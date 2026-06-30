@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>새싹트리 — 나만의 취업 핸드북</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --g900:#1A5C28;--g700:#2D7A3A;--g500:#4CAF50;--g300:#81C784;
+  --g100:#C8E6C9;--g50:#E8F5E9;--g20:#F1FAF2;
+  --gold:#F9A825;--gold-bg:#FFF8E1;
+  --coral:#EF5350;--coral-bg:#FFEBEE;
+  --blue:#1565C0;--blue-bg:#E3F2FD;
+  --purple:#7B1FA2;--purple-bg:#EDE7F6;
+  --orange:#E65100;--orange-bg:#FFF3E0;
+  --ink:#1C1C1E;--ink2:#3C3C43;--ink3:#6C6C70;--ink4:#AEAEB2;
+  --border:#E5E5EA;--bg:#F4FAF5;--surface:#FFFFFF;
+  --r-lg:16px;--r-md:12px;--r-sm:8px;--r-xs:6px;
+  --sh-sm:0 1px 4px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.04);
+  --sh-md:0 4px 16px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04);
+  --sh-lg:0 8px 32px rgba(0,0,0,.10),0 2px 8px rgba(0,0,0,.06);
+  --sh-g:0 4px 20px rgba(45,122,58,.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;background:none;font-family:inherit}
+input,textarea,select{font-family:inherit}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-thumb{background:var(--g300);border-radius:3px}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.logo{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--g700),var(--g500));display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 8px rgba(45,122,58,.35)}
+.logo-name{font-size:17px;font-weight:800;color:var(--g900);letter-spacing:-.3px}
+.logo-sub{font-size:10px;color:var(--ink3);font-weight:500;margin-top:-2px}
+.srch{flex:1;max-width:440px;margin:0 auto;position:relative}
+.srch input{width:100%;height:38px;padding:0 14px 0 38px;background:var(--bg);border:1.5px solid var(--border);border-radius:20px;font-size:13px;outline:none;transition:all .18s}
+.srch input:focus{border-color:var(--g500);box-shadow:0 0 0 3px rgba(76,175,80,.15);background:#fff}
+.srch-ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--ink4);font-size:14px;pointer-events:none}
+.hdr-r{display:flex;align-items:center;gap:10px;margin-left:auto}
+.nb{width:38px;height:38px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;position:relative;transition:all .18s}
+.nb:hover{background:var(--g50);border-color:var(--g300)}
+.ndot{position:absolute;top:5px;right:5px;width:8px;height:8px;background:var(--coral);border-radius:50%;border:2px solid #fff}
+.pt{display:flex;align-items:center;gap:5px;background:var(--gold-bg);border:1.5px solid #FFE082;border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;color:#795548}
+.uc{display:flex;align-items:center;gap:8px;background:var(--g50);border:1.5px solid var(--g100);border-radius:20px;padding:5px 12px 5px 6px;cursor:pointer;transition:all .18s}
+.uc:hover{background:var(--g100)}
+.av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--g700),var(--g500));display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff}
+.nav{position:fixed;top:62px;left:0;right:0;z-index:190;height:48px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:2px}
+.ni{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--r-sm);font-size:13px;font-weight:600;color:var(--ink3);cursor:pointer;transition:all .18s;white-space:nowrap;position:relative}
+.ni::after{content:'';position:absolute;bottom:-9px;left:16px;right:16px;height:2.5px;background:var(--g700);border-radius:2px;opacity:0;transition:opacity .18s}
+.ni:hover{color:var(--g700);background:var(--g50)}.ni.on{color:var(--g900);background:var(--g50)}.ni.on::after{opacity:1}
+.pg{display:none}.pg.on{display:block}
+.shell{margin-top:110px;display:flex;min-height:calc(100vh - 110px)}
+.sb{width:210px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);padding:20px 12px;position:sticky;top:110px;height:calc(100vh - 110px);overflow-y:auto}
+.sbl{font-size:10px;font-weight:800;color:var(--ink4);text-transform:uppercase;letter-spacing:.07em;padding:0 10px;margin-bottom:6px}
+.sbi{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:var(--r-sm);font-size:13px;color:var(--ink3);cursor:pointer;transition:all .15s;margin-bottom:1px;font-weight:500}
+.sbi:hover{background:var(--g50);color:var(--g700)}.sbi.on{background:var(--g50);color:var(--g900);font-weight:700}
+.sbcard{margin-top:20px;background:linear-gradient(135deg,var(--g50),#dcf0de);border-radius:var(--r-md);padding:14px;font-size:12px;color:var(--g900);line-height:1.6;border:1px solid var(--g100)}
+.main{flex:1;min-width:0;padding:28px 28px 48px}
+.rp{width:268px;flex-shrink:0;background:var(--surface);border-left:1px solid var(--border);padding:20px 18px;position:sticky;top:110px;height:calc(100vh - 110px);overflow-y:auto}
+.rpt{font-size:12px;font-weight:800;color:var(--ink2);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.rpt a{font-size:11px;color:var(--g700);font-weight:600;cursor:pointer}
+.pgt{font-size:22px;font-weight:800;color:var(--g900);display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.pgs{font-size:13px;color:var(--ink3);margin-bottom:22px}
+.card{background:var(--surface);border-radius:var(--r-lg);border:1px solid var(--border);box-shadow:var(--sh-sm)}
+.cp{padding:18px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:var(--r-sm);font-size:13px;font-weight:700;transition:all .18s;white-space:nowrap}
+.bp{background:linear-gradient(135deg,var(--g700),var(--g500));color:#fff;box-shadow:var(--sh-g)}
+.bp:hover{filter:brightness(1.07);box-shadow:0 6px 24px rgba(45,122,58,.3)}
+.bo{background:#fff;color:var(--g700);border:2px solid var(--g700)}.bo:hover{background:var(--g50)}
+.bsm{padding:6px 13px;font-size:12px;border-radius:var(--r-xs)}
+.bdanger{background:var(--coral-bg);color:var(--coral);border:1.5px solid #FFCDD2}
+.tag{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.tg{background:var(--g50);color:var(--g900);border:1px solid var(--g100)}
+.tb{background:var(--blue-bg);color:var(--blue);border:1px solid #BBDEFB}
+.tgold{background:var(--gold-bg);color:#795548;border:1px solid #FFE082}
+.tc{background:var(--coral-bg);color:var(--coral);border:1px solid #FFCDD2}
+.tgr{background:#F2F2F7;color:var(--ink3);border:1px solid #E5E5EA}
+.tp{background:var(--purple-bg);color:var(--purple);border:1px solid #D1C4E9}
+.tor{background:var(--orange-bg);color:var(--orange);border:1px solid #FFCC80}
+.trec{background:var(--g50);color:var(--g700);border:1.5px solid var(--g300);font-size:10px}
+.bar{height:7px;background:#EFEFEF;border-radius:20px;overflow:hidden}
+.bf{height:100%;border-radius:20px;transition:width .5s}
+.fg{background:linear-gradient(90deg,var(--g700),var(--g500))}
+.fb{background:linear-gradient(90deg,#1565C0,#42A5F5)}
+.fo{background:linear-gradient(90deg,#F57F17,var(--gold))}
+.fc{background:linear-gradient(90deg,#C62828,var(--coral))}
+.fp{background:linear-gradient(90deg,#6A1B9A,#AB47BC)}
+.ring{position:relative;display:inline-block}
+.ring svg{display:block}
+.rbg{fill:none;stroke:#EFEFEF}
+.rfi{fill:none;stroke-linecap:round;transition:stroke-dashoffset .6s}
+.rtx{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.star{font-size:18px;cursor:pointer;color:#D0D0D0;transition:all .18s;line-height:1}
+.star.on{color:var(--gold);filter:drop-shadow(0 1px 3px rgba(249,168,37,.4))}
+.star:hover{transform:scale(1.2)}
+.div{height:1px;background:var(--border);margin:14px 0}
+.ftabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.ftab{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;border:1.5px solid var(--border);background:var(--surface);color:var(--ink3);cursor:pointer;transition:all .15s}
+.ftab.on{background:var(--g700);border-color:var(--g700);color:#fff}
+.ftab:hover:not(.on){border-color:var(--g500);color:var(--g700);background:var(--g50)}
+.spl{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid var(--border);background:var(--surface);color:var(--ink3);cursor:pointer;transition:all .15s}
+.spl.on,.spl:hover{border-color:var(--g700);color:var(--g700);background:var(--g50)}
+.pages{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:24px}
+.pgb{width:34px;height:34px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--surface);font-size:13px;font-weight:600;color:var(--ink3);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.pgb.on{background:var(--g700);border-color:var(--g700);color:#fff}
+.pgb:hover:not(.on){border-color:var(--g700);color:var(--g700)}
+.back{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--ink3);cursor:pointer;margin-bottom:16px}
+.back:hover{color:var(--g700)}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(70px);background:rgba(26,26,30,.92);color:#fff;padding:11px 22px;border-radius:30px;font-size:13px;font-weight:600;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:9999;transition:transform .3s cubic-bezier(.4,0,.2,1);pointer-events:none;white-space:nowrap}
+.toast.on{transform:translateX(-50%) translateY(0)}
+/* HOME */
+.hero{background:linear-gradient(130deg,#D7EED9 0%,#C5E8C7 40%,#B8E0BB 100%);border-radius:var(--r-lg);border:1px solid var(--g100);padding:28px 32px;margin-bottom:24px;display:flex;align-items:center;gap:20px;position:relative;overflow:hidden;box-shadow:var(--sh-sm)}
+.hey{display:inline-flex;align-items:center;gap:5px;background:rgba(45,122,58,.12);color:var(--g700);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-bottom:10px}
+.hq{background:rgba(255,255,255,.72);backdrop-filter:blur(6px);border-radius:var(--r-md);padding:14px 16px;font-size:12px;color:var(--g900);line-height:1.7;border:1px solid rgba(255,255,255,.8);max-width:160px;flex-shrink:0}
+.hq::before{content:'❝';font-size:18px;color:var(--g500);display:block;margin-bottom:2px}
+.ggrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}
+.gc{background:var(--surface);border-radius:var(--r-lg);border:1px solid var(--border);padding:18px;box-shadow:var(--sh-sm);transition:box-shadow .2s}
+.gc:hover{box-shadow:var(--sh-md)}
+.rm-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;margin-bottom:26px}
+.rm-scroll::-webkit-scrollbar{height:3px}
+.rmc{min-width:172px;flex-shrink:0;background:var(--surface);border-radius:var(--r-lg);border:1px solid var(--border);padding:16px;box-shadow:var(--sh-sm);cursor:pointer;transition:all .2s}
+.rmc:hover{box-shadow:var(--sh-md);transform:translateY(-3px);border-color:var(--g300)}
+.h3g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.h3t{font-size:13px;font-weight:800;color:var(--ink2);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.h3t a{font-size:11px;color:var(--g700);font-weight:600;cursor:pointer}
+.rrow{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)}
+.rrow:last-child{border:none}
+.frow{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px}
+.frow:last-child{border:none}
+.wc{padding:5px 13px;border-radius:20px;background:var(--g50);color:var(--g900);font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid var(--g100);transition:all .15s}
+.wc:hover{background:var(--g700);color:#fff;border-color:var(--g700)}
+.strk{background:linear-gradient(135deg,var(--g50),#C8E6C9);border-radius:var(--r-md);padding:16px;margin-bottom:14px;border:1px solid var(--g100)}
+.scgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.scb{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:11px 6px;text-align:center;font-size:11px;font-weight:700;color:var(--ink2);cursor:pointer;transition:all .15s}
+.scb:hover{border-color:var(--g500);color:var(--g700);background:var(--g50)}
+.scb em{display:block;font-size:20px;margin-bottom:5px;font-style:normal}
+/* WIKI LIST */
+.wr{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--surface);border-radius:var(--r-lg);border:1px solid var(--border);margin-bottom:10px;cursor:pointer;box-shadow:var(--sh-sm);transition:all .18s}
+.wr:hover{box-shadow:var(--sh-md);border-color:var(--g300);transform:translateX(2px)}
+.pli{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px}
+.pli:last-child{border:none}
+.pln{width:22px;height:22px;border-radius:50%;background:var(--g700);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pln.gr{background:#F2F2F7;color:var(--ink3)}
+.ltip{background:linear-gradient(135deg,var(--g50),#C8E6C9);border-radius:var(--r-md);padding:14px;margin-top:16px;border:1px solid var(--g100);font-size:12px;color:var(--g900);line-height:1.7}
+/* WIKI DETAIL */
+.dlyt{display:flex;gap:24px}
+.tocp{width:170px;flex-shrink:0;position:sticky;top:124px;align-self:flex-start}
+.toci{padding:5px 10px;font-size:12px;color:var(--ink3);cursor:pointer;border-left:2px solid transparent;transition:all .15s;border-radius:0 var(--r-xs) var(--r-xs) 0}
+.toci:hover,.toci.on{color:var(--g900);border-left-color:var(--g700);background:var(--g50);font-weight:700}
+.abody{user-select:text;position:relative}
+.abody h2{font-size:16px;font-weight:800;color:var(--g900);border-left:3px solid var(--g700);padding-left:10px;margin:22px 0 10px}
+.abody p{font-size:13px;line-height:1.85;color:var(--ink2);margin-bottom:12px}
+.hly{background:#FFF59D;border-radius:2px;padding:0 2px;border-bottom:2px solid #F9A825}
+.hlg{background:#C8E6C9;border-radius:2px;padding:0 2px;border-bottom:2px solid var(--g500)}
+.wp{position:relative;cursor:pointer;border-bottom:1.5px dashed var(--g500);color:var(--g900);font-weight:600}
+.wp:hover::after{content:'+ 단어장';position:absolute;top:-28px;left:50%;transform:translateX(-50%);background:var(--g700);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;white-space:nowrap;pointer-events:none;box-shadow:0 2px 8px rgba(45,122,58,.3)}
+#hlbar{position:fixed;z-index:600;display:none;background:rgba(26,26,30,.95);border-radius:var(--r-sm);box-shadow:var(--sh-lg);padding:5px 6px;align-items:center;gap:3px}
+#hlbar.on{display:flex}
+.hlbtn{padding:5px 10px;border-radius:var(--r-xs);font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;color:#fff}
+.hly-btn{background:rgba(249,168,37,.8)}.hly-btn:hover{background:var(--gold)}
+.hlg-btn{background:rgba(76,175,80,.8)}.hlg-btn:hover{background:var(--g500)}
+.hlw-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3)}.hlw-btn:hover{background:rgba(255,255,255,.25)}
+.cbox{background:#1C1C2E;border-radius:var(--r-md);padding:18px 20px;margin:14px 0;position:relative;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.cbox pre{color:#CDD9E5;font-size:13px;font-family:'SF Mono','Fira Code',Consolas,monospace;line-height:1.7;overflow-x:auto}
+.kw{color:#F97583}.str{color:#9ECBFF}.cmt{color:#6A737D;font-style:italic}
+.cpbtn{position:absolute;top:10px;right:12px;background:rgba(255,255,255,.1);color:#CDD9E5;border:1px solid rgba(255,255,255,.15);border-radius:var(--r-xs);padding:4px 10px;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s}
+.cpbtn:hover{background:rgba(255,255,255,.2)}
+.wpnl{width:210px;flex-shrink:0}
+.abox{background:linear-gradient(135deg,var(--g50),#D9EFD9);border-radius:var(--r-md);padding:16px;margin-bottom:12px;border:1px solid var(--g100)}
+.abtn{display:flex;align-items:center;gap:8px;padding:9px 11px;background:var(--surface);border-radius:var(--r-sm);font-size:12px;font-weight:700;color:var(--g900);cursor:pointer;border:1px solid var(--g100);transition:all .15s;box-shadow:var(--sh-sm);margin-bottom:7px}
+.abtn:hover{background:var(--g700);color:#fff;border-color:var(--g700)}
+.cbtn{width:100%;padding:13px;border-radius:var(--r-sm);border:none;background:linear-gradient(135deg,var(--g700),var(--g500));color:#fff;font-size:13px;font-weight:800;cursor:pointer;box-shadow:var(--sh-g);transition:all .18s;margin-top:6px}
+.cbtn:hover{filter:brightness(1.07)}
+.hll{margin-top:16px}
+.hlli{font-size:11px;font-weight:800;color:var(--ink3);margin-bottom:8px}
+.hlitem{background:#FFF9C4;border-radius:var(--r-xs);padding:8px 10px;font-size:11px;color:var(--ink2);margin-bottom:6px;line-height:1.5;border-left:3px solid var(--gold);position:relative}
+.hdel{position:absolute;top:6px;right:8px;color:var(--ink4);font-size:12px;cursor:pointer;font-weight:700}
+.hdel:hover{color:var(--coral)}
+.mover{position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:800;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.mover.on{display:flex}
+.mbox{background:var(--surface);border-radius:var(--r-lg);padding:26px;width:360px;box-shadow:var(--sh-lg);border:1px solid var(--border);animation:mIn .2s cubic-bezier(.4,0,.2,1)}
+@keyframes mIn{from{transform:scale(.95) translateY(10px);opacity:0}to{transform:none;opacity:1}}
+.mlbl{font-size:12px;font-weight:700;color:var(--ink3);margin-bottom:5px}
+.mi{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;outline:none;transition:all .18s}
+.mi:focus{border-color:var(--g500);box-shadow:0 0 0 3px rgba(76,175,80,.12)}
+.relitem{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--surface);border-radius:var(--r-sm);border:1px solid var(--border);margin-bottom:8px;cursor:pointer;transition:all .15s;box-shadow:var(--sh-sm)}
+.relitem:hover{border-color:var(--g500);box-shadow:var(--sh-md)}
+/* EXAM */
+.exrow{display:flex;align-items:flex-start;gap:14px;padding:18px;background:var(--surface);border-radius:var(--r-lg);border:1px solid var(--border);margin-bottom:10px;cursor:pointer;box-shadow:var(--sh-sm);transition:all .18s}
+.exrow:hover{box-shadow:var(--sh-md);border-color:var(--g300)}
+.exst{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px}
+.exst:last-child{border:none}
+.reex{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px}
+.reex:last-child{border:none}
+.odbox{background:linear-gradient(135deg,var(--coral-bg),#FFE4E4);border-radius:var(--r-md);padding:14px;margin-top:14px;border:1px solid #FFCDD2;cursor:pointer;transition:box-shadow .15s}
+.odbox:hover{box-shadow:var(--sh-md)}
+/* QUIZ */
+.qcard{background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);padding:16px;margin-bottom:12px;box-shadow:var(--sh-sm)}
+.qtip{background:linear-gradient(135deg,var(--g50),#C8E6C9);border-radius:var(--r-md);padding:14px;border:1px solid var(--g100)}
+.qirow{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px}
+.qirow:last-child{border:none}
+.qbody{background:var(--surface);border-radius:var(--r-lg);border:1px solid var(--border);padding:26px;box-shadow:var(--sh-sm)}
+.cho{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:var(--r-sm);border:1.5px solid var(--border);margin-bottom:9px;cursor:pointer;transition:all .15s}
+.cho:hover{border-color:var(--g500);background:var(--g20)}
+.cho.sel{border-color:var(--g700);background:var(--g50);box-shadow:0 0 0 3px rgba(76,175,80,.12)}
+.choc{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.cho.sel .choc{background:var(--g700);border-color:var(--g700)}
+.cho.sel .choc::after{content:'';width:8px;height:8px;background:#fff;border-radius:50%}
+.qgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:12px}
+.qnum{width:36px;height:36px;border-radius:var(--r-sm);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1.5px solid var(--border);transition:all .15s}
+.qnum.done{background:var(--g700);border-color:var(--g700);color:#fff}
+.qnum.curr{background:var(--g50);border-color:var(--g700);color:var(--g900);box-shadow:0 0 0 3px rgba(76,175,80,.15)}
+.twrap{position:relative;width:80px;height:80px;margin:0 auto 8px}
+.twrap svg{display:block;transform:rotate(-90deg)}
+.tbg{fill:none;stroke:#EFEFEF;stroke-width:6}.tfi{fill:none;stroke:var(--g700);stroke-width:6;stroke-linecap:round;stroke-dasharray:220;stroke-dashoffset:55}
+.tval{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--g900)}
+.memo{background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);padding:14px;box-shadow:var(--sh-sm)}
+.memo textarea{width:100%;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:9px;font-size:12px;resize:none;outline:none;height:80px;line-height:1.5}
+.memo textarea:focus{border-color:var(--g500)}
+/* JOB */
+.strow{display:flex;align-items:flex-start;margin-bottom:26px}
+.stnod{display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.stc{width:42px;height:42px;border-radius:50%;border:2px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--ink4);z-index:1;transition:all .2s}
+.stc.done{background:var(--g700);border-color:var(--g700);color:#fff;box-shadow:var(--sh-g)}
+.stc.act{background:var(--surface);border-color:var(--g700);color:var(--g900);box-shadow:0 0 0 5px var(--g50)}
+.stlbl{font-size:10px;color:var(--ink3);margin-top:5px;text-align:center;max-width:58px;line-height:1.3}
+.stlbl.act{color:var(--g900);font-weight:700}
+.stline{flex:1;height:2px;background:var(--border);margin:21px 4px 0}
+.stline.done{background:var(--g500)}
+.jcard{background:var(--surface);border-radius:var(--r-lg);border:1px solid var(--border);padding:22px;box-shadow:var(--sh-sm)}
+.jtask{display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg);border-radius:var(--r-md);margin-bottom:8px;cursor:pointer;transition:all .15s;border:1px solid transparent}
+.jtask:hover{background:var(--g50);border-color:var(--g100)}
+.jobtip{background:linear-gradient(135deg,var(--g50),#C8E6C9);border-radius:var(--r-md);padding:16px;margin-top:16px;display:flex;align-items:flex-start;gap:10px;border:1px solid var(--g100)}
+.prow{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px}
+.prow:last-child{border:none}
+.resi{padding:9px 0;border-bottom:1px solid var(--border);font-size:12px}
+.resi:last-child{border:none}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.tbtn{display:flex;align-items:center;gap:6px;padding:9px;background:var(--bg);border-radius:var(--r-sm);font-size:11px;font-weight:700;color:var(--ink2);cursor:pointer;transition:all .15s;border:1px solid var(--border)}
+.tbtn:hover{background:var(--g50);color:var(--g900);border-color:var(--g100)}
+/* MY */
+.drow{display:flex;align-items:center;gap:10px;padding:13px 16px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);margin-bottom:8px;cursor:pointer;box-shadow:var(--sh-sm);transition:all .15s}
+.drow:hover{box-shadow:var(--sh-md);border-color:var(--g300)}
+.stgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.stbox{background:var(--bg);border-radius:var(--r-sm);padding:12px;text-align:center;border:1px solid var(--border)}
+.wsbar{display:flex;gap:10px;margin-bottom:18px}
+.wsb{flex:1;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);padding:14px;text-align:center;box-shadow:var(--sh-sm)}
+.wrow{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);margin-bottom:8px;box-shadow:var(--sh-sm);transition:all .15s}
+.wrow:hover{box-shadow:var(--sh-md);border-color:var(--g300)}
+.qwid{background:linear-gradient(135deg,var(--g50),#C8E6C9);border-radius:var(--r-md);padding:16px;margin-bottom:16px;border:1px solid var(--g100)}
+.qwopt{padding:7px 11px;background:var(--surface);border-radius:var(--r-sm);font-size:12px;cursor:pointer;border:1.5px solid transparent;transition:all .15s;margin-bottom:5px}
+.qwopt:hover{border-color:var(--g500);background:var(--g50)}
+.cbar{height:6px;flex:2;border-radius:3px;overflow:hidden;background:var(--border)}
+.frow2{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);margin-bottom:8px;cursor:pointer;box-shadow:var(--sh-sm);transition:all .15s}
+.frow2:hover{box-shadow:var(--sh-md);border-color:var(--gold)}
+</style>
+
+</head>
+<body>
+
+<header class="hdr">
+  <div class="logo">
+    <div class="logo-mark">🌱</div>
+    <div><div class="logo-name">새싹트리</div><div class="logo-sub">나만의 취업 핸드북</div></div>
+  </div>
+  <div class="srch"><span class="srch-ico">🔍</span><input type="text" placeholder="궁금한 내용을 검색해보세요!"></div>
+  <div class="hdr-r">
+    <div class="nb">🔔<span class="ndot"></span></div>
+    <div class="pt"><span style="font-size:15px;">🪙</span>1,240P</div>
+    <div class="uc"><div class="av">🌿</div><div><div style="font-size:13px;font-weight:700;color:var(--g900);">김새싹</div><div style="font-size:10px;color:var(--g700);font-weight:600;">Lv.3 잎새</div></div><span style="color:var(--ink3);margin-left:2px;">▾</span></div>
+  </div>
+</header>
+<nav class="nav">
+  <div class="ni on" data-p="home" onclick="gp('home')">🏠 홈</div>
+  <div class="ni" data-p="wiki" onclick="gp('wiki')">📖 새싹위키</div>
+  <div class="ni" data-p="exam" onclick="gp('exam')">📝 모의고사</div>
+  <div class="ni" data-p="job" onclick="gp('job')">💼 취업핸드북</div>
+  <div class="ni" data-p="my" onclick="gp('my')">📚 마이핸드북</div>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="pg on"><div class="shell">
+<div class="main">
+  <div class="hero" style="margin-bottom:24px;">
+    <div style="flex:1;min-width:0;">
+      <div class="hey">🌱 나의 취업 준비 핸드북</div>
+      <div style="font-size:26px;font-weight:800;color:var(--g900);line-height:1.3;margin-bottom:5px;letter-spacing:-.3px;">오늘도 새싹이<br>자라는 중이에요!</div>
+      <div style="font-size:13px;color:var(--g700);margin-bottom:18px;">나만의 취업 핸드북</div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn bp" onclick="gp('wiki')">🌱 오늘 학습 시작하기</button>
+        <button class="btn bo" onclick="gp('my')">📖 내 핸드북 보기</button>
+      </div>
+    </div>
+    <div class="hq">작은 새싹이 나무가 되듯,<br>오늘의 공부가<br>내일의 내가 됩니다.</div>
+    <div style="font-size:80px;line-height:1;flex-shrink:0;filter:drop-shadow(0 4px 12px rgba(0,0,0,.15));">🌳</div>
+  </div>
+  <div style="font-size:14px;font-weight:800;color:var(--g900);margin-bottom:12px;display:flex;align-items:center;gap:6px;">🌱 나의 성장 현황</div>
+  <div class="ggrid">
+    <div class="gc">
+      <div style="font-size:11px;font-weight:700;color:var(--ink3);display:flex;align-items:center;gap:5px;margin-bottom:10px;"><span>📊</span>학습 진도율</div>
+      <div class="ring" style="width:68px;height:68px;margin:2px 0 4px;">
+        <svg viewBox="0 0 68 68" width="68" height="68"><circle class="rbg" cx="34" cy="34" r="28" stroke-width="6"/><circle class="rfi" cx="34" cy="34" r="28" stroke="var(--g700)" stroke-width="6" stroke-dasharray="176" stroke-dashoffset="67" transform="rotate(-90 34 34)"/></svg>
+        <div class="rtx"><span style="font-size:18px;font-weight:800;color:var(--g900);">62%</span></div>
+      </div>
+      <div style="font-size:11px;color:var(--ink4);margin-top:2px;">전체 진도</div>
+    </div>
+    <div class="gc"><div style="font-size:11px;font-weight:700;color:var(--ink3);display:flex;align-items:center;gap:5px;margin-bottom:10px;"><span>📥</span>모의고사</div><div style="font-size:30px;font-weight:800;color:var(--g900);">3회</div><div style="font-size:11px;color:var(--ink4);margin-top:2px;">총 완료 횟수</div><div style="display:inline-block;margin-top:6px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;background:var(--g50);color:var(--g700);border:1px solid var(--g100);">평균 점수 72점</div></div>
+    <div class="gc"><div style="font-size:11px;font-weight:700;color:var(--ink3);display:flex;align-items:center;gap:5px;margin-bottom:10px;"><span>💼</span>취업 준비율</div><div style="font-size:30px;font-weight:800;color:var(--g900);">45%</div><div style="font-size:11px;color:var(--ink4);margin-top:2px;">전체 준비율</div><div style="margin-top:8px;"><div class="bar"><div class="bf fo" style="width:45%"></div></div></div></div>
+    <div class="gc"><div style="font-size:11px;font-weight:700;color:var(--ink3);display:flex;align-items:center;gap:5px;margin-bottom:10px;"><span>⭐</span>총 포인트</div><div style="font-size:30px;font-weight:800;color:var(--g900);">1,240P</div><div style="display:inline-block;margin-top:6px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;background:var(--gold-bg);color:#795548;border:1px solid #FFE082;">이번 주 +120P</div></div>
+  </div>
+  <div style="font-size:14px;font-weight:800;color:var(--g900);display:flex;align-items:center;gap:7px;margin-bottom:12px;">🌱 추천 학습 로드맵 <span style="font-size:12px;font-weight:400;color:var(--ink3);">지금 나에게 딱 맞는 학습을 추천해드려요!</span></div>
+  <div class="rm-scroll">
+    <div class="rmc" onclick="gp('detail')"><div style="font-size:28px;margin-bottom:8px;">🗄️</div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">SQL 기초 복습</div><div style="font-size:11px;color:var(--ink3);margin-bottom:10px;">SELECT, WHERE, JOIN</div><div class="bar"><div class="bf fg" style="width:70%"></div></div><div style="font-size:11px;color:var(--ink3);margin-top:4px;text-align:right;">70%</div></div>
+    <div class="rmc" onclick="gp('detail')"><div style="font-size:28px;margin-bottom:8px;">☕</div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Java 객체지향</div><div style="font-size:11px;color:var(--ink3);margin-bottom:10px;">클래스와 객체 이해하기</div><div class="bar"><div class="bf fb" style="width:40%"></div></div><div style="font-size:11px;color:var(--ink3);margin-top:4px;text-align:right;">40%</div></div>
+    <div class="rmc" onclick="gp('detail')"><div style="font-size:28px;margin-bottom:8px;">🔀</div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Git 기본 개념</div><div style="font-size:11px;color:var(--ink3);margin-bottom:10px;">버전 관리와 협업</div><div class="bar"><div class="bf fb" style="width:30%"></div></div><div style="font-size:11px;color:var(--ink3);margin-top:4px;text-align:right;">30%</div></div>
+    <div class="rmc" onclick="gp('job')"><div style="font-size:28px;margin-bottom:8px;">📄</div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">이력서 작성</div><div style="font-size:11px;color:var(--ink3);margin-bottom:10px;">핵심역량 정리하기</div><div class="bar"><div class="bf fo" style="width:50%"></div></div><div style="font-size:11px;color:var(--ink3);margin-top:4px;text-align:right;">50%</div></div>
+    <div class="rmc" onclick="gp('job')"><div style="font-size:28px;margin-bottom:8px;">💬</div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">면접 준비</div><div style="font-size:11px;color:var(--ink3);margin-bottom:10px;">기출 면접 질문 풀이</div><div class="bar"><div class="bf fo" style="width:30%"></div></div><div style="font-size:11px;color:var(--ink3);margin-top:4px;text-align:right;">30%</div></div>
+  </div>
+  <div class="h3g">
+    <div class="card cp"><div class="h3t">최근 본 페이지 <a onclick="gp('wiki')">전체보기 ›</a></div>
+      <div class="rrow"><span style="font-size:15px;">🗄️</span><span style="flex:1;font-size:12px;font-weight:600;">SQL SELECT 문법</span><span class="tag tg" style="font-size:10px;">새싹위키</span><span style="font-size:10px;color:var(--ink4);">5분 전</span></div>
+      <div class="rrow"><span style="font-size:15px;">☕</span><span style="flex:1;font-size:12px;font-weight:600;">Java 상속과 다형성</span><span class="tag tg" style="font-size:10px;">새싹위키</span><span style="font-size:10px;color:var(--ink4);">1시간 전</span></div>
+      <div class="rrow"><span style="font-size:15px;">📄</span><span style="flex:1;font-size:12px;font-weight:600;">이력서 작성 가이드</span><span class="tag tgold" style="font-size:10px;">취업핸드북</span><span style="font-size:10px;color:var(--ink4);">3시간 전</span></div>
+      <div class="rrow" onclick="gp('exam')" style="cursor:pointer;"><span style="font-size:15px;">📝</span><span style="flex:1;font-size:12px;font-weight:600;">모의고사 1회</span><span class="tag tb" style="font-size:10px;">모의고사</span><span style="font-size:10px;color:var(--ink4);">어제</span></div>
+    </div>
+    <div class="card cp"><div class="h3t">즐겨찾기 <a onclick="gp('myfav')">전체보기 ›</a></div>
+      <div class="frow"><span style="color:var(--gold);font-size:14px;">★</span><span style="flex:1;font-weight:600;">SQL JOIN 완벽 정리</span><span class="tag tg" style="font-size:10px;">새싹위키</span></div>
+      <div class="frow"><span style="color:var(--gold);font-size:14px;">★</span><span style="flex:1;font-weight:600;">Java 예외 처리</span><span class="tag tg" style="font-size:10px;">새싹위키</span></div>
+      <div class="frow"><span style="color:var(--gold);font-size:14px;">★</span><span style="flex:1;font-weight:600;">면접 질문 모음 정리</span><span class="tag tgold" style="font-size:10px;">취업핸드북</span></div>
+      <div class="frow"><span style="color:var(--gold);font-size:14px;">★</span><span style="flex:1;font-weight:600;">Salesforce Flow 기초</span><span class="tag tg" style="font-size:10px;">새싹위키</span></div>
+    </div>
+    <div class="card cp"><div class="h3t">최근 저장한 단어 <a onclick="gp('mywords')">전체보기 ›</a></div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;"><span class="wc">JOIN</span><span class="wc">Primary Key</span><span class="wc">Apex</span><span class="wc">Flow</span><span class="wc">Callback</span><span class="wc" style="background:#F2F2F7;color:var(--ink3);border-color:var(--border);">+ 더보기</span></div>
+    </div>
+  </div>
+</div>
+<aside class="rp">
+  <div class="strk"><div style="font-size:12px;font-weight:800;color:var(--g900);margin-bottom:6px;">연속 학습 기록</div><div style="display:flex;align-items:baseline;gap:5px;"><span style="font-size:36px;font-weight:800;color:var(--g900);line-height:1;">7</span><span style="font-size:13px;color:var(--g700);font-weight:700;">일</span><span style="font-size:11px;color:var(--ink3);margin-left:auto;">최고 기록 12일</span></div><div style="font-size:32px;text-align:center;margin-top:10px;">📅</div></div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:12px;margin-bottom:14px;"><div style="font-size:11px;font-weight:800;color:var(--g700);margin-bottom:5px;">🌱 오늘의 한마디</div><div style="font-size:12px;color:var(--ink2);line-height:1.6;">꾸준함이 실력이고,<br>실력이 자신감이 됩니다!</div></div>
+  <div style="font-size:12px;font-weight:800;color:var(--ink2);margin-bottom:8px;">바로가기</div>
+  <div class="scgrid">
+    <div class="scb" onclick="gp('mywords')"><em>📓</em>단어장</div>
+    <div class="scb"><em>❌</em>오답노트</div>
+    <div class="scb"><em>✏️</em>하이라이트</div>
+    <div class="scb"><em>📈</em>진도 리포트</div>
+  </div>
+  <div style="text-align:center;font-size:52px;margin-top:20px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.12));">🌳</div>
+</aside>
+</div></div>
+
+<!-- WIKI LIST -->
+<div id="wiki" class="pg"><div class="shell">
+<aside class="sb">
+  <div class="sbl">카테고리</div>
+  <div class="sbi on"><span style="font-size:15px;width:20px;text-align:center;">📋</span>전체</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🗄️</span>SQL</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">☕</span>Java</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🌐</span>HTML/CSS</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">⚡</span>JavaScript</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🔀</span>Git</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">☁️</span>Salesforce</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">💡</span>CS 개념</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🎤</span>면접 개념</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">💼</span>취업 가이드</div>
+</aside>
+<div class="main">
+  <div class="pgt">새싹위키 🌱</div>
+  <div class="pgs">새싹 과정에 필요한 모든 지식을 모아놓은 백과사전</div>
+  <div style="display:flex;gap:10px;align-items:center;margin-bottom:18px;">
+    <input type="text" placeholder="위키 검색하기..." style="flex:1;height:40px;padding:0 14px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;outline:none;">
+    <div style="display:flex;gap:6px;"><button class="spl on">최신순</button><button class="spl">인기순</button><button class="spl">난이도순</button></div>
+  </div>
+  <div class="wr" onclick="gp('detail')"><span style="font-size:32px;flex-shrink:0;">🗄️</span><div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;margin-bottom:2px;">SQL SELECT 문법</div><div style="font-size:12px;color:var(--ink3);">데이터베이스를 다루는 가장 기본적인 SQL 문법을 알아봅니다.</div></div><div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="tag tg">SQL</span><span style="font-size:11px;color:var(--ink3);">입문</span><span style="font-size:11px;color:var(--ink4);">5분 전</span><span style="font-size:13px;font-weight:800;color:var(--g900);">78%</span><span class="star on" onclick="event.stopPropagation();ts(this)">★</span></div></div>
+  <div class="wr" onclick="gp('detail')"><span style="font-size:32px;flex-shrink:0;">🗄️</span><div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;margin-bottom:2px;">SQL JOIN 완벽 정리</div><div style="font-size:12px;color:var(--ink3);">다양한 JOIN의 종류와 사용법을 정리했습니다.</div></div><div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="tag tg">SQL</span><span style="font-size:11px;color:var(--ink3);">중급</span><span style="font-size:11px;color:var(--ink4);">10분 전</span><span style="font-size:13px;font-weight:800;color:var(--g900);">65%</span><span class="star" onclick="event.stopPropagation();ts(this)">★</span></div></div>
+  <div class="wr" onclick="gp('detail')"><span style="font-size:32px;flex-shrink:0;">☕</span><div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;margin-bottom:2px;">Java 클래스와 객체</div><div style="font-size:12px;color:var(--ink3);">객체지향의 핵심! 클래스와 객체를 이해해봅시다.</div></div><div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="tag tor">Java</span><span style="font-size:11px;color:var(--ink3);">기초</span><span style="font-size:11px;color:var(--ink4);">8분 전</span><span style="font-size:13px;font-weight:800;color:var(--g900);">42%</span><span class="star on" onclick="event.stopPropagation();ts(this)">★</span></div></div>
+  <div class="wr" onclick="gp('detail')"><span style="font-size:32px;flex-shrink:0;">🔀</span><div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;margin-bottom:2px;">Git 기본 개념</div><div style="font-size:12px;color:var(--ink3);">버전 관리 시스템 Git의 기본 개념을 정리했습니다.</div></div><div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="tag tgr">Git</span><span style="font-size:11px;color:var(--ink3);">입문</span><span style="font-size:11px;color:var(--ink4);">6분 전</span><span style="font-size:13px;font-weight:800;color:var(--g900);">55%</span><span class="star on" onclick="event.stopPropagation();ts(this)">★</span></div></div>
+  <div class="wr" onclick="gp('detail')"><span style="font-size:32px;flex-shrink:0;">☁️</span><div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;margin-bottom:2px;">Salesforce Flow 기초</div><div style="font-size:12px;color:var(--ink3);">Flow의 기본 개념과 화면 Flow를 만들어봅니다.</div></div><div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="tag tb">Salesforce</span><span style="font-size:11px;color:var(--ink3);">중급</span><span style="font-size:11px;color:var(--ink4);">15분 전</span><span style="font-size:13px;font-weight:800;color:var(--g900);">30%</span><span class="star" onclick="event.stopPropagation();ts(this)">★</span></div></div>
+  <div class="pages"><button class="pgb">‹</button><button class="pgb on">1</button><button class="pgb">2</button><button class="pgb">3</button><button class="pgb">4</button><button class="pgb">5</button><button class="pgb">›</button></div>
+</div>
+<aside class="rp">
+  <div class="rpt">많이 보는 위키</div>
+  <div class="pli"><span class="pln">1</span><span style="flex:1;">SQL SELECT 문법</span></div>
+  <div class="pli"><span class="pln">2</span><span style="flex:1;">Java 클래스와 객체</span></div>
+  <div class="pli"><span class="pln">3</span><span style="flex:1;">Git 기본 개념</span></div>
+  <div class="pli"><span class="pln gr">4</span><span style="flex:1;">HTML 기본 구조</span></div>
+  <div class="pli"><span class="pln gr">5</span><span style="flex:1;">면접 질문 모음</span></div>
+  <div class="ltip"><div style="font-weight:800;margin-bottom:5px;">💡 학습 팁</div>모르는 단어는 단어장에, 중요한 내용은 하이라이트로 나만의 핸드북을 만들어보세요!<div style="text-align:center;font-size:44px;margin-top:10px;">🌿</div></div>
+</aside>
+</div></div>
+
+
+<!-- WIKI DETAIL (하이라이트 + 단어저장) -->
+<div id="detail" class="pg"><div class="shell"><div class="main">
+  <div class="back" onclick="gp('wiki')">‹ 새싹위키 목록으로</div>
+  <div class="dlyt">
+    <!-- TOC -->
+    <div class="tocp">
+      <div style="font-size:10px;font-weight:800;color:var(--ink4);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">목차</div>
+      <div class="toci on">1. SELECT 기본 문법</div>
+      <div class="toci">2. WHERE 조건절</div>
+      <div class="toci">3. ORDER BY 정렬</div>
+      <div class="toci">4. GROUP BY 집계</div>
+      <div class="toci">5. HAVING 필터</div>
+      <div class="toci">6. 실습 예제</div>
+    </div>
+    <!-- Article -->
+    <div style="flex:1;min-width:0;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:7px;">
+        <span style="font-size:20px;font-weight:800;color:var(--g900);">SQL SELECT 문법</span>
+        <span class="tag tg">SQL</span><span class="tag tgr">입문</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;color:var(--ink3);margin-bottom:14px;">
+        <span>⏱ 예상 학습 시간: 15분</span>
+        <span>👁 완료율 78%</span>
+        <span class="star on" onclick="ts(this)">★ 즐겨찾기</span>
+      </div>
+      <div class="bar" style="margin-bottom:18px;"><div class="bf fg" style="width:78%"></div></div>
+
+      <!-- 하이라이트 안내 배너 -->
+      <div style="background:linear-gradient(135deg,var(--g50),#D7EED9);border:1px solid var(--g100);border-radius:var(--r-sm);padding:11px 14px;font-size:12px;color:var(--g900);margin-bottom:18px;display:flex;align-items:center;gap:8px;">
+        <span>✏️</span>
+        <span><strong>텍스트를 드래그</strong>하면 하이라이트 저장 또는 단어장 추가를 할 수 있어요!</span>
+      </div>
+
+      <div class="abody" id="artbody">
+        <h2>1. SELECT 기본 문법</h2>
+        <p><span class="hly">SELECT는 데이터베이스에서 데이터를 조회할 때 사용하는 가장 기본적인 SQL 명령어입니다.</span> 테이블에서 원하는 컬럼을 선택해 결과를 가져옵니다. SELECT 뒤에 원하는 컬럼명을 쉼표로 구분하여 나열하고, FROM 뒤에 조회할 테이블명을 지정합니다.</p>
+        <div class="cbox">
+          <button class="cpbtn" onclick="toast('코드가 복사되었어요!')">복사</button>
+          <pre><span class="kw">SELECT</span> 컬럼명1, 컬럼명2
+<span class="kw">FROM</span> 테이블명
+<span class="kw">WHERE</span> 조건; <span class="cmt">-- 조건에 맞는 행만 반환</span></pre>
+        </div>
+        <h2>2. WHERE 조건절</h2>
+        <p>WHERE 절은 조회할 데이터의 조건을 지정합니다. <span class="wp" onclick="openModal('WHERE 절')">WHERE 절</span>은 조건에 맞는 행(row)만 결과로 반환합니다. 다양한 비교 연산자(=, !=, &gt;, &lt;, BETWEEN, LIKE, IN)를 사용할 수 있습니다.</p>
+        <div class="cbox">
+          <button class="cpbtn" onclick="toast('코드가 복사되었어요!')">복사</button>
+          <pre><span class="kw">SELECT</span> name, salary
+<span class="kw">FROM</span> employees
+<span class="kw">WHERE</span> department = <span class="str">'IT'</span>
+  <span class="kw">AND</span> salary &gt; 3000000;</pre>
+        </div>
+        <h2>3. ORDER BY 정렬</h2>
+        <p>ORDER BY 절은 결과를 특정 컬럼 기준으로 정렬합니다. <span class="wp" onclick="openModal('ASC')">ASC</span>는 오름차순, <span class="wp" onclick="openModal('DESC')">DESC</span>는 내림차순입니다. 기본값은 ASC(오름차순)입니다.</p>
+        <div class="cbox">
+          <button class="cpbtn" onclick="toast('코드가 복사되었어요!')">복사</button>
+          <pre><span class="kw">SELECT</span> name, salary
+<span class="kw">FROM</span> employees
+<span class="kw">ORDER BY</span> salary <span class="kw">DESC</span>;</pre>
+        </div>
+        <h2>4. GROUP BY 집계</h2>
+        <p><span class="wp" onclick="openModal('GROUP BY')">GROUP BY</span>는 특정 컬럼을 기준으로 데이터를 그룹화합니다. COUNT, SUM, AVG, MAX, MIN 등의 집계 함수와 함께 사용하여 각 그룹에 대한 집계 결과를 얻습니다.</p>
+        <div class="cbox">
+          <button class="cpbtn" onclick="toast('코드가 복사되었어요!')">복사</button>
+          <pre><span class="kw">SELECT</span> department, <span class="kw">COUNT</span>(*) <span class="kw">AS</span> cnt, <span class="kw">AVG</span>(salary) <span class="kw">AS</span> avg_sal
+<span class="kw">FROM</span> employees
+<span class="kw">GROUP BY</span> department;</pre>
+        </div>
+      </div>
+
+      <div style="font-size:13px;font-weight:800;color:var(--ink2);margin:24px 0 10px;">관련 문서</div>
+      <div class="relitem" onclick="toast('SQL JOIN 문서로 이동해요!')"><span style="font-size:20px;">🗄️</span><div><div style="font-size:13px;font-weight:700;">SQL JOIN 완벽 정리</div><div style="font-size:11px;color:var(--ink3);">다양한 JOIN의 종류와 사용법</div></div><span class="tag tg" style="margin-left:auto;">SQL</span></div>
+      <div class="relitem" onclick="toast('SQL 집계함수 문서로 이동해요!')"><span style="font-size:20px;">🗄️</span><div><div style="font-size:13px;font-weight:700;">SQL 집계 함수 (GROUP BY)</div><div style="font-size:11px;color:var(--ink3);">COUNT, SUM, AVG 활용법</div></div><span class="tag tg" style="margin-left:auto;">SQL</span></div>
+    </div>
+
+    <!-- 위키 패널 -->
+    <div class="wpnl">
+      <div class="abox">
+        <div style="font-size:12px;font-weight:800;color:var(--g900);margin-bottom:10px;">📚 내 핸드북에 저장</div>
+        <div class="abtn" onclick="ts(this.querySelector('span'));toast('★ 즐겨찾기에 저장했어요!')"><span class="star on">★</span> 즐겨찾기</div>
+        <div class="abtn" onclick="toast('텍스트를 드래그하면 하이라이트 툴바가 나타나요!')">✏️ 하이라이트</div>
+        <div class="abtn" onclick="openModal('')">📓 단어장 추가</div>
+      </div>
+      <button class="cbtn" onclick="toast('🎉 학습 완료! +20P 획득했어요!')">✅ 학습 완료</button>
+      <!-- 하이라이트 목록 -->
+      <div class="hll">
+        <div class="hlli" id="hlcount">✏️ 저장한 하이라이트 (1)</div>
+        <div class="hlitem" id="hl-init"><span class="hdel" onclick="delHl('hl-init')">✕</span>SELECT는 데이터베이스에서 데이터를 조회할 때 사용하는 가장 기본적인 SQL 명령어입니다.</div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+
+<!-- 하이라이트 툴바 -->
+<div id="hlbar">
+  <div class="hlbtn hly-btn" onclick="applyHL('y')">🟡 노란색</div>
+  <div class="hlbtn hlg-btn" onclick="applyHL('g')">🟢 초록색</div>
+  <div class="hlbtn hlw-btn" onclick="hlToWord()">📓 단어장</div>
+</div>
+
+<!-- 단어 저장 모달 -->
+<div class="mover" id="wmodal">
+  <div class="mbox">
+    <div style="font-size:16px;font-weight:800;color:var(--g900);margin-bottom:18px;display:flex;align-items:center;gap:8px;">📓 단어장에 추가</div>
+    <div style="margin-bottom:14px;"><div class="mlbl">단어</div><input class="mi" id="mword" placeholder="단어를 입력하세요"></div>
+    <div style="margin-bottom:14px;"><div class="mlbl">뜻 (한국어)</div><input class="mi" placeholder="뜻을 입력하세요"></div>
+    <div style="margin-bottom:14px;"><div class="mlbl">카테고리</div><select class="mi"><option>SQL</option><option>Java</option><option>CS/IT</option><option>비즈니스</option><option>기타</option></select></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:20px;">
+      <button class="btn bo bsm" onclick="closeModal()">취소</button>
+      <button class="btn bp bsm" onclick="saveWord()">단어장에 저장</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- EXAM LIST -->
+<div id="exam" class="pg"><div class="shell">
+<aside class="sb">
+  <div class="sbl">모의고사</div>
+  <div class="sbi on"><span style="font-size:15px;width:20px;text-align:center;">📋</span>전체 모의고사</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🗄️</span>SQL</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">☕</span>Java</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🌐</span>HTML/CSS</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">⚡</span>JavaScript</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🔀</span>Git</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">☁️</span>Salesforce</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🎤</span>면접 대비</div>
+  <div class="sbcard"><div style="font-weight:800;margin-bottom:5px;">꾸준히 풀면 실력이 쑥쑥!</div>오늘도 한 문제 도전해보세요 🌱<div style="text-align:center;font-size:38px;margin-top:8px;">🌳</div></div>
+</aside>
+<div class="main">
+  <div class="pgt">모의고사 🌱</div>
+  <div class="pgs">중간평가, 실습평가, 취업 대비 문제를 풀어보세요.</div>
+  <div class="ftabs">
+    <button class="ftab on">전체</button><button class="ftab">SQL</button><button class="ftab">Java</button>
+    <button class="ftab">HTML/CSS</button><button class="ftab">JavaScript</button><button class="ftab">Git</button>
+    <button class="ftab">Salesforce</button><button class="ftab">면접 대비</button>
+  </div>
+  <div class="exrow" onclick="gp('quiz')">
+    <span style="font-size:32px;flex-shrink:0;">🗄️</span>
+    <div style="flex:1;"><div style="font-size:15px;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:8px;">SQL 기초 10문제 <span class="tag trec">추천</span></div><div style="font-size:12px;color:var(--ink3);margin-bottom:8px;">SQL 기본 문법을 확인할 수 있는 입문 모의고사</div><div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink3);"><span>입문</span><span>·</span><span>10문제</span><span>·</span><span>예상 10분</span><span>·</span><span>평균 72점</span></div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;"><span style="font-size:11px;color:var(--ink4);">👥 256명 응시</span><button class="btn bp bsm" onclick="event.stopPropagation();gp('quiz')">시작하기</button></div>
+  </div>
+  <div class="exrow" onclick="gp('quiz')">
+    <span style="font-size:32px;flex-shrink:0;">☕</span>
+    <div style="flex:1;"><div style="font-size:15px;font-weight:700;margin-bottom:3px;">Java 객체지향 개념 테스트</div><div style="font-size:12px;color:var(--ink3);margin-bottom:8px;">클래스, 객체, 상속 등 객체지향 개념 확인</div><div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink3);"><span>기초~중급</span><span>·</span><span>15문제</span><span>·</span><span>예상 15분</span><span>·</span><span>평균 68점</span></div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;"><span style="font-size:11px;color:var(--ink4);">👥 198명 응시</span><button class="btn bp bsm" onclick="event.stopPropagation();gp('quiz')">시작하기</button></div>
+  </div>
+  <div class="exrow" onclick="gp('quiz')">
+    <span style="font-size:32px;flex-shrink:0;">🌐</span>
+    <div style="flex:1;"><div style="font-size:15px;font-weight:700;margin-bottom:3px;">HTML/CSS 기초 테스트</div><div style="font-size:12px;color:var(--ink3);margin-bottom:8px;">HTML 태그와 CSS 속성에 대한 기본 실력 점검</div><div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink3);"><span>입문</span><span>·</span><span>12문제</span><span>·</span><span>예상 12분</span><span>·</span><span>평균 75점</span></div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;"><span style="font-size:11px;color:var(--ink4);">👥 173명 응시</span><button class="btn bp bsm" onclick="event.stopPropagation();gp('quiz')">시작하기</button></div>
+  </div>
+  <div class="exrow" onclick="gp('quiz')">
+    <span style="font-size:32px;flex-shrink:0;">🔀</span>
+    <div style="flex:1;"><div style="font-size:15px;font-weight:700;margin-bottom:3px;">Git 기본 명령어 모의고사</div><div style="font-size:12px;color:var(--ink3);margin-bottom:8px;">Git 명령어와 사용법을 확인하는 모의고사</div><div style="display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink3);"><span>기초</span><span>·</span><span>10문제</span><span>·</span><span>예상 10분</span><span>·</span><span>평균 65점</span></div></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;"><span style="font-size:11px;color:var(--ink4);">👥 142명 응시</span><button class="btn bp bsm" onclick="event.stopPropagation();gp('quiz')">시작하기</button></div>
+  </div>
+</div>
+<aside class="rp">
+  <div class="rpt">내 모의고사 현황 <a>전체보기 ›</a></div>
+  <div style="text-align:center;margin:8px 0 12px;">
+    <div class="ring" style="width:80px;height:80px;display:inline-block;">
+      <svg viewBox="0 0 80 80" width="80" height="80"><circle class="rbg" cx="40" cy="40" r="30" stroke-width="7"/><circle class="rfi" cx="40" cy="40" r="30" stroke="var(--g700)" stroke-width="7" stroke-dasharray="188" stroke-dashoffset="128" transform="rotate(-90 40 40)"/></svg>
+      <div class="rtx"><span style="font-size:20px;font-weight:800;color:var(--g900);">32%</span><span style="font-size:10px;color:var(--ink3);">전체 평균</span></div>
+    </div>
+  </div>
+  <div class="exst"><span style="color:var(--ink3);">응시한 시험</span><span style="font-weight:700;">4회</span></div>
+  <div class="exst"><span style="color:var(--ink3);">평균 점수</span><span style="font-weight:700;">72점</span></div>
+  <div class="exst"><span style="color:var(--ink3);">최고 점수</span><span style="font-weight:700;">88점</span></div>
+  <div class="exst"><span style="color:var(--ink3);">획득 포인트</span><span style="font-weight:700;">560P</span></div>
+  <div class="rpt" style="margin-top:16px;">최근 응시한 시험 <a>전체보기 ›</a></div>
+  <div class="reex"><span style="font-size:15px;">🗄️</span><span style="flex:1;font-weight:600;">SQL 기초 10문제</span><span style="font-weight:800;color:var(--g900);">80점</span></div>
+  <div class="reex"><span style="font-size:15px;">☕</span><span style="flex:1;font-weight:600;">Java 객체지향</span><span style="font-weight:800;color:var(--coral);">65점</span></div>
+  <div class="reex"><span style="font-size:15px;">🔀</span><span style="flex:1;font-weight:600;">Git 기본 명령어</span><span style="font-weight:800;color:var(--g900);">70점</span></div>
+  <div class="odbox" onclick="toast('오답노트로 이동해요!')">
+    <div style="font-size:13px;font-weight:800;color:#C62828;margin-bottom:4px;">📝 오답노트 바로가기</div>
+    <div style="font-size:11px;color:var(--ink3);">틀린 문제를 다시 풀고 약점을 보완해보세요!</div>
+    <button class="btn bsm" style="margin-top:8px;width:100%;background:var(--coral-bg);color:var(--coral);border:1.5px solid #FFCDD2;">오답노트 보기</button>
+  </div>
+</aside>
+</div></div>
+
+<!-- QUIZ -->
+<div id="quiz" class="pg"><div class="shell"><div class="main">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+    <div>
+      <div class="back" onclick="gp('exam')" style="margin-bottom:4px;">‹ 모의고사 목록으로</div>
+      <div style="font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px;">SQL 기초 10문제 <span class="tag tgr">입문</span></div>
+      <div style="font-size:12px;color:var(--ink3);margin-top:3px;">SQL 기본 문법 확인 · ⏱ 10분 · 📝 10문제 · 👥 256명 응시</div>
+    </div>
+    <button class="btn bdanger" onclick="toast('시험을 종료했어요.')">시험 종료하기</button>
+  </div>
+  <div style="display:flex;gap:20px;">
+    <!-- 좌 -->
+    <div style="width:220px;flex-shrink:0;">
+      <div class="qcard">
+        <div style="font-size:12px;font-weight:800;color:var(--g900);margin-bottom:10px;">📋 시험 정보</div>
+        <div class="qirow"><span style="color:var(--ink3);">출제 유형</span><span style="font-weight:700;">객관식</span></div>
+        <div class="qirow"><span style="color:var(--ink3);">배점</span><span style="font-weight:700;">10점 (문제당 1점)</span></div>
+        <div class="qirow"><span style="color:var(--ink3);">제한 시간</span><span style="font-weight:700;">10분</span></div>
+        <div class="qirow"><span style="color:var(--ink3);">응시 가능</span><span style="font-weight:700;">무제한</span></div>
+      </div>
+      <div class="qtip">
+        <div style="font-size:12px;font-weight:800;color:var(--g900);margin-bottom:8px;">💡 시험 팁</div>
+        <ul style="list-style:none;font-size:11px;color:var(--g900);line-height:1.7;">
+          <li>✓ SQL 문법을 정확히 이해하는 것이 중요해요.</li>
+          <li>✓ 모르는 문제는 체크해두고 넘어가세요.</li>
+          <li>✓ 시간을 잘 분배해서 풀어보세요!</li>
+        </ul>
+        <div style="text-align:center;font-size:40px;margin-top:10px;">🌱</div>
+      </div>
+    </div>
+    <!-- 중 -->
+    <div style="flex:1;min-width:0;">
+      <div style="margin-bottom:14px;">
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--ink3);font-weight:600;margin-bottom:5px;"><span>3 / 10 문제</span><span>30%</span></div>
+        <div class="bar" style="height:9px;"><div class="bf fg" style="width:30%"></div></div>
+      </div>
+      <div class="qbody">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+          <span style="font-size:12px;font-weight:700;color:var(--g700);">Q3.</span>
+          <span class="tag tgr">객관식 (1점)</span>
+        </div>
+        <div style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:22px;line-height:1.55;">WHERE 절의 역할로 가장 알맞은 것은?</div>
+        <div class="cho" onclick="selCho(this)"><div class="choc"></div><span style="font-size:14px;">데이터를 추가한다</span></div>
+        <div class="cho sel" onclick="selCho(this)"><div class="choc"></div><span style="font-size:14px;">조건에 맞는 데이터를 조회한다</span></div>
+        <div class="cho" onclick="selCho(this)"><div class="choc"></div><span style="font-size:14px;">테이블을 삭제한다</span></div>
+        <div class="cho" onclick="selCho(this)"><div class="choc"></div><span style="font-size:14px;">컬럼 이름을 변경한다</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:22px;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink3);cursor:pointer;"><input type="checkbox"> 나중에 다시 풀기</label>
+          <div style="display:flex;gap:8px;">
+            <button class="btn bo">‹ 이전 문제</button>
+            <button class="btn bp" onclick="toast('다음 문제로 이동해요!')">다음 문제 ›</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 우 -->
+    <div style="width:220px;flex-shrink:0;">
+      <div class="rpt">문제 목록</div>
+      <div style="display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--ink3);margin-bottom:10px;">
+        <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--g700);margin-right:5px;"></span>풀었어요</span>
+        <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--g50);border:1.5px solid var(--g700);margin-right:5px;"></span>현재 문제</span>
+        <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#fff;border:1.5px solid var(--border);margin-right:5px;"></span>아직 안 풀었어요</span>
+      </div>
+      <div class="qgrid">
+        <div class="qnum done">1</div><div class="qnum done">2</div><div class="qnum curr">3</div>
+        <div class="qnum">4</div><div class="qnum">5</div><div class="qnum">6</div>
+        <div class="qnum">7</div><div class="qnum">8</div><div class="qnum">9</div><div class="qnum">10</div>
+      </div>
+      <div class="memo" style="margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:800;color:var(--ink2);margin-bottom:8px;text-align:center;">남은 시간</div>
+        <div class="twrap">
+          <svg viewBox="0 0 80 80" width="80" height="80"><circle class="tbg" cx="40" cy="40" r="33"/><circle class="tfi" cx="40" cy="40" r="33"/></svg>
+          <div class="tval" id="timer">07:24</div>
+        </div>
+        <button class="btn bo bsm" style="width:100%;margin-top:8px;" onclick="toast('시간을 2분 연장했어요!')">⟳ 시간 연장하기</button>
+      </div>
+      <div class="memo">
+        <div style="font-size:12px;font-weight:800;color:var(--ink2);margin-bottom:6px;">나의 메모장 ✏️</div>
+        <textarea placeholder="문제와 관련된 내용을 메모해보세요!"></textarea>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+
+
+<!-- JOB HANDBOOK -->
+<div id="job" class="pg"><div class="shell">
+<aside class="sb">
+  <div class="sbl">취업핸드북</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🔍</span>직무 탐색</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">📄</span>이력서 작성</div>
+  <div class="sbi on"><span style="font-size:15px;width:20px;text-align:center;">✏️</span>자기소개서</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🖼</span>포트폴리오</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🎤</span>면접 준비</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">📊</span>지원 관리</div>
+  <div class="sbcard" style="margin-top:20px;">
+    <div style="font-weight:800;margin-bottom:5px;">나의 취업 준비 지수</div>
+    <div style="font-size:32px;font-weight:800;color:var(--g900);text-align:center;margin:8px 0 2px;">45%</div>
+    <div style="font-size:11px;color:var(--g700);text-align:center;margin-bottom:8px;">지난주 대비 +8% ↑</div>
+    <div class="bar"><div class="bf fg" style="width:45%"></div></div>
+    <button class="btn bo bsm" style="width:100%;margin-top:10px;">상세 분석 보기</button>
+    <div style="text-align:center;font-size:38px;margin-top:8px;">🌿</div>
+  </div>
+</aside>
+<div class="main">
+  <div class="pgt">취업핸드북 🌱</div>
+  <div class="pgs">단계별로 차근차근 준비해서 꿈을 현실로 만들어보세요!</div>
+  <div class="strow">
+    <div class="stnod"><div class="stc done">✓</div><div class="stlbl">직무 탐색</div></div>
+    <div class="stline done"></div>
+    <div class="stnod"><div class="stc done">✓</div><div class="stlbl">이력서 작성</div></div>
+    <div class="stline done"></div>
+    <div class="stnod"><div class="stc act">3</div><div class="stlbl act">자기소개서</div></div>
+    <div class="stline"></div>
+    <div class="stnod"><div class="stc">4</div><div class="stlbl">포트폴리오</div></div>
+    <div class="stline"></div>
+    <div class="stnod"><div class="stc">5</div><div class="stlbl">면접 준비</div></div>
+    <div class="stline"></div>
+    <div class="stnod"><div class="stc">6</div><div class="stlbl">지원 관리</div></div>
+  </div>
+  <div class="jcard">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+      <span style="font-size:34px;">✏️</span>
+      <div style="flex:1;">
+        <div style="font-size:17px;font-weight:800;">3. 자기소개서</div>
+        <div style="font-size:12px;color:var(--ink3);margin:3px 0 8px;">나만의 경험과 강점을 잘 표현하는 자기소개서를 작성해보세요.</div>
+        <div class="bar" style="width:200px;"><div class="bf fb" style="width:40%"></div></div>
+      </div>
+      <div style="font-size:13px;font-weight:800;color:var(--g700);">진행률 40%</div>
+    </div>
+    <div class="jtask"><span style="font-size:22px;flex-shrink:0;">📄</span><div style="flex:1;"><div style="font-size:13px;font-weight:700;">항목별 작성</div><div style="font-size:11px;color:var(--ink3);">기업별 자기소개서 항목을 작성하고 관리해보세요.</div></div><span style="font-size:11px;color:var(--ink4);">2 / 5 항목 작성</span><button class="btn bp bsm" onclick="toast('자기소개서 작성 화면으로 이동해요!')">작성하기 ›</button></div>
+    <div class="jtask"><span style="font-size:22px;flex-shrink:0;">✅</span><div style="flex:1;"><div style="font-size:13px;font-weight:700;">맞춤법/문법 검사</div><div style="font-size:11px;color:var(--ink3);">작성한 자기소개서의 맞춤법과 문법을 검사해보세요.</div></div><span style="font-size:11px;color:var(--ink4);">마지막 검사 2025.05.19</span><button class="btn bo bsm" onclick="toast('맞춤법 검사를 실행해요!')">검사하기 ›</button></div>
+    <div class="jtask"><span style="font-size:22px;flex-shrink:0;">⭐</span><div style="flex:1;"><div style="font-size:13px;font-weight:700;">첨삭/피드백</div><div style="font-size:11px;color:var(--ink3);">AI 피드백으로 자기소개서를 더 완성도 있게 만들어보세요.</div></div><span style="font-size:11px;color:var(--ink4);">피드백 1회 완료</span><button class="btn bsm" style="background:var(--orange-bg);color:var(--orange);border:1.5px solid #FFCC80;" onclick="toast('피드백 내용을 확인해요!')">피드백 보기 ›</button></div>
+    <div class="jtask"><span style="font-size:22px;flex-shrink:0;">💡</span><div style="flex:1;"><div style="font-size:13px;font-weight:700;">우수 자기소개서 예시</div><div style="font-size:11px;color:var(--ink3);">직무별/기업별 우수 자기소개서 예시를 확인해보세요.</div></div><span></span><button class="btn bo bsm" onclick="toast('우수 예시를 확인해요!')">예시 보기 ›</button></div>
+    <div class="jobtip"><span style="font-size:20px;flex-shrink:0;">💡</span><div style="font-size:12px;color:var(--g900);line-height:1.7;"><strong>오늘의 취업 팁</strong><br>자기소개서는 '나'의 이야기를 '기업이 원하는 방식'으로 전달하는 것이 중요해요! STAR 기법을 활용해 구체적인 경험을 작성해보세요.</div><span style="font-size:36px;flex-shrink:0;">🌿</span></div>
+  </div>
+</div>
+<aside class="rp">
+  <div class="rpt">나의 취업 준비 현황 <a>전체보기 ›</a></div>
+  <div class="prow"><span style="flex:1;font-weight:600;">이력서 작성</span><div style="width:80px;"><div class="bar"><div class="bf fg" style="width:70%"></div></div></div><span style="width:30px;text-align:right;font-weight:800;font-size:11px;color:var(--g700);">70%</span></div>
+  <div class="prow"><span style="flex:1;font-weight:600;">자기소개서</span><div style="width:80px;"><div class="bar"><div class="bf fb" style="width:40%"></div></div></div><span style="width:30px;text-align:right;font-weight:800;font-size:11px;color:var(--blue);">40%</span></div>
+  <div class="prow"><span style="flex:1;font-weight:600;">포트폴리오</span><div style="width:80px;"><div class="bar"><div class="bf fo" style="width:20%"></div></div></div><span style="width:30px;text-align:right;font-weight:800;font-size:11px;color:var(--gold);">20%</span></div>
+  <div class="prow"><span style="flex:1;font-weight:600;">면접 준비</span><div style="width:80px;"><div class="bar"><div class="bf fc" style="width:10%"></div></div></div><span style="width:30px;text-align:right;font-weight:800;font-size:11px;color:var(--coral);">10%</span></div>
+  <div class="prow"><span style="flex:1;font-weight:600;">지원 관리</span><div style="width:80px;"><div class="bar"><div class="bf fp" style="width:30%"></div></div></div><span style="width:30px;text-align:right;font-weight:800;font-size:11px;color:var(--purple);">30%</span></div>
+  <div class="rpt" style="margin-top:16px;">최근 작성한 자기소개서 <a>전체보기 ›</a></div>
+  <div class="resi"><div style="font-weight:700;margin-bottom:3px;">신한은행 IT직무 자기소개서</div><span style="display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:800;background:var(--gold-bg);color:#795548;">임시저장</span><span style="font-size:10px;color:var(--ink4);margin-left:6px;">2025.05.20</span></div>
+  <div class="resi"><div style="font-weight:700;margin-bottom:3px;">카카오 백엔드 개발자 자기소개서</div><span style="display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:800;background:var(--g50);color:var(--g900);">검토 완료</span><span style="font-size:10px;color:var(--ink4);margin-left:6px;">2025.05.18</span></div>
+  <div class="rpt" style="margin-top:16px;">자주 사용하는 도구</div>
+  <div class="tgrid">
+    <div class="tbtn">📄 자소서 템플릿</div><div class="tbtn">🏢 기업 분석</div>
+    <div class="tbtn">🎯 핵심 역량 찾기</div><div class="tbtn">❓ 면접 질문 모음</div>
+  </div>
+</aside>
+</div></div>
+
+<!-- MY DOCS -->
+<div id="my" class="pg"><div class="shell">
+<aside class="sb">
+  <div class="sbl">마이핸드북</div>
+  <div class="sbi on" onclick="gp('my')"><span style="font-size:15px;width:20px;text-align:center;">📄</span>내 문서</div>
+  <div class="sbi" onclick="gp('myfav')"><span style="font-size:15px;width:20px;text-align:center;">⭐</span>즐겨찾기</div>
+  <div class="sbi" onclick="gp('mywords')"><span style="font-size:15px;width:20px;text-align:center;">📓</span>저장한 단어</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">📋</span>학습 노트</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">📄</span>나의 이력서</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🖼</span>포트폴리오</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">📊</span>학습 기록</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">⚙️</span>설정</div>
+  <div class="sbcard"><div style="font-weight:800;margin-bottom:5px;">📌 핸드북 활용 팁</div>중요한 자료는 카테고리별로 정리하고 태그를 활용하면 나중에 쉽게 찾아볼 수 있어요!<div style="text-align:center;font-size:38px;margin-top:8px;">🌿</div></div>
+</aside>
+<div class="main">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+    <div class="pgt">내 문서 🌱</div>
+    <button class="btn bp bsm" onclick="toast('새 문서 작성 화면으로 이동해요!')">+ 새 문서 작성</button>
+  </div>
+  <div class="pgs">저장하고 작성한 모든 문서를 한눈에 확인하세요.</div>
+  <div class="ftabs">
+    <button class="ftab on">전체</button><button class="ftab">문서</button><button class="ftab">노트</button>
+    <button class="ftab">이력서</button><button class="ftab">포트폴리오</button><button class="ftab">기타</button>
+  </div>
+  <div style="display:flex;gap:8px;margin-bottom:16px;">
+    <input type="text" placeholder="문서 제목 또는 내용을 검색하세요" style="flex:1;padding:8px 14px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;outline:none;">
+    <select style="padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:12px;outline:none;background:var(--surface);"><option>전체 카테고리</option></select>
+    <select style="padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:12px;outline:none;background:var(--surface);"><option>최신순</option></select>
+  </div>
+  <div class="drow"><span style="font-size:22px;flex-shrink:0;">📄</span><span style="flex:1;font-size:13px;font-weight:700;">신한은행 IT직무 자기소개서 ★</span><span class="tag tg" style="font-size:10px;">이력서</span><span class="tag tb" style="font-size:10px;margin-left:4px;">IT/개발</span><span style="font-size:11px;color:var(--ink4);margin-left:8px;">2025.05.20</span><span style="font-size:16px;color:var(--ink4);">···</span></div>
+  <div class="drow"><span style="font-size:22px;flex-shrink:0;">📋</span><span style="flex:1;font-size:13px;font-weight:700;">SQL JOIN 개념 정리 노트</span><span class="tag tgr" style="font-size:10px;">노트</span><span class="tag tg" style="font-size:10px;margin-left:4px;">SQL</span><span style="font-size:11px;color:var(--ink4);margin-left:8px;">2025.05.19</span><span style="font-size:16px;color:var(--ink4);">···</span></div>
+  <div class="drow"><span style="font-size:22px;flex-shrink:0;">🖼</span><span style="flex:1;font-size:13px;font-weight:700;">포트폴리오_웹 프로젝트 모음 ★</span><span class="tag tp" style="font-size:10px;">포트폴리오</span><span style="font-size:11px;color:var(--ink4);margin-left:8px;">2025.05.18</span><span style="font-size:16px;color:var(--ink4);">···</span></div>
+  <div class="drow"><span style="font-size:22px;flex-shrink:0;">📄</span><span style="flex:1;font-size:13px;font-weight:700;">자주 묻는 면접 질문 정리</span><span class="tag tgr" style="font-size:10px;">문서</span><span style="font-size:11px;color:var(--ink4);margin-left:8px;">2025.05.16</span><span style="font-size:16px;color:var(--ink4);">···</span></div>
+  <div class="drow"><span style="font-size:22px;flex-shrink:0;">📋</span><span style="flex:1;font-size:13px;font-weight:700;">Java OOP 개념 요약</span><span class="tag tgr" style="font-size:10px;">노트</span><span class="tag tor" style="font-size:10px;margin-left:4px;">Java</span><span style="font-size:11px;color:var(--ink4);margin-left:8px;">2025.05.14</span><span style="font-size:16px;color:var(--ink4);">···</span></div>
+  <div class="pages"><button class="pgb">‹</button><button class="pgb on">1</button><button class="pgb">2</button><button class="pgb">3</button><button class="pgb">›</button></div>
+</div>
+<aside class="rp">
+  <div class="rpt">문서 통계 <a>전체보기 ›</a></div>
+  <div class="stgrid">
+    <div class="stbox"><div style="font-size:22px;font-weight:800;color:var(--g900);">32</div><div style="font-size:10px;color:var(--ink4);margin-top:1px;">전체 문서</div></div>
+    <div class="stbox"><div style="font-size:22px;font-weight:800;color:var(--gold);">12</div><div style="font-size:10px;color:var(--ink4);margin-top:1px;">즐겨찾기</div></div>
+    <div class="stbox"><div style="font-size:22px;font-weight:800;color:var(--g900);">5</div><div style="font-size:10px;color:var(--ink4);margin-top:1px;">최근 작성</div></div>
+    <div class="stbox"><div style="font-size:16px;font-weight:800;color:var(--g900);">128MB</div><div style="font-size:10px;color:var(--ink4);margin-top:1px;">저장 용량</div></div>
+  </div>
+  <div class="rpt" style="margin-top:4px;">카테고리별 문서 수</div>
+  <div style="display:flex;flex-direction:column;gap:4px;font-size:11px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0;"><span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--g700);margin-right:5px;"></span>이력서</span><span style="font-weight:800;">8개</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0;"><span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);margin-right:5px;"></span>노트</span><span style="font-weight:800;">9개</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0;"><span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--blue);margin-right:5px;"></span>문서</span><span style="font-weight:800;">7개</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0;"><span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--purple);margin-right:5px;"></span>포트폴리오</span><span style="font-weight:800;">4개</span></div>
+  </div>
+</aside>
+</div></div>
+
+<!-- MY WORDS -->
+<div id="mywords" class="pg"><div class="shell">
+<aside class="sb">
+  <div class="sbl">마이핸드북</div>
+  <div class="sbi" onclick="gp('my')"><span style="font-size:15px;width:20px;text-align:center;">📄</span>내 문서</div>
+  <div class="sbi" onclick="gp('myfav')"><span style="font-size:15px;width:20px;text-align:center;">⭐</span>즐겨찾기</div>
+  <div class="sbi on"><span style="font-size:15px;width:20px;text-align:center;">📓</span>저장한 단어</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">📋</span>학습 노트</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">📄</span>나의 이력서</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">🖼</span>포트폴리오</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">📊</span>학습 기록</div>
+  <div class="sbcard" style="background:linear-gradient(135deg,var(--g50),#C8E6C9);">꾸준한 학습이<br>취업의 열매를 맺어요! 🌱<div style="text-align:center;font-size:38px;margin-top:8px;">🌿</div></div>
+</aside>
+<div class="main">
+  <div class="pgt">저장한 단어 🌱</div>
+  <div class="pgs">모르는 단어를 저장하고 복습하여 어휘력을 키워보세요.</div>
+  <div style="display:flex;gap:8px;margin-bottom:18px;align-items:center;flex-wrap:wrap;">
+    <input type="text" placeholder="단어를 검색하세요" style="flex:1;min-width:160px;padding:8px 14px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;outline:none;">
+    <select style="padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:12px;outline:none;background:var(--surface);"><option>전체 카테고리</option><option>CS/IT</option><option>Java</option><option>SQL</option></select>
+    <button class="btn bp bsm" onclick="openModal('')">+ 단어 추가</button>
+    <button class="btn bo bsm" onclick="toast('단어를 내보내는 중이에요!')">⬇ 내보내기</button>
+  </div>
+  <div class="wsbar">
+    <div class="wsb"><div style="font-size:24px;font-weight:800;color:var(--g900);">127</div><div style="font-size:10px;color:var(--ink4);">전체 단어</div></div>
+    <div class="wsb"><div style="font-size:24px;font-weight:800;color:var(--g900);">15</div><div style="font-size:10px;color:var(--ink4);">오늘 학습</div></div>
+    <div class="wsb"><div style="font-size:24px;font-weight:800;color:var(--g900);">32</div><div style="font-size:10px;color:var(--ink4);">마스터한 단어</div></div>
+    <div class="wsb">
+      <div class="ring" style="width:44px;height:44px;display:inline-block;margin-bottom:3px;">
+        <svg viewBox="0 0 44 44" width="44" height="44"><circle class="rbg" cx="22" cy="22" r="17" stroke-width="5"/><circle class="rfi" cx="22" cy="22" r="17" stroke="var(--g700)" stroke-width="5" stroke-dasharray="107" stroke-dashoffset="80" transform="rotate(-90 22 22)"/></svg>
+        <div class="rtx"><span style="font-size:11px;font-weight:800;color:var(--g900);">25%</span></div>
+      </div>
+      <div style="font-size:10px;color:var(--ink4);">마스터율</div>
+    </div>
+  </div>
+  <div class="wrow"><input type="checkbox" style="flex-shrink:0;"><div style="flex:1;"><div><span style="font-size:15px;font-weight:800;">Algorithm</span><span style="font-size:10px;color:var(--ink4);background:var(--bg);padding:1px 6px;border-radius:4px;margin-left:5px;">명사</span></div><div style="font-size:12px;color:var(--ink3);">문제를 해결하기 위한 절차나 방법</div><div style="font-size:11px;color:var(--ink4);font-style:italic;">Algorithm is the core of programming.</div></div><span class="tag tb" style="font-size:10px;">CS/IT</span><span style="font-size:10px;color:var(--ink4);">2025.05.20</span><span class="star on" onclick="ts(this)">★</span></div>
+  <div class="wrow"><input type="checkbox" style="flex-shrink:0;"><div style="flex:1;"><div><span style="font-size:15px;font-weight:800;">Inheritance</span><span style="font-size:10px;color:var(--ink4);background:var(--bg);padding:1px 6px;border-radius:4px;margin-left:5px;">명사</span></div><div style="font-size:12px;color:var(--ink3);">상속, 계승 (객체지향에서 상속)</div><div style="font-size:11px;color:var(--ink4);font-style:italic;">Inheritance allows code reusability.</div></div><span class="tag tor" style="font-size:10px;">Java</span><span style="font-size:10px;color:var(--ink4);">2025.05.19</span><span class="star" onclick="ts(this)">★</span></div>
+  <div class="wrow"><input type="checkbox" checked style="flex-shrink:0;"><div style="flex:1;"><div><span style="font-size:15px;font-weight:800;">Normalization</span><span style="font-size:10px;color:var(--ink4);background:var(--bg);padding:1px 6px;border-radius:4px;margin-left:5px;">명사</span></div><div style="font-size:12px;color:var(--ink3);">정규화 (데이터베이스 설계)</div><div style="font-size:11px;color:var(--ink4);font-style:italic;">Normalization reduces data redundancy.</div></div><span class="tag tg" style="font-size:10px;">SQL</span><span style="font-size:10px;color:var(--ink4);">2025.05.18</span><span class="star on" onclick="ts(this)">★</span></div>
+  <div class="wrow"><input type="checkbox" style="flex-shrink:0;"><div style="flex:1;"><div><span style="font-size:15px;font-weight:800;">API</span><span style="font-size:10px;color:var(--ink4);background:var(--bg);padding:1px 6px;border-radius:4px;margin-left:5px;">명사</span></div><div style="font-size:12px;color:var(--ink3);">응용 프로그램 인터페이스</div><div style="font-size:11px;color:var(--ink4);font-style:italic;">The API connects different systems.</div></div><span class="tag tb" style="font-size:10px;">IT/개발</span><span style="font-size:10px;color:var(--ink4);">2025.05.17</span><span class="star" onclick="ts(this)">★</span></div>
+  <div class="pages"><button class="pgb">‹</button><button class="pgb on">1</button><button class="pgb">2</button><button class="pgb">3</button><button class="pgb">›</button></div>
+</div>
+<aside class="rp">
+  <div class="qwid">
+    <div style="font-size:12px;font-weight:800;color:var(--g900);margin-bottom:8px;">오늘의 단어 퀴즈 ❓</div>
+    <div style="font-size:11px;color:var(--g700);margin-bottom:8px;">저장한 단어로 퀴즈를 풀어보세요!</div>
+    <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.4;">Algorithm 의 의미로 가장 적절한 것은?</div>
+    <div class="qwopt">① 알고리즘</div>
+    <div class="qwopt">② 데이터베이스</div>
+    <div class="qwopt">③ 사용자 인터페이스</div>
+    <div class="qwopt">④ 운영체제</div>
+    <button style="width:100%;margin-top:10px;padding:9px;border-radius:var(--r-sm);border:none;background:var(--g700);color:#fff;font-size:12px;font-weight:800;cursor:pointer;box-shadow:var(--sh-g);" onclick="toast('퀴즈를 시작해요! +30P 도전!')">퀴즈 시작하기</button>
+  </div>
+  <div class="rpt">카테고리별 단어 수 <a>전체보기 ›</a></div>
+  <div style="display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px;"><span style="flex:1;font-weight:600;">CS/IT</span><div class="cbar"><div style="height:100%;border-radius:3px;background:var(--g700);width:75%;"></div></div><span style="width:28px;text-align:right;font-weight:800;font-size:11px;">45개</span></div>
+  <div style="display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px;"><span style="flex:1;font-weight:600;">Java</span><div class="cbar"><div style="height:100%;border-radius:3px;background:var(--blue);width:55%;"></div></div><span style="width:28px;text-align:right;font-weight:800;font-size:11px;">28개</span></div>
+  <div style="display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px;"><span style="flex:1;font-weight:600;">SQL</span><div class="cbar"><div style="height:100%;border-radius:3px;background:var(--g500);width:40%;"></div></div><span style="width:28px;text-align:right;font-weight:800;font-size:11px;">22개</span></div>
+  <div style="display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px;"><span style="flex:1;font-weight:600;">비즈니스</span><div class="cbar"><div style="height:100%;border-radius:3px;background:var(--gold);width:30%;"></div></div><span style="width:28px;text-align:right;font-weight:800;font-size:11px;">18개</span></div>
+</aside>
+</div></div>
+
+<!-- MY FAV -->
+<div id="myfav" class="pg"><div class="shell">
+<aside class="sb">
+  <div class="sbl">마이핸드북</div>
+  <div class="sbi" onclick="gp('my')"><span style="font-size:15px;width:20px;text-align:center;">📄</span>내 문서</div>
+  <div class="sbi on"><span style="font-size:15px;width:20px;text-align:center;">⭐</span>즐겨찾기</div>
+  <div class="sbi" onclick="gp('mywords')"><span style="font-size:15px;width:20px;text-align:center;">📓</span>저장한 단어</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">📋</span>학습 노트</div>
+  <div class="sbi"><span style="font-size:15px;width:20px;text-align:center;">📄</span>나의 이력서</div>
+  <div class="sbcard" style="background:linear-gradient(135deg,var(--gold-bg),#FFE082);border-color:#FFE082;">중요한 자료는 즐겨찾기로 한눈에! 필요할 때 바로 찾아보세요 🌱<div style="text-align:center;font-size:38px;margin-top:8px;">🌿</div></div>
+</aside>
+<div class="main">
+  <div class="pgt">즐겨찾기 ⭐</div>
+  <div class="pgs">중요하다고 표시한 자료를 모아봤어요.</div>
+  <div class="ftabs">
+    <button class="ftab on">전체 (12)</button><button class="ftab">문서 (8)</button>
+    <button class="ftab">노트 (2)</button><button class="ftab">단어 (2)</button>
+  </div>
+  <div class="frow2"><div style="font-size:22px;flex-shrink:0;">📄</div><div style="flex:1;"><div style="font-size:13px;font-weight:700;">신한은행 IT직무 자기소개서</div><div style="font-size:11px;color:var(--ink3);">금융권 IT 직무 합격 자기소개서 예시</div></div><span class="tag tg" style="font-size:10px;">이력서</span><span style="font-size:11px;color:var(--ink4);margin:0 8px;">2025.05.20</span><span class="star on" onclick="ts(this);toast('즐겨찾기가 해제됐어요.')">★</span><span style="font-size:16px;color:var(--ink4);">···</span></div>
+  <div class="frow2"><div style="font-size:22px;flex-shrink:0;">📋</div><div style="flex:1;"><div style="font-size:13px;font-weight:700;">SQL JOIN 개념 정리 노트</div><div style="font-size:11px;color:var(--ink3);">JOIN 종류와 사용 예시 정리</div></div><span class="tag tgr" style="font-size:10px;">노트</span><span style="font-size:11px;color:var(--ink4);margin:0 8px;">2025.05.19</span><span class="star on" onclick="ts(this);toast('즐겨찾기가 해제됐어요.')">★</span><span style="font-size:16px;color:var(--ink4);">···</span></div>
+  <div class="frow2"><div style="font-size:22px;flex-shrink:0;">🖼</div><div style="flex:1;"><div style="font-size:13px;font-weight:700;">포트폴리오_웹 프로젝트 모음</div><div style="font-size:11px;color:var(--ink3);">개인 프로젝트 포트폴리오 링크 모음</div></div><span class="tag tp" style="font-size:10px;">포트폴리오</span><span style="font-size:11px;color:var(--ink4);margin:0 8px;">2025.05.18</span><span class="star on" onclick="ts(this);toast('즐겨찾기가 해제됐어요.')">★</span><span style="font-size:16px;color:var(--ink4);">···</span></div>
+  <div class="frow2"><div style="font-size:22px;flex-shrink:0;">📋</div><div style="flex:1;"><div style="font-size:13px;font-weight:700;">면접 질문 모음 (개발 직무)</div><div style="font-size:11px;color:var(--ink3);">기술 면접 기출 질문과 답변 정리</div></div><span class="tag tgr" style="font-size:10px;">노트</span><span style="font-size:11px;color:var(--ink4);margin:0 8px;">2025.05.16</span><span class="star on" onclick="ts(this);toast('즐겨찾기가 해제됐어요.')">★</span><span style="font-size:16px;color:var(--ink4);">···</span></div>
+  <div class="frow2"><div style="font-size:22px;flex-shrink:0;">#️⃣</div><div style="flex:1;"><div style="font-size:13px;font-weight:700;">Algorithm (알고리즘)</div><div style="font-size:11px;color:var(--ink3);">문제를 해결하기 위한 절차나 방법</div></div><span class="tag tb" style="font-size:10px;">단어</span><span style="font-size:11px;color:var(--ink4);margin:0 8px;">2025.05.14</span><span class="star on" onclick="ts(this);toast('즐겨찾기가 해제됐어요.')">★</span><span style="font-size:16px;color:var(--ink4);">···</span></div>
+  <div style="text-align:center;padding:28px 0 8px;">
+    <div style="font-size:52px;margin-bottom:10px;">🌿</div>
+    <div style="font-size:12px;color:var(--g900);background:var(--g50);border-radius:20px;padding:8px 16px;display:inline-block;border:1px solid var(--g100);">즐겨찾기한 자료를 잘 활용해서 목표를 이뤄보세요! 🌱</div>
+    <br><button class="btn bo" style="margin-top:14px;" onclick="toast('모두 확인 완료!')">모두 확인했어요!</button>
+  </div>
+</div>
+<aside class="rp">
+  <div class="rpt">즐겨찾기 요약</div>
+  <div style="text-align:center;padding:8px 0 14px;"><span style="font-size:28px;">⭐</span><div style="font-size:30px;font-weight:800;color:var(--gold);">12개</div><div style="font-size:11px;color:var(--ink4);">즐겨찾기한 자료</div></div>
+  <div style="height:1px;background:var(--border);margin:0 0 10px;"></div>
+  <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px;"><span>📄 문서</span><span style="font-weight:800;">8개</span></div>
+  <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px;"><span>📋 노트</span><span style="font-weight:800;">2개</span></div>
+  <div style="display:flex;justify-content:space-between;padding:5px 0;font-size:12px;"><span>#️⃣ 단어</span><span style="font-weight:800;">2개</span></div>
+  <div class="rpt" style="margin-top:16px;">최근 추가한 즐겨찾기 <a>전체보기 ›</a></div>
+  <div style="font-size:12px;color:var(--ink2);padding:6px 0;border-bottom:1px solid var(--border);">📄 신한은행 IT직무 자기소개서<div style="font-size:10px;color:var(--ink4);">2025.05.20</div></div>
+  <div style="font-size:12px;color:var(--ink2);padding:6px 0;border-bottom:1px solid var(--border);">📋 SQL JOIN 개념 정리 노트<div style="font-size:10px;color:var(--ink4);">2025.05.19</div></div>
+  <div style="font-size:12px;color:var(--ink2);padding:6px 0;">🖼 포트폴리오_웹 프로젝트 모음<div style="font-size:10px;color:var(--ink4);">2025.05.18</div></div>
+  <button class="btn bp bsm" style="width:100%;margin-top:14px;" onclick="toast('모두 확인 완료!')">모두 확인했어요!</button>
+</aside>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── 페이지 전환 ──────────────────────────────
+const PAGE_NAV = {
+  home:'home', wiki:'wiki', detail:'wiki',
+  exam:'exam', quiz:'exam',
+  job:'job',
+  my:'my', mywords:'my', myfav:'my'
+};
+
+function gp(id) {
+  document.querySelectorAll('.pg').forEach(p => p.classList.toggle('on', p.id === id));
+  document.querySelectorAll('.ni').forEach(n => n.classList.toggle('on', n.dataset.p === PAGE_NAV[id]));
+  window.scrollTo(0, 0);
+}
+
+// ── 즐겨찾기 토글 ────────────────────────────
+function ts(el) {
+  el.classList.toggle('on');
+  toast(el.classList.contains('on') ? '★ 즐겨찾기에 저장했어요!' : '즐겨찾기를 해제했어요.');
+}
+
+// ── 객관식 선택 ──────────────────────────────
+function selCho(el) {
+  el.closest('.qbody').querySelectorAll('.cho').forEach(c => c.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+// ── 필터 탭 ──────────────────────────────────
+document.querySelectorAll('.ftabs').forEach(g => {
+  g.querySelectorAll('.ftab').forEach(b => b.addEventListener('click', () => {
+    g.querySelectorAll('.ftab').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+  }));
+});
+
+// ── 정렬 필 ──────────────────────────────────
+document.querySelectorAll('.spl').forEach(b => b.addEventListener('click', () => {
+  b.closest('div').querySelectorAll('.spl').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+}));
+
+// ── 사이드바 ─────────────────────────────────
+document.querySelectorAll('.sbi').forEach(b => b.addEventListener('click', function() {
+  if (!this.onclick) {
+    this.closest('.sb').querySelectorAll('.sbi').forEach(x => x.classList.remove('on'));
+    this.classList.add('on');
+  }
+}));
+
+// ── TOC ──────────────────────────────────────
+document.querySelectorAll('.toci').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.toci').forEach(x => x.classList.remove('on'));
+    el.classList.add('on');
+  });
+});
+
+// ── 토스트 ───────────────────────────────────
+let _tt;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('on');
+  clearTimeout(_tt);
+  _tt = setTimeout(() => el.classList.remove('on'), 2200);
+}
+
+// ── 타이머 ───────────────────────────────────
+let timerSec = 444;
+setInterval(() => {
+  if (document.getElementById('quiz').classList.contains('on')) {
+    timerSec = Math.max(0, timerSec - 1);
+    const el = document.getElementById('timer');
+    if (el) el.textContent =
+      String(Math.floor(timerSec / 60)).padStart(2, '0') + ':' +
+      String(timerSec % 60).padStart(2, '0');
+  }
+}, 1000);
+
+// ══════════════════════════════════════════════
+//  하이라이트 시스템
+// ══════════════════════════════════════════════
+const hlbar = document.getElementById('hlbar');
+let savedRange = null;
+
+document.addEventListener('mouseup', e => {
+  if (hlbar && hlbar.contains(e.target)) return;
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.toString().trim()) {
+    hlbar && hlbar.classList.remove('on');
+    return;
+  }
+  const body = document.getElementById('artbody');
+  if (!body) return;
+  const range = sel.getRangeAt(0);
+  if (!body.contains(range.commonAncestorContainer)) {
+    hlbar && hlbar.classList.remove('on');
+    return;
+  }
+  savedRange = range.cloneRange();
+  const rect = range.getBoundingClientRect();
+  hlbar.style.left = Math.max(4, rect.left + rect.width / 2 - 115) + 'px';
+  hlbar.style.top  = (rect.top + window.scrollY - 52) + 'px';
+  hlbar.classList.add('on');
+});
+
+document.addEventListener('mousedown', e => {
+  if (hlbar && !hlbar.contains(e.target)) hlbar.classList.remove('on');
+});
+
+function applyHL(color) {
+  if (!savedRange) return;
+  const span = document.createElement('span');
+  span.className = color === 'y' ? 'hly' : 'hlg';
+  try {
+    savedRange.surroundContents(span);
+    const text = span.textContent.slice(0, 55) + (span.textContent.length > 55 ? '…' : '');
+    addHlPanel(text);
+    toast('✏️ 하이라이트로 저장했어요!');
+  } catch(e) {
+    toast('텍스트를 다시 드래그해보세요.');
+  }
+  hlbar.classList.remove('on');
+  window.getSelection()?.removeAllRanges();
+  savedRange = null;
+}
+
+function addHlPanel(text) {
+  const panel = document.querySelector('.hll');
+  if (!panel) return;
+  const id = 'hl-' + Date.now();
+  const div = document.createElement('div');
+  div.className = 'hlitem';
+  div.id = id;
+  div.innerHTML = `<span class="hdel" onclick="delHl('${id}')">✕</span>${text}`;
+  panel.appendChild(div);
+  updateHlCount();
+}
+
+function delHl(id) {
+  document.getElementById(id)?.remove();
+  updateHlCount();
+  toast('하이라이트를 삭제했어요.');
+}
+
+function updateHlCount() {
+  const panel = document.querySelector('.hll');
+  const ct = document.getElementById('hlcount');
+  if (!panel || !ct) return;
+  ct.textContent = '✏️ 저장한 하이라이트 (' + panel.querySelectorAll('.hlitem').length + ')';
+}
+
+function hlToWord() {
+  const text = window.getSelection()?.toString().trim() || '';
+  hlbar.classList.remove('on');
+  window.getSelection()?.removeAllRanges();
+  savedRange = null;
+  openModal(text);
+}
+
+// ══════════════════════════════════════════════
+//  단어 저장 모달
+// ══════════════════════════════════════════════
+function openModal(word) {
+  const inp = document.getElementById('mword');
+  if (inp) inp.value = word || '';
+  document.getElementById('wmodal')?.classList.add('on');
+}
+
+function closeModal() {
+  document.getElementById('wmodal')?.classList.remove('on');
+}
+
+function saveWord() {
+  const w = document.getElementById('mword')?.value.trim();
+  closeModal();
+  toast('📓 ' + (w ? `"${w}"를 ` : '') + '단어장에 저장했어요! +20P');
+}
+
+document.getElementById('wmodal')?.addEventListener('click', e => {
+  if (e.target === document.getElementById('wmodal')) closeModal();
+});
+
+// ── 단어 퀴즈 옵션 선택 ──────────────────────
+document.querySelectorAll('.qwopt').forEach(opt => {
+  opt.addEventListener('click', function() {
+    document.querySelectorAll('.qwopt').forEach(o => o.style.borderColor = 'transparent');
+    this.style.borderColor = 'var(--g700)';
+    this.style.background = 'var(--g50)';
+  });
+});
+</script>
+
+</body>
+</html>
