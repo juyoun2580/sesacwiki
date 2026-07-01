@@ -9,7 +9,28 @@
     "time": "5분 전",
     "bookmarked": true,
     "views": 342,
-    "content": []
+    "content": [
+      {
+        "title": "1. SELECT 기본 문법",
+        "body": "SELECT는 데이터베이스에서 데이터를 조회할 때 사용하는 가장 기본적인 SQL 명령어입니다. 테이블에서 원하는 컬럼을 선택해 결과를 가져옵니다. SELECT 뒤에 원하는 컬럼명을 쉼표로 구분하여 나열하고, FROM 뒤에 조회할 테이블명을 지정합니다.",
+        "code": "SELECT 컬럼명1, 컬럼명2\nFROM 테이블명\nWHERE 조건;"
+      },
+      {
+        "title": "2. WHERE 조건절",
+        "body": "WHERE 절은 조회할 데이터의 조건을 지정합니다. 조건에 맞는 행(row)만 결과로 반환합니다. 다양한 비교 연산자(=, !=, >, <, BETWEEN, LIKE, IN)를 사용할 수 있습니다.",
+        "code": "SELECT name, salary\nFROM employees\nWHERE department = 'IT'\n  AND salary > 3000000;"
+      },
+      {
+        "title": "3. ORDER BY 정렬",
+        "body": "ORDER BY 절은 결과를 특정 컬럼 기준으로 정렬합니다. ASC는 오름차순, DESC는 내림차순입니다. 기본값은 ASC(오름차순)입니다.",
+        "code": "SELECT name, salary\nFROM employees\nORDER BY salary DESC;"
+      },
+      {
+        "title": "4. GROUP BY 집계",
+        "body": "GROUP BY는 특정 컬럼을 기준으로 데이터를 그룹화합니다. COUNT, SUM, AVG, MAX, MIN 등의 집계 함수와 함께 사용하여 각 그룹에 대한 집계 결과를 얻습니다.",
+        "code": "SELECT department, COUNT(*) AS cnt, AVG(salary) AS avg_sal\nFROM employees\nGROUP BY department;"
+      }
+    ]
   },
   {
     "id": "sql-join",
@@ -21,7 +42,18 @@
     "time": "10분 전",
     "bookmarked": false,
     "views": 298,
-    "content": []
+    "content": [
+      {
+        "title": "1. INNER JOIN",
+        "body": "INNER JOIN은 두 테이블에서 조건이 일치하는 행만 결과로 반환합니다. 가장 많이 쓰이는 JOIN 방식입니다.",
+        "code": "SELECT o.id, c.name\nFROM orders o\nINNER JOIN customers c ON o.customer_id = c.id;"
+      },
+      {
+        "title": "2. LEFT JOIN",
+        "body": "LEFT JOIN은 왼쪽 테이블의 모든 행을 반환하고, 오른쪽 테이블에 일치하는 값이 없으면 NULL로 채웁니다.",
+        "code": "SELECT c.name, o.id\nFROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id;"
+      }
+    ]
   },
   {
     "id": "java-class",
@@ -33,7 +65,18 @@
     "time": "8분 전",
     "bookmarked": true,
     "views": 210,
-    "content": []
+    "content": [
+      {
+        "title": "1. 클래스 정의",
+        "body": "클래스는 객체를 만들기 위한 설계도입니다. 필드(속성)와 메서드(동작)로 구성됩니다.",
+        "code": "class Car {\n  String color;\n  void drive() {\n    System.out.println(\"달립니다\");\n  }\n}"
+      },
+      {
+        "title": "2. 객체 생성",
+        "body": "new 키워드로 클래스를 기반으로 실제 객체(인스턴스)를 만듭니다. 하나의 클래스로 여러 개의 객체를 만들 수 있습니다.",
+        "code": "Car myCar = new Car();\nmyCar.color = \"red\";\nmyCar.drive();"
+      }
+    ]
   },
   {
     "id": "git-basics",
@@ -45,7 +88,18 @@
     "time": "6분 전",
     "bookmarked": true,
     "views": 401,
-    "content": []
+    "content": [
+      {
+        "title": "1. Git이란",
+        "body": "Git은 파일 변경 이력을 추적하는 분산 버전 관리 시스템입니다. 여러 명이 동시에 작업해도 변경 내용을 안전하게 합칠 수 있습니다.",
+        "code": ""
+      },
+      {
+        "title": "2. 기본 명령어",
+        "body": "가장 자주 쓰는 명령어는 변경사항을 기록에 올리는 add/commit, 원격 저장소와 주고받는 push/pull입니다.",
+        "code": "git add .\ngit commit -m \"작업 내용\"\ngit push origin main"
+      }
+    ]
   },
   {
     "id": "salesforce-flow",
@@ -57,7 +111,18 @@
     "time": "15분 전",
     "bookmarked": false,
     "views": 156,
-    "content": []
+    "content": [
+      {
+        "title": "1. Flow란",
+        "body": "Flow는 코드 없이 클릭만으로 자동화를 구현하는 Salesforce의 선언적 도구입니다. 화면 진행형부터 예약 실행까지 다양한 유형이 있습니다.",
+        "code": ""
+      },
+      {
+        "title": "2. Screen Flow 만들기",
+        "body": "Screen Flow는 사용자가 화면을 보며 단계별로 정보를 입력하도록 안내합니다. Flow Builder에서 화면(Screen) 요소를 순서대로 배치해 구성합니다.",
+        "code": ""
+      }
+    ]
   },
   {
     "id": "html-basic-structure",
@@ -69,7 +134,18 @@
     "time": "20분 전",
     "bookmarked": false,
     "views": 187,
-    "content": []
+    "content": [
+      {
+        "title": "1. 문서 기본 구조",
+        "body": "모든 HTML 문서는 doctype 선언과 html, head, body 태그로 구성됩니다. head에는 메타 정보를, body에는 화면에 보이는 내용을 작성합니다.",
+        "code": "<!DOCTYPE html>\n<html>\n<head><title>제목</title></head>\n<body>내용</body>\n</html>"
+      },
+      {
+        "title": "2. 시맨틱 태그",
+        "body": "header, nav, main, section, article, footer처럼 의미를 가진 태그를 사용하면 검색엔진과 스크린리더가 문서 구조를 더 잘 이해합니다.",
+        "code": ""
+      }
+    ]
   },
   {
     "id": "css-flexbox",
@@ -81,7 +157,18 @@
     "time": "25분 전",
     "bookmarked": true,
     "views": 233,
-    "content": []
+    "content": [
+      {
+        "title": "1. Flex 컨테이너",
+        "body": "display: flex를 부모 요소에 지정하면 자식 요소들이 가로 방향(기본값)으로 나란히 정렬됩니다.",
+        "code": ".container {\n  display: flex;\n}"
+      },
+      {
+        "title": "2. 정렬 속성",
+        "body": "justify-content는 주축(가로) 정렬을, align-items는 교차축(세로) 정렬을 제어합니다.",
+        "code": ".container {\n  justify-content: center;\n  align-items: center;\n}"
+      }
+    ]
   },
   {
     "id": "js-array-methods",
@@ -93,7 +180,18 @@
     "time": "30분 전",
     "bookmarked": false,
     "views": 275,
-    "content": []
+    "content": [
+      {
+        "title": "1. map과 filter",
+        "body": "map은 배열의 각 요소를 변환해 새 배열을 만들고, filter는 조건에 맞는 요소만 걸러 새 배열을 만듭니다.",
+        "code": "const nums = [1, 2, 3];\nconst doubled = nums.map(n => n * 2);\nconst even = nums.filter(n => n % 2 === 0);"
+      },
+      {
+        "title": "2. reduce",
+        "body": "reduce는 배열의 모든 요소를 순회하며 하나의 값으로 누적 계산합니다. 합계, 평균 등을 구할 때 자주 사용합니다.",
+        "code": "const sum = [1, 2, 3].reduce((acc, cur) => acc + cur, 0);"
+      }
+    ]
   },
   {
     "id": "js-async",
@@ -105,7 +203,18 @@
     "time": "1시간 전",
     "bookmarked": false,
     "views": 198,
-    "content": []
+    "content": [
+      {
+        "title": "1. 콜백과 Promise",
+        "body": "콜백 함수는 작업이 끝난 뒤 실행할 함수를 전달하는 방식이며, 중첩되면 가독성이 떨어집니다. Promise는 비동기 작업의 성공/실패 상태를 객체로 표현해 이를 개선합니다.",
+        "code": "fetch(url).then(res => res.json()).then(data => console.log(data));"
+      },
+      {
+        "title": "2. async/await",
+        "body": "async/await는 Promise를 동기 코드처럼 읽기 쉽게 작성하도록 해주는 문법입니다.",
+        "code": "async function getData() {\n  const res = await fetch(url);\n  const data = await res.json();\n  return data;\n}"
+      }
+    ]
   },
   {
     "id": "cs-network-basic",
@@ -117,7 +226,18 @@
     "time": "2시간 전",
     "bookmarked": true,
     "views": 512,
-    "content": []
+    "content": [
+      {
+        "title": "1. HTTP란",
+        "body": "HTTP는 클라이언트와 서버가 데이터를 주고받기 위한 통신 규약입니다. 요청(Request)과 응답(Response)으로 구성됩니다.",
+        "code": ""
+      },
+      {
+        "title": "2. TCP/IP",
+        "body": "TCP/IP는 인터넷에서 데이터를 안정적으로 전달하기 위한 프로토콜 모음입니다. TCP는 신뢰성 있는 연결을, IP는 주소 지정과 라우팅을 담당합니다.",
+        "code": ""
+      }
+    ]
   },
   {
     "id": "git-branch-strategy",
@@ -129,6 +249,17 @@
     "time": "3시간 전",
     "bookmarked": false,
     "views": 145,
-    "content": []
+    "content": [
+      {
+        "title": "1. 브랜치란",
+        "body": "브랜치는 메인 코드 흐름에서 독립적으로 작업할 수 있는 별도의 작업 공간입니다. 기능 개발, 버그 수정을 서로 방해받지 않고 진행할 수 있습니다.",
+        "code": "git checkout -b feature/login"
+      },
+      {
+        "title": "2. Git Flow",
+        "body": "Git Flow는 main, develop, feature, release, hotfix 브랜치를 역할별로 나누어 운영하는 협업 전략입니다.",
+        "code": ""
+      }
+    ]
   }
 ]
