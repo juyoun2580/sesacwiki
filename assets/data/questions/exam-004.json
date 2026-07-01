@@ -136,5 +136,951 @@
       "examPoint": "required, pattern, minlength/maxlength 같은 HTML5 내장 유효성 검사 속성들을 함께 알아두면 좋다.",
       "practicalExample": "회원가입 폼에서 이메일 입력창에 required를 붙여 빈 값 제출을 막는다."
     }
+  },
+  {
+    "id": "q-html-007",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹페이지를 구성하는 3대 기술 중, 화면의 구조와 골조를 잡는 건물의 뼈대 역할을 하는 언어는 무엇인가?",
+    "choices": [
+      "CSS",
+      "JavaScript",
+      "HTML",
+      "Java"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "HTML은 웹 페이지의 정적 골조를 잡고 콘텐츠를 배치하며 의미를 부여하는 마크업 언어이다.",
+      "whyCorrect": "제공된 자료에서 HTML은 화면의 구조와 골조를 완벽히 장악하는 언어로 비유하고 있다.",
+      "whyIncorrect": "CSS는 꾸밈(인테리어), JavaScript는 동작(엔진/동력)을 담당하며, Java는 백엔드 서버 개발에 주로 쓰이는 프로그래밍 언어이다.",
+      "examPoint": "HTML(뼈대), CSS(꾸밈), JavaScript(동작) 세 가지 기술의 본질적인 역할을 묻는 것은 프론트엔드의 가장 기초적인 문제이다.",
+      "practicalExample": "웹 브라우저에서 '요소 검사'를 눌렀을 때 나타나는 <html>, <body> 등의 태그 구조가 바로 HTML 뼈대이다."
+    }
+  },
+  {
+    "id": "q-html-008",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML 문서 트리 구조에서, 사용자 눈에 보이지 않지만 웹페이지의 제목, 문자 인코딩 설정, 외부 파일 연결 고리 등 메타데이터를 보관하는 영역은?",
+    "choices": [
+      "<html>",
+      "<head>",
+      "<body>",
+      "<footer>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<head> 태그는 문서의 정보를 담는 두뇌 영역으로, 브라우저가 문서를 해석하기 위한 각종 설정값이 들어간다.",
+      "whyCorrect": "<head> 영역은 문서의 메타데이터를 보관하며 브라우저 뷰포트(화면)에 직접 노출되지 않는다.",
+      "whyIncorrect": "<html>은 최상위 루트 상자, <body>는 눈에 보이는 본문 콘텐츠가 적재되는 구역, <footer>는 페이지 하단 정보를 나타내는 시맨틱 태그이다.",
+      "examPoint": "문서의 설정(head)과 실제 시각적 내용(body)을 구분하여 태그를 배치할 줄 알아야 한다.",
+      "practicalExample": "구글 검색 시 노출되는 페이지 제목(<title>)이나 썸네일 정보는 모두 <head> 태그 안에 선언된다."
+    }
+  },
+  {
+    "id": "q-html-009",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "일반적인 본문 서술 문단을 명확하게 하나로 묶어서 관리할 때 사용하는 텍스트 제어 태그는?",
+    "choices": [
+      "<h1>",
+      "<h6>",
+      "<p>",
+      "<li>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "<p> 태그는 Paragraph(문단)의 약자로, 텍스트 본문 단락을 그룹화할 때 사용한다.",
+      "whyCorrect": "제공된 자료에서 일반적인 본문 서술 문단은 <p> 태그로 묶어 명확하게 관리한다고 명시되어 있다.",
+      "whyIncorrect": "<h1>~<h6>는 제목(Heading) 계층을 잡을 때 사용하며, <li>는 목록의 개별 항목을 정의할 때 사용한다.",
+      "examPoint": "제목을 나타내는 h 태그와 본문 단락을 나타내는 p 태그의 의미론적 차이를 묻는 문제가 자주 나온다.",
+      "practicalExample": "블로그나 기사 본문을 작성할 때 단락이 바뀔 때마다 <p> 태그를 사용하여 문단을 구분한다."
+    }
+  },
+  {
+    "id": "q-html-010",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML 태그 내부에 추가적인 옵션이나 정보를 이름='값' 형태로 심는 설정인 '속성(Attribute)'에 대한 설명으로 가장 올바른 것은?",
+    "choices": [
+      "닫는 태그 내부에만 선언해야 한다.",
+      "여는 태그 내부에 선언하며 띄어쓰기로 여러 개를 추가할 수 있다.",
+      "반드시 모든 태그에 필수로 하나 이상 작성해야 한다.",
+      "속성은 CSS에서만 사용 가능하며 HTML에서는 쓸 수 없다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "속성(Attribute)은 태그의 부가적인 정보나 동작 방식을 정의하며, 항상 '여는 태그' 안에 작성된다.",
+      "whyCorrect": "태그 내부(여는 태그)에서 이름='값' 형태로 명시하여 추가 옵션 정보(예: src, href)를 심는다.",
+      "whyIncorrect": "닫는 태그에는 속성을 넣을 수 없으며, 모든 태그에 필수는 아니다. 속성은 HTML 고유의 기능이다.",
+      "examPoint": "속성의 위치(여는 태그 vs 닫는 태그)와 문법 구조(이름='값')를 혼동하지 않도록 주의한다.",
+      "practicalExample": "<img src='logo.png' class='main-logo' /> 처럼 하나의 여는 태그 안에 여러 속성을 나열할 수 있다."
+    }
+  },
+  {
+    "id": "q-html-011",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "다음 중 하위 항목으로 번호가 매겨지는 '순서가 있는 목록(1, 2, 3...)'을 생성할 때, 전체 영역을 감싸는 부모 태그로 알맞은 것은?",
+    "choices": [
+      "<ul>",
+      "<ol>",
+      "<li>",
+      "<div>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<ol> (Ordered List) 태그는 순서가 중요한 목록을 만들 때 부모 묶음으로 사용한다.",
+      "whyCorrect": "순서대로 번호가 매겨져야 하는 목록은 <ol> 태그로 감싸 선언해야 한다.",
+      "whyIncorrect": "<ul>은 순서가 없는(불릿 기호) 목록, <li>는 목록의 개별 자식 항목, <div>는 단순 구역을 묶는 상자이다.",
+      "examPoint": "<ul>(Unordered)과 <ol>(Ordered)의 철자 의미를 연상하여 헷갈리지 않게 암기해야 한다.",
+      "practicalExample": "요리 레시피의 단계나 시험 문제의 1~4번 보기를 구현할 때 전체를 <ol>로 감싼다."
+    }
+  },
+  {
+    "id": "q-html-012",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "이미지(<img>) 태그를 사용할 때 시각 장애인을 위한 스크린 리더기를 지원하고, 엑스박스 시 대체 텍스트를 띄워주기 위해 반드시 필요한 속성은?",
+    "choices": [
+      "src",
+      "href",
+      "alt",
+      "title"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "alt(Alternative) 속성은 이미지를 설명하는 대체 텍스트를 제공하여 웹 접근성을 향상시키는 핵심 속성이다.",
+      "whyCorrect": "네트워크 단절 등으로 이미지가 깨졌을 때나 스크린 리더기가 텍스트를 읽어줄 때 alt 속성의 값이 사용된다.",
+      "whyIncorrect": "src는 실제 이미지의 경로, href는 하이퍼링크 목적지 주소, title은 마우스 오버 시 뜨는 툴팁 텍스트이다.",
+      "examPoint": "이미지가 화면에 나타나게 하는 필수 속성은 src이지만, 웹 접근성과 표준을 위해 필수적인 속성은 alt임을 명심한다.",
+      "practicalExample": "<img src='profile.jpg' alt='사용자 프로필 사진' /> 형태로 작성하여 스크린 리더기가 맥락을 파악하게 돕는다."
+    }
+  },
+  {
+    "id": "q-html-013",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "하이퍼링크를 생성해 주는 <a> 태그에서, 사용자가 클릭했을 때 도달해야 하는 목적지 URL 주소를 전달받는 속성은?",
+    "choices": [
+      "src",
+      "href",
+      "class",
+      "link"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<a> 태그의 href(Hypertext Reference) 속성은 클릭 시 이동할 링크의 목적지 주소를 지정한다.",
+      "whyCorrect": "목적지 주소는 href 속성을 통해 전달받아 다른 웹페이지나 섹션으로 연결을 처리한다.",
+      "whyIncorrect": "src는 외부 리소스(이미지 등)를 불러올 때 쓰고, class는 CSS 스타일을 적용할 식별자, link는 외부 파일(주로 CSS)을 연결하는 태그 이름이다.",
+      "examPoint": "<img>의 경로는 src, <a>의 경로는 href를 쓴다는 점을 교차해서 물어보는 함정 문제에 주의한다.",
+      "practicalExample": "구글로 이동하는 버튼을 만들 때 <a href='https://google.com'>구글로 가기</a> 처럼 작성한다."
+    }
+  },
+  {
+    "id": "q-html-014",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자로부터 텍스트 타이핑, 체크박스 선택 등의 동적인 데이터를 입력받아 백엔드 서버나 시스템으로 전송하기 위해 묶어주는 상위 틀(거푸집) 태그는?",
+    "choices": [
+      "<form>",
+      "<table>",
+      "<section>",
+      "<input>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<form> 태그는 사용자의 입력을 서버로 제출하기 위한 구역 전체를 감싸는 데이터 수집 양식 틀이다.",
+      "whyCorrect": "자료에서 <form>은 입력값을 받아내는 고객 전용 계약서 양식 틀(거푸집)로 정의되어 있다.",
+      "whyIncorrect": "<table>은 표를 만들 때, <section>은 본문 덩어리를 묶을 때, <input>은 <form> 내부에 배치되는 개별 입력 칸이다.",
+      "examPoint": "입력을 받는 개별 요소(input)와 그 요소들을 전송하기 위해 겉에서 감싸는 구조(form)의 포함 관계를 구분해야 한다.",
+      "practicalExample": "회원가입 페이지에서 아이디/비밀번호 input 태그들과 제출 버튼을 모두 <form> 태그로 묶어 서버로 한 번에 보낸다."
+    }
+  },
+  {
+    "id": "q-html-015",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 키보드로 타이핑할 수 있는 <input> 태그 바로 옆에 붙어서, 이 입력 칸이 어떤 데이터를 입력하는 곳인지 알려주는 친절한 이름표 역할을 하는 태그는?",
+    "choices": [
+      "<span>",
+      "<div>",
+      "<label>",
+      "<title>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "<label> 태그는 폼 컨트롤(input 등) 요소에 의미를 부여하는 이름표 역할을 하며, 클릭 시 연결된 input으로 포커스가 이동한다.",
+      "whyCorrect": "입력 칸이 무엇을 의미하는지 사용자(및 스크린 리더기)에게 알려주는 목적을 가진 가장 정확한 폼 요소는 <label>이다.",
+      "whyIncorrect": "<span>은 단순 텍스트 줄바꿈 없는 묶음, <div>는 단순 상자, <title>은 문서 전체의 브라우저 탭 제목이다.",
+      "examPoint": "접근성과 사용자 편의성을 위해 input과 label을 id와 for 속성으로 짝지어(연결하여) 묶어주는 실무 원칙과 함께 자주 출제된다.",
+      "practicalExample": "<label>아이디: <input type='text' /></label> 처럼 사용하면 글자인 '아이디:'를 클릭해도 입력창에 커서가 깜빡인다."
+    }
+  },
+  {
+    "id": "q-html-016",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "시맨틱 태그(Semantic Tag)에 대한 설명으로 가장 올바르지 않은 것은?",
+    "choices": [
+      "구역별 표지판 역할을 하여 검색엔진이 문서 구조를 이해하는 데 도움을 준다.",
+      "태그 자체를 사용하는 것만으로도 브라우저 화면에 화려한 시각적 디자인 변화가 자동으로 적용된다.",
+      "웹 표준을 준수하고 정보의 구조화를 명확하게 기여하는 목적을 가진다.",
+      "개발자가 소스코드를 읽었을 때 직관적으로 해당 구역의 뜻을 파악할 수 있게 한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "시맨틱 태그는 '의미(Semantic)'를 부여할 뿐, 그 자체로 시각적인 레이아웃이나 색상 디자인을 변경하지는 않는다.",
+      "whyCorrect": "시맨틱 태그는 눈에 보이는 시각적 변화를 일으키지 않으며, 디자인은 별도의 CSS를 통해 제어해야 하므로 2번이 틀린 설명이다.",
+      "whyIncorrect": "검색엔진 최적화(SEO), 웹 표준 준수, 소스코드 가독성 향상은 모두 시맨틱 태그를 도입하는 핵심 목적이다.",
+      "examPoint": "시맨틱 태그를 쓴다고 해서 브라우저가 알아서 예쁘게 디자인해 줄 것이라는 오해를 타파하는 것이 핵심이다.",
+      "practicalExample": "<div>와 <section>은 화면에 그려질 때 동일한 네모 상자이지만, <section>으로 쓰면 동료 개발자가 '여기가 본문이구나'라고 바로 파악할 수 있다."
+    }
+  },
+  {
+    "id": "q-html-017",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "자체적인 특별한 의미는 없지만, 카드 구조(Card Layout) 설계처럼 다수의 엘리먼트를 하나의 물리 상자로 묶어 CSS 스타일이나 JS 기능을 한 번에 부여할 때 가장 보편적으로 사용하는 만능 상자 태그는?",
+    "choices": [
+      "<article>",
+      "<div>",
+      "<form>",
+      "<body>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<div> (Division) 태그는 문서를 논리적 구역으로 나누거나 여러 요소를 하나로 묶기 위해 사용하는 무의미 컨테이너 태그이다.",
+      "whyCorrect": "의미를 가진 시맨틱 태그를 적용하기 애매하거나 단순히 디자인/동작 제어를 위해 여러 요소를 묶을 때 가장 흔하게 쓰이는 태그이다.",
+      "whyIncorrect": "<article>은 독립적인 글 덩어리(시맨틱), <form>은 입력 양식 묶음, <body>는 전체 화면 본문 영역이다.",
+      "examPoint": "시맨틱의 개념을 배웠다고 해서 <div>를 쓰면 안 되는 것은 아니며, 무의미한 디자인적 묶음에는 <div>를 쓰는 것이 오히려 올바름을 인지해야 한다.",
+      "practicalExample": "상품 이미지, 상품명, 가격 텍스트를 한데 묶어 마우스 오버 시 전체 테두리가 생기게 하려면 이 3개를 <div>로 감싸서 CSS를 적용한다."
+    }
+  },
+  {
+    "id": "q-html-018",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "외부에 분리해 둔 CSS 스타일시트 파일을 HTML 문서로 불러와 결합할 때, 연결 통로를 개설하는 태그와 그 코드가 삽입되어야 하는 구역으로 올바르게 짝지어진 것은?",
+    "choices": [
+      "<head> 구역 내부에 <link> 태그 사용",
+      "<body> 구역 내부에 <style> 태그 사용",
+      "<head> 구역 내부에 <a> 태그 사용",
+      "<footer> 구역 내부에 <link> 태그 사용"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "외부 CSS 파일은 메타데이터가 모이는 <head> 영역 안에서 <link> 태그를 사용하여 불러오는 것이 원칙이다.",
+      "whyCorrect": "디자인 파일(CSS)은 브라우저가 화면(body)을 그리기 전에 미리 읽어두어야 하므로 <head> 영역에 선언하며, 연결 태그는 <link>이다.",
+      "whyIncorrect": "<body> 안의 <style>은 외부 파일 연결이 아닌 직접 작성 방식, <a>는 하이퍼링크용, <footer>는 하단 시맨틱 태그이므로 모두 부적절하다.",
+      "examPoint": "외부 연결 시 CSS는 <link> 태그로 <head>에, JavaScript는 <script> 태그로 <body> 하단에 둔다는 아키텍처 원리를 명확히 비교할 줄 알아야 한다.",
+      "practicalExample": "<head> 안에 <link rel='stylesheet' href='style.css'> 코드를 삽입하여 외부 디자인 파일을 연동한다."
+    }
+  },
+  {
+    "id": "q-html-019",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "코딩 중 열어둔 태그에 대응하는 태그를 작성하지 않아 부모-자식 관계가 깨지고 레이아웃 전체가 아래로 밀리는 실무 휴먼 에러를 무엇이라고 부르는가?",
+    "choices": [
+      "교차 중첩 오류 (Bad Nesting)",
+      "태그 닫기 누락 (Missing End Tag)",
+      "들여쓰기 오류 (Indent Error)",
+      "속성 선언 누락 (Missing Attribute)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "쌍으로 존재하는 태그(예: <div> </div>)에서 닫는 태그를 빼먹으면 브라우저가 구역의 끝을 알 수 없어 레이아웃이 붕괴된다.",
+      "whyCorrect": "제공된 실무 꿀팁 자료에서 열어둔 닫는 태그를 빼먹어 레이아웃이 밀리는 사고를 'Missing End Tag'로 명명하고 있다.",
+      "whyIncorrect": "교차 중첩(Bad Nesting)은 태그의 열고 닫는 순서가 꼬인 것, 들여쓰기 오류는 가독성 문제이다.",
+      "examPoint": "초보 개발자들이 화면이 심하게 깨졌을 때 가장 먼저 체크해야 할 1순위 항목이 바로 태그 닫기 누락임을 강조하는 문제이다.",
+      "practicalExample": "VS Code와 같은 에디터의 자동 완성 기능(Auto Rename Tag 등)을 사용하면 여닫기 누락 실수를 원천적으로 방지할 수 있다."
+    }
+  },
+  {
+    "id": "q-html-020",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML 태그를 열고 닫는 순서가 서로 꼬여서 엇갈리게 묶이게 되면 브라우저가 문서를 제대로 해석하지 못하게 되는데, 이러한 오류를 지칭하는 용어는?",
+    "choices": [
+      "교차 중첩 오류 (Bad Nesting)",
+      "인코딩 에러 (Encoding Error)",
+      "무한 루프 방지 (Infinite Loop Prevention)",
+      "크로스 사이트 스크립팅 (XSS)"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "태그는 가장 나중에 열린 태그가 가장 먼저 닫혀야 하는 양파 껍질 같은 인클로징(Enclosing) 규칙을 지켜야 한다.",
+      "whyCorrect": "자료에서 부모-자식 관계의 바운더리가 엇갈리게 묶여 해석 에러를 유발하는 현상을 '교차 중첩 오류(Bad Nesting)'로 정의하고 있다.",
+      "whyIncorrect": "인코딩 에러는 문자 깨짐, XSS는 보안 공격의 일종이다. 무한 루프는 자바스크립트 등에서 발생하는 논리 오류이다.",
+      "examPoint": "<a><b> 텍스트 </b></a> 처럼 바르게 감싸야 하며, <a><b> 텍스트 </a></b> 처럼 엇갈리게 닫으면 안 된다는 기초 문법 검증 문제이다.",
+      "practicalExample": "<p><strong>강조텍스트</p></strong> 처럼 작성하면 일부 브라우저에서 디자인이 깨지거나 다음 문단까지 굵어지는 부작용이 생긴다."
+    }
+  },
+  {
+    "id": "q-html-021",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "협업 시 소스코드의 가독성을 높이기 위해, 부모와 자식 태그 간의 계층 구조를 시각적으로 구분하여 띄워주는 행위를 무엇이라고 하는가?",
+    "choices": [
+      "렌더링 (Rendering)",
+      "컴파일 (Compile)",
+      "들여쓰기 (Indent)",
+      "파싱 (Parsing)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "들여쓰기(Indent)는 코드가 좌측 벽면에 일렬로 붙는 것을 방지하고, 코드의 계층(Depth)을 스페이스바나 탭으로 밀어 넣어 시각적 가독성을 확보하는 행위이다.",
+      "whyCorrect": "제공된 실무 팁에 따르면 저장 시 들여쓰기를 자동 정렬해 주는 Prettier 같은 도구를 생활화하면 협업 시 생산성이 크게 상승한다.",
+      "whyIncorrect": "렌더링은 브라우저가 화면을 그리는 과정, 컴파일은 언어 번역 과정, 파싱은 문서를 읽어 분석하는 과정이다.",
+      "examPoint": "문법 에러를 유발하지는 않지만, 실무 협업과 코드 유지보수를 위해 가장 기본이 되는 코딩 컨벤션(Convention)에 대한 문제이다.",
+      "practicalExample": "VS Code 에디터에서 단축키(Shift + Alt + F)를 누르거나 저장 시 자동 포맷팅 기능을 켜두면 복잡한 <div> 계층이 한눈에 들어오게 척척 정렬된다."
+    }
+  },
+  {
+    "id": "q-html-022",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML에서 꺾쇠 기호(< >)로 감싸진 태그(Tag)의 가장 기본적인 작성 원리로 알맞은 것은?",
+    "choices": [
+      "모든 태그는 반드시 소문자로만 작성해야 동작한다.",
+      "대부분의 태그는 콘텐츠를 감싸기 위해 '여는 태그'와 슬래시(/)가 붙는 '닫는 태그' 한 쌍으로 구성된다.",
+      "여는 태그 안에 텍스트를 적고, 닫는 태그 안에 속성을 부여한다.",
+      "태그의 이름은 개발자가 임의로 아무 단어나 만들어 사용할 수 있다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "HTML 태그는 요소의 시작과 끝을 브라우저에 알려주기 위해 기본적으로 <태그명>내용</태그명>의 쌍으로 동작한다.",
+      "whyCorrect": "자료에 따르면 대다수의 태그는 알맹이 콘텐츠를 감싸기 위해 여는 태그와 닫는 태그가 한 쌍으로 움직이며 구조적 범위를 한정 짓는다.",
+      "whyIncorrect": "대소문자 구분이 엄격하지는 않으나 소문자 권장일 뿐이며, 속성은 여는 태그에 넣는다. 또한 태그 이름은 표준 스펙에 정의된 것을 사용해야 한다.",
+      "examPoint": "태그의 구조(여는 태그, 닫는 태그, 슬래시 위치)를 묻는 가장 기초적인 문법 문제이다.",
+      "practicalExample": "텍스트를 강조할 때 <strong>중요한 내용</strong> 처럼 슬래시를 이용해 닫아주어야 범위가 지정된다."
+    }
+  },
+  {
+    "id": "q-html-023",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "다음 중 내부에 콘텐츠 텍스트를 감싸지 않기 때문에 닫는 태그를 작성하지 않는 대표적인 '빈 태그(Empty Tag)'는 무엇인가?",
+    "choices": [
+      "<a>",
+      "<p>",
+      "<img>",
+      "<div>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "빈 태그(Empty Tag)는 감쌀 텍스트 콘텐츠가 없어서 단일 태그로만 쓰이는 요소를 말한다.",
+      "whyCorrect": "<img> 태그는 이미지를 불러오는 용도이므로 내부에 텍스트를 담을 필요가 없어 닫는 태그가 없는 대표적인 빈 태그이다.",
+      "whyIncorrect": "<a>, <p>, <div>는 모두 내부에 텍스트나 다른 하위 태그를 자식으로 감싸야 하므로 반드시 닫는 태그가 필요하다.",
+      "examPoint": "쌍으로 이루어진 일반 태그와 단독으로 쓰이는 빈 태그(img, input, br, hr 등)를 구별할 수 있어야 한다.",
+      "practicalExample": "<img> 태그는 닫는 태그 없이 <img src='logo.png' /> 형태로 끝에 슬래시를 붙여 스스로 닫는 방식(Self-closing)으로 실무에서 자주 쓴다."
+    }
+  },
+  {
+    "id": "q-html-024",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "문서의 텍스트 계층 구조를 설계할 때, 중요도와 크기에 따라 제목을 나타내기 위해 사용하는 태그들의 범위로 올바른 것은?",
+    "choices": [
+      "<h1> 부터 <h6> 까지",
+      "<t1> 부터 <t6> 까지",
+      "<head1> 부터 <head5> 까지",
+      "<title1> 부터 <title6> 까지"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "제목 태그(Heading Tag)는 문서의 구조적 위계질서를 나타내며, h1이 가장 크고 중요하며 h6이 가장 작다.",
+      "whyCorrect": "제공된 자료에서 중요도와 크기에 따라 <h1>부터 <h6>까지의 제목 태그를 배치하여 텍스트 계층을 잡는다고 설명하고 있다.",
+      "whyIncorrect": "t, head, title에 숫자를 붙이는 태그는 HTML 표준에 존재하지 않는다.",
+      "examPoint": "Heading을 의미하는 알파벳 'h'와 1~6까지의 숫자를 조합한다는 것을 기억해야 한다.",
+      "practicalExample": "하나의 페이지에는 문서 전체의 대주제인 <h1>을 보통 한 번만 쓰고, 그 아래 소주제로 <h2>, <h3>를 계층적으로 내려가며 사용한다."
+    }
+  },
+  {
+    "id": "q-html-025",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "목록형 데이터를 표기할 때, <ul>이나 <ol> 태그 내부에서 실제 개별 리스트 아이템을 하나씩 뿌려주기 위해 반드시 자식으로 배치해야 하는 태그는?",
+    "choices": [
+      "<ol>",
+      "<li>",
+      "<list>",
+      "<item>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<li> (List Item) 태그는 순서가 있거나(ol) 없는(ul) 목록 내부의 개별 항목을 정의할 때 필수적으로 사용된다.",
+      "whyCorrect": "부모 태그(ul, ol) 안쪽에서 개별 항목을 뿌려줄 때는 반드시 <li> 태그를 자식으로 배치해야 계층(Hierarchy) 구조가 성립한다.",
+      "whyIncorrect": "<ol>은 순서 있는 목록의 부모 상자이며, <list>나 <item>은 HTML 표준 태그가 아니다.",
+      "examPoint": "<ul>과 <li>는 실과 바늘 같은 부모-자식 세트이므로 <ul> 바로 아래에 <div>나 <p>가 직접 오지 않도록 주의해야 한다.",
+      "practicalExample": "메뉴 목록을 짤 때 <ul> 하위에 <li>메뉴1</li> <li>메뉴2</li> 형식으로 구성한다."
+    }
+  },
+  {
+    "id": "q-html-026",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "페이지의 최하단 영역에 위치하며, 주로 회사의 정보, 저작권(Copyright) 공고, 이용약관 링크 등을 담아두는 시맨틱 태그는 무엇인가?",
+    "choices": [
+      "<footer>",
+      "<bottom>",
+      "<section>",
+      "<aside>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<footer> 태그는 웹 페이지나 구역의 꼬리말(하단부)을 나타내며 보통 부가 정보나 저작권 정보를 포함한다.",
+      "whyCorrect": "자료에서 <footer>를 페이지 최하단 영역으로 회사 정보, 저작권 공고, 이용약관 등이 들어간다고 설명했다.",
+      "whyIncorrect": "<bottom>은 존재하지 않는 태그이며, <section>은 본문 덩어리, <aside>는 본문과 무관한 사이드바를 나타낸다.",
+      "examPoint": "문서의 머리말(<header>)과 꼬리말(<footer>)의 대응 관계를 명확히 아는 것이 필수이다.",
+      "practicalExample": "거의 모든 웹사이트의 맨 밑바닥 어두운 배경 영역에 '© 2024 Company Name. All rights reserved.'를 적을 때 <footer> 구역 안에 넣는다."
+    }
+  },
+  {
+    "id": "q-html-027",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "하나의 HTML 파일 안에 모든 디자인(CSS) 코드를 다 집어넣게 되면 발생하는 문제점으로 가장 적절하게 언급된 것은 무엇인가?",
+    "choices": [
+      "브라우저가 HTML 코드를 파싱하지 못하고 백지 화면을 출력한다.",
+      "소스코드가 심각하게 비대해지므로 뼈대와 꾸밈 파일을 철저히 격리해야 한다.",
+      "자바스크립트가 디자인 코드를 바이러스로 인식하여 실행을 멈춘다.",
+      "HTML의 보안 수준이 떨어져 사용자 비밀번호가 쉽게 유출된다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "관심사의 분리(Separation of Concerns) 원칙에 따라 HTML(구조)과 CSS(디자인)는 별도 파일로 관리하여 유지보수성을 높여야 한다.",
+      "whyCorrect": "자료에서 하나의 파일에 디자인 코드를 다 집어넣으면 소스코드가 심각하게 비대해진다고 지적하며 격리의 필요성을 설명했다.",
+      "whyIncorrect": "인라인/내부 스타일을 쓴다고 백지가 되거나, 자바스크립트가 멈추거나, 보안이 뚫리는 치명적 에러가 발생하는 것은 아니다. 유지보수와 가독성의 문제이다.",
+      "examPoint": "왜 굳이 번거롭게 CSS 파일을 외부로 분리해서 <link>로 불러오는지, 그 아키텍처적 이유(유지보수와 코드 경량화)를 묻는 문제이다.",
+      "practicalExample": "1,000줄짜리 HTML 코드에 색상/크기 디자인 코드까지 섞이면 5,000줄이 넘어가 수정이 어려워지므로, style.css 파일로 따로 빼낸다."
+    }
+  },
+  {
+    "id": "q-html-028",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML 문서에서 화면에 생동감 넘치는 동작(동적 기능) 엔진을 주입하기 위해 활용하는 언어와 연결 태그가 바르게 짝지어진 것은?",
+    "choices": [
+      "CSS - <style>",
+      "JavaScript - <script>",
+      "Python - <code>",
+      "Java - <link>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<script> 태그는 자바스크립트 엔진을 HTML 문서에 삽입하여 웹 페이지에 동적인 기능과 이벤트를 부여한다.",
+      "whyCorrect": "자료에서 화면에 생동감 넘치는 동작 엔진을 주입하기 위해 JavaScript를 사용하며 <script> 태그를 활용한다고 명시했다.",
+      "whyIncorrect": "CSS는 꾸밈(style/link)이고, 파이썬이나 자바는 일반적으로 브라우저 프론트엔드에서 HTML과 직접 연결하여 쓰지 않는다.",
+      "examPoint": "구조(HTML), 꾸밈(CSS/link/style), 동작(JS/script)의 삼위일체 관계를 완벽히 숙지해야 한다.",
+      "practicalExample": "사용자가 버튼을 눌렀을 때 팝업창을 띄우는 동작은 <body> 최하단에 <script> 태그를 열고 자바스크립트로 구현한다."
+    }
+  },
+  {
+    "id": "q-html-029",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "부모 태그와 자식 태그의 바운더리를 명확하게 격리하여 코드를 인클로징(Enclosing)해야 브라우저 해석 에러를 예방할 수 있는 휴먼 에러의 종류는?",
+    "choices": [
+      "들여쓰기 미적용",
+      "태그 닫기 누락 (Missing End Tag)",
+      "교차 중첩 오류 (Bad Nesting)",
+      "시맨틱 태그 오남용"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "태그는 열린 순서의 역순으로 닫혀야 완벽하게 포함(Enclosing)되며, 순서가 엇갈리면 렌더링에 심각한 오류가 발생한다.",
+      "whyCorrect": "자료에서 태그를 열고 닫는 순서가 꼬여 엇갈리게 묶이는 현상을 '교차 중첩 오류(Bad Nesting)'로 설명하며 바운더리 격리를 강조했다.",
+      "whyIncorrect": "닫기 누락은 아예 닫는 태그를 안 쓴 것이고, 들여쓰기는 단순 가독성 문제이다.",
+      "examPoint": "문서를 구조화할 때 상자 안에 상자가 온전히 들어가는 러시아 인형(마트료시카) 구조를 떠올려야 한다.",
+      "practicalExample": "<div><span>텍스트</span></div> 처럼 자식(span)을 먼저 닫고 부모(div)를 나중에 닫아야 한다."
+    }
+  },
+  {
+    "id": "q-html-030",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "의미상 하나의 거대한 비즈니스 본문 덩어리를 묶어내는 독립적인 영역을 선언할 때 사용하는 시맨틱 태그는?",
+    "choices": [
+      "<header>",
+      "<div>",
+      "<section>",
+      "<head>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "<section> 태그는 문서 내에서 의미적으로 연관성 있는 독립된 콘텐츠 덩어리(구역)를 그룹화할 때 사용한다.",
+      "whyCorrect": "자료의 시맨틱 레이아웃 설계 부분에서 비즈니스 본문 덩어리를 묶어내는 독립 구역을 <section>이라고 정의하였다.",
+      "whyIncorrect": "<header>는 상단 타이틀 구역, <div>는 의미 없는 단순 묶음, <head>는 메타데이터 보관 영역이다.",
+      "examPoint": "화면을 크게 머리(header), 본문 덩어리들(section), 꼬리(footer)로 분할하는 웹 표준 설계 방식을 묻는 문제이다.",
+      "practicalExample": "쇼핑몰 메인 페이지에서 '신상품 코너', '베스트셀러 코너'를 각각 하나의 <section> 덩어리로 묶어서 코딩한다."
+    }
+  },
+  {
+    "id": "q-html-031",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "협업 시 가독성을 최악으로 떨어뜨리는 '좌측 벽면에 일렬로 다 붙어있는 코드' 문제를 해결하기 위해 실무에서 강력히 권장하는 작업 도구의 확장 프로그램 기능은?",
+    "choices": [
+      "Debugger",
+      "Prettier (자동 줄 바꿈 및 들여쓰기 정렬)",
+      "Live Server",
+      "Git Lens"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Prettier와 같은 코드 포매터(Formatter)는 저장 시 들여쓰기와 줄 바꿈을 자동으로 정렬하여 코드의 계층(가독성)을 균일하게 유지해 준다.",
+      "whyCorrect": "선배의 실무 꿀팁에서 코드가 일렬로 붙는 것을 방지하기 위해 Prettier 등 들여쓰기 자동 정렬 확장 프로그램 사용을 생활화하라고 권장했다.",
+      "whyIncorrect": "Debugger는 버그 추적, Live Server는 실시간 미리보기, Git Lens는 버전 관리 이력 확인 도구이다.",
+      "examPoint": "문법 오류는 아니지만 실무 생산성과 직결되는 코딩 컨벤션 도구의 역할(들여쓰기 정렬)을 알고 있는지 묻는 실무형 문제이다.",
+      "practicalExample": "VS Code에 Prettier를 설치하고 'Format On Save' 설정을 켜면, 저장 단축키(Ctrl+S)를 누르는 순간 뒤죽박죽이던 코드가 보기 좋게 정렬된다."
+    }
+  },
+  {
+    "id": "q-html-032",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "페이지 최상단 영역으로 로고나 메인 검색창이 주로 배치되는 시맨틱 태그는 무엇인가?",
+    "choices": [
+      "<footer>",
+      "<section>",
+      "<header>",
+      "<nav>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "<header> 태그는 문서나 특정 섹션의 도입부(머리말)를 나타내며, 로고, 검색창, 작성자 이름 등이 포함된다.",
+      "whyCorrect": "자료에 따르면 페이지 최상단 영역으로 주요 로고나 검색창이 배치되는 영역의 뜻을 명확히 하는 태그는 <header>이다.",
+      "whyIncorrect": "<footer>는 바닥글, <section>은 본문 덩어리, <nav>는 내비게이션(주요 메뉴) 전용이다.",
+      "examPoint": "물리적인 위치가 상단에 있다고 해서 div를 남발하기보다는, 의미에 맞는 header를 사용하는 습관이 중요하다.",
+      "practicalExample": "네이버나 구글의 메인 페이지 맨 위에 위치한 초록색/흰색 검색창 바(Bar) 영역 전체를 보통 <header>로 감싼다."
+    }
+  },
+  {
+    "id": "q-html-033",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "태그 내부에서 옵션을 설정하는 '속성(Attribute)'에 대한 설명 중, 실제 작성 문법 메커니즘을 가장 정확하게 표현한 것은?",
+    "choices": [
+      "이름과 값을 콜론(:)으로 구분한다. (예: src:logo.png)",
+      "여는 태그 안에서 이름='값' 형태로 명시한다. (예: src='logo.png')",
+      "닫는 태그 안에 괄호로 묶어 명시한다. (예: </img(src=logo)>)",
+      "별도의 <attribute> 태그를 자식으로 생성하여 부여한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "HTML 속성(Attribute)은 요소의 시작(여는 태그) 안에서 Key='Value' 또는 Key=\"Value\" 형태로 작성된다.",
+      "whyCorrect": "자료에서 여는 태그 안에 '이름=값' 형태로 명시하여 추가 옵션 정보를 심는다고 정의하였다.",
+      "whyIncorrect": "콜론(:) 방식은 CSS 문법이며, 속성은 항상 여는 태그 안에 작성되어야 하고 별도의 태그를 생성하지 않는다.",
+      "examPoint": "HTML 속성(이름='값')과 CSS 속성(이름: 값;)의 문법적 차이를 혼동하지 않는 것이 매우 중요하다.",
+      "practicalExample": "<a href='https://example.com' target='_blank'> 처럼 한 태그 안에 띄어쓰기로 여러 속성을 동시에 부여할 수 있다."
+    }
+  },
+  {
+    "id": "q-html-034",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "화면에 시각적 디자인 변화를 일으키지는 않지만, 해당 구역이 '내비게이션'인지 '본문'인지 브라우저가 직관적으로 뜻을 알 수 있게 명명된 태그들을 통칭하는 용어는?",
+    "choices": [
+      "메타 태그 (Meta Tag)",
+      "스크립트 태그 (Script Tag)",
+      "시맨틱 태그 (Semantic Tag)",
+      "빈 태그 (Empty Tag)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "시맨틱(Semantic, 의미론적인) 태그는 <div> 같은 무의미한 태그와 달리 태그 이름 자체에 콘텐츠의 의미(목적)가 담겨 있는 요소이다.",
+      "whyCorrect": "자료에서 구역의 '뜻'이 명확하게 직관적으로 드러나도록 명명된 태그를 시맨틱 태그라고 부른다고 명시했다.",
+      "whyIncorrect": "메타 태그는 문서 설정 정보, 스크립트 태그는 JS 실행, 빈 태그는 내용물 없이 단독으로 쓰이는 태그이다.",
+      "examPoint": "시맨틱 마크업은 웹 접근성(장애인 스크린 리더)과 검색엔진 최적화(SEO)의 핵심 기반 기술임을 기억해야 한다.",
+      "practicalExample": "시각 장애인이 사용하는 스크린 리더기는 <nav> 태그를 만나면 '지금부터 메뉴 링크를 읽어드리겠습니다'라고 똑똑하게 안내할 수 있다."
+    }
+  },
+  {
+    "id": "q-html-035",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "태그 닫기 누락(Missing End Tag) 실수를 방지하고 개발 생산성을 높이기 위해 선배가 실무 꿀팁으로 추천한 작업 도구의 기능은 무엇인가?",
+    "choices": [
+      "메모장의 문법 검사기",
+      "터미널의 로그 기록 확인",
+      "VS Code의 자동 완성 기능",
+      "웹 브라우저의 새로고침 기능"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "현대적인 코드 에디터(VS Code 등)는 태그를 열면 자동으로 닫는 태그를 생성해 주는 기능을 제공하여 휴먼 에러를 획기적으로 줄여준다.",
+      "whyCorrect": "실무 꿀팁 자료에서 닫는 태그를 빼먹는 사고를 막기 위해 VS Code의 자동 완성 기능을 적극 활용하라고 명시되어 있다.",
+      "whyIncorrect": "메모장, 터미널, 단순 새로고침은 코딩 중 발생하는 실시간 오타나 태그 누락을 선제적으로 막아주는 기능과 거리가 멀다.",
+      "examPoint": "오류를 잡는 것도 실력이지만, 도구(IDE)를 100% 활용하여 휴먼 에러 자체를 사전에 차단하는 것이 진정한 실무자의 자세임을 묻는다.",
+      "practicalExample": "VS Code에서 <div>라고 치고 닫는 꺾쇠(>)를 누르는 순간 자동으로 </div>가 뒤에 생겨나서 절대 까먹을 일이 없다."
+    }
+  },
+  {
+    "id": "q-html-036",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹 프론트엔드를 구성하는 기술들을 건축물에 비유할 때, HTML이 담당하는 역할로 가장 적절한 것은?",
+    "choices": [
+      "건물의 뼈대 및 구조",
+      "건물의 외벽 페인트 색상",
+      "건물의 엘리베이터 동작",
+      "건물의 자동문 센서 시스템"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "HTML은 웹 페이지의 정적 골조를 잡는 마크업 언어로, 건물의 뼈대와 구조를 세우는 역할과 동일하다.",
+      "whyCorrect": "제공된 핵심 개념 요약 표에서 HTML을 '건물의 뼈대 및 구조'로 명확히 비유하고 있다.",
+      "whyIncorrect": "페인트 색상(디자인)은 CSS, 엘리베이터나 자동문 센서(동적 기능)는 JavaScript가 담당하는 영역이다.",
+      "examPoint": "프론트엔드 3대장(HTML, CSS, JS)의 역할을 실생활에 비유하여 본질을 이해하는 것은 입문자의 필수 관문이다.",
+      "practicalExample": "아무리 예쁜 CSS(페인트)를 발라도, HTML(철근) 태그 구조가 잘못되어 있으면 브라우저 창 크기를 줄일 때 웹사이트가 와르르 무너져 내린다."
+    }
+  },
+  {
+    "id": "q-html-037",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "다음 중 브라우저 뷰포트(화면) 상에 시각적으로 그 어떠한 콘텐츠도 직접 노출시키지 않는 태그는 무엇인가?",
+    "choices": [
+      "<body>",
+      "<h1>",
+      "<img>",
+      "<head>"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "<head> 영역은 문서의 메타데이터, 제목, CSS 연결 링크 등을 담는 두뇌 영역으로, 화면 본문에 렌더링되지 않는다.",
+      "whyCorrect": "자료에 따르면 <head>는 브라우저 화면에 직접 보이지 않지만, 웹페이지의 필수 설정 정보를 보관하는 구역이다.",
+      "whyIncorrect": "<body>는 본문 전체, <h1>은 제목 텍스트, <img>는 이미지를 화면에 띄우는 태그이므로 모두 시각적으로 노출된다.",
+      "examPoint": "문서의 '설정(head)'과 '본문(body)'을 물리적으로 나누는 아키텍처를 정확히 구분할 수 있어야 한다.",
+      "practicalExample": "구글 애널리틱스(GA) 추적 스크립트나 카카오톡 공유 썸네일 정보 설정 등은 화면에 보일 필요가 없으므로 항상 <head> 안에 삽입한다."
+    }
+  },
+  {
+    "id": "q-html-038",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "실제 사용자의 눈에 보이는 텍스트, 이미지, 버튼 등의 콘텐츠가 물리적으로 모두 적재되는 신체 구역을 의미하는 태그는?",
+    "choices": [
+      "<html>",
+      "<head>",
+      "<body>",
+      "<title>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "<body> 태그는 브라우저가 화면에 실제로 그려내는(렌더링하는) 모든 시각적 요소들을 포함하는 단 하나의 컨테이너이다.",
+      "whyCorrect": "자료에서 <body>는 실제 사용자의 눈에 보이는 본문 콘텐츠가 적재되는 물리적인 신체 구역으로 정의된다.",
+      "whyIncorrect": "<html>은 전체 문서의 루트, <head>는 메타데이터 영역, <title>은 브라우저 탭에 표시되는 제목이다.",
+      "examPoint": "화면에 무언가를 표시하고 싶다면, 그 코드는 반드시 <body>와 </body> 사이에 작성되어야 함을 묻는다.",
+      "practicalExample": "<body> 태그의 배경색을 CSS로 검정색으로 바꾸면, 사용자가 보는 웹페이지 전체 배경이 어두워진다(다크모드 뼈대)."
+    }
+  },
+  {
+    "id": "q-html-039",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "순서가 필요 없는 목록을 만들 때 점(불릿) 기호로 항목을 표기하기 위해 사용하는 바깥 묶음 태그는?",
+    "choices": [
+      "<ol>",
+      "<ul>",
+      "<li>",
+      "<div>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<ul> (Unordered List) 태그는 순서가 중요하지 않은 항목들의 집합을 정의할 때 사용되며, 기본적으로 불릿(•) 기호가 나타난다.",
+      "whyCorrect": "순서가 없는 목록은 <ul>로 감싸고, 그 안의 자식으로 <li>를 배치해야 한다고 명시되어 있다.",
+      "whyIncorrect": "<ol>은 숫자가 매겨지는 순서 있는 목록, <li>는 목록의 자식 항목, <div>는 단순 구역 상자이다.",
+      "examPoint": "Unordered(순서 없음)의 U와 Ordered(순서 있음)의 O를 철자 그대로 직관적으로 연결하여 암기한다.",
+      "practicalExample": "쇼핑몰의 '상품 특징 3가지'를 나열할 때 순위가 상관없다면 <ul> 태그를 사용하여 점 기호로 보기 좋게 나열한다."
+    }
+  },
+  {
+    "id": "q-html-040",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자로부터 입력받은 동적인 데이터(예: 회원가입 정보)를 백엔드 서버나 CRM 시스템으로 전송하기 위해 이 입력칸들을 하나로 감싸는 태그는?",
+    "choices": [
+      "<table>",
+      "<form>",
+      "<section>",
+      "<body>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<form> 태그는 입력된 데이터를 수집하여 지정된 서버 URL로 데이터를 묶어서 제출(Submit)하는 컨테이너이다.",
+      "whyCorrect": "동적인 데이터를 입력받아 백엔드나 CRM 시스템으로 전송하기 위해 배치하는 데이터 수집 거푸집이 바로 <form>이다.",
+      "whyIncorrect": "<table>은 격자형 표, <section>은 본문 덩어리 구역, <body>는 화면 전체 영역을 뜻한다.",
+      "examPoint": "폼 컨트롤 요소(input, select 등)들이 서버로 넘어가려면 반드시 하나의 큰 <form> 보따리 안에 담겨 있어야 함을 명심해야 한다.",
+      "practicalExample": "로그인 화면에서 아이디 칸, 비밀번호 칸, 로그인 버튼은 모두 하나의 <form action='/login' method='POST'> 안에 묶여 있다."
+    }
+  },
+  {
+    "id": "q-html-041",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "시맨틱 태그 중 사이트의 주요 메뉴나 길 안내 링크 모음을 담아두는 '내비게이션 바' 구역을 의미하는 태그는?",
+    "choices": [
+      "<header>",
+      "<footer>",
+      "<nav>",
+      "<section>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "<nav> 태그는 웹사이트 내의 다른 페이지나 동일 페이지 내의 주요 구역으로 이동하는 링크(메뉴)들을 묶어주는 시맨틱 요소이다.",
+      "whyCorrect": "사이트의 주요 메뉴나 길 안내 링크 모음을 담아두는 내비게이션 바 구역으로 정의되어 있다.",
+      "whyIncorrect": "<header>는 상단 도입부, <footer>는 하단 저작권 정보, <section>은 독립된 본문 덩어리이다.",
+      "examPoint": "Navigation(내비게이션, 항해/길찾기)의 약자인 Nav를 떠올려 메뉴 모음 영역과 연결 짓는다.",
+      "practicalExample": "웹페이지 상단의 '로그인 | 회원가입 | 고객센터' 같은 주요 링크 묶음을 통째로 <nav> 태그로 감싸서 마크업한다."
+    }
+  },
+  {
+    "id": "q-html-042",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "다수의 엘리먼트를 하나의 물리 상자로 묶어서 CSS 스타일을 주거나 레이아웃(예: 카드 구조)을 잡을 때 가장 보편적으로 사용하는, 자체적인 의미가 없는 만능 상자 태그는?",
+    "choices": [
+      "<span>",
+      "<article>",
+      "<div>",
+      "<form>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "<div> 태그는 특별한 시맨틱(의미)은 없지만, 블록 단위로 여러 요소를 하나로 묶어 CSS/JS 제어를 용이하게 만드는 범용 컨테이너이다.",
+      "whyCorrect": "자료에서 카드 구조 설계 등 여러 요소를 묶어 CSS/JS를 한 번에 부여할 때 가장 보편적으로 사용하는 만능 상자 태그로 <div>를 소개한다.",
+      "whyIncorrect": "<span>은 인라인 단위의 단순 묶음, <article>은 독립적인 글 시맨틱, <form>은 데이터 제출 양식이다.",
+      "examPoint": "시맨틱 태그가 권장되지만, 순수하게 '디자인적 레이아웃'을 잡기 위한 목적으로는 <div> 사용이 가장 올바른 선택임을 이해해야 한다.",
+      "practicalExample": "세 개의 상품 카드를 가로로 나란히 정렬하기 위해, 세 개의 카드를 하나의 커다란 <div class='card-container'>로 감싸고 Flexbox CSS를 적용한다."
+    }
+  },
+  {
+    "id": "q-html-043",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "외부에 작성된 CSS 파일을 HTML 문서에 연결하기 위해 사용하는 <link> 태그는 문서 내 어느 구역에 배치해야 하는가?",
+    "choices": [
+      "<body> 태그 최하단",
+      "<html> 태그 밖깥",
+      "<footer> 구역 내부",
+      "<head> 구역 내부"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "디자인(CSS) 요소는 브라우저가 본문(body)을 화면에 그리기 전에 미리 읽어서 준비해야 하므로, 설정 정보가 모이는 <head> 내부에 선언한다.",
+      "whyCorrect": "자료에서 분리된 외부 스타일시트 파일을 불러올 때 헤드(<head>) 영역 내에 <link> 태그를 심어 연결 통로를 개설한다고 명시되어 있다.",
+      "whyIncorrect": "<body> 최하단은 JavaScript 연결(<script>)을 위한 위치이며, <html> 바깥이나 <footer>에는 메타데이터를 넣지 않는다.",
+      "examPoint": "CSS는 렌더링 전(<head>), JS는 렌더링 후(<body> 하단)라는 프론트엔드 최적화 아키텍처의 기본 원칙을 묻는다.",
+      "practicalExample": "HTML 문서 위쪽에 <head>를 열고 <link rel='stylesheet' href='main.css'>를 적어주면 웹페이지에 색상과 예쁜 폰트가 입혀진다."
+    }
+  },
+  {
+    "id": "q-html-044",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "태그를 열고 닫을 때, 가장 나중에 열린 태그가 가장 먼저 닫혀야 하는 양파 껍질 같은 바운더리 규칙을 지키지 않고 엇갈리게 묶는 에러를 무엇이라 하는가?",
+    "choices": [
+      "교차 중첩 오류 (Bad Nesting)",
+      "태그 닫기 누락 (Missing End Tag)",
+      "들여쓰기 오류 (Indent Error)",
+      "문자열 파싱 에러 (String Parsing Error)"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "교차 중첩(Bad Nesting)은 부모 태그가 닫히기 전에 자식 태그가 닫히지 않고 서로 엇갈려서, 브라우저가 요소의 포함 관계를 인식하지 못하게 되는 문법 오류이다.",
+      "whyCorrect": "자료에서 태그를 열고 닫는 순서가 꼬여 엇갈리게 묶이는 오류를 방지하기 위해 바운더리를 명확히 격리하라고 설명하며 이를 'Bad Nesting'이라 칭했다.",
+      "whyIncorrect": "닫기 누락은 태그 자체를 안 쓴 것, 들여쓰기는 빈칸 정렬 문제로 엇갈림 현상과는 다르다.",
+      "examPoint": "태그 구조는 샌드위치나 양파처럼 완벽하게 감싸지는(Enclosing) 트리 구조를 형성해야 한다는 원리를 묻는 문법 문제이다.",
+      "practicalExample": "<a><button>클릭</button></a> (정상) / <a><button>클릭</a></button> (교차 중첩 에러)"
+    }
+  },
+  {
+    "id": "q-html-045",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "코드를 작성할 때 좌측 벽면에 모든 코드가 일렬로 붙어 가독성이 떨어지는 것을 방지하기 위해, 저장 시 자동으로 코드를 계층별로 밀어 넣어 정렬해 주는 확장 프로그램(예: Prettier)의 기능은?",
+    "choices": [
+      "컴파일(Compile) 자동화",
+      "들여쓰기(Indent) 자동 정렬",
+      "변수명 일괄 변경",
+      "주석(Comment) 자동 생성"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "들여쓰기(Indent)는 탭(Tab)이나 스페이스바를 활용해 부모-자식 태그 간의 깊이(Depth)를 시각적으로 구분하여 코드 가독성을 극대화하는 행위이다.",
+      "whyCorrect": "선배의 실무 꿀팁에 따르면, 저장 시 '자동 줄 바꿈 및 들여쓰기를 정렬해 주는 확장 프로그램(Prettier 등)'을 설정해 두면 실무 생산성이 크게 향상된다.",
+      "whyIncorrect": "컴파일 자동화나 변수명 변경, 주석 생성은 코드 구조를 시각적으로 계층화하는 기능(포매터)과는 역할이 다르다.",
+      "examPoint": "들여쓰기는 브라우저 렌더링에 영향을 주진 않지만, 개발자 간 협업 시 가독성을 유지하기 위한 0순위 규칙임을 짚어준다.",
+      "practicalExample": "수백 줄의 HTML 코드가 왼쪽 벽에 붙어 있으면 <div>가 어디서 닫히는지 찾을 수 없지만, Prettier가 들여쓰기를 해주면 부모-자식 블록이 한눈에 파악된다."
+    }
+  },
+  {
+    "id": "q-html-046",
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "작업 도중 레이아웃 전체가 의도치 않게 아래로 심하게 밀리거나 배경색이 바깥으로 튀어나오는 등 화면이 붕괴되었을 때, 실무 선배가 가장 먼저 점검하라고 조언한 휴먼 에러는?",
+    "choices": [
+      "자바스크립트의 무한 루프 발생",
+      "CSS 파일 경로 오타",
+      "태그 닫기 누락 (Missing End Tag)",
+      "HTML 파일의 인코딩(UTF-8) 설정 오류"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "닫는 태그를 누락하면 브라우저가 해당 구역이 어디서 끝나는지 알 수 없어 그 뒤의 모든 요소들을 자식으로 취급해버리므로 레이아웃이 연쇄적으로 무너진다.",
+      "whyCorrect": "선배의 실무 꿀팁에서 코딩하다가 열어둔 닫는 태그를 빼먹어 레이아웃 전체가 아래로 밀리는 사고가 빈번하다고 경고하며 확인을 당부했다.",
+      "whyIncorrect": "JS 무한루프는 브라우저 멈춤, CSS 경로 오타는 디자인 전체 증발, 인코딩 오류는 한글 깨짐 현상을 유발하며, 레이아웃 밀림의 주원인은 보통 닫기 누락이다.",
+      "examPoint": "퍼블리싱 과정에서 화면이 심하게 깨졌을 때 CSS를 탓하기 전에, 가장 기본인 HTML 태그 구조(열고 닫기)부터 의심해보는 디버깅 사고력을 기른다.",
+      "practicalExample": "상단 헤더 <div>를 닫지 않으면, 브라우저는 본문과 꼬리말 영역까지 모두 헤더의 자식으로 욱여넣어 버려 화면 비율이 기괴하게 변한다."
+    }
+  },
+  {
+    "id": "q-html-047",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "태그 내부에서 옵션이나 정보를 설정하는 '속성(Attribute)'에 대한 설명 중 틀린 것은?",
+    "choices": [
+      "여는 태그 안에서 작성해야 한다.",
+      "이름='값' 형태의 쌍으로 이루어진다.",
+      "하나의 여는 태그 안에 띄어쓰기를 통해 여러 개의 속성을 동시에 선언할 수 있다.",
+      "닫는 태그 안에도 속성을 선언하여 특정 효과를 해제할 수 있다."
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "속성(Attribute)은 요소의 부가 정보를 정의하는 문법으로, 반드시 '여는 태그' 안에만 존재할 수 있다.",
+      "whyCorrect": "닫는 태그(예: </div class='box'>)에 속성을 넣는 것은 HTML 문법 위반이며 브라우저가 해석하지 못하므로 4번이 틀린 설명이다.",
+      "whyIncorrect": "속성은 여는 태그에 넣고, 이름='값' 형태이며, 띄어쓰기로 여러 개(예: src='a.jpg' alt='사진')를 덧붙일 수 있다는 것은 모두 올바른 설명이다.",
+      "examPoint": "속성 부여는 오직 시작 시점(여는 태그)에만 설정한다는 아주 명확한 문법적 한계를 묻는다.",
+      "practicalExample": "<input type='text' placeholder='이름' required /> 처럼 하나의 여는 태그 안에 타입, 안내문구, 필수조건 등의 속성을 주르륵 나열한다."
+    }
+  },
+  {
+    "id": "q-html-048",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 키보드로 텍스트를 직접 타이핑할 수 있는 빈 칸 상자를 생성할 때 사용하는 폼 엘리먼트 태그는?",
+    "choices": [
+      "<input>",
+      "<label>",
+      "<select>",
+      "<body>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<input> 태그는 사용자로부터 텍스트, 비밀번호, 날짜 등 다양한 형태의 데이터를 입력받는 가장 핵심적인 대화형(폼) 컨트롤 요소이다.",
+      "whyCorrect": "자료에서 input은 사용자가 키보드로 텍스트를 직접 타이핑할 수 있는 빈 칸 상자를 생성한다고 명확히 정의하였다.",
+      "whyIncorrect": "<label>은 입력칸의 이름표, <select>는 옵션 선택지, <body>는 전체 화면 구역이다.",
+      "examPoint": "웹사이트에서 글자를 쳐 넣는 네모난 빈칸은 무조건 <input> 또는 <textarea> 태그임을 인지해야 한다.",
+      "practicalExample": "구글 메인 화면의 거대한 검색어 입력창 역시 그 본질은 단 하나의 <input type='text'> 태그일 뿐이다."
+    }
+  },
+  {
+    "id": "q-html-049",
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "의미를 부여하는 시맨틱 태그(Semantic Tag)에 속하지 않으며, 단지 다수의 요소를 묶어 레이아웃을 잡는 용도로 쓰이는 무의미한 컨테이너 태그는?",
+    "choices": [
+      "<footer>",
+      "<header>",
+      "<div>",
+      "<section>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "<div> 태그는 Division의 약자로 문서를 분할하는 역할만 할 뿐, 콘텐츠의 '의미(시맨틱)'나 '목적'을 검색엔진이나 브라우저에 전달하지는 않는다.",
+      "whyCorrect": "footer, header, section은 구역의 직관적인 뜻(의미)이 담긴 시맨틱 태그이지만, div는 '특별한 의미는 없으나 만능 상자로 쓰는' 비(非)시맨틱 태그이다.",
+      "whyIncorrect": "나머지 보기는 모두 HTML5에서 정보의 구조화를 명확하게 기여하기 위해 도입된 대표적인 시맨틱 태그들이다.",
+      "examPoint": "시맨틱(의미론적) 태그와 논-시맨틱(비의미론적) 태그를 명확히 분류할 수 있는지를 묻는 단골 문제이다.",
+      "practicalExample": "화면을 좌우로 단순히 반으로 나누기 위한 박스가 필요할 때는 <div>를 쓰고, 그 박스 안의 진짜 '본문' 내용에는 <section>이나 <article>을 쓰는 식으로 혼용한다."
+    }
   }
 ]

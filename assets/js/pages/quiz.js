@@ -506,6 +506,11 @@ document.getElementById('quiz-next-btn')?.addEventListener('click', () => {
 
 document.getElementById('quiz-setup-start-btn')?.addEventListener('click', startQuizFromSetup);
 
+// 슬라이더를 움직이는 동안 실시간으로 선택한 문항 수를 보여준다 (기존엔 초기값만 세팅되고 갱신이 안 됐음)
+document.getElementById('quiz-setup-count')?.addEventListener('input', e => {
+  setText('quiz-setup-count-value', e.target.value);
+});
+
 document.getElementById('quiz-end-btn')?.addEventListener('click', () => {
   if (!quizState) return;
   // 오클릭으로 응시가 즉시 종료/채점되는 것을 막기 위한 최소한의 확인 (공용 확인 모달이 없어 네이티브 confirm 사용)

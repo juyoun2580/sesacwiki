@@ -1,0 +1,1476 @@
+[
+  {
+    "id": "q-adx-reports-001",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "행과 열 모두 그룹핑이 필요한 보고서 유형은?",
+    "choices": [
+      "Tabular",
+      "Summary",
+      "Matrix",
+      "Joined"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Matrix Report는 행(Row)과 열(Column) 양쪽으로 그룹핑해 두 기준의 교차 분석을 가능하게 하는 유일한 보고서 유형이다.",
+      "whyCorrect": "행+열 이중 그룹핑이 필요한 요구사항에 정확히 부합하는 것은 Matrix이므로 C가 정답이다.",
+      "whyIncorrect": "Tabular는 그룹화가 전혀 없고, Summary는 행 그룹화만 지원하며, Joined는 여러 오브젝트를 나란히 배치하는 용도라 교차 분석과는 다르다.",
+      "examPoint": "'행+열 교차 분석'이라는 키워드는 항상 Matrix Report로 직결된다.",
+      "practicalExample": "영업담당자(행)별, 월(열)별 매출 총액을 한 표로 보고 싶다면 Matrix Report를 만든다."
+    }
+  },
+  {
+    "id": "q-adx-reports-002",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "그룹핑과 소계가 필요하지만 행열 교차는 필요 없는 보고서 유형은?",
+    "choices": [
+      "Tabular",
+      "Summary",
+      "Matrix",
+      "Joined"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Summary Report는 행 기준으로 레코드를 그룹핑하고 그룹별 소계를 보여주는 보고서 유형이다.",
+      "whyCorrect": "그룹핑+소계만 필요하고 교차 분석은 필요 없는 요구사항에 정확히 맞는 것이 Summary이므로 B가 정답이다.",
+      "whyIncorrect": "Tabular는 그룹화가 없고, Matrix는 행+열 이중 그룹화가 필요하며, Joined는 여러 오브젝트를 다루는 용도라 단일 기준 그룹핑과는 다르다.",
+      "examPoint": "'그룹화+소계'는 Summary, '행+열 교차'는 Matrix로 나눠서 기억하는 것이 이 영역의 기본이다.",
+      "practicalExample": "지역별 Opportunity 합계를 보고 싶다면 Summary Report로 지역을 그룹핑하면 된다."
+    }
+  },
+  {
+    "id": "q-adx-reports-003",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보는 사람에 따라 다른 데이터를 보여주는 대시보드 유형은?",
+    "choices": [
+      "Static Dashboard",
+      "Dynamic Dashboard",
+      "Joined Dashboard",
+      "Summary Dashboard"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Dynamic Dashboard는 보는 사람의 접근 권한을 기준으로 개인화된 데이터를 보여주는 대시보드 유형이다.",
+      "whyCorrect": "보는 사람마다 다른 데이터를 표시하는 것이 Dynamic Dashboard의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "Static Dashboard는 고정된 Running User 기준으로 데이터가 항상 동일하고, Joined Dashboard와 Summary Dashboard는 실제 존재하는 대시보드 유형이 아니다(Summary는 리포트 유형).",
+      "examPoint": "'사람마다 자기 데이터만 보인다'는 표현은 항상 Dynamic Dashboard로 연결된다.",
+      "practicalExample": "같은 영업 대시보드를 열어도 지역 담당자마다 자기 담당 지역의 매출만 보이는 것이 Dynamic Dashboard다."
+    }
+  },
+  {
+    "id": "q-adx-reports-004",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "여러 오브젝트의 데이터를 하나의 보고서에서 볼 수 있는 유형은?",
+    "choices": [
+      "Tabular",
+      "Summary",
+      "Matrix",
+      "Joined"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Joined Report는 최대 5개의 블록을 결합해 서로 다른 오브젝트의 데이터를 하나의 보고서에서 나란히 볼 수 있게 해준다.",
+      "whyCorrect": "여러 오브젝트를 하나의 보고서에서 다루는 것이 Joined Report의 정의이므로 D가 정답이다.",
+      "whyIncorrect": "Tabular, Summary, Matrix는 모두 단일 오브젝트(Report Type) 기반이라 여러 오브젝트를 동시에 다룰 수 없다.",
+      "examPoint": "'여러 오브젝트를 한 보고서에서'라는 표현은 항상 Joined Report로 연결된다.",
+      "practicalExample": "Account 정보와 관련 Opportunity 정보를 한 화면에서 나란히 보고 싶다면 Joined Report를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-005",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to see only Accounts that have NO related open Cases. Which filter type should be used?",
+    "choices": [
+      "Standard Filter",
+      "Field Filter",
+      "Row-Level Formula",
+      "Cross Filter"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Cross Filter는 자식 레코드의 존재/부재를 기준으로 부모 레코드를 필터링하는 기능으로, 'Accounts WITHOUT Cases'처럼 관련 레코드가 없는 경우를 걸러낼 수 있다.",
+      "whyCorrect": "관련 Case가 없는 Account만 걸러내는 요구사항은 Cross Filter로만 표현 가능하므로 D가 정답이다.",
+      "whyIncorrect": "Standard Filter는 날짜·소유자 같은 기본 조건만 다루고, Field Filter는 필드 값 기준이며, Row-Level Formula는 행별 계산이라 자식 레코드 존재 여부를 표현할 수 없다.",
+      "examPoint": "'관련 레코드가 없는 경우만'이라는 표현은 항상 Cross Filter(WITHOUT)로 연결된다.",
+      "practicalExample": "열린 Case가 하나도 없는 Account 목록을 뽑아 영업팀이 안정적인 고객사를 파악하는 데 활용한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-006",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서를 특정 팀과 공유하려면 무엇을 공유해야 하나요?",
+    "choices": [
+      "보고서 자체",
+      "보고서 폴더",
+      "대시보드",
+      "보고서 유형"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce에서 보고서는 개별적으로 직접 공유할 수 없고, 반드시 보고서가 담긴 폴더를 통해서만 공유된다.",
+      "whyCorrect": "공유의 단위가 보고서 폴더이므로 B가 정답이다.",
+      "whyIncorrect": "보고서 자체를 직접 공유하는 기능은 없고, 대시보드나 보고서 유형은 이 질문의 대상과 다르다.",
+      "examPoint": "'보고서는 직접 공유 불가, 폴더로만 공유'라는 원칙은 이 영역에서 가장 자주 나오는 함정이다.",
+      "practicalExample": "마케팅팀과 리포트를 공유하려면 그 리포트가 담긴 폴더를 마케팅팀 그룹에 공유한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-007",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Tabular Report의 특징은?",
+    "choices": [
+      "그룹핑과 소계 지원",
+      "단순 목록, 그룹핑 없음",
+      "행열 교차 분석 가능",
+      "여러 오브젝트 동시 표시"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Tabular Report는 가장 단순한 형태로, 그룹핑이나 소계 없이 레코드를 목록으로만 나열한다.",
+      "whyCorrect": "단순 목록, 그룹핑 없음이 Tabular의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "그룹핑/소계는 Summary, 행열 교차는 Matrix, 여러 오브젝트 동시 표시는 Joined의 특징이다.",
+      "examPoint": "4가지 보고서 유형 중 가장 기본형이 Tabular라는 것, 그리고 차트를 붙일 수 없다는 제약도 함께 기억해두자.",
+      "practicalExample": "이번 주 신규 등록된 Lead를 그냥 목록으로만 확인하고 싶을 때 Tabular Report를 쓴다."
+    }
+  },
+  {
+    "id": "q-adx-reports-008",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서 폴더를 공유할 때 설정할 수 있는 접근 수준이 아닌 것은?",
+    "choices": [
+      "Viewer",
+      "Editor",
+      "Manager",
+      "Owner Transfer"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "보고서 폴더 공유 시 설정 가능한 접근 수준은 Viewer(보기), Editor(편집), Manager(공유 설정까지 관리) 세 가지다.",
+      "whyCorrect": "Owner Transfer는 폴더 공유의 접근 수준으로 존재하지 않으므로 D가 정답(아닌 것)이다.",
+      "whyIncorrect": "Viewer, Editor, Manager는 모두 실제로 존재하는 폴더 공유 접근 수준이다.",
+      "examPoint": "Viewer/Editor/Manager 세 단계를 표로 정리해서 각각의 권한 범위를 확실히 암기해두자.",
+      "practicalExample": "영업팀에게는 Viewer 권한만, 리포트 관리 담당자에게는 Manager 권한을 부여하는 식으로 세분화한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-009",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Cross Filter를 사용하면 무엇을 할 수 있나요?",
+    "choices": [
+      "여러 오브젝트를 하나의 보고서에 결합",
+      "관련 레코드의 존재 유무로 필터링",
+      "행과 열 모두 그룹핑",
+      "보고서를 자동 이메일 발송"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Cross Filter는 관련 오브젝트 레코드가 존재하는지 여부를 기준으로 필터링하는 기능이다.",
+      "whyCorrect": "관련 레코드 존재/부재로 필터링하는 것이 Cross Filter의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "여러 오브젝트 결합은 Joined Report, 행열 그룹핑은 Matrix, 자동 이메일 발송은 Schedule 기능의 역할이다.",
+      "examPoint": "Cross Filter는 'WITH/WITHOUT'이라는 키워드로 관련 레코드 존재 여부를 표현한다는 것을 기억하자.",
+      "practicalExample": "관련 케이스가 있는 Account만, 혹은 없는 Account만 걸러서 볼 때 Cross Filter를 쓴다."
+    }
+  },
+  {
+    "id": "q-adx-reports-010",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Dashboard를 예약하는 목적은?",
+    "choices": [
+      "데이터를 자동으로 백업",
+      "지정된 시간에 대시보드를 자동 새로고침하고 결과를 이메일로 발송",
+      "승인 프로세스를 자동화",
+      "보고서를 자동 생성"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "대시보드를 예약하면 지정된 주기(일/주/월)에 자동으로 새로고침되고 그 결과가 지정된 수신자에게 이메일로 발송된다.",
+      "whyCorrect": "자동 새로고침 후 이메일 발송이 대시보드 예약의 목적이므로 B가 정답이다.",
+      "whyIncorrect": "데이터 백업, 승인 프로세스 자동화, 보고서 자동 생성은 대시보드 예약과 무관한 기능이다.",
+      "examPoint": "Schedule(예약)은 리포트와 대시보드 둘 다에 있는 기능이라는 것, 그리고 결과가 이메일로 온다는 점을 기억하자.",
+      "practicalExample": "매주 월요일 아침 영업 대시보드가 자동 새로고침되어 팀장 이메일로 요약본이 도착하게 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-011",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서에서 Running User의 역할은?",
+    "choices": [
+      "보고서를 만든 사람",
+      "보고서 데이터가 누구의 접근 권한 기준으로 필터링되는지 결정",
+      "보고서를 실행하는 사람",
+      "보고서를 공유받은 사람"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Running User는 보고서(특히 Dynamic Dashboard)의 데이터가 누구의 공유/접근 권한 기준으로 필터링될지를 결정하는 개념이다.",
+      "whyCorrect": "데이터 접근 기준을 결정하는 사람이라는 정의가 정확하므로 B가 정답이다.",
+      "whyIncorrect": "단순히 보고서를 만들었거나, 실행하거나, 공유받은 사람이라는 표현은 Running User의 핵심 의미(권한 기준)를 놓치고 있다.",
+      "examPoint": "Dynamic Dashboard에서는 보는 사람 각자가 Running User가 되어 자기 권한만큼만 데이터를 본다는 점이 핵심이다.",
+      "practicalExample": "Static Dashboard는 특정 관리자를 Running User로 고정해 항상 그 사람 기준의 전체 데이터를 보여줄 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-reports-012",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Summary Report를 Dashboard에 사용하려면 어떤 조건이 필요한가요?",
+    "choices": [
+      "항상 사용 가능",
+      "최소 하나의 그룹핑이 있어야 함",
+      "Matrix 유형으로 변환 필요",
+      "관리자 권한 필요"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Summary Report를 Dashboard의 차트 컴포넌트 소스로 쓰려면 최소 하나의 그룹핑(행 그룹)이 있어야 한다.",
+      "whyCorrect": "최소 하나의 그룹핑이 필요하다는 것이 정확한 조건이므로 B가 정답이다.",
+      "whyIncorrect": "아무 조건 없이 항상 되는 것은 아니며, Matrix로 변환할 필요도 없고 관리자 권한과도 무관하다.",
+      "examPoint": "Tabular Report는 그룹화가 없어 차트 소스로 쓸 수 없고 Table 컴포넌트로만 가능하다는 것과 짝지어 기억하자.",
+      "practicalExample": "담당자별로 그룹화된 Summary Report라야 Dashboard에 막대 차트로 시각화할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-reports-013",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Row-Level Formula의 용도는?",
+    "choices": [
+      "보고서 전체 합계 계산",
+      "각 행에 대한 개별 계산을 수행하는 수식",
+      "여러 그룹간 비율 계산",
+      "보고서를 필터링"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Row-Level Formula는 보고서의 각 행(레코드)마다 개별적으로 계산을 수행하는 수식 필드다.",
+      "whyCorrect": "행별 개별 계산이 Row-Level Formula의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "전체 합계나 그룹간 비율은 Custom Summary Formula의 영역이고, 필터링은 별개의 기능이다.",
+      "examPoint": "Row-Level Formula(행 단위)와 Custom Summary Formula(그룹/전체 집계 단위)를 구분하는 것이 핵심이다.",
+      "practicalExample": "각 Opportunity마다 할인율(1-실제금액/정가)을 계산해서 보여줄 때 Row-Level Formula를 쓴다."
+    }
+  },
+  {
+    "id": "q-adx-reports-014",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Dashboard 컴포넌트 유형 중 단일 숫자를 강조하여 표시하는 것은?",
+    "choices": [
+      "Chart",
+      "Gauge",
+      "Metric",
+      "Table"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Metric 컴포넌트는 총 매출, 열린 케이스 수 같은 단일 숫자값을 크게 강조해서 보여준다.",
+      "whyCorrect": "단일 숫자 강조 표시가 Metric의 정의이므로 C가 정답이다.",
+      "whyIncorrect": "Chart는 여러 값을 시각화하고, Gauge는 목표 대비 달성률을 범위로 표시하며, Table은 목록 형태 데이터를 보여준다.",
+      "examPoint": "Chart(추이/비교), Gauge(달성률), Metric(단일 숫자), Table(목록) 네 컴포넌트의 역할을 표로 정리해두자.",
+      "practicalExample": "이번 달 총 매출액 하나만 크게 강조해서 보여주고 싶을 때 Metric 컴포넌트를 쓴다."
+    }
+  },
+  {
+    "id": "q-adx-reports-015",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Bucket Field의 용도는?",
+    "choices": [
+      "필드 삭제",
+      "여러 값을 그룹으로 묶어 분류",
+      "필드 숨기기",
+      "필드 순서 변경"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Bucket Field는 코드 없이 보고서 안에서 여러 값을 사용자 정의 그룹으로 묶어 분류하는 기능이다.",
+      "whyCorrect": "여러 값을 그룹으로 묶는 것이 Bucket Field의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "필드 삭제, 숨기기, 순서 변경은 Bucket Field와 무관한 조작이다.",
+      "examPoint": "Bucket Field는 '보고서 안에서만 임시로' 만드는 분류라는 점, 실제 오브젝트 필드를 바꾸는 게 아니라는 점이 핵심이다.",
+      "practicalExample": "Opportunity 금액을 Small/Medium/Large 세 구간으로 나눠 보고 싶을 때 Bucket Field로 그룹핑한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-016",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "대시보드를 특정 사용자만 볼 수 있게 하려면?",
+    "choices": [
+      "비공개 폴더에 저장",
+      "비밀번호 설정",
+      "PDF로 내보내기",
+      "Dynamic Dashboard 설정"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "대시보드도 보고서처럼 폴더를 통해 공유되므로, 비공개 폴더에 저장하면 본인만, 공유 폴더면 폴더 권한에 따라 접근이 제한된다.",
+      "whyCorrect": "접근 범위를 제한하는 방법은 비공개 폴더 저장이므로 A가 정답이다.",
+      "whyIncorrect": "비밀번호 설정 기능은 존재하지 않고, PDF 내보내기는 접근 제한과 무관하며, Dynamic Dashboard는 개인화이지 접근 제한 자체는 아니다.",
+      "examPoint": "대시보드 접근 제어도 결국 '폴더' 단위로 이루어진다는 원칙을 다시 확인하는 문제다.",
+      "practicalExample": "경영진 전용 대시보드는 비공개 폴더에 저장해 본인만 볼 수 있게 한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-017",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서 타입(Report Type)이란?",
+    "choices": [
+      "Tabular, Summary 등의 보고서 형식",
+      "보고서 데이터 소스와 포함 관계를 정의하는 프레임워크",
+      "보고서 접근 권한",
+      "보고서 일정 설정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Report Type은 보고서에서 사용할 수 있는 오브젝트, 필드, 오브젝트 간 관계(부모-자식 포함 여부 등)를 정의하는 프레임워크다.",
+      "whyCorrect": "데이터 소스와 오브젝트 간 포함 관계를 정의하는 것이 Report Type의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "Tabular/Summary 같은 것은 Report Format(형식)이지 Report Type이 아니고, 접근 권한이나 일정 설정과도 다른 개념이다.",
+      "examPoint": "Report Type(어떤 데이터를 다룰지)과 Report Format(Tabular/Summary/Matrix, 어떻게 보여줄지)을 혼동하지 않는 것이 핵심이다.",
+      "practicalExample": "'Accounts with Opportunities'라는 Report Type을 선택하면 그 안에서 Account와 관련 Opportunity 필드를 함께 쓸 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-reports-018",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서를 자동으로 이메일 발송하려면?",
+    "choices": [
+      "매번 수동 실행",
+      "보고서 예약(Schedule) 설정",
+      "Flow로 이메일 발송",
+      "대시보드로 변환"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "보고서 예약(Schedule) 기능을 사용하면 지정된 주기에 자동으로 실행되고 결과가 이메일로 발송된다.",
+      "whyCorrect": "자동 이메일 발송을 위한 표준 기능이 보고서 Schedule이므로 B가 정답이다.",
+      "whyIncorrect": "매번 수동 실행은 자동화가 아니고, Flow로 직접 구현하거나 대시보드로 변환하는 것은 표준적이고 효율적인 방법이 아니다.",
+      "examPoint": "'보고서를 정기적으로 자동 발송'이라는 요구사항은 항상 Schedule 기능으로 해결한다.",
+      "practicalExample": "매주 금요일 오후 5시에 주간 매출 보고서가 자동 실행되어 팀 전체에게 이메일로 발송되도록 예약한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-019",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Summary Report에서 그룹핑된 데이터의 소계를 보여주지 않으려면?",
+    "choices": [
+      "Tabular로 변환",
+      "Summary Options에서 Show Subtotals 해제",
+      "Filter 추가",
+      "관련 목록 제거"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Summary Report의 Summary Options에서 'Show Subtotals' 체크박스를 해제하면 그룹별 소계 행이 표시되지 않는다.",
+      "whyCorrect": "소계 표시 여부를 제어하는 정확한 설정이 Summary Options의 Show Subtotals이므로 B가 정답이다.",
+      "whyIncorrect": "Tabular로 변환하면 그룹핑 자체가 사라져 요구사항과 다르고, 필터 추가나 관련 목록 제거는 소계 표시와 무관하다.",
+      "examPoint": "그룹핑은 유지하면서 소계만 숨기고 싶을 때는 보고서 유형을 바꾸는 게 아니라 옵션만 끄면 된다는 점이 핵심이다.",
+      "practicalExample": "그룹은 유지한 채 화면을 더 깔끔하게 보이고 싶을 때 소계 행만 꺼서 표시한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-020",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서에서 특정 날짜 범위의 레코드만 보려면 어떤 필터를 사용하나요?",
+    "choices": [
+      "Cross Filter",
+      "Date Range",
+      "Row-Level Formula",
+      "Bucket Filter"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Standard Filter의 Date 필터(Date Range)를 사용하면 이번 분기, 지난 30일처럼 특정 날짜 범위의 레코드만 보고서에 표시할 수 있다.",
+      "whyCorrect": "날짜 범위 제한이 필요한 요구사항에 정확히 맞는 것이 Date Range이므로 B가 정답이다.",
+      "whyIncorrect": "Cross Filter는 관련 레코드 존재 여부, Row-Level Formula는 행별 계산, 'Bucket Filter'는 존재하지 않는 명칭이라 날짜 범위 필터링과는 다르다.",
+      "examPoint": "날짜 범위 필터는 Standard Filter의 하위 개념이라는 것을 기억해두면 응용 문제에도 대응할 수 있다.",
+      "practicalExample": "이번 분기에 생성된 Opportunity만 보고 싶을 때 Date Range 필터를 'This Fiscal Quarter'로 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-021",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "대시보드에서 Table 컴포넌트의 특징은?",
+    "choices": [
+      "차트 형태로 표시",
+      "Tabular 보고서처럼 목록 형태로 데이터 표시",
+      "실시간 데이터만 표시",
+      "편집 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Table 컴포넌트는 보고서 데이터를 행과 열로 구성된 목록 형태로 대시보드에 표시하며, Tabular Report를 소스로 자주 사용한다.",
+      "whyCorrect": "목록 형태로 데이터를 표시한다는 것이 Table 컴포넌트의 특징이므로 B가 정답이다.",
+      "whyIncorrect": "차트 형태 표시는 Chart 컴포넌트의 역할이고, 실시간 여부나 편집 가능 여부는 Table 컴포넌트의 정의와 무관하다.",
+      "examPoint": "Table 컴포넌트는 그룹화가 필요 없는 Tabular Report와 궁합이 좋다는 점을 함께 기억하자.",
+      "practicalExample": "최근 등록된 Lead 20건을 목록 그대로 대시보드에 보여줄 때 Table 컴포넌트를 쓴다."
+    }
+  },
+  {
+    "id": "q-adx-reports-022",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서 유형(Report Type) 중 With or Without의 의미는?",
+    "choices": [
+      "포함 또는 제외",
+      "부모 레코드와 관련 자식 레코드가 있거나 없는 경우 모두 표시",
+      "두 가지 필터 조건",
+      "두 개의 오브젝트 결합"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Report Type 설정에서 'With or Without'을 선택하면 자식 레코드가 있든 없든 상관없이 모든 부모 레코드가 보고서 대상에 포함된다.",
+      "whyCorrect": "자식 유무에 관계없이 모든 부모 레코드를 포함한다는 설명이 정확하므로 B가 정답이다.",
+      "whyIncorrect": "단순히 '포함 또는 제외'라는 설명은 부정확하고, 필터 조건이나 오브젝트 결합의 개념과도 다르다.",
+      "examPoint": "Report Type 생성 시 'With', 'Without', 'With or Without' 세 옵션의 차이를 명확히 구분해두면 관련 문제에 바로 대응할 수 있다.",
+      "practicalExample": "Opportunity가 있는 Account와 없는 Account를 모두 포함해서 보고 싶다면 With or Without 옵션의 Report Type을 만든다."
+    }
+  },
+  {
+    "id": "q-adx-reports-023",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서를 Salesforce 외부(Excel 등)로 내보내는 기능을 제한하는 방법은?",
+    "choices": [
+      "OWD를 Private으로 설정",
+      "프로필에서 Export Reports 권한 제거",
+      "FLS로 모든 필드 숨기기",
+      "보고서 폴더 접근 제거"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "프로필에서 Export Reports 권한을 제거하면 그 프로필 사용자는 보고서를 CSV나 Excel로 내보낼 수 없게 된다.",
+      "whyCorrect": "내보내기 기능 자체를 막는 정확한 방법이 Export Reports 권한 제거이므로 B가 정답이다.",
+      "whyIncorrect": "OWD 변경은 레코드 접근 범위를 바꿀 뿐 내보내기 자체를 막지 못하고, FLS나 폴더 접근 제거는 보고서 조회 자체를 막아 요구사항보다 과도하다.",
+      "examPoint": "'내보내기만 막고 조회는 허용'이라는 세밀한 요구사항은 Export Reports 권한 제거로 정확히 해결된다.",
+      "practicalExample": "민감한 재무 리포트는 화면에서 보는 건 허용하되, Export Reports 권한을 빼서 외부로 유출되지 않게 한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-024",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "대시보드 Filter의 용도는?",
+    "choices": [
+      "보고서 데이터 삭제",
+      "대시보드 보는 사람이 직접 데이터 범위를 조정할 수 있게 하는 기능",
+      "대시보드 자동 업데이트",
+      "사용자별 접근 제어"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "대시보드 Filter를 추가하면 대시보드를 보는 사람이 날짜 범위나 특정 필드 값으로 직접 데이터를 필터링할 수 있다.",
+      "whyCorrect": "보는 사람이 직접 범위를 조정하는 기능이 대시보드 Filter의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "데이터 삭제나 자동 업데이트는 필터와 무관하고, 사용자별 접근 제어는 Dynamic Dashboard/폴더 공유의 영역이다.",
+      "examPoint": "Dashboard Filter(보는 사람이 직접 조정)와 Dynamic Dashboard(권한에 따라 자동 개인화)를 혼동하지 않도록 구분하자.",
+      "practicalExample": "같은 대시보드에서 '이번 분기/지난 분기' 필터를 클릭해 보는 시점을 사용자가 직접 바꿀 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-reports-025",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서에서 Conditional Highlighting이란?",
+    "choices": [
+      "조건에 맞는 레코드만 표시",
+      "특정 값 범위에 따라 셀 배경색을 자동으로 변경",
+      "필터 조건 강조 표시",
+      "그룹핑 조건 표시"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Conditional Highlighting은 Summary와 Matrix 보고서에서 숫자 값의 범위에 따라 셀 배경색을 자동으로 바꿔주는 시각화 기능이다.",
+      "whyCorrect": "값 범위에 따른 셀 배경색 자동 변경이 정확한 정의이므로 B가 정답이다.",
+      "whyIncorrect": "레코드 자체를 걸러내는 것은 필터의 역할이고, 필터/그룹핑 조건 자체를 강조 표시하는 기능이 아니다.",
+      "examPoint": "Conditional Highlighting은 Summary/Matrix 전용이며 Tabular에는 적용되지 않는다는 제약도 함께 기억해두자.",
+      "practicalExample": "목표 미달 지역은 빨간색, 초과 달성 지역은 초록색으로 자동 표시되게 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-026",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서 구독(Subscribe)의 기능은?",
+    "choices": [
+      "보고서를 즐겨찾기에 추가",
+      "보고서가 특정 조건을 충족하면 자동으로 알림 수신",
+      "보고서를 팀과 공유",
+      "보고서를 자동 실행"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "보고서 구독(Subscribe)은 집계 값이 설정한 조건(예: 열린 케이스 50개 초과)을 충족할 때 자동으로 이메일 알림을 보내는 기능이다.",
+      "whyCorrect": "조건 충족 시 자동 알림 수신이 Subscribe의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "즐겨찾기 추가, 팀 공유, 단순 자동 실행은 Subscribe의 핵심 기능(조건부 알림)과 다르다.",
+      "examPoint": "Schedule(정기적으로 무조건 실행+발송)과 Subscribe(조건 충족 시에만 알림)의 차이를 정확히 구분하자.",
+      "practicalExample": "열린 Case 수가 50개를 넘으면 즉시 알림을 받도록 리포트를 구독해둔다."
+    }
+  },
+  {
+    "id": "q-adx-reports-027",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Joined Report의 최대 블록 수는?",
+    "choices": [
+      "2개",
+      "3개",
+      "5개",
+      "10개"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Joined Report는 최대 5개의 블록을 결합할 수 있으며, 각 블록은 서로 다른 Report Type을 기반으로 할 수 있다.",
+      "whyCorrect": "Joined Report의 블록 상한이 5개이므로 C가 정답이다.",
+      "whyIncorrect": "2개, 3개, 10개는 실제 Salesforce가 정한 Joined Report의 블록 상한과 다르다.",
+      "examPoint": "숫자를 묻는 문제는 정확히 암기해야 하는 부분이니 '5개 블록'을 확실히 기억해두자.",
+      "practicalExample": "Account, Opportunity, Case, Contact, Campaign까지 최대 5개 오브젝트 블록을 하나의 Joined Report에 담을 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-reports-028",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서에서 사용자가 직접 필드를 계산식으로 추가하는 기능은?",
+    "choices": [
+      "Filter",
+      "Bucket Field",
+      "Custom Summary Formula",
+      "Cross Filter"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Custom Summary Formula는 보고서의 기존 집계 값을 활용해 전환율, 성장률 같은 새로운 계산 컬럼을 만드는 기능이다.",
+      "whyCorrect": "집계값 기반 새 계산 컬럼을 추가하는 것이 Custom Summary Formula의 정의이므로 C가 정답이다.",
+      "whyIncorrect": "Filter는 레코드를 걸러내는 기능이고, Bucket Field는 값을 그룹으로 묶는 기능이며, Cross Filter는 관련 레코드 존재 여부 필터라 계산식 추가와는 다르다.",
+      "examPoint": "Custom Summary Formula(집계 기반 새 계산)와 Row-Level Formula(행별 계산)를 짝지어 구분해서 암기하자.",
+      "practicalExample": "Closed Won 건수를 전체 Opportunity 건수로 나눈 승률(win rate)을 Custom Summary Formula로 만든다."
+    }
+  },
+  {
+    "id": "q-adx-reports-029",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "대시보드 컴포넌트 중 달성률을 색상으로 표시하는 것은?",
+    "choices": [
+      "Metric",
+      "Chart",
+      "Gauge",
+      "Table"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Gauge 컴포넌트는 목표 대비 현재 값을 색상 범위(빨강/노랑/초록 등)로 시각화해 달성률을 직관적으로 보여준다.",
+      "whyCorrect": "색상 범위로 달성률을 표시하는 것이 Gauge의 정의이므로 C가 정답이다.",
+      "whyIncorrect": "Metric은 숫자만 강조할 뿐 범위 색상이 없고, Chart는 다양한 형태의 시각화이며, Table은 목록 형태 데이터다.",
+      "examPoint": "'달성률/색상 구간'이라는 표현이 나오면 항상 Gauge를 떠올리자.",
+      "practicalExample": "분기 매출 목표 대비 현재 몇 %를 달성했는지 신호등 색깔로 한눈에 보여줄 때 Gauge를 쓴다."
+    }
+  },
+  {
+    "id": "q-adx-reports-030",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보고서를 특정 조건 충족 시 자동 알림 기능은?",
+    "choices": [
+      "보고서 예약",
+      "Subscribe",
+      "대시보드 새로고침",
+      "Flow 트리거"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "보고서 구독(Subscribe)은 집계 값이 설정한 조건을 충족할 때만 자동으로 이메일 알림을 보내는 조건부 알림 기능이다.",
+      "whyCorrect": "조건 충족 시 자동 알림이 Subscribe의 정확한 정의이므로 B가 정답이다.",
+      "whyIncorrect": "보고서 예약(Schedule)은 조건과 무관하게 정기적으로 무조건 발송되는 방식이고, 대시보드 새로고침이나 Flow 트리거는 이 기능과 다르다.",
+      "examPoint": "Schedule(정기 무조건 발송)과 Subscribe(조건부 알림)의 차이를 이 문제에서도 다시 확인하는 패턴이다.",
+      "practicalExample": "이번 달 매출 목표를 초과 달성하면 곧바로 이메일로 알림 받도록 리포트를 구독한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-031",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Matrix Report에서 그룹핑을 설정하는 방법은?",
+    "choices": [
+      "행 그룹만 설정 가능",
+      "행(Row) 그룹과 열(Column) 그룹을 각각 설정",
+      "필터로만 그룹핑 가능",
+      "Summary Report와 동일"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Matrix Report는 행 방향과 열 방향 그룹핑 필드를 각각 따로 설정해, 두 기준의 교차표를 만든다.",
+      "whyCorrect": "행 그룹과 열 그룹을 각각 설정한다는 것이 정확한 방법이므로 B가 정답이다.",
+      "whyIncorrect": "행 그룹만 가능한 것은 Summary의 제약이고, 필터만으로 그룹핑을 대신할 수 없으며, Summary Report와 동일하지도 않다(Summary는 단일 방향 그룹핑).",
+      "examPoint": "Matrix는 '행+열' 두 방향 그룹핑이 핵심이라는 것을 다시 한번 확인하는 문제다.",
+      "practicalExample": "행에는 영업담당자, 열에는 분기를 설정하면 담당자×분기별 매출을 교차표로 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-reports-032",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to see total Opportunity amounts grouped by sales rep AND by month. Which report type should be used?",
+    "choices": [
+      "Tabular Report",
+      "Summary Report",
+      "Matrix Report",
+      "Joined Report"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "영업담당자(행)와 월(열) 두 기준으로 교차 집계하려면 Matrix Report가 필요하다.",
+      "whyCorrect": "두 차원을 교차 분석하는 유일한 리포트 유형이 Matrix이므로 C가 정답이다.",
+      "whyIncorrect": "Tabular는 단순 목록이고, Summary는 행 그룹화만 지원하며, Joined는 여러 오브젝트를 나란히 배치하는 용도라 교차 집계와는 다르다.",
+      "examPoint": "'A별, B별' 두 기준이 동시에 나오면 항상 Matrix Report를 떠올리자.",
+      "practicalExample": "담당자별·월별 매출 총액을 하나의 교차표로 확인하고 싶을 때 Matrix Report를 만든다."
+    }
+  },
+  {
+    "id": "q-adx-reports-033",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales manager wants a report that shows only Accounts that have NO related open Opportunities. Which filter type should be used?",
+    "choices": [
+      "Standard Filter",
+      "Field Filter",
+      "Row-Level Formula Filter",
+      "Cross Filter"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "자식 레코드(Opportunity)가 없는 부모 레코드(Account)만 필터링하려면 Cross Filter를 사용해야 한다.",
+      "whyCorrect": "'Accounts WITHOUT Opportunities'처럼 자식 존재/부재로 필터링하는 것이 Cross Filter이므로 D가 정답이다.",
+      "whyIncorrect": "Standard Filter는 날짜·소유자 기본 조건이고, Field Filter는 필드 값 기준이며, Row-Level Formula는 행별 계산이라 자식 레코드 부재를 표현할 수 없다.",
+      "examPoint": "'관련 레코드가 없는 것만'이라는 조건은 항상 Cross Filter로 연결된다.",
+      "practicalExample": "Opportunity가 하나도 없는 휴면 Account 목록을 뽑아 영업 기회를 발굴하는 데 활용한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-034",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants the same dashboard to show each user only their own data when they view it. What type of dashboard should be used?",
+    "choices": [
+      "Static Dashboard",
+      "Tabular Dashboard",
+      "Dynamic Dashboard",
+      "Summary Dashboard"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "같은 대시보드를 보는 사람마다 자기 데이터만 보게 하려면 Dynamic Dashboard를 사용해야 한다.",
+      "whyCorrect": "로그인 사용자의 공유 설정 기준으로 데이터가 필터링되는 것이 Dynamic Dashboard의 정의이므로 C가 정답이다.",
+      "whyIncorrect": "Static Dashboard는 특정 사용자 기준으로 고정되고, 'Tabular Dashboard'와 'Summary Dashboard'는 실제로는 리포트 유형이지 대시보드 유형이 아니다.",
+      "examPoint": "대시보드 유형은 Static/Dynamic 두 가지뿐이라는 것을 정확히 기억해두자.",
+      "practicalExample": "같은 매출 대시보드를 열어도 지역 담당자마다 자기 지역 데이터만 보이는 구조가 Dynamic Dashboard다."
+    }
+  },
+  {
+    "id": "q-adx-reports-035",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin wants to share a report with the entire Marketing team. What is the correct approach in Salesforce?",
+    "choices": [
+      "Share the report directly with each user",
+      "Place the report in a folder and share the folder with the Marketing team",
+      "Export the report and email it",
+      "Create a dashboard instead"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce 보고서는 개별적으로 직접 공유할 수 없고, 폴더에 넣은 뒤 그 폴더를 팀에 공유해야 한다.",
+      "whyCorrect": "폴더 단위 공유가 정확한 방법이므로 B가 정답이다.",
+      "whyIncorrect": "직접 공유는 지원되지 않고, 내보내기 후 이메일 발송은 실시간 공유가 아니며, 대시보드 생성은 완전히 다른 작업이다.",
+      "examPoint": "'보고서는 직접 공유 불가, 폴더로만 공유'라는 원칙을 다시 확인하는 문제다.",
+      "practicalExample": "마케팅팀과 리포트를 공유하려면 그 리포트를 마케팅 전용 폴더로 옮기고 그 폴더를 팀에 공유한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-036",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC needs a report that shows Account information alongside related Opportunity data in the same report. Which report type supports this?",
+    "choices": [
+      "Tabular",
+      "Summary",
+      "Matrix",
+      "Joined"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "서로 다른 오브젝트(Account, Opportunity)의 데이터를 한 보고서에서 나란히 보려면 Joined Report를 써야 한다.",
+      "whyCorrect": "여러 오브젝트 블록을 나란히 배치할 수 있는 유일한 유형이 Joined이므로 D가 정답이다.",
+      "whyIncorrect": "Tabular, Summary, Matrix는 모두 단일 오브젝트(Report Type) 기반이라 서로 다른 오브젝트를 나란히 보여줄 수 없다.",
+      "examPoint": "'서로 다른 오브젝트를 한 보고서에서 동시에'라는 표현은 항상 Joined Report로 연결된다.",
+      "practicalExample": "Account 목록 블록과 관련 Opportunity 블록을 나란히 배치해 한 화면에서 비교한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-037",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep wants a simple list of all their open Leads with no grouping or subtotals needed. Which report type is most appropriate?",
+    "choices": [
+      "Tabular",
+      "Summary",
+      "Matrix",
+      "Joined"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "그룹화나 소계 없이 단순히 레코드를 나열하기만 하면 되는 요구사항에는 Tabular Report가 가장 적합하다.",
+      "whyCorrect": "그룹핑/소계가 필요 없는 단순 목록 요구사항에 정확히 부합하므로 A가 정답이다.",
+      "whyIncorrect": "Summary는 그룹화+소계, Matrix는 이중 그룹화, Joined는 다중 블록이 필요해 이 단순한 요구사항에는 과도하다.",
+      "examPoint": "'단순 목록, 그룹화 불필요'라는 조건은 항상 가장 기본형인 Tabular로 연결된다.",
+      "practicalExample": "이번 주 내가 담당한 열린 Lead를 그냥 목록으로만 확인하고 싶을 때 Tabular Report를 만든다."
+    }
+  },
+  {
+    "id": "q-adx-reports-038",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to display key sales metrics visually on a single screen for the leadership team. What should be created?",
+    "choices": [
+      "A Summary Report",
+      "A Matrix Report",
+      "A Dashboard",
+      "A Joined Report"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "여러 지표를 한 화면에서 시각적으로 보여주려면 여러 보고서를 조합한 Dashboard를 만들어야 한다.",
+      "whyCorrect": "한 화면에서 여러 지표를 시각화하는 것이 Dashboard의 정의이므로 C가 정답이다.",
+      "whyIncorrect": "Summary/Matrix/Joined Report는 모두 데이터를 표 형태로 보여주는 리포트일 뿐, 여러 지표를 한 화면에 종합 시각화하는 것은 Dashboard의 역할이다.",
+      "examPoint": "Report(데이터 표)와 Dashboard(여러 리포트의 시각화 집합)의 관계를 명확히 구분하자 — Dashboard는 Report를 소스로 만들어진다.",
+      "practicalExample": "경영진을 위해 매출 차트, 목표 달성 게이지, 신규 고객 수 메트릭을 한 화면에 모은 대시보드를 만든다."
+    }
+  },
+  {
+    "id": "q-adx-reports-039",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Who can view a report stored in a private folder in Salesforce?",
+    "choices": [
+      "Anyone in the org",
+      "Only users with the Admin profile",
+      "Only the folder owner",
+      "All users with the Reports permission"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Private 폴더에 저장된 보고서는 그 폴더의 소유자만 접근할 수 있으며, 다른 사람과 공유하려면 공유 폴더로 옮겨야 한다.",
+      "whyCorrect": "비공개 폴더는 폴더 소유자만 볼 수 있으므로 C가 정답이다.",
+      "whyIncorrect": "조직 전체 사용자, Admin 프로필 전체, Reports 권한 보유자 전체가 볼 수 있다는 설명은 모두 'Private'이라는 폴더 성격과 맞지 않는다.",
+      "examPoint": "Private 폴더는 말 그대로 소유자 개인만을 위한 공간이라는 것을 명확히 기억하자.",
+      "practicalExample": "개인 업무용으로만 쓰는 초안 리포트는 Private 폴더에 저장해 남들이 못 보게 한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-040",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales manager at Universal Containers wants a report that groups Opportunities by sales rep (rows) and by quarter (columns), showing total amounts in each cell. Which report type should be used?",
+    "choices": [
+      "Tabular",
+      "Summary",
+      "Matrix",
+      "Joined"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "영업담당자(행)와 분기(열)를 교차해 각 셀에 총액을 보여주는 요구사항은 Matrix Report의 전형적인 사용 사례다.",
+      "whyCorrect": "행+열 이중 그룹화와 교차 셀 값 표시가 Matrix Report의 정의이므로 C가 정답이다.",
+      "whyIncorrect": "Tabular는 그룹화가 없고, Summary는 행 그룹화만 가능하며, Joined는 여러 오브젝트 블록을 다루는 용도다.",
+      "examPoint": "'행은 A, 열은 B, 셀에는 값'이라는 구조는 항상 Matrix Report로 직결된다.",
+      "practicalExample": "담당자별×분기별 매출 총액을 교차표로 정리해 성과를 비교한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-041",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to see a list of all Contacts who do NOT have any related open Cases. Which filter type makes this possible?",
+    "choices": [
+      "Standard Filter",
+      "Field Filter with NULL value",
+      "Cross Filter — Contacts WITHOUT Cases",
+      "Row-Level Formula"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "열린 Case가 없는 Contact만 걸러내려면 관련 레코드 부재를 조건으로 하는 Cross Filter가 필요하다.",
+      "whyCorrect": "'Contacts WITHOUT Cases'라는 정확한 Cross Filter 설정이 요구사항에 부합하므로 C가 정답이다.",
+      "whyIncorrect": "Standard Filter는 기본 조건만 다루고, NULL 값 필드 필터는 이 시나리오를 표현할 표준 방법이 아니며, Row-Level Formula는 계산용이라 존재 여부 필터링과 다르다.",
+      "examPoint": "'관련 자식 레코드가 없는 경우만'이라는 조건은 예외 없이 Cross Filter(WITHOUT)로 해결한다.",
+      "practicalExample": "열린 문의가 하나도 없는 안정적인 고객(Contact) 목록을 뽑아 관리한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-042",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An executive at Universal Containers wants to see the same sales dashboard but each exec should see only their own regions data. What type of dashboard should be created?",
+    "choices": [
+      "Static Dashboard with filters",
+      "Dynamic Dashboard",
+      "Joined Report Dashboard",
+      "Summary Dashboard"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "경영진마다 자기 지역(Region) 데이터만 보게 하려면 로그인 사용자 기준으로 데이터를 필터링하는 Dynamic Dashboard가 필요하다.",
+      "whyCorrect": "보는 사람에 따라 자동으로 개인화된 데이터를 보여주는 것이 Dynamic Dashboard의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "Static Dashboard에 필터를 추가해도 근본적으로 개인화되지 않고, 'Joined Report Dashboard'와 'Summary Dashboard'는 실제로 존재하는 대시보드 유형이 아니다.",
+      "examPoint": "'경영진마다 자기 지역만'이라는 표현은 항상 Dynamic Dashboard로 연결된다.",
+      "practicalExample": "같은 대시보드를 열어도 아시아 담당 임원은 아시아 매출만, 유럽 담당 임원은 유럽 매출만 보게 한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-043",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at UC says they cannot see a report that the admin shared with them. The admin shared the report directly from the report screen. What is the issue?",
+    "choices": [
+      "The report needs to be exported first",
+      "Reports cannot be shared directly — they must be in a shared folder",
+      "The rep needs the Run Reports permission",
+      "The report type is not supported"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce 보고서는 화면에서 직접 공유하는 기능이 없으므로, 반드시 폴더를 통해서만 공유가 가능하다.",
+      "whyCorrect": "직접 공유가 불가능하고 폴더를 통해야 한다는 것이 정확한 원인이므로 B가 정답이다.",
+      "whyIncorrect": "내보내기는 불필요하고, Run Reports 권한 문제는 별개이며, 보고서 유형 자체가 지원되지 않는 문제도 아니다.",
+      "examPoint": "관리자가 '공유했다고 착각'하는 흔한 실수 시나리오 — 보고서 직접 공유는 애초에 지원되지 않는다는 점을 강조해서 기억하자.",
+      "practicalExample": "관리자가 리포트 화면에서 공유 버튼을 눌러도 실제로는 반영되지 않으며, 폴더를 공유해야 상대방이 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-reports-044",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to create a report that shows Account information in one block and related Opportunity data in a second block side by side. Which report type supports this?",
+    "choices": [
+      "Summary Report with groupings",
+      "Matrix Report",
+      "Joined Report",
+      "Tabular with cross-filter"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Account 블록과 Opportunity 블록을 나란히 배치하는 요구사항은 여러 오브젝트를 다루는 Joined Report로 구현한다.",
+      "whyCorrect": "서로 다른 블록을 나란히 배치하는 것이 Joined Report의 핵심 기능이므로 C가 정답이다.",
+      "whyIncorrect": "Summary with groupings는 단일 오브젝트만 다루고, Matrix는 이중 그룹화이며, Tabular+Cross Filter는 필터링일 뿐 블록 병렬 배치와는 다르다.",
+      "examPoint": "'~블록, ~블록 나란히'라는 표현이 나오면 항상 Joined Report를 떠올리자.",
+      "practicalExample": "왼쪽엔 Account 정보, 오른쪽엔 관련 Opportunity 정보를 나란히 배치해 한 화면에서 비교 분석한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-045",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A report at Universal Containers shows all Opportunities. The sales manager wants to see only Opportunities where the Opportunity has at least one related Activity. Which filter should be used?",
+    "choices": [
+      "Field Filter: Activity Count greater than 0",
+      "Cross Filter: Opportunities WITH Activities",
+      "Standard Filter: My Teams Opportunities",
+      "Row-Level Formula to count activities"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "관련 Activity가 하나라도 있는 Opportunity만 걸러내려면 Cross Filter의 'WITH' 조건을 사용해야 한다.",
+      "whyCorrect": "관련 레코드가 '있는' 경우만 필터링하는 것이 Cross Filter(WITH)의 정확한 용법이므로 B가 정답이다.",
+      "whyIncorrect": "Activity Count라는 표준 필드는 존재하지 않아 Field Filter로 표현할 수 없고, Standard Filter는 팀/소유자 기준일 뿐이며, Row-Level Formula는 개수를 세는 용도가 아니다.",
+      "examPoint": "Cross Filter는 WITHOUT(없는 경우)뿐 아니라 WITH(있는 경우)도 지원한다는 것을 함께 기억해두자.",
+      "practicalExample": "최근 연락 기록이 있는 활성 Opportunity만 걸러서 우선순위 관리에 활용한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-046",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to display a real-time count of open Cases on a Dashboard that refreshes every time someone views it. What should be configured?",
+    "choices": [
+      "A Scheduled Report",
+      "A Joined Report",
+      "A Dashboard component sourced from a Summary Report",
+      "A report exported to Excel"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "실시간에 가까운 케이스 수 대시보드를 만들려면, 그룹화된 Summary Report를 소스로 한 Dashboard 컴포넌트를 구성한다.",
+      "whyCorrect": "집계 가능한 Summary Report를 소스로 한 Dashboard 컴포넌트가 정확한 구성 방법이므로 C가 정답이다.",
+      "whyIncorrect": "예약된 리포트는 정해진 시간에만 실행되어 실시간이 아니고, Joined Report는 다중 오브젝트용이며, Excel 내보내기는 그 순간의 스냅샷일 뿐 실시간이 아니다.",
+      "examPoint": "대시보드는 매번 볼 때마다 다시 계산되므로(설정에 따라), '실시간에 가까운 값'이 필요하면 항상 Dashboard 컴포넌트로 해결한다는 것을 기억하자.",
+      "practicalExample": "열린 Case 수를 그룹화한 Summary Report를 만들고 그것을 소스로 하는 Metric 컴포넌트를 대시보드에 추가한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-047",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A user at Universal Containers says they can run a report but the results show fewer records than expected. The OWD for the object is Private. What is most likely causing this?",
+    "choices": [
+      "The report has a bug",
+      "The user can only see records they have access to based on sharing settings",
+      "The report type is incorrect",
+      "The report filter is excluding records"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "OWD가 Private인 오브젝트는 보고서를 실행하는 사용자도 자신이 접근 권한을 가진 레코드만 결과에 표시된다.",
+      "whyCorrect": "보고서 결과는 실행자의 공유 설정을 그대로 따르므로, 접근 가능한 레코드만 보이는 것이 가장 가능성 높은 원인이라 B가 정답이다.",
+      "whyIncorrect": "리포트 버그 가능성은 낮고, 리포트 유형이 잘못됐다면 아예 실행이 안 되거나 다른 오류가 나며, 필터가 원인이라면 사용자가 직접 필터를 확인해 배제할 수 있는 문제다.",
+      "examPoint": "'OWD Private인데 레코드가 적게 보인다'는 시나리오는 거의 항상 '레코드 접근 권한' 문제로 귀결된다는 패턴을 기억해두자.",
+      "practicalExample": "같은 리포트를 관리자가 실행하면 전체가 보이지만, 일반 영업사원이 실행하면 자기 소유 레코드만 보이는 것이 이 원리 때문이다."
+    }
+  },
+  {
+    "id": "q-adx-reports-048",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants a Dashboard to display a gauge showing what percentage of the quarterly sales target has been achieved. Which Dashboard component type should be used?",
+    "choices": [
+      "Chart",
+      "Table",
+      "Metric",
+      "Gauge"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "분기 목표 대비 달성률을 색상 범위로 시각화하는 표준 컴포넌트는 Gauge다.",
+      "whyCorrect": "목표 달성률을 범위 색상으로 보여주는 것이 Gauge의 정의이므로 D가 정답이다.",
+      "whyIncorrect": "Chart는 다양한 형태의 시각화이고, Table은 목록 데이터이며, Metric은 범위 없이 숫자만 강조한다는 점에서 Gauge와 다르다.",
+      "examPoint": "'달성률(percentage of target)'이라는 표현은 항상 Gauge 컴포넌트로 연결된다.",
+      "practicalExample": "분기 매출 목표의 87%를 달성했다는 것을 초록/노랑/빨강 게이지로 한눈에 보여준다."
+    }
+  },
+  {
+    "id": "q-adx-reports-049",
+    "category": "세일즈포스",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants a report that shows all Accounts and, for each Account, the number of open and closed Opportunities side by side. Which report type is most appropriate?",
+    "choices": [
+      "Summary Report with two groupings",
+      "Matrix Report",
+      "Joined Report with two blocks",
+      "Tabular Report with Cross Filter"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Account별로 열린 Opportunity 수와 닫힌 Opportunity 수를 나란히 보여주려면, 각각을 별도 블록으로 구성한 Joined Report가 필요하다.",
+      "whyCorrect": "같은 Account 기준으로 두 개의 서로 다른 집계(Open/Closed) 블록을 나란히 배치하는 것은 Joined Report의 전형적인 활용이므로 C가 정답이다.",
+      "whyIncorrect": "Summary Report의 두 그룹핑만으로는 Open/Closed를 나란히 블록으로 배치할 수 없고, Matrix는 행+열 교차이지 블록 병렬 배치가 아니며, Tabular+Cross Filter는 단순 필터링일 뿐이다.",
+      "examPoint": "'같은 기준으로 서로 다른 두 집계를 나란히'라는 요구사항은 Joined Report의 여러 블록 구조로 해결한다는 것을 기억하자.",
+      "practicalExample": "Account마다 '열린 Opportunity 3건, 닫힌 Opportunity 5건'처럼 두 숫자를 나란히 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-reports-050",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales manager at UC wants to add a chart to a Summary Report that shows Opportunity revenue by sales rep. Where can a chart be added to a report?",
+    "choices": [
+      "Only on Dashboards, not on reports",
+      "In the report editor using the Add Chart option",
+      "By exporting to Excel and creating a chart there",
+      "Charts cannot be added to Summary Reports"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Summary Report는 리포트 편집 화면 안에서도 'Add Chart' 옵션으로 직접 차트를 추가할 수 있다.",
+      "whyCorrect": "리포트 편집기 내 Add Chart 옵션으로 직접 차트를 붙일 수 있으므로 B가 정답이다.",
+      "whyIncorrect": "차트는 대시보드뿐 아니라 리포트 자체에도 추가할 수 있고, Excel로 내보내 차트를 만드는 것은 비효율적이며, Summary Report는 차트 추가가 가능한 대표적인 유형이다.",
+      "examPoint": "Tabular Report만 차트를 붙일 수 없고, Summary/Matrix는 리포트 자체에서 바로 차트를 추가할 수 있다는 점을 기억하자.",
+      "practicalExample": "담당자별 매출을 그룹핑한 Summary Report 화면에서 바로 막대 차트를 추가해 시각적으로 보여준다."
+    }
+  },
+  {
+    "id": "q-adx-reports-051",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to see a report of all Leads that were created in the last 30 days and have NOT been contacted (no related Activities). Which filter type should be used?",
+    "choices": [
+      "Field Filter: Activity Date is blank",
+      "Cross Filter: Leads WITHOUT Activities",
+      "Standard Filter: Last 30 Days",
+      "Row-Level Formula"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "최근 30일 내 생성됐지만 관련 Activity가 없는 Lead를 찾으려면, 날짜 조건(Standard Filter)과 관련 레코드 부재 조건(Cross Filter)을 함께 적용해야 하며, 그중 '연락 여부'를 표현하는 핵심은 Cross Filter다.",
+      "whyCorrect": "관련 Activity가 없다는 조건을 표현할 수 있는 것은 Cross Filter(WITHOUT)이므로 B가 정답이다.",
+      "whyIncorrect": "Activity Date라는 표준 필드가 Lead에 직접 없어 Field Filter로는 표현이 어렵고, Standard Filter(Last 30 Days)는 날짜 조건만 담당할 뿐 연락 여부는 표현 못 하며, Row-Level Formula는 계산용이다.",
+      "examPoint": "날짜 조건은 Standard Filter로, '관련 레코드 유무'는 Cross Filter로 각각 처리한다는 역할 분담을 기억하자.",
+      "practicalExample": "최근 한 달간 들어온 Lead 중 한 번도 연락하지 않은 건을 찾아 영업팀이 우선 컨택하게 한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-052",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at Universal Containers says their report shows fewer Opportunities than expected. The OWD is Private. What is the most likely explanation?",
+    "choices": [
+      "The report has a filter bug",
+      "The rep only sees records they own or have been granted access to",
+      "The report type is wrong",
+      "The Opportunity object has a Validation Rule affecting visibility"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "OWD가 Private인 오브젝트에서는 리포트를 실행하는 사용자도 자신이 소유하거나 공유받은 레코드만 결과에 표시된다.",
+      "whyCorrect": "레코드 접근 권한에 따라 결과가 제한되는 것이 가장 가능성 높은 원인이므로 B가 정답이다.",
+      "whyIncorrect": "필터 버그 가능성은 낮고, 리포트 유형이 틀렸다면 실행 자체가 이상해지며, Validation Rule은 저장 시점의 데이터 검증 규칙이라 조회(리포트) 결과 노출과는 무관하다.",
+      "examPoint": "OWD Private + '결과가 예상보다 적다'는 조합은 예외 없이 '레코드 접근 권한' 문제로 연결된다.",
+      "practicalExample": "같은 리포트를 관리자가 실행하면 전체가 보이지만, 일반 영업사원이 실행하면 자기 소유·공유받은 Opportunity만 보인다."
+    }
+  },
+  {
+    "id": "q-adx-reports-053",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to display the percentage of the quarterly quota achieved on the sales dashboard. Which dashboard component type is most appropriate?",
+    "choices": [
+      "Table",
+      "Bar",
+      "Metric",
+      "Gauge"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "분기 할당량 달성 비율을 시각화하는 표준 컴포넌트는 색상 범위로 진척도를 보여주는 Gauge다.",
+      "whyCorrect": "목표 대비 달성률을 색상 구간으로 시각화하는 것이 Gauge의 정의이므로 D가 정답이다.",
+      "whyIncorrect": "Table은 목록 표시, Bar는 막대 형태의 일반 차트 컴포넌트로 목표 대비 진척도 색상 구간이 없으며, Metric은 범위 없이 숫자만 강조한다.",
+      "examPoint": "'달성률/할당량 대비 퍼센트'라는 표현은 항상 Gauge 컴포넌트로 연결된다는 패턴을 다시 확인하는 문제다.",
+      "practicalExample": "이번 분기 목표의 92%를 달성했다는 것을 초록색 게이지 바늘 위치로 한눈에 보여준다."
+    }
+  },
+  {
+    "id": "q-adx-reports-054",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants all users in the Sales Operations team to be able to edit reports in a specific folder. What should be configured?",
+    "choices": [
+      "Share the folder with Edit access to the Sales Operations role or group",
+      "Clone all reports for the team",
+      "Give the team Manage All Reports permission",
+      "Create a custom report type"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "특정 폴더 안의 보고서를 팀 전체가 편집할 수 있게 하려면, 그 폴더를 해당 팀(Role/Group)에 Edit 접근 수준으로 공유해야 한다.",
+      "whyCorrect": "폴더를 Edit 권한으로 공유하는 것이 정확한 방법이므로 A가 정답이다.",
+      "whyIncorrect": "모든 리포트를 복제하는 것은 관리 비효율적이고, Manage All Reports는 전체 조직 수준의 과도한 권한이며, 커스텀 리포트 유형 생성은 편집 권한 부여와는 목적이 다르다.",
+      "examPoint": "'팀 전체가 특정 폴더만 편집'이라는 요구사항은 항상 그 폴더의 공유 접근 수준을 Edit로 설정하는 것으로 해결한다.",
+      "practicalExample": "Sales Operations 폴더를 그 팀 Role에 Edit 권한으로 공유하면 팀원 모두가 그 폴더 안 리포트를 수정할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-reports-055",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A manager at Universal Containers wants to schedule a report to run every Monday morning and receive the results by email. What should be configured?",
+    "choices": [
+      "Create a Dashboard and subscribe to it",
+      "Schedule the report using Report Schedule feature",
+      "Set up a Flow to email the report",
+      "Use Data Export to email weekly"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "특정 요일/시간에 보고서를 자동 실행하고 결과를 이메일로 받으려면 보고서 자체의 Schedule(예약) 기능을 사용한다.",
+      "whyCorrect": "정기 자동 실행+이메일 발송의 표준 기능이 Report Schedule이므로 B가 정답이다.",
+      "whyIncorrect": "대시보드 구독은 대시보드 전용 기능이고, Flow로 직접 구현하거나 Data Export를 쓰는 것은 표준적이고 효율적인 방법이 아니다.",
+      "examPoint": "'매주 특정 요일에 리포트를 자동 실행 + 이메일'이라는 요구사항은 항상 Report Schedule 기능으로 해결한다.",
+      "practicalExample": "매주 월요일 오전 9시에 주간 매출 리포트가 자동 실행되어 팀장 이메일로 도착하도록 예약한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-056",
+    "category": "세일즈포스",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers needs a report showing all Contacts along with their related Account industry. The Account Industry field is on the Account object, not Contact. What should be used?",
+    "choices": [
+      "Cross-Object Formula field on Contact",
+      "Joined Report combining Contact and Account",
+      "Standard Summary Report on Contact with Account Industry",
+      "A Lookup filter on the report"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "부모 오브젝트(Account)의 필드 값을 자식 오브젝트(Contact)의 리포트에서 바로 쓰려면, Contact에 Account.Industry를 참조하는 Cross-Object Formula 필드를 만들어야 한다.",
+      "whyCorrect": "부모 필드를 자식 오브젝트로 끌어오는 정확한 방법이 Cross-Object Formula이므로 A가 정답이다.",
+      "whyIncorrect": "Joined Report는 별도 블록으로 나뉘어 한 행에 나란히 붙지 않고, Standard Summary Report만으로는 다른 오브젝트 필드를 직접 쓸 수 없으며, Lookup filter는 레코드 필터링 기능일 뿐 필드를 끌어오는 기능이 아니다.",
+      "examPoint": "Contact 리포트에서 Account의 필드가 필요하면, Account-Contact 관계를 이용한 Cross-Object Formula를 Contact에 만들어야 한다는 것이 핵심이다.",
+      "practicalExample": "Contact 리포트 한 줄에서 그 Contact가 속한 Account의 산업군(Industry)까지 함께 보여줄 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-reports-057",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A UC manager wants to receive a weekly email with the top 10 Opportunities by amount. What is the most efficient way to set this up?",
+    "choices": [
+      "Export the report manually each week",
+      "Schedule the report to run weekly and email results",
+      "Create a Dashboard and share it",
+      "Set up a Flow to email the report"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "매주 자동으로 상위 10건의 Opportunity 리포트를 이메일로 받으려면 리포트의 정렬/개수 제한을 설정한 뒤 주간 Schedule을 구성하는 것이 가장 효율적이다.",
+      "whyCorrect": "정기 자동 실행과 이메일 발송을 한 번에 처리하는 Report Schedule이 가장 효율적인 방법이므로 B가 정답이다.",
+      "whyIncorrect": "매주 수동으로 내보내는 것은 비효율적이고, 대시보드 공유만으로는 매주 자동 이메일 발송이 되지 않으며, Flow로 직접 구현하는 것은 이미 있는 표준 기능을 두고 불필요하게 복잡하다.",
+      "examPoint": "'매주 자동 이메일'이라는 요구사항은 항상 가장 간단한 표준 기능인 Report Schedule로 해결한다는 원칙을 반복해서 확인하는 문제다.",
+      "practicalExample": "금액 기준 내림차순 정렬 후 상위 10건만 표시하는 리포트를 만들어 매주 월요일 자동 발송되게 예약한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-058",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants a report that shows the conversion rate of Leads by Lead Source. Which report type should be used?",
+    "choices": [
+      "Tabular Report on Leads",
+      "Summary Report on Leads grouped by Lead Source with conversion metrics",
+      "Joined Report of Leads and Contacts",
+      "Matrix Report on Leads and Opportunities"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lead Source별 전환율을 보려면 Lead Source로 그룹화한 Summary Report에 전환 관련 지표(Custom Summary Formula 등)를 추가하는 것이 정확한 방법이다.",
+      "whyCorrect": "단일 기준(Lead Source) 그룹화 + 집계 지표라는 요구사항에 정확히 맞는 것이 Summary Report이므로 B가 정답이다.",
+      "whyIncorrect": "Tabular는 그룹화가 없어 전환율 집계가 불가능하고, Joined Report는 서로 다른 오브젝트를 나란히 배치할 뿐 전환율 계산에는 비효율적이며, Matrix는 두 기준 교차가 필요할 때만 적합하다.",
+      "examPoint": "'하나의 기준으로 그룹화해서 비율/집계를 계산'하는 요구사항은 대부분 Summary Report + Custom Summary Formula로 해결된다.",
+      "practicalExample": "Lead Source별로 '전체 Lead 수 대비 전환된 수'의 비율을 Summary Report에서 계산해 어떤 채널이 가장 효과적인지 파악한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-059",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers wants to give the Finance team access to a folder of financial reports without giving them access to other report folders. What should be configured?",
+    "choices": [
+      "Assign the Finance team a unique profile",
+      "Share only the Finance reports folder with the Finance role or group",
+      "Enable field-level security on financial fields",
+      "Use a Dynamic Dashboard for Finance only"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "특정 폴더에만 접근을 허용하고 나머지 폴더는 그대로 두려면, 그 폴더 하나만 Finance 팀(Role/Group)에 공유하면 된다.",
+      "whyCorrect": "딱 그 폴더만 공유하는 것이 다른 폴더에 영향을 주지 않는 가장 정확한 방법이므로 B가 정답이다.",
+      "whyIncorrect": "새 프로필을 만드는 것은 전체 권한 체계에 영향을 주는 과도한 조치이고, FLS는 필드 단위 제어라 폴더 접근과 무관하며, Dynamic Dashboard는 대시보드 개인화 기능이라 폴더 접근 제어와는 다른 메커니즘이다.",
+      "examPoint": "'특정 폴더만 공유, 나머지는 그대로'라는 요구사항은 딱 그 폴더 하나만 공유 설정을 바꾸는 것으로 해결한다는 최소 변경 원칙을 기억하자.",
+      "practicalExample": "재무 리포트 폴더만 Finance Role에 공유하고, 영업 리포트 폴더 등 다른 폴더는 기존 설정 그대로 유지한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-060",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants a dashboard that auto-refreshes data every time a user views it rather than showing cached data. What should be configured?",
+    "choices": [
+      "Enable Dynamic Dashboards",
+      "Set Dashboard refresh interval to 0",
+      "Check Refresh Dashboard on Every View in settings",
+      "Schedule the dashboard to refresh hourly"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "대시보드를 열 때마다 캐시된 값이 아니라 최신 데이터를 보여주려면, 대시보드 설정에서 'Refresh Dashboard on Every View' 옵션을 켜야 한다.",
+      "whyCorrect": "볼 때마다 새로고침하는 정확한 설정이 이 옵션이므로 C가 정답이다.",
+      "whyIncorrect": "Dynamic Dashboard는 사용자별 데이터 개인화가 목적이지 새로고침 빈도와는 별개이고, refresh interval을 0으로 두는 옵션은 존재하지 않으며, 시간별 예약 새로고침은 '볼 때마다'라는 요구사항과 다르다.",
+      "examPoint": "Dynamic Dashboard(누가 보느냐)와 Refresh on Every View(언제 새로고침 하느냐)는 서로 다른 축의 설정이라는 점을 구분하자.",
+      "practicalExample": "실시간성이 중요한 운영 대시보드는 볼 때마다 최신 데이터로 갱신되도록 이 옵션을 켜둔다."
+    }
+  },
+  {
+    "id": "q-adx-reports-061",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to see which sales reps have the highest win rate (Closed Won / Total Opportunities). Which approach achieves this?",
+    "choices": [
+      "Tabular Report sorted by Closed Won count",
+      "Summary Report grouped by Owner with a custom summary formula for win rate",
+      "Matrix Report of Stage vs. Owner",
+      "Joined Report of Won and Lost Opportunities"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "담당자별 승률(Closed Won ÷ 전체)을 계산하려면 담당자(Owner)로 그룹화한 Summary Report에 승률을 계산하는 Custom Summary Formula를 추가한다.",
+      "whyCorrect": "Owner 그룹화 + 비율 계산이 필요한 요구사항에 정확히 맞는 조합이 Summary Report + Custom Summary Formula이므로 B가 정답이다.",
+      "whyIncorrect": "단순 정렬만으로는 비율 계산이 안 되고, Matrix는 두 기준 교차가 필요할 때 쓰며, Joined Report는 승률 같은 단일 비율 계산에는 비효율적이다.",
+      "examPoint": "'비율/승률/전환율' 같은 계산이 필요하면 항상 Summary Report + Custom Summary Formula 조합을 떠올리자.",
+      "practicalExample": "담당자별로 'Closed Won 건수 ÷ 전체 Opportunity 건수'를 계산해 어떤 영업사원의 성과가 가장 좋은지 비교한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-062",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants a report showing Account information alongside related Opportunity data in side-by-side blocks. Which report type supports this?",
+    "choices": [
+      "Summary Report",
+      "Matrix Report",
+      "Joined Report",
+      "Tabular Report with cross-filter"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Account 정보와 관련 Opportunity 정보를 나란히 블록으로 배치하려면 여러 오브젝트를 다루는 Joined Report가 필요하다.",
+      "whyCorrect": "서로 다른 오브젝트 블록을 나란히 배치하는 것이 Joined Report의 핵심 기능이므로 C가 정답이다.",
+      "whyIncorrect": "Summary와 Matrix는 단일 오브젝트 기반이라 서로 다른 오브젝트를 나란히 배치할 수 없고, Tabular+Cross Filter는 필터링일 뿐 블록 병렬 배치가 아니다.",
+      "examPoint": "'~와 ~를 나란히'라는 표현이 두 번째로 등장해도 정답은 여전히 Joined Report라는 것을 확인하는 문제다.",
+      "practicalExample": "Account 블록 옆에 관련 Opportunity 블록을 나란히 배치해 계정별 영업 현황을 한눈에 파악한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-063",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A manager wants a dashboard where each viewer sees only their own team data based on their security settings. What type of dashboard should be created?",
+    "choices": [
+      "Static Dashboard run as a specific user",
+      "Dynamic Dashboard set to run as the dashboard viewer",
+      "Dashboard with a field filter",
+      "Scheduled Dashboard"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "보는 사람의 보안 설정에 따라 각자 자기 팀 데이터만 보게 하려면, 'Run as viewer'로 설정된 Dynamic Dashboard를 만들어야 한다.",
+      "whyCorrect": "대시보드를 보는 사람 각자의 권한 기준으로 데이터를 필터링하는 것이 Dynamic Dashboard(Run as viewer)의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "Static Dashboard는 특정 한 사용자 기준으로 고정되고, 필드 필터만으로는 보안 기반 개인화가 안 되며, 'Scheduled Dashboard'는 예약 실행 개념이지 개인화와는 무관하다.",
+      "examPoint": "Dynamic Dashboard 설정 시 'Let each user see this dashboard run as themselves' 옵션이 이 개인화의 핵심이라는 것을 기억하자.",
+      "practicalExample": "같은 대시보드를 각 팀장이 열어도 자기 팀 데이터만 보이도록 Dynamic Dashboard의 Run as viewer를 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-064",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants a report showing total Opportunity revenue grouped by both Region and Quarter. Which report type should be used?",
+    "choices": [
+      "Tabular",
+      "Summary",
+      "Matrix",
+      "Joined"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Region(행)과 Quarter(열) 두 기준으로 매출을 교차 집계하려면 Matrix Report가 필요하다.",
+      "whyCorrect": "두 기준의 교차 그룹화가 필요한 요구사항에 정확히 맞는 것이 Matrix이므로 C가 정답이다.",
+      "whyIncorrect": "Tabular는 그룹화가 없고, Summary는 단일 기준 그룹화만 가능하며, Joined는 여러 오브젝트를 다루는 용도라 두 필드 교차 집계와는 다르다.",
+      "examPoint": "'A별, B별'이라는 두 기준 동시 그룹화는 반복해서 Matrix Report로 연결된다는 패턴을 다시 확인하는 문제다.",
+      "practicalExample": "지역×분기별 매출 총액을 교차표로 정리해 어떤 지역이 어느 분기에 강한지 파악한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-065",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin needs to schedule a report to run every Monday and email results to the sales team. How is this configured?",
+    "choices": [
+      "Report Builder > Properties tab",
+      "Dashboard Settings",
+      "Subscribe button on the Report",
+      "Setup > Scheduled Reports"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "리포트를 정기적으로 실행해 이메일로 발송하는 설정은 해당 리포트 화면의 Subscribe(구독) 버튼을 통해 구성한다.",
+      "whyCorrect": "리포트 화면에서 직접 예약을 설정하는 진입점이 Subscribe 버튼이므로 C가 정답이다.",
+      "whyIncorrect": "Report Builder의 Properties tab에는 이런 예약 설정이 없고, Dashboard Settings는 대시보드 전용이며, Setup에 'Scheduled Reports'라는 별도 메뉴는 존재하지 않는다.",
+      "examPoint": "리포트 예약은 Setup의 별도 메뉴가 아니라, 리포트 화면 자체의 Subscribe 버튼에서 이루어진다는 점이 실무 함정이다.",
+      "practicalExample": "리포트 화면에서 Subscribe를 눌러 '매주 월요일 오전 8시, 영업팀 전체에게 발송'으로 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-066",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants a report showing only Accounts with NO related Opportunities. Which report feature should be used?",
+    "choices": [
+      "Grouping by Opportunity count",
+      "Summary formula field",
+      "Cross Filter: Accounts WITHOUT Opportunities",
+      "Bucket column on Opportunity"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "관련 Opportunity가 하나도 없는 Account만 걸러내려면 Cross Filter의 WITHOUT 조건을 사용해야 한다.",
+      "whyCorrect": "'Accounts WITHOUT Opportunities'라는 정확한 Cross Filter 설정이 이 요구사항에 부합하므로 C가 정답이다.",
+      "whyIncorrect": "Opportunity 개수로 그룹핑하는 것은 필터링이 아니라 집계 방식이고, Summary formula field나 Bucket column도 존재 여부 필터링을 대체할 수 없다.",
+      "examPoint": "'관련 레코드가 없는 부모만'이라는 요구사항이 세 번째로 나와도 정답은 여전히 Cross Filter(WITHOUT)라는 것을 확실히 각인하자.",
+      "practicalExample": "영업 기회가 전혀 없었던 Account 목록을 뽑아 신규 영업 대상으로 활용한다."
+    }
+  },
+  {
+    "id": "q-adx-reports-067",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "The VP of Sales wants to see total Opportunity Amount grouped by Account with a chart. Which report format is MOST appropriate?",
+    "choices": [
+      "Tabular",
+      "Summary",
+      "Matrix",
+      "Joined"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Account 기준으로 그룹화한 매출 합계에 차트까지 붙이려면, 그룹화와 차트를 모두 지원하는 Summary Report가 가장 적합하다.",
+      "whyCorrect": "단일 기준 그룹화 + 차트 지원이 정확히 필요한 조건이므로 B가 정답이다.",
+      "whyIncorrect": "Tabular는 그룹화도 차트도 지원하지 않고, Matrix는 두 기준 교차가 필요한 경우에만 적합하며(이 요구사항은 단일 기준), Joined는 여러 오브젝트를 다루는 용도라 과도하다.",
+      "examPoint": "'하나의 기준으로 그룹화 + 차트'라는 요구사항은 Matrix까지 갈 필요 없이 Summary Report로 충분하다는 것이 핵심 판단 포인트다.",
+      "practicalExample": "Account별 총 Opportunity 금액을 그룹화한 Summary Report에 막대 차트를 추가해 VP에게 보고한다."
+    }
+  }
+]

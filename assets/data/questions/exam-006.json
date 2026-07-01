@@ -136,5 +136,995 @@
       "examPoint": "stringify(객체→문자열)와 parse(문자열→객체)는 짝을 이루는 함수이므로 방향을 헷갈리지 않아야 한다.",
       "practicalExample": "localStorage에 사용자 상태를 저장할 때 객체를 JSON.stringify()로 문자열로 바꿔서 저장한다."
     }
+  },
+  {
+    "id": "q-js-007",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹 프론트엔드의 3요소(HTML, CSS, JS) 중에서, 정적인 화면에 생명력을 불어넣고 클릭 시 팝업이 뜨는 등의 '동작 및 제어 엔진' 역할을 하는 언어는 무엇인가?",
+    "choices": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Java"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "JavaScript는 HTML(뼈대)과 CSS(꾸밈) 위에 사용자와 상호작용할 수 있는 동적인 로직과 연산을 이식하는 프로그래밍 언어이다.",
+      "whyCorrect": "핵심 개념 요약 표에서 '건물의 엘리베이터 및 동작 시스템'으로 비유되며 동적 연산과 반응을 추가하는 언어를 JavaScript로 정의했다.",
+      "whyIncorrect": "HTML은 뼈대, CSS는 꾸밈이며, Java는 주로 백엔드에서 사용되는 전혀 다른 객체지향 언어이다.",
+      "examPoint": "HTML, CSS와 명확히 구분되는 JavaScript의 '동적 인터랙션' 처리 역할을 이해하고 있어야 한다.",
+      "practicalExample": "사용자가 버튼을 눌렀을 때 '안녕하세요'라는 알림창(alert)이 화면에 뜨게 하는 것은 모두 JavaScript의 역할이다."
+    }
+  },
+  {
+    "id": "q-js-008",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "실무 환경에서 자바스크립트 코드(`<script>`)를 HTML 문서의 `<body>` 태그가 닫히기 바로 직전 최하단에 배치하는 가장 핵심적인 이유는 무엇인가?",
+    "choices": [
+      "CSS 파일이 자바스크립트 코드를 바이러스로 인식하여 실행을 멈추기 때문이다.",
+      "자바스크립트 파일의 용량이 커서 항상 맨 마지막에 다운로드 받아야만 에러가 발생하지 않기 때문이다.",
+      "HTML 요소가 완전히 그려진 후(렌더링 완료)에 스크립트가 대상 객체를 안전하게 찾아 조작할 수 있도록 순서를 보장하기 위함이다.",
+      "보안 정책상 자바스크립트는 무조건 최하단에 있어야 해킹 공격을 방어할 수 있기 때문이다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "브라우저는 문서를 위에서 아래로 파싱(해석)하므로, 아직 화면에 그려지지 않은 DOM을 자바스크립트가 먼저 조작하려고 시도하면 에러(null 반환)가 발생한다.",
+      "whyCorrect": "자료에서 '뼈대와 꾸밈이 완전히 그려진 후 비로소 JS가 화면 내의 대상을 안전하게 찾아내 가공할 수 있도록 순서를 보장하기 위함'이라고 명확히 설명했다.",
+      "whyIncorrect": "바이러스 인식, 다운로드 용량 제한, 해킹 방어 등은 스크립트 배치 순서와 기술적으로 아무런 연관이 없다.",
+      "examPoint": "JS 코드는 완벽한데 동작하지 않을 때, 가장 먼저 스크립트의 '실행 타이밍(물리적 배치 위치)'을 점검해야 함을 묻는다.",
+      "practicalExample": "`<head>` 영역에 스크립트를 넣고 버튼을 찾으려 하면 `document.querySelector('button')`의 결과가 null로 나와서 이벤트를 걸 수 없다."
+    }
+  },
+  {
+    "id": "q-js-009",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "브라우저 개발자 도구(F12) 콘솔 창에 개발자가 원하는 런타임 로그나 변수 상태를 찍어서 점검할 때 사용하는 핵심 디버깅 명령어는?",
+    "choices": [
+      "console.log()",
+      "document.print()",
+      "window.alert()",
+      "system.out()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "console.log()는 코드 실행 과정 중 특정 시점의 변수 값이나 로직 흐름을 브라우저 개발자 도구의 콘솔 화면에 출력해 주는 가장 기본적인 디버깅 도구이다.",
+      "whyCorrect": "자료에서 콘솔 창에 개발자가 원하는 로그나 변수 상태를 찍어서 점검하는 핵심 도구로 console.log를 지목했다.",
+      "whyIncorrect": "alert()는 화면 팝업창 띄우기, system.out()은 Java 백엔드용 출력 명령어이다.",
+      "examPoint": "실무에서 버그를 잡을 때 코드가 어디까지 실행되었는지, 변수 안에 무슨 값이 들었는지 확인하기 위해 밥 먹듯이 사용하는 필수 명령어이다.",
+      "practicalExample": "`let score = 50; console.log(score);`를 작성하면 개발자 도구 탭에서 숫자 50이 출력된 것을 바로 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-js-010",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "JavaScript 문법 구조 규칙 중, 모든 '문자열(텍스트)' 데이터를 서술할 때 반드시 감싸주어야 하는 기호는?",
+    "choices": [
+      "( ) 소괄호",
+      "{ } 중괄호",
+      "'' 또는 \"\" 따옴표",
+      "[ ] 대괄호"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "문자열 데이터 타입(String)은 컴퓨터가 변수명이나 명령어와 혼동하지 않도록 반드시 작은따옴표(')나 큰따옴표(\")로 감싸서 선언해야 한다.",
+      "whyCorrect": "자료에서 모든 문자열 데이터는 반드시 작은따옴표나 큰따옴표로 감싸 서술한다고 명시했다.",
+      "whyIncorrect": "소괄호는 매개변수 격리, 중괄호는 코드 블록이나 객체, 대괄호는 배열(Array)에 쓰이는 기호이다.",
+      "examPoint": "문자열에 따옴표를 빼먹으면 브라우저가 이를 예약어나 변수로 착각하여 'ReferenceError'를 내뿜는 기초 문법 실수를 방지한다.",
+      "practicalExample": "이름을 저장할 때 `let name = 홍길동;`이라고 쓰면 에러가 나고, `let name = '홍길동';`이라고 써야 정상 저장된다."
+    }
+  },
+  {
+    "id": "q-js-011",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "JavaScript가 데이터를 보관하는 변수(Variable) 시스템에 대한 설명 중 가장 올바른 것은?",
+    "choices": [
+      "변수를 선언할 때 반드시 정수, 문자열 등의 데이터 타입(Type)을 명시해야만 동작한다.",
+      "상자 안에 들어오는 값에 따라 데이터 타입이 실시간으로 결정되는 유연한 '동적 타입(Dynamic Typing) 언어'이다.",
+      "한 번 선언된 변수는 어떠한 경우에도 다른 타입의 데이터로 덮어쓸 수 없다.",
+      "모든 변수는 메모리 절약을 위해 브라우저 종료 시 서버로 자동 전송된다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "자바스크립트는 Java나 C와 다르게 변수 선언 시 타입을 명시하지 않으며, 할당되는 값(숫자, 문자 등)에 따라 런타임에 타입이 결정되는 동적 타입 언어이다.",
+      "whyCorrect": "자료에서 데이터의 종류를 고정 명시하지 않고, 알맹이 값에 따라 타입이 실시간 결정되는 유연한 동적 타입 언어라고 설명했다.",
+      "whyIncorrect": "타입을 명시해야 하거나(정적 타입), 다른 타입으로 변경이 불가능하다는 설명은 Java 같은 강타입 언어에 해당한다.",
+      "examPoint": "JS에서는 변수에 숫자를 넣었다가 곧바로 문자열로 바꿔 넣어도 문법 에러가 나지 않는다는 유연성(그러나 버그의 원인이 되기도 함)을 묻는다.",
+      "practicalExample": "`let data = 10; data = '열';` 처럼 숫자 상자에 문자를 다시 집어넣어도 프로그램이 중단되지 않고 정상 동작한다."
+    }
+  },
+  {
+    "id": "q-js-012",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "게임 점수, 장바구니 수량 등 실시간으로 계속해서 누적되고 바뀌는 '변동 가능성이 있는' 데이터를 담을 때 사용하는 변수 선언 키워드는?",
+    "choices": [
+      "const",
+      "function",
+      "var",
+      "let"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "`let` 키워드는 선언 이후에 값의 재할당(변경)이 자유롭게 허용되는 가변 데이터 상자를 만들 때 사용한다.",
+      "whyCorrect": "자료에서 실시간으로 누적되고 변동 가능성이 있는 값을 담을 때 선택하며 재할당이 허용되는 키워드로 `let`을 정의했다.",
+      "whyIncorrect": "`const`는 불변(상수), `function`은 함수 선언 키워드이다. `var`는 재선언/재할당이 모두 가능하나 현대 문법에서는 호이스팅 문제로 지양한다.",
+      "examPoint": "값이 바뀔 수 있다면 `let`, 절대 바뀌면 안 된다면 `const`를 쓴다는 최신 JS 변수 선언의 양대 산맥을 구분하는 기초 문제이다.",
+      "practicalExample": "`let score = 0; score = score + 10;` 처럼 값이 지속적으로 갱신되어야 할 때 쓴다."
+    }
+  },
+  {
+    "id": "q-js-013",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "시스템 설정값이나 고유 식별 Key 등 한 번 정하면 절대 고정되어 변하지 않아야 하는 데이터를 담기 위한 '불변 상수 상자'를 생성하는 키워드는?",
+    "choices": [
+      "let",
+      "const",
+      "var",
+      "static"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "`const` 키워드는 한 번 값을 대입(초기화)하면 이후에 다른 값으로 덮어씌울 수 없어 데이터의 무결성을 보호하는 상수(Constant)를 만든다.",
+      "whyCorrect": "자료에서 한 번 정하면 고정되어 변하지 않는 보호해야 하는 값을 담을 때 선택하며 재할당을 불허하는 것은 `const`이다.",
+      "whyIncorrect": "`let`은 가변, `var`는 구식 가변, `static`은 객체지향 클래스에서 쓰이는 키워드이다.",
+      "examPoint": "`const` 상자에 강제로 새 값을 넣으려 시도하면 TypeError(재할당 불허)가 발생하여 프로그램이 터진다는 안전장치의 특성을 기억해야 한다.",
+      "practicalExample": "`const pi = 3.141592;` 처럼 원주율같이 프로그램 실행 내내 바뀌지 않을 값을 보호할 때 쓴다."
+    }
+  },
+  {
+    "id": "q-js-014",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "선배의 실무 꿀팁에 따르면, 협업 시 장애를 방지하기 위해 변수 선언 시 지켜야 하는 가장 이상적이고 안전한 '안전망의 정석'은 무엇인가?",
+    "choices": [
+      "무조건 모든 변수를 let으로 개방하여 유연성을 높인다.",
+      "const를 디폴트(기본)로 선언하고, 명확히 값이 변해야만 하는 값에 한해서만 let으로 바꾼다.",
+      "메모리 절약을 위해 전역 변수 하나만 만들어 모든 데이터를 그 안에 욱여넣는다.",
+      "자바스크립트 대신 HTML의 data- 속성에만 데이터를 저장한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "변수를 선언할 때는 원칙적으로 `const`를 사용하여 의도치 않은 재할당을 원천 차단(오염 방지)하고, 루프 인덱스처럼 어쩔 수 없이 변해야 하는 것만 보수적으로 `let`을 개방하는 것이 좋은 설계이다.",
+      "whyCorrect": "선배 팁에서 무조건 상수를 기본(const)으로 쓰고, 루프 변수 등 명확히 변해야 하는 값에 한해서만 let을 개방하는 버릇을 들이라고 조언했다.",
+      "whyIncorrect": "모두 let으로 열어두면 비동기 로직 등에 의해 데이터가 오염될 위험이 높으며, 전역 변수나 HTML 저장은 구조적 안티 패턴이다.",
+      "examPoint": "단순히 let과 const의 뜻을 묻는 것을 넘어, '실제 프로젝트에서 어떤 키워드를 먼저 습관적으로 쳐야 하는가'를 묻는 실무형 인사이트 문제이다.",
+      "practicalExample": "버튼 DOM 요소나 함수 등을 변수에 담을 때는 절대 바뀔 일이 없으므로 항상 `const btn = document.querySelector(...)` 처럼 쓴다."
+    }
+  },
+  {
+    "id": "q-js-015",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "function이라는 긴 단어를 생략하고 `=>` 기호를 활용하여 함수 코드를 획기적으로 짧고 간결하게 평탄화하여 선언하는 현대 자바스크립트의 표준 문법 스타일은?",
+    "choices": [
+      "익명 함수 (Anonymous Function)",
+      "콜백 함수 (Callback Function)",
+      "화살표 함수 (Arrow Function)",
+      "제너레이터 함수 (Generator Function)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "화살표 함수(Arrow Function)는 ES6에서 도입된 문법으로, `function` 키워드 대신 `=>` 기호를 사용하여 함수를 간결하게 표현한다.",
+      "whyCorrect": "자료에서 `function`을 생략하고 `=>` 기호를 활용해 코드를 획기적으로 짧게 평탄화하는 현대 표준 문법을 '화살표 함수'라고 정의했다.",
+      "whyIncorrect": "익명 함수나 콜백 함수는 함수의 '용도/형태'를 뜻하는 포괄적 단어이며, 구체적인 문법 스타일 명칭은 화살표 함수이다.",
+      "examPoint": "실무 코드나 리액트(React) 등 최신 프론트엔드 생태계에서는 전통적 function보다 화살표 함수가 디폴트 문법임을 묻는다.",
+      "practicalExample": "`const greet = () => { alert('안녕!'); }`처럼 작성하여 타이핑 수를 줄이고 코드를 깔끔하게 관리한다."
+    }
+  },
+  {
+    "id": "q-js-016",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트가 브라우저에 렌더링된 HTML 태그 트리 구조에 접근하여 대상을 읽고 쓰기(조작) 위해 경유하는 유일한 논리적 제어 통로(설계도 조작 콘솔 패널)를 무엇이라 부르는가?",
+    "choices": [
+      "BOM (Browser Object Model)",
+      "CSSOM (CSS Object Model)",
+      "DOM (문서 객체 모델)",
+      "AJAX (비동기 자바스크립트)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "DOM(Document Object Model)은 브라우저가 HTML을 파싱하여 메모리에 띄워놓은 객체(Object)들의 트리로, 자바스크립트와 HTML을 이어주는 다리이다.",
+      "whyCorrect": "핵심 개념 요약에서 자바스크립트가 HTML을 다루기 위한 논리적 제어 통로를 DOM(문서 객체 모델)으로 정의했다.",
+      "whyIncorrect": "BOM은 브라우저 창 자체(뒤로가기 등)를 제어하고, CSSOM은 스타일 트리, AJAX는 서버 통신 기술이다.",
+      "examPoint": "JS가 HTML을 직접 만지는 것이 아니라, 브라우저가 만들어둔 DOM이라는 중간 인터페이스를 통해 간접적으로 조작한다는 철학을 이해한다.",
+      "practicalExample": "자바스크립트가 텍스트를 바꿀 때 실제 HTML 파일의 소스코드를 뜯어고치는 것이 아니라, 메모리 위의 DOM 객체 속성값을 변경하여 화면만 갱신하는 것이다."
+    }
+  },
+  {
+    "id": "q-js-017",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "화면에 렌더링된 수많은 태그 엘리먼트 중에서, 자바스크립트로 다룰 특정 대상을 콕 집어 변수에 담아오는 가장 대표적인 '요소 탐색(조회)' 명령어는?",
+    "choices": [
+      "document.createElement()",
+      "document.querySelector()",
+      "window.open()",
+      "console.log()"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "`document.querySelector('선택자')`는 DOM 트리 안에서 괄호 안에 입력된 CSS 선택자 문법에 일치하는 첫 번째 요소를 찾아 객체로 반환한다.",
+      "whyCorrect": "자료에서 화면 엘리먼트 중 대상을 콕 집어 변수에 담아오는 핵심 탐색 명령으로 `document.querySelector`를 명시했다.",
+      "whyIncorrect": "createElement는 요소 새로 만들기, open은 새 탭 열기, log는 콘솔 출력 명령어이다.",
+      "examPoint": "이 명령어를 모르면 화면의 어떤 버튼에 이벤트를 걸고, 어떤 텍스트를 바꿀지 '대상 지정' 자체가 불가능하므로 가장 많이 쓰이는 필수 함수이다.",
+      "practicalExample": "`const box = document.querySelector('.my-box');` 처럼 CSS 클래스 선택자를 인자로 넣어 해당 상자 객체를 가져온다."
+    }
+  },
+  {
+    "id": "q-js-018",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "일반적인 태그(div, p, h1 등) 내부의 텍스트 글자 내용을 읽어오거나 치환하여 덮어쓸 때 사용하는 속성은 `.textContent`이다. 그렇다면 사용자가 `<input>` 입력창에 직접 타이핑한 데이터를 낚아챌 때 사용하는 입력 요소 전용 속성은?",
+    "choices": [
+      ".innerText",
+      ".innerHTML",
+      ".value",
+      ".placeholder"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "사용자와 대화형으로 상호작용하는 폼 엘리먼트(input, select, textarea 등)는 `.value` 속성을 통해 사용자가 입력한 현재 값에 접근할 수 있다.",
+      "whyCorrect": "자료에서 사용자가 입력창에 직접 타이핑하여 넣은 동적 데이터를 낚아채거나 초기화할 때 사용하는 입력 요소 전용 속성으로 `.value`를 규정했다.",
+      "whyIncorrect": ".innerText는 텍스트(textContent와 유사), .innerHTML은 태그 째로 다룰 때, .placeholder는 입력 전 안내 문구 속성이다.",
+      "examPoint": "일반 태그의 글자는 `textContent`, 폼 입력 태그의 글자는 `value`라는 속성의 차이를 혼동하지 않도록 묻는 실무 빈출 문제이다.",
+      "practicalExample": "회원가입 폼에서 사용자가 친 아이디를 가져오려면 `document.querySelector('input').value`를 호출해야 한다."
+    }
+  },
+  {
+    "id": "q-js-019",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 버튼을 클릭(click)하거나 입력창에 타이핑을 하는 등, 브라우저 화면에서 일으키는 모든 물리적 액션 및 신호의 총칭을 무엇이라 부르는가?",
+    "choices": [
+      "이벤트 (Event)",
+      "콜백 (Callback)",
+      "돔 (DOM)",
+      "루프 (Loop)"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "이벤트(Event)는 브라우저 내에서 발생하는 상호작용의 사건(사건)으로, 이를 감지(Listen)하고 특정 함수를 실행하여 웹을 동적으로 만든다.",
+      "whyCorrect": "자료에서 사용자가 브라우저 화면에서 일으키는 물리적 액션(클릭, 타이핑 등)의 총칭을 '이벤트'라고 정의했다.",
+      "whyIncorrect": "콜백은 나중에 실행될 함수, DOM은 화면 객체, 루프는 반복문이다.",
+      "examPoint": "자바스크립트는 기본적으로 이 '이벤트'가 발생할 때까지 상시 대기하다가 반응하는 이벤트 주도형(Event-driven) 구조를 갖는다는 점을 인식해야 한다.",
+      "practicalExample": "사용자가 키보드의 Enter 키를 '누르는 행위' 자체를 keydown 이벤트라고 부른다."
+    }
+  },
+  {
+    "id": "q-js-020",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "특정 화면 객체에 '클릭'과 같은 이벤트 신호를 지속적으로 감시하는 센서를 부착하여, 신호 포착 시 약속된 함수(행동)를 자동 실행하게 만드는 명령어는?",
+    "choices": [
+      "document.querySelector()",
+      "console.log()",
+      "addEventListener()",
+      "setTimeout()"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "`addEventListener('이벤트종류', 콜백함수)`는 타겟 DOM 요소에 귀(센서)를 달아두고, 지정한 이벤트가 발생할 때마다 콜백 함수를 실행시키는 표준 메서드이다.",
+      "whyCorrect": "자료에서 특정 요소에 이벤트를 지속적으로 감시하는 센서를 부착하는 특수 명령어로 `addEventListener`를 명시했다.",
+      "whyIncorrect": "querySelector는 요소 찾기, console.log는 출력, setTimeout은 타이머 함수이다.",
+      "examPoint": "찾아온 객체(DOM) + 이벤트를 거는 행위(addEventListener) + 할당된 동작(함수)이라는 이벤트 핸들링 3박자 메커니즘을 묻는다.",
+      "practicalExample": "`btn.addEventListener('click', () => { alert('클릭됨'); });` 처럼 코딩해두면 버튼을 누를 때마다 팝업이 무한정 뜬다."
+    }
+  },
+  {
+    "id": "q-js-021",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "특정 비즈니스 조건이나 데이터 규칙을 만족하는 '참(true)' 상황일 때만 내부 코드가 흘러가도록 길을 나누어주는 제어문은 무엇인가?",
+    "choices": [
+      "루프문 (for)",
+      "조건 제어문 (if)",
+      "선언문 (let)",
+      "함수문 (function)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "if 문은 괄호 안의 조건식이 참(true)인지 거짓(false)인지 평가하여, 참일 경우에만 블록 내부의 로직을 실행하는 대표적인 조건 분기 제어문이다.",
+      "whyCorrect": "자료에서 특정 조건을 만족하는 상황일 때만 코드가 흘러가도록 길을 나누는 제어문으로 `if (조건) { ... } else { ... }` 구조를 소개했다.",
+      "whyIncorrect": "for는 반복 처리, let은 변수 선언, function은 동작 단위 묶음이다.",
+      "examPoint": "버튼을 클릭했을 때 '비밀번호가 8자리 이상인가?'를 검사하여 가입을 허락하거나 튕겨내는 분기 로직이 모두 if문을 통해 구현됨을 이해한다.",
+      "practicalExample": "`if (score >= 80) { alert('합격입니다'); } else { alert('불합격입니다'); }` 처럼 사용한다."
+    }
+  },
+  {
+    "id": "q-js-022",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트 코드 작성 시, 메서드나 함수에게 필요한 데이터(재료)를 건네줄 때 이 매개변수 값을 격리하여 주입하기 위해 사용하는 괄호 기호는?",
+    "choices": [
+      "{ } 중괄호",
+      "[ ] 대괄호",
+      "( ) 소괄호",
+      "< > 꺾쇠괄호"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "함수를 호출하거나 정의할 때 인자(Arguments)와 매개변수(Parameters)는 항상 소괄호 `()` 안에 담겨 전달된다.",
+      "whyCorrect": "자료의 JS 문법 구조 핵심 규칙에서 '메서드나 함수에 건네주는 매개변수 값은 소괄호 () 안에 격리하여 주입한다'고 명시했다.",
+      "whyIncorrect": "중괄호는 함수의 몸체(로직 블록), 대괄호는 배열, 꺾쇠는 HTML 태그 기호이다.",
+      "examPoint": "JS 문법에서 `{}`(코드 블록/객체), `[]`(배열), `()`(함수 매개변수 및 실행 기호)의 명확한 역할 분담을 묻는 구문론적 기초 문제이다.",
+      "practicalExample": "`alert`라는 함수를 실행하면서 '안녕하세요'라는 재료를 줄 때 `alert('안녕하세요')` 처럼 소괄호 안에 담아서 준다."
+    }
+  },
+  {
+    "id": "q-js-023",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "선배의 실무 꿀팁에 따르면, 복잡한 화살표 함수와 이벤트를 엮을 때 괄호 짝 `})`을 맞추지 않거나 구문 끝에 세미콜론(`;`) 처리가 누락되면 어떤 문제가 발생하는가?",
+    "choices": [
+      "브라우저가 누락된 괄호를 자동 생성하여 정상 실행된다.",
+      "서버의 데이터베이스가 해킹당할 위험이 높아진다.",
+      "실무 프로덕션 빌드 단계에서 통째로 에러가 나며 프로그램이 튕겨 나간다.",
+      "자바스크립트 코드가 CSS 코드로 변환되어 화면 디자인이 바뀐다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "자바스크립트 엔진이 단순한 세미콜론 누락은 알아서 눈감아주는(자동 삽입) 관대한 면이 있으나, 함수와 객체가 중첩된 복잡한 구조에서 괄호나 구문 마무리가 꼬이면 빌드 툴(Webpack 등)에서 치명적 에러를 뱉고 멈춘다.",
+      "whyCorrect": "선배 팁에서 '대충 짜도 눈감아주는 경우가 많아 디버깅을 소홀히 하기 쉽지만, 실무 프로덕션 빌드 단계에서 통째로 튕겨 나간다'고 강력히 경고했다.",
+      "whyIncorrect": "자동 생성 한계가 명확하며, 해킹이나 CSS 변환 같은 현상은 문법 에러와는 거리가 멀다.",
+      "examPoint": "로컬에서 대충 돌아간다고 안심하지 말고, 엄격한 구문 규칙(괄호 매칭과 세미콜론)을 지켜 단정하게 코딩하는 것이 시니어의 자세임을 묻는다.",
+      "practicalExample": "`btn.addEventListener('click', () => { console.log('안녕'); }` -> 끝에 `)` 괄호가 누락되어 문법 에러(SyntaxError)가 발생한다."
+    }
+  },
+  {
+    "id": "q-js-024",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML(뼈대)과 CSS(꾸밈)로 구성된 정적 골조 위에, 실시간으로 변하는 게임 점수를 화면에 그려주는 등의 '런타임 로직'을 이식하는 프론트엔드 언어는?",
+    "choices": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Python"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "JavaScript는 웹 페이지에 생명력과 동적인 반응(런타임 로직)을 추가하는 유일한 프론트엔드 프로그래밍 언어이다.",
+      "whyCorrect": "핵심 개념 요약에서 정적 골조 위에 생명력과 런타임 로직을 이식하는 것을 JavaScript로 명시했다.",
+      "whyIncorrect": "HTML/CSS는 정적인 시각 구조를 만들 뿐, 연산이나 로직 처리가 불가능하다. Python은 웹 브라우저 내장 언어가 아니다.",
+      "examPoint": "문서(Document)가 아닌 프로그램(Application)으로서의 웹을 구동시키는 핵심 언어가 JS임을 묻는다.",
+      "practicalExample": "사용자가 버튼을 클릭하면 1초마다 화면의 카운트다운 숫자가 10에서 0으로 줄어들게 만드는 것은 자바스크립트의 역할이다."
+    }
+  },
+  {
+    "id": "q-js-025",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "실무에서 `<script>` 태그를 HTML 문서의 `<body>` 최하단이 아닌 `<head>` 영역에 작성해야만 할 경우, 발생할 수 있는 가장 대표적인 에러 현상은?",
+    "choices": [
+      "CSS 스타일이 자바스크립트 코드와 충돌하여 페이지가 백지로 변한다.",
+      "HTML 요소가 아직 브라우저 메모리에 렌더링되지 않은 상태에서 자바스크립트가 요소를 탐색하려 하여 Null 에러가 발생한다.",
+      "브라우저의 보안 시스템이 작동하여 자바스크립트 실행을 영구 차단한다.",
+      "자바스크립트 파일 용량이 2배로 증가하여 로딩 속도가 현저히 느려진다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "브라우저는 문서를 위에서 아래로 순차적으로 해석한다. 상단(<head>)에서 JS가 먼저 실행되면, 하단에 위치할 DOM 요소가 생성되지 않았기 때문에 조회(querySelector) 시 실패(null)하게 된다.",
+      "whyCorrect": "자료에서 화면 내 객체들을 '안전하게 찾아내어 가공할 수 있도록 순서를 보장'하기 위해 body 닫기 직전(하단)에 배치한다고 설명했다.",
+      "whyIncorrect": "CSS 충돌, 보안 차단, 용량 증가는 스크립트의 물리적 배치 순서와 무관하다.",
+      "examPoint": "JS 코드가 에러를 뱉을 때, 코드 자체의 오타보다 브라우저의 'DOM 파싱 라이프사이클'을 의심할 수 있는 디버깅 능력을 묻는다.",
+      "practicalExample": "head 안에 `<script> console.log(document.querySelector('.box')); </script>`를 넣으면 null이 찍히고 요소 조작이 불가능해진다."
+    }
+  },
+  {
+    "id": "q-js-026",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트 코드 구문을 작성할 때, 컴퓨터에게 '이 명령어 문장이 끝났다'고 알려주어 컴파일(해석) 에러를 막아주는 마침표 역할의 기호는?",
+    "choices": [
+      ". (마침표)",
+      ": (콜론)",
+      "; (세미콜론)",
+      ", (쉼표)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "자바스크립트에서 하나의 실행문(Statement)이 끝날 때는 항상 세미콜론(;)을 붙여 구문의 종료를 명시적으로 선언하는 것이 원칙이다.",
+      "whyCorrect": "자료에서 명령어 문장의 끝에는 문장의 마침표 역할을 하는 세미콜론(;)을 누락 없이 작성해야 해석 에러를 막을 수 있다고 했다.",
+      "whyIncorrect": "마침표(.)는 객체 접근, 콜론(:)은 객체 리터럴, 쉼표(,)는 나열에 쓰인다.",
+      "examPoint": "JS 엔진이 자동 세미콜론 삽입(ASI)을 지원하지만, 이에 의존하면 의도치 않은 버그가 생기므로 명시적 종료 습관이 중요함을 묻는다.",
+      "practicalExample": "`let x = 10; let y = 20;` 처럼 한 줄에 여러 명령어를 쓸 때 세미콜론이 없으면 문법 에러가 난다."
+    }
+  },
+  {
+    "id": "q-js-027",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "다음 중 자바스크립트의 '동적 타입(Dynamic Typing)' 특성을 가장 잘 설명한 문장은?",
+    "choices": [
+      "변수 선언 시 앞에 데이터의 종류(예: int, String)를 반드시 고정하여 명시해야 한다.",
+      "변수 상자 안에 들어오는 알맹이 값에 따라 데이터 타입이 실시간(런타임)으로 유연하게 결정된다.",
+      "한 번 문자열(String)이 할당된 변수는 브라우저를 종료할 때까지 절대 숫자형(Number)으로 바뀔 수 없다.",
+      "동적 타이핑 특성으로 인해 변수는 항상 let 키워드만 사용해야 한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "JavaScript는 컴파일 단계에서 타입을 강제하지 않고, 런타임에 값(할당된 데이터)을 평가하여 그 변수의 타입을 스스로 유추하고 결정한다.",
+      "whyCorrect": "자료에서 '상자 안에 들어오는 알맹이 값에 따라 타입이 실시간으로 결정되는 유연한 언어'라고 동적 타입 언어의 본질을 설명했다.",
+      "whyIncorrect": "타입 명시 강제나 타입 변경 불가는 정적 타입 언어(Java, C)의 특징이다. let, const 둘 다 동적 타입의 영향을 받는다.",
+      "examPoint": "Java와의 가장 이질적인 차이점(유연함이자 런타임 에러의 원인)인 '타입 추론' 메커니즘을 이해하고 있는지 묻는다.",
+      "practicalExample": "`let age = 30;` 일 때는 숫자형이지만, 다음 줄에 `age = '서른';`을 넣으면 순식간에 문자열 타입으로 바뀐다."
+    }
+  },
+  {
+    "id": "q-js-028",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "모던 자바스크립트(ES6)에서 도입된 '화살표 함수(Arrow Function)' 문법의 시각적 형태이자 핵심 기호는 무엇인가?",
+    "choices": [
+      "=>",
+      "==",
+      "->",
+      "<="
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "화살표 함수는 전통적인 `function` 키워드 대신 `=>` (Equals와 Greater-than 기호의 조합)를 사용하여 선언부를 획기적으로 축약한다.",
+      "whyCorrect": "자료에서 `function` 단어를 생략하고 `=>` 기호를 활용하여 코드를 평탄화한다고 명시했다.",
+      "whyIncorrect": "==는 동등 비교 연산자, ->는 자바나 C++의 화살표/포인터 접근자, <=는 작거나 같다(이하) 연산자이다.",
+      "examPoint": "코드를 읽을 때 `() => { ... }` 형태를 보고 '아, 이게 함수 덩어리구나'라고 1초 만에 파악하는 문법적 눈썰미가 필요하다.",
+      "practicalExample": "버튼 클릭 이벤트 안에 `() => { alert('클릭'); }` 형태로 콜백 함수를 아주 간결하게 집어넣을 수 있다."
+    }
+  },
+  {
+    "id": "q-js-029",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "DOM(문서 객체 모델)을 통해 화면의 특정 엘리먼트를 타겟팅할 때 사용하는 `document.querySelector()` 메서드의 괄호 안에 들어갈 문자열의 문법 규칙은 무엇과 동일한가?",
+    "choices": [
+      "SQL의 WHERE 절 문법 규칙",
+      "CSS의 선택자(클래스 '.', 아이디 '#') 문법 규칙",
+      "HTML의 꺾쇠(< >) 태그 문법 규칙",
+      "Java의 클래스명 선언 규칙"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "querySelector는 인자로 'CSS 선택자(CSS Selectors)' 문자열을 받아, 문서 트리에서 그 선택자에 일치하는 첫 번째 DOM 객체를 반환한다.",
+      "whyCorrect": "자료에서 'CSS 학습 시 다루었던 선택자 문법 규칙을 괄호 문자열 안에 그대로 적용하여 정밀 타겟팅을 수행한다'고 명확히 설명했다.",
+      "whyIncorrect": "SQL, 순수 HTML 태그 꺾쇠, Java 네이밍 규칙은 DOM 탐색 API의 인자 문법과 완전히 무관하다.",
+      "examPoint": "프론트엔드는 결국 HTML+CSS+JS가 유기적으로 맞물려 돌아가는 기술이며, JS가 요소를 찾을 때 CSS의 식별자(선택자) 체계를 빌려 쓴다는 통합적 사고를 묻는다.",
+      "practicalExample": "HTML에 `<div id='login-box'>`가 있다면 JS에서는 `document.querySelector('#login-box')`로 아이디 선택자 기호(#)를 똑같이 써서 가져온다."
+    }
+  },
+  {
+    "id": "q-js-030",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "DOM 요소의 내용을 읽거나 변경할 때 사용하는 속성 중, `<div>`나 `<h1>` 같은 일반 태그 내부의 '텍스트 글자' 자체를 조작하는 속성은?",
+    "choices": [
+      ".value",
+      ".placeholder",
+      ".textContent",
+      ".className"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "`.textContent` 속성은 지정된 DOM 노드와 그 자손 노드들이 포함하는 텍스트 콘텐츠만을 순수하게(HTML 태그 제외) 읽거나 쓸 수 있게 해준다.",
+      "whyCorrect": "자료에서 일반적인 태그 내부의 텍스트 글자 내용을 읽어오거나 치환하여 덮어쓸 때 사용하는 속성으로 `.textContent`를 정의했다.",
+      "whyIncorrect": "`.value`는 입력창(input) 전용, `.placeholder`는 힌트 텍스트, `.className`은 클래스명 속성이다.",
+      "examPoint": "버튼에 적힌 글씨를 '전송'에서 '완료'로 바꾸는 등, 화면의 글자 정보만 갈아 끼울 때 밥 먹듯이 사용하는 속성임을 알아야 한다.",
+      "practicalExample": "`document.querySelector('h1').textContent = '새로운 제목입니다';` 코드는 메인 타이틀을 즉시 변경시킨다."
+    }
+  },
+  {
+    "id": "q-js-031",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "특정 화면 객체에 사용자의 돌발 행동(클릭 등)을 상시 대기하다가 신호가 터지면 함수를 실행시키는 센서를 부착하는 특수 명령어 `addEventListener('A', B);` 구조에서, 'A'와 'B'에 들어갈 내용으로 올바르게 짝지어진 것은?",
+    "choices": [
+      "A: HTML 태그 이름 / B: CSS 스타일시트",
+      "A: 이벤트 종류(예: 'click') / B: 실행할 로직 함수",
+      "A: 자바스크립트 파일명 / B: HTML 페이지 주소",
+      "A: 변수 선언(let) / B: 변수 값(value)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "이벤트 리스너(addEventListener)는 첫 번째 인자로 감지할 이벤트의 종류(문자열)를, 두 번째 인자로 이벤트 발생 시 호출될 콜백 함수를 전달받는다.",
+      "whyCorrect": "자료에서 `addEventListener('click', 함수명);` 구조로 연동해 두면, 이벤트 신호를 유발할 때마다 약속해 둔 로직 함수를 엔진이 호출한다고 설명했다.",
+      "whyIncorrect": "HTML 태그, CSS, 파일명 등은 이벤트 리스너의 매개변수 규격에 전혀 맞지 않는다.",
+      "examPoint": "'언제(무슨 일이 생기면)'와 '무엇을(어떤 행동을)' 할 것인지 엔진에게 계약 조건을 전달하는 문법 구조를 명확히 이해해야 한다.",
+      "practicalExample": "A 자리에 `'mouseover'`(마우스 올림), B 자리에 `() => { alert('올라옴'); }`을 넣으면 버튼에 마우스를 올리기만 해도 팝업이 뜬다."
+    }
+  },
+  {
+    "id": "q-js-032",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "특정 비즈니스 조건이 참(true)일 때만 내부 코드가 실행되도록 흐름을 나누는 조건 제어문 `if (조건) { ... } else { ... }`에 대한 설명으로 올바른 것은?",
+    "choices": [
+      "else 블록은 무조건 작성해야 하며, 생략하면 컴파일 에러가 발생한다.",
+      "괄호 ( ) 안의 조건이 참(true)이면 if 뒤의 { } 블록이 실행되고, 거짓(false)이면 else 뒤의 { } 블록이 실행된다.",
+      "if 문은 조건이 거짓일 때만 실행되는 특수한 에러 처리 구문이다.",
+      "이벤트 리스너 안에서는 조건문을 사용할 수 없다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "if-else 구문은 불리언(참/거짓) 평가 결과에 따라 코드의 실행 경로(흐름)를 두 갈래로 분기시키는 가장 기본적인 제어 구조이다.",
+      "whyCorrect": "자료에서 참(true) 상황일 때만 코드가 흘러가도록 길을 나눈다고 했으며, 기본적으로 조건 만족 시 if 블록, 아닐 시 else 블록이 실행된다.",
+      "whyIncorrect": "else 블록은 선택 사항이므로 생략 가능하며, 거짓일 때만 도는 것도 아니고, 이벤트 리스너 내부야말로 if문을 가장 많이 쓰는 장소이다.",
+      "examPoint": "웹사이트에서 사용자의 권한(로그인 여부, 성인 인증 등)에 따라 화면을 보여줄지 막을지를 판단하는 핵심 두뇌 역할이 바로 if문임을 묻는다.",
+      "practicalExample": "결제 버튼을 눌렀을 때(이벤트) -> `if (잔액 > 물건값) { 결제승인 } else { 잔액부족 경고 }` 처럼 활용한다."
+    }
+  },
+  {
+    "id": "q-js-033",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트의 주요 원시 자료형(Type) 중 하나로, '참(true)'과 '거짓(false)' 두 가지 상태만을 나타내어 조건 분기(if)의 기준이 되는 자료형은?",
+    "choices": [
+      "Number (숫자형)",
+      "Boolean (불리언형)",
+      "String (문자열형)",
+      "Object (객체형)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Boolean(불리언) 타입은 논리적 참(true)과 거짓(false)을 표현하며, 비교 연산의 결과이자 제어문(if, while)의 실행 여부를 결정하는 핵심 데이터 타입이다.",
+      "whyCorrect": "자료에서 참/거짓의 분기를 결정하는 원시 자료형을 불리언(Boolean)으로 명시했다.",
+      "whyIncorrect": "Number는 연산, String은 텍스트, Object는 복합 데이터를 다룬다.",
+      "examPoint": "`if ('true')`처럼 문자열로 쓰는 것과 논리값 `true` 자체의 본질적 타입 차이를 묻는 기초 개념이다.",
+      "practicalExample": "`let isLogin = false;`로 설정해 두고, 로그인 버튼을 누르면 `isLogin = true;`로 변경하여 조건문을 제어한다."
+    }
+  },
+  {
+    "id": "q-js-034",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "이벤트 리스너 내부에 콜백 함수를 작성할 때, 최근 실무 트렌드인 모던 화살표 함수 문법을 올바르게 적용한 코드는 무엇인가?",
+    "choices": [
+      "btn.addEventListener('click', function => alert('클릭'));",
+      "btn.addEventListener('click', () => { alert('클릭'); });",
+      "btn.addEventListener('click', { () => alert('클릭') });",
+      "btn.addEventListener('click', function() { alert('클릭'); } => );"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "이벤트 리스너의 두 번째 인자인 콜백 함수 자리에 화살표 함수 `() => { ... }`를 직접 삽입하여 코드를 평탄화하고 인라인으로 간결하게 작성할 수 있다.",
+      "whyCorrect": "괄호 `()`로 매개변수 자리를 만들고, 화살표 `=>` 뒤에 실행할 코드 블록 `{ }`을 여는 2번이 정확한 화살표 함수 문법이다.",
+      "whyIncorrect": "1번은 function 키워드가 남았고, 3번은 중괄호와 소괄호 위치가 뒤집혔으며, 4번은 전통적 함수와 화살표가 기괴하게 섞여 문법 에러가 발생한다.",
+      "examPoint": "`function() {}` 이라는 13글자의 타이핑을 `() => {}` 이라는 7글자의 깔끔한 기호로 치환하는 현대 문법의 형태를 눈에 익혀야 한다.",
+      "practicalExample": "`submitBtn.addEventListener('click', (event) => { console.log(event); });` 형태로 실무에서 100% 사용되는 형태이다."
+    }
+  },
+  {
+    "id": "q-js-035",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML 화면에 경고 팝업창을 직관적으로 띄워주기 위해 실무에서 조건문(if)의 에러 상황 분기 처리 등과 자주 조합되어 활용되는 내장 함수는?",
+    "choices": [
+      "document.write()",
+      "console.log()",
+      "alert()",
+      "parseInt()"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "브라우저 내장 API인 `alert('메시지')`는 브라우저 중앙에 시스템 팝업을 띄워 사용자에게 강제적으로 정보를 전달하고 흐름을 일시 정지시키는 메서드이다.",
+      "whyCorrect": "자료의 조건 제어 섹션에서 브라우저 화면에 경고 팝업창을 직관적으로 띄워주는 함수로 `alert('경고메시지');`를 소개했다.",
+      "whyIncorrect": "document.write는 화면 전체 덮어쓰기, console.log는 개발자용 보이지 않는 로그 출력, parseInt는 숫자 변환 함수이다.",
+      "examPoint": "사용자가 비밀번호를 틀렸을 때처럼, 즉각적이고 물리적인 인지가 필요한 피드백(경고)을 줄 때 가장 쉽고 확실한 방법이다.",
+      "practicalExample": "`if (input.value === '') { alert('이름을 입력해주세요!'); }` 처럼 폼 유효성 검사 실패 시 사용자에게 경고를 날릴 때 쓴다."
+    }
+  },
+  {
+    "id": "q-js-036",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "변수 선언 시 Java와 달리 데이터 타입(int, String 등)을 적지 않고 데이터 상자의 목적(가변/불변)에 따라서만 키워드를 분리하여 사용하는 자바스크립트의 변수 선언 키워드 2가지는?",
+    "choices": [
+      "let과 const",
+      "var과 static",
+      "public과 private",
+      "class와 function"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "현대 자바스크립트(ES6+)는 타입 지정 없이 오직 재할당 가능 여부에 따라 `let`(가변)과 `const`(불변 상수)라는 두 가지 선언 키워드만을 사용하여 데이터를 격리 보관한다.",
+      "whyCorrect": "자료에서 Java와 달리 타입을 명시하지 않고, 목적에 따라 가변 데이터 상자인 `let`과 불변 데이터 상자인 `const` 두 가지를 사용한다고 명시했다.",
+      "whyIncorrect": "var는 구시대 유물, static/public/private은 클래스 지향(Java 등) 접근 제어자이며, class/function은 객체와 함수 선언 키워드이다.",
+      "examPoint": "다른 백엔드 언어를 배우다 온 사람들이 `String name = '홍길동';` 이라고 치는 습관을 버리고, JS 세계의 자유로운 박스(let/const) 개념에 적응했는지 평가한다.",
+      "practicalExample": "JS에서는 숫자든 문자든 함수든 객체든 간에 그냥 무심하게 `const box = ...;` 라고 선언하면 엔진이 알아서 다 담아준다."
+    }
+  },
+  {
+    "id": "q-js-037",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "정적인 HTML 뼈대 위에 동적인 연산과 생명력을 추가하는 언어인 JavaScript가 웹 페이지 내에 물리적으로 삽입될 때 감싸져야 하는 태그는 무엇인가?",
+    "choices": [
+      "<style>",
+      "<script>",
+      "<link>",
+      "<meta>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<script> 태그는 HTML 문서 내에서 자바스크립트 엔진을 구동시키기 위한 전용 영역(컨테이너)을 생성한다.",
+      "whyCorrect": "자료에서 자바스크립트 코드는 HTML 문서 내부의 `<script>` 태그 사이에 작성한다고 명시했다.",
+      "whyIncorrect": "<style>은 CSS 인라인 작성, <link>는 외부 CSS 파일 연결, <meta>는 문서 메타데이터 설정용 태그이다.",
+      "examPoint": "JS(script)와 CSS(style/link)의 삽입 태그를 혼동하지 않는 것이 프론트엔드 기초 마크업의 첫걸음이다.",
+      "practicalExample": "<body> 맨 밑바닥에 `<script> console.log('Hello'); </script>`를 넣으면 브라우저가 이를 JS 코드로 인식하여 실행한다."
+    }
+  },
+  {
+    "id": "q-js-038",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "브라우저가 HTML 문서를 논리적 트리 형태로 변환하여 메모리에 올려둔 공간으로, 자바스크립트가 실제 화면을 조작하기 위해 접근하는 '설계도 조작 콘솔 패널'을 의미하는 약어는?",
+    "choices": [
+      "JSON",
+      "CSSOM",
+      "API",
+      "DOM"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "DOM(Document Object Model, 문서 객체 모델)은 자바스크립트가 브라우저가 그려낸 HTML 구조에 접근(Read)하고 조작(Write)할 수 있게 해주는 표준 인터페이스(API)이다.",
+      "whyCorrect": "핵심 개념 요약에서 자바스크립트가 HTML을 다루기 위한 논리적 제어 통로이자 브라우저가 해석한 태그 트리 구조에 접근하는 인터페이스를 DOM으로 정의했다.",
+      "whyIncorrect": "JSON은 데이터 전송 형식, CSSOM은 CSS 객체 모델, API는 범용 프로그래밍 인터페이스를 뜻한다.",
+      "examPoint": "우리가 VS Code에 치는 것은 단순한 텍스트(HTML)이지만, 브라우저가 이를 읽으면 메모리 상에 살아 움직이는 객체(DOM)로 변환됨을 이해해야 한다.",
+      "practicalExample": "자바스크립트로 화면의 `<div>`를 숨기고 싶을 때, HTML 텍스트 파일을 직접 수정하는 것이 아니라 메모리에 떠 있는 DOM 객체(`divElement.style.display = 'none';`)를 조작하는 것이다."
+    }
+  },
+  {
+    "id": "q-js-039",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트에서 텍스트 집합을 의미하는 문자열(String) 자료형과, 정수/실수를 의미하는 숫자(Number) 자료형을 올바르게 선언한 코드는?",
+    "choices": [
+      "let name = '홍길동'; let age = 20;",
+      "let name = 홍길동; let age = '20';",
+      "String name = '홍길동'; int age = 20;",
+      "let name = [홍길동]; let age = {20};"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "문자열은 반드시 따옴표('', \"\")로 감싸야 하며, 숫자는 기호 없이 그대로 적는다. JS는 동적 타입 언어이므로 타입 명시(String, int) 없이 범용 선언자(let)를 사용한다.",
+      "whyCorrect": "문자열(홍길동)을 작은따옴표로 감싸고, 숫자(20)를 기호 없이 적어 let으로 선언한 1번이 JS의 완벽한 문법 규칙이다.",
+      "whyIncorrect": "2번은 문자열에 따옴표 누락, 3번은 Java식 정적 타입 명시, 4번은 배열/객체 괄호를 잘못 사용한 구문 에러이다.",
+      "examPoint": "따옴표 유무에 따라 브라우저가 이를 '데이터'로 볼지, 아니면 알 수 없는 '명령어/변수'로 볼지가 결정됨을 묻는다.",
+      "practicalExample": "나이를 연산할 때 `let age = '20';`처럼 문자로 담으면 나중에 `age + 1`을 했을 때 21이 아니라 '201'이라는 엉뚱한 문자열이 나온다."
+    }
+  },
+  {
+    "id": "q-js-040",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트에 등장하는 '데이터와 화면의 괴리'에 대한 설명으로, 바닐라 자바스크립트에서 주니어 개발자들이 가장 빈번하게 오해하는 부분은 무엇인가?",
+    "choices": [
+      "let 키워드로 선언된 변수는 화면에 렌더링될 수 없다고 생각하는 것",
+      "변수 상자(메모리)의 값을 변경하면, 사용자 눈앞의 화면 렌더링도 알아서 저절로 변경된다고 착각하는 것",
+      "문자열 데이터는 화면에 출력할 수 있지만 숫자 데이터는 출력 불가능하다고 생각하는 것",
+      "DOM 조작 명령어를 <body> 태그 밖에서 실행하면 에러가 안 난다고 믿는 것"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "순수(Vanilla) JS 아키텍처에서는 메모리의 상태(State)와 화면의 뷰(View)가 물리적으로 단절되어 있어, 데이터가 바뀌면 이를 화면에 꽂아 넣는 수동 작업이 필수적이다.",
+      "whyCorrect": "강사는 '변수 값을 바꿨는데 왜 화면에 반영이 안 되죠?'라는 질문을 예로 들며, 메모리 상의 데이터 변동이 화면 렌더링으로 저절로 직결되지 않는다는 점을 지적했다.",
+      "whyIncorrect": "나머지 보기들은 JS의 타입 특성이나 스크립트 위치에 대한 엉뚱한 낭설들이다.",
+      "examPoint": "값이 바뀌는 것(연산 로직)과 값이 눈에 보이게 칠해지는 것(DOM 조작)이라는 두 가지 행동을 개발자가 직접 통제해야 한다는 바닐라 JS의 고단함을 이해한다.",
+      "practicalExample": "은행 앱에서 이자율 변수 `rate`를 아무리 곱하고 나누고 지지고 볶아도, 최종적으로 `rateDisplay.textContent = rate;`를 쳐주지 않으면 사용자 화면에는 옛날 이자율이 떠 있게 된다."
+    }
+  },
+  {
+    "id": "q-js-041",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트가 화면에서 내가 조작하고 싶은 특정 태그 요소(예: id가 submit-btn인 버튼)를 메모리로 콕 집어 변수에 담아오기 위해 사용하는 핵심 탐색 메서드는?",
+    "choices": [
+      "document.addEventListener()",
+      "console.log()",
+      "document.querySelector('#submit-btn')",
+      "window.alert('#submit-btn')"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "`document.querySelector`는 괄호 안에 CSS 선택자 규칙(아이디는 #, 클래스는 .)을 넣어 DOM 트리에서 대상 객체를 정확히 찾아 꺼내오는 탐색용 핀셋이다.",
+      "whyCorrect": "자료의 요소 고르기 파트에서 타겟 대상을 콕 집어 변수에 담아오는 핵심 탐색 명령으로 `document.querySelector('#submit-btn')` 예시를 명확히 제시했다.",
+      "whyIncorrect": "addEventListener는 센서 부착, log는 콘솔 출력, alert는 경고창 띄우기 명령어이다.",
+      "examPoint": "JS가 화면에 무슨 짓을 하려면 일단 '그 녀석을 멱살 잡고 끌고 오는(탐색)' 행위가 무조건 1순위로 선행되어야 함을 묻는 가장 기초적인 문제이다.",
+      "practicalExample": "`const myBtn = document.querySelector('.login-btn');` 코드는 렌더링된 화면 구석에 있는 로그인 버튼의 통제권을 JS 변수 `myBtn`에게 넘겨준다."
+    }
+  },
+  {
+    "id": "q-js-042",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "DOM 조작 과정에서, 사용자가 `<input>` 태그에 직접 키보드로 친 글자를 낚아챌 때는 `.value`를 쓴다. 그렇다면 `<h1>`이나 `<div>`처럼 태그 사이에 고정된 일반 텍스트 글자를 바꾸거나 읽어올 때 쓰는 속성은 무엇인가?",
+    "choices": [
+      ".innerText",
+      ".placeholder",
+      ".textContent",
+      ".value"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "`.textContent`는 일반 컨테이너 태그(div, h1, span 등)가 감싸고 있는 순수 문자열 데이터에 접근하여 값을 덮어쓰거나 읽어오는 DOM 속성이다.",
+      "whyCorrect": "자료에서 일반적인 태그 내부의 텍스트 글자 내용을 치환하여 덮어쓸 때 사용하는 속성을 `.textContent`라고 명시했다.",
+      "whyIncorrect": ".innerText는 렌더링된 텍스트만 읽어오는 유사 속성이지만 자료에서 명시한 공식 답변은 textContent이며, placeholder와 value는 폼 요소 전용 속성이다.",
+      "examPoint": "사용자가 입력을 주고받는 상호작용 요소(input)와 단순히 정보를 표시하는 출력 요소(div)를 다루는 DOM 속성의 차이를 묻는다.",
+      "practicalExample": "게시판의 제목이 `<h1 id='title'>안녕하세요</h1>`일 때, `document.querySelector('#title').textContent = '반갑습니다';`를 치면 화면의 글자가 즉시 바뀐다."
+    }
+  },
+  {
+    "id": "q-js-043",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트 프로그램은 코드가 한 번 순차적으로 실행된 뒤 바로 끝나는 것이 아니라, '사용자가 누르는 센서/주문벨'을 상시 대기하는 루프로 진입한다. 이 신호의 총칭을 이르는 용어는?",
+    "choices": [
+      "조건 분기 (Condition)",
+      "함수 선언 (Declaration)",
+      "이벤트 (Event)",
+      "렌더링 (Rendering)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "이벤트(Event)는 마우스 클릭, 키보드 타이핑, 스크롤 등 브라우저 창 내에서 발생하는 사용자의 모든 물리적 인터랙션 신호탄이다.",
+      "whyCorrect": "자료에서 사용자가 브라우저 화면에서 일으키는 물리적 액션(클릭 등)의 총칭을 이벤트(Event)로 정의하고 '주문벨'에 비유했다.",
+      "whyIncorrect": "조건 분기는 if문, 함수 선언은 로직 정의, 렌더링은 화면 그리기 과정이다.",
+      "examPoint": "식당 종업원이 항상 주방에 있는 것이 아니라 딩동(이벤트) 벨이 울리면 반응하듯, 자바스크립트도 이벤트 주도형(Event-driven)으로 동작함을 이해한다.",
+      "practicalExample": "사용자가 화면 위에서 마우스를 휙휙 젓는 행위 하나하나도 모두 `mousemove`라는 엄청난 양의 이벤트 신호탄으로 엔진에 접수되고 있다."
+    }
+  },
+  {
+    "id": "q-js-044",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "특정 화면 객체에 이벤트 감시 센서를 부착하는 명령어 `addEventListener('click', 로직함수);` 에 대한 설명 중 가장 올바른 것은?",
+    "choices": [
+      "한 번 부착된 센서는 단 1회의 클릭만 감지한 뒤 브라우저가 자동으로 삭제한다.",
+      "이 신호(click)가 포착될 때마다 약속해 둔 로직 함수를 엔진이 '자동으로 반복 호출'하여 비즈니스 행동에 반응하게 만든다.",
+      "이 명령어는 화면 갱신을 수행하므로 반드시 HTML의 `<head>` 구역에서만 실행해야 한다.",
+      "두 번째 인자인 로직 함수는 반드시 문자열(String) 형태로 감싸서 전달해야 한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "addEventListener는 타겟 요소에 특정 이벤트(예: click)가 발생할 때마다 두 번째 인자로 넘겨진 콜백 함수를 실행시키는 무한 감시자(Listener)를 등록한다.",
+      "whyCorrect": "자료에서 '사용자가 신호를 유발할 때마다 약속해 둔 로직 함수를 런타임 엔진이 자동으로 알아서 반복 호출한다'고 메커니즘을 명확히 설명했다.",
+      "whyIncorrect": "단 1회성(once 옵션)이 아니면 기본적으로 무한 반복 감지하며, HTML 위치 제약이나 콜백을 문자열로 넘기는 것은 잘못된 문법이다.",
+      "examPoint": "JS 엔진이 백그라운드에서 감시 센서를 켜놓고, 방아쇠가 당겨질 때(이벤트)마다 총알(함수)을 쏜다는 비동기 이벤트 핸들링의 핵심을 묻는다.",
+      "practicalExample": "웹툰 사이트에서 '다음 화 보기' 버튼에 `addEventListener('click', ...)`를 걸어두면, 100번 클릭하면 100번 모두 다음 화로 넘어가는 함수가 실행된다."
+    }
+  },
+  {
+    "id": "q-js-045",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "특정 비즈니스 조건이나 데이터 규칙을 만족하는 참(true) 상황일 때만 내부 코드가 흘러가도록 길을 나누는 제어문(if문)이 가장 필수적으로 사용되는 상황은 언제인가?",
+    "choices": [
+      "문서 내의 <h1> 태그 폰트 색상을 파란색으로 지정할 때",
+      "사용자가 입력한 비밀번호가 8자리 이상인지 검사하여 통과/경고 분기 처리를 할 때",
+      "자바스크립트 파일을 HTML 문서에 연결할 때",
+      "console.log()를 사용하여 단순 문자를 5번 연속으로 출력할 때"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "if문은 논리적 판단(조건)을 통해 프로그램이 실행할 코드 블록의 방향을 결정짓는 분기(Branching) 제어문이다.",
+      "whyCorrect": "자료에서 특정 조건을 만족하는 참(true) 상황일 때만 코드가 흘러가도록 길을 나누는 제어문이라고 했으므로, '비밀번호 검사 및 분기 처리' 상황이 가장 완벽한 활용 예시이다.",
+      "whyIncorrect": "폰트 색상은 CSS, 파일 연결은 HTML tag, 단순 연속 출력은 루프문(for)의 역할이다.",
+      "examPoint": "if문은 개발자가 프로그램에게 지능(판단력)을 부여하는 가장 기초적인 논리 단위임을 묻는다.",
+      "practicalExample": "`if (password.length >= 8) { 회원가입 로직 } else { alert('비밀번호가 너무 짧습니다'); }` 처럼 관문 역할을 한다."
+    }
+  },
+  {
+    "id": "q-js-046",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트에서 구문 마무리를 단정히 하지 않거나 괄호 짝 `})`을 맞추지 않으면, 로컬 브라우저에서는 대충 돌아가더라도 실무 프로덕션 빌드 단계에서 통째로 튕겨 나가는 에러가 발생한다. 이를 예방하기 위한 핵심 기호 2가지는?",
+    "choices": [
+      "큰따옴표(\"\")와 달러($)",
+      "소괄호/중괄호 짝({, })과 세미콜론(;)",
+      "우물정(#)과 점(.)",
+      "별표(*)와 물음표(?)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "자바스크립트는 괄호의 여닫음(Pair)으로 코드 블록의 범위를 묶고, 세미콜론(;)으로 실행문의 종료를 파서(Parser)에게 명확히 알려주어야 구조적 안정성이 보장된다.",
+      "whyCorrect": "선배 팁에서 괄호 짝 `})`을 맞추지 않거나 세미콜론 `;` 처리가 누락되면 빌드 단계에서 튕겨 나간다고 경고하며 이 두 기호의 마무리를 꼽았다.",
+      "whyIncorrect": "따옴표/달러, 우물정/점, 별표/물음표 등은 구문의 논리적 범위 지정과 마침표 역할을 하는 기호들이 아니다.",
+      "examPoint": "코드 압축(Minify) 과정에서 줄바꿈이 전부 사라질 때, 세미콜론과 괄호 짝이 없으면 코드가 엉뚱하게 해석되어 치명적 장애가 생김을 아는지 묻는 실무형 디버깅 문제이다.",
+      "practicalExample": "`const func = () => { console.log('Hi') }` 처럼 대충 짜도 에러가 안 나지만, 뒤에 괄호나 다른 로직이 이어지면 꼬일 수 있으므로 끝에 무조건 `;`을 찍는 버릇을 들인다."
+    }
+  },
+  {
+    "id": "q-js-047",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "다음 중 자바스크립트의 '변수(Variable)'에 대한 비유 및 특성으로 가장 올바르지 않은 것은?",
+    "choices": [
+      "데이터를 일시적으로 보관하는 '유연한 데이터 상자'이다.",
+      "Java와 달리 사전에 데이터 타입(정수, 문자 등)을 고정하여 명시하지 않는다.",
+      "알맹이 값에 따라 타입이 실시간으로 결정되는 동적 타입 언어 특성을 가진다.",
+      "한 번 브라우저 메모리에 저장된 변수는 컴퓨터의 전원을 꺼도 영구적으로 보존된다."
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "변수(Variables)는 프로그램이 런타임(실행 중) 동안 데이터를 조작하기 위해 RAM 메모리에 '일시적'으로 빌려 쓰는 공간이다.",
+      "whyCorrect": "변수는 브라우저 탭이 닫히거나 컴퓨터 전원이 꺼지면 메모리에서 완전히 날아가 소멸하므로, 영구 보존된다는 4번 설명은 명백히 틀렸다.",
+      "whyIncorrect": "데이터 상자 비유, 타입 명시 생략, 동적 타입 언어 특성은 모두 자료에 명시된 자바스크립트 변수 시스템의 올바른 특징이다.",
+      "examPoint": "데이터를 영구 보존하려면 변수가 아닌 데이터베이스(DB)나 로컬 스토리지에 저장해야 한다는 프론트엔드-백엔드 간의 데이터 생명주기 차이를 묻는다.",
+      "practicalExample": "게임을 하다가 새로고침(F5)을 누르면 기껏 모은 골드 변수(let gold)가 0으로 싹 초기화되는 이유가 바로 메모리의 휘발성 때문이다."
+    }
+  },
+  {
+    "id": "q-js-048",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "메서드나 함수에게 외부의 데이터를 건네주기 위해 주입하는 값을 '매개변수(Parameter)'라고 한다. 자바스크립트에서 이 값을 격리하여 주입하기 위해 함수명 바로 뒤에 여닫는 기호는?",
+    "choices": [
+      "< >",
+      "{ }",
+      "[ ]",
+      "( )"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "함수를 호출할 때 외부에서 던져주는 인자(Argument) 값은 반드시 함수명 뒤에 붙은 소괄호 `()` 안에 격리하여 전달해야 한다.",
+      "whyCorrect": "자료에서 메서드나 함수에 건네주는 매개변수 값은 소괄호 () 안에 격리하여 주입한다고 명시했다.",
+      "whyIncorrect": "꺾쇠는 태그, 중괄호는 함수 몸체(블록), 대괄호는 배열 기호이다.",
+      "examPoint": "JS에서 소괄호 `()`는 우선순위 연산뿐만 아니라 '함수를 실행(Trigger)하고 재료를 투입'하는 발사 버튼 역할을 함을 인지한다.",
+      "practicalExample": "브라우저 화면에 팝업을 띄우는 함수 `alert`에게 '반갑습니다'라는 텍스트 재료를 줄 때 `alert('반갑습니다')`처럼 소괄호에 넣어 쏜다."
+    }
+  },
+  {
+    "id": "q-js-049",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "화면에 렌더링된 요소 중 `class=\"alert-box\"`를 가진 <div> 요소를 자바스크립트로 콕 집어 변수에 담고자 할 때, 가장 올바른 코드는 무엇인가?",
+    "choices": [
+      "document.querySelector('alert-box');",
+      "document.querySelector('#alert-box');",
+      "document.querySelector('.alert-box');",
+      "document.querySelector('<alert-box>');"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "`document.querySelector`는 괄호 안에 CSS 선택자 문법을 정확히 동일하게 사용한다. 클래스를 지정하려면 이름 앞에 점(`.`) 기호를 붙여야 한다.",
+      "whyCorrect": "자료에서 '클래스는 ., 아이디는 #' 선택자 문법 규칙을 괄호 문자열 안에 그대로 적용한다고 했으므로, 클래스 타겟팅은 `.alert-box`가 맞다.",
+      "whyIncorrect": "1번은 기호가 없어 태그 선택자로 오인되며, 2번은 아이디(#) 선택자이고, 4번은 꺾쇠를 사용한 잘못된 문법이다.",
+      "examPoint": "HTML 태그 구조와 CSS 선택자 지식, 그리고 JS의 DOM API가 완벽하게 유기적으로 연결되어야만 요소를 정확히 찾아낼 수 있음을 증명하는 문제이다.",
+      "practicalExample": "HTML에 `<button id='btn' class='primary'>`가 있다면, `querySelector('#btn')`이나 `querySelector('.primary')` 둘 중 편한 방식으로 찾아오면 된다."
+    }
+  },
+  {
+    "id": "q-js-050",
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "전통적인 `function` 방식의 함수 선언 문법 트렌드가 현대에 들어와 `=>` 기호를 사용하는 모던 화살표 함수(Arrow Function)로 전환된 가장 주된 표면적 이유는 무엇인가?",
+    "choices": [
+      "기존의 function 키워드로는 이벤트 리스너를 연동할 수 없게 브라우저 스펙이 막혔기 때문이다.",
+      "function이라는 긴 단어를 생략하고 코드를 획기적으로 짧고 간결하게 평탄화하여 가독성을 높이기 위함이다.",
+      "화살표 함수를 쓰면 브라우저의 렌더링 속도가 100배 이상 강제로 증가하기 때문이다.",
+      "CSS 스타일시트 파일 안에서 자바스크립트 함수를 실행하기 위한 전용 문법이기 때문이다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "ES6 화살표 함수는 불필요한 타이핑(function, return, 중괄호 등)을 최소화하여 콜백 함수를 직관적이고 간결하게 표현할 수 있는 문법적 이점을 제공한다. (내부 this 바인딩 특성도 있으나 본 자료 범위는 축약성에 집중)",
+      "whyCorrect": "자료에서 function이라는 긴 단어를 생략하고 기호를 활용해 코드를 획기적으로 짧고 간결하게 평탄화하는 목적이라고 명시했다.",
+      "whyIncorrect": "이벤트 연동 불가, 속도 100배 증가, CSS 내부 실행 등은 모두 전혀 사실이 아닌 오답이다.",
+      "examPoint": "왜 실무자들의 최신 코드에는 그 흔한 `function` 단어가 잘 안 보이고 죄다 `() => {}`로 도배되어 있는지 실무 트렌드의 배경을 묻는다.",
+      "practicalExample": "`[1, 2, 3].map(function(num){ return num * 2; })` 처럼 길고 뚱뚱하던 코드가 `[1, 2, 3].map(num => num * 2)` 처럼 한 줄의 예술로 바뀐다."
+    }
+  },
+  {
+    "id": "q-js-051",
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "변수 선언 시 사용되는 `let`과 `const` 키워드 중, '한 번 대입하면 값을 변경(재할당)할 수 없어 시스템 설정값 등 무결성을 유지해야 하는 보호 상자'를 생성하는 키워드는 무엇인가?",
+    "choices": [
+      "let",
+      "const",
+      "var",
+      "static"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "const(Constant)는 초기 선언 이후에 값의 재할당을 문법적으로 강제 차단하여, 실수로 다른 값이 덮어씌워져 프로그램이 오작동하는 것을 막는 안전장치이다.",
+      "whyCorrect": "자료에서 절대 고정되어 변하지 않는 보호해야 하는 값을 담을 때 선택하며, 값을 변경(재할당)할 수 없어 무결성을 유지하는 키워드를 `const`로 정의했다.",
+      "whyIncorrect": "let은 자유롭게 값이 변하는 가변 변수, var는 구식 변수이다.",
+      "examPoint": "데이터를 보호하는 최소한의 자물쇠가 `const`임을 인식하고, 코딩을 시작할 때 항상 무의식적으로 `const`를 먼저 치는 습관을 들였는지 묻는다.",
+      "practicalExample": "서버의 URL 주소나 회사 이름 같은 것들은 중간에 바뀔 일이 절대 없으므로 `const API_URL = 'http://...';` 처럼 단단하게 잠가둔다."
+    }
   }
 ]

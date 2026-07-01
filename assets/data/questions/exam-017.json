@@ -1,0 +1,948 @@
+[
+  {
+    "id": "q-adx-agentforce-001",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce AI 에이전트 플랫폼 이름은?",
+    "choices": [
+      "Einstein AI",
+      "AI 에이전트 플랫폼",
+      "Copilot",
+      "AutoML"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Agentforce는 Salesforce의 자율 AI 에이전트 플랫폼으로, 사람 개입 없이 고객 응대나 반복 업무를 스스로 수행한다.",
+      "whyCorrect": "사람 개입 없이 자율적으로 작업을 수행하는 Salesforce의 공식 AI 에이전트 플랫폼 이름이 Agentforce(AI 에이전트 플랫폼)이므로 B가 정답이다.",
+      "whyIncorrect": "Einstein AI는 여러 AI 기능을 아우르는 브랜드명이고, Copilot은 사용자와 협업하는 어시스턴트형 제품이며, AutoML은 머신러닝 모델 자동화 도구라 자율 에이전트 플랫폼과는 다르다.",
+      "examPoint": "Agentforce(완전 자율)와 Einstein Copilot(사용자 협업형 어시스턴트)을 혼동하지 않는 것이 이 영역의 첫 관문이다.",
+      "practicalExample": "주문 문의가 오면 사람이 응대하지 않아도 에이전트가 스스로 주문 상태를 조회해 답변까지 완료하는 것이 Agentforce의 전형적인 동작이다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-002",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "AI 에이전트 권한 제어 방법은?",
+    "choices": [
+      "모든 권한 부여",
+      "프로필/권한세트로 제어",
+      "관리자가 직접 모니터링",
+      "제어 불필요"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "AI 에이전트도 Agent User라는 전용 사용자 계정으로 운영되며, 일반 사용자와 동일하게 프로필과 권한 세트로 데이터 접근 범위가 제어된다.",
+      "whyCorrect": "에이전트의 권한도 결국 Salesforce의 표준 보안 모델(Profile + Permission Set)을 그대로 따르므로 B가 정답이다.",
+      "whyIncorrect": "모든 권한을 무조건 부여하는 것은 최소 권한 원칙에 위배되고, 매번 수동 모니터링이나 '제어 불필요'는 실제 운영 방식과 맞지 않는다.",
+      "examPoint": "'에이전트도 결국 하나의 사용자 계정'이라는 관점으로 접근하면 권한 관련 문제는 대부분 프로필/권한세트로 귀결된다.",
+      "practicalExample": "에이전트가 Case는 만들 수 있지만 Opportunity는 못 보게 하려면, Agent User의 권한 세트에서 Case 권한만 부여하면 된다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-003",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce AI 보안 레이어 이름은?",
+    "choices": [
+      "Trust Shield",
+      "AI 보안 레이어",
+      "Security Cloud",
+      "Data Vault"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Einstein Trust Layer는 데이터 마스킹, 유해 콘텐츠 필터링, 감사 로그 등 AI 사용 시 보안과 신뢰성을 담당하는 레이어다.",
+      "whyCorrect": "AI 보안을 전담하는 Salesforce의 공식 레이어 명칭이 Einstein Trust Layer(AI 보안 레이어)이므로 B가 정답이다.",
+      "whyIncorrect": "Trust Shield, Security Cloud, Data Vault는 실제 Salesforce의 AI 보안 레이어 명칭이 아닌 만들어진 오답이다.",
+      "examPoint": "AI 관련 보안 문제가 나오면 거의 항상 Einstein Trust Layer의 5가지 하위 기능(Masking/Retention/Toxicity/Audit/Grounding) 중 하나를 묻는 문제라는 걸 기억하자.",
+      "practicalExample": "외부 LLM에 고객 데이터를 보내기 전에 카드번호가 자동으로 마스킹되는 건 Einstein Trust Layer가 뒤에서 작동하기 때문이다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-004",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "AI에게 표준화된 지시문을 설정하는 기능은?",
+    "choices": [
+      "Agent Script",
+      "프롬프트 템플릿",
+      "AI Config",
+      "Einstein Setup"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Prompt Template은 관리자가 Setup에서 만드는 재사용 가능한 AI 지시문으로, AI 응답의 톤과 형식을 일관되게 유지시켜준다.",
+      "whyCorrect": "AI에게 표준화된 지시문을 주는 기능은 정확히 Prompt Template(프롬프트 템플릿)이므로 B가 정답이다.",
+      "whyIncorrect": "Agent Script, AI Config, Einstein Setup은 실제 Salesforce 기능 명칭이 아니다.",
+      "examPoint": "Prompt Template의 4가지 유형(Sales Email/Record Summary/Field Generation/Flex)까지 함께 기억해두면 응용 문제에도 대응할 수 있다.",
+      "practicalExample": "영업사원마다 이메일 톤이 제각각이지 않도록, 회사 표준 문구가 담긴 Prompt Template을 만들어 전 직원이 재사용하게 한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-005",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Agentforce의 Topic이란?",
+    "choices": [
+      "AI가 학습하는 데이터",
+      "에이전트가 처리하는 비즈니스 영역이나 업무 범위",
+      "AI 응답 템플릿",
+      "AI 보안 레이어"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Topic은 에이전트가 담당할 수 있는 업무 범위(주문 문의, 환불 처리 등)를 정의하는 구성 요소다.",
+      "whyCorrect": "Topic의 정의가 '에이전트가 처리하는 비즈니스 영역/업무 범위'이므로 B가 정답이다.",
+      "whyIncorrect": "학습 데이터, 응답 템플릿, 보안 레이어는 각각 다른 개념(모델 학습, Prompt Template, Trust Layer)을 가리킨다.",
+      "examPoint": "Topic(어떤 영역을 다루는가)과 Action(구체적으로 무엇을 하는가)을 짝지어 기억하면 헷갈리지 않는다.",
+      "practicalExample": "'환불 처리'라는 Topic 안에 '주문 조회', '환불 승인' 같은 세부 Action들이 속하는 구조다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-006",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Agentforce의 Action이란?",
+    "choices": [
+      "AI 모델 학습 과정",
+      "에이전트가 수행하는 구체적인 작업",
+      "Trust Layer의 구성 요소",
+      "Prompt Template의 다른 이름"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Action은 에이전트가 실제로 실행하는 구체적인 동작(레코드 조회, Case 생성, 이메일 발송 등)을 정의한다.",
+      "whyCorrect": "Action의 정의가 '에이전트가 수행하는 구체적인 작업'이므로 B가 정답이다.",
+      "whyIncorrect": "모델 학습 과정, Trust Layer 구성 요소, Prompt Template의 별칭은 모두 Action과 다른 개념이다.",
+      "examPoint": "Topic은 '분야', Action은 '실제 행동'이라는 한 단어 대응으로 암기해두면 좋다.",
+      "practicalExample": "고객이 배송 조회를 요청하면, 에이전트는 'Case 조회'라는 Action을 실행해 실제 배송 상태 레코드를 가져온다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-007",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Einstein Trust Layer에서 Data Masking의 역할은?",
+    "choices": [
+      "데이터를 암호화하여 저장",
+      "외부 AI 모델로 전송 전 민감한 데이터를 자동으로 마스킹",
+      "사용자별 데이터 접근 제어",
+      "AI 응답의 유해성 검사"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Data Masking은 카드번호, 주민번호 등 PII가 외부 LLM으로 전송되기 전에 자동으로 가려주는 기능이다.",
+      "whyCorrect": "'외부 AI 모델 전송 전 민감 데이터 자동 마스킹'이 Data Masking의 정의 그대로이므로 B가 정답이다.",
+      "whyIncorrect": "암호화 저장은 Shield Platform Encryption의 영역이고, 사용자별 접근 제어는 FLS/프로필의 역할이며, 응답 유해성 검사는 Toxicity Detection의 역할이다.",
+      "examPoint": "'전송 전 마스킹'=Data Masking, '학습에 미사용'=Zero Data Retention, '응답 내용 검증'=Toxicity Detection이라는 키워드 삼단 매칭이 시험 핵심이다.",
+      "practicalExample": "고객 카드번호가 Salesforce에 저장돼 있어도, AI가 외부 LLM에 질의를 보낼 때는 그 번호가 마스킹된 값으로만 전달된다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-008",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Zero Data Retention이란?",
+    "choices": [
+      "Salesforce가 데이터를 30일만 보관",
+      "외부 LLM이 전달받은 데이터를 저장하거나 학습에 사용하지 않음",
+      "사용자가 데이터를 직접 삭제",
+      "백업 없이 운영"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Zero Data Retention은 Salesforce 데이터가 외부 LLM에 전달되더라도 그 모델의 저장이나 학습에 재사용되지 않도록 보장하는 정책이다.",
+      "whyCorrect": "'외부 LLM이 데이터를 저장·학습에 사용하지 않음'이 Zero Data Retention의 정확한 정의이므로 B가 정답이다.",
+      "whyIncorrect": "30일 보관, 사용자 직접 삭제, 백업 미운영은 모두 Zero Data Retention과 무관한 설명이다.",
+      "examPoint": "'내 데이터가 AI 학습에 쓰이지 않게 하려면?'이라는 질문에는 항상 Zero Data Retention이 정답이라는 패턴을 기억하자.",
+      "practicalExample": "외부 LLM 제공업체에 질의를 보내도, 그 회사가 우리 고객 데이터를 자기 모델 학습에 재사용할 수 없는 이유가 Zero Data Retention 정책 때문이다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-009",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Agentforce Agent User의 권한은 어떻게 제어하나요?",
+    "choices": [
+      "별도 제어 방법 없음, 모든 권한 보유",
+      "일반 사용자와 동일하게 프로필과 권한 집합으로 제어",
+      "Trust Layer가 자동으로 제어",
+      "관리자가 매번 수동으로 설정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Agent User는 에이전트 전용 사용자 계정으로, 일반 사용자와 똑같이 Profile과 Permission Set으로 데이터 접근 권한이 제어된다.",
+      "whyCorrect": "Agent User도 결국 사용자 계정이라 표준 보안 모델(Profile+Permission Set)을 그대로 따르므로 B가 정답이다.",
+      "whyIncorrect": "모든 권한을 자동으로 갖는 것이 아니며, Trust Layer는 데이터 보호 담당이지 권한 부여 담당이 아니고, 매 요청마다 관리자가 수동 설정하는 방식도 아니다.",
+      "examPoint": "Agent User = '로그인하지 않는 특수한 직원 한 명'이라고 생각하면 권한 관리 원리가 사람 사용자와 똑같다는 것이 이해된다.",
+      "practicalExample": "영업 에이전트용 Agent User에게는 Lead/Opportunity 권한만, 서비스 에이전트용 Agent User에게는 Case 권한만 부여하는 식으로 분리 운영한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-010",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Toxicity Detection의 역할은?",
+    "choices": [
+      "데이터 마스킹",
+      "AI가 생성한 응답에서 유해하거나 부적절한 콘텐츠 필터링",
+      "사용자 인증 강화",
+      "데이터 보관 기간 제한"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Toxicity Detection은 AI가 생성한 답변 자체를 검사해 유해하거나 부적절한 내용을 걸러내는 사후 검증 기능이다.",
+      "whyCorrect": "'AI 생성 응답의 유해 콘텐츠 필터링'이 Toxicity Detection의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "데이터 마스킹은 입력 단계의 보호 기능이고, 사용자 인증 강화나 보관 기간 제한은 이 기능과 관련이 없다.",
+      "examPoint": "Data Masking은 '보내기 전'(입력), Toxicity Detection은 '받은 후'(출력)를 검사한다는 시점 차이로 구분하면 명확하다.",
+      "practicalExample": "AI가 실수로 공격적이거나 부적절한 문장을 생성하려 해도, Toxicity Detection이 그 응답을 걸러내 고객에게 전달되지 않게 막는다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-011",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Grounding in Agentforce란?",
+    "choices": [
+      "에이전트를 인터넷에 연결하는 것",
+      "AI 응답을 Salesforce의 실제 데이터와 컨텍스트에 기반하게 하는 것",
+      "에이전트 학습 과정",
+      "Trust Layer의 보안 기능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Grounding은 AI가 막연한 추측이 아니라 실제 Salesforce 레코드와 지식 베이스에 근거해 답변을 생성하도록 하는 정확성 확보 기법이다.",
+      "whyCorrect": "'AI 응답을 실제 Salesforce 데이터/컨텍스트에 기반하게 하는 것'이 Grounding의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "인터넷 연결이나 학습 과정, 보안 기능은 Grounding의 정의와 무관하다.",
+      "examPoint": "Grounding이 없으면 AI가 '그럴듯하지만 틀린' 답을 만들 위험이 있다는 것, 그래서 실제 레코드 데이터를 근거로 삼는다는 것이 핵심 취지다.",
+      "practicalExample": "고객이 '내 최근 주문 상태는?'이라고 물으면, 에이전트는 실제 Order 레코드를 조회(Grounding)해서 정확한 상태를 답한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-012",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Agentforce의 Topic이란? (구성 요소 정의 재확인)",
+    "choices": [
+      "AI 학습 데이터",
+      "에이전트가 처리하는 비즈니스 영역",
+      "AI 응답 템플릿",
+      "AI 보안 레이어"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Topic은 에이전트가 다룰 수 있는 업무 범위(주문, 환불, 기술지원 등)를 정의하는 Agentforce의 핵심 구성 요소다.",
+      "whyCorrect": "Topic이 '에이전트가 처리하는 비즈니스 영역'을 정의한다는 것은 Agentforce 구성 요소의 기본 정의이므로 B가 정답이다.",
+      "whyIncorrect": "학습 데이터, 응답 템플릿, 보안 레이어는 각각 모델 학습, Prompt Template, Trust Layer의 영역이라 Topic과 다르다.",
+      "examPoint": "같은 개념이 반복 출제되는 경우가 많으니, Topic·Action·Prompt Template·Trust Layer 네 가지 구성 요소의 역할을 표로 정리해두면 실수를 줄일 수 있다.",
+      "practicalExample": "기술지원 Topic 안에는 '오류 코드 조회', '매뉴얼 안내' 같은 세부 업무가 포함된다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-013",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Data Masking의 역할은? (재확인)",
+    "choices": [
+      "데이터 암호화 저장",
+      "외부 AI 전송 전 민감 데이터 자동 마스킹",
+      "사용자별 데이터 접근 제어",
+      "유해성 검사"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Data Masking은 고객 개인정보가 외부 AI 모델로 넘어가기 전에 자동으로 가려주는 Einstein Trust Layer의 핵심 보호 기능이다.",
+      "whyCorrect": "외부 AI 전송 전 민감 데이터를 자동으로 마스킹하는 것이 Data Masking의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "암호화 저장은 다른 보안 기능의 영역이고, 접근 제어는 FLS/권한 체계의 역할이며, 유해성 검사는 Toxicity Detection이 담당한다.",
+      "examPoint": "Data Masking을 '전송 전 자동 모자이크'라고 이미지화해서 기억하면 헷갈리지 않는다.",
+      "practicalExample": "AI가 상담 내역을 요약할 때, 원문에 있는 카드번호는 마스킹된 채로만 AI 모델에 전달된다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-014",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Toxicity Detection의 역할은? (재확인)",
+    "choices": [
+      "데이터 마스킹",
+      "AI 생성 응답의 유해 콘텐츠 필터링",
+      "데이터 보관 기간 제한",
+      "사용자 인증 강화"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Toxicity Detection은 AI가 만든 답변을 검토해서 부적절하거나 유해한 표현을 걸러내는 출력 단계 안전장치다.",
+      "whyCorrect": "AI 생성 응답에서 유해 콘텐츠를 필터링하는 것이 정의이므로 B가 정답이다.",
+      "whyIncorrect": "데이터 마스킹은 입력 단계 기능이고, 보관 기간 제한이나 인증 강화는 Toxicity Detection과 관계없다.",
+      "examPoint": "입력 보호(Data Masking) vs 출력 검증(Toxicity Detection)이라는 축으로 5개 Trust Layer 기능을 분류해서 외우면 빠르게 풀린다.",
+      "practicalExample": "에이전트가 실수로 무례한 답변을 생성하려 해도 Toxicity Detection이 걸러내 실제 고객에게는 전달되지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-015",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Grounding이란? (재확인)",
+    "choices": [
+      "에이전트 인터넷 연결",
+      "AI 응답을 실제 Salesforce 데이터에 기반하게 하는 것",
+      "에이전트 학습 과정",
+      "보안 기능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Grounding은 AI가 실제 레코드나 지식 베이스에 근거해 응답을 생성하도록 만들어 답변의 정확성을 높이는 메커니즘이다.",
+      "whyCorrect": "AI 응답을 실제 Salesforce 데이터에 기반하게 하는 것이 Grounding의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "인터넷 연결이나 학습 과정, 단순 보안 기능은 Grounding의 정의와 다르다.",
+      "examPoint": "Grounding이 잘 되면 AI가 '환각(hallucination)' 없이 실제 데이터 기반으로만 답한다는 실무적 의미까지 알아두면 좋다.",
+      "practicalExample": "에이전트가 '이 계좌의 잔여 포인트는 몇 점인가요?'라는 질문에, 실제 레코드를 조회한 값으로 답하는 것이 Grounding이 작동한 결과다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-016",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Agentforce 에이전트의 구성 요소 중 에이전트가 다루는 업무 영역을 정의하는 것은?",
+    "choices": [
+      "Action",
+      "Topic",
+      "프롬프트 템플릿",
+      "Agent User"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "업무 영역(청구 문의, 배송 추적 등)을 정의하는 Agentforce 구성 요소는 Topic이다.",
+      "whyCorrect": "Topic이 에이전트가 처리할 수 있는 비즈니스 영역을 정의하는 구성 요소이므로 B가 정답이다.",
+      "whyIncorrect": "Action은 실제 작업 실행 단위이고, 프롬프트 템플릿은 응답 형식 지정이며, Agent User는 에이전트의 사용자 계정 자체를 가리킨다.",
+      "examPoint": "'영역을 정의' → Topic, '작업을 실행' → Action이라는 두 단어 대응만 정확히 짚으면 이 유형의 문제는 항상 풀린다.",
+      "practicalExample": "'청구 문의' Topic 안에 '청구서 조회', '결제 내역 확인' 같은 세부 업무 범위가 포함된다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-017",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Einstein Trust Layer의 구성 요소가 아닌 것은?",
+    "choices": [
+      "Data Masking",
+      "Toxicity Detection",
+      "Zero Data Retention",
+      "Flow Builder"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Einstein Trust Layer의 5대 핵심 기능은 Data Masking, Zero Data Retention, Toxicity Detection, Audit Trail, Grounding이다.",
+      "whyCorrect": "Flow Builder는 자동화(Flow) 제작 도구로 Einstein Trust Layer와는 전혀 다른 카테고리의 기능이므로 D가 정답(구성 요소가 아닌 것)이다.",
+      "whyIncorrect": "Data Masking, Toxicity Detection, Zero Data Retention은 모두 Einstein Trust Layer의 실제 구성 요소다.",
+      "examPoint": "Einstein Trust Layer 5대 기능(Masking/Retention/Toxicity/Audit/Grounding)을 통으로 암기해두면 '아닌 것 고르기' 유형에 바로 대응된다.",
+      "practicalExample": "Flow Builder로 승인 프로세스를 자동화하는 것과, Einstein Trust Layer가 AI 응답을 보호하는 것은 완전히 별개의 영역이다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-018",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "AI 에이전트에게 최소 권한 원칙(Least Privilege)을 적용하는 방법은?",
+    "choices": [
+      "에이전트에게 모든 권한 부여",
+      "Agent User에게 업무에 필요한 최소한의 프로필과 권한 집합만 할당",
+      "Trust Layer가 자동 제어",
+      "관리자가 매번 수동 설정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "AI 에이전트도 사람 사용자와 동일하게, Agent User 계정에 업무 수행에 필요한 최소한의 Profile/Permission Set만 부여하는 것이 최소 권한 원칙의 실천이다.",
+      "whyCorrect": "Agent User에게 필요한 최소 권한만 할당하는 것이 정확히 Least Privilege 원칙의 적용 방법이므로 B가 정답이다.",
+      "whyIncorrect": "모든 권한 부여는 최소 권한 원칙에 정반대이고, Trust Layer는 권한 제어가 아닌 데이터 보호 담당이며, 매번 수동 설정은 실제 운영 방식이 아니다.",
+      "examPoint": "'최소 권한'이라는 보안 원칙은 사람이든 AI든 동일하게 적용된다는 점, 그리고 실현 수단은 항상 Profile/Permission Set이라는 점이 핵심이다.",
+      "practicalExample": "주문 조회만 하면 되는 에이전트에게 결제 정보 수정 권한까지 주지 않고, 딱 필요한 Case/Order 읽기 권한만 부여하는 것이 최소 권한 적용 사례다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-019",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Prompt Template에서 Grounding Data를 사용하는 목적은?",
+    "choices": [
+      "AI 모델 학습",
+      "AI 응답을 실제 Salesforce 레코드 데이터에 기반하게 하여 정확성 향상",
+      "데이터 마스킹",
+      "응답 속도 향상"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Prompt Template 안에 Grounding Data(실제 레코드 필드 값)를 포함시키면, AI가 그 구체적인 데이터를 근거로 정확한 응답을 생성할 수 있다.",
+      "whyCorrect": "Grounding Data의 목적이 '실제 레코드 데이터에 기반한 정확성 향상'이므로 B가 정답이다.",
+      "whyIncorrect": "모델 학습, 데이터 마스킹, 응답 속도 향상은 Grounding Data의 목적과 무관하다.",
+      "examPoint": "Grounding(개념 자체)과 Grounding Data(Prompt Template 안에 실제로 주입하는 데이터)를 같은 맥락으로 연결해서 이해하면 문제 풀이가 쉬워진다.",
+      "practicalExample": "Opportunity 요약 이메일 Prompt Template에 실제 Opportunity의 금액·단계 필드 값을 Grounding Data로 넣으면, AI가 그 수치를 정확히 인용해 이메일을 작성한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-020",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Agentforce 에이전트가 Flow를 Action으로 호출하는 것의 장점은?",
+    "choices": [
+      "Flow가 더 빠름",
+      "기존 Salesforce 자동화 로직을 AI 에이전트에서 재사용 가능",
+      "코드 없이 가능",
+      "API 호출 비용 절감"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "이미 구축해 둔 Flow 자동화 로직을 Agentforce의 Action으로 그대로 연결하면, 별도로 재개발하지 않고도 AI 에이전트가 그 로직을 활용할 수 있다.",
+      "whyCorrect": "가장 실질적인 장점은 '기존 자동화 로직의 재사용'이므로 B가 정답이다.",
+      "whyIncorrect": "속도 향상이나 비용 절감을 직접 목적으로 하는 기능이 아니며, Flow 자체는 원래도 대부분 코드 없이 만들 수 있어 '코드 없이 가능'은 Action 연동의 고유 장점이 아니다.",
+      "examPoint": "'이미 있는 자동화를 재사용'이라는 효율성 관점이 Flow-Action 연동 문제의 핵심 포인트다.",
+      "practicalExample": "기존에 만들어둔 '환불 승인 Flow'를 에이전트의 Action으로 그대로 연결하면, 새로 개발하지 않고도 AI가 환불 처리를 수행할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-021",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Agentforce 에이전트 대화 기록을 감사하려면?",
+    "choices": [
+      "Login History 확인",
+      "Einstein Trust Layer Audit Trail 확인",
+      "Setup Audit Trail 확인",
+      "Chatter 피드 확인"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "AI 에이전트와 고객 간의 모든 대화 입출력은 Einstein Trust Layer의 Audit Trail에 로깅되어 보안 감사와 규정 준수 확인에 활용된다.",
+      "whyCorrect": "AI 상호작용 기록 감사를 위한 전용 기능이 Einstein Trust Layer Audit Trail이므로 B가 정답이다.",
+      "whyIncorrect": "Login History는 사람의 로그인 기록이고, Setup Audit Trail은 관리자 설정 변경 이력이며, Chatter 피드는 소셜 협업 게시물이라 AI 대화 로그와는 다른 영역이다.",
+      "examPoint": "'설정 변경 이력'은 Setup Audit Trail, 'AI 대화 이력'은 Einstein Trust Layer Audit Trail로 서로 다른 감사 로그라는 점을 구분해야 한다.",
+      "practicalExample": "컴플라이언스 담당자가 지난달 AI 에이전트가 고객에게 어떤 답을 했는지 전수 조사하려면 Einstein Trust Layer의 Audit Trail을 열람한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-022",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "AI 에이전트가 처리할 수 없는 요청을 받으면 어떻게 되나요?",
+    "choices": [
+      "오류 메시지 표시 후 종료",
+      "Topic 외 요청은 사람 상담원에게 에스컬레이션",
+      "자동으로 학습하여 처리",
+      "무한 재시도"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "에이전트가 정의된 Topic 범위를 벗어나거나 처리하기 어려운 요청을 받으면, Human Escalation 기능으로 자동으로 사람 상담원에게 넘겨진다.",
+      "whyCorrect": "Topic 밖의 요청은 사람 상담원에게 에스컬레이션되는 것이 Agentforce의 표준 동작이므로 B가 정답이다.",
+      "whyIncorrect": "오류를 띄우고 그냥 종료하거나 무한 재시도하는 것은 사용자 경험을 해치고, 요청 하나로 즉시 자동 학습해 처리 범위를 넓히는 기능은 존재하지 않는다.",
+      "examPoint": "Human Escalation은 '실패'가 아니라 '안전장치'라는 관점으로 이해하는 것이 중요하다 — 처리 불가 상황을 사람에게 매끄럽게 넘기는 설계다.",
+      "practicalExample": "법률 상담처럼 민감하고 복잡한 문의가 들어오면, 에이전트는 스스로 답하려 하지 않고 바로 사람 상담원에게 대화를 넘긴다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-023",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Agentforce에서 Human Escalation이란?",
+    "choices": [
+      "AI가 승인 요청",
+      "에이전트가 처리할 수 없는 복잡한 요청을 사람 상담원에게 이전",
+      "사람이 AI를 감독",
+      "관리자 알림"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Human Escalation은 에이전트가 Topic 범위를 벗어나거나 복잡한 요청을 받았을 때 자동으로 사람 상담원에게 대화를 넘기는 기능이다.",
+      "whyCorrect": "'처리할 수 없는 복잡한 요청을 사람 상담원에게 이전'이 Human Escalation의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "AI의 승인 요청, 사람의 AI 감독, 단순 관리자 알림은 Human Escalation의 정의와 다른 개념이다.",
+      "examPoint": "Human Escalation은 에이전트의 '한계 인식 후 위임' 동작이라는 점을 기억하면 관련 시나리오 문제를 쉽게 풀 수 있다.",
+      "practicalExample": "에이전트가 세 번의 대화 시도에도 고객 문제를 해결하지 못하면, 대화 내용을 요약해 사람 상담원에게 자동으로 넘긴다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-024",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Agentforce 에이전트를 특정 채널(채팅, 이메일 등)에 배포하려면?",
+    "choices": [
+      "자동으로 모든 채널에 배포",
+      "Messaging for In-App and Web이나 해당 채널과의 통합 설정 필요",
+      "별도 라이선스 구매",
+      "Apex 코드 작성 필요"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "에이전트를 웹 채팅·이메일·Slack 등 특정 채널에 노출시키려면, 그 채널에 맞는 통합(예: 웹 채팅용 Messaging for In-App and Web)을 별도로 구성해야 한다.",
+      "whyCorrect": "채널별 통합 설정이 필요하다는 것이 정답 내용과 일치하므로 B가 정답이다.",
+      "whyIncorrect": "만들었다고 모든 채널에 자동 배포되는 것이 아니며, 채널 연동 자체가 반드시 별도 라이선스나 Apex 코드를 요구하는 것도 아니다.",
+      "examPoint": "에이전트를 '만드는 것'과 '특정 채널에 배포하는 것'은 별개의 단계라는 점, 그리고 배포는 채널별 통합 설정으로 이뤄진다는 점이 핵심이다.",
+      "practicalExample": "같은 에이전트를 웹사이트 채팅창에 노출하려면 Messaging for In-App and Web 통합을, 이메일 채널에 노출하려면 이메일 채널 통합을 각각 구성해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-025",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to deploy an AI agent that can autonomously handle common customer service inquiries without human intervention. Which Salesforce platform should be used?",
+    "choices": [
+      "Einstein Analytics",
+      "Flow Builder",
+      "AI 에이전트 플랫폼",
+      "Apex Code"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "사람 개입 없이 자율적으로 고객 문의를 처리하는 플랫폼은 Salesforce의 AI 에이전트 플랫폼인 Agentforce다.",
+      "whyCorrect": "자율적 고객 서비스 AI 에이전트라는 요구사항은 Agentforce(AI 에이전트 플랫폼)의 정의와 정확히 일치한다.",
+      "whyIncorrect": "Einstein Analytics는 데이터 분석 도구이고, Flow Builder는 규칙 기반 자동화 도구이며, Apex Code는 개발자용 코드 작성 도구라 자율 AI 에이전트와는 다르다.",
+      "examPoint": "'사람 개입 없이 자율적으로'라는 키워드가 나오면 Agentforce를 바로 떠올리는 것이 이 영역의 기본 패턴이다.",
+      "practicalExample": "야간에 들어온 배송 문의를 사람이 출근할 때까지 기다리지 않고 에이전트가 즉시 답변까지 완료하는 것이 Agentforce의 활용 사례다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-026",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which Salesforce feature ensures that sensitive customer data is masked before being sent to an external AI model?",
+    "choices": [
+      "Shield Platform Encryption",
+      "AI 보안 레이어",
+      "FLS",
+      "Data Masking Rules"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "외부 AI 모델로 전송되기 전에 민감 데이터를 자동으로 가려주는 기능은 Einstein Trust Layer(AI 보안 레이어)의 Data Masking이다.",
+      "whyCorrect": "PII 제거, 독성 감지, Zero Data Retention을 아우르는 Einstein Trust Layer가 외부 전송 전 마스킹을 책임지므로 B가 정답이다.",
+      "whyIncorrect": "Shield Platform Encryption은 Salesforce 내부 저장 데이터 암호화이고, FLS는 Salesforce 내 필드 접근 제어이며, Data Masking Rules는 외부 AI 전송과 무관한 Salesforce 내부 마스킹 기능이다.",
+      "examPoint": "'외부 AI 모델로 나가기 전' 이라는 문구가 나오면 무조건 Einstein Trust Layer 영역이라고 판단하자.",
+      "practicalExample": "고객 상담 요약을 AI에게 맡길 때, 원본 레코드의 카드번호는 외부로 나가기 전 자동으로 마스킹된 값으로 대체된다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-027",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An administrator wants to ensure an AI agent only has access to the minimum data needed to perform its tasks. Which principle should be applied?",
+    "choices": [
+      "Maximum privilege",
+      "Least privilege",
+      "Role Hierarchy",
+      "OWD Public Read/Write"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "AI 에이전트가 업무 수행에 필요한 최소한의 데이터에만 접근하도록 하는 것은 최소 권한(Least Privilege) 원칙의 적용이다.",
+      "whyCorrect": "에이전트도 Profile+Permission Set으로 필요한 최소 권한만 부여받아야 하므로 정답은 Least Privilege다.",
+      "whyIncorrect": "Maximum privilege는 정반대 개념이라 보안 위험을 키우고, Role Hierarchy는 레코드 공유 체계일 뿐 권한 범위 최소화 원칙이 아니며, OWD Public Read/Write는 오히려 접근을 광범위하게 여는 설정이다.",
+      "examPoint": "'최소한의 데이터만 접근'이라는 문구는 항상 Least Privilege로 직결된다는 것을 기억하자.",
+      "practicalExample": "주문 상태만 조회하면 되는 에이전트에게 전체 고객 재무 정보 접근 권한까지 주지 않는 것이 Least Privilege의 실천이다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-028",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants all AI-generated sales emails to follow a consistent tone and format. What should the administrator configure?",
+    "choices": [
+      "Einstein Bot",
+      "Flow Template",
+      "프롬프트 템플릿",
+      "Agent Action"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "AI가 생성하는 영업 이메일의 톤과 형식을 일관되게 유지하려면 재사용 가능한 지시문인 Prompt Template을 구성해야 한다.",
+      "whyCorrect": "일관된 톤·형식이라는 요구사항은 Prompt Template의 핵심 존재 이유이므로 C가 정답이다.",
+      "whyIncorrect": "Einstein Bot은 챗봇 도구이고, Flow Template은 자동화 흐름 재사용용이며, Agent Action은 에이전트가 수행하는 구체적 작업을 정의하는 것이라 톤/형식 표준화와는 목적이 다르다.",
+      "examPoint": "'일관된 톤/형식'이라는 표현은 거의 항상 Prompt Template으로 직결된다.",
+      "practicalExample": "모든 영업 이메일이 회사 톤앤매너에 맞게 나가도록, Sales Email 유형의 Prompt Template을 만들어 전 영업팀이 공유해서 쓴다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-029",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers is building an Agentforce agent. They want to ensure the agent only performs actions and accesses data within a defined scope. What controls the agents permissions in Salesforce?",
+    "choices": [
+      "AI 보안 레이어",
+      "Profiles and Permission Sets assigned to the Agent User",
+      "Prompt Templates",
+      "Topic Configurations"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "에이전트가 접근할 수 있는 데이터 범위는 그 에이전트의 Agent User에 배정된 Profile과 Permission Set이 결정한다.",
+      "whyCorrect": "데이터 접근 권한은 사람 사용자와 동일하게 Agent User의 Profile/Permission Set으로 통제되므로 B가 정답이다.",
+      "whyIncorrect": "Einstein Trust Layer는 데이터 보호가 목적이고, Prompt Template은 응답 형식을 다루며, Topic Configuration은 업무 영역 범위를 정의할 뿐 세부 데이터 권한을 결정하지는 않는다.",
+      "examPoint": "'권한(데이터 접근 범위)'을 묻는 문제는 항상 Profile/Permission Set으로 귀결된다는 원칙이 Agentforce 영역에도 그대로 적용된다.",
+      "practicalExample": "에이전트가 Account 레코드는 볼 수 있지만 Contract는 못 보게 하려면, Agent User의 권한 세트에서 Contract 접근 권한을 빼면 된다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-030",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A customer service agent at UC notices that when the AI agent responds to customers, it never reveals the customers full credit card number even though it exists in Salesforce. Which feature is responsible for this?",
+    "choices": [
+      "FLS",
+      "Einstein Trust Layer Data Masking",
+      "Validation Rule",
+      "Connected App restriction"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "AI 응답에서 카드번호 같은 민감 정보가 노출되지 않는 이유는 Einstein Trust Layer의 Data Masking이 외부 전송 전에 자동으로 가리기 때문이다.",
+      "whyCorrect": "PII를 자동 감지해 마스킹 후 AI 모델에 전달하는 기능이 Einstein Trust Layer Data Masking이므로 B가 정답이다.",
+      "whyIncorrect": "FLS는 Salesforce 내부 화면에서의 필드 접근 제어이고, Validation Rule은 저장 시 데이터 검증이며, Connected App restriction은 API 접근 제한이라 AI 응답 마스킹과는 다른 메커니즘이다.",
+      "examPoint": "사람이 화면에서 보는 것을 막는 FLS와, AI에게 전달되는 데이터를 가리는 Data Masking은 완전히 다른 계층의 보호 기능이라는 점을 구분해야 한다.",
+      "practicalExample": "상담원 화면에는 카드번호 뒷자리가 보여도, 에이전트가 AI로 응답을 생성할 때는 그 번호가 마스킹된 채로만 AI에 전달된다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-031",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants AI-generated summary emails for Opportunities to always start with the company tagline and follow a specific format. What should be configured?",
+    "choices": [
+      "Einstein Bot Script",
+      "Flow with Email Action",
+      "프롬프트 템플릿",
+      "Auto-Response Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Opportunity 요약 이메일이 항상 정해진 태그라인과 형식으로 시작하게 하려면, 그 형식을 표준화한 Prompt Template을 구성한다.",
+      "whyCorrect": "형식·구조·시작 문구를 표준화하는 것은 Prompt Template의 역할이므로 C가 정답이다.",
+      "whyIncorrect": "Einstein Bot Script는 챗봇 스크립트이고, Flow with Email Action은 일반적인 자동화 이메일 발송이며, Auto-Response Rule은 트리거 조건 기반 자동 응답이라 AI 생성 콘텐츠의 형식 표준화와는 목적이 다르다.",
+      "examPoint": "'항상 특정 태그라인/형식으로 시작' 같은 요구사항은 Prompt Template의 지시문 설계 문제로 귀결된다.",
+      "practicalExample": "Prompt Template에 '항상 회사 슬로건으로 시작하고, 요약은 3줄 이내로 작성하라'는 지시를 넣으면 모든 AI 생성 이메일이 그 형식을 따른다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-032",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Zero Data Retention이 보장하는 것은? (LLM에 데이터가 저장되지 않도록)",
+    "choices": [
+      "Data Masking",
+      "Toxicity Detection",
+      "Zero Data Retention",
+      "Audit Trail"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "외부 LLM 제공업체가 전달받은 고객 데이터를 저장하거나 자기 모델 학습에 재사용하지 못하도록 막는 것이 Zero Data Retention이다.",
+      "whyCorrect": "'외부 LLM에 데이터가 저장되는 것을 방지'하는 정확한 기능이 Zero Data Retention이므로 C가 정답이다.",
+      "whyIncorrect": "Data Masking은 전송 전 PII 제거이고, Toxicity Detection은 부적절 콘텐츠 감지이며, Audit Trail은 상호작용 로깅이라 데이터 저장 방지와는 목적이 다르다.",
+      "examPoint": "'저장되지 않게'라는 표현은 Zero Data Retention, '내용이 가려지게'는 Data Masking으로 정확히 나눠서 기억하자.",
+      "practicalExample": "외부 LLM 제공업체와 계약할 때 Zero Data Retention이 보장되어 있으면, 우리 회사 데이터가 그 업체의 다른 고객 응답 생성에 쓰일 걱정이 없다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-033",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An Agentforce agent at Universal Containers needs to look up Account information and create Cases in Salesforce. Which component of Agentforce defines what the agent is allowed to do?",
+    "choices": [
+      "Topics",
+      "Actions",
+      "Prompt Templates",
+      "Agent User Profile"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "에이전트가 실제로 할 수 있는 구체적인 작업(조회, 생성 등)의 목록은 Actions로 정의된다.",
+      "whyCorrect": "'Account 조회', 'Case 생성' 같은 구체적 작업을 정의하는 것은 Actions이므로 B가 정답이다.",
+      "whyIncorrect": "Topics는 다루는 업무 영역을 정의할 뿐 구체적 작업 단위는 아니고, Prompt Templates는 응답 형식이며, Agent User Profile은 데이터 접근 권한의 근거일 뿐 작업 자체의 정의는 아니다.",
+      "examPoint": "'무엇을 할 수 있는가(구체적 동작)'는 Actions, '어떤 영역을 다루는가'는 Topics로 나눠서 기억하면 두 개념이 헷갈리지 않는다.",
+      "practicalExample": "에이전트가 Case를 만들 수 있으려면 'Case 생성' Action이 그 에이전트에 등록되어 있어야 한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-034",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants their Agentforce agent to greet customers by name and reference their most recent purchase. Which Agentforce component retrieves this data from Salesforce records?",
+    "choices": [
+      "프롬프트 템플릿",
+      "Flow or Apex",
+      "AI 보안 레이어",
+      "Topic Configuration"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "에이전트가 고객 이름이나 최근 구매 이력처럼 구체적인 레코드 데이터를 실시간으로 가져오려면, Prompt Template만으로는 부족하고 Flow나 Apex를 Action으로 연결해 데이터를 조회해야 한다.",
+      "whyCorrect": "실제 레코드 값을 동적으로 조회하는 로직은 Flow나 Apex 같은 실행 가능한 자동화/코드 계층이 담당하므로 B가 정답이다.",
+      "whyIncorrect": "프롬프트 템플릿은 응답의 형식과 지시문을 담당할 뿐 데이터 조회 로직 자체는 없고, AI 보안 레이어는 데이터 보호가 목적이며, Topic Configuration은 업무 영역만 정의할 뿐 데이터를 가져오는 실행 로직이 아니다.",
+      "examPoint": "'실제 데이터를 조회해서 가져온다'는 동작이 나오면 Flow/Apex 같은 실행 로직을 떠올리고, '어떻게 표현할지'를 묻는다면 Prompt Template을 떠올리는 식으로 역할을 구분하자.",
+      "practicalExample": "에이전트가 '안녕하세요 홍길동님, 최근 구매하신 노트북은 어떠셨나요?'라고 말하려면, Flow가 뒤에서 고객 이름과 최근 주문 레코드를 조회해 그 값을 대화에 채워 넣는다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-035",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to limit the Agentforce agent so it only handles billing and shipping inquiries, and escalates all other topics to human agents. What controls this scope?",
+    "choices": [
+      "Einstein Trust Layer Filters",
+      "Prompt Template restrictions",
+      "Topic Configuration with defined scope",
+      "Agent User Profile permissions"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "에이전트가 다룰 업무 범위를 청구·배송 문의로만 제한하고 나머지는 자동으로 에스컬레이션하게 하려면, Topic Configuration에서 범위를 명시적으로 정의해야 한다.",
+      "whyCorrect": "업무 범위 자체를 제한하는 설정은 Topic Configuration의 역할이므로 C가 정답이다.",
+      "whyIncorrect": "Einstein Trust Layer Filters는 실제 존재하는 정확한 기능명이 아니고, Prompt Template restrictions는 응답 형식 제한일 뿐 업무 범위 제한이 아니며, Agent User Profile permissions는 데이터 접근 권한을 다룰 뿐 어떤 주제를 처리할지는 결정하지 않는다.",
+      "examPoint": "'어떤 주제/영역까지만 다루게 할 것인가'라는 범위 제한 문제는 항상 Topic Configuration으로 귀결된다.",
+      "practicalExample": "청구/배송 Topic만 활성화하고 나머지 Topic은 등록하지 않으면, 그 외 문의는 자동으로 사람 상담원에게 넘어간다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-036",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A compliance officer at UC needs to audit all interactions the Agentforce agent has had with customers over the last month. Which feature provides this?",
+    "choices": [
+      "Login History",
+      "설정 감사 추적",
+      "Einstein Trust Layer Audit Trail",
+      "Chatter History"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "지난 한 달간 에이전트와 고객 간 모든 상호작용을 감사하려면 Einstein Trust Layer의 Audit Trail을 조회해야 한다.",
+      "whyCorrect": "AI 상호작용의 입출력 전체를 로깅해 감사·규정 준수에 활용하는 기능이 Einstein Trust Layer Audit Trail이므로 C가 정답이다.",
+      "whyIncorrect": "Login History는 사람의 로그인 기록일 뿐 AI 대화 내용이 아니고, 설정 감사 추적(Setup Audit Trail)은 관리자의 설정 변경 이력이며, Chatter History는 소셜 게시물 기록이라 AI 대화 감사와는 무관하다.",
+      "examPoint": "'AI 대화 내용 감사'라는 요구사항은 항상 Einstein Trust Layer Audit Trail로 연결된다는 패턴을 확실히 잡아두자.",
+      "practicalExample": "컴플라이언스 담당자가 지난달 에이전트가 고객에게 잘못된 정보를 준 적이 있는지 확인하려면 Audit Trail의 전체 대화 로그를 검토한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-037",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers deployed an Agentforce agent that sometimes generates responses that are inappropriate or off-brand. Which Einstein Trust Layer feature addresses this?",
+    "choices": [
+      "Data Masking",
+      "Zero Data Retention",
+      "Toxicity Detection and Content Filtering",
+      "Grounding"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "AI가 가끔 부적절하거나 브랜드 이미지에 맞지 않는 응답을 생성하는 문제는 Toxicity Detection(콘텐츠 필터링) 기능으로 방지한다.",
+      "whyCorrect": "부적절한 응답을 사전에 걸러내는 기능이 Toxicity Detection and Content Filtering이므로 C가 정답이다.",
+      "whyIncorrect": "Data Masking은 민감 정보 은폐가 목적이고, Zero Data Retention은 데이터 미저장이 목적이며, Grounding은 응답을 실제 데이터에 근거시키는 정확성 기능이라 부적절한 톤/내용 자체를 걸러내는 것과는 다르다.",
+      "examPoint": "'부적절한/브랜드에 안 맞는 응답'이라는 표현이 나오면 Toxicity Detection이 정답이라는 것을 바로 연결하자.",
+      "practicalExample": "에이전트가 무심코 과격하거나 회사 톤에 맞지 않는 표현을 생성하려 해도, Toxicity Detection이 그 응답을 걸러내 고객에게 전달되지 않게 막는다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-038",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants their Agentforce agent to always respond in a formal, professional tone and structure responses with bullet points. How should this be configured?",
+    "choices": [
+      "Agent User Profile setting",
+      "Flow with text formatting",
+      "Prompt Template with tone and format instructions",
+      "Einstein Trust Layer Content Policy"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "항상 공식적인 톤과 불릿 포인트 형식으로 응답하게 하려면, 그 지시사항을 담은 Prompt Template을 구성해야 한다.",
+      "whyCorrect": "톤과 형식을 지정하는 지시문 설계는 Prompt Template의 정확한 용도이므로 C가 정답이다.",
+      "whyIncorrect": "Agent User Profile setting은 데이터 접근 권한을 다룰 뿐 응답 스타일과 무관하고, Flow with text formatting은 일반 자동화 로직이라 AI 응답 톤 제어에는 적합하지 않으며, Einstein Trust Layer Content Policy는 실제 정식 기능명이 아니다.",
+      "examPoint": "'항상 이런 톤/형식으로 답하게 하라'는 요구는 예외 없이 Prompt Template의 지시문 설계 문제다.",
+      "practicalExample": "Prompt Template에 '항상 정중한 존댓말을 쓰고, 답변은 불릿 포인트 3개 이내로 정리하라'는 지시를 넣으면 모든 응답이 그 규칙을 따른다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-039",
+    "category": "세일즈포스",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers deployed an Agentforce agent to handle customer service inquiries. They want the agent to be able to look up order information from an external OMS system in real time. What enables this?",
+    "choices": [
+      "AI 보안 레이어",
+      "External Data Actions connected via MuleSoft or API",
+      "Prompt Template with OMS data",
+      "Connected App OAuth flow"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce 외부의 OMS(주문관리시스템) 데이터를 실시간으로 조회하려면, MuleSoft나 API로 연결된 External Data Action을 구성해야 한다.",
+      "whyCorrect": "외부 시스템의 실시간 데이터를 에이전트가 가져오게 하려면 MuleSoft/API 기반 External Data Action이 필요하므로 B가 정답이다.",
+      "whyIncorrect": "AI 보안 레이어는 데이터 보호가 목적이라 외부 데이터 조회 기능을 제공하지 않고, Prompt Template에 OMS 데이터를 직접 넣는 것은 정적인 방식이라 실시간 조회에 맞지 않으며, Connected App OAuth flow는 인증 수단일 뿐 데이터 조회 로직 자체는 아니다.",
+      "examPoint": "'Salesforce 밖의 외부 시스템 데이터를 실시간으로'라는 요구사항은 항상 MuleSoft/API 연동을 통한 External Data Action으로 연결된다.",
+      "practicalExample": "고객이 배송 상태를 물으면, 에이전트가 External Data Action으로 외부 물류 시스템 API를 호출해 실시간 배송 위치를 가져와 답한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-040",
+    "category": "세일즈포스",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to ensure their Agentforce deployment meets data residency requirements — that customer data never leaves the EU data center when processed by AI. Which feature helps enforce this?",
+    "choices": [
+      "Login IP Ranges",
+      "Einstein Trust Layer with data residency controls",
+      "Trusted IP Ranges",
+      "Session Settings"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "고객 데이터가 AI 처리 과정에서 특정 지역(EU) 밖으로 나가지 않도록 보장하려면, Einstein Trust Layer의 데이터 거주지(data residency) 제어 기능을 활용해야 한다.",
+      "whyCorrect": "AI 처리 시 데이터가 특정 지역을 벗어나지 않도록 강제하는 기능은 Einstein Trust Layer의 데이터 거주지 제어이므로 B가 정답이다.",
+      "whyIncorrect": "Login IP Ranges와 Trusted IP Ranges는 로그인 접근 제어 기능일 뿐 AI 데이터 처리 위치와 무관하고, Session Settings는 세션 관리 설정이라 데이터 거주지 요구사항과는 다른 영역이다.",
+      "examPoint": "'데이터가 특정 지역/국가를 벗어나면 안 된다'는 규정 준수(컴플라이언스) 요구사항은 Einstein Trust Layer의 데이터 거주지 제어로 연결된다는 것을 기억하자.",
+      "practicalExample": "EU 고객 데이터를 다루는 회사가 GDPR 준수를 위해, AI 처리 시에도 데이터가 EU 데이터센터를 벗어나지 않도록 Trust Layer 설정을 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-041",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to measure the effectiveness of their Agentforce deployment. They want to see metrics on how many inquiries the agent handled, escalated, and resolved. What provides this?",
+    "choices": [
+      "Login History",
+      "설정 감사 추적",
+      "Einstein Conversation Insights and Bot Analytics",
+      "Event Monitoring"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "에이전트가 처리·에스컬레이션·해결한 문의 건수 같은 성과 지표는 Einstein Conversation Insights와 Bot Analytics로 확인할 수 있다.",
+      "whyCorrect": "AI 에이전트 배포 효과를 측정하는 전용 분석 도구가 Einstein Conversation Insights and Bot Analytics이므로 C가 정답이다.",
+      "whyIncorrect": "Login History는 사람의 로그인 기록이고, 설정 감사 추적은 설정 변경 이력이며, Event Monitoring은 시스템 이벤트/성능 로그라 에이전트의 업무 처리 성과 지표와는 목적이 다르다.",
+      "examPoint": "'처리/에스컬레이션/해결 건수 같은 성과 지표'라는 표현이 나오면 Einstein Conversation Insights와 Bot Analytics를 떠올리자.",
+      "practicalExample": "관리자가 이번 달 에이전트가 몇 건을 자동 해결했고 몇 건을 사람에게 넘겼는지 확인하려면 Bot Analytics 대시보드를 연다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-042",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to use Agentforce to automatically categorize incoming Cases by topic and urgency before assigning them to agents. Which component handles this decision logic?",
+    "choices": [
+      "AI 보안 레이어",
+      "Agent Action using a Flow with Decision elements",
+      "프롬프트 템플릿",
+      "Case Assignment Rule only"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "들어오는 Case를 주제와 긴급도에 따라 자동 분류하는 판단 로직은, Decision 요소가 포함된 Flow를 Agent Action으로 연결해 구현한다.",
+      "whyCorrect": "조건에 따른 분기 판단이 필요한 로직은 Flow의 Decision 요소로 구현하고 이를 Agent Action으로 호출하는 것이 정확한 방법이므로 B가 정답이다.",
+      "whyIncorrect": "AI 보안 레이어는 데이터 보호 기능이라 분류 로직과 무관하고, Prompt Template은 응답 형식을 다룰 뿐 조건부 판단 로직을 구현하지 않으며, Case Assignment Rule만으로는 AI 에이전트가 사전에 내용을 분석해 분류하는 지능적 판단을 대체할 수 없다.",
+      "examPoint": "'조건에 따라 분류/판단하는 로직'이 필요하면 Flow의 Decision 요소를 Action으로 활용한다는 패턴을 기억해두자.",
+      "practicalExample": "긴급도가 높은 키워드가 포함된 Case는 자동으로 '긴급' 태그가 붙어 우선 배정되도록, Decision 요소가 있는 Flow를 Agent Action으로 연결한다."
+    }
+  },
+  {
+    "id": "q-adx-agentforce-043",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to ensure their Agentforce agent always says \"I am an AI assistant\" at the start of every conversation. What should be configured?",
+    "choices": [
+      "Agent User Profile greeting field",
+      "Prompt Template with system instructions",
+      "Auto-Response Rule for Agent",
+      "Session Settings welcome message"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "모든 대화 시작 시 '저는 AI 어시스턴트입니다'라고 항상 말하게 하려면, 그 지시사항을 시스템 지시문으로 넣은 Prompt Template을 구성해야 한다.",
+      "whyCorrect": "대화 시작 문구를 항상 고정으로 넣는 것은 Prompt Template의 시스템 지시문 설계로 구현하므로 B가 정답이다.",
+      "whyIncorrect": "Agent User Profile greeting field는 실제 존재하는 기능이 아니고, Auto-Response Rule for Agent나 Session Settings welcome message도 AI 응답 내용 자체를 지정하는 정식 기능이 아니다.",
+      "examPoint": "'항상 이 문구로 시작/마무리하게 하라'는 모든 요구사항은 Prompt Template의 지시문으로 해결한다는 원칙을 기억하자.",
+      "practicalExample": "법적 고지 목적으로 모든 대화 첫 문장에 'AI 어시스턴트입니다'라고 명시해야 한다면, Prompt Template의 시스템 지시문에 그 문장을 고정으로 넣는다."
+    }
+  }
+]

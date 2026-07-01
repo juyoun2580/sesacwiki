@@ -1,0 +1,860 @@
+[
+  {
+    "id": "q-adx-identity-001",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce가 IdP 역할을 할 때 맞는 설명은?",
+    "choices": [
+      "외부 계정으로 Salesforce에 로그인",
+      "Salesforce 계정으로 외부 앱에 로그인",
+      "MFA 설정이 필요하다",
+      "Salesforce는 IdP가 될 수 없다"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "IdP(Identity Provider)는 사용자의 신원을 인증해주는 주체이며, Salesforce가 IdP 역할을 하면 Salesforce 계정 하나로 여러 외부 서비스에 로그인할 수 있다.",
+      "whyCorrect": "Salesforce가 IdP일 때는 Salesforce에서 인증을 마친 뒤 그 인증 결과를 외부 앱(SP)에 전달하므로, 사용자는 Salesforce 계정으로 외부 앱에 로그인하게 된다.",
+      "whyIncorrect": "A는 Salesforce가 SP일 때의 흐름이고, C는 IdP 역할과 무관하게 별도로 설정하는 보안 기능이며, Salesforce는 IdP와 SP 둘 다 될 수 있으므로 D는 틀렸다.",
+      "examPoint": "IdP/SP는 '누가 인증을 담당하는가'로 구분한다 — Salesforce 계정으로 다른 곳에 로그인하면 Salesforce가 IdP, 다른 계정으로 Salesforce에 로그인하면 Salesforce가 SP다.",
+      "practicalExample": "사내 포털에 Salesforce 계정으로 로그인한 뒤 별도 로그인 없이 사내 위키나 협업 툴에 바로 들어가진다면, 그건 Salesforce가 IdP로서 인증을 대신 해준 것이다."
+    }
+  },
+  {
+    "id": "q-adx-identity-002",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "데이터 공유 권한 위임 프로토콜은?",
+    "choices": [
+      "기업 SSO",
+      "XML",
+      "권한 위임",
+      "소셜 로그인"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "OAuth 2.0은 비밀번호를 공유하지 않고도 특정 앱에 제한된 권한만 위임하는 인가(Authorization) 프로토콜이다.",
+      "whyCorrect": "OAuth 2.0의 핵심 목적이 바로 'API 접근 권한을 다른 앱에 위임'하는 것이라, 정답은 권한 위임이다.",
+      "whyIncorrect": "기업 SSO는 SAML의 용도이고, XML은 SAML이 쓰는 데이터 형식일 뿐 프로토콜이 아니며, 소셜 로그인은 OpenID Connect의 용도다.",
+      "examPoint": "'인증(누구인지 확인)'과 '인가(무엇에 접근 가능한지 위임)'를 헷갈리지 않는 게 핵심 — OAuth는 인가 전용이다.",
+      "practicalExample": "외부 캘린더 앱이 내 비밀번호 없이 구글 캘린더 일정만 읽어가도록 허용할 때 쓰는 게 바로 OAuth 2.0 권한 위임이다."
+    }
+  },
+  {
+    "id": "q-adx-identity-003",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "기업 내부 시스템 SSO 표준은?",
+    "choices": [
+      "권한 위임",
+      "기업 SSO",
+      "소셜 로그인",
+      "REST API"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "SAML 2.0은 XML 기반으로 기업 내부 시스템 간 인증 정보를 주고받는 전통적인 기업용 SSO 표준이다.",
+      "whyCorrect": "기업 내부 시스템(사내 AD 등)과 SaaS를 연동하는 SSO 표준은 SAML 2.0이므로 '기업 SSO'가 정답이다.",
+      "whyIncorrect": "권한 위임은 OAuth의 용도, REST API는 로그인 프로토콜이 아닌 데이터 통신 방식, 소셜 로그인은 OpenID Connect의 용도다.",
+      "examPoint": "SAML은 'XML', OAuth는 'JSON/Token', OpenID Connect는 'JWT'라는 데이터 형식 키워드로 서로 구분해서 암기하면 헷갈리지 않는다.",
+      "practicalExample": "회사 Active Directory 계정으로 로그인하면 Salesforce·메일·인사시스템까지 한 번에 로그인되는 구조가 SAML 기반 기업 SSO다."
+    }
+  },
+  {
+    "id": "q-adx-identity-004",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "'구글로 로그인' 버튼에 사용되는 프로토콜은?",
+    "choices": [
+      "SAML",
+      "권한 위임",
+      "소셜 로그인",
+      "XML"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "OpenID Connect는 OAuth 2.0 위에 '신원 확인' 기능을 얹은 프로토콜로, 소셜 로그인 버튼의 표준 기술이다.",
+      "whyCorrect": "'구글로 로그인'처럼 소셜 계정으로 제3의 서비스에 가입/로그인하는 기능은 OpenID Connect, 즉 소셜 로그인에 해당한다.",
+      "whyIncorrect": "SAML은 XML 기반 기업 SSO이고, 권한 위임은 OAuth 자체의 역할이며(신원확인 기능은 없음), XML은 데이터 형식일 뿐 프로토콜이 아니다.",
+      "examPoint": "OAuth 2.0만으로는 '이 사람이 누구인지' 확인할 수 없다 — 신원 확인이 필요한 소셜 로그인엔 반드시 OpenID Connect가 필요하다는 점이 시험 단골 함정이다.",
+      "practicalExample": "배달앱 가입 시 '구글 계정으로 시작하기'를 누르면 별도 회원가입 없이 구글 인증 정보로 즉시 가입되는데, 이게 OpenID Connect다."
+    }
+  },
+  {
+    "id": "q-adx-identity-005",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "IdP(Identity Provider)의 역할은?",
+    "choices": [
+      "서비스를 제공하는 앱",
+      "사용자를 인증하고 신원을 확인해주는 시스템",
+      "데이터를 저장하는 시스템",
+      "API 접근을 관리하는 시스템"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "IdP(Identity Provider)는 사용자가 누구인지 확인(인증)하고 그 결과를 다른 서비스에 보증해주는 시스템이다.",
+      "whyCorrect": "IdP의 정의 자체가 '사용자를 인증하고 신원을 확인해주는 시스템'이므로 B가 정답이다.",
+      "whyIncorrect": "서비스 제공은 SP의 역할이고, 데이터 저장이나 API 접근 관리는 IdP의 정의와 무관한 기능이다.",
+      "examPoint": "IdP는 '신뢰의 근원'이라는 개념으로 기억하면, SP가 왜 IdP의 인증 결과를 그대로 믿고 서비스를 내주는지 이해하기 쉽다.",
+      "practicalExample": "회사 Active Directory가 '이 사람은 우리 직원 김철수가 맞다'고 확인해주면, 다른 시스템들은 그 확인을 믿고 접근을 허용한다 — AD가 바로 IdP다."
+    }
+  },
+  {
+    "id": "q-adx-identity-006",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "SP(Service Provider)의 역할은?",
+    "choices": [
+      "사용자를 인증하는 시스템",
+      "IdP의 인증을 신뢰하고 서비스를 제공하는 앱",
+      "데이터를 백업하는 시스템",
+      "API를 제공하는 시스템"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "SP(Service Provider)는 사용자를 직접 인증하지 않고, IdP가 인증한 결과를 신뢰하여 서비스 접근을 허용하는 앱이다.",
+      "whyCorrect": "SP는 인증을 직접 수행하지 않고 IdP의 인증 결과만 믿고 서비스를 제공하므로 B가 정답이다.",
+      "whyIncorrect": "사용자를 직접 인증하는 건 IdP의 역할이고, 데이터 백업이나 API 제공은 SP 정의와 관련 없다.",
+      "examPoint": "IdP와 SP는 항상 짝을 이루는 개념이다 — 한쪽이 인증을 '해주고', 다른 쪽은 그 인증을 '믿는다'는 관계로 이해하자.",
+      "practicalExample": "Salesforce가 회사 AD를 신뢰해서 로그인을 맡기고 있다면, 이 상황에서 Salesforce는 SP다."
+    }
+  },
+  {
+    "id": "q-adx-identity-007",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "MFA의 두 번째 인증 요소로 사용할 수 없는 것은?",
+    "choices": [
+      "Salesforce Authenticator 앱",
+      "TOTP 인증기 앱",
+      "하드웨어 보안 키",
+      "생년월일"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "MFA의 두 번째 요소는 '알고 있는 것(비밀번호)'과는 다른 범주, 즉 '소유하고 있는 것'이나 '생체 정보'여야 한다.",
+      "whyCorrect": "생년월일은 비밀번호처럼 '알고 있는 정보'에 속해 소유 기반 인증 수단이 아니므로, 유효한 MFA 두 번째 요소가 될 수 없다.",
+      "whyIncorrect": "Authenticator 앱, TOTP 인증기, 하드웨어 보안 키는 모두 사용자가 '소유'하고 있어야만 인증 코드를 생성할 수 있는 소유 기반 수단이라 유효하다.",
+      "examPoint": "MFA 시험 문제는 '알고 있는 것 vs 소유하고 있는 것' 구분이 핵심 — 비밀번호와 같은 카테고리인 개인정보(생일, 이메일 주소 등)는 항상 오답으로 나온다.",
+      "practicalExample": "로그인 시 비밀번호 입력 후 스마트폰의 Salesforce Authenticator 앱에서 알림을 눌러 승인하는 과정이 바로 소유 기반 2차 인증이다."
+    }
+  },
+  {
+    "id": "q-adx-identity-008",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Connected App의 주요 용도는?",
+    "choices": [
+      "Salesforce 내부 앱 관리",
+      "외부 앱이 OAuth를 통해 Salesforce에 접근할 수 있도록 허용",
+      "사용자 비밀번호 관리",
+      "보고서 공유"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Connected App은 외부 애플리케이션이 OAuth 2.0 프로토콜로 Salesforce API에 접근할 수 있도록 등록하는 프레임워크다.",
+      "whyCorrect": "Connected App의 정의 자체가 '외부 앱이 OAuth를 통해 Salesforce에 접근하도록 허용'하는 것이므로 B가 정답이다.",
+      "whyIncorrect": "내부 앱 관리, 비밀번호 관리, 보고서 공유는 Connected App의 목적과 관련이 없다.",
+      "examPoint": "Connected App을 만들면 Consumer Key/Secret이 발급되는데, 이게 바로 외부 앱이 OAuth 인증을 요청할 때 자신을 증명하는 열쇠라는 점을 기억하자.",
+      "practicalExample": "사내에서 만든 모바일 앱이 Salesforce 데이터를 가져오려면, 먼저 Salesforce에 Connected App으로 그 앱을 등록해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-identity-009",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "SAML 2.0이 사용하는 데이터 형식은?",
+    "choices": [
+      "JSON",
+      "XML",
+      "CSV",
+      "HTML"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "SAML 2.0은 인증 정보를 'assertion'이라는 XML 형식의 문서로 주고받는 프로토콜이다.",
+      "whyCorrect": "SAML 2.0은 이름 그대로 XML 기반 프로토콜이며 인증 정보를 XML 어설션으로 전달하므로 B가 정답이다.",
+      "whyIncorrect": "JSON은 OAuth/OpenID Connect가 주로 쓰는 형식이고, CSV와 HTML은 SAML과 무관한 형식이다.",
+      "examPoint": "SAML=XML, OAuth/OIDC=JSON(JWT)이라는 형식 대응만 정확히 외워두면 형식을 묻는 문제는 바로 풀린다.",
+      "practicalExample": "SAML 기반 SSO에서 IdP가 SP로 전달하는 인증 응답 메시지를 열어보면 태그로 이루어진 XML 구조로 되어 있다."
+    }
+  },
+  {
+    "id": "q-adx-identity-010",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce가 IdP일 때 사용자가 외부 앱에 접근하는 흐름은?",
+    "choices": [
+      "외부 앱 로그인 페이지에서 인증 후 Salesforce로 리디렉션",
+      "Salesforce에서 로그인 후 외부 앱에 자동으로 접근 가능",
+      "매번 외부 앱과 Salesforce에 각각 로그인",
+      "관리자가 수동으로 접근 허용"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "IdP-initiated SSO는 사용자가 IdP(Salesforce)에 먼저 로그인하면, 그 인증 결과가 SAML 어설션으로 SP(외부 앱)에 전달되어 별도 로그인 없이 바로 접근되는 흐름이다.",
+      "whyCorrect": "Salesforce가 IdP일 때는 Salesforce 로그인만으로 외부 앱에 자동 접근이 가능한 IdP-initiated 흐름이 성립하므로 B가 정답이다.",
+      "whyIncorrect": "외부 앱에서 먼저 인증하는 흐름은 SP-initiated이고 Salesforce가 IdP일 때의 흐름과 반대이며, 매번 각각 로그인하거나 관리자가 수동으로 허용하는 방식은 SSO의 목적(로그인 통합)에 어긋난다.",
+      "examPoint": "'어디서 로그인을 시작했는가'로 SP-initiated와 IdP-initiated를 구분하는 게 핵심 — Salesforce에서 시작했으면 IdP-initiated다.",
+      "practicalExample": "Salesforce에 로그인한 상태에서 앱 런처의 외부 연동 앱 아이콘을 클릭하면 추가 로그인 없이 바로 그 앱 화면이 뜨는 게 IdP-initiated SSO다."
+    }
+  },
+  {
+    "id": "q-adx-identity-011",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 MFA를 우회(Exempt)할 수 있는 사용자는?",
+    "choices": [
+      "없음, 모든 사용자 필수",
+      "API Only User 권한 보유자",
+      "관리자 프로필 사용자",
+      "Guest 사용자"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "MFA는 UI 로그인 시 필요한 보안 절차이므로, API로만 접근하고 UI 로그인을 하지 않는 API Only User 권한 보유자는 MFA에서 면제될 수 있다.",
+      "whyCorrect": "API Only User는 브라우저 로그인 화면을 거치지 않기 때문에 MFA 절차 자체가 적용될 상황이 없어 면제 대상이 된다.",
+      "whyIncorrect": "MFA는 프로덕션 조직 전체에 의무화되어 예외가 전혀 없는 게 아니며, 관리자 프로필이나 Guest 사용자라고 해서 별도로 면제되는 규정은 없다.",
+      "examPoint": "MFA 의무화는 예외가 거의 없는 강력한 정책이지만, 'UI 로그인을 하지 않는 사용자'라는 논리적 예외만 존재한다는 점을 기억해두자.",
+      "practicalExample": "외부 시스템이 API로만 Salesforce 데이터를 주고받는 연동 계정이라면, 그 계정에는 MFA 로그인 화면 자체가 뜨지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-identity-012",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Single Sign-On 설정 후 사용자가 Salesforce 로그인 페이지를 우회하여 직접 SSO 로그인 페이지로 이동하게 하려면?",
+    "choices": [
+      "별도 설정 불필요",
+      "My Domain 설정에서 Authentication Configuration을 SSO 전용으로 설정",
+      "모든 사용자의 비밀번호 삭제",
+      "Login Hours를 0으로 설정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "My Domain의 Authentication Configuration에서 Salesforce 기본 로그인 방법(아이디/비밀번호)을 끄고 SSO만 남기면, 사용자는 항상 SSO 로그인 페이지로 리디렉션된다.",
+      "whyCorrect": "사용자가 Salesforce 기본 로그인 페이지를 거치지 않고 곧장 SSO로 가게 하려면 My Domain에서 기본 로그인 방식을 비활성화해야 하므로 B가 정답이다.",
+      "whyIncorrect": "별도 설정 없이는 기본 로그인 페이지가 계속 함께 보이며, 비밀번호를 전부 삭제하거나 Login Hours를 0으로 만드는 건 로그인 자체를 막아버리는 부작용이 있어 목적에 맞지 않는다.",
+      "examPoint": "SSO를 도입해도 기본적으로는 Salesforce 로그인 페이지가 같이 뜬다 — '오직 SSO만' 강제하려면 My Domain 설정을 추가로 건드려야 한다는 게 실무 함정이다.",
+      "practicalExample": "회사 정책상 직원들이 아이디/비밀번호 로그인을 아예 못 쓰게 하고 싶다면, My Domain에서 SSO를 유일한 로그인 방법으로 지정하면 된다."
+    }
+  },
+  {
+    "id": "q-adx-identity-013",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants employees to log in to Salesforce using their existing corporate Active Directory credentials. What should be configured?",
+    "choices": [
+      "연결된 앱",
+      "OAuth 2.0 only",
+      "SAML-based Single Sign-On",
+      "OpenID Connect only"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "회사 Active Directory 같은 기존 기업 인증 시스템의 자격증명으로 Salesforce에 로그인하게 하려면, 기업용 SSO 표준인 SAML 기반 SSO를 구성해야 한다.",
+      "whyCorrect": "기업 내부 AD 자격증명으로 Salesforce에 로그인하는 시나리오는 SAML 기반 SSO의 전형적인 사용 사례이며, 이때 Salesforce는 SP(서비스 제공자) 역할을 한다.",
+      "whyIncorrect": "Connected App은 OAuth 기반 외부 앱 연동용이고, OAuth 2.0 단독으로는 인증이 아닌 권한 위임만 처리하며, OpenID Connect는 소셜 로그인에 주로 쓰인다.",
+      "examPoint": "'기존 기업 인증 시스템 연동'이라는 키워드가 나오면 거의 항상 SAML SSO가 정답이라는 패턴을 익혀두자.",
+      "practicalExample": "신규 입사자가 회사에서 발급받은 AD 계정으로 로그인만 하면 별도 Salesforce 계정 생성 없이 바로 접속되는 구조가 SAML SSO다."
+    }
+  },
+  {
+    "id": "q-adx-identity-014",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "When Salesforce acts as an Identity Provider (IdP), which of the following is true?",
+    "choices": [
+      "Users log in to Salesforce using an external system.",
+      "Users log in to external apps using their Salesforce credentials.",
+      "Salesforce delegates authentication to Active Directory.",
+      "MFA is automatically disabled."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce가 Identity Provider 역할을 하면, 사용자는 Salesforce 계정 자격증명으로 다른 외부 앱에 로그인할 수 있다.",
+      "whyCorrect": "IdP는 인증을 담당하는 쪽이므로, Salesforce가 IdP이면 Salesforce 계정이 다른 외부 앱 로그인의 기준이 된다.",
+      "whyIncorrect": "외부 시스템으로 Salesforce에 로그인하는 것은 Salesforce가 SP일 때의 방향이고, AD에 인증을 위임하는 것도 Salesforce가 SP인 경우이며, MFA 자동 비활성화는 IdP 역할과 무관하다.",
+      "examPoint": "'Salesforce가 IdP'라는 말이 나오면 화살표 방향을 'Salesforce → 외부 앱'으로 그려보면 헷갈리지 않는다.",
+      "practicalExample": "Salesforce 계정으로 사내에서 쓰는 협업 툴(Slack 등)에 자동 로그인된다면, 그건 Salesforce가 IdP로서 인증을 대신 해준 것이다."
+    }
+  },
+  {
+    "id": "q-adx-identity-015",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A mobile app needs to access Salesforce data on behalf of a user without storing their password. Which protocol should be used?",
+    "choices": [
+      "기업 SSO",
+      "권한 위임",
+      "소셜 로그인",
+      "LDAP"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "비밀번호를 저장하지 않고 사용자를 대신해 API에 접근해야 할 때는 OAuth 2.0의 권한 위임(액세스 토큰 발급) 방식을 사용한다.",
+      "whyCorrect": "OAuth 2.0은 비밀번호 대신 액세스 토큰으로 제한된 권한만 위임하기 때문에, 비밀번호 미저장 요구사항에 정확히 부합한다.",
+      "whyIncorrect": "기업 SSO(SAML)는 인증 통합용이지 권한 위임용이 아니고, 소셜 로그인(OpenID Connect)은 신원확인이 목적이며, LDAP은 Salesforce가 직접 지원하지 않는다.",
+      "examPoint": "'비밀번호 없이 대신 접근'이라는 표현이 나오면 OAuth 2.0(권한 위임)을 먼저 떠올리는 게 시험 풀이 요령이다.",
+      "practicalExample": "회사 모바일 앱이 사용자 비밀번호를 저장하지 않고도 그 사용자의 Salesforce 레코드를 조회할 수 있는 이유는 OAuth 액세스 토큰 덕분이다."
+    }
+  },
+  {
+    "id": "q-adx-identity-016",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which protocol is used when a user clicks \"Sign in with Google\" to log into a third-party app?",
+    "choices": [
+      "기업 SSO",
+      "OAuth 2.0 only",
+      "소셜 로그인",
+      "REST API"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "'Google로 로그인'처럼 소셜 계정을 이용한 제3자 서비스 로그인은 OpenID Connect, 즉 소셜 로그인 방식이다.",
+      "whyCorrect": "OpenID Connect는 OAuth 2.0 위에 ID Token을 추가해 '이 사람이 누구인지'까지 확인해주므로 소셜 로그인에 쓰인다.",
+      "whyIncorrect": "SAML은 XML 기반 기업 SSO이고, OAuth 2.0만으로는 권한 위임만 될 뿐 신원 확인이 안 되며, REST API는 로그인 프로토콜이 아니다.",
+      "examPoint": "OAuth와 OpenID Connect를 혼동하지 않으려면 '신원 확인 여부'로 구분하자 — 로그인 버튼이면 OpenID Connect, 단순 데이터 접근 권한이면 OAuth다.",
+      "practicalExample": "쇼핑몰 회원가입 페이지에서 '구글로 계속하기'를 누르면 별도 정보 입력 없이 구글 계정 정보로 즉시 가입되는 게 OpenID Connect다."
+    }
+  },
+  {
+    "id": "q-adx-identity-017",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to require all Salesforce users to verify their identity with an authenticator app in addition to their password. What should be enabled?",
+    "choices": [
+      "Single Sign-On",
+      "연결된 앱",
+      "MFA, 다중 인증",
+      "Login IP Restrictions"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "비밀번호에 더해 인증 앱 등 추가 인증 수단을 의무화하려면 MFA(다중 인증)를 활성화해야 한다.",
+      "whyCorrect": "비밀번호 외에 인증 앱으로 추가 확인을 요구하는 요구사항은 MFA의 정의 그 자체이므로 C가 정답이다.",
+      "whyIncorrect": "SSO는 여러 시스템의 로그인을 통합하는 것이지 추가 인증 수단이 아니고, Connected App은 OAuth 앱 등록용이며, Login IP Restrictions는 위치 기반 제한일 뿐 인증 수단 추가가 아니다.",
+      "examPoint": "'비밀번호 + 또 다른 인증 수단'이라는 조합이 나오면 무조건 MFA를 떠올리면 된다.",
+      "practicalExample": "로그인 시 비밀번호를 입력한 뒤 스마트폰 인증 앱의 승인 알림을 눌러야만 접속되는 게 MFA가 켜진 상태다."
+    }
+  },
+  {
+    "id": "q-adx-identity-018",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers uses Microsoft Azure AD as their corporate identity system. They want Salesforce users to log in with their Azure AD credentials. Salesforce should trust Azure AD for authentication. Which role does Salesforce play?",
+    "choices": [
+      "IdP",
+      "SP",
+      "OAuth Server",
+      "OpenID Provider"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "외부 시스템(Azure AD)이 인증을 담당하고 Salesforce가 그 인증 결과를 신뢰하는 구조에서는 Salesforce가 SP(Service Provider) 역할을 한다.",
+      "whyCorrect": "Azure AD가 인증을 수행하고 Salesforce는 그 결과를 신뢰하기만 하므로, Salesforce는 서비스를 제공받는 쪽인 SP다.",
+      "whyIncorrect": "Salesforce가 IdP라면 반대로 Salesforce가 인증을 수행해야 하고, OAuth Server나 OpenID Provider는 이 시나리오에서 Salesforce의 역할을 설명하는 정확한 용어가 아니다.",
+      "examPoint": "'외부 시스템을 신뢰한다'는 문구가 나오면 Salesforce는 항상 SP라고 기계적으로 연결지어 암기하자.",
+      "practicalExample": "회사가 Azure AD로 모든 로그인을 통합 관리하면서 Salesforce도 그 안에 편입시켰다면, Salesforce는 Azure AD를 믿고 서비스만 제공하는 SP다."
+    }
+  },
+  {
+    "id": "q-adx-identity-019",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants employees to use their Salesforce credentials to access a third-party project management tool. Which role does Salesforce play in this scenario?",
+    "choices": [
+      "SP",
+      "IdP",
+      "OAuth Client",
+      "SAML Responder"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce 계정으로 다른 외부 도구에 로그인한다는 것은 Salesforce가 인증을 책임지는 IdP 역할을 한다는 뜻이다.",
+      "whyCorrect": "직원들이 Salesforce 자격증명으로 외부 프로젝트 관리 도구에 접근한다면, 인증의 주체는 Salesforce이므로 IdP가 정답이다.",
+      "whyIncorrect": "SP는 서비스를 제공받는 쪽이라 방향이 반대이고, OAuth Client는 데이터를 가져가는 앱을 가리키는 용어이며, SAML Responder는 실제로 쓰이는 정식 역할 명칭이 아니다.",
+      "examPoint": "'Salesforce 계정으로 어딘가에 로그인한다'는 문장을 보면 무조건 Salesforce=IdP로 바로 연결하자.",
+      "practicalExample": "Salesforce 계정 하나로 사내 프로젝트 관리 툴에도 로그인이 된다면, Salesforce가 그 툴에게 '이 사람이 누구인지' 보증해주고 있는 것이다."
+    }
+  },
+  {
+    "id": "q-adx-identity-020",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A developer at Universal Containers is building a mobile app that accesses Salesforce data. The app should access data on behalf of logged-in users without storing their passwords. Which protocol should be implemented?",
+    "choices": [
+      "기업 SSO",
+      "권한 위임",
+      "소셜 로그인",
+      "LDAP"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "사용자의 비밀번호를 저장하지 않고 앱이 사용자를 대신해 데이터에 접근하려면 OAuth 2.0의 권한 위임 구조가 필요하다.",
+      "whyCorrect": "비밀번호 없이 액세스 토큰만으로 대신 접근하는 것이 정확히 OAuth 2.0(권한 위임)의 동작 방식이다.",
+      "whyIncorrect": "기업 SSO는 인증 통합이 목적이고, 소셜 로그인은 신원 확인이 목적이며, LDAP은 Salesforce가 직접 지원하지 않는 프로토콜이다.",
+      "examPoint": "같은 유형의 '비밀번호 미저장 + 대리 접근' 문제는 항상 OAuth 2.0(권한 위임)으로 귀결된다는 패턴을 확실히 잡아두자.",
+      "practicalExample": "모바일 앱 개발자가 사용자 비밀번호를 서버에 저장하지 않고도 그 사용자 명의로 데이터를 읽고 쓸 수 있는 이유는 OAuth 액세스 토큰 때문이다."
+    }
+  },
+  {
+    "id": "q-adx-identity-021",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has enabled MFA for all users. A user complains they are prompted for verification every single login even from the same trusted device. What should the admin investigate?",
+    "choices": [
+      "The users profile has MFA disabled",
+      "Trusted IP Ranges are not configured for the users network",
+      "The user has not registered a verification method",
+      "Session settings require re-verification on every login"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "같은 신뢰할 수 있는 네트워크에서 반복적으로 MFA를 요구받는다면, Trusted IP Ranges가 해당 네트워크에 대해 설정되어 있는지 확인해야 한다.",
+      "whyCorrect": "Trusted IP Ranges를 설정하면 해당 IP 대역에서의 로그인 시 추가 인증(이메일 확인 등)이 간소화되므로, 미설정 시 매번 검증을 요구받을 수 있다.",
+      "whyIncorrect": "MFA는 의무화 정책이라 프로필에서 임의로 비활성화할 수 없고, 인증 수단 미등록이면 애초에 로그인 자체가 불가능하며, 세션 설정은 세션 유지 시간과 관련될 뿐 매번 재인증 여부와는 별개다.",
+      "examPoint": "Trusted IP Ranges는 '차단'이 아니라 '인증 절차 완화' 기능이라는 점(Login IP Ranges와 반대 개념)이 반복 출제되는 핵심 함정이다.",
+      "practicalExample": "회사 사무실 IP 대역을 Trusted IP Ranges에 등록해두면, 사무실 안에서 로그인할 때는 이메일 인증 같은 추가 절차가 생략된다."
+    }
+  },
+  {
+    "id": "q-adx-identity-022",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which of the following correctly describes the difference between SAML and OAuth 2.0?",
+    "choices": [
+      "SAML is for mobile apps; OAuth is for enterprise",
+      "SAML handles authentication (who you are); OAuth handles authorization (what you can access)",
+      "OAuth is XML-based; SAML uses JSON tokens",
+      "They are identical protocols with different names"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "SAML은 '이 사람이 누구인지' 확인하는 인증(Authentication) 프로토콜이고, OAuth는 '무엇에 접근할 수 있는지' 위임하는 인가(Authorization) 프로토콜이다.",
+      "whyCorrect": "두 프로토콜의 근본적인 차이는 인증(SAML)과 인가(OAuth)의 목적 차이이므로 B가 정확한 설명이다.",
+      "whyIncorrect": "SAML도 모바일 환경에서 쓰일 수 있고 OAuth도 기업에서 쓰이므로 A는 부정확하며, OAuth는 JSON/JWT 기반이고 SAML이 XML 기반이라 C는 반대이며, 둘은 목적과 형식이 전혀 다른 프로토콜이라 D는 틀렸다.",
+      "examPoint": "'인증 vs 인가'라는 한 문장 구분만 확실히 외워두면 SAML/OAuth를 비교하는 모든 문제를 풀 수 있다.",
+      "practicalExample": "은행 앱에 로그인하는 것은 인증(SAML류), 그 은행 앱이 내 캘린더 앱 일정에 알림을 보내도 되는지 허락하는 것은 인가(OAuth류)에 해당한다."
+    }
+  },
+  {
+    "id": "q-adx-identity-023",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to allow customers to log in to their self-service portal using their Google account. Which protocol should be configured?",
+    "choices": [
+      "기업 SSO",
+      "OAuth 2.0 only",
+      "소셜 로그인",
+      "LDAP"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "고객용 포털에서 구글 계정으로 로그인하게 하려면 소셜 로그인 표준인 OpenID Connect를 구성해야 한다.",
+      "whyCorrect": "구글 계정으로 커스텀 포털에 로그인하는 시나리오는 신원 확인이 필요한 소셜 로그인이므로 OpenID Connect가 정답이다.",
+      "whyIncorrect": "기업 SSO(SAML)는 내부 직원용 인증에 주로 쓰이고, OAuth 2.0만으로는 신원 확인이 불가능하며, LDAP은 Salesforce가 직접 지원하지 않는다.",
+      "examPoint": "'고객/소비자 대상 로그인'이라는 문맥이 나오면 기업 SSO(SAML)가 아니라 소셜 로그인(OpenID Connect) 쪽으로 판단하는 것이 포인트다.",
+      "practicalExample": "고객이 자사 몰 회원가입 없이 '구글로 3초 회원가입'을 누르는 기능이 바로 OpenID Connect 기반 소셜 로그인이다."
+    }
+  },
+  {
+    "id": "q-adx-identity-024",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "What must be created in Salesforce before a third-party application can use OAuth to access Salesforce data via API?",
+    "choices": [
+      "A Permission Set",
+      "A Profile with API access",
+      "A Connected App",
+      "A Trusted IP Range"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "서드파티 앱이 OAuth로 Salesforce API에 접근하려면 먼저 Salesforce에 Connected App을 등록해 Consumer Key/Secret을 발급받아야 한다.",
+      "whyCorrect": "OAuth 인증 흐름 자체가 Connected App에 등록된 Consumer Key/Secret을 전제로 동작하므로 Connected App 생성이 선행 조건이다.",
+      "whyIncorrect": "Permission Set은 사용자 권한 부여용이고, API 접근 권한이 있는 Profile만으로는 OAuth 앱 등록이 되지 않으며, Trusted IP Range는 인증 절차를 간소화할 뿐 OAuth 등록과는 무관하다.",
+      "examPoint": "'서드파티 앱이 API로 접근하려면?'이라는 질문에는 거의 항상 Connected App이 정답이라는 패턴을 기억해두자.",
+      "practicalExample": "외부 분석 도구가 Salesforce 데이터를 API로 끌어가려면, 관리자가 먼저 그 도구를 Connected App으로 등록해줘야 한다."
+    }
+  },
+  {
+    "id": "q-adx-identity-025",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to configure SSO so that users who are already logged into the corporate portal are automatically logged into Salesforce without entering credentials. Which protocol supports this seamless experience?",
+    "choices": [
+      "권한 위임",
+      "SAML 2.0 with SP-initiated SSO",
+      "SAML 2.0 with IdP-initiated SSO",
+      "OpenID Connect with PKCE"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "이미 사내 포털에 로그인된 상태에서 별도 인증 없이 Salesforce로 자연스럽게 넘어가려면, 포털(IdP)에서 인증이 시작되는 IdP-initiated SAML SSO 방식이 필요하다.",
+      "whyCorrect": "사용자가 이미 로그인된 IdP(사내 포털)에서 곧바로 Salesforce(SP)로 진입하는 흐름은 정확히 IdP-initiated SSO의 동작 방식이다.",
+      "whyIncorrect": "권한 위임(OAuth)은 인증이 아닌 인가를 위한 것이라 로그인 자체를 대체할 수 없고, SP-initiated SSO는 사용자가 Salesforce에서 먼저 접근을 시도해야 시작되는 반대 흐름이며, PKCE는 OAuth의 보안 확장 옵션일 뿐 SAML 로그인 흐름과는 관련이 없다.",
+      "examPoint": "'이미 로그인된 곳에서 시작해서 자연스럽게 넘어간다'는 문장은 IdP-initiated, '내가 서비스에 먼저 접속을 시도한다'는 문장은 SP-initiated로 구분하는 연습이 필요하다.",
+      "practicalExample": "사내 인트라넷 포털에 아침에 한 번 로그인한 뒤, 포털의 Salesforce 바로가기를 누르면 추가 로그인 없이 바로 들어가지는 게 IdP-initiated SSO다."
+    }
+  },
+  {
+    "id": "q-adx-identity-026",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A Connected App at Universal Containers is configured with OAuth 2.0. The admin wants to ensure only users with a specific Profile can use this app. What should be configured?",
+    "choices": [
+      "Set Permitted Users to All users may self-authorize",
+      "Set Permitted Users to Admin approved users and assign the profile",
+      "Create a Validation Rule on the Connected App",
+      "Use IP restrictions on the Connected App"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Connected App에 접근 가능한 사용자를 특정 Profile로 제한하려면, Permitted Users를 'Admin approved users are pre-authorized'로 설정하고 해당 Profile에만 앱 사용 권한을 배정해야 한다.",
+      "whyCorrect": "관리자가 승인한 사용자만 사전 인가하도록 설정하고 원하는 Profile에만 그 권한을 부여하면, 딱 그 Profile 사용자만 Connected App을 쓸 수 있다.",
+      "whyIncorrect": "모든 사용자가 스스로 인가하도록 두면 특정 Profile로 제한할 수 없고, Validation Rule은 레코드 저장 시 데이터 검증용이라 앱 접근 제어와 무관하며, IP 제한은 위치 기반 제어일 뿐 Profile 기반 제어가 아니다.",
+      "examPoint": "Connected App 접근 통제는 'Permitted Users' 설정값 자체가 핵심 — 자율 인가(All users may self-authorize)와 관리자 승인(Admin approved users)의 차이를 명확히 구분해야 한다.",
+      "practicalExample": "영업팀 Profile 사용자만 특정 외부 리포트 툴에 연동되게 하려면, 그 Connected App의 Permitted Users를 Admin approved로 바꾸고 영업팀 Profile만 프로필 목록에 추가하면 된다."
+    }
+  },
+  {
+    "id": "q-adx-identity-027",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to allow users to log in to Salesforce using their LinkedIn accounts. Which protocol would support this social login?",
+    "choices": [
+      "기업 SSO",
+      "OAuth 2.0 only",
+      "소셜 로그인",
+      "LDAP"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "LinkedIn 같은 소셜 계정으로 로그인하는 기능은 OpenID Connect 기반의 소셜 로그인으로 구현한다.",
+      "whyCorrect": "LinkedIn 계정 로그인은 신원 확인이 필요한 소셜 로그인 시나리오이므로 OpenID Connect, 즉 소셜 로그인이 정답이다.",
+      "whyIncorrect": "기업 SSO(SAML)는 사내 시스템 연동용이고, OAuth 2.0만으로는 신원 확인이 불가능하며, LDAP은 Salesforce가 직접 지원하지 않는다.",
+      "examPoint": "구글이든 LinkedIn이든 '소셜 계정으로 로그인'이라는 패턴은 전부 OpenID Connect로 귀결된다는 것을 기억하자.",
+      "practicalExample": "채용 플랫폼에서 'LinkedIn으로 로그인'을 누르면 이력 정보까지 자동으로 연동되며 가입되는데, 이 인증 방식이 OpenID Connect다."
+    }
+  },
+  {
+    "id": "q-adx-identity-028",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC has enabled MFA. A user lost their phone and cannot receive verification codes. What should the admin do to restore access?",
+    "choices": [
+      "Delete and recreate the user",
+      "Temporarily exempt the user from MFA to allow login while they get a new device",
+      "Disable MFA for the entire org",
+      "Change the users password"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "MFA 인증 수단(휴대폰)을 분실해 로그인이 막힌 사용자는, 새 기기를 마련할 때까지 관리자가 일시적으로 MFA 예외를 부여해 접근을 복구시켜줄 수 있다.",
+      "whyCorrect": "휴대폰 분실로 인증 코드를 받을 수 없는 긴급 상황에서는, 새 인증 수단을 등록할 때까지 임시로 MFA를 예외 처리하는 것이 가장 현실적인 접근 복구 방법이다.",
+      "whyIncorrect": "사용자를 삭제 후 재생성하면 레코드 관계와 히스토리가 훼손될 위험이 크고, 조직 전체 MFA를 끄는 것은 보안 정책을 심각하게 훼손하며, 비밀번호 변경은 MFA 문제와는 무관한 조치다.",
+      "examPoint": "MFA 예외는 '전사 비활성화'가 아니라 '개별 사용자에 대한 일시적 조치'로 접근해야 한다는 점이 실무·시험 모두에서 중요한 포인트다.",
+      "practicalExample": "직원이 출장 중 휴대폰을 분실했다면, 관리자가 그 직원 계정만 임시로 MFA 예외 처리해 새 기기를 받을 때까지 업무를 볼 수 있게 해준다."
+    }
+  },
+  {
+    "id": "q-adx-identity-029",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers is implementing SSO using SAML. The admin needs to configure Salesforce to redirect users to the corporate login page. What should be configured in Salesforce?",
+    "choices": [
+      "연결된 앱",
+      "Identity Provider settings",
+      "SAML SSO",
+      "My Domain settings"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Salesforce에서 사용자를 회사 로그인 페이지(IdP)로 리디렉션시키려면 Setup의 SAML SSO 설정에서 IdP 정보(로그인 URL, 인증서 등)를 등록해야 한다.",
+      "whyCorrect": "회사 로그인 페이지로의 리디렉션은 SAML SSO 설정에서 IdP URL과 인증서를 구성해야 이루어지는 동작이므로 C가 정답이다.",
+      "whyIncorrect": "Connected App은 반대로 외부 앱이 Salesforce에 접근하도록 등록하는 것이고, Identity Provider settings는 Salesforce가 IdP가 될 때 쓰는 설정(방향이 반대)이며, My Domain settings는 Salesforce 자체 URL을 커스터마이징하는 기능이지 리디렉션 대상 IdP를 지정하는 곳이 아니다.",
+      "examPoint": "'Salesforce → 회사 로그인 페이지로 리디렉션'은 Salesforce가 SP인 상황이라 SAML SSO(로그인) 설정에서 처리하고, 'Salesforce가 다른 곳을 인증해준다'면 Identity Provider settings로 완전히 다른 메뉴라는 점을 구분해야 한다.",
+      "practicalExample": "SAML SSO 설정 화면에서 IdP의 로그인 URL과 인증서를 입력해두면, 사용자가 Salesforce에 접속하려 할 때 자동으로 회사 로그인 페이지로 넘어간다."
+    }
+  },
+  {
+    "id": "q-adx-identity-030",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to ensure that Salesforce API access tokens expire after 2 hours for security purposes. Where should this be configured?",
+    "choices": [
+      "Connected App OAuth policies",
+      "Session Settings — API Session Timeout",
+      "Password Policies",
+      "Profile Session Timeout"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "API 접근에 쓰이는 OAuth 액세스 토큰의 유효 기간은 해당 Connected App의 OAuth Policies에서 설정한다.",
+      "whyCorrect": "액세스 토큰 만료 시간은 UI 세션이 아닌 OAuth 인증 자체의 설정값이라, Connected App의 OAuth Policies에서 지정해야 한다.",
+      "whyIncorrect": "Session Settings의 API Session Timeout은 세션 전반의 타임아웃이지 특정 Connected App의 토큰 만료를 세밀하게 제어하는 곳이 아니고, Password Policies는 비밀번호 규칙이며, Profile Session Timeout은 UI 세션과 관련된 설정이다.",
+      "examPoint": "'API 토큰'과 '로그인 세션'은 서로 다른 설정 영역에서 관리된다는 점이 헷갈리기 쉬운 포인트다 — 토큰 관련은 항상 Connected App 쪽을 먼저 의심하자.",
+      "practicalExample": "외부 연동 앱이 발급받은 액세스 토큰을 2시간마다 새로 갱신하도록 하고 싶다면, 그 앱의 Connected App OAuth Policies에서 토큰 유효 기간을 2시간으로 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-identity-031",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers uses Salesforce as an IdP for 5 external apps. A user leaves the company. The admin deactivates their Salesforce user. What happens to their access to the 5 external apps via SSO?",
+    "choices": [
+      "They retain access until each app is individually updated",
+      "They lose access to all 5 apps immediately because Salesforce IdP controls authentication",
+      "They need to be removed from each app separately",
+      "Nothing changes until passwords expire"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce가 IdP로서 여러 외부 앱의 인증을 담당하고 있다면, Salesforce 사용자를 비활성화하는 순간 그 사용자는 더 이상 인증을 통과할 수 없어 연결된 모든 외부 앱 접근도 즉시 차단된다.",
+      "whyCorrect": "IdP인 Salesforce가 인증을 거부하면 SP인 외부 앱들은 그 사용자를 인증해줄 방법이 없으므로, 5개 앱 전체에 대한 접근이 즉시 끊긴다.",
+      "whyIncorrect": "각 앱을 개별적으로 갱신하거나 개별 제거할 필요 없이 IdP 단에서 즉시 차단되며, 비밀번호 만료를 기다릴 필요도 없이 인증 자체가 막힌다.",
+      "examPoint": "SSO의 장점이자 특징이 바로 이것 — 중앙(IdP)에서 계정 하나만 비활성화하면 연결된 모든 서비스 접근이 한 번에 정리된다는 점을 강조해서 기억하자.",
+      "practicalExample": "퇴사자의 Salesforce 계정을 비활성화하면, 그 계정을 IdP로 삼아 연결해둔 협업툴·문서툴 등 5개 서비스에도 동시에 로그인이 막힌다."
+    }
+  },
+  {
+    "id": "q-adx-identity-032",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants API integrations to authenticate to Salesforce without a user needing to be actively logged in. Which OAuth flow is most appropriate?",
+    "choices": [
+      "Web Server Flow",
+      "User-Agent Flow",
+      "JWT Bearer Token Flow",
+      "Device Flow"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "사용자가 직접 로그인하지 않아도 서버 간 통합이 자동으로 인증받아야 할 때는 JWT Bearer Token Flow처럼 사용자 개입이 필요 없는 OAuth 흐름을 사용한다.",
+      "whyCorrect": "JWT Bearer Token Flow는 미리 등록된 인증서 기반 서명으로 사용자 상호작용 없이 서버-투-서버 인증이 가능해, 능동적으로 로그인한 사용자가 없는 시나리오에 적합하다.",
+      "whyIncorrect": "Web Server Flow와 User-Agent Flow는 모두 사용자가 브라우저에서 직접 로그인/승인하는 과정을 거쳐야 하고, Device Flow는 TV·IoT처럼 별도 기기에서 코드를 입력해 승인받는 방식이라 역시 사용자 개입이 필요하다.",
+      "examPoint": "'사용자가 로그인해 있지 않아도 되는 서버 간 자동 인증'이라는 조건이 나오면 JWT Bearer Flow를 먼저 떠올리는 것이 OAuth 흐름 문제의 핵심 패턴이다.",
+      "practicalExample": "야간에 자동으로 실행되는 배치 프로그램이 사람의 개입 없이 Salesforce API에 접속해 데이터를 동기화할 때, JWT Bearer Token Flow로 인증한다."
+    }
+  },
+  {
+    "id": "q-adx-identity-033",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC employees use SAML SSO to log into Salesforce via their corporate portal. An employee is terminated. The admin deactivates their Active Directory account. What happens to their Salesforce access?",
+    "choices": [
+      "They retain Salesforce access until deactivated there too",
+      "They immediately lose Salesforce access because SAML authentication fails at the IdP",
+      "They are auto-deactivated in Salesforce via SAML sync",
+      "Their Salesforce session continues until it expires"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "SAML SSO 환경에서는 IdP(AD)가 인증의 근원이므로, AD 계정이 비활성화되면 그 즉시 SAML 인증이 실패해 Salesforce 접근도 함께 차단된다.",
+      "whyCorrect": "Salesforce는 SP로서 IdP인 AD의 인증 결과에 의존하므로, AD 인증이 실패하는 순간 Salesforce 로그인도 불가능해진다.",
+      "whyIncorrect": "Salesforce에서 별도로 비활성화해야만 접근이 막히는 게 아니라 IdP 실패만으로도 즉시 차단되며, SAML 자체에 사용자 상태를 자동 동기화하는 표준 기능은 없고, 세션이 만료될 때까지 기다릴 필요 없이 재인증 시점에 즉시 차단된다.",
+      "examPoint": "SSO 환경에서는 'Salesforce 쪽 사용자 상태'와 'IdP 쪽 사용자 상태'가 분리돼 있다는 점, 그리고 인증은 항상 IdP가 최종 관문이라는 점이 핵심 포인트다.",
+      "practicalExample": "퇴사 처리로 회사 AD 계정이 잠기면, 이미 로그인된 세션이 만료된 후 다시 로그인을 시도할 때 SAML 인증 단계에서 바로 막혀 Salesforce에 들어갈 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-identity-034",
+    "category": "세일즈포스",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has multiple orgs. They want users to log in once and access both orgs without re-authenticating. What should be configured?",
+    "choices": [
+      "Shared passwords across orgs",
+      "Cross-Org SSO using SAML with one org as IdP and the other as SP",
+      "OAuth token sharing",
+      "Shared Profile across orgs"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "여러 Salesforce 조직 간에도 한쪽 조직을 IdP, 다른 쪽을 SP로 지정하는 Cross-Org SAML SSO를 구성하면 재인증 없이 넘나들 수 있다.",
+      "whyCorrect": "SAML은 조직 간(Org-to-Org) 신뢰 관계도 구성할 수 있어, 한 조직이 IdP 역할을 하고 다른 조직이 그 인증을 신뢰하는 SP가 되면 한 번의 로그인으로 양쪽을 오갈 수 있다.",
+      "whyIncorrect": "비밀번호나 Profile을 조직 간에 공유하는 기능은 Salesforce에 존재하지 않으며, OAuth 토큰 공유만으로는 완전한 로그인 세션 통합이 이루어지지 않는다.",
+      "examPoint": "SAML SSO는 외부 시스템뿐 아니라 Salesforce 조직끼리도 IdP/SP 관계를 맺을 수 있다는 것, 즉 '두 Salesforce 조직 사이'에도 적용 가능하다는 확장 개념이 포인트다.",
+      "practicalExample": "인수합병으로 두 회사가 각자 Salesforce 조직을 운영 중일 때, 한쪽을 IdP로 지정해두면 직원이 로그인 한 번으로 양쪽 조직을 오갈 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-identity-035",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants all users to verify their identity with a second factor on every login. What should the admin enable?",
+    "choices": [
+      "Login IP Restrictions",
+      "Password Policies",
+      "Multi-Factor Authentication (MFA)",
+      "Single Sign-On (SSO)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "모든 로그인마다 두 번째 인증 요소로 신원을 확인시키려면 MFA를 활성화해야 한다.",
+      "whyCorrect": "'매 로그인마다 2차 인증'이라는 요구사항은 MFA의 정의와 정확히 일치하므로 C가 정답이다.",
+      "whyIncorrect": "Login IP Restrictions는 위치 기반 접근 제어이고, Password Policies는 비밀번호 규칙일 뿐 2차 인증 요소가 아니며, SSO는 로그인 통합이지 추가 인증 수단을 강제하는 기능이 아니다.",
+      "examPoint": "이 유형의 문제는 '무엇을 활성화해야 하는가'를 묻는 가장 기본적인 MFA 확인 문제로, 반복해서 출제되는 패턴이니 확실히 익혀두자.",
+      "practicalExample": "회사 보안 정책상 모든 직원이 로그인할 때마다 인증 앱 승인까지 받아야 한다면, 조직 전체에 MFA가 활성화되어 있다는 뜻이다."
+    }
+  },
+  {
+    "id": "q-adx-identity-036",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A user at Universal Containers logs in from outside the company Trusted IP Range. What happens?",
+    "choices": [
+      "The user is permanently locked out",
+      "The user must contact the admin to access Salesforce",
+      "The user receives an identity verification challenge (email or SMS code)",
+      "The user logs in normally with no additional steps"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Trusted IP Ranges에 등록되지 않은 네트워크에서 로그인하면, Salesforce는 추가 신원 확인(이메일/SMS 코드 등)을 요구해 보안을 강화한다.",
+      "whyCorrect": "신뢰 IP 범위 밖에서의 로그인은 위험도가 높다고 판단되어 이메일이나 SMS 코드를 통한 추가 검증 절차가 자동으로 뜨는 것이 기본 동작이다.",
+      "whyIncorrect": "영구 잠금이나 관리자 문의가 강제되는 것은 아니며, 추가 확인만 통과하면 정상적으로 로그인되므로 아무 절차 없이 그냥 로그인되는 것도 아니다.",
+      "examPoint": "Trusted IP Ranges 밖이라고 해서 로그인이 '차단'되는 게 아니라 '추가 검증 한 단계'만 더 거친다는 점이 Login IP Ranges(완전 차단)와 구분되는 핵심이다.",
+      "practicalExample": "출장 중 평소와 다른 나라의 호텔 와이파이로 로그인하면, 등록된 이메일로 온 인증 코드를 입력해야 로그인이 완료된다."
+    }
+  },
+  {
+    "id": "q-adx-identity-037",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants users to access a third-party app using their Salesforce credentials. Salesforce acts as the Identity Provider. Which protocol is used?",
+    "choices": [
+      "LDAP",
+      "OAuth 2.0 / OpenID Connect",
+      "REST API",
+      "SOAP API"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce가 IdP로서 외부 앱에 신원과 접근 권한을 제공할 때는 OAuth 2.0(권한 위임)과 OpenID Connect(신원 확인)를 함께 사용하는 것이 일반적이다.",
+      "whyCorrect": "Salesforce 자격증명으로 타사 앱에 접근하는 IdP 시나리오는 OAuth 2.0의 권한 위임과 OpenID Connect의 신원확인이 결합된 방식으로 처리되므로 B가 정답이다.",
+      "whyIncorrect": "LDAP은 Salesforce가 직접 지원하지 않는 프로토콜이고, REST API와 SOAP API는 로그인 프로토콜이 아니라 데이터를 주고받는 통신 방식일 뿐이다.",
+      "examPoint": "Salesforce가 IdP 역할을 할 때 실제로 내부적으로 쓰이는 표준 조합이 OAuth 2.0 + OpenID Connect라는 점을 통으로 기억해두면 이런 유형의 문제에 바로 대응할 수 있다.",
+      "practicalExample": "Salesforce 계정으로 외부 설문 툴에 로그인하면, 뒤에서는 OAuth로 권한을, OpenID Connect로 신원을 함께 확인해 인증을 완료한다."
+    }
+  },
+  {
+    "id": "q-adx-identity-038",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers wants to restrict the hours during which users can log in. Where is this configured?",
+    "choices": [
+      "Password Policies in Setup",
+      "Network Access in Setup",
+      "Login Hours on the Profile",
+      "Session Settings in Setup"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "사용자가 로그인 가능한 요일/시간대를 제한하는 설정은 Profile의 Login Hours에서 이루어진다.",
+      "whyCorrect": "로그인 허용 시간을 요일/시간 단위로 제어하는 기능은 정확히 Profile의 Login Hours 설정이므로 C가 정답이다.",
+      "whyIncorrect": "Password Policies는 비밀번호 규칙 설정이고, Network Access는 IP 허용/차단 설정이며, Session Settings는 세션 지속 시간이나 보안 옵션을 다루는 곳이라 로그인 가능 시간대와는 다른 영역이다.",
+      "examPoint": "Login IP Ranges(누가 어디서), Login Hours(언제), Session Settings(세션 자체)처럼 Profile 관련 보안 설정을 역할별로 구분해서 암기해두면 헷갈리지 않는다.",
+      "practicalExample": "콜센터 상담원 Profile에 평일 오전 9시~오후 6시만 로그인 가능하도록 Login Hours를 설정하면, 그 시간 외에는 로그인 자체가 거부된다."
+    }
+  },
+  {
+    "id": "q-adx-identity-039",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers uses SSO. A user forgets their password. What should the admin advise?",
+    "choices": [
+      "Reset the password from the Salesforce user record",
+      "The user clicks Forgot Password on the Salesforce login page",
+      "The user resets through the company Identity Provider",
+      "The admin freezes and unfreezes the user account"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "SSO 환경에서는 Salesforce가 비밀번호를 직접 관리하지 않으므로, 비밀번호 재설정도 인증을 담당하는 IdP(회사 시스템)를 통해 이루어져야 한다.",
+      "whyCorrect": "SSO에서 실제 인증 주체는 IdP이기 때문에, 비밀번호를 잊었다면 Salesforce가 아니라 IdP(회사 인증 시스템)에서 재설정해야 한다.",
+      "whyIncorrect": "Salesforce 사용자 레코드에서 재설정하거나 로그인 페이지의 '비밀번호 찾기'를 이용하는 것은 SSO 환경에서는 의미가 없으며(Salesforce가 비밀번호를 관리하지 않으므로), 계정을 얼리고 푸는 것은 비밀번호 재설정과 무관한 조치다.",
+      "examPoint": "SSO를 쓰면 '비밀번호는 IdP가 주인'이라는 원칙을 기억하면, 비밀번호 관련 SSO 문제는 대부분 이 문장으로 풀린다.",
+      "practicalExample": "SSO로 로그인하는 직원이 비밀번호를 잊었다면, Salesforce가 아니라 회사 IT팀이 관리하는 사내 계정 시스템(AD 등)에서 비밀번호를 재설정해야 한다."
+    }
+  }
+]
