@@ -100,7 +100,7 @@
                   class="tag tag--gray"></span></h1>
               <p class="quiz-header__meta" id="quiz-meta">문제를 불러오는 중이에요…</p>
             </div>
-            <button type="button" class="btn btn--danger" id="quiz-end-btn">시험 종료하기</button>
+            <button type="button" class="btn btn--danger" id="quiz-end-btn">응시 중단하기</button>
           </div>
 
           <!-- 설정 단계: 난이도/문항 수를 고르고 시작하기 -->
@@ -169,7 +169,7 @@
 
                 <div class="quiz-question__footer">
                   <label class="quiz-question__later">
-                    <input type="checkbox"> 나중에 다시 풀기
+                    <input type="checkbox" id="quiz-flag-checkbox"> 나중에 다시 풀기
                   </label>
                   <div class="quiz-question__actions">
                     <button type="button" class="btn btn--outline" id="quiz-prev-btn">‹ 이전 문제</button>
@@ -187,6 +187,8 @@
                     aria-hidden="true"></span>풀었어요</li>
                 <li><span class="question-grid-legend__swatch question-grid-legend__swatch--curr"
                     aria-hidden="true"></span>현재 문제</li>
+                <li><span class="question-grid-legend__swatch question-grid-legend__swatch--flagged"
+                    aria-hidden="true"></span>나중에 다시 풀기</li>
                 <li><span class="question-grid-legend__swatch question-grid-legend__swatch--todo"
                     aria-hidden="true"></span>아직 안 풀었어요</li>
               </ul>
@@ -201,8 +203,8 @@
                   </svg>
                   <div class="time-ring__value" id="timer">07:24</div>
                 </div>
-                <button type="button" class="btn btn--outline btn--sm memo-panel__extend-btn" data-action="toast"
-                  data-message="시간을 2분 연장했어요!">⟳ 시간 연장하기</button>
+                <button type="button" class="btn btn--outline btn--sm memo-panel__extend-btn" id="quiz-extend-btn">⟳
+                  시간 연장하기</button>
               </div>
 
               <div class="memo-panel">
@@ -215,14 +217,18 @@
           <!-- 결과 단계: 채점 완료 후 -->
           <div class="quiz-result" id="quiz-result" hidden>
             <div class="quiz-question quiz-result__card">
-              <p class="quiz-result__emoji" aria-hidden="true">🌱</p>
-              <p class="quiz-result__title">수고하셨습니다!</p>
+              <p class="quiz-result__emoji" id="quiz-result-emoji" aria-hidden="true">🌱</p>
+              <p class="quiz-result__title" id="quiz-result-title">수고하셨습니다!</p>
               <p class="quiz-result__desc" id="quiz-result-desc"></p>
               <div class="quiz-result__actions">
                 <button type="button" class="btn btn--outline" id="quiz-result-score-btn">📊 점수 보기</button>
+                <button type="button" class="btn btn--outline" id="quiz-result-retry-btn">🔁 다시 풀기</button>
+                <button type="button" class="btn btn--outline" id="quiz-result-retry-wrong-btn" hidden>📝 오답만 다시
+                  풀기</button>
                 <a class="btn btn--primary" href="exam.html" id="quiz-result-exit-btn">시험 종료하기</a>
               </div>
               <div class="quiz-result__breakdown" id="quiz-result-breakdown" hidden>
+                <div class="quiz-result__category-breakdown" id="quiz-result-category-breakdown" hidden></div>
                 <div class="exam-status-ring-wrap">
                   <div class="score-ring">
                     <svg id="quiz-result-ring-svg" viewBox="0 0 80 80" width="80" height="80" role="img"

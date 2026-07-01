@@ -7,11 +7,13 @@
 // NOTE: 이 프로젝트엔 storage.js(공통 담당자 소유, 아직 미신설)가 없어 localStorage를 직접 사용한다.
 // storage.js가 생기면 이 저장 로직도 그쪽으로 이관한다. exam.js도 같은 키를 사용한다(파일 간 공유 모듈이 없어 상수를 각자 정의).
 const SESAC_EXAM_ATTEMPTS_KEY = 'sesac-exam-attempts';
+const MAX_STORED_ATTEMPTS = 100; // localStorage 무한 누적 방지 — 최근 100건만 보관
 const DIFFICULTY_ORDER = ['기초', '중급', '고급', '심화'];
 const MAX_QUIZ_QUESTION_COUNT = 50; // 문항 수 슬라이더 상한 (풀 크기가 더 작으면 풀 크기가 상한이 된다)
 
-let quizState = null; // { exam, questions, currentIndex, answers: Map<index, choiceIndex> }
-let quizPool = null;  // { exam, allQuestions } — 설정 화면에서 참조하는 전체 문제 풀
+let quizState = null; // { exam, questions, currentIndex, answers: Map<index, choiceIndex>, flagged: Set<index>, memos: Map<index, string> }
+let quizPool = null;  // { exam, allQuestions, seedHistory } — 설정 화면/포인트 계산이 참조하는 전체 문제 풀 · 시드 응시 기록
+let lastWrongQuestions = []; // 방금 채점한 시험의 오답 문제 목록 — "오답만 다시 풀기"에서 사용
 // 타이머 초기값은 startQuizFromSetup()이 선택된 문항 수에 맞춰 갱신한다 (선언은 호출보다 먼저 와야 한다).
 let timerSec = 444;
 
@@ -24,6 +26,25 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function shuffleArray(arr) {
+  const result = [...arr];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function getLocalExamAttempts() {
+  try {
+    const raw = localStorage.getItem(SESAC_EXAM_ATTEMPTS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
 }
 
 async function initQuizPage() {
@@ -40,7 +61,7 @@ async function initQuizPage() {
     const allQuestions = resolveQuizQuestions(data, examId);
     if (!exam || !allQuestions.length) throw new Error('해당 모의고사를 찾을 수 없습니다.');
 
-    quizPool = { exam, allQuestions };
+    quizPool = { exam, allQuestions, seedHistory: data.attemptHistory || [] };
 
     document.title = `${exam.title} 응시 — 새싹트리`;
     setText('quiz-title-text', exam.title);
@@ -73,7 +94,7 @@ function showQuizPhase(phase) {
   if (setupEl) setupEl.hidden = phase !== 'setup';
   if (playEl) playEl.hidden = phase !== 'play';
   if (resultEl) resultEl.hidden = phase !== 'result';
-  if (endBtn) endBtn.hidden = phase !== 'play'; // 설정/결과 화면에서는 헤더의 종료 버튼을 숨긴다 (중복 방지)
+  if (endBtn) endBtn.hidden = phase !== 'play'; // 설정/결과 화면에서는 헤더의 중단 버튼을 숨긴다 (결과 화면 버튼과 중복 방지)
 }
 
 // ── 1단계: 응시 설정 (난이도 · 문항 수) ──
@@ -92,10 +113,6 @@ function renderQuizSetup() {
       cb.addEventListener('change', updateQuizSetupCountOptions);
     });
   }
-
-  document.getElementById('quiz-setup-count')?.addEventListener('input', e => {
-    setText('quiz-setup-count-value', e.target.value);
-  });
 
   updateQuizSetupCountOptions();
 }
@@ -145,9 +162,9 @@ function startQuizFromSetup() {
 
   const countSlider = document.getElementById('quiz-setup-count');
   const count = Math.min(Number(countSlider?.value) || filtered.length, filtered.length);
-  const questions = filtered.slice(0, count);
+  const questions = shuffleArray(filtered).slice(0, count); // 매 응시마다 문제 구성/순서를 무작위화
 
-  quizState = { exam, questions, currentIndex: 0, answers: new Map() };
+  quizState = { exam, questions, currentIndex: 0, answers: new Map(), flagged: new Set(), memos: new Map() };
   timerSec = Math.max(60, Math.round(exam.estimatedMinutes * 60 * (count / allQuestions.length)));
 
   setText('quiz-info-point', `${questions.length}점 (문제당 1점)`);
@@ -159,7 +176,7 @@ function startQuizFromSetup() {
 
 // ── 2단계: 응시 (문항 탐색) ──
 function renderQuizQuestion() {
-  const { questions, currentIndex, answers } = quizState;
+  const { questions, currentIndex, answers, flagged, memos } = quizState;
   const total = questions.length;
   const q = questions[currentIndex];
 
@@ -176,6 +193,11 @@ function renderQuizQuestion() {
       </button>
     `).join('');
   }
+
+  const memoEl = document.getElementById('quiz-memo');
+  if (memoEl) memoEl.value = memos.get(currentIndex) || '';
+  const flagEl = document.getElementById('quiz-flag-checkbox');
+  if (flagEl) flagEl.checked = flagged.has(currentIndex);
 
   const percent = Math.round(((currentIndex + 1) / total) * 100);
   setText('quiz-progress-text', `${currentIndex + 1} / ${total} 문제`);
@@ -197,11 +219,12 @@ function renderQuizQuestion() {
 function renderQuizQuestionGrid() {
   const grid = document.getElementById('quiz-question-grid');
   if (!grid) return;
-  const { questions, currentIndex, answers } = quizState;
+  const { questions, currentIndex, answers, flagged } = quizState;
   grid.innerHTML = questions.map((_, i) => {
     const classes = ['question-grid__num'];
     if (i === currentIndex) classes.push('question-grid__num--curr');
     else if (answers.has(i)) classes.push('question-grid__num--done');
+    if (flagged.has(i)) classes.push('question-grid__num--flagged');
     return `<button type="button" class="${classes.join(' ')}" data-q-index="${i}">${i + 1}</button>`;
   }).join('');
   grid.querySelectorAll('[data-q-index]').forEach(btn => {
@@ -215,24 +238,66 @@ function goToQuizQuestion(index) {
   renderQuizQuestion();
 }
 
-// ── 3단계: 결과 (채점 · 오답 확인) ──
+// ── 3단계: 결과 (채점 · 포인트 적립 · 오답 확인) ──
+// 포인트 공식: 정답 1문제당 10P + 만점 보너스 50P. 같은 시험 재응시는 "이전 최고 포인트 대비 개선분"만 적립되어
+// 파밍을 방지하면서도 자기 갱신(더 높은 점수로 재도전)은 계속 보상한다.
+function computeEarnedPoints(examId, correctCount, total, isPerfect) {
+  const rawPoints = correctCount * 10 + (isPerfect ? 50 : 0);
+  const history = [...(quizPool.seedHistory || []), ...getLocalExamAttempts()].filter(h => h.examId === examId);
+  const priorBest = history.length ? Math.max(...history.map(h => h.pointsEarned || 0)) : 0;
+  return Math.max(0, rawPoints - priorBest);
+}
+
+function getScoreTier(score) {
+  if (score >= 90) return { emoji: '🎉', title: '완벽해요!', confetti: true };
+  if (score >= 70) return { emoji: '👍', title: '잘했어요!', confetti: false };
+  return { emoji: '🌱', title: '다음엔 더 잘할 수 있어요!', confetti: false };
+}
+
+function launchConfetti() {
+  const colors = ['#4CAF50', '#8BC34A', '#FFC107', '#FF7043', '#42A5F5'];
+  for (let i = 0; i < 40; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDelay = (Math.random() * 0.4) + 's';
+    piece.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+    document.body.appendChild(piece);
+    setTimeout(() => piece.remove(), 4000);
+  }
+}
+
 function finishQuiz() {
   if (!quizState) return;
   const { exam, questions, answers } = quizState;
   const total = questions.length;
   const correctCount = questions.filter((q, i) => answers.get(i) === q.answerIndex).length;
   const score = Math.round((correctCount / total) * 100);
+  const isPerfect = correctCount === total;
 
+  lastWrongQuestions = questions.filter((q, i) => answers.get(i) !== q.answerIndex);
+
+  const tier = getScoreTier(score);
+  setText('quiz-result-emoji', tier.emoji);
+  setText('quiz-result-title', tier.title);
   setText('quiz-result-desc', `${exam.title} · ${correctCount} / ${total}문제를 맞혔어요.`);
+
+  const retryWrongBtn = document.getElementById('quiz-result-retry-wrong-btn');
+  if (retryWrongBtn) retryWrongBtn.hidden = lastWrongQuestions.length === 0;
 
   const breakdownEl = document.getElementById('quiz-result-breakdown');
   if (breakdownEl) breakdownEl.hidden = true; // "점수 보기"를 눌러야 펼쳐지도록 초기화
 
   renderQuizResultRing(score);
+  renderQuizResultCategoryBreakdown(questions, answers);
   renderQuizResultQuestionList(questions, answers);
-  saveExamAttempt(exam, score);
+
+  const pointsEarned = computeEarnedPoints(exam.id, correctCount, total, isPerfect);
+  saveExamAttempt(exam, score, pointsEarned);
 
   showQuizPhase('result');
+  if (tier.confetti) launchConfetti();
 }
 
 function renderQuizResultRing(score) {
@@ -247,6 +312,25 @@ function renderQuizResultRing(score) {
   }
   const svgEl = document.getElementById('quiz-result-ring-svg');
   if (svgEl) svgEl.setAttribute('aria-label', `이번 응시 점수 ${score}%`);
+}
+
+function renderQuizResultCategoryBreakdown(questions, answers) {
+  const el = document.getElementById('quiz-result-category-breakdown');
+  if (!el) return;
+  const categories = [...new Set(questions.map(q => q.category))];
+
+  if (categories.length < 2) {
+    el.hidden = true;
+    el.innerHTML = '';
+    return;
+  }
+
+  el.hidden = false;
+  el.innerHTML = categories.map(cat => {
+    const inCategory = questions.map((q, i) => ({ q, i })).filter(({ q }) => q.category === cat);
+    const correct = inCategory.filter(({ q, i }) => answers.get(i) === q.answerIndex).length;
+    return `<div class="exam-stat"><span class="exam-stat__label">${escapeHtml(cat)}</span><span class="exam-stat__value">${correct} / ${inCategory.length}</span></div>`;
+  }).join('');
 }
 
 function renderQuizResultQuestionList(questions, answers) {
@@ -285,19 +369,19 @@ function renderQuizResultQuestionList(questions, answers) {
   }).join('');
 }
 
-function saveExamAttempt(exam, score) {
+function saveExamAttempt(exam, score, pointsEarned) {
   try {
-    const raw = localStorage.getItem(SESAC_EXAM_ATTEMPTS_KEY);
-    const list = raw ? JSON.parse(raw) : [];
+    const list = getLocalExamAttempts();
     list.push({
       examId: exam.id,
       title: exam.title,
       icon: exam.icon,
       score,
-      pointsEarned: score + 20,
+      pointsEarned,
       date: new Date().toISOString().slice(0, 10)
     });
-    localStorage.setItem(SESAC_EXAM_ATTEMPTS_KEY, JSON.stringify(list));
+    const trimmed = list.length > MAX_STORED_ATTEMPTS ? list.slice(-MAX_STORED_ATTEMPTS) : list;
+    localStorage.setItem(SESAC_EXAM_ATTEMPTS_KEY, JSON.stringify(trimmed));
   } catch (e) {
     console.error(e);
   }
@@ -316,6 +400,18 @@ document.getElementById('quiz-choices')?.addEventListener('click', e => {
   renderQuizQuestion();
 });
 
+document.getElementById('quiz-memo')?.addEventListener('input', e => {
+  if (!quizState) return;
+  quizState.memos.set(quizState.currentIndex, e.target.value);
+});
+
+document.getElementById('quiz-flag-checkbox')?.addEventListener('change', e => {
+  if (!quizState) return;
+  if (e.target.checked) quizState.flagged.add(quizState.currentIndex);
+  else quizState.flagged.delete(quizState.currentIndex);
+  renderQuizQuestionGrid();
+});
+
 document.getElementById('quiz-prev-btn')?.addEventListener('click', () => {
   if (quizState) goToQuizQuestion(quizState.currentIndex - 1);
 });
@@ -332,7 +428,12 @@ document.getElementById('quiz-next-btn')?.addEventListener('click', () => {
 document.getElementById('quiz-setup-start-btn')?.addEventListener('click', startQuizFromSetup);
 
 document.getElementById('quiz-end-btn')?.addEventListener('click', () => {
-  if (quizState) finishQuiz(); // 응시 중 조기 종료 — 지금까지 답한 것만으로 채점
+  if (quizState) finishQuiz(); // 응시 중 조기 종료(중단) — 지금까지 답한 것만으로 채점
+});
+
+document.getElementById('quiz-extend-btn')?.addEventListener('click', () => {
+  timerSec += 120;
+  toast('⟳ 시간을 2분 연장했어요!');
 });
 
 document.getElementById('quiz-result-score-btn')?.addEventListener('click', () => {
@@ -340,18 +441,45 @@ document.getElementById('quiz-result-score-btn')?.addEventListener('click', () =
   if (breakdownEl) breakdownEl.hidden = !breakdownEl.hidden;
 });
 
+document.getElementById('quiz-result-retry-btn')?.addEventListener('click', () => {
+  if (!quizPool) return;
+  renderQuizSetup();
+  showQuizPhase('setup');
+});
+
+document.getElementById('quiz-result-retry-wrong-btn')?.addEventListener('click', () => {
+  if (!quizPool || !lastWrongQuestions.length) return;
+  quizState = {
+    exam: quizPool.exam,
+    questions: [...lastWrongQuestions],
+    currentIndex: 0,
+    answers: new Map(),
+    flagged: new Set(),
+    memos: new Map()
+  };
+  timerSec = Math.max(60, Math.round(quizPool.exam.estimatedMinutes * 60 * (lastWrongQuestions.length / quizPool.allQuestions.length)));
+  setText('quiz-info-point', `${quizState.questions.length}점 (문제당 1점)`);
+  setText('quiz-info-time', `${Math.round(timerSec / 60)}분`);
+  renderQuizQuestion();
+  showQuizPhase('play');
+});
+
 initQuizPage();
 
-// ── 모의고사 타이머 (원본 로직 그대로) ──
+// ── 모의고사 타이머 (남은 시간 0 도달 시 자동 제출 추가) ──
 // MPA 전환: quiz.js는 quiz.html뿐 아니라 mywords.html(단어 퀴즈 선택지 토글)에서도 로드되므로
 // #quiz 요소가 없는 페이지에서 에러 없이 동작하도록 옵셔널 체이닝을 사용한다.
 setInterval(() => {
-  if (document.getElementById('quiz-play') && !document.getElementById('quiz-play').hidden) {
-    timerSec = Math.max(0, timerSec - 1);
-    const el = document.getElementById('timer');
-    if (el) el.textContent =
-      String(Math.floor(timerSec / 60)).padStart(2, '0') + ':' +
-      String(timerSec % 60).padStart(2, '0');
+  const playEl = document.getElementById('quiz-play');
+  if (!playEl || playEl.hidden || timerSec <= 0) return;
+  timerSec = Math.max(0, timerSec - 1);
+  const el = document.getElementById('timer');
+  if (el) el.textContent =
+    String(Math.floor(timerSec / 60)).padStart(2, '0') + ':' +
+    String(timerSec % 60).padStart(2, '0');
+  if (timerSec === 0) {
+    toast('⏰ 시간이 종료되어 자동 제출되었어요.');
+    finishQuiz();
   }
 }, 1000);
 
