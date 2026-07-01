@@ -1,0 +1,367 @@
+/* ==========================================================================
+   Page: resume (나의 이력서)
+   ========================================================================== */
+
+/* ---------- 페이지 헤더 ---------- */
+.resume-header-actions {
+  display: flex;
+  gap: var(--space-8);
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ---------- AI 배너 ---------- */
+.resume-ai-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  background: linear-gradient(135deg, var(--g900), var(--g700));
+  border-radius: var(--r-md);
+  padding: var(--space-16) var(--space-22);
+  margin-bottom: var(--space-20);
+  color: #fff;
+  box-shadow: var(--sh-g);
+}
+
+.resume-ai-banner__icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.resume-ai-banner__body {
+  flex: 1;
+}
+
+.resume-ai-banner__title {
+  font-size: var(--fs-14);
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+}
+
+.resume-ai-banner__desc {
+  font-size: var(--fs-12);
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+/* ---------- 통계 바 ---------- */
+.resume-stat-bar {
+  display: flex;
+  gap: var(--space-1);
+  margin-bottom: var(--space-20);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--sh-sm);
+}
+
+.resume-stat-bar__item {
+  flex: 1;
+  padding: var(--space-14) var(--space-16);
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+
+.resume-stat-bar__item:last-child {
+  border-right: none;
+}
+
+.resume-stat-bar__value {
+  font-size: var(--fs-20);
+  font-weight: 800;
+  color: var(--g900);
+  line-height: 1;
+  margin-bottom: var(--space-3);
+}
+
+.resume-stat-bar__value--accent {
+  color: var(--g700);
+}
+
+.resume-stat-bar__label {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+}
+
+/* ---------- 필터 행 ---------- */
+.resume-filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-14);
+  gap: var(--space-10);
+  flex-wrap: wrap;
+}
+
+.resume-filter-row .filter-tabs {
+  margin-bottom: 0;
+}
+
+/* ---------- 이력서 목록 ---------- */
+.resume-list {
+  list-style: none;
+  margin-bottom: var(--space-28);
+}
+
+/* ---------- 이력서 행 ---------- */
+.resume-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-14);
+  padding: var(--space-16) var(--space-18);
+  background: var(--surface);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-8);
+  box-shadow: var(--sh-sm);
+  transition: all .15s;
+  width: 100%;
+  text-align: left;
+}
+
+.resume-row:hover {
+  box-shadow: var(--sh-md);
+  border-color: var(--g300);
+  transform: translateY(-1px);
+}
+
+.resume-row__status {
+  flex-shrink: 0;
+  width: 64px;
+}
+
+.resume-row__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.resume-row__title {
+  font-size: var(--fs-14);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: var(--space-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resume-row__meta {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+}
+
+.resume-row__progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  width: 140px;
+  flex-shrink: 0;
+}
+
+.resume-row__progress .progress-bar {
+  flex: 1;
+}
+
+.resume-row__pct {
+  font-size: var(--fs-11);
+  font-weight: 800;
+  color: var(--ink3);
+  min-width: 28px;
+  text-align: right;
+}
+
+.resume-row__date {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+  flex-shrink: 0;
+  width: 80px;
+  text-align: right;
+}
+
+.resume-row__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-shrink: 0;
+}
+
+.resume-row__more {
+  font-size: var(--fs-16);
+  color: var(--ink4);
+  width: 28px;
+  text-align: center;
+}
+
+/* 지원 완료 이력서: 목록에서 살짝 다운 톤 */
+.resume-row--applied {
+  background: var(--bg);
+}
+
+/* ---------- 새 이력서 만들기 CTA 행 ---------- */
+.resume-row-new {
+  display: flex;
+  align-items: center;
+  gap: var(--space-14);
+  padding: var(--space-16) var(--space-18);
+  border: 2px dashed var(--g300);
+  border-radius: var(--r-md);
+  background: var(--g20);
+  cursor: pointer;
+  transition: all .18s;
+  width: 100%;
+  text-align: left;
+  color: var(--g700);
+}
+
+.resume-row-new:hover {
+  border-color: var(--g500);
+  background: var(--g50);
+  box-shadow: var(--sh-g);
+}
+
+.resume-row-new__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--g700), var(--g500));
+  color: #fff;
+  font-size: var(--fs-20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--sh-g);
+}
+
+.resume-row-new__label {
+  font-size: var(--fs-13);
+  font-weight: 800;
+}
+
+.resume-row-new__sub {
+  font-size: var(--fs-11);
+  color: var(--ink3);
+  margin-top: var(--space-1);
+}
+
+/* ---------- 이력서 생성 모달 확장 ---------- */
+.modal--resume {
+  width: 420px;
+}
+
+.modal__template-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-14);
+}
+
+.modal__template-card {
+  border: 2px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: var(--space-12) var(--space-8);
+  cursor: pointer;
+  text-align: center;
+  transition: all .15s;
+}
+
+.modal__template-card:hover,
+.modal__template-card--selected {
+  border-color: var(--g700);
+  background: var(--g50);
+}
+
+.modal__template-card--selected {
+  box-shadow: var(--sel-ring);
+}
+
+.modal__template-icon {
+  font-size: var(--fs-22);
+  margin-bottom: var(--space-4);
+}
+
+.modal__template-name {
+  font-size: var(--fs-11);
+  font-weight: 700;
+  color: var(--ink2);
+}
+
+/* ---------- 사이드 패널 — 작성 가이드 ---------- */
+.resume-guide-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.resume-guide-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-guide-step:last-child {
+  border-bottom: none;
+}
+
+.resume-guide-step__num {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--g700);
+  color: #fff;
+  font-size: var(--fs-10);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.resume-guide-step__num--done {
+  background: var(--g300);
+}
+
+.resume-guide-step__body {
+  flex: 1;
+}
+
+.resume-guide-step__title {
+  font-size: var(--fs-12);
+  font-weight: 700;
+  color: var(--ink2);
+}
+
+.resume-guide-step__desc {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+  line-height: 1.4;
+}
+
+/* ---------- 지원 현황 ---------- */
+.apply-status-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.apply-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.apply-status-row:last-child {
+  border-bottom: none;
+}
+
+.apply-status-row__company {
+  font-size: var(--fs-12);
+  font-weight: 700;
+  color: var(--ink2);
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 — 새싹트리</title>
+  <!-- ================================================= -->
+  <!-- 공통 디자인 토큰/리셋 — 재사용만 함, 수정하지 않음 -->
+  <!-- ================================================= -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- 페이지 전용 CSS — MyPage(Job/My) 담당, 신규 파일 (login.html과 공유) -->
+  <link rel="stylesheet" href="assets/css/pages/auth.css">
+</head>
+
+<body class="auth-body">
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
+
+  <main id="main-content" class="auth-shell">
+    <!-- ================================================= -->
+    <!-- SIGNUP PAGE (회원가입) -->
+    <!-- 신규 파일 : 공식 WORK_ORDER.md 스코프 밖 프로토타입, MyPage(Job/My) 담당 -->
+    <!-- css : pages/auth.css (login.html과 공유) -->
+    <!-- js : pages/auth.js (localStorage 기반 모킹, 공통 담당자 리뷰 필요) -->
+    <!-- 로그인 전 화면이라 공통 header/nav 없이 독립적으로 렌더링한다 -->
+    <!-- ================================================= -->
+    <section id="signup" class="auth-card" aria-label="회원가입">
+      <div class="auth-card__logo">
+        <span class="auth-card__logo-mark" aria-hidden="true">🌱</span>
+        <p class="auth-card__logo-name">새싹트리</p>
+      </div>
+      <h1 class="auth-card__title">회원가입</h1>
+      <p class="auth-card__subtitle">이메일로 가입하고 나만의 취업 핸드북을 시작하세요.</p>
+
+      <form class="auth-form" id="signup-form" novalidate>
+        <div class="auth-field">
+          <label class="auth-label" for="signup-name">이름</label>
+          <input type="text" id="signup-name" class="auth-input" placeholder="이름을 입력하세요" autocomplete="name"
+            required>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label" for="signup-email">이메일</label>
+          <input type="email" id="signup-email" class="auth-input" placeholder="example@sesac.com"
+            autocomplete="email" required>
+        </div>
+
+        <label class="auth-checkbox-row" for="signup-agree-required">
+          <input type="checkbox" id="signup-agree-required" required>
+          <span><span class="auth-checkbox-row__required">[필수]</span> 개인정보 수집 및 이용약관에 동의합니다.</span>
+        </label>
+
+        <label class="auth-checkbox-row" for="signup-agree-marketing">
+          <input type="checkbox" id="signup-agree-marketing">
+          <span>[선택] 할인 혜택 및 마케팅 정보 수신에 동의합니다.</span>
+        </label>
+
+        <button type="submit" class="btn btn--primary auth-form__submit">이메일 회원가입</button>
+      </form>
+
+      <p class="auth-card__switch">이미 계정이 있으신가요? <a href="login.html" class="auth-card__switch-link">로그인</a></p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/toast.js" defer></script>
+  <script src="assets/js/pages/auth.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이페이지 — 새싹트리</title>
+  <!-- ================================================= -->
+  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
+  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
+  <!-- ================================================= -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- 페이지 전용 CSS — MyPage(Job/My) 담당, 신규 파일 (mypage-edit.html과 공유) -->
+  <link rel="stylesheet" href="assets/css/pages/mypage.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
+
+  <!-- ================================================= -->
+  <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
+  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
+  <!-- ================================================= -->
+  <header class="header">
+    <div class="header__logo">
+      <span class="header__logo-mark" aria-hidden="true">🌱</span>
+      <div>
+        <p class="header__logo-name">새싹트리</p>
+        <p class="header__logo-sub">나만의 취업 핸드북</p>
+      </div>
+    </div>
+    <div class="search-box">
+      <span class="search-box__icon" aria-hidden="true">🔍</span>
+      <label class="sr-only" for="global-search">검색</label>
+      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
+    </div>
+    <div class="header__right">
+      <button type="button" class="notification-btn" aria-label="알림">🔔<span
+          class="notification-btn__dot"></span></button>
+      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
+      <button type="button" class="user-chip">
+        <span class="avatar" aria-hidden="true">🌿</span>
+        <span>
+          <span class="user-chip__name">김새싹</span>
+          <span class="user-chip__level">Lv.3 잎새</span>
+        </span>
+        <span class="user-chip__caret" aria-hidden="true">▾</span>
+      </button>
+    </div>
+  </header>
+  <!-- COMMON HEADER END -->
+
+  <!-- ================================================= -->
+  <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
+  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
+  <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
+  <!-- ================================================= -->
+  <nav class="nav" aria-label="주 메뉴">
+    <a class="nav__item" href="index.html">🏠 홈</a>
+    <a class="nav__item" href="wiki.html">📖 새싹위키</a>
+    <a class="nav__item" href="exam.html">📝 모의고사</a>
+    <a class="nav__item" href="job.html">💼 취업핸드북</a>
+    <a class="nav__item nav__item--active" href="my.html" aria-current="page">📚 마이핸드북</a>
+  </nav>
+  <!-- COMMON NAVIGATION END -->
+
+  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
+
+  <main id="main-content">
+    <!-- ================================================= -->
+    <!-- MYPAGE DASHBOARD (마이페이지 메인 대시보드) -->
+    <!-- 신규 파일 : 공식 WORK_ORDER.md 스코프 밖 프로토타입, MyPage(Job/My) 담당 -->
+    <!-- css : pages/mypage.css (mypage-edit.html과 공유) -->
+    <!-- js  : pages/mypage.js (localStorage 기반 프로필 실시간 반영, 공통 담당자 리뷰 필요) -->
+    <!-- json: assets/data/my_handbook.json (더미 데이터, 현재는 하드코딩 값과 동일하게 유지) -->
+    <!-- ================================================= -->
+    <!-- MYPAGE START -->
+    <section id="mypage" class="page page--active" aria-label="마이페이지 대시보드">
+      <div class="shell">
+        <aside class="sidebar" aria-label="마이핸드북 메뉴">
+          <button type="button" class="sidebar__item sidebar__item--active"><span class="sidebar__item-icon"
+              aria-hidden="true">🏠</span>대시보드</button>
+          <a class="sidebar__item" href="my.html"><span class="sidebar__item-icon"
+              aria-hidden="true">📄</span>내 문서</a>
+          <a class="sidebar__item" href="myfav.html"><span class="sidebar__item-icon"
+              aria-hidden="true">⭐</span>즐겨찾기</a>
+          <a class="sidebar__item" href="mywords.html"><span class="sidebar__item-icon"
+              aria-hidden="true">📓</span>저장한 단어</a>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📋</span>학습
+            노트</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📄</span>나의
+            이력서</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">🖼</span>포트폴리오</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📊</span>학습
+            기록</button>
+          <a class="sidebar__item" href="mypage-edit.html"><span class="sidebar__item-icon"
+              aria-hidden="true">⚙️</span>설정</a>
+          <div class="sidebar__card">
+            <p class="sidebar__card-title">📌 성장 팁</p>매일 꾸준히 학습하면 다음 레벨까지 더 빨리 도달할 수 있어요!
+            <p class="sidebar__card-icon" aria-hidden="true">🌿</p>
+          </div>
+        </aside>
+
+        <div class="page__content">
+          <h1 class="page-title">마이페이지 🌱</h1>
+          <p class="page-subtitle">나의 성장 현황과 활동을 한눈에 확인하세요.</p>
+
+          <!-- 프로필 영역 -->
+          <div class="profile-card" id="profile-card">
+            <span class="profile-card__avatar" id="profile-avatar" aria-hidden="true">🌱</span>
+            <div class="profile-card__body">
+              <p class="profile-card__name" id="profile-name">DAJEONG KIM</p>
+              <p class="profile-card__username" id="profile-username">@kdj4027</p>
+            </div>
+            <div class="profile-card__actions">
+              <a href="mypage-edit.html" class="btn btn--primary btn--sm">Edit profile</a>
+              <button type="button" class="btn btn--outline btn--sm" data-action="toast"
+                data-message="프로필 보기 화면은 준비 중이에요!">See profile</button>
+            </div>
+          </div>
+
+          <!-- 현재 레벨 시스템 -->
+          <div class="level-card">
+            <div class="section-title section-title--sm">현재 레벨</div>
+            <div class="level-track">
+              <div class="level-track__stage level-track__stage--active" data-stage="0">
+                <span class="level-track__icon" aria-hidden="true">🌱</span>
+                <span class="level-track__label">새싹</span>
+              </div>
+              <div class="level-track__stage" data-stage="1">
+                <span class="level-track__icon" aria-hidden="true">🌿</span>
+                <span class="level-track__label">줄기</span>
+              </div>
+              <div class="level-track__stage" data-stage="2">
+                <span class="level-track__icon" aria-hidden="true">🍃</span>
+                <span class="level-track__label">잎</span>
+              </div>
+              <div class="level-track__stage" data-stage="3">
+                <span class="level-track__icon" aria-hidden="true">🌳</span>
+                <span class="level-track__label">나무</span>
+              </div>
+            </div>
+            <div class="progress-bar level-track__bar" role="progressbar" aria-valuenow="35" aria-valuemin="0"
+              aria-valuemax="100">
+              <div class="progress-bar__fill progress-bar__fill--green" data-progress="35"></div>
+            </div>
+            <p class="level-track__hint">다음 단계(줄기)까지 <strong>35%</strong> 남았어요 · 1,240P / 2,000P</p>
+          </div>
+
+          <!-- 나의 오답 & 단어 노트 -->
+          <div class="notebook-grid">
+            <div class="notebook-card">
+              <div class="section-title section-title--sm">오답 노트 <button type="button" class="section-title__link"
+                  data-action="toast" data-message="오답노트 전체보기는 준비 중이에요!">전체보기 ›</button></div>
+              <ul class="notebook-card__list">
+                <li class="notebook-card__row">
+                  <span class="tag tag--green">SQL</span>
+                  <span class="notebook-card__text">WHERE 절의 역할로 가장 알맞은 것은?</span>
+                  <span class="notebook-card__date">2025.05.20</span>
+                </li>
+                <li class="notebook-card__row">
+                  <span class="tag tag--orange">Java</span>
+                  <span class="notebook-card__text">상속(Inheritance)의 특징으로 옳지 않은 것은?</span>
+                  <span class="notebook-card__date">2025.05.18</span>
+                </li>
+                <li class="notebook-card__row">
+                  <span class="tag tag--green">SQL</span>
+                  <span class="notebook-card__text">GROUP BY와 함께 쓸 수 없는 것은?</span>
+                  <span class="notebook-card__date">2025.05.14</span>
+                </li>
+              </ul>
+            </div>
+            <div class="notebook-card">
+              <div class="section-title section-title--sm">저장한 단어 <a class="section-title__link"
+                  href="mywords.html">전체보기 ›</a></div>
+              <ul class="notebook-card__list">
+                <li class="notebook-card__row">
+                  <span class="tag tag--blue">CS/IT</span>
+                  <span class="notebook-card__text">Algorithm</span>
+                  <span class="notebook-card__date">2025.05.20</span>
+                </li>
+                <li class="notebook-card__row">
+                  <span class="tag tag--orange">Java</span>
+                  <span class="notebook-card__text">Inheritance</span>
+                  <span class="notebook-card__date">2025.05.19</span>
+                </li>
+                <li class="notebook-card__row">
+                  <span class="tag tag--green">SQL</span>
+                  <span class="notebook-card__text">Normalization</span>
+                  <span class="notebook-card__date">2025.05.18</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <aside class="side-panel" aria-label="챌린지 및 활동 뱃지">
+          <div class="streak-card">
+            <p class="streak-card__label">연속 학습 기록</p>
+            <div class="streak-card__value-row">
+              <span class="streak-card__number">7</span><span class="streak-card__unit">일</span>
+              <span class="streak-card__note">최고 기록 12일</span>
+            </div>
+            <p class="streak-card__icon" aria-hidden="true">📅</p>
+          </div>
+
+          <div class="achievement-panel">
+            <div class="achievement-tabs" role="tablist" aria-label="챌린지/활동 전환">
+              <button type="button" class="achievement-tab achievement-tab--active" role="tab" aria-selected="true"
+                data-tab="challenges">Challenges</button>
+              <button type="button" class="achievement-tab" role="tab" aria-selected="false"
+                data-tab="activities">Activities</button>
+            </div>
+
+            <!-- Challenges 탭: 진행 중인 활동 챌린지 -->
+            <div class="achievement-tab-content achievement-tab-content--active" data-tab-panel="challenges">
+              <div class="challenge-list">
+                <div class="challenge-row">
+                  <p class="challenge-row__title">이번 주 새싹위키 3개 완독하기</p>
+                  <div class="progress-bar progress-bar--thin" role="progressbar" aria-valuenow="66"
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar__fill progress-bar__fill--green" data-progress="66"></div>
+                  </div>
+                </div>
+                <div class="challenge-row">
+                  <p class="challenge-row__title">모의고사 1회 응시하기</p>
+                  <div class="progress-bar progress-bar--thin" role="progressbar" aria-valuenow="100"
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar__fill progress-bar__fill--blue" data-progress="100"></div>
+                  </div>
+                </div>
+                <div class="challenge-row">
+                  <p class="challenge-row__title">단어 10개 저장하기</p>
+                  <div class="progress-bar progress-bar--thin" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar__fill progress-bar__fill--orange" data-progress="40"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activities 탭: 획득한 기술 뱃지 (게임 업적 스타일 원형 그리드) -->
+            <div class="achievement-tab-content" data-tab-panel="activities">
+              <div class="badge-grid--compact">
+                <div class="badge-circle badge-circle--locked">
+                  <span class="badge-circle__icon" aria-hidden="true">☁️<span class="badge-circle__lock"
+                      aria-hidden="true">🔒</span></span>
+                  <span class="badge-circle__label">ADX 201</span>
+                </div>
+                <div class="badge-circle">
+                  <span class="badge-circle__icon" aria-hidden="true">🧱</span>
+                  <span class="badge-circle__label">HTML5</span>
+                </div>
+                <div class="badge-circle">
+                  <span class="badge-circle__icon" aria-hidden="true">🎨</span>
+                  <span class="badge-circle__label">CSS3</span>
+                </div>
+                <div class="badge-circle badge-circle--locked">
+                  <span class="badge-circle__icon" aria-hidden="true">☕<span class="badge-circle__lock"
+                      aria-hidden="true">🔒</span></span>
+                  <span class="badge-circle__label">Java</span>
+                </div>
+                <div class="badge-circle">
+                  <span class="badge-circle__icon" aria-hidden="true">🗄️</span>
+                  <span class="badge-circle__label">SQL</span>
+                </div>
+                <div class="badge-circle badge-circle--locked">
+                  <span class="badge-circle__icon" aria-hidden="true">⚡<span class="badge-circle__lock"
+                      aria-hidden="true">🔒</span></span>
+                  <span class="badge-circle__label">JavaScript</span>
+                </div>
+                <div class="badge-circle">
+                  <span class="badge-circle__icon" aria-hidden="true">🌿</span>
+                  <span class="badge-circle__label">Git/GitHub</span>
+                </div>
+                <div class="badge-circle">
+                  <span class="badge-circle__icon" aria-hidden="true">🤖</span>
+                  <span class="badge-circle__label">CLAUDE CODE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <!-- MYPAGE END -->
+  </main>
+
+  <!-- ================================================= -->
+  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
+  <!-- 담당 : feature/core (공통 담당자 전용) -->
+  <!-- ================================================= -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- COMMON SHARED MARKUP END -->
+
+  <!-- ================================================= -->
+  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
+  <!-- 담당 : feature/core (공통 담당자 전용) -->
+  <!-- ================================================= -->
+  <script src="assets/js/toast.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <!-- 페이지 전용 JS — MyPage(Job/My) 담당, 신규 파일 -->
+  <script src="assets/js/pages/mypage.js" defer></script>
+</body>
+
+</html>

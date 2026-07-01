@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인 — 새싹트리</title>
+  <!-- ================================================= -->
+  <!-- 공통 디자인 토큰/리셋 — 재사용만 함, 수정하지 않음 -->
+  <!-- ================================================= -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- 페이지 전용 CSS — MyPage(Job/My) 담당, 신규 파일 (signup.html과 공유) -->
+  <link rel="stylesheet" href="assets/css/pages/auth.css">
+</head>
+
+<body class="auth-body">
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
+
+  <main id="main-content" class="auth-shell">
+    <!-- ================================================= -->
+    <!-- LOGIN PAGE (로그인) -->
+    <!-- 신규 파일 : 공식 WORK_ORDER.md 스코프 밖 프로토타입, MyPage(Job/My) 담당 -->
+    <!-- css : pages/auth.css (signup.html과 공유) -->
+    <!-- js : pages/auth.js (localStorage 기반 모킹, 공통 담당자 리뷰 필요) -->
+    <!-- 로그인 전 화면이라 공통 header/nav 없이 독립적으로 렌더링한다 -->
+    <!-- ================================================= -->
+    <section id="login" class="auth-card" aria-label="로그인">
+      <div class="auth-card__logo">
+        <span class="auth-card__logo-mark" aria-hidden="true">🌱</span>
+        <p class="auth-card__logo-name">새싹트리</p>
+      </div>
+      <h1 class="auth-card__title">로그인</h1>
+      <p class="auth-card__subtitle">이메일로 로그인하고 나만의 취업 핸드북을 이어가세요.</p>
+
+      <form class="auth-form" id="login-form" novalidate>
+        <div class="auth-field">
+          <label class="auth-label" for="login-email">이메일</label>
+          <input type="email" id="login-email" class="auth-input" placeholder="example@sesac.com"
+            autocomplete="email" required>
+        </div>
+        <button type="submit" class="btn btn--primary auth-form__submit">로그인</button>
+      </form>
+
+      <p class="auth-card__switch">계정이 없으신가요? <a href="signup.html" class="auth-card__switch-link">가입하기</a></p>
+
+      <!-- 이메일 인증 대기 패널 (모킹) -->
+      <div class="auth-pending" id="auth-pending" hidden>
+        <p class="auth-pending__icon" aria-hidden="true">📩</p>
+        <p class="auth-pending__title">인증 메일을 보냈어요</p>
+        <p class="auth-pending__desc"><strong id="auth-pending-email"></strong> 주소로 보낸 인증 링크를 클릭하면 로그인이 완료돼요.</p>
+        <button type="button" class="btn btn--outline btn--sm" data-action="mock-verify">✅ (테스트) 이메일 인증
+          완료했다고 가정하기</button>
+        <button type="button" class="auth-pending__resend" data-action="mock-resend">인증 메일 다시 보내기</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/toast.js" defer></script>
+  <script src="assets/js/pages/auth.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+{
+  "profile": {
+    "avatarEmoji": "🌱",
+    "avatarUrl": "",
+    "name": "DAJEONG KIM",
+    "username": "kdj4027",
+    "githubUsername": "serranoarevalo",
+    "email": "kdj4027@gmail.com",
+    "language": "Korean",
+    "isMarketingAgreed": false
+  },
+  "level": {
+    "stages": ["새싹", "줄기", "잎", "나무"],
+    "currentStageIndex": 0,
+    "currentPoints": 1240,
+    "nextStagePoints": 2000,
+    "percentToNext": 35
+  },
+  "notebook": {
+    "wrongAnswers": [
+      { "id": "wa-001", "title": "WHERE 절의 역할로 가장 알맞은 것은?", "category": "SQL", "categoryColor": "green", "date": "2025-05-20" },
+      { "id": "wa-002", "title": "상속(Inheritance)의 특징으로 옳지 않은 것은?", "category": "Java", "categoryColor": "orange", "date": "2025-05-18" },
+      { "id": "wa-003", "title": "GROUP BY와 함께 쓸 수 없는 것은?", "category": "SQL", "categoryColor": "green", "date": "2025-05-14" }
+    ],
+    "savedWords": [
+      { "id": "word-001", "title": "Algorithm", "category": "CS/IT", "categoryColor": "blue", "date": "2025-05-20" },
+      { "id": "word-002", "title": "Inheritance", "category": "Java", "categoryColor": "orange", "date": "2025-05-19" },
+      { "id": "word-003", "title": "Normalization", "category": "SQL", "categoryColor": "green", "date": "2025-05-18" }
+    ]
+  },
+  "challenges": {
+    "streakDays": 7,
+    "bestStreakDays": 12,
+    "current": [
+      { "id": "ch-001", "title": "이번 주 새싹위키 3개 완독하기", "percent": 66, "color": "green" },
+      { "id": "ch-002", "title": "모의고사 1회 응시하기", "percent": 100, "color": "blue" },
+      { "id": "ch-003", "title": "단어 10개 저장하기", "percent": 40, "color": "gold" }
+    ]
+  },
+  "badges": [
+    { "id": "badge-adx201", "label": "ADX 201", "category": "Salesforce", "icon": "☁️", "isEarned": false },
+    { "id": "badge-html", "label": "HTML", "category": "HTML", "icon": "🧱", "isEarned": true },
+    { "id": "badge-css", "label": "CSS", "category": "CSS", "icon": "🎨", "isEarned": true },
+    { "id": "badge-java", "label": "Java", "category": "Java", "icon": "☕", "isEarned": false },
+    { "id": "badge-sql", "label": "SQL", "category": "SQL", "icon": "🗄️", "isEarned": true },
+    { "id": "badge-javascript", "label": "JavaScript", "category": "JavaScript", "icon": "⚡", "isEarned": false },
+    { "id": "badge-git", "label": "Git/GitHub", "category": "Git", "icon": "🌿", "isEarned": true },
+    { "id": "badge-claudecode", "label": "CLAUDE CODE", "category": "AI", "icon": "🤖", "isEarned": true }
+  ]
+}
