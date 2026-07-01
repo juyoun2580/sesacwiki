@@ -9,7 +9,10 @@
 const SESAC_EXAM_ATTEMPTS_KEY = 'sesac-exam-attempts';
 const MAX_STORED_ATTEMPTS = 100; // localStorage 무한 누적 방지 — 최근 100건만 보관
 const DIFFICULTY_ORDER = ['기초', '중급', '고급', '심화'];
+const DIFFICULTY_TAG_CLASS = { '기초': 'tag--green', '중급': 'tag--blue', '고급': 'tag--gold', '심화': 'tag--coral' };
 const MAX_QUIZ_QUESTION_COUNT = 50; // 문항 수 슬라이더 상한 (풀 크기가 더 작으면 풀 크기가 상한이 된다)
+const TIMER_WARNING_SEC = 60; // 이 초 이하로 남으면 타이머 링이 경고색으로 바뀐다
+const TIMER_CRITICAL_SEC = 10; // 이 초 이하로 남으면 경고색 + 깜빡임
 
 let quizState = null; // { exam, questions, currentIndex, answers: Map<index, choiceIndex>, flagged: Set<index>, memos: Map<index, string> }
 let quizPool = null;  // { exam, allQuestions, seedHistory } — 설정 화면/포인트 계산이 참조하는 전체 문제 풀 · 시드 응시 기록
@@ -26,6 +29,10 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function resetTimerRingVisual() {
+  document.querySelector('.time-ring')?.classList.remove('time-ring--warning', 'time-ring--critical');
 }
 
 function shuffleArray(arr) {
@@ -104,11 +111,14 @@ function renderQuizSetup() {
 
   const diffContainer = document.getElementById('quiz-setup-difficulty');
   if (diffContainer) {
-    diffContainer.innerHTML = difficulties.map(d => `
+    diffContainer.innerHTML = difficulties.map(d => {
+      const count = allQuestions.filter(q => q.difficulty === d).length;
+      return `
       <label class="quiz-setup__checkbox">
-        <input type="checkbox" value="${d}" checked> ${d}
+        <input type="checkbox" value="${d}" checked> ${d} <span class="quiz-setup__diff-count">${count}문제</span>
       </label>
-    `).join('');
+    `;
+    }).join('');
     diffContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => {
       cb.addEventListener('change', updateQuizSetupCountOptions);
     });
@@ -166,6 +176,7 @@ function startQuizFromSetup() {
 
   quizState = { exam, questions, currentIndex: 0, answers: new Map(), flagged: new Set(), memos: new Map() };
   timerSec = Math.max(60, Math.round(exam.estimatedMinutes * 60 * (count / allQuestions.length)));
+  resetTimerRingVisual();
 
   setText('quiz-info-point', `${questions.length}점 (문제당 1점)`);
   setText('quiz-info-time', `${Math.round(timerSec / 60)}분`);
@@ -181,6 +192,12 @@ function renderQuizQuestion() {
   const q = questions[currentIndex];
 
   setText('quiz-question-num', `Q${currentIndex + 1}.`);
+  const diffTagEl = document.getElementById('quiz-question-difficulty-tag');
+  if (diffTagEl) {
+    diffTagEl.textContent = q.difficulty;
+    diffTagEl.className = `tag ${DIFFICULTY_TAG_CLASS[q.difficulty] || 'tag--gray'}`;
+  }
+  setText('quiz-question-category-tag', q.category);
   setText('quiz-question-meta-tag', `${q.type} (${q.point}점)`);
   setText('quiz-question-text', q.text);
 
@@ -283,6 +300,13 @@ function finishQuiz() {
   setText('quiz-result-title', tier.title);
   setText('quiz-result-desc', `${exam.title} · ${correctCount} / ${total}문제를 맞혔어요.`);
 
+  const resultCardEl = document.querySelector('.quiz-result__card');
+  if (resultCardEl) {
+    resultCardEl.classList.remove('quiz-result__card--great', 'quiz-result__card--low');
+    if (score >= 90) resultCardEl.classList.add('quiz-result__card--great');
+    else if (score < 70) resultCardEl.classList.add('quiz-result__card--low');
+  }
+
   const retryWrongBtn = document.getElementById('quiz-result-retry-wrong-btn');
   if (retryWrongBtn) retryWrongBtn.hidden = lastWrongQuestions.length === 0;
 
@@ -358,11 +382,11 @@ function renderQuizResultQuestionList(questions, answers) {
         <dl class="wrong-note-item__body">
           <dt>내가 고른 답</dt><dd>${escapeHtml(userAnswerText)}</dd>
           <dt>정답</dt><dd>${escapeHtml(q.choices[q.answerIndex])}</dd>
-          <dt>핵심 개념</dt><dd>${escapeHtml(q.explanation.coreConcept)}</dd>
-          <dt>정답 원리</dt><dd>${escapeHtml(q.explanation.whyCorrect)}</dd>
-          <dt>오답 분석</dt><dd>${escapeHtml(q.explanation.whyIncorrect)}</dd>
-          <dt>출제 유의사항</dt><dd>${escapeHtml(q.explanation.examPoint)}</dd>
-          <dt>실무 비유</dt><dd>${escapeHtml(q.explanation.practicalExample)}</dd>
+          <dt>🎯 핵심 개념</dt><dd>${escapeHtml(q.explanation.coreConcept)}</dd>
+          <dt>✅ 정답 원리</dt><dd>${escapeHtml(q.explanation.whyCorrect)}</dd>
+          <dt>❌ 오답 분석</dt><dd>${escapeHtml(q.explanation.whyIncorrect)}</dd>
+          <dt>⚠️ 출제 유의사항</dt><dd>${escapeHtml(q.explanation.examPoint)}</dd>
+          <dt>💼 실무 비유</dt><dd>${escapeHtml(q.explanation.practicalExample)}</dd>
         </dl>
       </details>
     `;
@@ -458,6 +482,7 @@ document.getElementById('quiz-result-retry-wrong-btn')?.addEventListener('click'
     memos: new Map()
   };
   timerSec = Math.max(60, Math.round(quizPool.exam.estimatedMinutes * 60 * (lastWrongQuestions.length / quizPool.allQuestions.length)));
+  resetTimerRingVisual();
   setText('quiz-info-point', `${quizState.questions.length}점 (문제당 1점)`);
   setText('quiz-info-time', `${Math.round(timerSec / 60)}분`);
   renderQuizQuestion();
@@ -477,6 +502,11 @@ setInterval(() => {
   if (el) el.textContent =
     String(Math.floor(timerSec / 60)).padStart(2, '0') + ':' +
     String(timerSec % 60).padStart(2, '0');
+  const ringEl = document.querySelector('.time-ring');
+  if (ringEl) {
+    ringEl.classList.toggle('time-ring--warning', timerSec <= TIMER_WARNING_SEC);
+    ringEl.classList.toggle('time-ring--critical', timerSec <= TIMER_CRITICAL_SEC);
+  }
   if (timerSec === 0) {
     toast('⏰ 시간이 종료되어 자동 제출되었어요.');
     finishQuiz();

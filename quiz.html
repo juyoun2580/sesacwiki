@@ -161,7 +161,11 @@
               <div class="quiz-question">
                 <div class="quiz-question__head">
                   <span class="quiz-question__num" id="quiz-question-num">Q-.</span>
-                  <span class="tag tag--gray" id="quiz-question-meta-tag">-</span>
+                  <span class="quiz-question__badges">
+                    <span class="tag" id="quiz-question-difficulty-tag">-</span>
+                    <span class="tag tag--gray" id="quiz-question-category-tag">-</span>
+                    <span class="tag tag--gray" id="quiz-question-meta-tag">-</span>
+                  </span>
                 </div>
                 <p class="quiz-question__text" id="quiz-question-text">문제를 불러오는 중이에요…</p>
 
@@ -233,10 +237,16 @@
                   <div class="score-ring">
                     <svg id="quiz-result-ring-svg" viewBox="0 0 80 80" width="80" height="80" role="img"
                       aria-label="이번 응시 점수 0%">
+                      <defs>
+                        <linearGradient id="quiz-result-ring-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="var(--g500)" />
+                          <stop offset="100%" stop-color="var(--g900)" />
+                        </linearGradient>
+                      </defs>
                       <circle class="score-ring__bg" cx="40" cy="40" r="30" stroke-width="7" />
                       <circle id="quiz-result-ring-fill" class="score-ring__fill" cx="40" cy="40" r="30"
-                        stroke="var(--g700)" stroke-width="7" stroke-dasharray="188" stroke-dashoffset="188"
-                        transform="rotate(-90 40 40)" />
+                        stroke="url(#quiz-result-ring-gradient)" stroke-width="7" stroke-dasharray="188"
+                        stroke-dashoffset="188" transform="rotate(-90 40 40)" />
                     </svg>
                     <div class="score-ring__text"><span id="quiz-result-score-value"
                         class="score-ring__value">0%</span><span class="exam-status-ring-wrap__caption">이번 점수</span>

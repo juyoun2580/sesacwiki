@@ -73,9 +73,16 @@ function renderExamStats(history) {
   if (listEl) {
     const recent = history.slice(-3).reverse();
     listEl.innerHTML = recent.map(h => `
-      <div class="recent-exam"><span class="recent-exam__icon" aria-hidden="true">${h.icon}</span><span class="recent-exam__title">${escapeHtml(h.title)}</span><span class="recent-exam__score${h.score < 70 ? ' recent-exam__score--low' : ''}">${h.score}점</span></div>
+      <div class="recent-exam"><span class="recent-exam__icon" aria-hidden="true">${h.icon}</span><span class="recent-exam__title">${escapeHtml(h.title)}</span><span class="recent-exam__score${h.score < 70 ? ' recent-exam__score--low' : ''}">${scoreTierEmoji(h.score)} ${h.score}점</span></div>
     `).join('');
   }
+}
+
+// 결과 화면(quiz.js의 getScoreTier)과 동일한 점수 구간 기준으로 톤을 맞춘다
+function scoreTierEmoji(score) {
+  if (score >= 90) return '🎉';
+  if (score >= 70) return '👍';
+  return '🌱';
 }
 
 function renderWrongNoteAccordion(data) {
@@ -93,11 +100,11 @@ function renderWrongNoteAccordion(data) {
           <span class="wrong-note-item__question">${escapeHtml(q.text)}</span>
         </summary>
         <dl class="wrong-note-item__body">
-          <dt>핵심 개념</dt><dd>${escapeHtml(q.explanation.coreConcept)}</dd>
-          <dt>정답 원리</dt><dd>${escapeHtml(q.explanation.whyCorrect)}</dd>
-          <dt>오답 분석</dt><dd>${escapeHtml(q.explanation.whyIncorrect)}</dd>
-          <dt>출제 유의사항</dt><dd>${escapeHtml(q.explanation.examPoint)}</dd>
-          <dt>실무 비유</dt><dd>${escapeHtml(q.explanation.practicalExample)}</dd>
+          <dt>🎯 핵심 개념</dt><dd>${escapeHtml(q.explanation.coreConcept)}</dd>
+          <dt>✅ 정답 원리</dt><dd>${escapeHtml(q.explanation.whyCorrect)}</dd>
+          <dt>❌ 오답 분석</dt><dd>${escapeHtml(q.explanation.whyIncorrect)}</dd>
+          <dt>⚠️ 출제 유의사항</dt><dd>${escapeHtml(q.explanation.examPoint)}</dd>
+          <dt>💼 실무 비유</dt><dd>${escapeHtml(q.explanation.practicalExample)}</dd>
         </dl>
       </details>
     `;
