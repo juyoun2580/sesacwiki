@@ -1601,3 +1601,63 @@ button.ff-cert-chip--sel:hover {
 .ff-preview-hint { font-size: var(--fs-11); color: var(--ink3); margin-top: var(--space-4); line-height: 1.5; }
 .ff-preview-empty { font-size: var(--fs-12); color: var(--ink4); font-style: italic; }
 .ff-preview-tags { display: flex; flex-wrap: wrap; gap: var(--space-5); }
+
+/* ---------- Mock Interview — Voice Recording (모의 면접 음성 녹음) ---------- */
+.ff-mock__record-area { margin-top: var(--space-20); }
+
+.ff-mock__rec-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-14);
+}
+
+.ff-mock__rec-status {
+  font-size: var(--fs-12);
+  color: var(--ink3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.ff-mock__rec-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--coral);
+  animation: rec-pulse 1s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes rec-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .3; }
+}
+
+.ff-mock__rec-btn--active {
+  background: var(--coral) !important;
+  border-color: var(--coral) !important;
+  color: #fff !important;
+}
+
+.ff-mock__transcript {
+  min-height: 120px;
+  padding: var(--space-14);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  margin-bottom: var(--space-12);
+  line-height: 1.7;
+}
+
+.ff-mock__transcript-placeholder {
+  font-size: var(--fs-13);
+  color: var(--ink4);
+  font-style: italic;
+}
+
+.ff-mock__transcript-text { font-size: var(--fs-13); color: var(--ink); }
+
+.ff-mock__interim { color: var(--ink4); }
+
+.ff-mock__rec-actions { display: flex; gap: var(--space-8); }
