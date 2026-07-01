@@ -771,6 +771,10 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-bg); }
   list-style: none;
 }
 
+.exam-row-list > li.exam-row--hidden {
+  display: none;
+}
+
 /* ---------- Quiz setup (응시 설정: 난이도 · 문항 수) ---------- */
 .quiz-setup {
   max-width: 480px;

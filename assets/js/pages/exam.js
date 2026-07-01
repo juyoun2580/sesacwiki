@@ -29,6 +29,9 @@ function getLocalExamAttempts() {
   }
 }
 
+let examAttemptHistory = []; // "최근 응시한 시험" 전체보기 토글이 재렌더링할 때 다시 fetch하지 않도록 모듈 스코프에 보관
+let showAllRecentExams = false;
+
 async function loadExamPageData() {
   if (!document.getElementById('exam')) return;
 
@@ -36,12 +39,20 @@ async function loadExamPageData() {
     const res = await fetch('assets/data/exam.json');
     if (!res.ok) throw new Error('모의고사 데이터를 불러오지 못했습니다.');
     const data = await res.json();
-    const history = [...(data.attemptHistory || []), ...getLocalExamAttempts()];
-    renderExamStats(history);
+    examAttemptHistory = [...(data.attemptHistory || []), ...getLocalExamAttempts()];
+    renderExamStats(examAttemptHistory);
     renderWrongNoteAccordion(data);
   } catch (e) {
     console.error(e);
     toast('데이터를 불러오지 못했어요. 다시 시도해주세요.');
+    const retryHtml = '<p class="wrong-note-empty">⚠️ 불러오지 못했어요. <button type="button" class="section-title__link exam-data-retry-btn">다시 시도 ›</button></p>';
+    const recentListEl = document.getElementById('exam-recent-list');
+    if (recentListEl) recentListEl.innerHTML = retryHtml;
+    const wrongNoteListEl = document.getElementById('exam-wrong-note-list');
+    if (wrongNoteListEl) wrongNoteListEl.innerHTML = retryHtml;
+    document.querySelectorAll('.exam-data-retry-btn').forEach(btn => {
+      btn.addEventListener('click', loadExamPageData);
+    });
   }
 }
 
@@ -71,10 +82,17 @@ function renderExamStats(history) {
 
   const listEl = document.getElementById('exam-recent-list');
   if (listEl) {
-    const recent = history.slice(-3).reverse();
-    listEl.innerHTML = recent.map(h => `
+    const reversed = [...history].reverse();
+    const recent = showAllRecentExams ? reversed : reversed.slice(0, 3);
+    listEl.innerHTML = recent.length ? recent.map(h => `
       <div class="recent-exam"><span class="recent-exam__icon" aria-hidden="true">${h.icon}</span><span class="recent-exam__title">${escapeHtml(h.title)}</span><span class="recent-exam__score${h.score < 70 ? ' recent-exam__score--low' : ''}">${scoreTierEmoji(h.score)} ${h.score}점</span></div>
-    `).join('');
+    `).join('') : '<p class="wrong-note-empty">아직 응시한 시험이 없어요!</p>';
+  }
+
+  const toggleBtn = document.getElementById('exam-recent-toggle');
+  if (toggleBtn) {
+    toggleBtn.hidden = history.length <= 3;
+    toggleBtn.textContent = showAllRecentExams ? '접기 ‹' : '전체보기 ›';
   }
 }
 
@@ -122,17 +140,20 @@ function initExamFilters() {
 
   const sidebarBtns = examEl.querySelectorAll('.sidebar__item[data-category]');
   const tabBtns = examEl.querySelectorAll('.filter-tab[data-category]');
+  const allBtns = [...sidebarBtns, ...tabBtns];
   const rows = examEl.querySelectorAll('.exam-row-list > li[data-category]');
 
+  // 활성 클래스(sidebar__item--active/filter-tab--active) 토글은 ui.js가 이미 공통으로 처리하므로
+  // 여기서는 필터링과 접근성 상태(aria-pressed)만 담당한다 (중복 바인딩 방지).
   function applyExamFilter(category) {
     rows.forEach(li => {
-      li.style.display = (category === '전과목' || li.dataset.category === category) ? '' : 'none';
+      li.classList.toggle('exam-row--hidden', !(category === '전과목' || li.dataset.category === category));
     });
-    sidebarBtns.forEach(b => b.classList.toggle('sidebar__item--active', b.dataset.category === category));
-    tabBtns.forEach(b => b.classList.toggle('filter-tab--active', b.dataset.category === category));
+    allBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.category === category)));
   }
 
-  [...sidebarBtns, ...tabBtns].forEach(btn => {
+  allBtns.forEach(btn => {
+    btn.setAttribute('aria-pressed', String(btn.classList.contains('sidebar__item--active') || btn.classList.contains('filter-tab--active')));
     btn.addEventListener('click', () => applyExamFilter(btn.dataset.category));
   });
 }
@@ -141,6 +162,11 @@ function setText(id, text) {
   const el = document.getElementById(id);
   if (el) el.textContent = text;
 }
+
+document.getElementById('exam-recent-toggle')?.addEventListener('click', () => {
+  showAllRecentExams = !showAllRecentExams;
+  renderExamStats(examAttemptHistory);
+});
 
 loadExamPageData();
 initExamFilters();
