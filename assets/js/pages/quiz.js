@@ -65,6 +65,20 @@ function getLocalExamAttempts() {
   }
 }
 
+// 문제 데이터는 시험별로 assets/data/questions/{examId}.json에 분리 저장돼 있다 (exam.json은 목차만 가벼운 상태로 유지).
+// 응시할 시험 하나만 받아오도록 하기 위함 — 문제은행이 커져도 quiz.html 로딩 용량은 그대로다.
+// 같은 examId를 여러 번 요청할 수 있어(예: 전과목 통합 시험의 combinedQuestions) fetch 결과를 캐싱한다.
+const questionFileCache = new Map();
+function fetchQuestionsFile(examId) {
+  if (!questionFileCache.has(examId)) {
+    questionFileCache.set(examId, fetch(`assets/data/questions/${examId}.json`).then(res => {
+      if (!res.ok) throw new Error(`${examId} 문제 파일을 불러오지 못했습니다.`);
+      return res.json();
+    }));
+  }
+  return questionFileCache.get(examId);
+}
+
 async function initQuizPage() {
   if (!document.getElementById('quiz')) return; // mywords.html 등 quiz.js를 공유하는 다른 페이지에서는 종료
 
@@ -77,7 +91,7 @@ async function initQuizPage() {
     const data = await res.json();
 
     const exam = data.list.find(item => item.id === examId);
-    const allQuestions = resolveQuizQuestions(data, examId);
+    const allQuestions = await resolveQuizQuestions(data, examId);
     if (!exam || !allQuestions.length) {
       if (requestedId) {
         toast('요청한 모의고사를 찾을 수 없어 목록으로 돌아가요.');
@@ -106,14 +120,17 @@ async function initQuizPage() {
   }
 }
 
-function resolveQuizQuestions(data, examId) {
+async function resolveQuizQuestions(data, examId) {
   const combined = data.combinedQuestions && data.combinedQuestions[examId];
   if (combined) {
+    const neededExamIds = [...new Set(combined.map(ref => ref.examId))];
+    const files = await Promise.all(neededExamIds.map(fetchQuestionsFile));
+    const byExamId = Object.fromEntries(neededExamIds.map((id, i) => [id, files[i]]));
     return combined
-      .map(ref => (data.questions[ref.examId] || []).find(q => q.id === ref.questionId))
+      .map(ref => (byExamId[ref.examId] || []).find(q => q.id === ref.questionId))
       .filter(Boolean);
   }
-  return data.questions[examId] || [];
+  return fetchQuestionsFile(examId);
 }
 
 function showQuizPhase(phase) {

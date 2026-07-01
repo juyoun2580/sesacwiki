@@ -1,0 +1,140 @@
+[
+  {
+    "id": "q-java-001",
+    "num": 1,
+    "category": "Java",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "기존 클래스의 필드와 메서드를 물려받아 재사용하는 객체지향 개념은?",
+    "choices": [
+      "캡슐화",
+      "상속",
+      "다형성",
+      "추상화"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "상속(Inheritance)은 부모 클래스의 속성과 동작을 자식 클래스가 물려받아 재사용하는 개념이다.",
+      "whyCorrect": "extends 키워드로 부모 클래스를 확장하면 필드/메서드를 재정의 없이 그대로 사용할 수 있다.",
+      "whyIncorrect": "캡슐화는 정보 은닉, 다형성은 같은 동작이 다르게 구현되는 것, 추상화는 공통 특성을 뽑아내는 개념으로 재사용과는 결이 다르다.",
+      "examPoint": "객체지향 4대 특성(캡슐화/상속/다형성/추상화)의 정의를 헷갈리지 않도록 키워드로 암기해야 한다.",
+      "practicalExample": "Animal 클래스를 만들고 Dog, Cat 클래스가 이를 상속해 공통 기능(먹기, 자기)을 재사용한다."
+    }
+  },
+  {
+    "id": "q-java-002",
+    "num": 2,
+    "category": "Java",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Java에서 다중 구현이 가능하며 필드 없이 메서드 시그니처만 정의할 수 있는 것은?",
+    "choices": [
+      "abstract class",
+      "interface",
+      "enum",
+      "record"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "interface는 구현 강제를 위한 계약(약속)이며 한 클래스가 여러 개를 동시에 구현할 수 있다.",
+      "whyCorrect": "Java는 다중 상속을 지원하지 않지만 interface는 implements로 여러 개를 동시에 구현할 수 있다.",
+      "whyIncorrect": "abstract class는 단일 상속만 가능하고 필드를 가질 수 있어 순수한 시그니처 계약과는 다르다.",
+      "examPoint": "abstract class(단일 상속, 필드 가능)와 interface(다중 구현, 기본적으로 필드 없음)의 차이를 묻는 문제가 자주 나온다.",
+      "practicalExample": "Comparable, Serializable처럼 서로 다른 능력을 한 클래스에 동시에 부여할 때 interface를 여러 개 구현한다."
+    }
+  },
+  {
+    "id": "q-java-003",
+    "num": 3,
+    "category": "Java",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "같은 이름의 메서드를 매개변수 타입/개수를 다르게 하여 여러 개 정의하는 것은?",
+    "choices": [
+      "오버라이딩",
+      "오버로딩",
+      "캡슐화",
+      "인스턴스화"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "오버로딩(Overloading)은 같은 이름의 메서드를 매개변수 목록만 다르게 하여 한 클래스 안에 여러 개 정의하는 것이다.",
+      "whyCorrect": "매개변수의 타입, 개수, 순서가 다르면 같은 메서드명이라도 컴파일러가 서로 다른 메서드로 구분한다.",
+      "whyIncorrect": "오버라이딩은 부모 클래스의 메서드를 자식이 재정의하는 것으로, 매개변수가 같아야 하는 별개의 개념이다.",
+      "examPoint": "오버로딩(같은 클래스, 매개변수 다름)과 오버라이딩(상속 관계, 시그니처 동일)을 혼동하지 않도록 주의한다.",
+      "practicalExample": "print(String s)와 print(int n)처럼 같은 이름으로 다양한 타입을 출력하는 메서드를 만들 때 사용한다."
+    }
+  },
+  {
+    "id": "q-java-004",
+    "num": 4,
+    "category": "Java",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "같은 패키지 안에서만 접근을 허용하는 접근 제어자는? (제어자 생략 시)",
+    "choices": [
+      "public",
+      "private",
+      "protected",
+      "default(package-private)"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "접근 제어자를 생략하면 default(package-private)가 적용되어 같은 패키지 내에서만 접근이 허용된다.",
+      "whyCorrect": "default는 명시적으로 쓰는 키워드가 아니라 아무 제어자도 쓰지 않았을 때 적용되는 범위다.",
+      "whyIncorrect": "public은 어디서나, private은 같은 클래스 내에서만, protected는 같은 패키지+상속 관계까지 허용되어 범위가 다르다.",
+      "examPoint": "접근 제어자의 허용 범위를 public > protected > default > private 순서로 정리해두면 헷갈리지 않는다.",
+      "practicalExample": "같은 모듈 내부에서만 쓰는 유틸리티 클래스를 외부 패키지에 노출하고 싶지 않을 때 default로 둔다."
+    }
+  },
+  {
+    "id": "q-java-005",
+    "num": 5,
+    "category": "Java",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "예외 발생 여부와 상관없이 항상 실행되는 블록은?",
+    "choices": [
+      "try",
+      "catch",
+      "finally",
+      "throw"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "finally 블록은 예외 발생 여부와 관계없이 반드시 실행되어 자원 정리(파일 닫기 등)에 사용된다.",
+      "whyCorrect": "try에서 예외가 나든 안 나든, catch로 처리되든 안 되든 finally는 항상 마지막에 실행된다.",
+      "whyIncorrect": "catch는 예외가 발생했을 때만 실행되고, throw는 예외를 발생시키는 키워드라 '항상 실행'과는 무관하다.",
+      "examPoint": "try-catch-finally 실행 순서와 finally가 return보다 우선 실행된다는 점이 자주 출제된다.",
+      "practicalExample": "파일이나 DB 연결을 열었다면 예외 발생 여부와 상관없이 finally에서 반드시 close()를 호출한다."
+    }
+  },
+  {
+    "id": "q-java-006",
+    "num": 6,
+    "category": "Java",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "중복을 허용하지 않고 순서를 보장하지 않는 컬렉션 인터페이스는?",
+    "choices": [
+      "List",
+      "Set",
+      "Map",
+      "Queue"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Set은 중복 요소를 허용하지 않는 컬렉션이며, 구현체에 따라 순서 보장 여부가 다르다.",
+      "whyCorrect": "Set(예: HashSet)은 동일한 값을 두 번 추가해도 하나만 저장되고 기본적으로 삽입 순서를 보장하지 않는다.",
+      "whyIncorrect": "List는 중복과 순서를 모두 허용하고, Map은 키-값 쌍을 다루며, Queue는 순서(FIFO 등)를 핵심으로 하는 자료구조다.",
+      "examPoint": "List(순서 O, 중복 O) / Set(순서 X, 중복 X) / Map(키-값) / Queue(선입선출)의 차이를 표로 정리해두면 좋다.",
+      "practicalExample": "중복 없이 태그 목록을 관리하고 싶을 때 HashSet<String>을 사용한다."
+    }
+  }
+]

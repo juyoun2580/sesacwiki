@@ -1,0 +1,140 @@
+[
+  {
+    "id": "q-sf-001",
+    "num": 1,
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 서버 측 비즈니스 로직을 작성하는 프로그래밍 언어는?",
+    "choices": [
+      "Apex",
+      "Visualforce",
+      "Flow",
+      "SOQL"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Apex는 Salesforce 플랫폼 전용 서버 사이드 언어로, 트리거·클래스·배치 작업 등 비즈니스 로직을 구현한다.",
+      "whyCorrect": "Apex는 Java와 문법이 유사한 강타입 언어로 Salesforce 서버에서 실행되는 로직을 담당한다.",
+      "whyIncorrect": "Visualforce는 화면(UI) 마크업 언어, Flow는 선언형 자동화 도구, SOQL은 조회 전용 쿼리 언어라 로직 작성 용도가 아니다.",
+      "examPoint": "Apex(로직)와 Visualforce/Lightning(화면), Flow(선언형 자동화)의 역할 구분을 묻는 문제가 자주 나온다.",
+      "practicalExample": "레코드 저장 전 자동으로 값을 검증하는 Trigger를 만들 때 Apex를 사용한다."
+    }
+  },
+  {
+    "id": "q-sf-002",
+    "num": 2,
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce 데이터베이스에서 레코드를 조회할 때 사용하는 쿼리 언어는?",
+    "choices": [
+      "SQL",
+      "SOQL",
+      "SOSL",
+      "GraphQL"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "SOQL(Salesforce Object Query Language)은 단일 객체 및 관계형 객체의 레코드를 조회하는 전용 쿼리 언어다.",
+      "whyCorrect": "SOQL은 SQL과 문법이 비슷하지만 Salesforce 객체 구조에 맞춰 설계된 조회 전용 언어다.",
+      "whyIncorrect": "SQL은 일반 관계형 DB용이고, SOSL은 여러 객체를 동시에 검색하는 전문 검색 언어라 용도가 다르다.",
+      "examPoint": "SOQL(단일 객체 조회) vs SOSL(여러 객체 텍스트 검색)의 차이를 구분해서 기억해야 한다.",
+      "practicalExample": "특정 고객(Account)에 연결된 모든 상담(Case) 목록을 가져올 때 SOQL을 사용한다."
+    }
+  },
+  {
+    "id": "q-sf-003",
+    "num": 3,
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "코드 없이 화면 흐름이나 자동화 프로세스를 만들 수 있는 Salesforce 선언형 도구는?",
+    "choices": [
+      "Flow",
+      "Apex Trigger",
+      "Visualforce",
+      "Batch Apex"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Flow는 클릭 몇 번으로 화면/자동화 로직을 구성할 수 있는 대표적인 선언형(로우코드) 도구다.",
+      "whyCorrect": "Flow Builder는 코드 작성 없이 조건·화면·자동화 단계를 시각적으로 설계할 수 있다.",
+      "whyIncorrect": "Apex Trigger와 Batch Apex는 코드 기반 도구이고, Visualforce도 마크업 코드를 직접 작성해야 한다.",
+      "examPoint": "'선언형 vs 코드형' 키워드가 나오면 Flow/Process Builder를 먼저 떠올려야 한다.",
+      "practicalExample": "리드 등록 시 자동으로 담당자를 배정하는 자동화를 관리자가 코드 없이 Flow로 구성한다."
+    }
+  },
+  {
+    "id": "q-sf-004",
+    "num": 4,
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "부모 레코드가 삭제되면 자식 레코드도 함께 삭제되는, 소유권까지 강하게 종속된 관계를 표현하는 필드 타입은?",
+    "choices": [
+      "Lookup Relationship",
+      "Master-Detail Relationship",
+      "Formula Field",
+      "Roll-Up Summary"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Master-Detail은 부모-자식이 강하게 종속된 관계로, 부모가 삭제되면 자식도 함께 삭제된다.",
+      "whyCorrect": "Master-Detail Relationship은 소유권·보안·삭제가 부모 레코드에 종속되는 강한 관계를 정의한다.",
+      "whyIncorrect": "Lookup도 부모-자식 구조를 표현하지만 느슨한 연결이라 부모가 삭제돼도 자식은 남는다(기본값 기준). Formula/Roll-Up Summary는 관계가 아니라 값을 계산하는 필드다.",
+      "examPoint": "Lookup(느슨한 연결) vs Master-Detail(강한 종속)의 차이, 그리고 Roll-Up Summary는 Master-Detail에서만 쓸 수 있다는 점이 자주 출제된다.",
+      "practicalExample": "견적서(Quote)가 반드시 하나의 기회(Opportunity)에 속해야 할 때 Master-Detail을 사용한다."
+    }
+  },
+  {
+    "id": "q-sf-005",
+    "num": 5,
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "레코드가 저장되기 전에 실행되어 값을 검증/수정할 수 있는 Trigger 이벤트는?",
+    "choices": [
+      "after insert",
+      "before insert",
+      "after delete",
+      "before undelete"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "before 계열 트리거는 DB 저장 전에 실행되어 필드 값을 조작할 수 있는 시점이다.",
+      "whyCorrect": "before insert는 레코드가 실제로 저장되기 전에 실행되므로 값 검증·기본값 세팅에 적합하다.",
+      "whyIncorrect": "after 계열은 이미 저장이 끝난 뒤 실행되므로 필드를 바로 수정하려면 다시 update가 필요해 비효율적이다.",
+      "examPoint": "'저장 전 값 수정'이라는 문구가 나오면 before 트리거, '저장 후 관련 레코드 처리'는 after 트리거로 구분한다.",
+      "practicalExample": "이메일 형식이 잘못되면 저장 자체를 막고 싶을 때 before insert에서 addError()를 호출한다."
+    }
+  },
+  {
+    "id": "q-sf-006",
+    "num": 6,
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "특정 사용자에게 개별적으로 추가 권한을 부여할 때 사용하는 것은?",
+    "choices": [
+      "Profile",
+      "Permission Set",
+      "Role Hierarchy",
+      "Sharing Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Permission Set은 Profile의 기본 권한 위에 특정 사용자에게만 추가 권한을 얹어주는 단위다.",
+      "whyCorrect": "Permission Set은 한 사용자에게 여러 개를 부여할 수 있어 유연하게 추가 권한을 관리할 수 있다.",
+      "whyIncorrect": "Profile은 사용자당 1개만 가질 수 있는 기본 권한 집합이고, Role/Sharing Rule은 레코드 접근 범위(공유)를 다룬다.",
+      "examPoint": "Profile(필수, 1개) vs Permission Set(선택, 여러 개 추가 가능)의 차이가 핵심 출제 포인트다.",
+      "practicalExample": "영업팀 중 일부에게만 리포트 내보내기 권한을 추가로 줄 때 Permission Set을 할당한다."
+    }
+  }
+]

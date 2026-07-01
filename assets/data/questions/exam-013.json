@@ -1,0 +1,117 @@
+[
+  {
+    "id": "q-js-101",
+    "num": 1,
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "객체의 속성 이름(key)들을 배열 형태로 가져오는 메서드는?",
+    "choices": [
+      "Object.keys()",
+      "Object.values()",
+      "Object.entries()",
+      "Object.freeze()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Object.keys(obj)는 객체 자신이 가진 열거 가능한 속성 이름들을 배열로 반환한다.",
+      "whyCorrect": "Object.keys({a:1, b:2})는 ['a', 'b']를 반환해, 이후 map/forEach 등으로 각 키를 순회할 수 있게 해준다.",
+      "whyIncorrect": "Object.values()는 값만, Object.entries()는 [키, 값] 쌍을 반환하고, Object.freeze()는 객체를 동결(수정 불가)시키는 메서드라 키 목록 추출과는 다르다.",
+      "examPoint": "keys(키만) / values(값만) / entries(쌍) 세 메서드의 반환 형태 차이를 구분해서 기억한다.",
+      "practicalExample": "카테고리별 문제 개수를 담은 객체를 화면에 그릴 때 Object.keys()로 카테고리 이름 목록을 먼저 뽑는다."
+    }
+  },
+  {
+    "id": "q-js-102",
+    "num": 2,
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "DOM에서 특정 id를 가진 요소 하나를 선택하는 메서드는?",
+    "choices": [
+      "document.getElementById()",
+      "document.getElementsByClass()",
+      "document.queryAll()",
+      "document.findId()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "document.getElementById(id)는 문서 내에서 지정한 id 속성을 가진 요소 하나를 반환하는 표준 DOM 메서드다.",
+      "whyCorrect": "id는 문서 내에서 유일해야 하므로, 이 메서드는 배열이 아니라 단일 요소(또는 null)를 반환한다.",
+      "whyIncorrect": "document.getElementsByClass()는 실제로는 getElementsByClassName()이 올바른 이름이고, document.queryAll()/document.findId()는 존재하지 않는 메서드다.",
+      "examPoint": "id 선택은 getElementById 또는 querySelector('#id') 두 가지 방식이 모두 가능하다는 점을 알아둔다.",
+      "practicalExample": "이 프로젝트의 quiz.js 전반에서 document.getElementById('quiz-choices')처럼 특정 영역을 선택할 때 사용한다."
+    }
+  },
+  {
+    "id": "q-js-103",
+    "num": 3,
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "배열에서 특정 조건을 만족하는 첫 번째 요소를 찾아 반환하는 메서드는?",
+    "choices": [
+      "find()",
+      "filter()",
+      "some()",
+      "includes()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "find()는 배열을 순회하며 콜백 조건을 만족하는 첫 번째 요소를 찾으면 즉시 그 요소를 반환하고 순회를 멈춘다.",
+      "whyCorrect": "arr.find(x => x.id === 'exam-003')처럼 조건에 맞는 단일 객체를 바로 얻을 수 있다.",
+      "whyIncorrect": "filter()는 조건에 맞는 모든 요소를 배열로 반환하고, some()/includes()는 존재 여부를 boolean으로만 알려줄 뿐 요소 자체를 반환하지 않는다.",
+      "examPoint": "'요소 하나를 찾고 싶다'면 find(), '조건에 맞는 전부'가 필요하면 filter()를 쓰는 것이 관례다.",
+      "practicalExample": "이 프로젝트의 quiz.js에서 data.list.find(item => item.id === examId)로 현재 시험 정보를 찾는다."
+    }
+  },
+  {
+    "id": "q-js-104",
+    "num": 4,
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "여러 개의 Promise가 모두 완료(또는 하나라도 실패)될 때까지 기다리는 메서드는?",
+    "choices": [
+      "Promise.all()",
+      "Promise.race()",
+      "Promise.resolve()",
+      "Promise.any()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Promise.all()은 배열로 전달된 여러 Promise가 모두 성공할 때까지 기다렸다가, 그 결과를 배열로 한 번에 반환한다.",
+      "whyCorrect": "하나라도 실패(reject)하면 즉시 그 실패로 처리되며, 전부 성공해야만 전체 결과 배열을 얻을 수 있다.",
+      "whyIncorrect": "Promise.race()는 가장 먼저 끝나는 것 하나만 기다리고, Promise.resolve()는 이미 완료된 Promise를 만드는 메서드, Promise.any()는 하나라도 성공하면 끝나는 메서드라 동작이 다르다.",
+      "examPoint": "all(전부 성공 필요) / race(가장 빠른 것) / any(하나라도 성공) / allSettled(성공·실패 모두 수집)의 차이를 표로 정리해두면 좋다.",
+      "practicalExample": "여러 카테고리의 JSON을 동시에 불러와야 할 때 각 fetch를 배열로 모아 Promise.all()로 한 번에 기다린다."
+    }
+  },
+  {
+    "id": "q-js-105",
+    "num": 5,
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "요소의 클래스 목록에서 특정 클래스를 '있으면 제거, 없으면 추가'하는 메서드는?",
+    "choices": [
+      "classList.toggle()",
+      "classList.add()",
+      "classList.remove()",
+      "classList.replace()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "classList.toggle(className)은 요소가 해당 클래스를 이미 가지고 있으면 제거하고, 없으면 추가하는 동작을 한 번에 처리한다.",
+      "whyCorrect": "on/off 상태를 매번 조건문으로 확인할 필요 없이 toggle() 한 줄로 상태를 뒤집을 수 있다.",
+      "whyIncorrect": "add()는 항상 추가만, remove()는 항상 제거만 하고, replace()는 클래스 이름 자체를 다른 이름으로 바꾸는 메서드라 토글 동작과는 다르다.",
+      "examPoint": "toggle(className, force) 두 번째 인자로 boolean을 주면 무조건 추가/제거하도록 강제할 수도 있다는 점을 알아두면 좋다.",
+      "practicalExample": "이 프로젝트의 mywords 단어 퀴즈 옵션 선택 로직에서도 classList.toggle 계열 패턴으로 선택 상태를 표시한다."
+    }
+  }
+]

@@ -1,0 +1,117 @@
+[
+  {
+    "id": "q-java-101",
+    "num": 1,
+    "category": "Java",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "ArrayList와 LinkedList의 가장 큰 차이는?",
+    "choices": [
+      "둘 다 완전히 동일하다",
+      "내부 자료구조(배열 vs 연결리스트)에 따른 접근/삽입 성능 차이",
+      "ArrayList만 제네릭을 지원한다",
+      "LinkedList는 정렬이 불가능하다"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "ArrayList는 배열 기반이라 인덱스 접근이 빠르고, LinkedList는 노드 연결 기반이라 중간 삽입/삭제가 상대적으로 유리하다.",
+      "whyCorrect": "자료구조 차이 때문에 get(index)은 ArrayList가 빠르고, 중간 요소 삽입/삭제는 LinkedList가 유리한 경향이 있다.",
+      "whyIncorrect": "둘 다 List 인터페이스를 구현해 제네릭을 동일하게 지원하고, 정렬(Collections.sort 등)도 둘 다 가능하다.",
+      "examPoint": "'조회가 많다 vs 삽입/삭제가 많다'라는 사용 패턴에 따라 어떤 컬렉션이 유리한지 묻는 문제가 자주 나온다.",
+      "practicalExample": "빈번한 순차 접근이 필요한 목록 화면 데이터는 ArrayList로 관리하는 것이 일반적이다."
+    }
+  },
+  {
+    "id": "q-java-102",
+    "num": 2,
+    "category": "Java",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "컴파일 시점에 반드시 처리(try-catch 또는 throws)해야 하는 예외는?",
+    "choices": [
+      "Checked Exception",
+      "Unchecked Exception",
+      "RuntimeException",
+      "Error"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Checked Exception은 컴파일러가 처리 여부를 강제로 검사하는 예외로, try-catch나 throws 선언이 없으면 컴파일 오류가 난다.",
+      "whyCorrect": "IOException처럼 Exception을 상속하지만 RuntimeException은 아닌 예외들이 대표적인 Checked Exception이다.",
+      "whyIncorrect": "Unchecked Exception(RuntimeException 계열)은 컴파일러가 처리를 강제하지 않고, Error는 시스템 레벨 심각한 오류로 별개의 개념이다.",
+      "examPoint": "Checked(컴파일러 강제) vs Unchecked(강제 없음, 런타임에만 발생)의 구분이 핵심 출제 포인트다.",
+      "practicalExample": "파일을 읽는 코드에서 FileNotFoundException(Checked)은 반드시 try-catch로 처리해야 컴파일된다."
+    }
+  },
+  {
+    "id": "q-java-103",
+    "num": 3,
+    "category": "Java",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "제네릭(Generic)을 사용하는 주된 이유는?",
+    "choices": [
+      "코드 실행 속도를 항상 더 빠르게 만들기 위해",
+      "타입 안정성을 확보하고 형변환을 최소화하기 위해",
+      "메모리 사용량을 자동으로 줄이기 위해",
+      "private 필드를 외부에 노출하기 위해"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "제네릭은 컴파일 시점에 타입을 지정/검사하게 해, 잘못된 타입 사용을 컴파일 단계에서 막아준다.",
+      "whyCorrect": "List<String>처럼 타입을 명시하면 잘못된 타입 삽입을 컴파일 오류로 잡고, 꺼낼 때 형변환(casting)도 필요 없어진다.",
+      "whyIncorrect": "제네릭 자체가 실행 속도나 메모리 사용량을 직접 최적화하지 않으며, 접근 제어자(private 등)와도 무관한 개념이다.",
+      "examPoint": "제네릭 도입 이전(Java 5 이전)에는 Object 타입 컬렉션 + 강제 형변환으로 인한 런타임 오류가 흔했다는 배경을 알아두면 이해가 쉽다.",
+      "practicalExample": "List<Question> 처럼 문제 목록 컬렉션에 제네릭을 지정해 실수로 다른 타입 객체가 섞이는 것을 막는다."
+    }
+  },
+  {
+    "id": "q-java-104",
+    "num": 4,
+    "category": "Java",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Map에서 키-값 쌍을 함께 순회할 때 사용하는 대표적인 방법은?",
+    "choices": [
+      "keySet()만 순회",
+      "entrySet()을 순회",
+      "values()만 순회",
+      "Map은 순회할 수 없다"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "entrySet()은 Map의 키-값 쌍을 Map.Entry 객체 형태로 묶어 반환해, 한 번의 순회로 키와 값을 동시에 다룰 수 있다.",
+      "whyCorrect": "for (Map.Entry<K,V> entry : map.entrySet())처럼 순회하면 entry.getKey()/getValue()로 키와 값을 모두 얻을 수 있다.",
+      "whyIncorrect": "keySet()이나 values()만으로는 각각 키 또는 값만 얻을 수 있어 둘 다 필요할 때는 다시 map.get(key) 같은 추가 조회가 필요해 비효율적이다.",
+      "examPoint": "키만 필요하면 keySet(), 값만 필요하면 values(), 둘 다 필요하면 entrySet()을 쓰는 것이 표준 관례다.",
+      "practicalExample": "카테고리별 문제 개수를 담은 Map을 화면에 '카테고리: 개수' 형태로 출력할 때 entrySet()으로 순회한다."
+    }
+  },
+  {
+    "id": "q-java-105",
+    "num": 5,
+    "category": "Java",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "멀티스레드 환경에서 동시 접근을 제어하기 위해 메서드/블록에 사용하는 키워드는?",
+    "choices": [
+      "synchronized",
+      "static",
+      "final",
+      "volatile만 사용 가능"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "synchronized 키워드는 한 번에 하나의 스레드만 해당 메서드/블록에 진입하도록 제한해 동시 접근으로 인한 데이터 훼손을 막는다.",
+      "whyCorrect": "synchronized 메서드나 블록에 다른 스레드가 진입하려면 먼저 들어간 스레드가 나올 때까지 기다려야 한다.",
+      "whyIncorrect": "static은 클래스 공유 멤버 지정, final은 재할당 방지 키워드라 동시성 제어와는 목적이 다르고, volatile은 가시성만 보장할 뿐 배타적 접근을 보장하지 않는다.",
+      "examPoint": "synchronized(배타적 접근, 상대적으로 무거움)와 volatile(가시성만 보장, 가벼움)의 차이를 구분해서 알아두면 좋다.",
+      "practicalExample": "여러 스레드가 동시에 재고 수량을 차감하는 메서드에 synchronized를 붙여 데이터 정합성을 지킨다."
+    }
+  }
+]

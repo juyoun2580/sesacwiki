@@ -1,0 +1,117 @@
+[
+  {
+    "id": "q-sql-101",
+    "num": 1,
+    "category": "SQL",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "조회 성능을 높이기 위해 특정 컬럼에 생성하는 자료구조는?",
+    "choices": [
+      "인덱스(Index)",
+      "트리거(Trigger)",
+      "뷰(View)",
+      "제약조건(Constraint)"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "인덱스는 특정 컬럼 값을 빠르게 찾을 수 있도록 만든 별도의 조회용 자료구조로, 조회 성능을 크게 향상시킨다.",
+      "whyCorrect": "인덱스가 있으면 전체 테이블을 훑지 않고도(Full Scan 없이) 원하는 행을 빠르게 찾을 수 있다.",
+      "whyIncorrect": "트리거는 이벤트 기반 자동 실행 로직, 뷰는 저장된 쿼리, 제약조건은 데이터 무결성 규칙이라 조회 성능 최적화가 주 목적이 아니다.",
+      "examPoint": "인덱스는 조회는 빠르게 하지만 삽입/수정/삭제는 느려질 수 있다는 트레이드오프를 함께 이해해야 한다.",
+      "practicalExample": "회원 테이블에서 이메일로 자주 검색한다면 email 컬럼에 인덱스를 생성해 조회 속도를 높인다."
+    }
+  },
+  {
+    "id": "q-sql-102",
+    "num": 2,
+    "category": "SQL",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "트랜잭션의 ACID 중 '원자성(Atomicity)'이 의미하는 것은?",
+    "choices": [
+      "트랜잭션 내 작업이 전부 성공하거나 전부 실패한다",
+      "여러 트랜잭션이 서로 영향을 주지 않는다",
+      "커밋된 데이터는 영구히 저장된다",
+      "동시에 여러 트랜잭션이 실행될 수 없다"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "원자성은 트랜잭션에 포함된 여러 작업이 '전부 성공' 또는 '전부 실패(롤백)'로만 끝나는 성질을 의미한다.",
+      "whyCorrect": "계좌 이체처럼 출금과 입금이 함께 일어나야 하는 작업에서, 둘 중 하나만 성공하는 상황을 막는 것이 원자성의 핵심이다.",
+      "whyIncorrect": "'서로 영향을 주지 않는다'는 격리성(Isolation), '영구 저장'은 지속성(Durability)에 대한 설명이고, 동시 실행 제한은 ACID의 직접적인 정의가 아니다.",
+      "examPoint": "ACID(원자성/일관성/격리성/지속성) 4가지를 각각 한 문장으로 구분해 암기해두면 헷갈리지 않는다.",
+      "practicalExample": "송금 트랜잭션에서 출금은 성공했는데 입금이 실패하면, 원자성에 의해 출금도 함께 롤백되어야 한다."
+    }
+  },
+  {
+    "id": "q-sql-103",
+    "num": 3,
+    "category": "SQL",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "여러 테이블에 걸친 작업을 하나의 논리적 단위로 묶어 실행하는 것은?",
+    "choices": [
+      "트랜잭션(Transaction)",
+      "서브쿼리(Subquery)",
+      "인덱스(Index)",
+      "뷰(View)"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "트랜잭션은 여러 SQL 작업을 하나의 논리적 단위로 묶어, 전부 성공(COMMIT)하거나 전부 취소(ROLLBACK)되도록 관리하는 개념이다.",
+      "whyCorrect": "BEGIN(또는 START TRANSACTION) ~ COMMIT/ROLLBACK 사이의 작업들이 하나의 트랜잭션으로 처리된다.",
+      "whyIncorrect": "서브쿼리는 쿼리 안에 중첩된 조회, 인덱스는 조회 성능 최적화, 뷰는 저장된 쿼리라 여러 작업을 하나의 단위로 묶는 개념이 아니다.",
+      "examPoint": "COMMIT(확정)과 ROLLBACK(취소)이 트랜잭션의 대표적인 종료 방식이라는 점을 함께 기억한다.",
+      "practicalExample": "주문 생성과 재고 차감을 하나의 트랜잭션으로 묶어, 재고 차감이 실패하면 주문 생성도 함께 취소한다."
+    }
+  },
+  {
+    "id": "q-sql-104",
+    "num": 4,
+    "category": "SQL",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "조회 결과에서 중복된 행을 제거할 때 사용하는 키워드는?",
+    "choices": [
+      "DISTINCT",
+      "UNIQUE",
+      "ONLY",
+      "FILTER"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "DISTINCT는 SELECT 결과에서 완전히 동일한 행을 하나로 합쳐 중복을 제거하는 키워드다.",
+      "whyCorrect": "SELECT DISTINCT category FROM exams처럼 사용하면 같은 category 값이 여러 번 나와도 한 번만 표시된다.",
+      "whyIncorrect": "UNIQUE는 제약조건 이름이지 조회 키워드가 아니고, ONLY/FILTER는 표준 SQL의 중복 제거 키워드가 아니다.",
+      "examPoint": "DISTINCT는 SELECT 절 맨 앞에 한 번만 쓰며, 지정한 모든 컬럼 조합 기준으로 중복을 판단한다는 점에 주의한다.",
+      "practicalExample": "모의고사에 등장한 카테고리 목록을 중복 없이 뽑을 때 SELECT DISTINCT category를 사용한다."
+    }
+  },
+  {
+    "id": "q-sql-105",
+    "num": 5,
+    "category": "SQL",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "테이블 구조(컬럼 추가/삭제 등)를 변경하는 DDL 명령어는?",
+    "choices": [
+      "ALTER TABLE",
+      "UPDATE TABLE",
+      "MODIFY TABLE",
+      "CHANGE TABLE"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "ALTER TABLE은 이미 존재하는 테이블의 구조(컬럼 추가/삭제/타입 변경 등)를 바꾸는 DDL(Data Definition Language) 명령어다.",
+      "whyCorrect": "ALTER TABLE users ADD COLUMN phone VARCHAR(20);처럼 컬럼을 추가하거나 DROP COLUMN으로 삭제할 수 있다.",
+      "whyIncorrect": "UPDATE는 데이터(행) 값을 바꾸는 DML 명령어이고, MODIFY TABLE/CHANGE TABLE은 표준 SQL 명령어가 아니다.",
+      "examPoint": "DDL(CREATE/ALTER/DROP, 구조 변경)과 DML(INSERT/UPDATE/DELETE, 데이터 변경)을 구분하는 것이 기본이다.",
+      "practicalExample": "회원 테이블에 '가입 경로' 컬럼을 새로 추가해야 할 때 ALTER TABLE로 컬럼을 추가한다."
+    }
+  }
+]

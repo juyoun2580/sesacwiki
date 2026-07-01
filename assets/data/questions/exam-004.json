@@ -1,0 +1,140 @@
+[
+  {
+    "id": "q-html-001",
+    "num": 1,
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "문서의 독립적인 콘텐츠 영역을 의미하는 시맨틱 태그는?",
+    "choices": [
+      "<div>",
+      "<article>",
+      "<span>",
+      "<b>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<article>은 그 자체로 독립적으로 배포/재사용 가능한 콘텐츠 블록을 의미하는 시맨틱 태그다.",
+      "whyCorrect": "블로그 게시글, 뉴스 기사처럼 문맥 없이도 이해되는 독립 콘텐츠에는 <article>을 사용한다.",
+      "whyIncorrect": "<div>/<span>은 의미가 없는 범용 컨테이너이고, <b>는 단순 굵게 표시용 태그라 의미 구조를 표현하지 못한다.",
+      "examPoint": "CLAUDE.md의 'HTML5 시맨틱 태그를 적극 활용하고 의미 없는 div 사용을 최소화한다' 원칙과 직결되는 개념이다.",
+      "practicalExample": "위키 상세 페이지 본문처럼 그 자체로 독립된 문서 콘텐츠에 <article>을 사용한다."
+    }
+  },
+  {
+    "id": "q-html-002",
+    "num": 2,
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자 입력값을 서버로 전송할 때 폼 전체를 감싸는 태그는?",
+    "choices": [
+      "<input>",
+      "<form>",
+      "<label>",
+      "<fieldset>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<form>은 하나 이상의 입력 요소를 묶어 제출(submit) 동작의 기준이 되는 컨테이너 태그다.",
+      "whyCorrect": "<form action=... method=...>이 실제 데이터 전송 대상과 방식을 정의하고 내부 입력 요소를 하나로 묶는다.",
+      "whyIncorrect": "<input>은 개별 입력 필드, <label>은 입력 필드 설명, <fieldset>은 관련 필드를 시각적으로 그룹화하는 보조 요소일 뿐 제출을 담당하지 않는다.",
+      "examPoint": "폼 제출은 <form>의 action/method 속성이 결정하며, 버튼의 type='submit'과 함께 동작한다는 점을 기억한다.",
+      "practicalExample": "로그인 화면에서 아이디/비밀번호 입력창을 <form> 하나로 묶어 제출한다."
+    }
+  },
+  {
+    "id": "q-html-003",
+    "num": 3,
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "이미지가 로드되지 않을 때 대체 텍스트를 제공하는 속성은?",
+    "choices": [
+      "title",
+      "alt",
+      "aria-label",
+      "placeholder"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "alt 속성은 이미지가 표시되지 않을 때 대체 텍스트를 제공하며 스크린리더 접근성에도 필수적이다.",
+      "whyCorrect": "<img alt='설명'>은 이미지 로드 실패 시 텍스트로 대체 표시되고, 시각장애인 사용자에게 이미지 내용을 읽어준다.",
+      "whyIncorrect": "title은 마우스 오버 툴팁일 뿐 대체 텍스트 역할이 약하고, aria-label은 대체 수단이 될 수 있지만 이미지의 표준 대체 텍스트는 alt이며, placeholder는 입력 필드 전용 속성이다.",
+      "examPoint": "이미지 접근성 문제에서는 항상 alt 속성 유무를 먼저 확인하는 것이 기본이다.",
+      "practicalExample": "프로필 사진에 alt='사용자 프로필 이미지'를 넣어 이미지가 깨져도 의미를 전달한다."
+    }
+  },
+  {
+    "id": "q-html-004",
+    "num": 4,
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "반응형 웹을 위해 뷰포트를 설정하는 위치는?",
+    "choices": [
+      "<body>의 style",
+      "<head>의 <meta name='viewport'>",
+      "<footer>",
+      "<script>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "뷰포트 메타 태그는 모바일 브라우저가 페이지를 렌더링할 기준 너비/배율을 지정한다.",
+      "whyCorrect": "<meta name='viewport' content='width=device-width, initial-scale=1.0'>을 <head>에 넣어야 반응형 레이아웃이 올바르게 동작한다.",
+      "whyIncorrect": "<body> 인라인 스타일, <footer>, <script>는 뷰포트를 설정하는 표준 위치가 아니며 CLAUDE.md도 inline style 사용을 금지한다.",
+      "examPoint": "뷰포트 메타 태그를 빠뜨리면 모바일에서 데스크톱 레이아웃이 축소되어 보이는 문제가 생긴다는 것이 자주 출제된다.",
+      "practicalExample": "이 프로젝트의 모든 HTML 파일 <head>에도 동일한 viewport 메타 태그가 공통으로 포함되어 있다."
+    }
+  },
+  {
+    "id": "q-html-005",
+    "num": 5,
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "페이지 상단의 로고/내비게이션을 감싸기에 가장 알맞은 태그 조합은?",
+    "choices": [
+      "<header>+<nav>",
+      "<div>+<div>",
+      "<section>+<article>",
+      "<aside>+<footer>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<header>는 소개/탐색을 위한 상단 영역, <nav>는 주요 내비게이션 링크 묶음을 의미하는 시맨틱 태그다.",
+      "whyCorrect": "로고와 검색창은 <header>, 메뉴 링크 목록은 <nav>로 감싸는 것이 표준 시맨틱 구조다.",
+      "whyIncorrect": "<div>+<div>는 의미 없는 구조이고, <section>+<article>은 콘텐츠 영역용, <aside>+<footer>는 보조 정보/하단 영역용이라 상단 헤더 용도와 맞지 않는다.",
+      "examPoint": "이 프로젝트의 모든 페이지도 공통 <header class='header'>와 <nav class='nav'> 조합을 그대로 재사용하고 있다.",
+      "practicalExample": "새싹트리 사이트의 로고+검색창은 <header>, 홈/위키/모의고사 메뉴는 <nav>로 구성되어 있다."
+    }
+  },
+  {
+    "id": "q-html-006",
+    "num": 6,
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "입력 필드를 필수값으로 지정하는 HTML5 속성은?",
+    "choices": [
+      "required",
+      "mandatory",
+      "must",
+      "validate"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "required는 HTML5 폼 유효성 검사 속성으로, 값이 비어 있으면 제출을 막고 브라우저가 기본 안내 메시지를 보여준다.",
+      "whyCorrect": "<input required>를 추가하면 별도 JS 없이도 브라우저가 자동으로 빈 값 제출을 막는다.",
+      "whyIncorrect": "mandatory, must, validate는 HTML5 표준 속성이 아니며 실제로는 동작하지 않는다.",
+      "examPoint": "required, pattern, minlength/maxlength 같은 HTML5 내장 유효성 검사 속성들을 함께 알아두면 좋다.",
+      "practicalExample": "회원가입 폼에서 이메일 입력창에 required를 붙여 빈 값 제출을 막는다."
+    }
+  }
+]

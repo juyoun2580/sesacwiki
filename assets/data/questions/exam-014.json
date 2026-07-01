@@ -1,0 +1,117 @@
+[
+  {
+    "id": "q-etc-101",
+    "num": 1,
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "여러 명이 같은 파일의 같은 부분을 동시에 수정해 Git이 자동으로 병합하지 못하는 상태는?",
+    "choices": [
+      "Merge Conflict",
+      "Fast-forward",
+      "Detached HEAD",
+      "Fork"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Merge Conflict는 두 브랜치가 같은 파일의 같은 줄을 서로 다르게 변경해, Git이 어느 쪽을 남길지 자동으로 판단하지 못하는 상태다.",
+      "whyCorrect": "이 경우 충돌 표시(<<<<<<< / ======= / >>>>>>>)가 파일에 남고, 개발자가 직접 어떤 내용을 남길지 정리해야 한다.",
+      "whyIncorrect": "Fast-forward는 충돌 없이 브랜치가 단순히 앞으로 이동하는 병합 방식이고, Detached HEAD는 특정 커밋을 직접 보고 있는 상태, Fork는 저장소 자체를 복제하는 것이라 충돌 상황과는 다르다.",
+      "examPoint": "충돌이 나면 임의로 한쪽 파일을 통째로 버리지 말고, 두 변경 사항의 의도를 파악해 병합하는 것이 원칙이다(시스템 지침에도 명시된 원칙과 동일하다).",
+      "practicalExample": "두 팀원이 같은 exam.html의 같은 줄을 각자 수정해 push하면 나중에 병합하는 사람이 Merge Conflict를 해결해야 한다."
+    }
+  },
+  {
+    "id": "q-etc-102",
+    "num": 2,
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "커밋하지 않은 변경 사항을 잠시 다른 곳에 저장해두고 작업 디렉토리를 깨끗하게 되돌리는 명령어는?",
+    "choices": [
+      "git stash",
+      "git commit --amend",
+      "git checkout -- .",
+      "git reset --soft"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "git stash는 아직 커밋하지 않은 변경 사항을 임시 저장 공간에 넣어두고, 작업 디렉토리를 마지막 커밋 상태로 되돌린다.",
+      "whyCorrect": "급하게 다른 브랜치로 전환해야 할 때 stash로 변경 사항을 잠시 치워두고, 나중에 git stash pop으로 다시 꺼내올 수 있다.",
+      "whyIncorrect": "git commit --amend는 직전 커밋을 수정하는 명령이고, git checkout -- .은 변경 사항을 완전히 버리는(복구 불가) 명령이며, git reset --soft는 커밋만 되돌리고 스테이징은 유지하는 명령이라 '임시 저장'과는 다르다.",
+      "examPoint": "stash는 변경 사항을 '버리는 것'이 아니라 '잠시 넣어두는 것'이라는 점에서 checkout -- .과 명확히 구분해야 한다(되돌리기 어려운 작업은 신중히 확인해야 한다).",
+      "practicalExample": "exam.html을 수정하던 중 급하게 다른 브랜치의 버그를 확인해야 할 때 git stash로 변경 사항을 잠시 저장해둔다."
+    }
+  },
+  {
+    "id": "q-etc-103",
+    "num": 3,
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "원격 저장소의 최신 변경 사항을 가져오면서 현재 브랜치에 자동으로 병합까지 하는 명령어는?",
+    "choices": [
+      "git pull",
+      "git fetch",
+      "git push",
+      "git log"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "git pull은 git fetch(원격 변경 사항 가져오기) + git merge(현재 브랜치에 병합)를 한 번에 수행하는 명령어다.",
+      "whyCorrect": "git pull origin main을 실행하면 원격의 최신 커밋을 받아오면서 곧바로 현재 브랜치에 합쳐준다.",
+      "whyIncorrect": "git fetch는 가져오기만 하고 병합은 하지 않으며, git push는 반대로 로컬 변경을 원격에 올리는 명령, git log는 커밋 히스토리 조회 명령이라 병합과 무관하다.",
+      "examPoint": "충돌이 걱정되는 상황에서는 pull 대신 fetch로 먼저 변경 내용을 확인한 뒤 수동으로 merge/rebase하는 것이 더 안전하다는 점도 알아두면 좋다.",
+      "practicalExample": "TEAM_GUIDE.md의 작업 순서 1단계 'git pull'이 바로 이 명령어를 가리킨다."
+    }
+  },
+  {
+    "id": "q-etc-104",
+    "num": 4,
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "코드 변경 사항을 팀원에게 공유하고 리뷰받은 뒤 병합을 요청하기 위해 GitHub 등에서 만드는 것은?",
+    "choices": [
+      "Pull Request",
+      "Issue",
+      "Release",
+      "Webhook"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Pull Request(PR)는 한 브랜치의 변경 사항을 다른 브랜치(주로 main)에 병합해달라고 요청하며, 그 과정에서 코드 리뷰와 토론이 이루어지는 단위다.",
+      "whyCorrect": "PR을 통해 팀원들이 변경 내용을 리뷰하고, 문제가 없으면 승인 후 병합하는 것이 이 프로젝트의 표준 작업 순서(WORK_ORDER.md)다.",
+      "whyIncorrect": "Issue는 버그/작업 항목을 기록하는 단위, Release는 배포 버전을 표시하는 기능, Webhook은 이벤트 발생 시 외부로 알림을 보내는 기능이라 코드 병합 요청과는 다르다.",
+      "examPoint": "'커밋 → 리뷰 없이 바로 병합'이 아니라 'PR → 리뷰 → 병합' 순서를 지키는 것이 협업 품질을 지키는 핵심이라는 점을 기억한다.",
+      "practicalExample": "feature/exam 브랜치 작업을 마치면 main으로 병합해달라는 Pull Request를 생성해 리뷰를 요청한다."
+    }
+  },
+  {
+    "id": "q-etc-105",
+    "num": 5,
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": ".gitignore 파일의 역할은?",
+    "choices": [
+      "Git이 추적하지 않을 파일/폴더 목록을 지정한다",
+      "커밋 메시지 양식을 강제한다",
+      "브랜치 이름 규칙을 강제한다",
+      "원격 저장소 주소를 저장한다"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": ".gitignore는 node_modules, .env, 빌드 산출물처럼 버전 관리에 포함시키지 않을 파일/폴더 패턴을 지정하는 설정 파일이다.",
+      "whyCorrect": ".gitignore에 등록된 패턴과 일치하는 파일은 git add로도 스테이징되지 않고 git status에도 나타나지 않는다.",
+      "whyIncorrect": "커밋 메시지 양식이나 브랜치 이름 규칙은 팀 컨벤션(문서)으로 관리하는 것이지 .gitignore의 역할이 아니고, 원격 저장소 주소는 .git/config에 저장된다.",
+      "examPoint": "민감한 정보(.env, credentials.json 등)를 실수로 커밋하지 않도록 프로젝트 초기에 .gitignore를 잘 설정해두는 것이 중요하다는 점도 함께 기억한다.",
+      "practicalExample": "이 프로젝트에서도 임시 파일이나 개인 설정 파일을 커밋에서 제외하고 싶다면 .gitignore에 해당 경로를 추가한다."
+    }
+  }
+]

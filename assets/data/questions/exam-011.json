@@ -1,0 +1,117 @@
+[
+  {
+    "id": "q-html-101",
+    "num": 1,
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "비디오를 별도 플러그인 없이 삽입할 수 있는 HTML5 태그는?",
+    "choices": [
+      "<video>",
+      "<media>",
+      "<movie>",
+      "<embed-video>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<video> 태그는 HTML5에서 표준으로 제공하는 비디오 삽입 태그로, 별도 플러그인(Flash 등) 없이 브라우저가 직접 재생한다.",
+      "whyCorrect": "<video controls src='...'></video> 형태로 사용하며 controls 속성으로 재생 컨트롤 UI를 자동 제공한다.",
+      "whyIncorrect": "<media>, <movie>, <embed-video>는 존재하지 않는 태그다.",
+      "examPoint": "오디오는 <audio>, 비디오는 <video> 태그로 대응되며, 여러 포맷을 <source>로 함께 제공하는 방식도 함께 알아두면 좋다.",
+      "practicalExample": "튜토리얼 페이지에 강의 영상을 삽입할 때 <video controls>를 사용한다."
+    }
+  },
+  {
+    "id": "q-html-102",
+    "num": 2,
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "표 데이터를 표현할 때 헤더(제목) 셀을 나타내는 태그는?",
+    "choices": [
+      "<th>",
+      "<td>",
+      "<head>",
+      "<thead-cell>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<th>(table header)는 표의 헤더 셀을 의미하며, 스크린리더가 데이터 셀과 헤더를 구분해 읽어주는 데도 사용된다.",
+      "whyCorrect": "<th>는 기본적으로 굵게, 가운데 정렬로 렌더링되어 시각적으로도 일반 데이터 셀과 구분된다.",
+      "whyIncorrect": "<td>는 일반 데이터 셀, <head>는 문서 메타정보 영역이라 표와 무관하며, <thead-cell>은 존재하지 않는 태그다.",
+      "examPoint": "표 구조는 <table> > <thead>/<tbody> > <tr> > <th>/<td>로 이어지는 계층을 이해하는 것이 핵심이다.",
+      "practicalExample": "문제 목록 표에서 '번호/카테고리/난이도' 같은 제목 행을 <th>로 마크업한다."
+    }
+  },
+  {
+    "id": "q-html-103",
+    "num": 3,
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "여러 개의 관련 콘텐츠를 묶어 문서 내 별도 영역(섹션)으로 나눌 때 쓰는 태그는?",
+    "choices": [
+      "<section>",
+      "<div>",
+      "<group>",
+      "<block>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<section>은 주제별로 구분되는 콘텐츠 묶음을 의미하는 시맨틱 태그로, 보통 자체 제목(heading)을 가진다.",
+      "whyCorrect": "'모의고사 카테고리별 섹션'처럼 의미 있는 콘텐츠 그룹을 나눌 때 <section>이 적합하다.",
+      "whyIncorrect": "<div>는 의미 없는 범용 컨테이너이고, <group>/<block>은 HTML 표준 태그가 아니다.",
+      "examPoint": "이 페이지들처럼 <section id='exam'>, <section id='quiz'>로 화면 단위를 나누는 것도 실제 <section> 활용 사례다.",
+      "practicalExample": "위키 상세 페이지에서 '1. SELECT 기본 문법'처럼 소제목이 있는 콘텐츠 묶음을 <section>으로 나눈다."
+    }
+  },
+  {
+    "id": "q-html-104",
+    "num": 4,
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 여러 옵션 중 하나(또는 여러 개)를 선택하는 드롭다운 목록을 만드는 태그는?",
+    "choices": [
+      "<select>",
+      "<dropdown>",
+      "<input type='list'>",
+      "<menu>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<select>는 여러 <option>을 감싸 드롭다운 형태의 선택 목록을 만드는 폼 요소다.",
+      "whyCorrect": "<select><option>SQL</option><option>Java</option></select>처럼 사용하며, multiple 속성으로 다중 선택도 가능하다.",
+      "whyIncorrect": "<dropdown>, <input type='list'>는 존재하지 않는 문법이고, <menu>는 컨텍스트 메뉴용 태그라 폼 선택과는 용도가 다르다.",
+      "examPoint": "체크박스/라디오는 눈에 보이는 소수 옵션에, select는 옵션이 많을 때 공간을 절약하는 용도로 주로 쓰인다는 점을 알아둔다.",
+      "practicalExample": "모의고사 응시 설정 화면에서 '문항 수'를 고를 때 <select>로 드롭다운을 만든다."
+    }
+  },
+  {
+    "id": "q-html-105",
+    "num": 5,
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "문서에서 본문과 관련은 있지만 부차적인 정보(사이드바 등)를 표현하는 시맨틱 태그는?",
+    "choices": [
+      "<aside>",
+      "<sidebar>",
+      "<extra>",
+      "<sub>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<aside>는 주 콘텐츠와 관련은 있지만 핵심은 아닌 보조 정보(광고, 관련 링크, 사이드바 등)를 감싸는 시맨틱 태그다.",
+      "whyCorrect": "이 프로젝트의 side-panel(내 모의고사 현황 등)처럼 본문을 보조하는 영역에 <aside>를 사용하는 것이 표준이다.",
+      "whyIncorrect": "<sidebar>, <extra>는 존재하지 않는 태그이고, <sub>는 아래첨자(하위 텍스트) 표시용 태그라 완전히 다른 용도다.",
+      "examPoint": "<aside>는 반드시 화면 오른쪽/왼쪽에 있어야 하는 것이 아니라 '본문의 보조 정보'라는 의미가 핵심이라는 점에 유의한다.",
+      "practicalExample": "이 프로젝트의 exam.html에서 '내 모의고사 현황'을 담은 side-panel이 <aside> 태그로 구현되어 있다."
+    }
+  }
+]

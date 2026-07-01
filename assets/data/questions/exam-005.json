@@ -1,0 +1,140 @@
+[
+  {
+    "id": "q-css-001",
+    "num": 1,
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS 박스 모델에서 콘텐츠를 감싸는 순서로 알맞은 것은?",
+    "choices": [
+      "margin-border-padding-content",
+      "padding-border-margin-content",
+      "border-margin-padding-content",
+      "content-padding-border-margin"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "CSS 박스 모델은 안쪽부터 content → padding → border → margin 순서로 요소를 감싼다.",
+      "whyCorrect": "콘텐츠 바깥을 padding이 감싸고, 그 바깥을 border가, 가장 바깥을 margin이 감싸는 구조가 표준 박스 모델이다.",
+      "whyIncorrect": "다른 보기들은 순서가 뒤바뀌어 있어 실제 렌더링 구조와 맞지 않는다.",
+      "examPoint": "box-sizing: border-box를 쓰면 width에 padding/border가 포함되어 계산되는 점도 함께 알아두면 좋다.",
+      "practicalExample": "카드 컴포넌트에서 텍스트(content) 주변 여백(padding), 테두리(border), 카드 간 간격(margin)을 각각 다르게 조정한다."
+    }
+  },
+  {
+    "id": "q-css-002",
+    "num": 2,
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flexbox에서 items를 주축(main axis) 방향으로 정렬하는 속성은?",
+    "choices": [
+      "align-items",
+      "justify-content",
+      "flex-wrap",
+      "align-content"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "justify-content는 flex container의 주축(main axis) 방향 정렬을, align-items는 교차축(cross axis) 방향 정렬을 담당한다.",
+      "whyCorrect": "justify-content: center/space-between 등은 flex-direction 기준의 주축을 따라 아이템을 배치한다.",
+      "whyIncorrect": "align-items/align-content는 교차축 정렬용이고, flex-wrap은 줄바꿈 여부를 결정할 뿐 정렬 속성이 아니다.",
+      "examPoint": "flex-direction이 row일 때 주축=가로, column일 때 주축=세로로 바뀐다는 점을 함께 이해해야 한다.",
+      "practicalExample": "헤더에서 로고와 검색창, 우측 메뉴를 좌우로 균등하게 배치할 때 justify-content: space-between을 사용한다."
+    }
+  },
+  {
+    "id": "q-css-003",
+    "num": 3,
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS 우선순위(specificity)가 가장 높은 선택자는?",
+    "choices": [
+      "태그 선택자",
+      "클래스 선택자",
+      "id 선택자",
+      "전체 선택자(*)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "CSS 우선순위는 id 선택자 > 클래스/속성/가상클래스 선택자 > 태그/가상요소 선택자 > 전체 선택자 순으로 높다.",
+      "whyCorrect": "id 선택자(#id)는 문서 내에서 유일해야 하므로 클래스나 태그 선택자보다 더 강하게 적용된다.",
+      "whyIncorrect": "태그 선택자와 전체 선택자는 우선순위가 가장 낮고, 클래스 선택자는 id보다는 낮다.",
+      "examPoint": "이 프로젝트는 BEM 클래스 선택자만 사용하는 것이 원칙이므로(CLAUDE.md), id 선택자 남용은 실무에서 지양된다는 점도 함께 알아둔다.",
+      "practicalExample": "같은 요소에 클래스와 id 스타일이 동시에 걸리면 id 스타일이 우선 적용된다."
+    }
+  },
+  {
+    "id": "q-css-004",
+    "num": 4,
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "부모 요소를 기준으로 위치가 고정되며 문서 흐름에서 제거되는 position 값은?",
+    "choices": [
+      "static",
+      "relative",
+      "absolute",
+      "sticky"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "absolute는 가장 가까운 position이 지정된 조상 요소를 기준으로 배치되며 문서 흐름에서 완전히 빠진다.",
+      "whyCorrect": "absolute 요소는 다른 요소들이 마치 그 자리에 없는 것처럼 배치를 계산하므로 레이아웃 흐름에서 제거된다.",
+      "whyIncorrect": "static은 기본값(흐름 유지), relative는 자기 자신 기준 이동이지만 흐름은 유지, sticky는 스크롤에 따라 relative/fixed처럼 동작하되 흐름은 유지한다.",
+      "examPoint": "absolute를 쓸 때는 부모에 position: relative를 지정해야 의도한 기준점이 잡힌다는 점이 실무에서 자주 실수하는 포인트다.",
+      "practicalExample": "score-ring의 텍스트를 원 중앙에 겹쳐 배치할 때 부모에 relative, 텍스트에 absolute를 사용한다."
+    }
+  },
+  {
+    "id": "q-css-005",
+    "num": 5,
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "화면 너비에 따라 스타일을 다르게 적용할 때 사용하는 CSS 기능은?",
+    "choices": [
+      "@media",
+      "@import",
+      "@font-face",
+      "@keyframes"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "미디어 쿼리(@media)는 화면 너비, 해상도 등 조건에 따라 다른 스타일 규칙을 적용하는 반응형 웹의 핵심 기능이다.",
+      "whyCorrect": "@media (max-width: 768px) { ... } 형태로 특정 조건에서만 적용될 스타일을 정의할 수 있다.",
+      "whyIncorrect": "@import는 다른 CSS 파일 불러오기, @font-face는 커스텀 폰트 정의, @keyframes는 애니메이션 정의용으로 반응형과는 무관하다.",
+      "examPoint": "모바일 우선(mobile-first)인지 데스크톱 우선인지에 따라 min-width/max-width 사용 방식이 달라진다는 점을 알아둔다.",
+      "practicalExample": "사이드바가 있는 3단 레이아웃을 좁은 화면에서는 1단으로 쌓이게 만들 때 @media를 사용한다."
+    }
+  },
+  {
+    "id": "q-css-006",
+    "num": 6,
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS Grid에서 열의 개수와 너비를 한 번에 정의하는 속성은?",
+    "choices": [
+      "grid-template-columns",
+      "grid-gap",
+      "grid-area",
+      "justify-items"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "grid-template-columns는 grid container에 몇 개의 열을 만들고 각 열의 너비를 어떻게 배분할지 정의한다.",
+      "whyCorrect": "예를 들어 repeat(5, 1fr)을 지정하면 동일한 너비의 열 5개가 생성된다.",
+      "whyIncorrect": "grid-gap은 셀 사이 간격, grid-area는 아이템이 차지할 영역 이름, justify-items는 셀 안에서 아이템의 가로 정렬을 다뤄 열 구조 정의와는 다르다.",
+      "examPoint": "repeat(), fr 단위, auto-fill/auto-fit의 차이를 함께 익혀두면 실전 레이아웃 문제에 유리하다.",
+      "practicalExample": "문제 목록 grid를 5열로 배치할 때 grid-template-columns: repeat(5, 1fr)을 사용한다(이 프로젝트의 question-grid가 실제로 이 방식이다)."
+    }
+  }
+]

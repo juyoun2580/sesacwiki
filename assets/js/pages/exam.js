@@ -32,6 +32,19 @@ function getLocalExamAttempts() {
 let examAttemptHistory = []; // "최근 응시한 시험" 전체보기 토글이 재렌더링할 때 다시 fetch하지 않도록 모듈 스코프에 보관
 let showAllRecentExams = false;
 
+// 문제 데이터는 시험별로 assets/data/questions/{examId}.json에 분리 저장돼 있다 (exam.json은 목차만 가벼운 상태로 유지).
+// 오답노트에 필요한 시험 파일만 그때그때 가져온다 — quiz.js와 동일한 헬퍼지만 파일 간 공유 모듈이 없어 각자 정의한다.
+const questionFileCache = new Map();
+function fetchQuestionsFile(examId) {
+  if (!questionFileCache.has(examId)) {
+    questionFileCache.set(examId, fetch(`assets/data/questions/${examId}.json`).then(res => {
+      if (!res.ok) throw new Error(`${examId} 문제 파일을 불러오지 못했습니다.`);
+      return res.json();
+    }));
+  }
+  return questionFileCache.get(examId);
+}
+
 async function loadExamPageData() {
   if (!document.getElementById('exam')) return;
 
@@ -45,7 +58,7 @@ async function loadExamPageData() {
     examAttemptHistory = localHistory.length ? localHistory : (data.attemptHistory || []);
     renderExamList(data.list);
     renderExamStats(examAttemptHistory);
-    renderWrongNoteAccordion(data);
+    await renderWrongNoteAccordion(data);
     initExamFilters(); // 카드가 렌더링된 뒤에 실행해야 필터가 실제 <li>를 찾을 수 있다
   } catch (e) {
     console.error(e);
@@ -150,14 +163,18 @@ function buildWrongNoteRefs(data, localHistory) {
   return refs.slice(0, 5);
 }
 
-function renderWrongNoteAccordion(data) {
+async function renderWrongNoteAccordion(data) {
   const listEl = document.getElementById('exam-wrong-note-list');
   if (!listEl) return;
   const localHistory = getLocalExamAttempts();
   const samples = localHistory.length ? buildWrongNoteRefs(data, localHistory) : (data.wrongNoteSamples || []);
 
+  const neededExamIds = [...new Set(samples.map(ref => ref.examId))];
+  const files = await Promise.all(neededExamIds.map(fetchQuestionsFile));
+  const byExamId = Object.fromEntries(neededExamIds.map((id, i) => [id, files[i]]));
+
   const items = samples.map(ref => {
-    const q = (data.questions[ref.examId] || []).find(item => item.id === ref.questionId);
+    const q = (byExamId[ref.examId] || []).find(item => item.id === ref.questionId);
     if (!q || !q.explanation) return '';
     return `
       <details class="wrong-note-item">
