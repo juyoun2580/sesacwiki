@@ -1,0 +1,1086 @@
+[
+  {
+    "id": "q-css-001",
+    "num": 1,
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS 박스 모델에서 콘텐츠를 감싸는 순서로 알맞은 것은?",
+    "choices": [
+      "margin-border-padding-content",
+      "padding-border-margin-content",
+      "border-margin-padding-content",
+      "content-padding-border-margin"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "CSS 박스 모델은 안쪽부터 content → padding → border → margin 순서로 요소를 감싼다.",
+      "whyCorrect": "콘텐츠 바깥을 padding이 감싸고, 그 바깥을 border가, 가장 바깥을 margin이 감싸는 구조가 표준 박스 모델이다.",
+      "whyIncorrect": "다른 보기들은 순서가 뒤바뀌어 있어 실제 렌더링 구조와 맞지 않는다.",
+      "examPoint": "box-sizing: border-box를 쓰면 width에 padding/border가 포함되어 계산되는 점도 함께 알아두면 좋다.",
+      "practicalExample": "카드 컴포넌트에서 텍스트(content) 주변 여백(padding), 테두리(border), 카드 간 간격(margin)을 각각 다르게 조정한다."
+    }
+  },
+  {
+    "id": "q-css-002",
+    "num": 2,
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flexbox에서 items를 주축(main axis) 방향으로 정렬하는 속성은?",
+    "choices": [
+      "align-items",
+      "justify-content",
+      "flex-wrap",
+      "align-content"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "justify-content는 flex container의 주축(main axis) 방향 정렬을, align-items는 교차축(cross axis) 방향 정렬을 담당한다.",
+      "whyCorrect": "justify-content: center/space-between 등은 flex-direction 기준의 주축을 따라 아이템을 배치한다.",
+      "whyIncorrect": "align-items/align-content는 교차축 정렬용이고, flex-wrap은 줄바꿈 여부를 결정할 뿐 정렬 속성이 아니다.",
+      "examPoint": "flex-direction이 row일 때 주축=가로, column일 때 주축=세로로 바뀐다는 점을 함께 이해해야 한다.",
+      "practicalExample": "헤더에서 로고와 검색창, 우측 메뉴를 좌우로 균등하게 배치할 때 justify-content: space-between을 사용한다."
+    }
+  },
+  {
+    "id": "q-css-003",
+    "num": 3,
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS 우선순위(specificity)가 가장 높은 선택자는?",
+    "choices": [
+      "태그 선택자",
+      "클래스 선택자",
+      "id 선택자",
+      "전체 선택자(*)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "CSS 우선순위는 id 선택자 > 클래스/속성/가상클래스 선택자 > 태그/가상요소 선택자 > 전체 선택자 순으로 높다.",
+      "whyCorrect": "id 선택자(#id)는 문서 내에서 유일해야 하므로 클래스나 태그 선택자보다 더 강하게 적용된다.",
+      "whyIncorrect": "태그 선택자와 전체 선택자는 우선순위가 가장 낮고, 클래스 선택자는 id보다는 낮다.",
+      "examPoint": "이 프로젝트는 BEM 클래스 선택자만 사용하는 것이 원칙이므로(CLAUDE.md), id 선택자 남용은 실무에서 지양된다는 점도 함께 알아둔다.",
+      "practicalExample": "같은 요소에 클래스와 id 스타일이 동시에 걸리면 id 스타일이 우선 적용된다."
+    }
+  },
+  {
+    "id": "q-css-004",
+    "num": 4,
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "부모 요소를 기준으로 위치가 고정되며 문서 흐름에서 제거되는 position 값은?",
+    "choices": [
+      "static",
+      "relative",
+      "absolute",
+      "sticky"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "absolute는 가장 가까운 position이 지정된 조상 요소를 기준으로 배치되며 문서 흐름에서 완전히 빠진다.",
+      "whyCorrect": "absolute 요소는 다른 요소들이 마치 그 자리에 없는 것처럼 배치를 계산하므로 레이아웃 흐름에서 제거된다.",
+      "whyIncorrect": "static은 기본값(흐름 유지), relative는 자기 자신 기준 이동이지만 흐름은 유지, sticky는 스크롤에 따라 relative/fixed처럼 동작하되 흐름은 유지한다.",
+      "examPoint": "absolute를 쓸 때는 부모에 position: relative를 지정해야 의도한 기준점이 잡힌다는 점이 실무에서 자주 실수하는 포인트다.",
+      "practicalExample": "score-ring의 텍스트를 원 중앙에 겹쳐 배치할 때 부모에 relative, 텍스트에 absolute를 사용한다."
+    }
+  },
+  {
+    "id": "q-css-005",
+    "num": 5,
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "화면 너비에 따라 스타일을 다르게 적용할 때 사용하는 CSS 기능은?",
+    "choices": [
+      "@media",
+      "@import",
+      "@font-face",
+      "@keyframes"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "미디어 쿼리(@media)는 화면 너비, 해상도 등 조건에 따라 다른 스타일 규칙을 적용하는 반응형 웹의 핵심 기능이다.",
+      "whyCorrect": "@media (max-width: 768px) { ... } 형태로 특정 조건에서만 적용될 스타일을 정의할 수 있다.",
+      "whyIncorrect": "@import는 다른 CSS 파일 불러오기, @font-face는 커스텀 폰트 정의, @keyframes는 애니메이션 정의용으로 반응형과는 무관하다.",
+      "examPoint": "모바일 우선(mobile-first)인지 데스크톱 우선인지에 따라 min-width/max-width 사용 방식이 달라진다는 점을 알아둔다.",
+      "practicalExample": "사이드바가 있는 3단 레이아웃을 좁은 화면에서는 1단으로 쌓이게 만들 때 @media를 사용한다."
+    }
+  },
+  {
+    "id": "q-css-006",
+    "num": 6,
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS Grid에서 열의 개수와 너비를 한 번에 정의하는 속성은?",
+    "choices": [
+      "grid-template-columns",
+      "grid-gap",
+      "grid-area",
+      "justify-items"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "grid-template-columns는 grid container에 몇 개의 열을 만들고 각 열의 너비를 어떻게 배분할지 정의한다.",
+      "whyCorrect": "예를 들어 repeat(5, 1fr)을 지정하면 동일한 너비의 열 5개가 생성된다.",
+      "whyIncorrect": "grid-gap은 셀 사이 간격, grid-area는 아이템이 차지할 영역 이름, justify-items는 셀 안에서 아이템의 가로 정렬을 다뤄 열 구조 정의와는 다르다.",
+      "examPoint": "repeat(), fr 단위, auto-fill/auto-fit의 차이를 함께 익혀두면 실전 레이아웃 문제에 유리하다.",
+      "practicalExample": "문제 목록 grid를 5열로 배치할 때 grid-template-columns: repeat(5, 1fr)을 사용한다(이 프로젝트의 question-grid가 실제로 이 방식이다)."
+    }
+  },
+  {
+    "id": "q-css-007",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹 프론트엔드 기술을 건물에 비유할 때, HTML이 건물의 뼈대라면 CSS(Style Sheets)가 담당하는 역할로 가장 알맞은 것은?",
+    "choices": [
+      "엘리베이터의 동력 엔진",
+      "건물의 인테리어 및 꾸밈",
+      "방문객 출입 통제 시스템",
+      "건물 외부의 도로망 설계"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "CSS는 HTML이 구성한 뼈대 위에 색상, 크기, 여백 등의 시각적 디자인을 입혀 사용자 경험을 향상시키는 언어이다.",
+      "whyCorrect": "제공된 핵심 개념 요약 표에서 CSS는 '건물의 인테리어 및 꾸밈'으로 명확히 비유되고 있다.",
+      "whyIncorrect": "엘리베이터 동력이나 출입 통제(기능/동작)는 JavaScript의 역할이며, 도로망 설계는 외부 네트워크 인프라에 가깝다.",
+      "examPoint": "HTML(뼈대), CSS(꾸밈), JavaScript(동작) 3요소의 본질적 역할 분담을 정확히 구분하는 것이 프론트엔드 학습의 첫 단추이다.",
+      "practicalExample": "HTML로 생성한 밋밋한 버튼에 CSS로 배경색(파란색)과 둥근 테두리(border-radius)를 주면 세련된 인테리어가 완성된다."
+    }
+  },
+  {
+    "id": "q-css-008",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS 기본 문법인 '선택자 { 속성: 값; }' 구조에서, 속성과 값 뒤에 문장의 마침표 역할을 하는 기호(;)를 누락했을 때 발생하는 현상은?",
+    "choices": [
+      "브라우저가 자동으로 누락을 수정하여 정상 반영한다.",
+      "스타일이 깨지는 컴파일(해석) 오류가 발생한다.",
+      "해당 줄의 스타일만 두 배로 굵게 표시된다.",
+      "보안 경고창이 뜨며 웹사이트 접속이 차단된다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "CSS 구문에서 각 속성 선언의 끝에는 반드시 세미콜론(;)을 붙여야 브라우저가 명령의 끝을 인식할 수 있다.",
+      "whyCorrect": "자료에서 세미콜론(;)을 누락하면 스타일이 깨지는 컴파일 오류가 발생한다고 경고하고 있다.",
+      "whyIncorrect": "자동 수정되거나 두 배로 표시되지 않으며, 문법 오류일 뿐 보안 경고가 뜨는 것은 아니다.",
+      "examPoint": "초보자들이 CSS 코드를 짤 때 가장 많이 하는 실수가 세미콜론 누락이므로, 문법의 엄격성을 인지해야 한다.",
+      "practicalExample": "color: red font-size: 20px; 처럼 세미콜론을 빼먹으면 브라우저가 redfont-size라는 이상한 값으로 인식하여 디자인이 몽땅 깨진다."
+    }
+  },
+  {
+    "id": "q-css-009",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML에서 class 속성으로 지정된 요소들을 CSS에서 타겟팅할 때, 이름 앞에 반드시 붙여야 하는 기호는?",
+    "choices": [
+      "# (우물정)",
+      ". (점)",
+      "* (별표)",
+      "@ (골뱅이)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "클래스 선택자(Class Selector)는 HTML 문서 내에서 여러 번 중복하여 재사용할 수 있으며, CSS에서는 마침표(.) 기호로 호출한다.",
+      "whyCorrect": "자료에서 CSS 작성 시 class 이름 앞에 반드시 점(.)을 붙여야 한다고 명시되어 있다.",
+      "whyIncorrect": "#은 아이디(id) 선택자, *는 전체 선택자, @는 미디어 쿼리나 폰트 정의 등 특수 지시어에 쓰인다.",
+      "examPoint": "Class는 점(.), ID는 샵(#)이라는 CSS 선택자의 가장 기본이자 핵심인 기호 매칭을 묻는 문제이다.",
+      "practicalExample": "<div class='btn'> 코드를 꾸미려면 CSS에서 .btn { background: blue; } 라고 작성한다."
+    }
+  },
+  {
+    "id": "q-css-010",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "하나의 웹 페이지 안에서 오직 유일하게 한 번만 등장해야 하는 고유한 요소를 타겟팅하기 위해 사용하는 선택자와 그 기호로 올바른 것은?",
+    "choices": [
+      "태그 선택자, 기호 없음",
+      "클래스 선택자, 점(.)",
+      "아이디 선택자, 우물정(#)",
+      "전체 선택자, 별표(*)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "아이디 선택자(Id Selector)는 페이지 내에서 단 한 번만 사용되는 고유한 식별자를 의미하며, CSS에서는 # 기호로 호출한다.",
+      "whyCorrect": "유일하게 한 번만 등장해야 하는 고유한 요소에 적용하는 것은 아이디 선택자이며, 기호는 #을 사용한다.",
+      "whyIncorrect": "태그 선택자는 특정 태그 전체, 클래스는 여러 번 중복 가능한 식별자이다.",
+      "examPoint": "클래스(Class)는 여러 명의 학생을 묶는 '반'의 개념, 아이디(Id)는 개인의 고유한 '주민번호' 개념임을 구별해야 한다.",
+      "practicalExample": "페이지 맨 위 단 하나 존재하는 로고 영역은 <div id='main-logo'>로 만들고 CSS에서 #main-logo { height: 50px; } 로 제어한다."
+    }
+  },
+  {
+    "id": "q-css-011",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트에 등장한 비유를 바탕으로 할 때, 상자 내부의 답답함을 줄이기 위해 '내 안의 여유를 찾는 공간'을 의미하는 속성은 무엇인가?",
+    "choices": [
+      "Margin (마진)",
+      "Padding (패딩)",
+      "Border (테두리)",
+      "Content (콘텐츠)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "패딩(Padding)은 콘텐츠 알맹이와 테두리(Border) 사이의 '안쪽 여백'으로, 상자 내부를 쾌적하게 띄워주는 역할을 한다.",
+      "whyCorrect": "강사는 마진을 '타인과의 거리두기', 패딩을 '내 안의 여유를 찾는 공간'으로 비유하여 내부 여백의 속성을 강조했다.",
+      "whyIncorrect": "Margin은 타인(다른 요소)과의 바깥쪽 거리, Border는 물리적 경계선, Content는 실제 데이터이다.",
+      "examPoint": "안쪽 여백(Padding)과 바깥쪽 여백(Margin)을 혼동하여 적용하면 버튼의 클릭 영역이나 레이아웃이 완전히 어긋남을 경고하는 문제이다.",
+      "practicalExample": "버튼 안의 글씨가 테두리에 너무 딱 붙어 답답해 보일 때 `padding: 10px;`을 주면 글씨 주변으로 넉넉한 공간이 생긴다."
+    }
+  },
+  {
+    "id": "q-css-012",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "박스 모델에서 패딩 영역을 감싸는 물리적인 경계선으로, 선의 두께, 모양(실선, 점선 등), 색상을 지정할 수 있는 영역은?",
+    "choices": [
+      "Content",
+      "Margin",
+      "Border",
+      "Shadow"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "보더(Border)는 요소의 경계선(테두리)을 나타내며, 내부(Padding)와 외부(Margin)를 물리적으로 가르는 선이다.",
+      "whyCorrect": "자료에서 패딩 영역을 감싸는 물리적인 테두리 경계선으로, 두께와 모양, 색상을 지정할 수 있다고 설명된 것은 Border이다.",
+      "whyIncorrect": "Content는 내용, Margin은 바깥 여백, Shadow(그림자)는 박스 모델의 기본 구성 4요소가 아닌 부가 꾸밈 속성이다.",
+      "examPoint": "경계선(Border)을 기준으로 안쪽은 내 땅(Padding, 배경색 적용됨), 바깥쪽은 남의 땅(Margin, 배경색 적용 안 됨)으로 나뉨을 이해해야 한다.",
+      "practicalExample": "`border: 2px solid black;`을 입력하면 2픽셀 두께의 검은색 실선 테두리가 그려진다."
+    }
+  },
+  {
+    "id": "q-css-013",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "태그를 열고 닫는 순서가 꼬이는 '태그 중첩 오류'를 방지하기 위해 올바른 캡슐화 순서(부모-자식 관계)를 지켜 작성한 코드는 무엇인가?",
+    "choices": [
+      "<div><p></div></p>",
+      "<div><p></p></div>",
+      "<p><div></p></div>",
+      "<div></p><p></div>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "태그는 먼저 열린 것이 가장 나중에 닫혀야 하는 양파 껍질 같은 인클로징(Enclosing) 규칙을 따른다.",
+      "whyCorrect": "<div>를 먼저 열고 그 안에 <p>를 열었다면, <p>를 먼저 닫고(</p>) <div>를 나중에 닫아야(</div>) 올바른 중첩 구조이다.",
+      "whyIncorrect": "나머지 보기들은 부모 태그(div)가 닫히기 전에 자식 태그(p)가 닫히지 않고 서로 엇갈려 교차 중첩 오류를 일으킨다.",
+      "examPoint": "CSS 스타일이나 레이아웃이 엉뚱한 곳에 적용되는 가장 큰 원인 중 하나가 바로 이 '교차 중첩 에러(Bad Nesting)'임을 묻는 문법 검증이다.",
+      "practicalExample": "포장지(div) 안에 선물(p)을 넣었다면, 선물 뚜껑(</p>)을 먼저 닫고 최종 포장지(</div>)를 묶어야 이치에 맞다."
+    }
+  },
+  {
+    "id": "q-css-014",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "부모 상자에 선언하는 순간, 기본적으로 위아래로 쌓이던 자식 요소들이 즉시 가로 방향(주축)으로 나란히 정렬되도록 레이아웃 모드를 전환하는 CSS 선언문은?",
+    "choices": [
+      "display: block;",
+      "position: absolute;",
+      "display: flex;",
+      "float: left;"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "`display: flex;`는 해당 요소를 Flex 컨테이너로 만들어, 내부의 자식 요소(Flex 아이템)들이 가로 또는 세로축을 기준으로 유연하게 배치되도록 렌더링 엔진을 바꾼다.",
+      "whyCorrect": "자료에서 정렬을 시작하겠다는 선언문이며, 선언 즉시 자식들이 가로 방향으로 나란히 정렬된다고 설명하는 것은 `display: flex;`이다.",
+      "whyIncorrect": "block은 위아래 수직 배치, absolute는 절대 좌표 띄우기, float은 과거의 구형 정렬 방식이다.",
+      "examPoint": "현대 웹 레이아웃의 표준인 Flexbox를 깨우기 위한 마법의 주문(선언문)이 무엇인지 묻는 기초 필수 문제이다.",
+      "practicalExample": "세로로 나열된 리스트(li) 태그를 내비게이션 메뉴처럼 가로로 쫙 펴고 싶을 때, 부모(ul)에 `display: flex;` 한 줄만 쓰면 해결된다."
+    }
+  },
+  {
+    "id": "q-css-015",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flexbox 레이아웃에서 브라우저 창 너비가 자식들의 크기보다 좁아져 공간이 부족할 때, 자식 요소들이 깨지지 않고 자동으로 아랫줄로 줄바꿈 되어 정착하도록 만드는 안전장치 속성은?",
+    "choices": [
+      "flex-direction: column;",
+      "justify-content: center;",
+      "flex-wrap: wrap;",
+      "overflow: hidden;"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "flex-wrap 속성은 Flex 아이템들이 컨테이너의 한 줄에 다 들어가지 못할 경우, 아이템 크기를 억지로 줄이지 않고 다음 줄로 넘길지(wrap) 결정한다.",
+      "whyCorrect": "화면 공간이 좁아질 때 자식 요소들이 아랫줄로 줄바꿈 되도록 하는 안전장치는 `flex-wrap: wrap;`이다.",
+      "whyIncorrect": "flex-direction은 주축 방향 설정, justify-content는 가로 정렬, overflow는 삐져나온 요소의 숨김 처리이다.",
+      "examPoint": "반응형 웹(모바일 화면 등)을 만들 때 상품 카드들이 가로로 찌그러지지 않고 자연스럽게 아래로 떨어지게 만드는 핵심 속성이다.",
+      "practicalExample": "PC에서는 한 줄에 카드 4개가 보이다가 스마트폰으로 보면 1개씩 4줄로 떨어지는 마법이 바로 이 속성 덕분이다."
+    }
+  },
+  {
+    "id": "q-css-016",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "선배의 실무 꿀팁에 따르면, HTML 파일 내부에 <style> 태그를 열고 CSS 코드를 길게 작성하는 것을 지양하고 외부 style.css 파일로 물리적으로 격리(분리)해야 하는 가장 큰 이유는 무엇인가?",
+    "choices": [
+      "브라우저의 메모리 사용량이 급증하여 컴퓨터가 다운될 수 있기 때문이다.",
+      "HTML 태그와 CSS 코드가 뒤섞여 유지보수가 불가능한 '스파게티 코드'가 되는 것을 방지하기 위함이다.",
+      "외부 파일로 분리하지 않으면 CSS 박스 모델 기능이 비활성화되기 때문이다.",
+      "검색 엔진이 외부 파일만 디자인 코드로 인정해 주기 때문이다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "구조(HTML)와 꾸밈(CSS)을 물리적으로 분리하는 것은 '관심사의 분리' 원칙을 준수하여 가독성을 높이고 유지보수성을 극대화하기 위한 정석이다.",
+      "whyCorrect": "자료에서 내부에 길게 작성하면 나중에 어떤 스타일이 꼬였는지 찾을 수 없는 스파게티 코드가 되므로 격리하라고 조언했다.",
+      "whyIncorrect": "메모리 다운, 기능 비활성화, 검색 엔진 규정 등은 구조 분리와 관련 없는 비현실적인 에러 현상이다.",
+      "examPoint": "실무 프론트엔드 아키텍처의 기본인 파일 분할(모듈화)의 필요성과 철학을 이해하고 있는지 평가한다.",
+      "practicalExample": "로고 색상 하나 바꾸려는데 1만 줄짜리 index.html 파일을 뒤적거리는 것보다, style.css 파일에서 '.logo' 클래스만 검색해서 수정하는 것이 훨씬 빠르다."
+    }
+  },
+  {
+    "id": "q-css-017",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "분리된 HTML 뼈대 파일과 외부 CSS 꾸밈(스타일시트) 파일을 유기적으로 이어주기 위해 HTML 상단에 사용하는 통로 태그는?",
+    "choices": [
+      "<script>",
+      "<a>",
+      "<link>",
+      "<connect>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "<link> 태그는 현재 문서와 외부 리소스(주로 CSS 파일) 간의 관계를 정의하고 연결할 때 사용한다.",
+      "whyCorrect": "자료에서 HTML 상단에서 `<link rel='stylesheet' href='style.css'>` 태그를 사용해 유기적으로 이어주는 구조로 개발하라고 명시했다.",
+      "whyIncorrect": "<script>는 자바스크립트 연결, <a>는 하이퍼링크, <connect>는 존재하지 않는 태그이다.",
+      "examPoint": "화면을 그리기 전에 디자인(CSS)을 세팅해야 하므로, 이 <link> 통로는 주로 <head> 영역 안에 개설된다는 점도 같이 기억해야 한다.",
+      "practicalExample": "HTML <head> 안에 <link> 태그로 css 파일을 불러오지 않으면, 아무리 열심히 CSS를 짜도 브라우저 화면은 하얀 바탕에 검은 글씨만 나오게 된다."
+    }
+  },
+  {
+    "id": "q-css-018",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "코드를 수정하고 저장하자마자, 웹 브라우저 창에서 새로고침 버튼을 누르지 않아도 실시간으로 변경 사항이 동기화되어 화면 빌드 속도를 높여주는 생산성 확장 프로그램의 이름은?",
+    "choices": [
+      "Live Server",
+      "Git Bash",
+      "Prettier",
+      "Chrome Debugger"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "VS Code의 'Live Server' 확장 프로그램은 로컬 웹 서버를 구동하여 파일 저장 시 자동으로 브라우저 화면을 리로드(Hot Reloading)해주는 실무 필수 도구이다.",
+      "whyCorrect": "실무 꿀팁에서 코드를 저장하자마자 실시간 동기화를 지원하는 생산성 도구로 'Live Server'를 명확히 소개했다.",
+      "whyIncorrect": "Git Bash는 터미널 프로그램, Prettier는 들여쓰기 코드 정렬 도구, Debugger는 오류 추적 도구이다.",
+      "examPoint": "프론트엔드 마크업 작업은 코딩과 화면 확인의 무한 반복이므로, Live Server를 통한 환경 세팅이 생산성에 직결됨을 묻는다.",
+      "practicalExample": "CSS에서 버튼 색상을 red에서 blue로 바꾸고 Ctrl+S(저장)를 누르면, 옆 모니터의 웹사이트 버튼이 1초 만에 파란색으로 변해 있다."
+    }
+  },
+  {
+    "id": "q-css-019",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flexbox 레이아웃을 사용할 때, 부모 컨테이너에 속해 있는 자식들의 '세로축(교차축)' 방향 높낮이 정렬 상태를 제어하기 위해 사용하는 속성은?",
+    "choices": [
+      "justify-content",
+      "align-items",
+      "flex-wrap",
+      "margin-top"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "align-items 속성은 교차축(Cross-axis, 기본적으로 세로 방향)을 기준으로 자식 아이템들을 어떻게 정렬할지(위로 붙이기, 아래로 붙이기, 중앙 정렬 등)를 결정한다.",
+      "whyCorrect": "자료에서 세로축(교차축) 방향을 기준으로 자식들의 높낮이 정렬 상태를 제어하는 속성으로 align-items를 정의했다.",
+      "whyIncorrect": "justify-content는 주축(가로) 방향 제어, flex-wrap은 줄바꿈 여부, margin-top은 단순 위쪽 여백 밀어내기이다.",
+      "examPoint": "justify(행 단위의 텍스트 양쪽 맞춤에서 유래)는 주축, align(수직선 맞춤)은 교차축을 담당함을 유추하여 암기한다.",
+      "practicalExample": "카드 안의 아이콘과 텍스트의 높이가 안 맞아 삐뚤빼뚤할 때, 부모에 `align-items: center;`를 주면 수직 중앙선에 예쁘게 꿰어진다."
+    }
+  },
+  {
+    "id": "q-css-020",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML 태그명(예: div, p, h1)을 CSS 선택자에서 기호 없이 그대로 적었을 때 발생하는 현상으로 가장 알맞은 것은?",
+    "choices": [
+      "화면 내에서 가장 상단에 위치한 단 하나의 태그에만 스타일이 적용된다.",
+      "해당 태그를 사용한 화면 내의 모든 요소에 스타일이 한 번에 동시 적용된다.",
+      "태그명이 예약어와 충돌하여 CSS 파일이 동작을 멈춘다.",
+      "해당 태그의 부모 상자 크기가 화면 너비 100%로 강제 확장된다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "태그 선택자(Tag Selector)는 지정한 이름의 모든 HTML 요소(태그)를 문서 전체에서 찾아내어 일괄적으로 스타일을 적용하는 광역 선택자이다.",
+      "whyCorrect": "자료에서 기호 없이 그대로 적으면 해당 태그를 사용한 화면 내의 모든 요소에 스타일이 한 번에 동시 적용된다고 설명한다.",
+      "whyIncorrect": "단 하나만 적용되는 것은 아이디(#) 선택자이며, 태그 선택자는 문법 오류가 아니므로 충돌하거나 레이아웃을 임의로 확장하지 않는다.",
+      "examPoint": "문서 전체의 폰트 통일이나 기본 여백 초기화 등 일괄(Global) 세팅이 필요할 때 태그 선택자를 유용하게 활용할 수 있음을 묻는다.",
+      "practicalExample": "`p { line-height: 1.5; }` 라고 적으면, 페이지 안의 수십 개의 단락(p)들이 한꺼번에 줄 간격이 여유로워진다."
+    }
+  },
+  {
+    "id": "q-css-021",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "실무에서 UI를 개발할 때 제목, 본문, 버튼 등을 하나의 독립된 구역(카드 구조)으로 묶기 위해 상자 삼아 감싸는 용도로 가장 빈번하게 사용되는 HTML 태그는?",
+    "choices": [
+      "<div>",
+      "<button>",
+      "<title>",
+      "<body>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<div> 태그는 특별한 시맨틱 의미는 없으나, 여러 HTML 요소들을 하나의 덩어리로 묶어 캡슐화하고 CSS 스타일 및 Flexbox 정렬을 적용하기 위한 기본 컨테이너로 쓰인다.",
+      "whyCorrect": "카드 구조 설계 섹션에서 제목, 본문 등을 하나의 독립된 구역으로 묶기 위해 <div> 태그를 상자 삼아 감싸는 구조를 빈번하게 마주한다고 설명되어 있다.",
+      "whyIncorrect": "<button>은 클릭 액션 요소, <title>은 브라우저 탭 제목, <body>는 전체 화면을 의미하는 태그이다.",
+      "examPoint": "CSS 레이아웃 제어(특히 Flexbox)를 위해서는 반드시 그룹화를 위한 '부모 껍데기'가 필요한데, 이 껍데기로 <div>가 가장 만만하고 적합하다는 실무적 이해를 요구한다.",
+      "practicalExample": "인스타그램의 피드 하나(작성자, 사진, 좋아요 버튼 묶음)는 거대한 하나의 <div class='feed-card'> 안에 정갈하게 담겨 있는 구조이다."
+    }
+  },
+  {
+    "id": "q-css-022",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS를 작성할 때 반드시 준수해야 하는 기본 문법 구조로 올바르게 짝지어진 것은?",
+    "choices": [
+      "선택자 ( 속성 = 값 )",
+      "선택자 { 속성: 값; }",
+      "<선택자> 속성: 값; </선택자>",
+      "선택자 [ 속성 -> 값 ]"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "CSS는 대상을 지정하는 '선택자(Selector)' 뒤에 중괄호 `{}`를 열고, 그 안에 `속성: 값;` 형태로 스타일을 정의하는 고정된 문법을 갖는다.",
+      "whyCorrect": "자료에서 CSS는 반드시 '선택자 { 속성: 값; }' 문법 규칙을 준수해야 한다고 명시되어 있다.",
+      "whyIncorrect": "괄호의 종류(소괄호, 대괄호)가 틀렸거나 이퀄(=), 화살표(->) 등을 사용하는 것은 CSS 표준 문법이 아니다.",
+      "examPoint": "HTML의 `<태그 속성='값'>` 문법과 CSS의 `선택자 { 속성: 값; }` 문법을 헷갈리지 않도록 확실히 분리하여 외워야 한다.",
+      "practicalExample": "웹페이지의 모든 문단(p) 글씨를 16px로 맞출 때 `p { font-size: 16px; }` 라고 작성한다."
+    }
+  },
+  {
+    "id": "q-css-023",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트에서 박스 모델의 '마진(Margin)'을 설명할 때 사용한 비유로 가장 적절한 것은?",
+    "choices": [
+      "내 안의 여유를 찾는 공간",
+      "외부 침입을 막는 단단한 방패",
+      "타인(다른 요소)과의 거리두기",
+      "핵심 데이터를 보관하는 금고"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "마진(Margin)은 요소의 테두리(Border) 바깥쪽 여백으로, 인접한 다른 요소들과의 물리적 간격을 띄우는 역할을 한다.",
+      "whyCorrect": "강사는 마진(Margin)을 '타인과의 거리두기'로 비유하여 외부 요소와의 간격을 벌리는 속성임을 강조했다.",
+      "whyIncorrect": "내 안의 여유를 찾는 공간은 패딩(Padding)이며, 방패나 금고는 자료에 등장하지 않은 비유이다.",
+      "examPoint": "Padding(내부 여백)과 Margin(외부 여백)의 개념적 차이를 실생활 비유를 통해 직관적으로 구분할 수 있어야 한다.",
+      "practicalExample": "위아래로 붙어있는 두 개의 버튼 사이가 너무 좁을 때, 위쪽 버튼에 `margin-bottom: 10px;`을 주면 아래 버튼을 밀어내어 거리가 벌어진다."
+    }
+  },
+  {
+    "id": "q-css-024",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "하나의 웹페이지 내에서 여러 개의 요소에 '중복'하여 적용할 수 있어, 가장 범용적으로 쓰이는 CSS 선택자는 무엇인가?",
+    "choices": [
+      "아이디 선택자 (Id Selector)",
+      "클래스 선택자 (Class Selector)",
+      "태그 선택자 (Tag Selector)",
+      "전체 선택자 (Universal Selector)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "클래스 선택자(Class)는 동일한 디자인 패턴(예: 버튼 스타일, 카드 레이아웃)을 문서 내 여러 요소에 재사용하기 위해 고안된 식별자이다.",
+      "whyCorrect": "자료에서 화면 내에서 여러 개의 요소에 중복 적용이 가능하여 가장 범용적으로 쓰이는 것은 클래스 선택자라고 설명했다.",
+      "whyIncorrect": "아이디 선택자는 오직 유일하게 한 번만 써야 하며, 태그 선택자는 특정 태그 전체에 강제 적용되므로 범용적인 '선택적 그룹핑'에는 클래스가 가장 적합하다.",
+      "examPoint": "ID는 주민등록번호(유일함), Class는 동아리 이름(여러 명 가입 가능)으로 비유하여 사용처를 구분해야 한다.",
+      "practicalExample": "쇼핑몰의 50개 상품 카드에 모두 `<div class='product-card'>`를 부여하여 동일한 CSS 테두리와 배경색을 적용한다."
+    }
+  },
+  {
+    "id": "q-css-025",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS의 박스 모델에서 텍스트나 이미지 등 요소의 실제 알맹이 데이터가 표현되는 가장 안쪽 영역을 지칭하는 용어는?",
+    "choices": [
+      "Margin (마진)",
+      "Content (콘텐츠)",
+      "Border (보더)",
+      "Padding (패딩)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "콘텐츠(Content) 영역은 태그가 감싸고 있는 실제 데이터(글자, 이미지 등)가 위치하는 박스 모델의 가장 중심부이다.",
+      "whyCorrect": "자료에서 텍스트나 이미지 등 요소의 실제 알맹이 데이터가 표현되는 가장 안쪽 영역을 Content라고 정의했다.",
+      "whyIncorrect": "패딩은 안쪽 여백, 보더는 테두리, 마진은 바깥쪽 여백이다.",
+      "examPoint": "요소의 가로 너비(width)와 세로 높이(height)를 지정할 때 기본적으로 이 Content 영역의 크기가 변경되는 것임을 이해해야 한다.",
+      "practicalExample": "`<div>안녕하세요</div>`에서 '안녕하세요'라는 글씨 자체가 차지하는 순수한 공간이 바로 Content 영역이다."
+    }
+  },
+  {
+    "id": "q-css-026",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML 소스코드를 작성할 때 들여쓰기(Indent)를 철저히 유지해야 하는 가장 주된 이유로 자료에서 언급된 것은?",
+    "choices": [
+      "들여쓰기를 하지 않으면 브라우저가 HTML 코드를 인식하지 못하기 때문이다.",
+      "CSS 파일과 연동할 때 선택자 매칭 속도를 최적화하기 위함이다.",
+      "코드의 부모-자식 관계가 한눈에 보이도록 가시성을 유지하여 디버깅을 쉽게 하기 위함이다.",
+      "검색 엔진(SEO) 로봇이 들여쓰기 된 코드만 우선적으로 수집하기 때문이다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "들여쓰기(Indent)는 브라우저의 해석(기계)과는 무관하지만, 개발자(사람)가 코드의 계층 구조를 쉽게 파악하여 유지보수성과 협업 효율을 높이는 핵심 수단이다.",
+      "whyCorrect": "실수 점검 리스트에서 들여쓰기를 철저히 유지하여 코드의 부모-자식 관계가 한눈에 보이도록 해야 디버깅이 쉬워진다고 설명했다.",
+      "whyIncorrect": "들여쓰기는 문법 요소가 아니므로 브라우저 해석, CSS 연동 속도, 검색엔진 수집과는 전혀 무관하다.",
+      "examPoint": "들여쓰기 오류가 '컴파일 에러'를 내지는 않지만, '휴먼 에러'를 유발하는 가장 큰 원인임을 인지하는지 묻는다.",
+      "practicalExample": "어떤 <div>가 어떤 </div>와 짝인지 헷갈릴 때, 들여쓰기 깊이(Depth)가 같은 라인을 따라가면 1초 만에 짝을 찾을 수 있다."
+    }
+  },
+  {
+    "id": "q-css-027",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹 프론트엔드의 3요소(HTML, CSS, JS) 중에서, 사용자가 버튼을 클릭했을 때 팝업창을 띄우거나 서버에서 데이터를 비동기로 불러오는 등의 '동적인 제어 엔진' 역할을 하는 언어는?",
+    "choices": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "JSON"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "JavaScript(JS)는 정적인 웹페이지에 생명력과 인터랙션(동작)을 불어넣는 프로그래밍 언어이다.",
+      "whyCorrect": "자료에서 클릭 시 팝업이 뜨거나 데이터를 비동기로 불러오는 등 화면에 동적인 제어 엔진을 이식하는 언어는 JavaScript라고 명시했다.",
+      "whyIncorrect": "HTML은 뼈대, CSS는 디자인, JSON은 데이터 전송을 위한 텍스트 포맷이다.",
+      "examPoint": "CSS가 '눈에 보이는 것'을 통제한다면, JS는 '행동하고 상호작용하는 것'을 제어한다는 역할의 경계를 확실히 구분해야 한다.",
+      "practicalExample": "버튼에 마우스를 올렸을 때 색상이 변하는 것은 CSS(hover)로 가능하지만, 버튼을 클릭했을 때 회원가입이 완료되었다는 알림창(alert)을 띄우는 것은 JS의 역할이다."
+    }
+  },
+  {
+    "id": "q-css-028",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flexbox의 `justify-content` 속성값 중에서, 자식 요소들을 양끝으로 바짝 밀어낸 후 남은 여백을 자식들 사이에 균등하게 배분하는 정렬 옵션은 무엇인가?",
+    "choices": [
+      "center",
+      "space-between",
+      "flex-start",
+      "flex-end"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "justify-content의 'space-between' 옵션은 첫 번째 아이템을 시작점에, 마지막 아이템을 끝점에 붙이고, 나머지 공간을 아이템들 사이에 동일하게 분배한다.",
+      "whyCorrect": "자료에서 `justify-content: space-between`을 '양끝 정렬 후 균등 배분'이라고 설명하고 있다.",
+      "whyIncorrect": "center는 중앙 뭉치기, flex-start는 시작점 뭉치기, flex-end는 끝점 뭉치기 정렬이다.",
+      "examPoint": "헤더 바(Header)를 만들 때 왼쪽엔 로고, 오른쪽엔 로그인 버튼을 배치하는 가장 현대적이고 쉬운 방법이 `space-between`임을 암기한다.",
+      "practicalExample": "내비게이션 메뉴바에서 `<div style='justify-content: space-between;'>`를 적용하면 좌측 메뉴와 우측 설정 아이콘이 화면 양끝으로 예쁘게 찢어져 배치된다."
+    }
+  },
+  {
+    "id": "q-css-029",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS에서 특정 HTML 태그를 타겟팅할 때 사용하는 기호 매칭으로 가장 올바르지 않은 것은?",
+    "choices": [
+      "태그 선택자 - 기호 없이 태그명 그대로 작성",
+      "클래스 선택자 - 이름 앞에 점(.) 기호 사용",
+      "아이디 선택자 - 이름 앞에 우물정(#) 기호 사용",
+      "속성 선택자 - 이름 앞에 달러($) 기호 사용"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "CSS 기본 선택자의 기호는 클래스는 `.`(점), 아이디는 `#`(우물정), 태그는 기호 없음으로 규정되어 있다.",
+      "whyCorrect": "달러($) 기호는 제이쿼리(jQuery)나 변수 선언(PHP, JS 등)에 쓰일 뿐, 표준 CSS 선택자 기호가 아니므로 4번이 틀린 설명이다.",
+      "whyIncorrect": "태그(무기호), 클래스(.), 아이디(#)에 대한 1~3번의 설명은 자료에 명시된 완벽히 올바른 설명이다.",
+      "examPoint": "CSS 파일을 열었을 때 기호만 보고도 이것이 페이지에 하나만 있는 요소(#)인지, 여러 개 쓰일 요소(.)인지 파악할 수 있어야 한다.",
+      "practicalExample": "스타일시트에서 `#header`는 단일 헤더, `.btn`은 여러 개의 버튼, `div`는 문서 내 모든 묶음 상자를 의미한다."
+    }
+  },
+  {
+    "id": "q-css-030",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "박스 모델 구조에서 패딩(Padding)과 마진(Margin)을 물리적으로 분리하는 경계선 역할을 하는 영역은?",
+    "choices": [
+      "Border (보더)",
+      "Content (콘텐츠)",
+      "Background (배경)",
+      "Shadow (그림자)"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "보더(Border, 테두리)는 박스 모델에서 요소의 내부(Padding)와 외부(Margin)를 명확하게 가르는 물리적 경계선이다.",
+      "whyCorrect": "박스 모델 연산 구조에 따르면 Border(테두리)는 패딩 영역을 감싸며, 마진은 그 테두리(Border) 바깥쪽의 빈 공간이므로 둘 사이를 가르는 것은 Border이다.",
+      "whyIncorrect": "Content는 가장 안쪽의 데이터이며, Background나 Shadow는 박스의 시각적 속성일 뿐 4겹의 물리적 상자 구조 자체는 아니다.",
+      "examPoint": "배경색(Background-color)을 적용하면 Border와 Padding 영역까지만 색이 칠해지고, Margin 영역은 투명하게 남는다는 핵심 렌더링 원리를 뒷받침한다.",
+      "practicalExample": "버튼에 빨간 배경을 주면 패딩과 보더까지 빨갛게 보이지만, 마진 영역은 버튼 밖이므로 뒤쪽 화면의 원래 배경색이 비쳐 보인다."
+    }
+  },
+  {
+    "id": "q-css-031",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "현대적 레이아웃인 'Flexbox' 기법에 대한 설명으로 가장 올바른 것은?",
+    "choices": [
+      "요소들을 3차원 공간(Z축)으로 띄워 겹치게 배치하는 기법이다.",
+      "자식 요소 각각에 정렬 명령을 내려야만 작동하는 개별 통제 방식이다.",
+      "1차원 행(가로) 또는 열(세로)을 기준으로 요소들을 유연하게 정렬하는 방식이다.",
+      "과거에 사용되던 구형 기술로, 최근에는 <table> 태그 정렬로 대체되었다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Flexbox는 컨테이너 내의 아이템들을 1차원 축(가로열 행 또는 세로열 열)을 따라 정렬하고 공간을 분배하는 현대적이고 유연한 레이아웃 모델이다.",
+      "whyCorrect": "자료에서 Flexbox를 '1차원 행/열을 기준으로 요소를 정렬하는 현대적 기법'이자 '가변형 한 줄 정렬 진열대'로 정의하고 있다.",
+      "whyIncorrect": "3차원(Z축)은 position 속성, 정렬 주체는 부모 컨테이너이며, <table>은 과거의 구형 레이아웃 방식이고 Flexbox가 최신 표준이다.",
+      "examPoint": "Flexbox의 1차원적 성격(선형 정렬)을 이해해야 2차원(행과 열 동시 제어) 그리드(CSS Grid) 시스템과 헷갈리지 않는다.",
+      "practicalExample": "웹페이지의 가로형 내비게이션 바, 세로형 사이드 메뉴바, 가로로 나열된 상품 카드 리스트 등은 모두 Flexbox로 구현된다."
+    }
+  },
+  {
+    "id": "q-css-032",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "선택자(Selector) 중에서, HTML 요소의 태그명을 기호 없이 그대로 적어서 지정하는 방식은 무엇인가?",
+    "choices": [
+      "클래스 선택자",
+      "태그 선택자",
+      "아이디 선택자",
+      "전역 선택자"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "태그 선택자(Tag Selector)는 특정 HTML 태그를 문서 전체에서 타겟팅할 때 사용하는 가장 기본적인 선택자로, 어떠한 접두사 기호도 붙이지 않는다.",
+      "whyCorrect": "자료에서 '태그명(예: div, p)을 기호 없이 그대로 적는다'고 설명된 것은 태그 선택자이다.",
+      "whyIncorrect": "클래스는 점(.), 아이디는 우물정(#) 기호가 필요하며, 전역(전체) 선택자는 별표(*)를 쓴다.",
+      "examPoint": "CSS 파일에서 `div { }`와 `.div { }`가 완전히 다른 대상을 가리킴(전자는 태그, 후자는 class='div'인 요소)을 확실히 구별해야 한다.",
+      "practicalExample": "모든 `<a>` 태그의 기본 파란색 밑줄을 없애고 싶을 때, CSS 맨 위에 `a { text-decoration: none; }` 이라고 선언해 둔다."
+    }
+  },
+  {
+    "id": "q-css-033",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flexbox 부모 컨테이너에 `align-items: center;`를 부여했을 때, 자식 요소들에게 일어나는 변화로 가장 정확한 것은?",
+    "choices": [
+      "자식 요소들이 가로축 방향을 기준으로 화면의 정중앙에 뭉친다.",
+      "자식 요소들이 교차축(기본적으로 세로축) 방향을 기준으로 높낮이가 중앙선에 맞춰 정렬된다.",
+      "자식 요소들의 텍스트가 모두 가운데 정렬(text-align: center)된다.",
+      "자식 요소들의 크기가 모두 동일하게 변경된다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "align-items 속성은 Flex 컨테이너의 교차축(Cross Axis, 수평 나열 시 수직 방향)을 기준으로 자식 아이템들을 어떻게 맞출지 제어한다.",
+      "whyCorrect": "자료에서 `align-items: center`는 세로축(교차축) 방향을 기준으로 자식들의 높낮이 정렬 상태를 중앙으로 제어한다고 설명했다.",
+      "whyIncorrect": "가로축 정렬은 justify-content, 텍스트 정렬은 text-align의 역할이며 요소의 크기를 강제로 동일하게 만들지는 않는다.",
+      "examPoint": "가로로 나열된 프로필 사진과 이름 텍스트의 상하 높이가 삐뚤빼뚤할 때 수직선 중앙을 맞춰주는 핵심 속성임을 이해한다.",
+      "practicalExample": "헤더 바의 높이가 80px일 때 `align-items: center;`를 주면 로고와 버튼들이 천장이나 바닥에 붙지 않고 정확히 40px 중앙선(수직 중앙)에 매달리게 된다."
+    }
+  },
+  {
+    "id": "q-css-034",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "VS Code 확장 프로그램인 'Live Server'의 핵심 기능은 코드를 수정하고 저장(Ctrl+S)할 때 어떠한 현상을 만들어 주는가?",
+    "choices": [
+      "작성한 CSS 코드를 자동으로 최적화하여 압축(Minify)해 준다.",
+      "브라우저의 새로고침 버튼을 누르지 않아도 변경 사항이 화면에 실시간으로 동기화(Hot Reloading)된다.",
+      "HTML 코드의 들여쓰기를 자동으로 예쁘게 정렬해 준다.",
+      "문법 에러가 발생한 줄에 빨간 줄을 그어 알려준다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Live Server는 로컬 개발 환경에서 가상 서버를 띄워 파일의 변경 사항을 감지하고, 브라우저를 자동 새로고침(Auto Reload)하여 생산성을 극대화한다.",
+      "whyCorrect": "자료에서 Live Server는 코드를 저장하자마자 웹 브라우저 화면에 실시간 변경 사항이 새로고침 없이 동기화되는 도구라고 명시했다.",
+      "whyIncorrect": "코드 압축은 웹팩(Webpack) 등 번들러, 들여쓰기 정렬은 Prettier, 문법 에러 표시는 ESLint나 에디터 자체 기능이다.",
+      "examPoint": "수동 새로고침(F5)을 수천 번 누르는 비효율적인 퍼블리싱 방식에서 벗어나, 현대적인 프론트엔드 실무 환경의 기초 세팅을 할 줄 아는지 묻는다.",
+      "practicalExample": "듀얼 모니터의 한쪽에 VS Code, 다른 쪽에 크롬 창을 띄워두고 코드를 저장할 때마다 크롬 창의 디자인이 마법처럼 휙휙 바뀌는 경험을 제공한다."
+    }
+  },
+  {
+    "id": "q-css-035",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사가 \"십중팔구 자식 태그에 대고 정렬 속성을 적어두었다\"고 지적한 것처럼, Flexbox 정렬 실패를 유발하는 잘못된 코드 작성 위치는?",
+    "choices": [
+      "CSS 파일 내부가 아닌 HTML의 <head> 구역",
+      "요소들을 하나로 묶고 있는 바깥쪽 부모 상자(컨테이너)",
+      "정렬되어야 하는 개별 자식 태그(아이템)",
+      "페이지 전체를 감싸는 <body> 태그"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Flexbox의 `display: flex`와 `justify-content`, `align-items` 등 공간 배분 속성은 무조건 자식 요소들을 감싸는 '부모 요소(Container)'에 적용해야 한다.",
+      "whyCorrect": "초보자들이 정렬이 안 된다고 할 때 흔히 하는 실수가 정렬 대상인 개별 자식 태그(아이템)에 정렬 명령을 내리는 것이라고 강사가 지적했다.",
+      "whyIncorrect": "부모 상자에 부여하는 것은 '올바른' 작성법이며, CSS 작성 위치(head 등)와는 무관한 Flexbox 문법 구조에 대한 에러 현상이다.",
+      "examPoint": "Flexbox를 다룰 때는 항상 '누가 부모(컨테이너)이고 누가 자식(아이템)인지' DOM 트리의 계층 구조부터 파악하는 습관을 길러야 한다.",
+      "practicalExample": "`<div> <span>1</span> <span>2</span> </div>`에서 1과 2를 정렬하려면 `span { }`이 아니라 `div { display: flex; }`를 작성해야 한다."
+    }
+  },
+  {
+    "id": "q-css-036",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹페이지의 사용자 경험(UX)을 향상시키기 위해 요소의 색상, 글자 크기, 여백 등을 제어하는 '인테리어' 역할을 담당하는 기술은 무엇인가?",
+    "choices": [
+      "HTML",
+      "JavaScript",
+      "CSS",
+      "Python"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "CSS(Cascading Style Sheets)는 HTML 뼈대 위에 시각적 디자인을 입혀 사용자 경험(UX)을 극대화하는 프론트엔드 핵심 기술이다.",
+      "whyCorrect": "자료에서 색상, 글자 크기, 여백 등을 제어하여 UX를 향상시키고 건물의 인테리어 역할을 하는 언어를 CSS로 정의하고 있다.",
+      "whyIncorrect": "HTML은 구조(뼈대), JavaScript는 동작(엔진), Python은 주로 백엔드 서버에서 사용되는 언어이다.",
+      "examPoint": "디자인과 레이아웃 제어라는 CSS의 존재 목적을 정확히 이해하고 있는지 묻는 기초 개념 문제이다.",
+      "practicalExample": "투박한 회색 기본 버튼에 CSS로 둥근 모서리와 부드러운 그라데이션 색상을 입히면 사용자가 클릭하고 싶어지는 버튼이 된다."
+    }
+  },
+  {
+    "id": "q-css-037",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "CSS 코드를 작성할 때, 선택자(Selector) 뒤에 스타일 명령을 감싸기 위해 열고 닫는 괄호 기호는 무엇인가?",
+    "choices": [
+      "( ) 소괄호",
+      "{ } 중괄호",
+      "[ ] 대괄호",
+      "< > 꺾쇠괄호"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "CSS의 기본 문법은 대상을 지목하는 '선택자' 뒤에 중괄호 `{ }`를 열어 그 내부에 스타일 속성들을 모아 선언하는 구조이다.",
+      "whyCorrect": "자료에 명시된 기본 문법 구조는 `선택자 { 속성: 값; }` 이므로, 스타일 명령 그룹은 중괄호로 묶여야 한다.",
+      "whyIncorrect": "소괄호는 주로 함수에, 대괄호는 속성 선택자나 배열에, 꺾쇠괄호는 HTML 태그를 열고 닫을 때 사용된다.",
+      "examPoint": "HTML의 `< >` 태그 기호와 CSS의 `{ }` 블록 기호를 혼용하여 문법 에러를 내지 않도록 형태를 확실히 기억해야 한다.",
+      "practicalExample": "`.title { font-size: 24px; color: black; }` 와 같이 중괄호 안에 여러 개의 속성을 나열하여 관리한다."
+    }
+  },
+  {
+    "id": "q-css-038",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "박스 모델에서 인접해 있는 '옆에 있는 다른 상자(요소)'와의 거리를 벌려 서로 겹치지 않게 밀어내는 역할을 하는 영역은?",
+    "choices": [
+      "Padding",
+      "Border",
+      "Margin",
+      "Content"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "마진(Margin)은 요소의 물리적 경계선(Border) 바깥쪽의 투명한 여백으로, 다른 요소들과의 간격을 제어한다.",
+      "whyCorrect": "자료에서 '옆에 있는 다른 상자(요소)와의 거리'를 벌리는 바깥쪽 여백으로 Margin을 정의하고 있다.",
+      "whyIncorrect": "Padding은 안쪽 여백, Border는 테두리, Content는 핵심 내용 영역이다.",
+      "examPoint": "두 박스를 띄워야 할 때 내부 여백(Padding)을 늘려버리면 박스 덩치만 커지므로, 외부 여백(Margin)을 써야 함을 정확히 인지해야 한다.",
+      "practicalExample": "가로로 나열된 3개의 버튼이 너무 다닥다닥 붙어있을 때, 두 번째 버튼에 `margin: 0 15px;`을 주면 양옆 버튼을 15px씩 밀어낸다."
+    }
+  },
+  {
+    "id": "q-css-039",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "다음 중 브라우저가 화면의 모든 HTML 요소를 인식하는 '4겹의 사각형 상자' 개념을 지칭하는 공식 용어는 무엇인가?",
+    "choices": [
+      "그리드 시스템 (Grid System)",
+      "박스 모델 (Box Model)",
+      "돔 트리 (DOM Tree)",
+      "플렉스 컨테이너 (Flex Container)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "웹 브라우저의 렌더링 엔진은 모든 태그를 직사각형 상자로 취급하며, 이 상자는 Content, Padding, Border, Margin의 4가지 계층으로 구성된다(박스 모델).",
+      "whyCorrect": "자료에서 브라우저가 화면의 모든 요소를 4겹의 상자로 인식하는 개념을 '박스 모델(Box Model)'이라고 명시했다.",
+      "whyIncorrect": "그리드와 플렉스는 레이아웃을 배치하는 기법이며, DOM 트리는 HTML 문서의 객체 구조를 의미한다.",
+      "examPoint": "둥근 원형 버튼처럼 보이더라도 브라우저 입장에서는 둥근 테두리를 가진 '네모 박스'로 연산된다는 박스 모델의 철학을 묻는다.",
+      "practicalExample": "크롬 개발자 도구(F12)의 '계산됨(Computed)' 탭을 열어보면, 모든 요소가 4가지 색상의 네모난 과녁 모양(박스 모델)으로 분석되어 있는 것을 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-css-040",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "코드를 리뷰하던 중 `<div><p></div></p>`와 같이 작성된 부분을 발견했다. 이 코드가 유발하는 오류의 명칭과 해결책으로 알맞은 것은?",
+    "choices": [
+      "태그 닫기 누락 오류 / `<p>`의 닫는 태그를 아예 삭제한다.",
+      "태그 중첩 오류 (교차 중첩) / `<div><p></p></div>` 형태로 올바른 캡슐화 순서를 지킨다.",
+      "들여쓰기 오류 / <div>와 <p> 사이에 엔터 키를 두 번 입력한다.",
+      "선택자 문법 오류 / 태그 사이에 세미콜론(;)을 삽입한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "태그가 서로 엇갈리게 닫히는 교차 중첩은 부모-자식 계층 구조를 망가뜨려 브라우저가 DOM 트리를 정상적으로 생성하지 못하게 만든다.",
+      "whyCorrect": "자료의 실수 점검 리스트에서 교차하여 닫는 것을 '태그 중첩 오류'라 명명하고, `<div><p></p></div>` 형태로 캡슐화 순서를 지키라고 명시했다.",
+      "whyIncorrect": "이 현상은 닫기 누락이나 들여쓰기, CSS 문법 오류와는 다르다. 열린 순서의 역순으로 닫는 구조적 문제이다.",
+      "examPoint": "문서 구조의 기본인 인클로징(Enclosing) 규칙을 검증하는 문제로, 가장 나중에 열린 상자가 가장 먼저 닫혀야 함을 확인한다.",
+      "practicalExample": "이 오류를 방치하면, 브라우저가 강제로 에러를 수정하려 시도하다가 CSS 레이아웃이 원치 않는 곳에 적용되는 기괴한 화면을 마주하게 된다."
+    }
+  },
+  {
+    "id": "q-css-041",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "블록(Block) 형태로 위아래로 쌓이던 자식 요소들을 '가로 방향(주축)으로 한 줄 정렬'되도록 속성을 즉시 전환해 주는 부모 컨테이너의 핵심 선언문은?",
+    "choices": [
+      "display: flex;",
+      "align-items: center;",
+      "justify-content: center;",
+      "flex-wrap: wrap;"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "부모 요소에 `display: flex;`를 선언하면, 그 컨테이너는 Flexbox 레이아웃 모드로 활성화되며 기본적으로 자식 아이템들을 가로 방향(row)으로 나열한다.",
+      "whyCorrect": "자료에서 '부모 상자에 선언하는 순간, 위아래로 쌓이던 자식 요소들이 즉시 가로 방향(주축)으로 나란히 정렬된다'고 설명한 속성은 `display: flex;`이다.",
+      "whyIncorrect": "justify-content와 align-items는 이미 flex가 선언된 상태에서 정렬 위치를 제어하는 부가 속성이며, flex-wrap은 줄바꿈 속성이다.",
+      "examPoint": "Flexbox의 모든 유연한 정렬 마법은 부모에게 `display: flex;`를 선언하는 것에서부터 시작된다는 절대 규칙을 묻는다.",
+      "practicalExample": "리스트 태그(`<li>`) 3개가 위에서 아래로 쌓여있을 때, 부모인 `<ul>`에 `display: flex;`를 주면 가로형 내비게이션 바처럼 일렬로 정렬된다."
+    }
+  },
+  {
+    "id": "q-css-042",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹 브라우저의 화면 너비가 좁아져 자식 요소들이 들어갈 공간이 부족해졌을 때, 자식들이 억지로 찌그러지지 않고 자연스럽게 아랫줄로 넘어가도록(줄바꿈) 설정하는 속성은?",
+    "choices": [
+      "justify-content: space-between;",
+      "flex-wrap: wrap;",
+      "align-items: stretch;",
+      "display: flex;"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "flex-wrap 속성은 Flex 컨테이너의 한 줄에 아이템들을 모두 배치할 공간이 부족할 때, 아이템들을 여러 줄(multi-line)로 나누어 배치할지 결정한다.",
+      "whyCorrect": "자료에서 '브라우저 너비가 자식들의 크기보다 좁아질 때 아랫줄로 줄바꿈 되어 정착하도록 설정'하는 안전장치로 `flex-wrap: wrap;`을 명시했다.",
+      "whyIncorrect": "justify-content는 가로 정렬, align-items는 세로 정렬, display: flex는 정렬 활성화 선언문이다.",
+      "examPoint": "이 속성을 모르면 브라우저 창 크기를 줄일 때 요소들이 가로로 기괴하게 압축(Shrink)되어 내용이 깨지는 반응형 에러를 잡을 수 없다.",
+      "practicalExample": "이미지 갤러리를 만들 때 이 속성을 주면, 데스크탑에선 한 줄에 5장이 보이던 사진이 모바일에선 자연스럽게 1장씩 5줄로 떨어져 보기 좋게 정렬된다."
+    }
+  },
+  {
+    "id": "q-css-043",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML로 작성된 뼈대 파일과, 이를 예쁘게 꾸미기 위해 물리적으로 분리해 둔 CSS 파일(예: style.css)을 서로 연결할 때 사용하는 태그는?",
+    "choices": [
+      "<a>",
+      "<script>",
+      "<style>",
+      "<link>"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "<link> 태그는 HTML 문서의 <head> 구역 안에서 외부 리소스(CSS 스타일시트 등)를 불러와 유기적으로 연결하는 다리 역할을 한다.",
+      "whyCorrect": "자료의 팁에서 외부 style.css 파일로 격리하고 HTML 상단에서 `<link rel='stylesheet' href='style.css'>` 태그를 사용해 이어주라고 설명했다.",
+      "whyIncorrect": "<a>는 클릭 시 이동하는 하이퍼링크, <script>는 JS 파일 연결, <style>은 HTML 파일 내부에 직접 CSS를 작성할 때 쓰는 태그이다.",
+      "examPoint": "디자인 파일(CSS)은 `<link>`로, 동작 파일(JS)은 `<script>`로 연결한다는 프론트엔드 리소스 매니지먼트의 기본을 묻는다.",
+      "practicalExample": "HTML 헤더 부분에 `<link rel='stylesheet' href='main.css'>` 한 줄을 추가하는 순간, 밋밋했던 웹페이지에 화려한 색상과 레이아웃이 확 입혀진다."
+    }
+  },
+  {
+    "id": "q-css-044",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "선배가 실무 꿀팁에서 HTML 내부에 직접 `<style>` 코드를 길게 작성하지 말고 외부 `.css` 파일로 격리하라고 강조한 아키텍처적 이유는 무엇인가?",
+    "choices": [
+      "웹 브라우저가 내부 스타일에 대해서는 보안 경고를 띄우기 때문이다.",
+      "구조(HTML)와 꾸밈(CSS)이 뒤섞이면 나중에 꼬인 스타일을 찾기 힘든 '스파게티 코드'가 되어 유지보수가 불가능해지기 때문이다.",
+      "내부 스타일은 CSS의 박스 모델을 적용받지 못하는 기술적 한계가 있기 때문이다.",
+      "HTML 안에 CSS가 있으면 자바스크립트가 동작을 완전히 멈추기 때문이다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "관심사의 분리(Separation of Concerns) 원칙에 따라, 뼈대(HTML)와 인테리어(CSS)를 각자의 전용 파일에 분리 보관해야 가독성과 협업 효율(유지보수성)이 극대화된다.",
+      "whyCorrect": "자료에서 내부에 코드를 길게 작성하는 버릇을 들이면 스파게티 코드가 되어 유지보수가 불가능해지므로 외부로 격리하라고 명확히 설명했다.",
+      "whyIncorrect": "보안 경고, 박스 모델 미적용, JS 동작 멈춤 등은 파일을 분리하지 않았을 때 발생하는 실제 기술적 에러가 아닌 과장된 오답이다.",
+      "examPoint": "개발이 '동작하게 만드는 것'을 넘어 '미래의 동료가 읽기 쉽게 설계하는 것'임을 가르치는 실무형 유지보수 문제이다.",
+      "practicalExample": "수백 개의 HTML 파일이 있는 쇼핑몰에서 메인 컬러를 파란색에서 빨간색으로 변경하려면, 공통 `style.css` 파일 1개만 열어서 수정하는 것이 압도적으로 효율적이다."
+    }
+  },
+  {
+    "id": "q-css-045",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTML 문서 내에서 오직 '유일하게 한 번만 등장해야 하는 고유한 요소(예: 사이트 최상단 메인 로고)'를 식별하기 위해 CSS에서 사용하는 선택자와 기호는?",
+    "choices": [
+      "클래스 선택자 / 점(.)",
+      "태그 선택자 / 기호 없음",
+      "아이디 선택자 / 우물정(#)",
+      "전역 선택자 / 별표(*)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "아이디 선택자(ID Selector)는 페이지 내에 유일하게 존재하는 특정 요소 단 1개를 타겟팅할 때 사용하며, CSS에서는 이름 앞에 `#`을 붙인다.",
+      "whyCorrect": "자료에서 오직 유일하게 한 번만 등장해야 하는 고유 요소에 적용하는 것은 아이디 선택자이며 기호는 #이라고 정의했다.",
+      "whyIncorrect": "클래스(.)는 중복 적용, 태그(기호없음)는 모든 해당 태그, 전역(*)은 문서 전체 요소를 타겟팅한다.",
+      "examPoint": "신분증의 '주민등록번호'처럼 HTML 태그에 고유성을 부여하는 ID 속성의 본질적 의미와 CSS 문법 매칭을 묻는다.",
+      "practicalExample": "HTML에 `<header id='main-header'>`가 선언되어 있다면, CSS에서 `#main-header { background: black; }`으로 제어한다."
+    }
+  },
+  {
+    "id": "q-css-046",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "박스 모델에서, 실질적인 내용(Content)을 품고 있으면서 테두리(Border) 안쪽에 위치하여 요소 내부의 쾌적한 빈 공간을 만들어주는 영역은?",
+    "choices": [
+      "Margin",
+      "Padding",
+      "Border",
+      "Shadow"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "패딩(Padding)은 콘텐츠와 경계선(테두리) 사이의 빈 공간으로, 박스 안쪽의 여백을 확보하여 내용이 테두리에 달라붙지 않게(답답함을 줄이게) 한다.",
+      "whyCorrect": "자료에서 실제 내용과 테두리 사이의 '안쪽 여백'으로 상자 내부의 답답함을 줄일 때 주로 사용한다고 설명된 영역은 Padding이다.",
+      "whyIncorrect": "Margin은 바깥 여백, Border는 테두리 그 자체, Shadow는 그림자 효과이다.",
+      "examPoint": "배경색(Background)을 지정하면 콘텐츠뿐만 아니라 이 패딩 영역까지 색이 칠해진다는 사실을 시각적으로 유추할 수 있어야 한다.",
+      "practicalExample": "버튼 안의 글씨(로그인)가 테두리에 너무 꽉 껴서 숨 막혀 보일 때 `padding: 10px 20px;`을 주면 글씨 상하좌우로 넉넉한 쿠션이 생긴다."
+    }
+  },
+  {
+    "id": "q-css-047",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "1차원(가로 또는 세로) 방향을 기준으로 자식 요소들을 유연하게 정렬하고 배치하기 위해 고안된 가장 강력하고 현대적인 CSS 레이아웃 시스템은?",
+    "choices": [
+      "Table Layout",
+      "Float Layout",
+      "Flexbox (플렉스박스)",
+      "Absolute Positioning"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Flexbox는 요소들을 1차원 축(행이나 열)을 따라 정렬하고, 남는 공간을 배분하며, 화면 크기에 맞춰 크기를 유연(Flexible)하게 늘리거나 줄일 수 있는 현대적 레이아웃 모듈이다.",
+      "whyCorrect": "자료에서 요소들을 가로 방향으로 나란히 배치하고 세밀하게 정렬할 때 사용하는 가장 강력한 현대식 정렬 방식으로 Flexbox 아키텍처를 소개했다.",
+      "whyIncorrect": "Table은 과거의 표 레이아웃, Float은 문서 흐름을 깨는 구형 정렬 방식, Absolute는 특정 좌표에 고정시키는 배치 방식이다.",
+      "examPoint": "과거의 복잡하고 버그가 많았던 정렬 방식들(float, inline-block)을 완벽히 대체한 Flexbox의 개념적 우월성을 이해해야 한다.",
+      "practicalExample": "서로 높이가 다른 3개의 카드 요소들을 나란히 배치했을 때, 부모에 `display: flex;`만 주어도 세 카드의 높이가 가장 높은 카드에 맞춰 똑같이 늘어나는 마법을 보여준다."
+    }
+  },
+  {
+    "id": "q-css-048",
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flexbox 환경에서 부모 컨테이너에 `justify-content: center;`를 적용했을 때, 자식 요소들에게 일어나는 정렬 변화는 무엇인가?",
+    "choices": [
+      "모든 자식 요소가 세로축(교차축)을 기준으로 상단 천장에 찰싹 달라붙는다.",
+      "모든 자식 요소가 부모의 양쪽 끝으로 찢어져서 배치된다.",
+      "모든 자식 요소가 가로축(주축) 방향을 기준으로 부모 상자의 정중앙에 옹기종기 모여 정렬된다.",
+      "자식 요소들이 가지고 있던 고유의 크기가 사라지고 화면 전체 너비로 확장된다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "justify-content 속성은 Flex 컨테이너 내에서 자식 아이템들이 주축(Main Axis, 기본 가로 방향)을 따라 어떻게 배치(가운데, 양끝 등)될지 결정한다.",
+      "whyCorrect": "자료에서 `justify-content: center`를 '가로축(주축) 방향을 기준으로 한 중앙 정렬'로 명시하고 있으므로, 아이템들이 중앙에 옹기종기 모이게 된다.",
+      "whyIncorrect": "세로축 정렬은 align-items, 양끝 배치는 space-between이며, 요소의 고유 크기를 없애고 꽉 채우는 것은 아니다.",
+      "examPoint": "가로폭이 남을 때, 그 남는 공간을 자식들의 양옆으로 동일하게 몰아주어(가운데 정렬) 밸런스를 맞추는 원리임을 묻는다.",
+      "practicalExample": "웹페이지 맨 밑바닥 푸터(Footer)에 있는 3개의 SNS 아이콘을 한가운데로 모으고 싶을 때 `justify-content: center;`를 사용한다."
+    }
+  },
+  {
+    "id": "q-css-049",
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "문서 내의 HTML 코드에서 들여쓰기(Indent)가 잘 되어 있을 때 개발자가 얻을 수 있는 가장 큰 이점은 무엇인가?",
+    "choices": [
+      "코드의 실행 속도가 2배 이상 빨라진다.",
+      "부모 요소와 자식 요소 간의 포함 관계(계층)가 시각적으로 한눈에 파악되어 디버깅이 쉬워진다.",
+      "브라우저가 렌더링할 때 사용자의 컴퓨터 메모리를 덜 사용하게 된다.",
+      "자동으로 반응형 웹 디자인이 적용되어 모바일 화면에서 깨지지 않는다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "들여쓰기(Indent)는 브라우저의 렌더링이나 속도 등 기계적 작동에는 아무 영향을 미치지 않지만, 개발자가 코드의 시각적 계층 구조(Depth)를 파악해 휴먼 에러를 방지하는 필수 협업 규칙이다.",
+      "whyCorrect": "자료의 가독성 파트에서 들여쓰기를 철저히 유지하여 코드의 부모-자식 관계가 한눈에 보이도록 해야 디버깅이 쉬워진다고 설명했다.",
+      "whyIncorrect": "실행 속도 증가, 메모리 절약, 반응형 자동 적용 등은 들여쓰기(단순 공백)로 얻을 수 있는 기술적 효과가 아니다.",
+      "examPoint": "문법적 필수 요소는 아니지만 실무 생산성과 가독성에 절대적인 영향을 미치는 '코딩 컨벤션'의 목적을 이해하고 있는지 묻는다.",
+      "practicalExample": "`<div>` 안의 `<ul>`, 그 안의 `<li>`가 각각 스페이스바 2칸씩 들여쓰기 되어 있으면, 코드가 긴밀하게 묶인 한 덩어리라는 것을 직관적으로 알 수 있다."
+    }
+  }
+]

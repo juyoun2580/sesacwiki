@@ -1,5 +1,14 @@
 {
-  "categories": ["전과목", "세일즈포스", "Java", "SQL", "HTML", "CSS", "JavaScript", "기타"],
+  "categories": [
+    "전과목",
+    "세일즈포스",
+    "Java",
+    "SQL",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "기타"
+  ],
   "list": [
     {
       "id": "exam-000",
@@ -28,84 +37,6 @@
       "isRecommended": false
     },
     {
-      "id": "exam-002",
-      "icon": "☕",
-      "title": "Java 객체지향 개념 테스트",
-      "description": "클래스, 객체, 상속 등 객체지향 개념 확인",
-      "category": "Java",
-      "level": "기초~중급",
-      "questionCount": 6,
-      "estimatedMinutes": 8,
-      "avgScore": 68,
-      "attemptCount": 198,
-      "isRecommended": false
-    },
-    {
-      "id": "exam-003",
-      "icon": "🗄️",
-      "title": "SQL 기초 6문제",
-      "description": "SQL 기본 문법을 확인할 수 있는 입문 모의고사",
-      "category": "SQL",
-      "level": "입문",
-      "questionCount": 6,
-      "estimatedMinutes": 8,
-      "avgScore": 72,
-      "attemptCount": 256,
-      "isRecommended": true
-    },
-    {
-      "id": "exam-004",
-      "icon": "🌐",
-      "title": "HTML 기초 테스트",
-      "description": "HTML 시맨틱 태그와 폼, 접근성 기본기를 점검",
-      "category": "HTML",
-      "level": "입문",
-      "questionCount": 6,
-      "estimatedMinutes": 7,
-      "avgScore": 75,
-      "attemptCount": 173,
-      "isRecommended": false
-    },
-    {
-      "id": "exam-005",
-      "icon": "🎨",
-      "title": "CSS 기초~중급 테스트",
-      "description": "박스 모델, Flexbox, Grid 등 레이아웃 핵심 개념 점검",
-      "category": "CSS",
-      "level": "기초~중급",
-      "questionCount": 6,
-      "estimatedMinutes": 8,
-      "avgScore": 66,
-      "attemptCount": 140,
-      "isRecommended": false
-    },
-    {
-      "id": "exam-006",
-      "icon": "⚡",
-      "title": "JavaScript 핵심 문법 테스트",
-      "description": "변수, 배열 메서드, 비동기 처리 등 핵심 문법 확인",
-      "category": "JavaScript",
-      "level": "중급",
-      "questionCount": 6,
-      "estimatedMinutes": 8,
-      "avgScore": 64,
-      "attemptCount": 165,
-      "isRecommended": false
-    },
-    {
-      "id": "exam-007",
-      "icon": "🔀",
-      "title": "Git & 협업 기본 모의고사",
-      "description": "Git 명령어와 협업 워크플로우, 바이브코딩 유의사항 확인",
-      "category": "기타",
-      "level": "기초",
-      "questionCount": 6,
-      "estimatedMinutes": 7,
-      "avgScore": 65,
-      "attemptCount": 142,
-      "isRecommended": false
-    },
-    {
       "id": "exam-008",
       "icon": "☁️",
       "title": "세일즈포스 자동화 & 관리 심화",
@@ -116,6 +47,20 @@
       "estimatedMinutes": 7,
       "avgScore": 62,
       "attemptCount": 41,
+      "isRecommended": false,
+      "isAdvanced": true
+    },
+    {
+      "id": "exam-002",
+      "icon": "☕",
+      "title": "Java 객체지향 개념 테스트",
+      "description": "클래스, 객체, 상속 등 객체지향 개념 확인",
+      "category": "Java",
+      "level": "기초~중급",
+      "questionCount": 92,
+      "estimatedMinutes": 123,
+      "avgScore": 68,
+      "attemptCount": 198,
       "isRecommended": false
     },
     {
@@ -125,11 +70,25 @@
       "description": "컬렉션 자료구조, 예외 처리, 제네릭, 동시성 기본 개념 점검",
       "category": "Java",
       "level": "중급~고급",
-      "questionCount": 5,
-      "estimatedMinutes": 7,
+      "questionCount": 39,
+      "estimatedMinutes": 55,
       "avgScore": 60,
       "attemptCount": 77,
-      "isRecommended": false
+      "isRecommended": false,
+      "isAdvanced": true
+    },
+    {
+      "id": "exam-003",
+      "icon": "🗄️",
+      "title": "SQL 기초 문법 모의고사",
+      "description": "SQL 기본 문법을 확인할 수 있는 입문 모의고사",
+      "category": "SQL",
+      "level": "입문",
+      "questionCount": 47,
+      "estimatedMinutes": 62,
+      "avgScore": 72,
+      "attemptCount": 256,
+      "isRecommended": true
     },
     {
       "id": "exam-010",
@@ -138,10 +97,24 @@
       "description": "인덱스, 트랜잭션 ACID, DISTINCT, DDL 등 실무 SQL 개념 점검",
       "category": "SQL",
       "level": "중급",
-      "questionCount": 5,
-      "estimatedMinutes": 7,
+      "questionCount": 24,
+      "estimatedMinutes": 34,
       "avgScore": 63,
       "attemptCount": 95,
+      "isRecommended": false,
+      "isAdvanced": true
+    },
+    {
+      "id": "exam-004",
+      "icon": "🌐",
+      "title": "HTML 기초 테스트",
+      "description": "HTML 시맨틱 태그와 폼, 접근성 기본기를 점검",
+      "category": "HTML",
+      "level": "입문",
+      "questionCount": 49,
+      "estimatedMinutes": 56,
+      "avgScore": 75,
+      "attemptCount": 173,
       "isRecommended": false
     },
     {
@@ -151,10 +124,24 @@
       "description": "video, table, section, select, aside 등 시맨틱/멀티미디어 태그 점검",
       "category": "HTML",
       "level": "중급",
-      "questionCount": 5,
-      "estimatedMinutes": 6,
+      "questionCount": 22,
+      "estimatedMinutes": 26,
       "avgScore": 68,
       "attemptCount": 54,
+      "isRecommended": false,
+      "isAdvanced": true
+    },
+    {
+      "id": "exam-005",
+      "icon": "🎨",
+      "title": "CSS 기초~중급 테스트",
+      "description": "박스 모델, Flexbox, Grid 등 레이아웃 핵심 개념 점검",
+      "category": "CSS",
+      "level": "기초~중급",
+      "questionCount": 49,
+      "estimatedMinutes": 65,
+      "avgScore": 66,
+      "attemptCount": 140,
       "isRecommended": false
     },
     {
@@ -164,10 +151,24 @@
       "description": "transition, keyframes, 반응형 단위, flex-grow 등 심화 스타일링 점검",
       "category": "CSS",
       "level": "중급~고급",
-      "questionCount": 5,
-      "estimatedMinutes": 7,
+      "questionCount": 22,
+      "estimatedMinutes": 31,
       "avgScore": 58,
       "attemptCount": 49,
+      "isRecommended": false,
+      "isAdvanced": true
+    },
+    {
+      "id": "exam-006",
+      "icon": "⚡",
+      "title": "JavaScript 핵심 문법 테스트",
+      "description": "변수, 배열 메서드, 비동기 처리 등 핵심 문법 확인",
+      "category": "JavaScript",
+      "level": "중급",
+      "questionCount": 51,
+      "estimatedMinutes": 68,
+      "avgScore": 64,
+      "attemptCount": 165,
       "isRecommended": false
     },
     {
@@ -177,10 +178,24 @@
       "description": "Object.keys, DOM 선택, 배열 탐색, Promise.all, classList 등 실전 문법 점검",
       "category": "JavaScript",
       "level": "중급~고급",
-      "questionCount": 5,
-      "estimatedMinutes": 7,
+      "questionCount": 20,
+      "estimatedMinutes": 28,
       "avgScore": 59,
       "attemptCount": 63,
+      "isRecommended": false,
+      "isAdvanced": true
+    },
+    {
+      "id": "exam-007",
+      "icon": "🔀",
+      "title": "Git & 협업 기본 모의고사",
+      "description": "Git 명령어와 협업 워크플로우, 바이브코딩 유의사항 확인",
+      "category": "기타",
+      "level": "기초",
+      "questionCount": 45,
+      "estimatedMinutes": 52,
+      "avgScore": 65,
+      "attemptCount": 142,
       "isRecommended": false
     },
     {
@@ -190,1449 +205,144 @@
       "description": "merge conflict, stash, pull, PR, .gitignore 등 실전 협업 도구 점검",
       "category": "기타",
       "level": "중급",
-      "questionCount": 5,
-      "estimatedMinutes": 6,
+      "questionCount": 26,
+      "estimatedMinutes": 31,
       "avgScore": 61,
       "attemptCount": 58,
+      "isRecommended": false,
+      "isAdvanced": true
+    },
+    {
+      "id": "exam-016",
+      "icon": "🔐",
+      "title": "ADX201-Identity",
+      "description": "SSO, OAuth, OpenID Connect, MFA, Connected App 등 Salesforce Admin 자격증(ADX201) Identity & Access 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 39,
+      "estimatedMinutes": 51,
+      "avgScore": 65,
+      "attemptCount": 12,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-017",
+      "icon": "🤖",
+      "title": "ADX201-Agentforce",
+      "description": "Agentforce 에이전트 구성(Topic/Action/Prompt Template), Einstein Trust Layer(마스킹/독성감지/감사로그) 등 Salesforce Admin 자격증(ADX201) Agentforce AI 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 43,
+      "estimatedMinutes": 56,
+      "avgScore": 63,
+      "attemptCount": 9,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-018",
+      "icon": "💬",
+      "title": "ADX201-Productivity",
+      "description": "Chatter, Task/Event, Lightning App Builder, Quick Action, AppExchange, 모바일 오프라인 등 Salesforce Admin 자격증(ADX201) Productivity & Collaboration 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급",
+      "questionCount": 59,
+      "estimatedMinutes": 62,
+      "avgScore": 66,
+      "attemptCount": 14,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-019",
+      "icon": "📊",
+      "title": "ADX201-Reports",
+      "description": "Tabular/Summary/Matrix/Joined 리포트, Cross Filter, Dashboard 컴포넌트, 예약/구독 등 Salesforce Admin 자격증(ADX201) Reports & Dashboards 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 67,
+      "estimatedMinutes": 75,
+      "avgScore": 64,
+      "attemptCount": 11,
       "isRecommended": false
     }
   ],
   "combinedQuestions": {
     "exam-000": [
-      { "examId": "exam-001", "questionId": "q-sf-001" },
-      { "examId": "exam-002", "questionId": "q-java-001" },
-      { "examId": "exam-003", "questionId": "q-sql-001" },
-      { "examId": "exam-004", "questionId": "q-html-001" },
-      { "examId": "exam-005", "questionId": "q-css-001" },
-      { "examId": "exam-006", "questionId": "q-js-001" },
-      { "examId": "exam-007", "questionId": "q-etc-001" }
-    ]
-  },
-  "questions": {
-    "exam-001": [
       {
-        "id": "q-sf-001",
-        "num": 1,
-        "category": "세일즈포스",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "Salesforce에서 서버 측 비즈니스 로직을 작성하는 프로그래밍 언어는?",
-        "choices": ["Apex", "Visualforce", "Flow", "SOQL"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Apex는 Salesforce 플랫폼 전용 서버 사이드 언어로, 트리거·클래스·배치 작업 등 비즈니스 로직을 구현한다.",
-          "whyCorrect": "Apex는 Java와 문법이 유사한 강타입 언어로 Salesforce 서버에서 실행되는 로직을 담당한다.",
-          "whyIncorrect": "Visualforce는 화면(UI) 마크업 언어, Flow는 선언형 자동화 도구, SOQL은 조회 전용 쿼리 언어라 로직 작성 용도가 아니다.",
-          "examPoint": "Apex(로직)와 Visualforce/Lightning(화면), Flow(선언형 자동화)의 역할 구분을 묻는 문제가 자주 나온다.",
-          "practicalExample": "레코드 저장 전 자동으로 값을 검증하는 Trigger를 만들 때 Apex를 사용한다."
-        }
+        "examId": "exam-001",
+        "questionId": "q-sf-001"
       },
       {
-        "id": "q-sf-002",
-        "num": 2,
-        "category": "세일즈포스",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "Salesforce 데이터베이스에서 레코드를 조회할 때 사용하는 쿼리 언어는?",
-        "choices": ["SQL", "SOQL", "SOSL", "GraphQL"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "SOQL(Salesforce Object Query Language)은 단일 객체 및 관계형 객체의 레코드를 조회하는 전용 쿼리 언어다.",
-          "whyCorrect": "SOQL은 SQL과 문법이 비슷하지만 Salesforce 객체 구조에 맞춰 설계된 조회 전용 언어다.",
-          "whyIncorrect": "SQL은 일반 관계형 DB용이고, SOSL은 여러 객체를 동시에 검색하는 전문 검색 언어라 용도가 다르다.",
-          "examPoint": "SOQL(단일 객체 조회) vs SOSL(여러 객체 텍스트 검색)의 차이를 구분해서 기억해야 한다.",
-          "practicalExample": "특정 고객(Account)에 연결된 모든 상담(Case) 목록을 가져올 때 SOQL을 사용한다."
-        }
+        "examId": "exam-002",
+        "questionId": "q-java-001"
       },
       {
-        "id": "q-sf-003",
-        "num": 3,
-        "category": "세일즈포스",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "코드 없이 화면 흐름이나 자동화 프로세스를 만들 수 있는 Salesforce 선언형 도구는?",
-        "choices": ["Flow", "Apex Trigger", "Visualforce", "Batch Apex"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Flow는 클릭 몇 번으로 화면/자동화 로직을 구성할 수 있는 대표적인 선언형(로우코드) 도구다.",
-          "whyCorrect": "Flow Builder는 코드 작성 없이 조건·화면·자동화 단계를 시각적으로 설계할 수 있다.",
-          "whyIncorrect": "Apex Trigger와 Batch Apex는 코드 기반 도구이고, Visualforce도 마크업 코드를 직접 작성해야 한다.",
-          "examPoint": "'선언형 vs 코드형' 키워드가 나오면 Flow/Process Builder를 먼저 떠올려야 한다.",
-          "practicalExample": "리드 등록 시 자동으로 담당자를 배정하는 자동화를 관리자가 코드 없이 Flow로 구성한다."
-        }
+        "examId": "exam-003",
+        "questionId": "q-sql-001"
       },
       {
-        "id": "q-sf-004",
-        "num": 4,
-        "category": "세일즈포스",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "부모 레코드가 삭제되면 자식 레코드도 함께 삭제되는, 소유권까지 강하게 종속된 관계를 표현하는 필드 타입은?",
-        "choices": ["Lookup Relationship", "Master-Detail Relationship", "Formula Field", "Roll-Up Summary"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "Master-Detail은 부모-자식이 강하게 종속된 관계로, 부모가 삭제되면 자식도 함께 삭제된다.",
-          "whyCorrect": "Master-Detail Relationship은 소유권·보안·삭제가 부모 레코드에 종속되는 강한 관계를 정의한다.",
-          "whyIncorrect": "Lookup도 부모-자식 구조를 표현하지만 느슨한 연결이라 부모가 삭제돼도 자식은 남는다(기본값 기준). Formula/Roll-Up Summary는 관계가 아니라 값을 계산하는 필드다.",
-          "examPoint": "Lookup(느슨한 연결) vs Master-Detail(강한 종속)의 차이, 그리고 Roll-Up Summary는 Master-Detail에서만 쓸 수 있다는 점이 자주 출제된다.",
-          "practicalExample": "견적서(Quote)가 반드시 하나의 기회(Opportunity)에 속해야 할 때 Master-Detail을 사용한다."
-        }
+        "examId": "exam-004",
+        "questionId": "q-html-001"
       },
       {
-        "id": "q-sf-005",
-        "num": 5,
-        "category": "세일즈포스",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "레코드가 저장되기 전에 실행되어 값을 검증/수정할 수 있는 Trigger 이벤트는?",
-        "choices": ["after insert", "before insert", "after delete", "before undelete"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "before 계열 트리거는 DB 저장 전에 실행되어 필드 값을 조작할 수 있는 시점이다.",
-          "whyCorrect": "before insert는 레코드가 실제로 저장되기 전에 실행되므로 값 검증·기본값 세팅에 적합하다.",
-          "whyIncorrect": "after 계열은 이미 저장이 끝난 뒤 실행되므로 필드를 바로 수정하려면 다시 update가 필요해 비효율적이다.",
-          "examPoint": "'저장 전 값 수정'이라는 문구가 나오면 before 트리거, '저장 후 관련 레코드 처리'는 after 트리거로 구분한다.",
-          "practicalExample": "이메일 형식이 잘못되면 저장 자체를 막고 싶을 때 before insert에서 addError()를 호출한다."
-        }
+        "examId": "exam-005",
+        "questionId": "q-css-001"
       },
       {
-        "id": "q-sf-006",
-        "num": 6,
-        "category": "세일즈포스",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "특정 사용자에게 개별적으로 추가 권한을 부여할 때 사용하는 것은?",
-        "choices": ["Profile", "Permission Set", "Role Hierarchy", "Sharing Rule"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "Permission Set은 Profile의 기본 권한 위에 특정 사용자에게만 추가 권한을 얹어주는 단위다.",
-          "whyCorrect": "Permission Set은 한 사용자에게 여러 개를 부여할 수 있어 유연하게 추가 권한을 관리할 수 있다.",
-          "whyIncorrect": "Profile은 사용자당 1개만 가질 수 있는 기본 권한 집합이고, Role/Sharing Rule은 레코드 접근 범위(공유)를 다룬다.",
-          "examPoint": "Profile(필수, 1개) vs Permission Set(선택, 여러 개 추가 가능)의 차이가 핵심 출제 포인트다.",
-          "practicalExample": "영업팀 중 일부에게만 리포트 내보내기 권한을 추가로 줄 때 Permission Set을 할당한다."
-        }
-      }
-    ],
-    "exam-002": [
-      {
-        "id": "q-java-001",
-        "num": 1,
-        "category": "Java",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "기존 클래스의 필드와 메서드를 물려받아 재사용하는 객체지향 개념은?",
-        "choices": ["캡슐화", "상속", "다형성", "추상화"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "상속(Inheritance)은 부모 클래스의 속성과 동작을 자식 클래스가 물려받아 재사용하는 개념이다.",
-          "whyCorrect": "extends 키워드로 부모 클래스를 확장하면 필드/메서드를 재정의 없이 그대로 사용할 수 있다.",
-          "whyIncorrect": "캡슐화는 정보 은닉, 다형성은 같은 동작이 다르게 구현되는 것, 추상화는 공통 특성을 뽑아내는 개념으로 재사용과는 결이 다르다.",
-          "examPoint": "객체지향 4대 특성(캡슐화/상속/다형성/추상화)의 정의를 헷갈리지 않도록 키워드로 암기해야 한다.",
-          "practicalExample": "Animal 클래스를 만들고 Dog, Cat 클래스가 이를 상속해 공통 기능(먹기, 자기)을 재사용한다."
-        }
+        "examId": "exam-006",
+        "questionId": "q-js-001"
       },
       {
-        "id": "q-java-002",
-        "num": 2,
-        "category": "Java",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "Java에서 다중 구현이 가능하며 필드 없이 메서드 시그니처만 정의할 수 있는 것은?",
-        "choices": ["abstract class", "interface", "enum", "record"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "interface는 구현 강제를 위한 계약(약속)이며 한 클래스가 여러 개를 동시에 구현할 수 있다.",
-          "whyCorrect": "Java는 다중 상속을 지원하지 않지만 interface는 implements로 여러 개를 동시에 구현할 수 있다.",
-          "whyIncorrect": "abstract class는 단일 상속만 가능하고 필드를 가질 수 있어 순수한 시그니처 계약과는 다르다.",
-          "examPoint": "abstract class(단일 상속, 필드 가능)와 interface(다중 구현, 기본적으로 필드 없음)의 차이를 묻는 문제가 자주 나온다.",
-          "practicalExample": "Comparable, Serializable처럼 서로 다른 능력을 한 클래스에 동시에 부여할 때 interface를 여러 개 구현한다."
-        }
-      },
-      {
-        "id": "q-java-003",
-        "num": 3,
-        "category": "Java",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "같은 이름의 메서드를 매개변수 타입/개수를 다르게 하여 여러 개 정의하는 것은?",
-        "choices": ["오버라이딩", "오버로딩", "캡슐화", "인스턴스화"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "오버로딩(Overloading)은 같은 이름의 메서드를 매개변수 목록만 다르게 하여 한 클래스 안에 여러 개 정의하는 것이다.",
-          "whyCorrect": "매개변수의 타입, 개수, 순서가 다르면 같은 메서드명이라도 컴파일러가 서로 다른 메서드로 구분한다.",
-          "whyIncorrect": "오버라이딩은 부모 클래스의 메서드를 자식이 재정의하는 것으로, 매개변수가 같아야 하는 별개의 개념이다.",
-          "examPoint": "오버로딩(같은 클래스, 매개변수 다름)과 오버라이딩(상속 관계, 시그니처 동일)을 혼동하지 않도록 주의한다.",
-          "practicalExample": "print(String s)와 print(int n)처럼 같은 이름으로 다양한 타입을 출력하는 메서드를 만들 때 사용한다."
-        }
-      },
-      {
-        "id": "q-java-004",
-        "num": 4,
-        "category": "Java",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "같은 패키지 안에서만 접근을 허용하는 접근 제어자는? (제어자 생략 시)",
-        "choices": ["public", "private", "protected", "default(package-private)"],
-        "answerIndex": 3,
-        "explanation": {
-          "coreConcept": "접근 제어자를 생략하면 default(package-private)가 적용되어 같은 패키지 내에서만 접근이 허용된다.",
-          "whyCorrect": "default는 명시적으로 쓰는 키워드가 아니라 아무 제어자도 쓰지 않았을 때 적용되는 범위다.",
-          "whyIncorrect": "public은 어디서나, private은 같은 클래스 내에서만, protected는 같은 패키지+상속 관계까지 허용되어 범위가 다르다.",
-          "examPoint": "접근 제어자의 허용 범위를 public > protected > default > private 순서로 정리해두면 헷갈리지 않는다.",
-          "practicalExample": "같은 모듈 내부에서만 쓰는 유틸리티 클래스를 외부 패키지에 노출하고 싶지 않을 때 default로 둔다."
-        }
-      },
-      {
-        "id": "q-java-005",
-        "num": 5,
-        "category": "Java",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "예외 발생 여부와 상관없이 항상 실행되는 블록은?",
-        "choices": ["try", "catch", "finally", "throw"],
-        "answerIndex": 2,
-        "explanation": {
-          "coreConcept": "finally 블록은 예외 발생 여부와 관계없이 반드시 실행되어 자원 정리(파일 닫기 등)에 사용된다.",
-          "whyCorrect": "try에서 예외가 나든 안 나든, catch로 처리되든 안 되든 finally는 항상 마지막에 실행된다.",
-          "whyIncorrect": "catch는 예외가 발생했을 때만 실행되고, throw는 예외를 발생시키는 키워드라 '항상 실행'과는 무관하다.",
-          "examPoint": "try-catch-finally 실행 순서와 finally가 return보다 우선 실행된다는 점이 자주 출제된다.",
-          "practicalExample": "파일이나 DB 연결을 열었다면 예외 발생 여부와 상관없이 finally에서 반드시 close()를 호출한다."
-        }
-      },
-      {
-        "id": "q-java-006",
-        "num": 6,
-        "category": "Java",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "중복을 허용하지 않고 순서를 보장하지 않는 컬렉션 인터페이스는?",
-        "choices": ["List", "Set", "Map", "Queue"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "Set은 중복 요소를 허용하지 않는 컬렉션이며, 구현체에 따라 순서 보장 여부가 다르다.",
-          "whyCorrect": "Set(예: HashSet)은 동일한 값을 두 번 추가해도 하나만 저장되고 기본적으로 삽입 순서를 보장하지 않는다.",
-          "whyIncorrect": "List는 중복과 순서를 모두 허용하고, Map은 키-값 쌍을 다루며, Queue는 순서(FIFO 등)를 핵심으로 하는 자료구조다.",
-          "examPoint": "List(순서 O, 중복 O) / Set(순서 X, 중복 X) / Map(키-값) / Queue(선입선출)의 차이를 표로 정리해두면 좋다.",
-          "practicalExample": "중복 없이 태그 목록을 관리하고 싶을 때 HashSet<String>을 사용한다."
-        }
-      }
-    ],
-    "exam-003": [
-      {
-        "id": "q-sql-001",
-        "num": 1,
-        "category": "SQL",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "WHERE 절의 역할로 가장 알맞은 것은?",
-        "choices": ["데이터를 추가한다", "조건에 맞는 데이터를 조회한다", "테이블을 삭제한다", "컬럼 이름을 변경한다"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "WHERE 절은 SELECT/UPDATE/DELETE 문에서 특정 조건에 맞는 행만 걸러내는 필터 역할을 한다.",
-          "whyCorrect": "WHERE 뒤에 조건식을 쓰면 그 조건을 만족하는 행만 결과에 포함된다.",
-          "whyIncorrect": "데이터 추가는 INSERT, 테이블 삭제는 DROP TABLE, 컬럼명 변경은 ALTER TABLE ... RENAME COLUMN이 담당한다.",
-          "examPoint": "WHERE(행 필터링)와 HAVING(그룹 필터링)을 혼동하지 않도록 구분해서 기억한다.",
-          "practicalExample": "가입일이 2024년 이후인 회원만 조회할 때 WHERE join_date >= '2024-01-01'을 사용한다."
-        }
-      },
-      {
-        "id": "q-sql-002",
-        "num": 2,
-        "category": "SQL",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "두 테이블에서 조건이 일치하는 행만 반환하는 JOIN은?",
-        "choices": ["LEFT JOIN", "INNER JOIN", "FULL OUTER JOIN", "CROSS JOIN"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "INNER JOIN은 두 테이블에서 조인 조건이 일치하는 행만 결과에 포함하는 교집합 방식의 조인이다.",
-          "whyCorrect": "INNER JOIN은 양쪽 테이블 모두에 매칭되는 값이 있는 행만 남기고 나머지는 제외한다.",
-          "whyIncorrect": "LEFT JOIN은 왼쪽 테이블 기준으로 매칭 안 된 행도 NULL로 남기고, FULL OUTER JOIN은 양쪽 전체, CROSS JOIN은 조건 없이 모든 조합을 반환한다.",
-          "examPoint": "INNER(교집합) vs LEFT/RIGHT(한쪽 기준 전체) vs FULL OUTER(합집합)의 결과 행 개수 차이를 그림으로 익혀두면 좋다.",
-          "practicalExample": "주문 테이블과 회원 테이블에서 실제로 주문한 회원 정보만 뽑을 때 INNER JOIN을 사용한다."
-        }
-      },
-      {
-        "id": "q-sql-003",
-        "num": 3,
-        "category": "SQL",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "GROUP BY와 함께 사용할 때 그룹별 조건을 거는 절은?",
-        "choices": ["WHERE", "HAVING", "ORDER BY", "LIMIT"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "HAVING은 GROUP BY로 묶인 그룹 단위의 결과(집계값)에 조건을 거는 절이다.",
-          "whyCorrect": "HAVING은 COUNT, SUM 같은 집계 함수의 결과에 조건을 걸 수 있는 유일한 절이다.",
-          "whyIncorrect": "WHERE는 그룹화 이전 개별 행에만 조건을 걸 수 있어 집계 함수와 함께 쓸 수 없고, ORDER BY는 정렬, LIMIT은 개수 제한 용도다.",
-          "examPoint": "실행 순서상 WHERE가 먼저 적용되고 그 다음 GROUP BY, 마지막에 HAVING이 적용된다는 점이 자주 출제된다.",
-          "practicalExample": "주문 건수가 5건 이상인 고객만 조회할 때 GROUP BY customer_id HAVING COUNT(*) >= 5를 사용한다."
-        }
-      },
-      {
-        "id": "q-sql-004",
-        "num": 4,
-        "category": "SQL",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "테이블에서 각 행을 고유하게 식별하기 위한 제약조건은?",
-        "choices": ["FOREIGN KEY", "UNIQUE", "PRIMARY KEY", "CHECK"],
-        "answerIndex": 2,
-        "explanation": {
-          "coreConcept": "PRIMARY KEY는 테이블의 각 행을 유일하게 식별하는 기본 키 제약조건으로 NULL을 허용하지 않는다.",
-          "whyCorrect": "PRIMARY KEY는 UNIQUE + NOT NULL의 성격을 동시에 가지며 테이블당 하나만 지정할 수 있다.",
-          "whyIncorrect": "FOREIGN KEY는 다른 테이블을 참조하는 제약, UNIQUE는 중복만 막고 NULL은 허용, CHECK는 값의 범위/조건을 검증한다.",
-          "examPoint": "PRIMARY KEY(유일+NOT NULL, 1개)와 UNIQUE(유일, NULL 허용, 여러 개 가능)의 차이를 구분해야 한다.",
-          "practicalExample": "회원 테이블에서 member_id를 PRIMARY KEY로 지정해 중복 가입을 원천적으로 방지한다."
-        }
-      },
-      {
-        "id": "q-sql-005",
-        "num": 5,
-        "category": "SQL",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "조회 결과를 특정 컬럼 기준으로 내림차순 정렬하는 키워드 조합은?",
-        "choices": ["ORDER BY 컬럼 ASC", "ORDER BY 컬럼 DESC", "GROUP BY 컬럼 DESC", "SORT BY 컬럼 DESC"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "ORDER BY 절은 조회 결과의 정렬 순서를 지정하며, DESC는 내림차순, ASC는 오름차순을 의미한다.",
-          "whyCorrect": "ORDER BY 컬럼 DESC는 해당 컬럼 값을 큰 값부터 작은 값 순으로 정렬한다.",
-          "whyIncorrect": "ASC는 오름차순이라 반대 결과가 나오고, GROUP BY는 정렬이 아닌 그룹화 절이며, SORT BY는 표준 SQL 키워드가 아니다.",
-          "examPoint": "ORDER BY는 기본값이 ASC(오름차순)이므로 DESC를 명시하지 않으면 오름차순으로 정렬된다는 점을 기억한다.",
-          "practicalExample": "최신 주문부터 보고 싶을 때 ORDER BY order_date DESC를 사용한다."
-        }
-      },
-      {
-        "id": "q-sql-006",
-        "num": 6,
-        "category": "SQL",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "다른 SELECT문 안에 포함되어 먼저 실행되는 쿼리를 무엇이라 하는가?",
-        "choices": ["서브쿼리", "트리거", "뷰", "인덱스"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "서브쿼리(하위 쿼리)는 다른 쿼리 내부에 중첩되어 먼저 실행되고 그 결과를 바깥 쿼리가 활용하는 쿼리다.",
-          "whyCorrect": "서브쿼리는 WHERE, FROM, SELECT 절 등에 괄호로 중첩되어 값을 반환하고, 바깥 쿼리는 그 결과를 조건이나 값으로 사용한다.",
-          "whyIncorrect": "트리거는 이벤트 기반 자동 실행 로직, 뷰는 저장된 쿼리를 테이블처럼 재사용하는 것, 인덱스는 조회 성능 최적화를 위한 자료구조라 쿼리 중첩과는 무관하다.",
-          "examPoint": "서브쿼리는 실행 순서상 바깥 쿼리보다 먼저(또는 행마다) 평가된다는 점과 스칼라/상관 서브쿼리 구분이 자주 출제된다.",
-          "practicalExample": "평균 급여보다 많이 받는 직원을 찾을 때 WHERE salary > (SELECT AVG(salary) FROM employees)처럼 서브쿼리를 사용한다."
-        }
-      }
-    ],
-    "exam-004": [
-      {
-        "id": "q-html-001",
-        "num": 1,
-        "category": "HTML",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "문서의 독립적인 콘텐츠 영역을 의미하는 시맨틱 태그는?",
-        "choices": ["<div>", "<article>", "<span>", "<b>"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "<article>은 그 자체로 독립적으로 배포/재사용 가능한 콘텐츠 블록을 의미하는 시맨틱 태그다.",
-          "whyCorrect": "블로그 게시글, 뉴스 기사처럼 문맥 없이도 이해되는 독립 콘텐츠에는 <article>을 사용한다.",
-          "whyIncorrect": "<div>/<span>은 의미가 없는 범용 컨테이너이고, <b>는 단순 굵게 표시용 태그라 의미 구조를 표현하지 못한다.",
-          "examPoint": "CLAUDE.md의 'HTML5 시맨틱 태그를 적극 활용하고 의미 없는 div 사용을 최소화한다' 원칙과 직결되는 개념이다.",
-          "practicalExample": "위키 상세 페이지 본문처럼 그 자체로 독립된 문서 콘텐츠에 <article>을 사용한다."
-        }
-      },
-      {
-        "id": "q-html-002",
-        "num": 2,
-        "category": "HTML",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "사용자 입력값을 서버로 전송할 때 폼 전체를 감싸는 태그는?",
-        "choices": ["<input>", "<form>", "<label>", "<fieldset>"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "<form>은 하나 이상의 입력 요소를 묶어 제출(submit) 동작의 기준이 되는 컨테이너 태그다.",
-          "whyCorrect": "<form action=... method=...>이 실제 데이터 전송 대상과 방식을 정의하고 내부 입력 요소를 하나로 묶는다.",
-          "whyIncorrect": "<input>은 개별 입력 필드, <label>은 입력 필드 설명, <fieldset>은 관련 필드를 시각적으로 그룹화하는 보조 요소일 뿐 제출을 담당하지 않는다.",
-          "examPoint": "폼 제출은 <form>의 action/method 속성이 결정하며, 버튼의 type='submit'과 함께 동작한다는 점을 기억한다.",
-          "practicalExample": "로그인 화면에서 아이디/비밀번호 입력창을 <form> 하나로 묶어 제출한다."
-        }
-      },
-      {
-        "id": "q-html-003",
-        "num": 3,
-        "category": "HTML",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "이미지가 로드되지 않을 때 대체 텍스트를 제공하는 속성은?",
-        "choices": ["title", "alt", "aria-label", "placeholder"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "alt 속성은 이미지가 표시되지 않을 때 대체 텍스트를 제공하며 스크린리더 접근성에도 필수적이다.",
-          "whyCorrect": "<img alt='설명'>은 이미지 로드 실패 시 텍스트로 대체 표시되고, 시각장애인 사용자에게 이미지 내용을 읽어준다.",
-          "whyIncorrect": "title은 마우스 오버 툴팁일 뿐 대체 텍스트 역할이 약하고, aria-label은 대체 수단이 될 수 있지만 이미지의 표준 대체 텍스트는 alt이며, placeholder는 입력 필드 전용 속성이다.",
-          "examPoint": "이미지 접근성 문제에서는 항상 alt 속성 유무를 먼저 확인하는 것이 기본이다.",
-          "practicalExample": "프로필 사진에 alt='사용자 프로필 이미지'를 넣어 이미지가 깨져도 의미를 전달한다."
-        }
-      },
-      {
-        "id": "q-html-004",
-        "num": 4,
-        "category": "HTML",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "반응형 웹을 위해 뷰포트를 설정하는 위치는?",
-        "choices": ["<body>의 style", "<head>의 <meta name='viewport'>", "<footer>", "<script>"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "뷰포트 메타 태그는 모바일 브라우저가 페이지를 렌더링할 기준 너비/배율을 지정한다.",
-          "whyCorrect": "<meta name='viewport' content='width=device-width, initial-scale=1.0'>을 <head>에 넣어야 반응형 레이아웃이 올바르게 동작한다.",
-          "whyIncorrect": "<body> 인라인 스타일, <footer>, <script>는 뷰포트를 설정하는 표준 위치가 아니며 CLAUDE.md도 inline style 사용을 금지한다.",
-          "examPoint": "뷰포트 메타 태그를 빠뜨리면 모바일에서 데스크톱 레이아웃이 축소되어 보이는 문제가 생긴다는 것이 자주 출제된다.",
-          "practicalExample": "이 프로젝트의 모든 HTML 파일 <head>에도 동일한 viewport 메타 태그가 공통으로 포함되어 있다."
-        }
-      },
-      {
-        "id": "q-html-005",
-        "num": 5,
-        "category": "HTML",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "페이지 상단의 로고/내비게이션을 감싸기에 가장 알맞은 태그 조합은?",
-        "choices": ["<header>+<nav>", "<div>+<div>", "<section>+<article>", "<aside>+<footer>"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "<header>는 소개/탐색을 위한 상단 영역, <nav>는 주요 내비게이션 링크 묶음을 의미하는 시맨틱 태그다.",
-          "whyCorrect": "로고와 검색창은 <header>, 메뉴 링크 목록은 <nav>로 감싸는 것이 표준 시맨틱 구조다.",
-          "whyIncorrect": "<div>+<div>는 의미 없는 구조이고, <section>+<article>은 콘텐츠 영역용, <aside>+<footer>는 보조 정보/하단 영역용이라 상단 헤더 용도와 맞지 않는다.",
-          "examPoint": "이 프로젝트의 모든 페이지도 공통 <header class='header'>와 <nav class='nav'> 조합을 그대로 재사용하고 있다.",
-          "practicalExample": "새싹트리 사이트의 로고+검색창은 <header>, 홈/위키/모의고사 메뉴는 <nav>로 구성되어 있다."
-        }
-      },
-      {
-        "id": "q-html-006",
-        "num": 6,
-        "category": "HTML",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "입력 필드를 필수값으로 지정하는 HTML5 속성은?",
-        "choices": ["required", "mandatory", "must", "validate"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "required는 HTML5 폼 유효성 검사 속성으로, 값이 비어 있으면 제출을 막고 브라우저가 기본 안내 메시지를 보여준다.",
-          "whyCorrect": "<input required>를 추가하면 별도 JS 없이도 브라우저가 자동으로 빈 값 제출을 막는다.",
-          "whyIncorrect": "mandatory, must, validate는 HTML5 표준 속성이 아니며 실제로는 동작하지 않는다.",
-          "examPoint": "required, pattern, minlength/maxlength 같은 HTML5 내장 유효성 검사 속성들을 함께 알아두면 좋다.",
-          "practicalExample": "회원가입 폼에서 이메일 입력창에 required를 붙여 빈 값 제출을 막는다."
-        }
-      }
-    ],
-    "exam-005": [
-      {
-        "id": "q-css-001",
-        "num": 1,
-        "category": "CSS",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "CSS 박스 모델에서 콘텐츠를 감싸는 순서로 알맞은 것은?",
-        "choices": ["margin-border-padding-content", "padding-border-margin-content", "border-margin-padding-content", "content-padding-border-margin"],
-        "answerIndex": 3,
-        "explanation": {
-          "coreConcept": "CSS 박스 모델은 안쪽부터 content → padding → border → margin 순서로 요소를 감싼다.",
-          "whyCorrect": "콘텐츠 바깥을 padding이 감싸고, 그 바깥을 border가, 가장 바깥을 margin이 감싸는 구조가 표준 박스 모델이다.",
-          "whyIncorrect": "다른 보기들은 순서가 뒤바뀌어 있어 실제 렌더링 구조와 맞지 않는다.",
-          "examPoint": "box-sizing: border-box를 쓰면 width에 padding/border가 포함되어 계산되는 점도 함께 알아두면 좋다.",
-          "practicalExample": "카드 컴포넌트에서 텍스트(content) 주변 여백(padding), 테두리(border), 카드 간 간격(margin)을 각각 다르게 조정한다."
-        }
-      },
-      {
-        "id": "q-css-002",
-        "num": 2,
-        "category": "CSS",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "Flexbox에서 items를 주축(main axis) 방향으로 정렬하는 속성은?",
-        "choices": ["align-items", "justify-content", "flex-wrap", "align-content"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "justify-content는 flex container의 주축(main axis) 방향 정렬을, align-items는 교차축(cross axis) 방향 정렬을 담당한다.",
-          "whyCorrect": "justify-content: center/space-between 등은 flex-direction 기준의 주축을 따라 아이템을 배치한다.",
-          "whyIncorrect": "align-items/align-content는 교차축 정렬용이고, flex-wrap은 줄바꿈 여부를 결정할 뿐 정렬 속성이 아니다.",
-          "examPoint": "flex-direction이 row일 때 주축=가로, column일 때 주축=세로로 바뀐다는 점을 함께 이해해야 한다.",
-          "practicalExample": "헤더에서 로고와 검색창, 우측 메뉴를 좌우로 균등하게 배치할 때 justify-content: space-between을 사용한다."
-        }
-      },
-      {
-        "id": "q-css-003",
-        "num": 3,
-        "category": "CSS",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "CSS 우선순위(specificity)가 가장 높은 선택자는?",
-        "choices": ["태그 선택자", "클래스 선택자", "id 선택자", "전체 선택자(*)"],
-        "answerIndex": 2,
-        "explanation": {
-          "coreConcept": "CSS 우선순위는 id 선택자 > 클래스/속성/가상클래스 선택자 > 태그/가상요소 선택자 > 전체 선택자 순으로 높다.",
-          "whyCorrect": "id 선택자(#id)는 문서 내에서 유일해야 하므로 클래스나 태그 선택자보다 더 강하게 적용된다.",
-          "whyIncorrect": "태그 선택자와 전체 선택자는 우선순위가 가장 낮고, 클래스 선택자는 id보다는 낮다.",
-          "examPoint": "이 프로젝트는 BEM 클래스 선택자만 사용하는 것이 원칙이므로(CLAUDE.md), id 선택자 남용은 실무에서 지양된다는 점도 함께 알아둔다.",
-          "practicalExample": "같은 요소에 클래스와 id 스타일이 동시에 걸리면 id 스타일이 우선 적용된다."
-        }
-      },
-      {
-        "id": "q-css-004",
-        "num": 4,
-        "category": "CSS",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "부모 요소를 기준으로 위치가 고정되며 문서 흐름에서 제거되는 position 값은?",
-        "choices": ["static", "relative", "absolute", "sticky"],
-        "answerIndex": 2,
-        "explanation": {
-          "coreConcept": "absolute는 가장 가까운 position이 지정된 조상 요소를 기준으로 배치되며 문서 흐름에서 완전히 빠진다.",
-          "whyCorrect": "absolute 요소는 다른 요소들이 마치 그 자리에 없는 것처럼 배치를 계산하므로 레이아웃 흐름에서 제거된다.",
-          "whyIncorrect": "static은 기본값(흐름 유지), relative는 자기 자신 기준 이동이지만 흐름은 유지, sticky는 스크롤에 따라 relative/fixed처럼 동작하되 흐름은 유지한다.",
-          "examPoint": "absolute를 쓸 때는 부모에 position: relative를 지정해야 의도한 기준점이 잡힌다는 점이 실무에서 자주 실수하는 포인트다.",
-          "practicalExample": "score-ring의 텍스트를 원 중앙에 겹쳐 배치할 때 부모에 relative, 텍스트에 absolute를 사용한다."
-        }
-      },
-      {
-        "id": "q-css-005",
-        "num": 5,
-        "category": "CSS",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "화면 너비에 따라 스타일을 다르게 적용할 때 사용하는 CSS 기능은?",
-        "choices": ["@media", "@import", "@font-face", "@keyframes"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "미디어 쿼리(@media)는 화면 너비, 해상도 등 조건에 따라 다른 스타일 규칙을 적용하는 반응형 웹의 핵심 기능이다.",
-          "whyCorrect": "@media (max-width: 768px) { ... } 형태로 특정 조건에서만 적용될 스타일을 정의할 수 있다.",
-          "whyIncorrect": "@import는 다른 CSS 파일 불러오기, @font-face는 커스텀 폰트 정의, @keyframes는 애니메이션 정의용으로 반응형과는 무관하다.",
-          "examPoint": "모바일 우선(mobile-first)인지 데스크톱 우선인지에 따라 min-width/max-width 사용 방식이 달라진다는 점을 알아둔다.",
-          "practicalExample": "사이드바가 있는 3단 레이아웃을 좁은 화면에서는 1단으로 쌓이게 만들 때 @media를 사용한다."
-        }
-      },
-      {
-        "id": "q-css-006",
-        "num": 6,
-        "category": "CSS",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "CSS Grid에서 열의 개수와 너비를 한 번에 정의하는 속성은?",
-        "choices": ["grid-template-columns", "grid-gap", "grid-area", "justify-items"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "grid-template-columns는 grid container에 몇 개의 열을 만들고 각 열의 너비를 어떻게 배분할지 정의한다.",
-          "whyCorrect": "예를 들어 repeat(5, 1fr)을 지정하면 동일한 너비의 열 5개가 생성된다.",
-          "whyIncorrect": "grid-gap은 셀 사이 간격, grid-area는 아이템이 차지할 영역 이름, justify-items는 셀 안에서 아이템의 가로 정렬을 다뤄 열 구조 정의와는 다르다.",
-          "examPoint": "repeat(), fr 단위, auto-fill/auto-fit의 차이를 함께 익혀두면 실전 레이아웃 문제에 유리하다.",
-          "practicalExample": "문제 목록 grid를 5열로 배치할 때 grid-template-columns: repeat(5, 1fr)을 사용한다(이 프로젝트의 question-grid가 실제로 이 방식이다)."
-        }
-      }
-    ],
-    "exam-006": [
-      {
-        "id": "q-js-001",
-        "num": 1,
-        "category": "JavaScript",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "블록 스코프를 가지며 재할당은 가능하지만 재선언은 불가능한 변수 선언 키워드는?",
-        "choices": ["var", "let", "const", "function"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "let은 블록 스코프({} 단위)를 가지며 같은 스코프 내 재선언은 금지되지만 값 재할당은 허용된다.",
-          "whyCorrect": "let x = 1; x = 2;는 가능하지만 같은 스코프에서 let x = 3;처럼 다시 선언하면 오류가 난다.",
-          "whyIncorrect": "var는 함수 스코프이고 재선언도 가능해 버그를 유발하기 쉽고, const는 재할당 자체가 불가능하며, function은 변수가 아니라 함수 선언 키워드다.",
-          "examPoint": "var(함수 스코프, 재선언 가능) / let(블록 스코프, 재할당만 가능) / const(블록 스코프, 재할당 불가)의 차이를 표로 정리해두면 좋다.",
-          "practicalExample": "for 반복문 안에서 매 반복마다 새로운 값을 담을 카운터 변수는 let으로 선언한다."
-        }
-      },
-      {
-        "id": "q-js-002",
-        "num": 2,
-        "category": "JavaScript",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "배열의 각 요소를 변환해 새로운 배열을 반환하는 메서드는?",
-        "choices": ["forEach", "map", "filter", "reduce"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "map()은 배열의 각 요소에 콜백을 적용한 결과로 이루어진 '새로운 배열'을 반환하는 변환 메서드다.",
-          "whyCorrect": "arr.map(x => x * 2)처럼 원본 배열과 같은 길이의 새 배열을 만들어 반환한다.",
-          "whyIncorrect": "forEach는 반환값이 undefined이고, filter는 조건에 맞는 요소만 골라내며, reduce는 배열을 단일 값으로 누적/축약한다.",
-          "examPoint": "map(변환)/filter(선별)/reduce(누적)/forEach(단순 순회, 반환값 없음)의 역할 차이가 실무 코드 리딩에서 자주 나온다.",
-          "practicalExample": "JSON의 list 배열을 받아 각 항목을 <li> 문자열로 변환할 때 map()을 사용한다."
-        }
-      },
-      {
-        "id": "q-js-003",
-        "num": 3,
-        "category": "JavaScript",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "Promise의 완료를 기다렸다가 다음 코드를 순차적으로 실행하게 해주는 키워드는?",
-        "choices": ["async/await", "setTimeout", "callback", "throw"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "async/await는 Promise 기반 비동기 코드를 마치 동기 코드처럼 순차적으로 읽고 쓸 수 있게 해주는 문법이다.",
-          "whyCorrect": "await는 Promise가 처리(resolve/reject)될 때까지 함수 실행을 일시 정지했다가 결과값을 반환한다.",
-          "whyIncorrect": "setTimeout은 단순 지연 실행, callback은 콜백 패턴 자체를 의미할 뿐 자동 대기 기능은 없으며, throw는 예외를 발생시키는 키워드다.",
-          "examPoint": "await는 반드시 async 함수 내부에서만 사용할 수 있고, try/catch로 에러를 처리하는 패턴을 함께 알아두면 좋다.",
-          "practicalExample": "exam.json을 fetch한 뒤 결과를 받아 화면에 그리기 전까지 기다릴 때 await fetch(...)를 사용한다."
-        }
-      },
-      {
-        "id": "q-js-004",
-        "num": 4,
-        "category": "JavaScript",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "화살표 함수가 일반 함수와 가장 크게 다른 점은?",
-        "choices": ["자신만의 this를 바인딩하지 않는다", "항상 익명이다", "호이스팅되지 않는다", "매개변수를 받을 수 없다"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "화살표 함수는 자신만의 this를 만들지 않고 정의된 시점(렉시컬 스코프)의 상위 this를 그대로 사용한다.",
-          "whyCorrect": "일반 함수는 호출 방식에 따라 this가 바뀌지만, 화살표 함수는 항상 바깥 스코프의 this를 참조한다.",
-          "whyIncorrect": "화살표 함수도 이름을 가질 수 있고(변수에 할당), 매개변수도 자유롭게 받을 수 있어 나머지 보기는 사실이 아니다.",
-          "examPoint": "이벤트 리스너 안에서 상위 컴포넌트의 this(또는 상태)를 그대로 쓰고 싶을 때 화살표 함수가 유용하다는 점이 실무형 문제로 자주 나온다.",
-          "practicalExample": "quizState 같은 상위 스코프 변수를 클릭 핸들러 안에서 그대로 참조하고 싶을 때 화살표 함수를 사용한다."
-        }
-      },
-      {
-        "id": "q-js-005",
-        "num": 5,
-        "category": "JavaScript",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "이벤트가 하위 요소에서 상위 요소로 전파되는 것을 무엇이라 하는가?",
-        "choices": ["캡처링", "버블링", "디바운싱", "스로틀링"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "버블링(Bubbling)은 이벤트가 발생한 요소에서 시작해 부모 → 조상 방향으로 전파되는 기본 이벤트 전파 방식이다.",
-          "whyCorrect": "자식 요소를 클릭해도 이벤트가 부모 요소까지 순서대로 전달되기 때문에 부모에서 이벤트를 위임(delegation)해 처리할 수 있다.",
-          "whyIncorrect": "캡처링은 반대로 상위에서 하위로 내려가는 전파 단계이고, 디바운싱/스로틀링은 이벤트 발생 빈도를 제어하는 별개의 최적화 기법이다.",
-          "examPoint": "이벤트 버블링 덕분에 동적으로 추가된 요소도 부모에 한 번만 리스너를 걸어 처리하는 '이벤트 위임' 패턴이 가능해진다.",
-          "practicalExample": "이 프로젝트의 quiz-choices 컨테이너에 클릭 리스너 하나만 걸어, 동적으로 렌더링되는 선택지 버튼 클릭을 버블링으로 감지한다."
-        }
-      },
-      {
-        "id": "q-js-006",
-        "num": 6,
-        "category": "JavaScript",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "JS 객체를 JSON 문자열로 변환할 때 사용하는 메서드는?",
-        "choices": ["JSON.parse()", "JSON.stringify()", "Object.assign()", "String(obj)"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "JSON.stringify()는 JS 객체/배열을 JSON 형식의 문자열로 직렬화하는 메서드다.",
-          "whyCorrect": "JSON.stringify({a:1})은 '{\"a\":1}'이라는 문자열을 반환한다.",
-          "whyIncorrect": "JSON.parse()는 반대로 문자열을 객체로 변환하고, Object.assign()은 객체 병합, String(obj)은 '[object Object]' 형태의 부정확한 문자열을 반환한다.",
-          "examPoint": "stringify(객체→문자열)와 parse(문자열→객체)는 짝을 이루는 함수이므로 방향을 헷갈리지 않아야 한다.",
-          "practicalExample": "localStorage에 사용자 상태를 저장할 때 객체를 JSON.stringify()로 문자열로 바꿔서 저장한다."
-        }
-      }
-    ],
-    "exam-007": [
-      {
-        "id": "q-etc-001",
-        "num": 1,
-        "category": "기타",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "작업 디렉토리의 변경 사항을 커밋하기 전에 담아두는 임시 영역은?",
-        "choices": ["Working Directory", "Staging Area", "Remote Repository", "HEAD"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "Staging Area(Index)는 git add로 선택한 변경 사항을 커밋 직전에 임시로 담아두는 영역이다.",
-          "whyCorrect": "git add 파일명으로 변경 사항을 Staging Area에 올린 뒤 git commit으로 그 스냅샷을 기록한다.",
-          "whyIncorrect": "Working Directory는 실제 파일이 있는 작업 폴더, Remote Repository는 원격 저장소, HEAD는 현재 브랜치의 최신 커밋을 가리키는 포인터라 임시 저장 공간이 아니다.",
-          "examPoint": "Working Directory → Staging Area → Repository로 이어지는 Git 3단계 구조를 그림으로 이해해두면 좋다.",
-          "practicalExample": "여러 파일을 수정했지만 그중 일부만 먼저 커밋하고 싶을 때 해당 파일만 git add로 Staging Area에 올린다."
-        }
-      },
-      {
-        "id": "q-etc-002",
-        "num": 2,
-        "category": "기타",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "현재 브랜치로 다른 브랜치의 변경 사항을 하나로 합치는 명령어는?",
-        "choices": ["git merge", "git branch", "git fetch", "git clone"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "git merge는 다른 브랜치의 커밋 히스토리를 현재 체크아웃된 브랜치에 병합하는 명령어다.",
-          "whyCorrect": "git merge feature/exam을 main에서 실행하면 feature/exam의 변경 사항이 main에 합쳐진다.",
-          "whyIncorrect": "git branch는 브랜치 생성/조회, git fetch는 원격 변경 사항을 로컬로 가져오기만 하고 병합은 하지 않으며, git clone은 저장소를 통째로 복제하는 명령어다.",
-          "examPoint": "이 프로젝트의 WORK_ORDER.md에서도 각 팀 브랜치를 Pull Request로 main에 merge하는 순서를 정해두고 있다.",
-          "practicalExample": "feature/exam 브랜치 작업이 끝나면 PR을 통해 main 브랜치로 merge한다."
-        }
-      },
-      {
-        "id": "q-etc-003",
-        "num": 3,
-        "category": "기타",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "이미 원격에 push한 커밋을 안전하게 되돌리기 위해 새 커밋을 만드는 명령어는?",
-        "choices": ["git reset --hard", "git revert", "git clean -f", "git rm"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "git revert는 특정 커밋의 변경 내용을 취소하는 '새로운 커밋'을 추가하는 방식으로, 히스토리를 삭제하지 않는다.",
-          "whyCorrect": "이미 공유된(push된) 커밋은 히스토리를 지우면 팀원들과 충돌이 나므로, revert로 안전하게 되돌리는 것이 원칙이다.",
-          "whyIncorrect": "git reset --hard는 히스토리 자체를 되돌려 이미 push된 경우 팀원과 충돌을 일으킬 수 있고, git clean -f는 추적되지 않는 파일 삭제, git rm은 파일 삭제 명령이라 커밋 되돌리기와는 다르다.",
-          "examPoint": "이 프로젝트의 시스템 지침에도 'force-push, reset --hard 같은 되돌리기 어려운 작업은 신중히 확인 후 진행'하라는 원칙이 있다.",
-          "practicalExample": "잘못된 커밋을 이미 push한 뒤 발견했다면 git revert <커밋해시>로 안전하게 되돌린다."
-        }
-      },
-      {
-        "id": "q-etc-004",
-        "num": 4,
-        "category": "기타",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "AI 코딩 도구를 사용할 때, 결과 코드를 그대로 커밋하기 전에 반드시 해야 할 일은?",
-        "choices": ["코드 리뷰 없이 바로 배포", "동작 확인과 코드 검토", "테스트 코드 삭제", "커밋 메시지 생략"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "바이브코딩(AI 페어 프로그래밍)에서도 결과물은 사람이 직접 동작을 확인하고 코드를 검토해야 신뢰할 수 있다.",
-          "whyCorrect": "AI가 생성한 코드도 버그나 프로젝트 규칙 위반이 있을 수 있으므로, 실제 동작 확인과 리뷰 절차를 거쳐야 한다.",
-          "whyIncorrect": "리뷰 없는 배포, 테스트 삭제, 커밋 메시지 생략은 오히려 문제를 숨기고 협업 히스토리를 해치는 나쁜 습관이다.",
-          "examPoint": "이 프로젝트의 CLAUDE.md '작업 완료 체크리스트'에도 Console Error 확인, 기존 기능 정상 동작 확인이 PR 전 필수 항목으로 명시되어 있다.",
-          "practicalExample": "AI가 생성한 quiz.js 로직도 실제 브라우저에서 문제 이동이 정상 동작하는지 눈으로 확인한 뒤 커밋한다."
-        }
-      },
-      {
-        "id": "q-etc-005",
-        "num": 5,
-        "category": "기타",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "커밋 메시지를 작성할 때 일반적으로 권장되는 방식은?",
-        "choices": ["변경 이유 없이 파일명만 적기", "무엇을·왜 변경했는지 명확히 적기", "항상 영어 약어만 사용", "커밋마다 여러 기능을 한 번에 담기"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "좋은 커밋 메시지는 '무엇을 왜 바꿨는지'를 명확히 전달해 히스토리만 보고도 변경 맥락을 이해할 수 있게 한다.",
-          "whyCorrect": "예를 들어 'exam.html: 카테고리 8개로 갱신 (99-EXAM_PLAN 2장 반영)'처럼 목적이 드러나는 메시지가 협업에 도움이 된다.",
-          "whyIncorrect": "파일명만 적거나 여러 기능을 한 커밋에 몰아넣으면 나중에 특정 변경을 추적하거나 되돌리기 어려워진다.",
-          "examPoint": "커밋은 하나의 논리적 단위로 작게 쪼개고, 메시지에는 'What'과 'Why'를 함께 담는 것이 실무 표준이다.",
-          "practicalExample": "체크리스트 항목 하나가 끝날 때마다 그 항목 단위로 커밋을 나누면 리뷰어가 변경 범위를 빠르게 파악할 수 있다."
-        }
-      },
-      {
-        "id": "q-etc-006",
-        "num": 6,
-        "category": "기타",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "여러 명이 동시에 작업할 때 충돌을 줄이기 위해 권장되는 방식은?",
-        "choices": ["모두 main 브랜치에서 직접 작업", "기능별 브랜치 분리 후 PR로 병합", "커밋 없이 파일만 공유", "코드 리뷰 생략"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "기능/담당 영역별로 브랜치를 나누고 Pull Request로 병합하면 서로 다른 작업이 독립적으로 진행되어 충돌 범위가 줄어든다.",
-          "whyCorrect": "브랜치 분리는 각자의 변경 사항을 격리시켜, 병합 시점에만 충돌 여부를 확인하면 되므로 협업 안정성이 높아진다.",
-          "whyIncorrect": "모두 main에서 직접 작업하면 실시간으로 서로의 변경을 덮어쓸 위험이 크고, 파일 공유나 리뷰 생략은 추적/품질 관리를 포기하는 것이다.",
-          "examPoint": "이 프로젝트의 TEAM_GUIDE.md도 feature/core, feature/home, feature/exam처럼 담당별 브랜치 전략을 명시하고 있다.",
-          "practicalExample": "Exam 담당은 feature/exam 브랜치에서 작업한 뒤 PR을 올려 다른 팀의 작업과 독립적으로 병합한다."
-        }
-      }
-    ],
-    "exam-008": [
-      {
-        "id": "q-sf-101",
-        "num": 1,
-        "category": "세일즈포스",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "Lightning 웹 컴포넌트(LWC)를 개발할 때 사용하는 주요 언어 조합은?",
-        "choices": ["HTML + JavaScript", "Apex + CSS", "Visualforce + jQuery", "Java + XML"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "LWC는 웹 표준 기술(HTML, JavaScript)을 기반으로 만든 Salesforce의 최신 컴포넌트 프레임워크다.",
-          "whyCorrect": "LWC 컴포넌트는 HTML 템플릿과 JavaScript 클래스로 구성되며, 별도 CSS 파일로 스타일을 입힌다.",
-          "whyIncorrect": "Apex는 서버 로직용 언어이고, Visualforce+jQuery는 이전 세대 UI 기술이라 LWC의 핵심 언어 조합이 아니다.",
-          "examPoint": "LWC는 표준 웹 컴포넌트 스펙을 따르기 때문에 프론트엔드 경험이 있는 개발자가 빠르게 적응할 수 있다는 점이 자주 강조된다.",
-          "practicalExample": "고객 상세 화면에 커스텀 위젯을 추가할 때 LWC로 HTML+JS 컴포넌트를 만들어 배치한다."
-        }
-      },
-      {
-        "id": "q-sf-102",
-        "num": 2,
-        "category": "세일즈포스",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "대량의 레코드를 비동기로 나눠 처리할 때 사용하는 Apex 실행 방식은?",
-        "choices": ["Batch Apex", "Trigger", "Visualforce Controller", "SOQL"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Batch Apex는 수백만 건 단위의 레코드를 정해진 크기(batch size)로 나눠 비동기로 처리하는 실행 방식이다.",
-          "whyCorrect": "start-execute-finish 3단계 구조로, governor limit을 피하면서 대량 데이터를 안전하게 처리할 수 있다.",
-          "whyIncorrect": "Trigger는 레코드 저장 시점의 실시간 로직, Visualforce Controller는 화면 로직, SOQL은 조회 쿼리라 대량 비동기 처리와는 목적이 다르다.",
-          "examPoint": "Batch Apex, Queueable Apex, Scheduled Apex의 용도 차이를 구분해서 알아두면 좋다.",
-          "practicalExample": "전체 고객 100만 건의 등급을 매일 밤 재계산하는 작업을 Batch Apex로 처리한다."
-        }
-      },
-      {
-        "id": "q-sf-103",
-        "num": 3,
-        "category": "세일즈포스",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "개발 중인 기능을 실제 운영 조직에 영향을 주지 않고 테스트하는 별도 환경은?",
-        "choices": ["Sandbox", "Production", "Trailhead", "AppExchange"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Sandbox는 운영(Production) 조직과 분리된 복사본 환경으로, 안전하게 개발/테스트를 진행할 수 있다.",
-          "whyCorrect": "Sandbox에서 검증을 마친 변경 사항만 Production으로 배포하는 것이 표준 릴리스 프로세스다.",
-          "whyIncorrect": "Production은 실제 운영 데이터가 있는 환경이라 직접 테스트하면 위험하고, Trailhead는 학습 플랫폼, AppExchange는 앱 마켓플레이스라 개발 환경이 아니다.",
-          "examPoint": "Developer/Partial Copy/Full Copy 등 Sandbox 종류별 특징(데이터 포함 여부)을 구분해서 알아두면 좋다.",
-          "practicalExample": "새로운 자동화 Flow를 만들 때 먼저 Sandbox에서 테스트한 뒤 Production에 배포한다."
-        }
-      },
-      {
-        "id": "q-sf-104",
-        "num": 4,
-        "category": "세일즈포스",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "여러 레코드를 한 번에 가져오거나 내보낼 때 사용하는 도구는?",
-        "choices": ["Data Loader", "Flow Builder", "Report Builder", "Setup Menu"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Data Loader는 CSV 파일을 이용해 대량의 레코드를 삽입/수정/삭제/조회할 수 있는 데이터 이관 도구다.",
-          "whyCorrect": "수만 건 단위의 초기 데이터 이관이나 일괄 업데이트에는 UI로 하나씩 처리하는 대신 Data Loader를 사용한다.",
-          "whyIncorrect": "Flow Builder는 자동화 도구, Report Builder는 리포트 작성 도구, Setup Menu는 조직 설정 화면이라 대량 데이터 이관 용도가 아니다.",
-          "examPoint": "Data Loader(대량, CLI/GUI)와 Import Wizard(소량, 표준 객체 한정)의 차이를 함께 알아두면 좋다.",
-          "practicalExample": "엑셀로 정리된 5만 건의 신규 리드를 한 번에 등록할 때 Data Loader를 사용한다."
-        }
-      },
-      {
-        "id": "q-sf-105",
-        "num": 5,
-        "category": "세일즈포스",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "Salesforce에서 승인 절차(예: 휴가 신청 승인)를 구현하는 선언형 기능은?",
-        "choices": ["Approval Process", "Validation Rule", "Workflow Field Update", "Escalation Rule"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Approval Process는 특정 조건을 만족하는 레코드를 지정된 승인자에게 순서대로 전달해 승인/반려를 받는 선언형 기능이다.",
-          "whyCorrect": "단계별 승인자 지정, 승인/반려 시 필드 자동 변경 등을 코드 없이 구성할 수 있다.",
-          "whyIncorrect": "Validation Rule은 값 검증, Workflow Field Update는 단순 필드 자동 변경, Escalation Rule은 Case 에스컬레이션 전용이라 다단계 승인과는 다르다.",
-          "examPoint": "승인 절차는 레코드 잠금(lock) 기능과 함께 동작해 승인 진행 중에는 필드 수정이 제한된다는 점도 함께 기억한다.",
-          "practicalExample": "일정 금액 이상의 견적서는 팀장 승인을 거쳐야 확정되도록 Approval Process를 구성한다."
-        }
-      }
-    ],
-    "exam-009": [
-      {
-        "id": "q-java-101",
-        "num": 1,
-        "category": "Java",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "ArrayList와 LinkedList의 가장 큰 차이는?",
-        "choices": ["둘 다 완전히 동일하다", "내부 자료구조(배열 vs 연결리스트)에 따른 접근/삽입 성능 차이", "ArrayList만 제네릭을 지원한다", "LinkedList는 정렬이 불가능하다"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "ArrayList는 배열 기반이라 인덱스 접근이 빠르고, LinkedList는 노드 연결 기반이라 중간 삽입/삭제가 상대적으로 유리하다.",
-          "whyCorrect": "자료구조 차이 때문에 get(index)은 ArrayList가 빠르고, 중간 요소 삽입/삭제는 LinkedList가 유리한 경향이 있다.",
-          "whyIncorrect": "둘 다 List 인터페이스를 구현해 제네릭을 동일하게 지원하고, 정렬(Collections.sort 등)도 둘 다 가능하다.",
-          "examPoint": "'조회가 많다 vs 삽입/삭제가 많다'라는 사용 패턴에 따라 어떤 컬렉션이 유리한지 묻는 문제가 자주 나온다.",
-          "practicalExample": "빈번한 순차 접근이 필요한 목록 화면 데이터는 ArrayList로 관리하는 것이 일반적이다."
-        }
-      },
-      {
-        "id": "q-java-102",
-        "num": 2,
-        "category": "Java",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "컴파일 시점에 반드시 처리(try-catch 또는 throws)해야 하는 예외는?",
-        "choices": ["Checked Exception", "Unchecked Exception", "RuntimeException", "Error"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Checked Exception은 컴파일러가 처리 여부를 강제로 검사하는 예외로, try-catch나 throws 선언이 없으면 컴파일 오류가 난다.",
-          "whyCorrect": "IOException처럼 Exception을 상속하지만 RuntimeException은 아닌 예외들이 대표적인 Checked Exception이다.",
-          "whyIncorrect": "Unchecked Exception(RuntimeException 계열)은 컴파일러가 처리를 강제하지 않고, Error는 시스템 레벨 심각한 오류로 별개의 개념이다.",
-          "examPoint": "Checked(컴파일러 강제) vs Unchecked(강제 없음, 런타임에만 발생)의 구분이 핵심 출제 포인트다.",
-          "practicalExample": "파일을 읽는 코드에서 FileNotFoundException(Checked)은 반드시 try-catch로 처리해야 컴파일된다."
-        }
-      },
-      {
-        "id": "q-java-103",
-        "num": 3,
-        "category": "Java",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "제네릭(Generic)을 사용하는 주된 이유는?",
-        "choices": ["코드 실행 속도를 항상 더 빠르게 만들기 위해", "타입 안정성을 확보하고 형변환을 최소화하기 위해", "메모리 사용량을 자동으로 줄이기 위해", "private 필드를 외부에 노출하기 위해"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "제네릭은 컴파일 시점에 타입을 지정/검사하게 해, 잘못된 타입 사용을 컴파일 단계에서 막아준다.",
-          "whyCorrect": "List<String>처럼 타입을 명시하면 잘못된 타입 삽입을 컴파일 오류로 잡고, 꺼낼 때 형변환(casting)도 필요 없어진다.",
-          "whyIncorrect": "제네릭 자체가 실행 속도나 메모리 사용량을 직접 최적화하지 않으며, 접근 제어자(private 등)와도 무관한 개념이다.",
-          "examPoint": "제네릭 도입 이전(Java 5 이전)에는 Object 타입 컬렉션 + 강제 형변환으로 인한 런타임 오류가 흔했다는 배경을 알아두면 이해가 쉽다.",
-          "practicalExample": "List<Question> 처럼 문제 목록 컬렉션에 제네릭을 지정해 실수로 다른 타입 객체가 섞이는 것을 막는다."
-        }
-      },
-      {
-        "id": "q-java-104",
-        "num": 4,
-        "category": "Java",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "Map에서 키-값 쌍을 함께 순회할 때 사용하는 대표적인 방법은?",
-        "choices": ["keySet()만 순회", "entrySet()을 순회", "values()만 순회", "Map은 순회할 수 없다"],
-        "answerIndex": 1,
-        "explanation": {
-          "coreConcept": "entrySet()은 Map의 키-값 쌍을 Map.Entry 객체 형태로 묶어 반환해, 한 번의 순회로 키와 값을 동시에 다룰 수 있다.",
-          "whyCorrect": "for (Map.Entry<K,V> entry : map.entrySet())처럼 순회하면 entry.getKey()/getValue()로 키와 값을 모두 얻을 수 있다.",
-          "whyIncorrect": "keySet()이나 values()만으로는 각각 키 또는 값만 얻을 수 있어 둘 다 필요할 때는 다시 map.get(key) 같은 추가 조회가 필요해 비효율적이다.",
-          "examPoint": "키만 필요하면 keySet(), 값만 필요하면 values(), 둘 다 필요하면 entrySet()을 쓰는 것이 표준 관례다.",
-          "practicalExample": "카테고리별 문제 개수를 담은 Map을 화면에 '카테고리: 개수' 형태로 출력할 때 entrySet()으로 순회한다."
-        }
-      },
-      {
-        "id": "q-java-105",
-        "num": 5,
-        "category": "Java",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "멀티스레드 환경에서 동시 접근을 제어하기 위해 메서드/블록에 사용하는 키워드는?",
-        "choices": ["synchronized", "static", "final", "volatile만 사용 가능"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "synchronized 키워드는 한 번에 하나의 스레드만 해당 메서드/블록에 진입하도록 제한해 동시 접근으로 인한 데이터 훼손을 막는다.",
-          "whyCorrect": "synchronized 메서드나 블록에 다른 스레드가 진입하려면 먼저 들어간 스레드가 나올 때까지 기다려야 한다.",
-          "whyIncorrect": "static은 클래스 공유 멤버 지정, final은 재할당 방지 키워드라 동시성 제어와는 목적이 다르고, volatile은 가시성만 보장할 뿐 배타적 접근을 보장하지 않는다.",
-          "examPoint": "synchronized(배타적 접근, 상대적으로 무거움)와 volatile(가시성만 보장, 가벼움)의 차이를 구분해서 알아두면 좋다.",
-          "practicalExample": "여러 스레드가 동시에 재고 수량을 차감하는 메서드에 synchronized를 붙여 데이터 정합성을 지킨다."
-        }
-      }
-    ],
-    "exam-010": [
-      {
-        "id": "q-sql-101",
-        "num": 1,
-        "category": "SQL",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "조회 성능을 높이기 위해 특정 컬럼에 생성하는 자료구조는?",
-        "choices": ["인덱스(Index)", "트리거(Trigger)", "뷰(View)", "제약조건(Constraint)"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "인덱스는 특정 컬럼 값을 빠르게 찾을 수 있도록 만든 별도의 조회용 자료구조로, 조회 성능을 크게 향상시킨다.",
-          "whyCorrect": "인덱스가 있으면 전체 테이블을 훑지 않고도(Full Scan 없이) 원하는 행을 빠르게 찾을 수 있다.",
-          "whyIncorrect": "트리거는 이벤트 기반 자동 실행 로직, 뷰는 저장된 쿼리, 제약조건은 데이터 무결성 규칙이라 조회 성능 최적화가 주 목적이 아니다.",
-          "examPoint": "인덱스는 조회는 빠르게 하지만 삽입/수정/삭제는 느려질 수 있다는 트레이드오프를 함께 이해해야 한다.",
-          "practicalExample": "회원 테이블에서 이메일로 자주 검색한다면 email 컬럼에 인덱스를 생성해 조회 속도를 높인다."
-        }
-      },
-      {
-        "id": "q-sql-102",
-        "num": 2,
-        "category": "SQL",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "트랜잭션의 ACID 중 '원자성(Atomicity)'이 의미하는 것은?",
-        "choices": ["트랜잭션 내 작업이 전부 성공하거나 전부 실패한다", "여러 트랜잭션이 서로 영향을 주지 않는다", "커밋된 데이터는 영구히 저장된다", "동시에 여러 트랜잭션이 실행될 수 없다"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "원자성은 트랜잭션에 포함된 여러 작업이 '전부 성공' 또는 '전부 실패(롤백)'로만 끝나는 성질을 의미한다.",
-          "whyCorrect": "계좌 이체처럼 출금과 입금이 함께 일어나야 하는 작업에서, 둘 중 하나만 성공하는 상황을 막는 것이 원자성의 핵심이다.",
-          "whyIncorrect": "'서로 영향을 주지 않는다'는 격리성(Isolation), '영구 저장'은 지속성(Durability)에 대한 설명이고, 동시 실행 제한은 ACID의 직접적인 정의가 아니다.",
-          "examPoint": "ACID(원자성/일관성/격리성/지속성) 4가지를 각각 한 문장으로 구분해 암기해두면 헷갈리지 않는다.",
-          "practicalExample": "송금 트랜잭션에서 출금은 성공했는데 입금이 실패하면, 원자성에 의해 출금도 함께 롤백되어야 한다."
-        }
-      },
-      {
-        "id": "q-sql-103",
-        "num": 3,
-        "category": "SQL",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "여러 테이블에 걸친 작업을 하나의 논리적 단위로 묶어 실행하는 것은?",
-        "choices": ["트랜잭션(Transaction)", "서브쿼리(Subquery)", "인덱스(Index)", "뷰(View)"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "트랜잭션은 여러 SQL 작업을 하나의 논리적 단위로 묶어, 전부 성공(COMMIT)하거나 전부 취소(ROLLBACK)되도록 관리하는 개념이다.",
-          "whyCorrect": "BEGIN(또는 START TRANSACTION) ~ COMMIT/ROLLBACK 사이의 작업들이 하나의 트랜잭션으로 처리된다.",
-          "whyIncorrect": "서브쿼리는 쿼리 안에 중첩된 조회, 인덱스는 조회 성능 최적화, 뷰는 저장된 쿼리라 여러 작업을 하나의 단위로 묶는 개념이 아니다.",
-          "examPoint": "COMMIT(확정)과 ROLLBACK(취소)이 트랜잭션의 대표적인 종료 방식이라는 점을 함께 기억한다.",
-          "practicalExample": "주문 생성과 재고 차감을 하나의 트랜잭션으로 묶어, 재고 차감이 실패하면 주문 생성도 함께 취소한다."
-        }
-      },
-      {
-        "id": "q-sql-104",
-        "num": 4,
-        "category": "SQL",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "조회 결과에서 중복된 행을 제거할 때 사용하는 키워드는?",
-        "choices": ["DISTINCT", "UNIQUE", "ONLY", "FILTER"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "DISTINCT는 SELECT 결과에서 완전히 동일한 행을 하나로 합쳐 중복을 제거하는 키워드다.",
-          "whyCorrect": "SELECT DISTINCT category FROM exams처럼 사용하면 같은 category 값이 여러 번 나와도 한 번만 표시된다.",
-          "whyIncorrect": "UNIQUE는 제약조건 이름이지 조회 키워드가 아니고, ONLY/FILTER는 표준 SQL의 중복 제거 키워드가 아니다.",
-          "examPoint": "DISTINCT는 SELECT 절 맨 앞에 한 번만 쓰며, 지정한 모든 컬럼 조합 기준으로 중복을 판단한다는 점에 주의한다.",
-          "practicalExample": "모의고사에 등장한 카테고리 목록을 중복 없이 뽑을 때 SELECT DISTINCT category를 사용한다."
-        }
-      },
-      {
-        "id": "q-sql-105",
-        "num": 5,
-        "category": "SQL",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "테이블 구조(컬럼 추가/삭제 등)를 변경하는 DDL 명령어는?",
-        "choices": ["ALTER TABLE", "UPDATE TABLE", "MODIFY TABLE", "CHANGE TABLE"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "ALTER TABLE은 이미 존재하는 테이블의 구조(컬럼 추가/삭제/타입 변경 등)를 바꾸는 DDL(Data Definition Language) 명령어다.",
-          "whyCorrect": "ALTER TABLE users ADD COLUMN phone VARCHAR(20);처럼 컬럼을 추가하거나 DROP COLUMN으로 삭제할 수 있다.",
-          "whyIncorrect": "UPDATE는 데이터(행) 값을 바꾸는 DML 명령어이고, MODIFY TABLE/CHANGE TABLE은 표준 SQL 명령어가 아니다.",
-          "examPoint": "DDL(CREATE/ALTER/DROP, 구조 변경)과 DML(INSERT/UPDATE/DELETE, 데이터 변경)을 구분하는 것이 기본이다.",
-          "practicalExample": "회원 테이블에 '가입 경로' 컬럼을 새로 추가해야 할 때 ALTER TABLE로 컬럼을 추가한다."
-        }
-      }
-    ],
-    "exam-011": [
-      {
-        "id": "q-html-101",
-        "num": 1,
-        "category": "HTML",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "비디오를 별도 플러그인 없이 삽입할 수 있는 HTML5 태그는?",
-        "choices": ["<video>", "<media>", "<movie>", "<embed-video>"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "<video> 태그는 HTML5에서 표준으로 제공하는 비디오 삽입 태그로, 별도 플러그인(Flash 등) 없이 브라우저가 직접 재생한다.",
-          "whyCorrect": "<video controls src='...'></video> 형태로 사용하며 controls 속성으로 재생 컨트롤 UI를 자동 제공한다.",
-          "whyIncorrect": "<media>, <movie>, <embed-video>는 존재하지 않는 태그다.",
-          "examPoint": "오디오는 <audio>, 비디오는 <video> 태그로 대응되며, 여러 포맷을 <source>로 함께 제공하는 방식도 함께 알아두면 좋다.",
-          "practicalExample": "튜토리얼 페이지에 강의 영상을 삽입할 때 <video controls>를 사용한다."
-        }
-      },
-      {
-        "id": "q-html-102",
-        "num": 2,
-        "category": "HTML",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "표 데이터를 표현할 때 헤더(제목) 셀을 나타내는 태그는?",
-        "choices": ["<th>", "<td>", "<head>", "<thead-cell>"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "<th>(table header)는 표의 헤더 셀을 의미하며, 스크린리더가 데이터 셀과 헤더를 구분해 읽어주는 데도 사용된다.",
-          "whyCorrect": "<th>는 기본적으로 굵게, 가운데 정렬로 렌더링되어 시각적으로도 일반 데이터 셀과 구분된다.",
-          "whyIncorrect": "<td>는 일반 데이터 셀, <head>는 문서 메타정보 영역이라 표와 무관하며, <thead-cell>은 존재하지 않는 태그다.",
-          "examPoint": "표 구조는 <table> > <thead>/<tbody> > <tr> > <th>/<td>로 이어지는 계층을 이해하는 것이 핵심이다.",
-          "practicalExample": "문제 목록 표에서 '번호/카테고리/난이도' 같은 제목 행을 <th>로 마크업한다."
-        }
-      },
-      {
-        "id": "q-html-103",
-        "num": 3,
-        "category": "HTML",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "여러 개의 관련 콘텐츠를 묶어 문서 내 별도 영역(섹션)으로 나눌 때 쓰는 태그는?",
-        "choices": ["<section>", "<div>", "<group>", "<block>"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "<section>은 주제별로 구분되는 콘텐츠 묶음을 의미하는 시맨틱 태그로, 보통 자체 제목(heading)을 가진다.",
-          "whyCorrect": "'모의고사 카테고리별 섹션'처럼 의미 있는 콘텐츠 그룹을 나눌 때 <section>이 적합하다.",
-          "whyIncorrect": "<div>는 의미 없는 범용 컨테이너이고, <group>/<block>은 HTML 표준 태그가 아니다.",
-          "examPoint": "이 페이지들처럼 <section id='exam'>, <section id='quiz'>로 화면 단위를 나누는 것도 실제 <section> 활용 사례다.",
-          "practicalExample": "위키 상세 페이지에서 '1. SELECT 기본 문법'처럼 소제목이 있는 콘텐츠 묶음을 <section>으로 나눈다."
-        }
-      },
-      {
-        "id": "q-html-104",
-        "num": 4,
-        "category": "HTML",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "사용자가 여러 옵션 중 하나(또는 여러 개)를 선택하는 드롭다운 목록을 만드는 태그는?",
-        "choices": ["<select>", "<dropdown>", "<input type='list'>", "<menu>"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "<select>는 여러 <option>을 감싸 드롭다운 형태의 선택 목록을 만드는 폼 요소다.",
-          "whyCorrect": "<select><option>SQL</option><option>Java</option></select>처럼 사용하며, multiple 속성으로 다중 선택도 가능하다.",
-          "whyIncorrect": "<dropdown>, <input type='list'>는 존재하지 않는 문법이고, <menu>는 컨텍스트 메뉴용 태그라 폼 선택과는 용도가 다르다.",
-          "examPoint": "체크박스/라디오는 눈에 보이는 소수 옵션에, select는 옵션이 많을 때 공간을 절약하는 용도로 주로 쓰인다는 점을 알아둔다.",
-          "practicalExample": "모의고사 응시 설정 화면에서 '문항 수'를 고를 때 <select>로 드롭다운을 만든다."
-        }
-      },
-      {
-        "id": "q-html-105",
-        "num": 5,
-        "category": "HTML",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "문서에서 본문과 관련은 있지만 부차적인 정보(사이드바 등)를 표현하는 시맨틱 태그는?",
-        "choices": ["<aside>", "<sidebar>", "<extra>", "<sub>"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "<aside>는 주 콘텐츠와 관련은 있지만 핵심은 아닌 보조 정보(광고, 관련 링크, 사이드바 등)를 감싸는 시맨틱 태그다.",
-          "whyCorrect": "이 프로젝트의 side-panel(내 모의고사 현황 등)처럼 본문을 보조하는 영역에 <aside>를 사용하는 것이 표준이다.",
-          "whyIncorrect": "<sidebar>, <extra>는 존재하지 않는 태그이고, <sub>는 아래첨자(하위 텍스트) 표시용 태그라 완전히 다른 용도다.",
-          "examPoint": "<aside>는 반드시 화면 오른쪽/왼쪽에 있어야 하는 것이 아니라 '본문의 보조 정보'라는 의미가 핵심이라는 점에 유의한다.",
-          "practicalExample": "이 프로젝트의 exam.html에서 '내 모의고사 현황'을 담은 side-panel이 <aside> 태그로 구현되어 있다."
-        }
-      }
-    ],
-    "exam-012": [
-      {
-        "id": "q-css-101",
-        "num": 1,
-        "category": "CSS",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "요소의 상태 변화(예: hover)를 부드럽게 전환시키는 CSS 속성은?",
-        "choices": ["transition", "animation-name", "transform-origin", "will-change"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "transition은 특정 속성 값이 변할 때 그 변화를 지정한 시간 동안 부드럽게 보간(interpolation)해주는 속성이다.",
-          "whyCorrect": "transition: background-color .2s;처럼 지정하면 hover 시 배경색이 즉시 바뀌지 않고 서서히 바뀐다.",
-          "whyIncorrect": "animation-name은 @keyframes 애니메이션을 지정하는 속성, transform-origin은 변형 기준점, will-change는 브라우저 최적화 힌트라 전환 효과 자체를 만들지 않는다.",
-          "examPoint": "transition(상태 변화 시 1회성 보간)과 animation(반복 가능한 시퀀스)의 차이를 구분해야 한다.",
-          "practicalExample": "이 프로젝트의 .exam-row:hover에서 box-shadow가 부드럽게 바뀌는 것도 transition 덕분이다."
-        }
-      },
-      {
-        "id": "q-css-102",
-        "num": 2,
-        "category": "CSS",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "여러 단계의 스타일 변화를 정의해 반복 재생 가능한 애니메이션을 만드는 CSS 규칙은?",
-        "choices": ["@keyframes", "@media", "@supports", "@font-face"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "@keyframes는 애니메이션의 시작(0%/from)부터 끝(100%/to)까지 여러 단계의 스타일을 정의하는 규칙이다.",
-          "whyCorrect": "정의한 @keyframes 이름을 animation-name 속성으로 연결하면 반복·역재생 등 다양한 애니메이션을 만들 수 있다.",
-          "whyIncorrect": "@media는 반응형 조건, @supports는 브라우저 기능 지원 여부 분기, @font-face는 커스텀 폰트 정의용이라 애니메이션 단계를 정의하지 않는다.",
-          "examPoint": "transition은 두 상태 사이만 보간하지만, @keyframes는 중간에 여러 지점을 세밀하게 지정할 수 있다는 차이를 기억한다.",
-          "practicalExample": "로딩 스피너가 계속 회전하는 효과를 만들 때 @keyframes spin과 무한 반복 animation을 사용한다."
-        }
-      },
-      {
-        "id": "q-css-103",
-        "num": 3,
-        "category": "CSS",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "뷰포트(화면) 너비의 1%를 나타내는 CSS 단위는?",
-        "choices": ["vw", "vh", "rem", "%"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "vw(viewport width)는 브라우저 뷰포트 너비를 100 등분한 상대 단위로, 1vw는 뷰포트 너비의 1%다.",
-          "whyCorrect": "화면 크기에 비례해 요소 크기를 조절하고 싶을 때 vw를 사용하면 화면이 커지고 작아짐에 따라 값도 함께 변한다.",
-          "whyIncorrect": "vh는 뷰포트 '높이' 기준 단위이고, rem은 루트 요소(html)의 font-size 기준, %는 부모 요소 기준이라 뷰포트 너비 자체를 기준으로 하지 않는다.",
-          "examPoint": "vw/vh(뷰포트 기준), rem(루트 폰트 기준), em(부모 폰트 기준), %(부모 크기 기준)의 기준점 차이를 표로 정리해두면 좋다.",
-          "practicalExample": "히어로 배너의 큰 제목 글자 크기를 화면 크기에 비례해 키우고 싶을 때 font-size: 5vw처럼 사용한다."
-        }
-      },
-      {
-        "id": "q-css-104",
-        "num": 4,
-        "category": "CSS",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "Flexbox에서 자식 요소가 남는 공간을 얼마나 차지할지 정하는 속성은?",
-        "choices": ["flex-grow", "flex-basis", "align-self", "order"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "flex-grow는 flex container 안에서 남는 여유 공간을 형제 요소들과 비교해 얼마나 더 가져갈지 비율로 지정하는 속성이다.",
-          "whyCorrect": "flex-grow: 1인 요소는 남는 공간을 모두 차지하고, flex-grow: 2인 요소는 flex-grow: 1인 요소보다 2배 더 많은 여유 공간을 가져간다.",
-          "whyIncorrect": "flex-basis는 기본 크기, align-self는 교차축 개별 정렬, order는 시각적 순서를 다루는 속성이라 남는 공간 배분과는 다른 역할이다.",
-          "examPoint": "flex: 1 1 0;처럼 flex 단축 속성이 grow/shrink/basis를 한 번에 지정한다는 점도 함께 알아두면 실전에서 유용하다.",
-          "practicalExample": "검색창은 남는 공간을 모두 차지하고 우측 아이콘들은 고정 크기로 두고 싶을 때 검색창에 flex-grow: 1을 지정한다."
-        }
-      },
-      {
-        "id": "q-css-105",
-        "num": 5,
-        "category": "CSS",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "요소를 화면에서 완전히 숨기면서 차지하던 공간도 없애는 속성값은?",
-        "choices": ["display: none", "visibility: hidden", "opacity: 0", "position: absolute"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "display: none은 요소를 렌더링 트리에서 아예 제거해, 화면에 보이지 않는 것은 물론 차지하던 공간도 사라지게 한다.",
-          "whyCorrect": "display: none이 적용된 요소는 레이아웃 계산에서 완전히 제외되어 다른 요소들이 그 공간을 채운다.",
-          "whyIncorrect": "visibility: hidden과 opacity: 0은 보이지 않게만 할 뿐 공간은 그대로 차지하고, position: absolute는 숨김과 무관한 배치 속성이다.",
-          "examPoint": "display: none(공간까지 제거) vs visibility: hidden(공간 유지, 상호작용 불가) vs opacity: 0(공간·상호작용 유지, 시각적으로만 투명)의 차이를 표로 익혀둔다.",
-          "practicalExample": "이 프로젝트에서 문제 세트를 카테고리별로 필터링할 때, 조건에 안 맞는 .exam-row를 display: none으로 숨긴다."
-        }
-      }
-    ],
-    "exam-013": [
-      {
-        "id": "q-js-101",
-        "num": 1,
-        "category": "JavaScript",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "객체의 속성 이름(key)들을 배열 형태로 가져오는 메서드는?",
-        "choices": ["Object.keys()", "Object.values()", "Object.entries()", "Object.freeze()"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Object.keys(obj)는 객체 자신이 가진 열거 가능한 속성 이름들을 배열로 반환한다.",
-          "whyCorrect": "Object.keys({a:1, b:2})는 ['a', 'b']를 반환해, 이후 map/forEach 등으로 각 키를 순회할 수 있게 해준다.",
-          "whyIncorrect": "Object.values()는 값만, Object.entries()는 [키, 값] 쌍을 반환하고, Object.freeze()는 객체를 동결(수정 불가)시키는 메서드라 키 목록 추출과는 다르다.",
-          "examPoint": "keys(키만) / values(값만) / entries(쌍) 세 메서드의 반환 형태 차이를 구분해서 기억한다.",
-          "practicalExample": "카테고리별 문제 개수를 담은 객체를 화면에 그릴 때 Object.keys()로 카테고리 이름 목록을 먼저 뽑는다."
-        }
-      },
-      {
-        "id": "q-js-102",
-        "num": 2,
-        "category": "JavaScript",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "DOM에서 특정 id를 가진 요소 하나를 선택하는 메서드는?",
-        "choices": ["document.getElementById()", "document.getElementsByClass()", "document.queryAll()", "document.findId()"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "document.getElementById(id)는 문서 내에서 지정한 id 속성을 가진 요소 하나를 반환하는 표준 DOM 메서드다.",
-          "whyCorrect": "id는 문서 내에서 유일해야 하므로, 이 메서드는 배열이 아니라 단일 요소(또는 null)를 반환한다.",
-          "whyIncorrect": "document.getElementsByClass()는 실제로는 getElementsByClassName()이 올바른 이름이고, document.queryAll()/document.findId()는 존재하지 않는 메서드다.",
-          "examPoint": "id 선택은 getElementById 또는 querySelector('#id') 두 가지 방식이 모두 가능하다는 점을 알아둔다.",
-          "practicalExample": "이 프로젝트의 quiz.js 전반에서 document.getElementById('quiz-choices')처럼 특정 영역을 선택할 때 사용한다."
-        }
-      },
-      {
-        "id": "q-js-103",
-        "num": 3,
-        "category": "JavaScript",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "배열에서 특정 조건을 만족하는 첫 번째 요소를 찾아 반환하는 메서드는?",
-        "choices": ["find()", "filter()", "some()", "includes()"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "find()는 배열을 순회하며 콜백 조건을 만족하는 첫 번째 요소를 찾으면 즉시 그 요소를 반환하고 순회를 멈춘다.",
-          "whyCorrect": "arr.find(x => x.id === 'exam-003')처럼 조건에 맞는 단일 객체를 바로 얻을 수 있다.",
-          "whyIncorrect": "filter()는 조건에 맞는 모든 요소를 배열로 반환하고, some()/includes()는 존재 여부를 boolean으로만 알려줄 뿐 요소 자체를 반환하지 않는다.",
-          "examPoint": "'요소 하나를 찾고 싶다'면 find(), '조건에 맞는 전부'가 필요하면 filter()를 쓰는 것이 관례다.",
-          "practicalExample": "이 프로젝트의 quiz.js에서 data.list.find(item => item.id === examId)로 현재 시험 정보를 찾는다."
-        }
-      },
-      {
-        "id": "q-js-104",
-        "num": 4,
-        "category": "JavaScript",
-        "difficulty": "고급",
-        "type": "객관식",
-        "point": 1,
-        "text": "여러 개의 Promise가 모두 완료(또는 하나라도 실패)될 때까지 기다리는 메서드는?",
-        "choices": ["Promise.all()", "Promise.race()", "Promise.resolve()", "Promise.any()"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Promise.all()은 배열로 전달된 여러 Promise가 모두 성공할 때까지 기다렸다가, 그 결과를 배열로 한 번에 반환한다.",
-          "whyCorrect": "하나라도 실패(reject)하면 즉시 그 실패로 처리되며, 전부 성공해야만 전체 결과 배열을 얻을 수 있다.",
-          "whyIncorrect": "Promise.race()는 가장 먼저 끝나는 것 하나만 기다리고, Promise.resolve()는 이미 완료된 Promise를 만드는 메서드, Promise.any()는 하나라도 성공하면 끝나는 메서드라 동작이 다르다.",
-          "examPoint": "all(전부 성공 필요) / race(가장 빠른 것) / any(하나라도 성공) / allSettled(성공·실패 모두 수집)의 차이를 표로 정리해두면 좋다.",
-          "practicalExample": "여러 카테고리의 JSON을 동시에 불러와야 할 때 각 fetch를 배열로 모아 Promise.all()로 한 번에 기다린다."
-        }
-      },
-      {
-        "id": "q-js-105",
-        "num": 5,
-        "category": "JavaScript",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "요소의 클래스 목록에서 특정 클래스를 '있으면 제거, 없으면 추가'하는 메서드는?",
-        "choices": ["classList.toggle()", "classList.add()", "classList.remove()", "classList.replace()"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "classList.toggle(className)은 요소가 해당 클래스를 이미 가지고 있으면 제거하고, 없으면 추가하는 동작을 한 번에 처리한다.",
-          "whyCorrect": "on/off 상태를 매번 조건문으로 확인할 필요 없이 toggle() 한 줄로 상태를 뒤집을 수 있다.",
-          "whyIncorrect": "add()는 항상 추가만, remove()는 항상 제거만 하고, replace()는 클래스 이름 자체를 다른 이름으로 바꾸는 메서드라 토글 동작과는 다르다.",
-          "examPoint": "toggle(className, force) 두 번째 인자로 boolean을 주면 무조건 추가/제거하도록 강제할 수도 있다는 점을 알아두면 좋다.",
-          "practicalExample": "이 프로젝트의 mywords 단어 퀴즈 옵션 선택 로직에서도 classList.toggle 계열 패턴으로 선택 상태를 표시한다."
-        }
-      }
-    ],
-    "exam-014": [
-      {
-        "id": "q-etc-101",
-        "num": 1,
-        "category": "기타",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "여러 명이 같은 파일의 같은 부분을 동시에 수정해 Git이 자동으로 병합하지 못하는 상태는?",
-        "choices": ["Merge Conflict", "Fast-forward", "Detached HEAD", "Fork"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Merge Conflict는 두 브랜치가 같은 파일의 같은 줄을 서로 다르게 변경해, Git이 어느 쪽을 남길지 자동으로 판단하지 못하는 상태다.",
-          "whyCorrect": "이 경우 충돌 표시(<<<<<<< / ======= / >>>>>>>)가 파일에 남고, 개발자가 직접 어떤 내용을 남길지 정리해야 한다.",
-          "whyIncorrect": "Fast-forward는 충돌 없이 브랜치가 단순히 앞으로 이동하는 병합 방식이고, Detached HEAD는 특정 커밋을 직접 보고 있는 상태, Fork는 저장소 자체를 복제하는 것이라 충돌 상황과는 다르다.",
-          "examPoint": "충돌이 나면 임의로 한쪽 파일을 통째로 버리지 말고, 두 변경 사항의 의도를 파악해 병합하는 것이 원칙이다(시스템 지침에도 명시된 원칙과 동일하다).",
-          "practicalExample": "두 팀원이 같은 exam.html의 같은 줄을 각자 수정해 push하면 나중에 병합하는 사람이 Merge Conflict를 해결해야 한다."
-        }
-      },
-      {
-        "id": "q-etc-102",
-        "num": 2,
-        "category": "기타",
-        "difficulty": "중급",
-        "type": "객관식",
-        "point": 1,
-        "text": "커밋하지 않은 변경 사항을 잠시 다른 곳에 저장해두고 작업 디렉토리를 깨끗하게 되돌리는 명령어는?",
-        "choices": ["git stash", "git commit --amend", "git checkout -- .", "git reset --soft"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "git stash는 아직 커밋하지 않은 변경 사항을 임시 저장 공간에 넣어두고, 작업 디렉토리를 마지막 커밋 상태로 되돌린다.",
-          "whyCorrect": "급하게 다른 브랜치로 전환해야 할 때 stash로 변경 사항을 잠시 치워두고, 나중에 git stash pop으로 다시 꺼내올 수 있다.",
-          "whyIncorrect": "git commit --amend는 직전 커밋을 수정하는 명령이고, git checkout -- .은 변경 사항을 완전히 버리는(복구 불가) 명령이며, git reset --soft는 커밋만 되돌리고 스테이징은 유지하는 명령이라 '임시 저장'과는 다르다.",
-          "examPoint": "stash는 변경 사항을 '버리는 것'이 아니라 '잠시 넣어두는 것'이라는 점에서 checkout -- .과 명확히 구분해야 한다(되돌리기 어려운 작업은 신중히 확인해야 한다).",
-          "practicalExample": "exam.html을 수정하던 중 급하게 다른 브랜치의 버그를 확인해야 할 때 git stash로 변경 사항을 잠시 저장해둔다."
-        }
-      },
-      {
-        "id": "q-etc-103",
-        "num": 3,
-        "category": "기타",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "원격 저장소의 최신 변경 사항을 가져오면서 현재 브랜치에 자동으로 병합까지 하는 명령어는?",
-        "choices": ["git pull", "git fetch", "git push", "git log"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "git pull은 git fetch(원격 변경 사항 가져오기) + git merge(현재 브랜치에 병합)를 한 번에 수행하는 명령어다.",
-          "whyCorrect": "git pull origin main을 실행하면 원격의 최신 커밋을 받아오면서 곧바로 현재 브랜치에 합쳐준다.",
-          "whyIncorrect": "git fetch는 가져오기만 하고 병합은 하지 않으며, git push는 반대로 로컬 변경을 원격에 올리는 명령, git log는 커밋 히스토리 조회 명령이라 병합과 무관하다.",
-          "examPoint": "충돌이 걱정되는 상황에서는 pull 대신 fetch로 먼저 변경 내용을 확인한 뒤 수동으로 merge/rebase하는 것이 더 안전하다는 점도 알아두면 좋다.",
-          "practicalExample": "TEAM_GUIDE.md의 작업 순서 1단계 'git pull'이 바로 이 명령어를 가리킨다."
-        }
-      },
-      {
-        "id": "q-etc-104",
-        "num": 4,
-        "category": "기타",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": "코드 변경 사항을 팀원에게 공유하고 리뷰받은 뒤 병합을 요청하기 위해 GitHub 등에서 만드는 것은?",
-        "choices": ["Pull Request", "Issue", "Release", "Webhook"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": "Pull Request(PR)는 한 브랜치의 변경 사항을 다른 브랜치(주로 main)에 병합해달라고 요청하며, 그 과정에서 코드 리뷰와 토론이 이루어지는 단위다.",
-          "whyCorrect": "PR을 통해 팀원들이 변경 내용을 리뷰하고, 문제가 없으면 승인 후 병합하는 것이 이 프로젝트의 표준 작업 순서(WORK_ORDER.md)다.",
-          "whyIncorrect": "Issue는 버그/작업 항목을 기록하는 단위, Release는 배포 버전을 표시하는 기능, Webhook은 이벤트 발생 시 외부로 알림을 보내는 기능이라 코드 병합 요청과는 다르다.",
-          "examPoint": "'커밋 → 리뷰 없이 바로 병합'이 아니라 'PR → 리뷰 → 병합' 순서를 지키는 것이 협업 품질을 지키는 핵심이라는 점을 기억한다.",
-          "practicalExample": "feature/exam 브랜치 작업을 마치면 main으로 병합해달라는 Pull Request를 생성해 리뷰를 요청한다."
-        }
-      },
-      {
-        "id": "q-etc-105",
-        "num": 5,
-        "category": "기타",
-        "difficulty": "기초",
-        "type": "객관식",
-        "point": 1,
-        "text": ".gitignore 파일의 역할은?",
-        "choices": ["Git이 추적하지 않을 파일/폴더 목록을 지정한다", "커밋 메시지 양식을 강제한다", "브랜치 이름 규칙을 강제한다", "원격 저장소 주소를 저장한다"],
-        "answerIndex": 0,
-        "explanation": {
-          "coreConcept": ".gitignore는 node_modules, .env, 빌드 산출물처럼 버전 관리에 포함시키지 않을 파일/폴더 패턴을 지정하는 설정 파일이다.",
-          "whyCorrect": ".gitignore에 등록된 패턴과 일치하는 파일은 git add로도 스테이징되지 않고 git status에도 나타나지 않는다.",
-          "whyIncorrect": "커밋 메시지 양식이나 브랜치 이름 규칙은 팀 컨벤션(문서)으로 관리하는 것이지 .gitignore의 역할이 아니고, 원격 저장소 주소는 .git/config에 저장된다.",
-          "examPoint": "민감한 정보(.env, credentials.json 등)를 실수로 커밋하지 않도록 프로젝트 초기에 .gitignore를 잘 설정해두는 것이 중요하다는 점도 함께 기억한다.",
-          "practicalExample": "이 프로젝트에서도 임시 파일이나 개인 설정 파일을 커밋에서 제외하고 싶다면 .gitignore에 해당 경로를 추가한다."
-        }
+        "examId": "exam-007",
+        "questionId": "q-etc-001"
       }
     ]
   },
   "attemptHistory": [
-    { "examId": "exam-001", "title": "세일즈포스 Apex 기초 테스트", "icon": "☁️", "score": 90, "pointsEarned": 120, "date": "2025-06-05" },
-    { "examId": "exam-007", "title": "Git & 협업 기본 모의고사", "icon": "🔀", "score": 70, "pointsEarned": 90, "date": "2025-06-10" },
-    { "examId": "exam-002", "title": "Java 객체지향 개념 테스트", "icon": "☕", "score": 65, "pointsEarned": 80, "date": "2025-06-15" },
-    { "examId": "exam-003", "title": "SQL 기초 6문제", "icon": "🗄️", "score": 80, "pointsEarned": 100, "date": "2025-06-20" }
+    {
+      "examId": "exam-001",
+      "title": "세일즈포스 Apex 기초 테스트",
+      "icon": "☁️",
+      "score": 90,
+      "pointsEarned": 120,
+      "date": "2025-06-05"
+    },
+    {
+      "examId": "exam-007",
+      "title": "Git & 협업 기본 모의고사",
+      "icon": "🔀",
+      "score": 70,
+      "pointsEarned": 90,
+      "date": "2025-06-10"
+    },
+    {
+      "examId": "exam-002",
+      "title": "Java 객체지향 개념 테스트",
+      "icon": "☕",
+      "score": 65,
+      "pointsEarned": 80,
+      "date": "2025-06-15"
+    },
+    {
+      "examId": "exam-003",
+      "title": "SQL 기초 6문제",
+      "icon": "🗄️",
+      "score": 80,
+      "pointsEarned": 100,
+      "date": "2025-06-20"
+    }
   ],
   "wrongNoteSamples": [
-    { "examId": "exam-003", "questionId": "q-sql-002" },
-    { "examId": "exam-002", "questionId": "q-java-003" },
-    { "examId": "exam-006", "questionId": "q-js-004" }
+    {
+      "examId": "exam-003",
+      "questionId": "q-sql-002"
+    },
+    {
+      "examId": "exam-002",
+      "questionId": "q-java-003"
+    },
+    {
+      "examId": "exam-006",
+      "questionId": "q-js-004"
+    }
   ]
 }

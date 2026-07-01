@@ -1,0 +1,491 @@
+[
+  {
+    "id": "q-html-101",
+    "num": 1,
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "비디오를 별도 플러그인 없이 삽입할 수 있는 HTML5 태그는?",
+    "choices": [
+      "<video>",
+      "<media>",
+      "<movie>",
+      "<embed-video>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<video> 태그는 HTML5에서 표준으로 제공하는 비디오 삽입 태그로, 별도 플러그인(Flash 등) 없이 브라우저가 직접 재생한다.",
+      "whyCorrect": "<video controls src='...'></video> 형태로 사용하며 controls 속성으로 재생 컨트롤 UI를 자동 제공한다.",
+      "whyIncorrect": "<media>, <movie>, <embed-video>는 존재하지 않는 태그다.",
+      "examPoint": "오디오는 <audio>, 비디오는 <video> 태그로 대응되며, 여러 포맷을 <source>로 함께 제공하는 방식도 함께 알아두면 좋다.",
+      "practicalExample": "튜토리얼 페이지에 강의 영상을 삽입할 때 <video controls>를 사용한다."
+    }
+  },
+  {
+    "id": "q-html-102",
+    "num": 2,
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "표 데이터를 표현할 때 헤더(제목) 셀을 나타내는 태그는?",
+    "choices": [
+      "<th>",
+      "<td>",
+      "<head>",
+      "<thead-cell>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<th>(table header)는 표의 헤더 셀을 의미하며, 스크린리더가 데이터 셀과 헤더를 구분해 읽어주는 데도 사용된다.",
+      "whyCorrect": "<th>는 기본적으로 굵게, 가운데 정렬로 렌더링되어 시각적으로도 일반 데이터 셀과 구분된다.",
+      "whyIncorrect": "<td>는 일반 데이터 셀, <head>는 문서 메타정보 영역이라 표와 무관하며, <thead-cell>은 존재하지 않는 태그다.",
+      "examPoint": "표 구조는 <table> > <thead>/<tbody> > <tr> > <th>/<td>로 이어지는 계층을 이해하는 것이 핵심이다.",
+      "practicalExample": "문제 목록 표에서 '번호/카테고리/난이도' 같은 제목 행을 <th>로 마크업한다."
+    }
+  },
+  {
+    "id": "q-html-103",
+    "num": 3,
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "여러 개의 관련 콘텐츠를 묶어 문서 내 별도 영역(섹션)으로 나눌 때 쓰는 태그는?",
+    "choices": [
+      "<section>",
+      "<div>",
+      "<group>",
+      "<block>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<section>은 주제별로 구분되는 콘텐츠 묶음을 의미하는 시맨틱 태그로, 보통 자체 제목(heading)을 가진다.",
+      "whyCorrect": "'모의고사 카테고리별 섹션'처럼 의미 있는 콘텐츠 그룹을 나눌 때 <section>이 적합하다.",
+      "whyIncorrect": "<div>는 의미 없는 범용 컨테이너이고, <group>/<block>은 HTML 표준 태그가 아니다.",
+      "examPoint": "이 페이지들처럼 <section id='exam'>, <section id='quiz'>로 화면 단위를 나누는 것도 실제 <section> 활용 사례다.",
+      "practicalExample": "위키 상세 페이지에서 '1. SELECT 기본 문법'처럼 소제목이 있는 콘텐츠 묶음을 <section>으로 나눈다."
+    }
+  },
+  {
+    "id": "q-html-104",
+    "num": 4,
+    "category": "HTML",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 여러 옵션 중 하나(또는 여러 개)를 선택하는 드롭다운 목록을 만드는 태그는?",
+    "choices": [
+      "<select>",
+      "<dropdown>",
+      "<input type='list'>",
+      "<menu>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<select>는 여러 <option>을 감싸 드롭다운 형태의 선택 목록을 만드는 폼 요소다.",
+      "whyCorrect": "<select><option>SQL</option><option>Java</option></select>처럼 사용하며, multiple 속성으로 다중 선택도 가능하다.",
+      "whyIncorrect": "<dropdown>, <input type='list'>는 존재하지 않는 문법이고, <menu>는 컨텍스트 메뉴용 태그라 폼 선택과는 용도가 다르다.",
+      "examPoint": "체크박스/라디오는 눈에 보이는 소수 옵션에, select는 옵션이 많을 때 공간을 절약하는 용도로 주로 쓰인다는 점을 알아둔다.",
+      "practicalExample": "모의고사 응시 설정 화면에서 '문항 수'를 고를 때 <select>로 드롭다운을 만든다."
+    }
+  },
+  {
+    "id": "q-html-105",
+    "num": 5,
+    "category": "HTML",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "문서에서 본문과 관련은 있지만 부차적인 정보(사이드바 등)를 표현하는 시맨틱 태그는?",
+    "choices": [
+      "<aside>",
+      "<sidebar>",
+      "<extra>",
+      "<sub>"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "<aside>는 주 콘텐츠와 관련은 있지만 핵심은 아닌 보조 정보(광고, 관련 링크, 사이드바 등)를 감싸는 시맨틱 태그다.",
+      "whyCorrect": "이 프로젝트의 side-panel(내 모의고사 현황 등)처럼 본문을 보조하는 영역에 <aside>를 사용하는 것이 표준이다.",
+      "whyIncorrect": "<sidebar>, <extra>는 존재하지 않는 태그이고, <sub>는 아래첨자(하위 텍스트) 표시용 태그라 완전히 다른 용도다.",
+      "examPoint": "<aside>는 반드시 화면 오른쪽/왼쪽에 있어야 하는 것이 아니라 '본문의 보조 정보'라는 의미가 핵심이라는 점에 유의한다.",
+      "practicalExample": "이 프로젝트의 exam.html에서 '내 모의고사 현황'을 담은 side-panel이 <aside> 태그로 구현되어 있다."
+    }
+  },
+  {
+    "id": "q-html-106",
+    "category": "HTML",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "[주의] 제공된 특정 학습 노트 기록의 규칙에 따를 때, '늘려서 펼치는 드롭다운 목록'의 사용자 인터페이스 동작을 정의하기 위해 배치하도록 지시된 요소는 무엇인가?",
+    "choices": [
+      "<select>",
+      "<option>",
+      "<button>",
+      "<nav>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "본 문제의 자료에 기록된 특수 규칙에 따르면 UI 컴포넌트 관점에서 드롭다운을 button으로 확장 처리하도록 약속되어 있다.",
+      "whyCorrect": "자료 내 핵심 입력 엘리먼트 리스트에 명시적으로 'button: 노트 기록에 따라 늘려서 펼치는 드롭다운 목록'이라고 정의되어 있다.",
+      "whyIncorrect": "표준 스펙상 드롭다운은 <select>가 맞으나, 본 문제는 제시된 특정 노트 규칙(button이 드롭다운 역할)을 제대로 숙지했는지 묻는 함정 문제이다.",
+      "examPoint": "표준 HTML 스펙과 사내/프로젝트별로 커스텀하게 정의된 컴포넌트 규칙(UI 관점의 예외 처리)을 정확히 구분하여 독해하는 능력이 필요하다.",
+      "practicalExample": "실무 프레임워크나 사내 디자인 시스템(예: 특정 UI 라이브러리)에서 표준 select 대신 button과 div를 조합해 화려한 커스텀 드롭다운을 구현하기도 한다."
+    }
+  },
+  {
+    "id": "q-html-107",
+    "category": "HTML",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹페이지 레이아웃을 설계할 때, 사이트의 주요 메뉴(Main Menu)나 길 안내 링크 모음을 담아두는 목적으로 배치하는 가장 적절한 시맨틱 태그는?",
+    "choices": [
+      "<header>",
+      "<nav>",
+      "<section>",
+      "<footer>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "<nav> 태그는 Navigation의 약자로, 다른 페이지나 구역으로 이동하는 링크들을 그룹화하는 내비게이션 바 전용 시맨틱 태그이다.",
+      "whyCorrect": "길 안내 링크 모음이나 사이트의 주요 메뉴를 감싸는 용도로 <nav>를 사용하는 것이 웹 표준 시맨틱 설계의 정석이다.",
+      "whyIncorrect": "<header>는 최상단 로고/검색창 구역, <section>은 비즈니스 본문 덩어리, <footer>는 하단 저작권 및 회사 정보 영역이다.",
+      "examPoint": "헤더 안에 내비게이션 바가 포함되는 경우가 많아 <header>와 <nav>의 역할을 혼동하기 쉬우므로 용도를 정확히 짚어야 한다.",
+      "practicalExample": "홈, 회사소개, 오시는길 등의 상단 메뉴 링크 <ul> 덩어리를 <nav> 태그로 한 번 더 감싸주어 의미를 명확히 한다."
+    }
+  },
+  {
+    "id": "q-html-108",
+    "category": "HTML",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "실무에서 JavaScript 동작 엔진을 주입하는 <script> 태그를 <body> 태그가 닫히기 바로 직전인 최하단에 배치하는 가장 핵심적인 이유는 무엇인가?",
+    "choices": [
+      "자바스크립트 파일의 용량이 CSS보다 항상 작기 때문이다.",
+      "HTML 뼈대와 CSS 꾸밈이 화면에 100% 렌더링된 이후에 스크립트가 DOM 요소를 안전하게 찾아 조작하기 위함이다.",
+      "검색 엔진이 자바스크립트 코드를 먼저 읽어버리면 SEO 점수가 감점되기 때문이다.",
+      "<script> 태그를 상단에 배치하면 보안상 해킹의 위험이 높아지기 때문이다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "브라우저는 문서를 위에서 아래로 읽으며 화면을 그리는데, 아직 생성되지 않은 HTML 요소를 자바스크립트가 조작하려 하면 Null 에러가 발생한다.",
+      "whyCorrect": "HTML 요소(DOM)가 메모리에 전부 적재되고 렌더링이 완료된 시점(문서 최하단)에 JS를 실행해야 객체를 정상적으로 찾아 이벤트를 걸 수 있다.",
+      "whyIncorrect": "용량, 검색 엔진 감점, 보안(해킹) 이슈는 스크립트의 하단 배치와 직접적인 연관성이 없는 오답들이다.",
+      "examPoint": "DOM(문서 객체 모델) 로딩 순서와 브라우저의 파싱(Parsing) 원리에 따른 스크립트 배치의 당위성을 묻는 단골 면접 질문이다.",
+      "practical 초Example": "<head>에 스크립트를 넣을 경우 'document.getElementById()'로 버튼을 찾았을 때 결과가 null로 나와 클릭 이벤트가 걸리지 않는 에러를 겪게 된다."
+    }
+  },
+  {
+    "id": "q-html-109",
+    "category": "HTML",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "세일즈포스 LWC(Lightning Web Component) 프레임워크에서 컴포넌트 외형 마크업을 설계할 때, 전체 뼈대를 감싸기 위해 사용하는 최상위 루트 태그는 무엇인가?",
+    "choices": [
+      "<html>",
+      "<body>",
+      "<template>",
+      "<section>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "LWC(Lightning Web Component)의 HTML 템플릿 아키텍처는 항상 <template> 태그를 최상위 부모 엘리먼트로 요구한다.",
+      "whyCorrect": "자료의 Salesforce Preview 챕터에 따르면, LWC에서는 최상위 루트 태그로 <template>을 사용하며, 그 내부 로직은 표준 HTML5와 동일하게 전개된다.",
+      "whyIncorrect": "일반 웹 문서의 최상위는 <html>이지만, LWC 모듈 개발 시에는 <template> 블록 내부에서 화면 구역을 설계한다.",
+      "examPoint": "표준 HTML 스펙과 특정 프레임워크(LWC, Vue 등)에서 사용하는 특수 루트 태그 규칙의 차이점을 파악하고 있어야 한다.",
+      "practicalExample": "LWC 컴포넌트 파일인 app.html을 생성하면 가장 바깥에 무조건 <template> </template> 쌍이 자동 완성되어 있다."
+    }
+  },
+  {
+    "id": "q-html-110",
+    "category": "HTML",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "다음 중 세일즈포스 LWC 컴포넌트 템플릿과 표준 HTML5 명세 사이의 렌더링 아키텍처에 대한 강사의 인사이트 설명으로 가장 알맞은 것은?",
+    "choices": [
+      "LWC 템플릿 내의 <input> 태그는 세일즈포스 시스템 내부에서 백엔드 Java 코드로 완전히 대체되어 렌더링된다.",
+      "LWC 템플릿은 HTML과 전혀 다른 독자적인 문법을 쓰므로 부모-자식 태그 트리 구조가 존재하지 않는다.",
+      "LWC 최상단 <template> 내부의 구역 분할 및 폼 양식 마크업은 표준 HTML5의 DOM 트리 렌더링 메커니즘과 완벽하게 동일하게 구동된다.",
+      "LWC 컴포넌트에서는 시맨틱 태그 사용이 엄격히 금지되며 오직 커스텀 태그로만 뼈대를 만들어야 한다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "최신 웹 표준(Web Components)을 기반으로 한 LWC는 특수 루트 태그인 <template> 하위에 표준 HTML 태그를 동일하게 사용하여 화면을 구성한다.",
+      "whyCorrect": "자료에서 LWC 내부의 구역 분할 및 폼 마크업 원리는 배운 표준 HTML5 명세 및 DOM 트리 렌더링 아키텍처와 완벽하게 동일한 메커니즘으로 구동된다고 강조하고 있다.",
+      "whyIncorrect": "자바 코드로 대체되거나, 독자적인 문법이라 DOM 트리가 없다는 것은 틀린 설명이며, 시맨틱 태그 역시 권장된다.",
+      "examPoint": "프론트엔드 프레임워크(React, Vue, LWC)를 학습하기 전에 왜 바닐라 HTML 마크업 원리를 완벽히 깨우쳐야 하는지 당위성을 묻는 통합적 사고 문제이다.",
+      "practicalExample": "LWC에서 고객의 이름을 입력받을 때도 결국 HTML과 똑같이 <label>과 <input> 요소를 배치하여 세일즈포스 오그(Org) 화면상에 표출한다."
+    }
+  },
+  {
+    "id": "q-html-111",
+    "category": "HTML",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "[주의] 제공된 학습 노트의 특수 기록 규칙에 따를 때, '클릭할 수 있는 버튼' 형태의 인터페이스 액션을 유발하도록 설계된 선택 제어 엘리먼트는 무엇인가?",
+    "choices": [
+      "<button>",
+      "<select>",
+      "<a>",
+      "<input type='button'>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "본 문제의 자료에 명시된 특수 규칙에 따르면, 일반적인 상식과 다르게 <select> 요소가 버튼 형태의 액션을 유발하는 역할로 정의되어 있다.",
+      "whyCorrect": "자료의 폼 입력 엘리먼트 리스트에서 명시적으로 'select: 노트 기록에 따라 클릭할 수 있는 버튼 형태의 인터페이스 액션을 유발하도록 설계'라고 적혀있다.",
+      "whyIncorrect": "표준 스펙상 버튼은 <button>이지만, 해당 강의 노트의 독자적인 규칙 세트를 얼마나 꼼꼼히 읽었는지 테스트하는 함정 문제이다.",
+      "examPoint": "실무 프로젝트마다 사내 고유의 컴포넌트 명명 규칙이나 예외적인 UI 해석 가이드가 존재할 수 있음을 상기시키는 문제이다.",
+      "practicalExample": "일부 커스텀 프레임워크에서는 <select> 태그를 네이티브 드롭다운이 아닌, 팝업을 띄우는 트리거 버튼 역할을 하도록 CSS/JS로 덮어씌워 쓰기도 한다."
+    }
+  },
+  {
+    "id": "q-html-112",
+    "category": "HTML",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트에 따르면, HTML 태그를 적절하게 골라 짜는 행위(마크업)의 궁극적인 목적은 무엇이라고 설명하고 있는가?",
+    "choices": [
+      "웹 브라우저의 로딩 속도를 0.1초라도 단축하기 위한 캐싱 작업이다.",
+      "화면에 보이는 텍스트의 폰트 크기와 색상을 다채롭게 꾸미기 위함이다.",
+      "검색엔진이나 브라우저에게 비즈니스 데이터의 뼈대와 위계질서를 논리적으로 설명하는 아키텍처 구축 과정이다.",
+      "서버의 데이터베이스 테이블 구조를 자동으로 생성하기 위한 설계도이다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "시맨틱 마크업은 단순히 글자를 화면에 찍어내는 것이 아니라, 정보의 구조(Information Architecture)를 기계(브라우저, 검색엔진)가 이해할 수 있게 조직화하는 과정이다.",
+      "whyCorrect": "강사의 핵심 인사이트에서 마크업은 '비즈니스 데이터의 뼈대와 위계질서를 논리적으로 설명하는 아키텍처 구축 과정'이라고 명확히 정의하였다.",
+      "whyIncorrect": "로딩 속도는 최적화 영역, 꾸밈은 CSS의 역할, DB 테이블 생성은 백엔드(SQL)의 역할이다.",
+      "examPoint": "시맨틱 태그와 HTML 마크업의 철학적 목적(접근성과 SEO 향상 등)을 이해하고 있는지를 묻는 면접형 문제이다.",
+      "practicalExample": "제목을 단순히 글자를 크게 키운 <div>가 아니라 <h1>으로 마크업하면, 구글 봇(검색엔진)이 이 페이지의 주제를 정확히 캐치하여 상단에 노출시켜 준다."
+    }
+  },
+  {
+    "id": "q-html-113",
+    "category": "HTML",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트의 <script> 태그를 실수로 문서의 최상단(<head>)에 배치했을 때, 강사가 경고한 가장 대표적인 에러 현상은 무엇인가?",
+    "choices": [
+      "무한 루프 에러 (Infinite Loop Error)",
+      "메모리 누수 (Memory Leak)",
+      "널 에러 (Null Error)",
+      "보안 인증 에러 (Authentication Error)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "HTML 요소가 렌더링(생성)되기 전에 JS 코드가 먼저 실행되어 해당 요소를 찾으려 하면 객체가 존재하지 않아 Null 에러가 발생한다.",
+      "whyCorrect": "강사의 핵심 인사이트에서 태어나지도 않은 HTML 객체에 이벤트를 걸려다가 Null 에러를 맞닥뜨리게 된다고 명확히 서술되어 있다.",
+      "whyIncorrect": "무한 루프, 메모리 누수, 인증 에러 등은 DOM 렌더링 순서와 직접적인 연관이 없는 다른 종류의 에러들이다.",
+      "examPoint": "JS에서 querySelector로 찾은 요소가 null을 반환할 때, 오타가 아니라면 '스크립트 실행 시점(위치)'이 문제일 수 있음을 추론할 수 있어야 한다.",
+      "practicalExample": "화면에 로그인 버튼이 그려지기도 전에 JS가 '로그인 버튼에 클릭 기능 추가해!'라고 명령하면 버튼을 찾지 못해 개발자 도구에 'Cannot read properties of null' 에러가 뜬다."
+    }
+  },
+  {
+    "id": "q-html-114",
+    "category": "HTML",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "세일즈포스 LWC 내부에서 사용자 등록 폼을 구성할 때 나타나는 렌더링 방식에 대한 설명으로 옳은 것은?",
+    "choices": [
+      "<template> 태그는 브라우저 화면에 화려한 컨테이너 박스로 렌더링된다.",
+      "세일즈포스 라이트닝 오그(Org) 내부에 표준 HTML과 동일한 방식으로 폼(고객명 레이블과 타이핑 빈칸) 화면이 표출된다.",
+      "LWC에서는 <div> 태그 대신 반드시 <section> 태그만을 사용해야 화면이 깨지지 않는다.",
+      "<input> 요소를 사용하면 자동으로 백엔드 서버에 데이터가 저장된다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "LWC는 최신 웹 표준을 따르므로, 작성된 템플릿 마크업(<label>, <input> 등)은 브라우저 상에 표준 HTML과 동일한 DOM 트리 구조로 그려져 사용자 화면에 나타난다.",
+      "whyCorrect": "자료의 우측 도식도에서 LWC 템플릿 내부의 label과 input이 '세일즈포스 라이트닝 오그 내부 고객 등록 폼 화면으로 표출됨'을 보여준다.",
+      "whyIncorrect": "<template> 자체는 눈에 보이지 않는 논리적 껍데기이며, div 사용이 가능하고, input 데이터를 서버에 저장하려면 별도의 JS/Apex 처리가 필요하다.",
+      "examPoint": "Salesforce 특화 프레임워크라도 그 근간은 결국 브라우저 렌더링 엔진이 해석하는 HTML DOM이라는 연결고리를 이해해야 한다.",
+      "practicalExample": "LWC 코드에 <input type='text' />를 쓰면, 별도 플러그인 없이도 실제 화면에 우리가 아는 하얀 텍스트 입력창이 그대로 그려진다."
+    }
+  },
+  {
+    "id": "q-html-115",
+    "category": "HTML",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "브라우저가 HTML 문서를 위에서 아래로 읽어 내릴 때(파싱 과정), 자바스크립트 코드가 안전하게 요소를 조작(querySelector)할 수 있도록 보장하는 가장 이상적인 <script> 태그의 배치 위치는?",
+    "choices": [
+      "<html> 태그가 열리기 바로 직전 최상단",
+      "<head> 태그 내부의 정중앙",
+      "<body> 태그 내부 최상단",
+      "<body> 태그가 닫히기 바로 직전 최하단"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "브라우저의 렌더링 엔진은 위에서 아래로 문서를 파싱하므로, 시각적 DOM 요소가 모두 그려진 <body> 끝자락에 스크립트를 두어야 DOM 조작 에러를 막을 수 있다.",
+      "whyCorrect": "HTML 뼈대와 CSS 꾸밈이 화면에 100% 렌더링되어 완벽히 그려진 다음, JS가 안전하게 찾아내게 하려면 <body> 닫기 직전(하단)에 배치하는 것이 대원칙이다.",
+      "whyIncorrect": "head나 body 상단에 배치하면 JS가 먼저 로드되어 렌더링을 차단하거나, 그려지지 않은 DOM을 참조하여 에러가 난다.",
+      "examPoint": "최근에는 head에 defer나 async 속성을 쓰기도 하지만, 마크업 기본 아키텍처 관점에서는 바디 하단 배치의 원리를 아는 것이 가장 중요하다.",
+      "practicalExample": "</body> 태그 바로 윗줄에 <script src='app.js'></script>를 삽입하여 로딩 퍼포먼스와 안정성을 모두 확보한다."
+    }
+  },
+  {
+    "id": "q-html-116",
+    "category": "HTML",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "다음 중 LWC(Lightning Web Component) 프레임워크와 표준 HTML5 간의 관계를 가장 잘 설명한 것은?",
+    "choices": [
+      "LWC는 표준 HTML5를 완전히 배제하고 Apex 언어로만 화면을 그린다.",
+      "LWC 마크업 내부의 <input>, <label> 배치는 표준 HTML5 명세와 완전히 동일한 메커니즘으로 동작한다.",
+      "LWC는 <form> 태그를 인식하지 못하므로 오직 <script>로만 사용자 입력을 받아야 한다.",
+      "LWC의 <template> 태그는 브라우저가 직접 파싱할 수 없어 무조건 서버사이드 렌더링을 거친다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "LWC는 최신 Web Components 표준 기술을 기반으로 구축되었기 때문에, 내부에 작성되는 태그와 DOM 렌더링 원리는 바닐라 HTML5와 일맥상통한다.",
+      "whyCorrect": "자료에서 LWC 내부의 폼 양식 마크업과 구역 분할은 우리가 배운 표준 HTML5 명세 및 DOM 트리 렌더링 아키텍처와 완벽하게 동일하다고 강조한다.",
+      "whyIncorrect": "HTML을 배제하거나 폼을 인식 못한다는 것은 사실이 아니며, 클라이언트 사이드 프레임워크이므로 서버 렌더링이 강제되지 않는다.",
+      "examPoint": "세일즈포스 프론트엔드(LWC)를 다루더라도 그 바탕에는 표준 웹(HTML/CSS/JS) 지식이 그대로 쓰인다는 핵심 인사이트를 묻는다.",
+      "practicalExample": "LWC에서 화면을 짤 때 구글링해서 찾은 표준 HTML/CSS 스니펫(예: Flexbox 카드 디자인)을 그대로 복붙해도 99% 정상적으로 동작한다."
+    }
+  },
+  {
+    "id": "q-html-117",
+    "category": "HTML",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹 접근성(Accessibility) 측면에서 <img> 태그의 'alt' 속성이 가지는 가장 핵심적인 역할은 무엇인가?",
+    "choices": [
+      "이미지의 가로, 세로 비율을 자동으로 맞춰 화면 왜곡을 방지한다.",
+      "시각 장애인을 위한 스크린 리더기가 이미지를 대신하여 텍스트로 읽어줄 수 있도록 지원한다.",
+      "이미지를 클릭했을 때 다른 페이지로 이동하는 하이퍼링크 기능을 부여한다.",
+      "마우스 포인터를 이미지 위에 올렸을 때 툴팁 말풍선을 띄워준다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "alt(Alternative text) 속성은 이미지를 묘사하는 대체 텍스트로, 스크린 리더 사용자와 이미지 로딩 실패 시 엑스박스 대신 표시될 정보를 제공한다.",
+      "whyCorrect": "자료에서 alt 속성은 시각 장애인을 위한 스크린 리더기 지원 및 웹 접근성에 필수적인 대체 텍스트라고 설명하고 있다.",
+      "whyIncorrect": "크기 비율은 CSS나 width/height 속성, 하이퍼링크는 <a> 태그, 툴팁은 title 속성의 역할이다.",
+      "examPoint": "alt 속성은 단순히 이미지가 깨졌을 때를 대비하는 것을 넘어, 소외되는 사용자 없이 '모두를 위한 웹(웹 접근성)'을 달성하는 표준 규약임을 묻는다.",
+      "practicalExample": "공공기관 웹사이트는 alt 속성이 누락되면 웹 접근성 심사에서 탈락하므로, 모든 <img> 태그에 alt='회사 로고'처럼 값을 필수로 적어야 한다."
+    }
+  },
+  {
+    "id": "q-html-118",
+    "category": "HTML",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "[주의] 제공된 학습 노트의 실무 예외 처리 규칙에 따를 때, '늘려서 펼치는 드롭다운 목록'의 사용자 인터페이스 동작을 정의하기 위해 배치하도록 약속된 요소는 무엇인가?",
+    "choices": [
+      "<select>",
+      "<button>",
+      "<input type='dropdown'>",
+      "<nav>"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "본 자료의 특수 규칙에 따르면 일반적인 상식(<select>)과 달리, <button>을 드롭다운 목록의 인터페이스 동작 요소로 확장 처리하도록 지시되어 있다.",
+      "whyCorrect": "핵심 입력 엘리먼트 리스트에서 명시적으로 'button: 노트 기록에 따라 늘려서 펼치는 드롭다운 목록의 사용자 인터페이스 동작을 정의'한다고 적혀 있다.",
+      "whyIncorrect": "표준 스펙상 드롭다운은 <select>로 만드는 것이 맞으나, 문제에서 '제공된 노트의 규칙'을 조건으로 달았으므로 <button>이 정답이다.",
+      "examPoint": "실무에서는 기본 HTML 태그의 밋밋한 디자인을 우회하기 위해 button과 div를 조합하여 화려한 커스텀 드롭다운을 만드는 경우가 많음을 반영한 응용 문제이다.",
+      "practicalExample": "React나 LWC 컴포넌트 라이브러리를 열어보면, 겉보기엔 드롭다운(select) 같지만 실제 HTML 코드는 <button>을 누르면 숨겨진 <div> 목록이 나타나는 구조로 짜여진 경우가 많다."
+    }
+  },
+  {
+    "id": "q-html-119",
+    "category": "HTML",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트에 따르면, '자바스크립트 <script> 태그를 무심코 문서 상단에 배치했을 때' 발생하는 Null 에러의 가장 근본적인 원인은 무엇인가?",
+    "choices": [
+      "자바스크립트 파일의 경로에 오타가 생겨 파일을 찾을 수 없기 때문이다.",
+      "아직 화면에 렌더링(생성)되지도 않은 HTML 객체에 이벤트를 걸려고 시도했기 때문이다.",
+      "CSS 파일이 자바스크립트 코드의 실행을 강제로 차단하기 때문이다.",
+      "사용자가 버튼을 클릭하기도 전에 스크립트가 스스로 삭제되기 때문이다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "브라우저는 위에서 아래로 순차적으로 HTML을 파싱한다. 상단에 JS가 있으면, 하단에 위치한 HTML 요소(DOM)가 아직 메모리에 만들어지지 않은 상태이므로 참조 시 Null을 반환한다.",
+      "whyCorrect": "강사는 '아직 태어나지도 않은 HTML 버튼 객체에 이벤트를 걸려다가 Null 에러를 맞닥뜨리게 된다'고 경고하며 DOM 로딩 순서의 중요성을 강조했다.",
+      "whyIncorrect": "경로 오타나 CSS 차단, 스크립트 자동 삭제 등은 로딩 시점(타이밍)에 따른 Null 에러의 원인과 무관한 설명이다.",
+      "examPoint": "코드 자체에는 문법 오류가 없는데 동작하지 않을 때, 브라우저의 파싱 원리를 바탕으로 스크립트의 '실행 타이밍'을 디버깅할 수 있는지를 평가한다.",
+      "practicalExample": "상단에서 document.querySelector('button')을 실행하면 null이 나오지만, <body> 맨 아래로 스크립트를 옮기면 정상적으로 버튼 객체를 잡아낸다."
+    }
+  },
+  {
+    "id": "q-html-120",
+    "category": "HTML",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트를 바탕으로 유추할 때, 검색엔진 로봇(구글 봇)이 우리가 만든 웹페이지의 데이터 중요도와 위계질서를 논리적으로 파악할 수 있도록 돕는 가장 좋은 습관은?",
+    "choices": [
+      "중요한 글자는 CSS를 이용해 빨간색으로 크고 굵게만 표시한다.",
+      "모든 텍스트를 가장 짧고 빠른 <span> 태그 하나로만 통일해서 작성한다.",
+      "데이터의 성격에 맞게 <h1>, <section>, <p> 등의 시맨틱 마크업을 적절히 골라 설계한다.",
+      "보안 강화를 위해 모든 텍스트를 자바스크립트 변수 안에 숨겨둔다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "검색엔진 최적화(SEO)는 봇이 문서를 쉽게 해석할 수 있게 정보 구조를 명확히 짜는 데서 출발하며, 시맨틱 마크업이 그 핵심 도구이다.",
+      "whyCorrect": "HTML 태그를 짜는 것은 검색엔진이나 브라우저에게 비즈니스 데이터의 위계질서를 논리적으로 설명하는 아키텍처 구축 과정이므로, 의미에 맞는 태그 선택이 필수이다.",
+      "whyIncorrect": "CSS는 시각적 꾸밈일 뿐 로봇은 색상을 이해하지 못한다. 태그를 통일하거나 JS로 숨기면 검색엔진이 문서의 구조와 핵심 내용을 전혀 파악하지 못하게 된다.",
+      "examPoint": "'눈에만 예쁘게 보이는 웹'과 '기계도 잘 읽을 수 있는 표준 웹'의 차이를 이해하고 설계할 수 있는 역량을 평가한다.",
+      "practicalExample": "블로그 제목을 <div>로 크게 키운 글과 <h1> 태그를 쓴 글이 있다면, 구글 검색 엔진은 <h1> 태그가 쓰인 글을 검색 결과 상단에 노출시켜 준다."
+    }
+  },
+  {
+    "id": "q-html-121",
+    "category": "HTML",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "세일즈포스의 LWC(Lightning Web Component) 프레임워크에서 화면을 구성하는 가장 바깥쪽 껍데기 역할을 하며, 그 내부에 HTML 마크업이 배치되도록 강제하는 특수 루트 태그는?",
+    "choices": [
+      "<html>",
+      "<head>",
+      "<template>",
+      "<lightning-root>"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "LWC 프레임워크는 최상위 컨테이너로 <template> 태그를 사용하며, 컴포넌트의 HTML 구조는 반드시 이 템플릿 태그 내부에 작성되어야 한다.",
+      "whyCorrect": "자료의 도식도와 설명에 따르면, LWC에서는 최상단 루트 태그로 <template>을 사용하는 점을 제외하면 내부는 표준 HTML 원리와 동일하게 구동된다.",
+      "whyIncorrect": "전체 웹 페이지의 루트는 <html>이지만, LWC 모듈 단위의 루트는 <template>이다. <lightning-root>는 존재하지 않는 임의의 태그이다.",
+      "examPoint": "바닐라 HTML과 프레임워크(LWC/Vue 등) 환경의 파일 구조적 차이점(루트 템플릿의 유무)을 명확히 아는지 묻는 실무형 문제이다.",
+      "practicalExample": "VS Code에서 Salesforce CLI로 LWC 컴포넌트를 생성하면 'myComponent.html' 파일 안에 <template> </template> 코드가 기본적으로 하나 덩그러니 작성되어 있다."
+    }
+  },
+  {
+    "id": "q-html-122",
+    "category": "HTML",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "세일즈포스의 라이트닝 오그(Org) 내부에 고객 등록 폼 화면이 표출되는 렌더링 과정의 본질로 가장 적합한 설명은?",
+    "choices": [
+      "LWC 템플릿 내의 HTML 코드가 브라우저의 DOM 엔진에 의해 우리가 아는 표준 웹 화면으로 동일하게 렌더링된다.",
+      "HTML 대신 자바스크립트로만 화면을 강제로 그려낸다.",
+      "세일즈포스 서버가 HTML 태그를 모두 삭제하고 이미지 파일(JPG)로 변환하여 사용자에게 전송한다.",
+      "브라우저는 LWC 코드를 무시하고 외부 CRM 프로그램을 다운로드하여 실행시킨다."
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "세일즈포스의 LWC는 웹 표준 컴포넌트 기술을 활용하므로, 내부적으로 작성된 마크업(input, label 등)은 일반적인 브라우저 DOM 트리와 동일한 방식으로 화면에 렌더링된다.",
+      "whyCorrect": "도식도 하단의 설명처럼, <template> 내부에 배치된 input과 label 마크업 소스코드는 표준 HTML5 명세 및 DOM 트리 렌더링 아키텍처와 완벽하게 동일한 메커니즘으로 구동된다.",
+      "whyIncorrect": "자바스크립트 전용 렌더링, 이미지 변환, 외부 프로그램 다운로드 등은 웹 표준 기반 프론트엔드 프레임워크의 동작 원리와 완전히 동떨어진 오답이다.",
+      "examPoint": "글로벌 SaaS 솔루션(Salesforce) 환경에서의 개발도 결국 W3C가 제정한 웹 표준(HTML/CSS/DOM) 위에서 돌아간다는 거시적 인사이트를 묻는다.",
+      "practicalExample": "LWC로 만든 사내용 고객관리 페이지에서 마우스 우클릭 후 '검사'를 눌러보면, 우리가 평소 짰던 평범한 <div>와 <input> 태그들이 동일하게 나타난다."
+    }
+  }
+]

@@ -1,0 +1,998 @@
+[
+  {
+    "id": "q-etc-001",
+    "num": 1,
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "작업 디렉토리의 변경 사항을 커밋하기 전에 담아두는 임시 영역은?",
+    "choices": [
+      "Working Directory",
+      "Staging Area",
+      "Remote Repository",
+      "HEAD"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Staging Area(Index)는 git add로 선택한 변경 사항을 커밋 직전에 임시로 담아두는 영역이다.",
+      "whyCorrect": "git add 파일명으로 변경 사항을 Staging Area에 올린 뒤 git commit으로 그 스냅샷을 기록한다.",
+      "whyIncorrect": "Working Directory는 실제 파일이 있는 작업 폴더, Remote Repository는 원격 저장소, HEAD는 현재 브랜치의 최신 커밋을 가리키는 포인터라 임시 저장 공간이 아니다.",
+      "examPoint": "Working Directory → Staging Area → Repository로 이어지는 Git 3단계 구조를 그림으로 이해해두면 좋다.",
+      "practicalExample": "여러 파일을 수정했지만 그중 일부만 먼저 커밋하고 싶을 때 해당 파일만 git add로 Staging Area에 올린다."
+    }
+  },
+  {
+    "id": "q-etc-002",
+    "num": 2,
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "현재 브랜치로 다른 브랜치의 변경 사항을 하나로 합치는 명령어는?",
+    "choices": [
+      "git merge",
+      "git branch",
+      "git fetch",
+      "git clone"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "git merge는 다른 브랜치의 커밋 히스토리를 현재 체크아웃된 브랜치에 병합하는 명령어다.",
+      "whyCorrect": "git merge feature/exam을 main에서 실행하면 feature/exam의 변경 사항이 main에 합쳐진다.",
+      "whyIncorrect": "git branch는 브랜치 생성/조회, git fetch는 원격 변경 사항을 로컬로 가져오기만 하고 병합은 하지 않으며, git clone은 저장소를 통째로 복제하는 명령어다.",
+      "examPoint": "이 프로젝트의 WORK_ORDER.md에서도 각 팀 브랜치를 Pull Request로 main에 merge하는 순서를 정해두고 있다.",
+      "practicalExample": "feature/exam 브랜치 작업이 끝나면 PR을 통해 main 브랜치로 merge한다."
+    }
+  },
+  {
+    "id": "q-etc-003",
+    "num": 3,
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "이미 원격에 push한 커밋을 안전하게 되돌리기 위해 새 커밋을 만드는 명령어는?",
+    "choices": [
+      "git reset --hard",
+      "git revert",
+      "git clean -f",
+      "git rm"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "git revert는 특정 커밋의 변경 내용을 취소하는 '새로운 커밋'을 추가하는 방식으로, 히스토리를 삭제하지 않는다.",
+      "whyCorrect": "이미 공유된(push된) 커밋은 히스토리를 지우면 팀원들과 충돌이 나므로, revert로 안전하게 되돌리는 것이 원칙이다.",
+      "whyIncorrect": "git reset --hard는 히스토리 자체를 되돌려 이미 push된 경우 팀원과 충돌을 일으킬 수 있고, git clean -f는 추적되지 않는 파일 삭제, git rm은 파일 삭제 명령이라 커밋 되돌리기와는 다르다.",
+      "examPoint": "이 프로젝트의 시스템 지침에도 'force-push, reset --hard 같은 되돌리기 어려운 작업은 신중히 확인 후 진행'하라는 원칙이 있다.",
+      "practicalExample": "잘못된 커밋을 이미 push한 뒤 발견했다면 git revert <커밋해시>로 안전하게 되돌린다."
+    }
+  },
+  {
+    "id": "q-etc-004",
+    "num": 4,
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "AI 코딩 도구를 사용할 때, 결과 코드를 그대로 커밋하기 전에 반드시 해야 할 일은?",
+    "choices": [
+      "코드 리뷰 없이 바로 배포",
+      "동작 확인과 코드 검토",
+      "테스트 코드 삭제",
+      "커밋 메시지 생략"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "바이브코딩(AI 페어 프로그래밍)에서도 결과물은 사람이 직접 동작을 확인하고 코드를 검토해야 신뢰할 수 있다.",
+      "whyCorrect": "AI가 생성한 코드도 버그나 프로젝트 규칙 위반이 있을 수 있으므로, 실제 동작 확인과 리뷰 절차를 거쳐야 한다.",
+      "whyIncorrect": "리뷰 없는 배포, 테스트 삭제, 커밋 메시지 생략은 오히려 문제를 숨기고 협업 히스토리를 해치는 나쁜 습관이다.",
+      "examPoint": "이 프로젝트의 CLAUDE.md '작업 완료 체크리스트'에도 Console Error 확인, 기존 기능 정상 동작 확인이 PR 전 필수 항목으로 명시되어 있다.",
+      "practicalExample": "AI가 생성한 quiz.js 로직도 실제 브라우저에서 문제 이동이 정상 동작하는지 눈으로 확인한 뒤 커밋한다."
+    }
+  },
+  {
+    "id": "q-etc-005",
+    "num": 5,
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "커밋 메시지를 작성할 때 일반적으로 권장되는 방식은?",
+    "choices": [
+      "변경 이유 없이 파일명만 적기",
+      "무엇을·왜 변경했는지 명확히 적기",
+      "항상 영어 약어만 사용",
+      "커밋마다 여러 기능을 한 번에 담기"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "좋은 커밋 메시지는 '무엇을 왜 바꿨는지'를 명확히 전달해 히스토리만 보고도 변경 맥락을 이해할 수 있게 한다.",
+      "whyCorrect": "예를 들어 'exam.html: 카테고리 8개로 갱신 (99-EXAM_PLAN 2장 반영)'처럼 목적이 드러나는 메시지가 협업에 도움이 된다.",
+      "whyIncorrect": "파일명만 적거나 여러 기능을 한 커밋에 몰아넣으면 나중에 특정 변경을 추적하거나 되돌리기 어려워진다.",
+      "examPoint": "커밋은 하나의 논리적 단위로 작게 쪼개고, 메시지에는 'What'과 'Why'를 함께 담는 것이 실무 표준이다.",
+      "practicalExample": "체크리스트 항목 하나가 끝날 때마다 그 항목 단위로 커밋을 나누면 리뷰어가 변경 범위를 빠르게 파악할 수 있다."
+    }
+  },
+  {
+    "id": "q-etc-006",
+    "num": 6,
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "여러 명이 동시에 작업할 때 충돌을 줄이기 위해 권장되는 방식은?",
+    "choices": [
+      "모두 main 브랜치에서 직접 작업",
+      "기능별 브랜치 분리 후 PR로 병합",
+      "커밋 없이 파일만 공유",
+      "코드 리뷰 생략"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "기능/담당 영역별로 브랜치를 나누고 Pull Request로 병합하면 서로 다른 작업이 독립적으로 진행되어 충돌 범위가 줄어든다.",
+      "whyCorrect": "브랜치 분리는 각자의 변경 사항을 격리시켜, 병합 시점에만 충돌 여부를 확인하면 되므로 협업 안정성이 높아진다.",
+      "whyIncorrect": "모두 main에서 직접 작업하면 실시간으로 서로의 변경을 덮어쓸 위험이 크고, 파일 공유나 리뷰 생략은 추적/품질 관리를 포기하는 것이다.",
+      "examPoint": "이 프로젝트의 TEAM_GUIDE.md도 feature/core, feature/home, feature/exam처럼 담당별 브랜치 전략을 명시하고 있다.",
+      "practicalExample": "Exam 담당은 feature/exam 브랜치에서 작업한 뒤 PR을 올려 다른 팀의 작업과 독립적으로 병합한다."
+    }
+  },
+  {
+    "id": "q-etc-007",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "서버 자원을 다루는 설계 표준으로, CRUD 비즈니스 맥락을 HTTP 규격에 맞추어 연동하며 '표준화된 우편 배달 시스템'으로 비유되는 인터페이스는 무엇인가?",
+    "choices": [
+      "SOAP",
+      "REST API",
+      "GraphQL",
+      "WebSocket"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "REST API는 자원(URI)과 행위(Method)를 명확히 규정하여, 이기종 간(프론트-백엔드) 통신 시 데이터 CRUD 작업을 예측 가능하게 만드는 설계 표준 규약이다.",
+      "whyCorrect": "핵심 개념 요약에서 자원과 행위를 규정하여 서버 자원을 다루는 설계 표준이자 CRUD 맥락을 연동하는 인터페이스로 REST API를 정의했다.",
+      "whyIncorrect": "SOAP, GraphQL, WebSocket은 REST와 구별되는 다른 통신 아키텍처 및 프로토콜이다.",
+      "examPoint": "백엔드 개발자가 짜놓은 백엔드 서버를 프론트엔드가 호출할 때, 제멋대로가 아닌 표준(REST)에 맞춰 던져야 함을 묻는다.",
+      "practicalExample": "고객을 추가할 때는 무조건 `POST /users`, 삭제할 때는 무조건 `DELETE /users/1` 구조로 짜는 것이 REST의 기본 철학이다."
+    }
+  },
+  {
+    "id": "q-etc-008",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "프론트엔드에서 고정된 데이터를 직접 작성해두던 방식에서 벗어나 실제 백엔드와 유기적으로 통신하는 동적 애플리케이션 아키텍처로 진입했다. 이때, 브라우저가 백엔드 서버를 향해 '특정 데이터를 가공하거나 보내달라'고 전달하는 호출 신호의 명칭은?",
+    "choices": [
+      "Response (응답)",
+      "Commit (반영)",
+      "Request (요청)",
+      "Render (렌더링)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "네트워크 통신의 본질은 클라이언트가 서버로 무언가를 요구하는 Request(요청)와, 서버가 처리 후 결과를 돌려주는 Response(응답)의 탁구 게임(Ping-Pong)이다.",
+      "whyCorrect": "자료에서 클라이언트 엔진이 네트워크 선을 타고 서버를 향해 데이터 자원을 요구하는 호출 신호를 Request(요청)로 명시했다.",
+      "whyIncorrect": "응답(Response)은 서버가 돌려주는 신호이며, Commit은 DB 트랜잭션 확정, Render는 화면 그리기이다.",
+      "examPoint": "통신의 방향성을 묻는 기초 문제로, '누가 누구에게 무엇을' 던지는지 파이프라인의 시작점을 이해해야 한다.",
+      "practicalExample": "버튼을 누르면 브라우저가 구글 서버로 `Request(검색어)`를 쏘고, 잠시 후 구글 서버가 `Response(검색결과)`를 던져준다."
+    }
+  },
+  {
+    "id": "q-etc-009",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "서버가 클라이언트의 요청 처리 결과를 장황한 글자가 아닌 '숫자 앞자리 묶음'으로 요약하여 통신 결과 신호등 역할을 하는 규약의 명칭은?",
+    "choices": [
+      "Port (포트)",
+      "Query String (쿼리 스트링)",
+      "Status Code (상태 코드)",
+      "JSON (제이슨)"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "HTTP 상태 코드(Status Code)는 100번대부터 500번대까지의 세 자리 숫자로 구성되어, 요청이 성공했는지 에러가 터졌는지를 직관적으로 브라우저에 보고하는 국제 통신 규약이다.",
+      "whyCorrect": "자료에서 처리 결과를 숫자의 앞자리 한 묶음으로 요약하여 알려주는 규약이자 '통신 결과 신호등'을 상태 코드라고 정의했다.",
+      "whyIncorrect": "Port는 방 번호, Query String은 URL 검색 조건, JSON은 데이터 전송 포맷이다.",
+      "examPoint": "네트워크 탭을 열었을 때 빨간색 `404`가 뜨면 주소 에러, 녹색 `200`이 뜨면 성공임을 1초 만에 캐치하는 실무 감각을 묻는다.",
+      "practicalExample": "서버 응답을 받았을 때 `if (res.status == 200)` 이면 성공 로직을, `if (res.status == 404)` 이면 '페이지를 찾을 수 없음' 팝업을 띄운다."
+    }
+  },
+  {
+    "id": "q-etc-010",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "프론트엔드의 요청에는 문제가 없었으나, 백엔드 내부의 로직 에러나 데이터베이스 다운 등으로 인해 처리에 실패했을 때 서버가 반환하는 상태 코드(Status Code) 그룹은?",
+    "choices": [
+      "2xx (예: 200, 201)",
+      "3xx (예: 301, 302)",
+      "4xx (예: 400, 404)",
+      "5xx (예: 500, 502)"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "500번대 상태 코드는 클라이언트(프론트엔드)는 올바른 요청을 보냈지만, 백엔드 서버(인프라나 코드) 자체에 문제가 생겨 뻗어버린 심각한 서버 장애를 의미한다.",
+      "whyCorrect": "자료에서 백엔드 내부 로직 에러나 DB 다운으로 실패한 상황을 5xx(백엔드 서버 측 오류)로 명시했다.",
+      "whyIncorrect": "2xx는 성공, 4xx는 클라이언트(보내는 쪽) 실수이다.",
+      "examPoint": "에러가 터졌을 때 400번대면 프론트 개발자가 자기 코드를 고쳐야 하고, 500번대면 백엔드 개발자에게 서버가 죽었다고 제보해야 하는 실무 책임 분담의 기준점이다.",
+      "practicalExample": "결제 버튼을 눌렀는데 `500 Internal Server Error`가 떨어지면 프론트 탓이 아니라 결제 서버(DB) 쪽 코드가 꼬인 것이다."
+    }
+  },
+  {
+    "id": "q-etc-011",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "화면과 백엔드가 네트워크를 타고 데이터를 주고받을 때 표준으로 삼는 경량 글자 형식으로, 내부 데이터가 항상 중괄호 `{}` 안에 `\"이름표(Key)\": \"값(Value)\"`의 쌍으로 격리되어 저장되는 포맷 구조의 이름은?",
+    "choices": [
+      "XML",
+      "HTML",
+      "JSON",
+      "CSV"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "JSON(JavaScript Object Notation)은 인간이 읽기 편하고 기계가 분석하기 쉬운 범용 데이터 교환 포맷으로, Key-Value 쌍과 배열 구조로 이루어져 있다.",
+      "whyCorrect": "자료에서 데이터 전송 규격으로 중괄호 꼴을 취하며 이름표와 값의 쌍으로 저장되는 포맷을 JSON 구조로 명시했다.",
+      "whyIncorrect": "XML은 구형 꺾쇠 태그 포맷, HTML은 화면 뼈대 포맷, CSV는 콤마 분리 텍스트 포맷이다.",
+      "examPoint": "프론트엔드와 백엔드가 서로 사용하는 언어(JS vs Java 등)가 달라도, JSON이라는 공용어(번역기)를 통해 데이터를 100% 이해할 수 있음을 묻는다.",
+      "practicalExample": "`{ \"name\": \"주디\", \"age\": 20 }` 형태로 예쁘게 포장되어 네트워크를 타고 서버로 날아간다."
+    }
+  },
+  {
+    "id": "q-etc-012",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "서버로 요청을 보낼 때, 엔드포인트 URL 주소 맨 뒤에 `?` 기호를 신호탄으로 터트리고 `Key=Value` 형태로 검색 조건이나 정렬 옵션 데이터를 엮어 필터링을 수행하는 방식은?",
+    "choices": [
+      "Body Payload",
+      "Path Parameter (경로 변수)",
+      "Query String (쿼리 스트링)",
+      "HTTP Header"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "쿼리 스트링(Query String)은 URL 뒤에 물음표(`?`)를 붙이고 변수와 값을 전달하여, 게시판 필터링이나 검색 조건 같은 옵션 데이터를 서버에 유연하게 넘기는 규약이다.",
+      "whyCorrect": "자료에서 `?` 기호를 붙여 필터링 조건을 추가하는 방식을 쿼리 스트링(Query String)이라고 정의했다.",
+      "whyIncorrect": "Path Parameter는 경로 자체에 번호를 박는 것(예: `/users/3`), Body는 숨겨서 보내는 본문, Header는 통신 메타데이터이다.",
+      "examPoint": "고유한 대상 1개를 콕 찝어올 때(Path)와 수많은 대상 중 조건에 맞는 것만 추려올 때(Query String)의 URL 설계 아키텍처 차이를 평가한다.",
+      "practicalExample": "유튜브에서 강아지를 검색하면 주소창이 `youtube.com/results?search_query=강아지` 로 쿼리 스트링이 붙어서 넘어가는 것을 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-etc-013",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "실제 거대 데이터베이스 서버를 구축하기 전, 단 하나의 JSON 데이터 파일(`.json`)을 기반으로 실제 백엔드와 완벽히 동일하게 작동하는 가상 REST API 서버 환경을 로컬(내 컴퓨터)에 띄워주는 도구의 이름은?",
+    "choices": [
+      "json-server",
+      "MySQL",
+      "Oracle",
+      "Tomcat"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "json-server는 프론트엔드 개발자가 백엔드 서버가 완성될 때까지 기다리지 않고, 로컬의 `.json` 파일 하나만으로 완벽한 CRUD 통신이 가능한 Mock(가짜) 서버를 1분 만에 구동하게 해주는 NPM 패키지이다.",
+      "whyCorrect": "자료에서 가상 백엔드 환경 인프라 구축 도구로 `json-server`를 명확히 소개했다.",
+      "whyIncorrect": "MySQL, Oracle은 실제 대형 관계형 데이터베이스이며, Tomcat은 자바 웹 애플리케이션 서버이다.",
+      "examPoint": "백엔드가 없어서 화면 개발을 멈춘다는 핑계를 대지 못하도록, 스스로 프로토타입 서버를 띄워 비동기 통신을 테스트하는 프론트엔드의 필수 생존 스킬이다.",
+      "practicalExample": "터미널에서 `json-server --watch db.json` 하나만 치면 내 컴퓨터가 훌륭한 백엔드 API 서버로 즉시 변신한다."
+    }
+  },
+  {
+    "id": "q-etc-014",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트 환경에서 브라우저가 제공하는 내장 통신 엔진으로, 화면이 네트워크를 타고 서버를 향해 데이터를 보내달라고 부르는(호출하는) 표준 비동기 명령어는?",
+    "choices": [
+      "document.querySelector",
+      "addEventListener",
+      "fetch",
+      "console.log"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "fetch API는 최신 브라우저에 내장된 프로미스(Promise) 기반의 네트워크 비동기 통신 표준 메서드로, 외부 서버의 리소스를 가져오거나 보낼 때 사용한다.",
+      "whyCorrect": "자료에서 브라우저가 제공하는 내장 명령어로 화면이 서버를 향해 데이터를 부르는 자바스크립트 표준 통신 엔진을 `fetch`로 정의했다.",
+      "whyIncorrect": "querySelector는 DOM 탐색, addEventListener는 이벤트 센서 부착, console.log는 로그 출력 명령어이다.",
+      "examPoint": "fetch라는 영단어 뜻(가져오다/불러오다) 그대로, 백엔드 서버에 쿼리를 던지고 결과물을 물어오는 훈련된 리트리버 같은 존재임을 묻는다.",
+      "practicalExample": "`fetch('https://api.github.com/users')` 라고 치면 깃허브 서버에서 전 세계 개발자 유저 데이터를 쫙 물고 들어온다."
+    }
+  },
+  {
+    "id": "q-etc-015",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "`fetch('주소')` 통신 명령어 내부에 객체 `{ method: 'POST', body: ... }` 와 같은 별도의 추가 옵션이나 HTTP 메서드를 전혀 기재하지 않았을 때, 자바스크립트 엔진은 이 통신을 어떤 요청으로 자동 간주하는가?",
+    "choices": [
+      "데이터를 영구 삭제하는 DELETE 요청",
+      "데이터를 새롭게 생성하는 POST 요청",
+      "데이터베이스 연결을 끊는 CLOSE 요청",
+      "데이터를 가져와 읽어오는 기본 조회 GET 요청"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "fetch 함수는 두 번째 인자인 옵션 객체(options)를 생략하면, 디폴트(기본값) 통신 방식인 `GET` 메서드를 사용하여 단순히 리소스를 읽어오는(조회) 작업만 수행한다.",
+      "whyCorrect": "자료의 기본 동작 규약에서 별도 추가 옵션이나 메서드를 기재하지 않으면 기본값인 조회(GET) 요청으로 간주하여 자동 처리한다고 설명했다.",
+      "whyIncorrect": "POST, DELETE 등 데이터베이스의 상태를 변경하는 파괴적(위험한) 통신들은 개발자가 반드시 method 옵션을 통해 명시적으로 의도를 선언해야만 발동한다.",
+      "examPoint": "단순히 남의 데이터를 읽기만 할 땐 주소만 던지면 끝나지만, 쓸 때는 까다롭게 세팅해야 한다는 통신 프로토콜의 보안 철학을 이해한다.",
+      "practicalExample": "`fetch('http://.../posts')` 코드는 서버에게 \"묻지도 따지지도 말고 게시물 목록이나 갖다 줘(GET)\"라는 뜻이다."
+    }
+  },
+  {
+    "id": "q-etc-016",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "자바스크립트의 비동기 흐름 제어에서, \"서버의 소포 상자(응답)가 무사히 도착하면 그때 비로소 다음 로직(포장 해제나 화면 그리기)을 순차적으로 실행하라\"고 약속해 두는 체이닝 계약서 구조의 키워드는?",
+    "choices": [
+      "if / else",
+      "for / while",
+      ".catch()",
+      ".then()"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "비동기 작업(Promise)은 백그라운드에서 진행되므로 코드가 즉시 다음 줄로 넘어간다. 따라서 \"통신 작업이 다 끝나면 이거 해줘!\"라고 엔진에게 예약(체이닝)을 걸어두는 핵심 메서드가 `.then()`이다.",
+      "whyCorrect": "자료에서 비동기 영역의 도착을 보장받고 \"무사히 도착하면 그때 비로소 이 로직을 실행하라\"는 약속 계약서로 `.then()` 체이닝 구조를 정의했다.",
+      "whyIncorrect": "if, for 등은 동기적 제어문이며, `.catch()`는 성공이 아닌 에러(실패)가 났을 때 실행되는 예약어이다.",
+      "examPoint": "JS는 성격이 너무 급해서 서버가 응답을 주기도 전에 화면 그리기 코드로 달려가 버리므로, `.then()` 이라는 대기표를 쥐여주어야 렌더링이 안 깨짐을 묻는다.",
+      "practicalExample": "`fetch(주소).then(성공하면 할 일).catch(에러나면 할 일)` 구조가 비동기 통신의 국룰 템플릿이다."
+    }
+  },
+  {
+    "id": "q-etc-017",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "데이터베이스에서 특정 데이터를 영구적으로 삭제하고자 할 때, 전체 데이터를 날려버리는 대참사를 막기 위해 URL 주소 엔드포인트의 가장 끝자리에 지우고자 하는 요소의 고유 식별 번호(ID)를 경로 변수 형태로 명시하여 보내는 올바른 REST 규약 HTTP 메서드는?",
+    "choices": [
+      "GET",
+      "DELETE",
+      "POST",
+      "REMOVE"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "REST 설계 규약에서 자원의 영구 삭제 트랜잭션을 담당하는 HTTP 통신 표준 메서드는 `DELETE`이다. 안전을 위해 삭제 타겟을 Path Parameter로 정확히 짚어주어야 한다.",
+      "whyCorrect": "자료에서 특정 데이터를 DB에서 영구히 삭제할 때 보내며, 주소 끝자리에 고유 식별 번호(ID)를 명시하여 발송하는 정밀 타겟팅 기법이 `DELETE`라고 명시했다.",
+      "whyIncorrect": "GET은 조회, POST는 생성이며, REMOVE는 SQL이나 배열 조작 메서드 이름이지 HTTP 통신 표준 메서드 명칭이 아니다.",
+      "examPoint": "실무에서 타겟 파라미터 없이 `DELETE /users` 라고 던지면 전체 회원이 날아가는 무시무시한 재앙이 닥치므로, 반드시 `/users/3` 처럼 주소 끝에 아이디를 박아야 함을 상기시킨다.",
+      "practicalExample": "게시글의 X 버튼을 클릭하면 뒤끝 없이 깔끔하게 `fetch('http://.../posts/5', { method: 'DELETE' })`가 발사된다."
+    }
+  },
+  {
+    "id": "q-etc-018",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "선배의 실무 꿀팁에 따르면, 서버로부터 도착한 소포(응답)를 `res.json()`으로 뜯기 직전에, 브라우저의 2차 런타임 크래시 폭탄(에러)을 막기 위해 반드시 먼저 선행해야 하는 '바리케이드 검증 작업'은 무엇인가?",
+    "choices": [
+      "응답 데이터가 담길 자바스크립트 변수들을 모두 const에서 let으로 미리 변경해 둔다.",
+      "서버의 응답 상태(res.ok 또는 상태 코드가 200번대)가 정상인지 검증하는 if문 차단벽 코드를 먼저 작성한다.",
+      "응답 데이터 전체를 브라우저 콘솔 창에 강제로 띄워 화면 렌더링을 멈춘다.",
+      "json-server를 재부팅하여 포트(Port) 충돌을 다시 한 번 해제한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "네트워크 환경에서는 언제든 에러(404, 500)가 발생할 수 있다. 에러 상태일 때는 JSON 포맷이 아닌 일반 텍스트나 HTML 에러 페이지가 응답 바디로 날아오기 때문에, 이를 `.json()`으로 파싱하려 시도하면 구문 파싱 에러(SyntaxError)가 터지며 앱 전체가 뻗어버린다.",
+      "whyCorrect": "선배 팁에서 서버가 404나 500 에러를 뿜었는데도 포장을 풀겠다고 강제 가동하면 2차 크래시가 터지므로, 무조건 `res.ok`나 상태 코드가 200번대인지 검증하는 바리케이드 코드를 먼저 짜라고 강력 권고했다.",
+      "whyIncorrect": "변수 타입 변경, 콘솔 강제 렌더링 정지, 서버 재부팅은 모두 통신 응답의 안정성 검증 로직과는 동떨어진 황당한 대처법들이다.",
+      "examPoint": "백엔드를 100% 맹신하지 않고, 넘어온 택배가 정상 택배인지 폭탄 택배인지 스캐너(`res.ok`)로 먼저 살짝 훑어보는 시니어 프론트엔드 개발자의 방어적 코딩 태도를 묻는다.",
+      "practicalExample": "`.then(res => { if(!res.ok) throw new Error(\"통신 장애\"); return res.json(); })` 처럼 방어 로직 한 줄만 껴두면 사용자 화면이 하얗게 뻗는 재앙을 막을 수 있다."
+    }
+  },
+  {
+    "id": "q-etc-019",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "서버가 던져준 복잡한 JSON 응답 데이터 뭉치 `responseData` 내부에서, `types` 배열의 0번째 항목 내부의 `type` 객체 안에 있는 `name` 값을 정밀 타겟팅하여 추출하고자 할 때, 자바스크립트의 '점 표기법(.)' 메커니즘을 올바르게 구사한 추출 코드는?",
+    "choices": [
+      "responseData.types(0).type.name",
+      "responseData->types[0]->type->name",
+      "responseData.types[0].type.name",
+      "responseData/types/0/type/name"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "JSON 객체의 계층적 구조를 파고들 때는 객체의 하위 속성은 점(`.`) 기호로, 배열(리스트)의 특정 인덱스 항목은 대괄호 `[]` 기호로 징검다리를 건너듯 순차 접근해야 한다.",
+      "whyCorrect": "자료의 점 표기법 파싱 메커니즘 예시 코드에 정확히 일치하는 문법은, 배열 인덱스 `[0]`과 하위 객체 접근 `.`을 조합한 `responseData.types[0].type.name`이다.",
+      "whyIncorrect": "1번은 소괄호를 써서 함수로 인식됨, 2번은 C언어 화살표 포인터, 4번은 파일 경로 슬래시이므로 모두 자바스크립트 문법 에러이다.",
+      "examPoint": "백엔드 개발자가 아무리 복잡한 3중첩 데이터 보따리를 던져주어도, 점(.)과 대괄호([ ]) 두 무기만 있으면 원하는 양파 껍질의 핵심 알맹이를 쏙 빼먹을 수 있다는 자신감을 기른다.",
+      "practicalExample": "포켓몬 API에서 피카츄의 타입이 전기(Electric)라는 데이터를 뽑아내려면, 저 길고 긴 징검다리 코드를 정확히 타야 에러 없이 문자열이 추출된다."
+    }
+  },
+  {
+    "id": "q-etc-020",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "실제 자바스크립트 코드를 짜서 fetch 통신을 돌려보기 전에, 백엔드가 설계한 API 문서와 엔드포인트가 제대로 동작하는지 마우스 클릭만으로 데이터를 쏴보며 검증할 수 있는 '실행 가능한 대화형 API 명세서' 프로덕션 도구는?",
+    "choices": [
+      "Swagger UI",
+      "json-server",
+      "VS Code Live Server",
+      "GitHub"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Swagger UI는 백엔드 개발자가 구축한 API 서버의 통신 규격(명세)을 브라우저 화면상에 직관적인 버튼과 폼 형태로 시각화하여, 프론트 개발자가 코딩 없이도 통신 테스트(Mocking)를 해볼 수 있게 돕는 협업 도구이다.",
+      "whyCorrect": "자료의 무코드 기반 API 시뮬레이션 인터페이스에서, 각 메서드 버튼을 누르고 연산 결과를 즉시 반환받아 볼 수 있는 실행 가능한 대화형 명세서로 `Swagger UI`를 소개했다.",
+      "whyIncorrect": "json-server는 가짜 서버 구동 도구, Live Server는 화면 새로고침 도구, GitHub는 소스코드 저장소이다.",
+      "examPoint": "실무 프론트엔드 개발자는 무턱대고 코드부터 치는 게 아니라, 스웨거 창을 띄워놓고 백엔드 서버가 진짜로 살아서 숨 쉬는지, 데이터 포맷이 맞는지 먼저 찔러보는(Try it out) 검증 절차를 거친다는 협업 스킬을 묻는다.",
+      "practicalExample": "백엔드 동료가 \"유저 리스트 조회 API 다 만들었어요\" 하면, 프론트는 스웨거 사이트에 들어가 초록색 [GET /users] 버튼을 눌러보고 200 OK와 JSON 결과가 예쁘게 떨어지는지 눈으로 확인한 뒤 비로소 JS 코딩을 시작한다."
+    }
+  },
+  {
+    "id": "q-etc-021",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "하드코딩(Hard-coding)된 프론트엔드 구조에서 벗어나 실제 백엔드 데이터베이스 자원과 통신할 때, 서버가 연산 처리를 완료한 후 클라이언트를 향해 결과물을 되돌려 보내주는 반환 신호를 무엇이라 하는가?",
+    "choices": [
+      "Request (요청)",
+      "Response (응답)",
+      "Query (질의)",
+      "Commit (반영)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "네트워크 아키텍처의 근간은 클라이언트의 Request(요청)에 대해 서버가 결과 데이터나 리소스를 담아 Response(응답)를 돌려주는 왕복 통신 구조이다.",
+      "whyCorrect": "자료에서 가공 결과물 데이터를 클라이언트를 향해 다시 되돌려 보내주는 반환 신호를 '응답(Response)'으로 정의했다.",
+      "whyIncorrect": "요청은 클라이언트가 보내는 신호, Query는 DB 질의, Commit은 트랜잭션 확정 명령어이다.",
+      "examPoint": "fetch API 등의 통신 함수를 짤 때 결과값을 받아주는 변수 이름을 주로 `res` 혹은 `response`로 짓는 이유(반환 신호의 주체)를 인식해야 한다.",
+      "practicalExample": "프론트엔드가 '고객 목록 줘(Request)'라고 하면 백엔드가 '여기 리스트 100명(Response)'이라고 던져주는 메커니즘이다."
+    }
+  },
+  {
+    "id": "q-etc-022",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTTP 상태 코드 중 클라이언트(프론트엔드) 측의 요청 주소가 틀렸거나 데이터 규격이 어긋났을 때 서버가 뱉어내는 4xx 그룹의 대표적인 두 가지 상태 코드는?",
+    "choices": [
+      "200 (OK) 와 201 (Created)",
+      "404 (Not Found) 와 400 (Bad Request)",
+      "500 (Internal Error) 와 502 (Bad Gateway)",
+      "301 (Moved Permanently) 와 302 (Found)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "400번대 에러는 클라이언트(보내는 쪽)의 잘못(오타, 권한 없음, 필수 파라미터 누락 등)으로 인해 서버가 요청을 거부하는 상태를 뜻한다.",
+      "whyCorrect": "자료에서 주소를 잘못 적었을 때의 404(Not Found)와 데이터 요청 규격이 어긋났을 때 터지는 400(Bad Request)을 4xx 오류의 대표 예시로 꼽았다.",
+      "whyIncorrect": "200번대는 성공, 500번대는 백엔드(서버) 내부 장애이며, 300번대는 리다이렉트(이동) 지시 코드이다.",
+      "examPoint": "에러 로그에 400번대가 찍히면 백엔드 개발자를 탓하기 전에 프론트엔드 코드(URL, JSON Body 구조)부터 점검해야 한다는 책임 소지의 기준을 묻는다.",
+      "practicalExample": "API 주소에 `.../users` 라고 써야 하는데 스펠링을 틀려 `.../user` 라고 쏘면 야박하게 `404 Not Found` 에러가 터진다."
+    }
+  },
+  {
+    "id": "q-etc-023",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "REST 규약에 따라 데이터베이스에 적재된 '특정 자원이나 목록을 안전하게 가져와 읽어오기(Read)만 할 때' 사용하는 HTTP 메서드는?",
+    "choices": [
+      "GET",
+      "POST",
+      "PATCH",
+      "DELETE"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "HTTP의 `GET` 메서드는 리소스의 상태나 내용을 변경시키지 않고 안전하게 조회(Read)만 수행하는 멱등성(Idempotent)을 가진 통신 방식이다.",
+      "whyCorrect": "자료의 CRUD 맥락 매핑에서 특정 자원이나 목록을 안전하게 가져와 읽어올 때 사용하는 메서드로 `GET`을 명시했다.",
+      "whyIncorrect": "POST는 생성, PATCH는 수정, DELETE는 삭제 역할이다.",
+      "examPoint": "브라우저 주소창에 치고 들어가는 모든 행위는 본질적으로 GET 요청이며, 데이터베이스를 파괴할 위험이 가장 적은 통신임을 알아야 한다.",
+      "practicalExample": "쇼핑몰 메인 페이지에 접속하여 상품 리스트 화면을 띄우는 행위 이면에는 수많은 `GET /products` 요청들이 숨어 있다."
+    }
+  },
+  {
+    "id": "q-etc-024",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "서버에 '새로운 데이터 레코드를 영구적으로 적재하여 생성(Create)'하고자 할 때 프론트엔드에서 발송해야 하는 HTTP 메서드는?",
+    "choices": [
+      "PUT",
+      "PATCH",
+      "DELETE",
+      "POST"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "REST 아키텍처에서 `POST` 메서드는 클라이언트가 전송한 데이터(Body)를 바탕으로 서버에 새로운 리소스를 생성하는 비멱등성(non-Idempotent, 할 때마다 새 데이터가 추가됨) 통신이다.",
+      "whyCorrect": "자료에서 서버에 새로운 데이터 레코드를 영구적으로 적재하여 생성하고자 할 때 보내는 메서드로 `POST`를 명시했다.",
+      "whyIncorrect": "PUT/PATCH는 기존 데이터 수정, DELETE는 기존 데이터 제거이다.",
+      "examPoint": "회원가입 버튼이나 글 작성 완료 버튼의 배후에는 100% 확률로 이 POST 통신이 백엔드와의 연결을 책임지고 있음을 묻는다.",
+      "practicalExample": "장바구니에 아이템을 담을 때 `POST /cart-items` 요청을 날려 서버 DB에 한 줄의 데이터를 쑤셔 넣는다."
+    }
+  },
+  {
+    "id": "q-etc-025",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹 브라우저 확장 프로그램 형태로 구동되며, 프론트엔드 코드를 짜기 전에 개발자가 수동으로 헤더 정보와 HTTP 메서드를 임의 조작하여 서버에 수동 통신 요청을 날려보고 검증할 수 있는 테스트 도구(샌드박스)의 이름은?",
+    "choices": [
+      "Talend API Tester",
+      "json-server",
+      "Live Server",
+      "Prettier"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Talend API Tester(혹은 Postman 등)는 브라우저만으로는 불가능한 POST, DELETE 등의 강제 통신 요청을 GUI 환경에서 조작하고 헤더(Header) 및 바디(Body)를 세팅하여 발송할 수 있게 해주는 API 클라이언트 테스터 도구이다.",
+      "whyCorrect": "자료에서 웹 브라우저 확장 프로그램 형태로 임의 조작하여 서버에 수동 요청을 날려볼 수 있는 정밀 테스트 샌드박스로 `Talend API Tester`를 소개했다.",
+      "whyIncorrect": "json-server는 가짜 서버, Live Server는 화면 새로고침, Prettier는 코드 정렬 도구이다.",
+      "examPoint": "백엔드가 API를 던져주었을 때 바로 프론트 코딩을 시작하지 않고, 이 도구로 먼저 찔러서 포맷을 확인하는 것이 디버깅 시간을 1/10로 줄여주는 비법임을 묻는다.",
+      "practicalExample": "Talend 창을 열어 POST로 맞추고 JSON 텍스트를 적어 쏜 다음, 201 Created 초록불이 뜨는 걸 확인한 후에야 안심하고 VS Code에서 fetch 코드를 작성한다."
+    }
+  },
+  {
+    "id": "q-etc-026",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "백엔드에서 도착한 통신 결과물을 다루기 위해 `.then(res => res.json())` 코드를 실행한다. 강사의 핵심 인사이트에 비추어 볼 때 이 행위의 가장 직관적인 목적은?",
+    "choices": [
+      "네트워크 선을 타고 도착한 응답 객체의 단단한 '소포 박스 포장 테이프'를 부드럽게 뜯어내어, 내부의 실제 JSON 알맹이를 자바스크립트가 쓸 수 있게 가공하는 작업",
+      "자바스크립트 객체를 백엔드 서버로 전송하기 위해 텍스트로 압축(직렬화)하는 포장 작업",
+      "백엔드 서버의 데이터베이스를 초기화(Reset)하는 파괴적 명령",
+      "브라우저의 렌더링 엔진을 중지시켜 메모리를 확보하는 보안 작업"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "`res.json()`은 HTTP Response 스트림에 포함된 원시 텍스트 데이터를 파싱(Parsing)하여, 프론트엔드의 JS 코드가 요리할 수 있는 진짜 자바스크립트 객체/배열(Object/Array) 덩어리로 변환하는 언패킹 작업이다.",
+      "whyCorrect": "자료에서 도착한 응답 객체(res)는 굳게 밀봉된 소포 상자와 같으므로, 이 상자를 뜯어내기 위해 `res.json()`을 호출하는 포장 해제 가공 처리가 필수적이라 비유했다.",
+      "whyIncorrect": "압축(직렬화)하는 것은 역방향인 `JSON.stringify()`이며, DB 초기화나 렌더링 중지는 황당한 오답이다.",
+      "examPoint": "fetch가 물고 온 것은 택배 상자이지 내용물(신발) 그 자체가 아니므로, 무작정 신발 신으려 하지 말고 박스 뜯는 절차를 거치라는 프론트엔드의 국룰 파이프라인을 묻는다.",
+      "practicalExample": "`fetch().then(res => console.log(res))` 해보면 알 수 없는 Response 껍데기 메타데이터만 잔뜩 찍히고, 내가 원하는 유저 이름이나 나이 데이터는 전혀 안 보인다."
+    }
+  },
+  {
+    "id": "q-etc-027",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "fetch 엔진을 통한 데이터 통신 흐름에서, 언제 응답이 올지 모르는 비동기 통신의 제어를 위해 사용되는 예약어 `.then()` 의 본질적 역할은?",
+    "choices": [
+      "동기식으로 브라우저 전체 시스템을 일시 정지(Pause)시키는 것",
+      "서버로 요청을 반복해서 무한 루프로 보내는 것",
+      "\"소포 상자가 무사히 도착하면 그때 비로소 내부 봉인을 풀고 특정 로직을 실행하라\"는 약속 계약서 체이닝 역할",
+      "에러(404, 500 등)가 발생했을 때만 작동하는 에러 전용 복구 엔진 역할"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "프로미스(Promise)의 `.then()` 체이닝은 비동기 작업이 성공적으로 완료되었을 때만 그 결과값을 넘겨받아 순차적으로 후속 로직(콜백 함수)을 실행하도록 보장해 주는 제어기이다.",
+      "whyCorrect": "자료에서 비동기 흐름 제어 파트에 \"소포 상자가 무사히 도착하면 그때 비로소 내부 봉인을 풀고 이 로직을 실행하라\"는 약속 계약서 체이닝 구조로 `.then()`을 명시했다.",
+      "whyIncorrect": "브라우저 시스템을 정지시키지 않고(Non-blocking), 무한 요청도 아니며, 에러 전용은 `.catch()`의 역할이다.",
+      "examPoint": "자바스크립트 엔진이 택배 아저씨(fetch)를 기다려주지 않고 제 갈 길 가버리는 비동기 특성을 통제하기 위해 '순서표'를 쥐여주는 원리를 묻는다.",
+      "practicalExample": "택배가 아직 배송 중(Pending)인데도 박스 뜯는 코드(`data[0]`)로 넘어가서 `undefined` 에러를 뱉는 프론트엔드의 최대 골칫거리를 `.then()`이 잡아준다."
+    }
+  },
+  {
+    "id": "q-etc-028",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "서버에 새로운 데이터를 생성(POST)하거나 기존 데이터를 수정(PUT/PATCH)할 때, 요청과 함께 진짜 비즈니스 데이터(알맹이)를 안전하게 담아 보내기 위해 통신 패킷 내부에 필수적으로 개설해야 하는 속성 공간은?",
+    "choices": [
+      "header",
+      "body",
+      "query",
+      "url"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "HTTP 요청 메시지 구조에서, 생성이나 수정 통신 시 서버에 전달해야 하는 거대한 데이터 뭉치(JSON 페이로드)는 요청의 본문(Body) 영역에 탑재하여 발송한다.",
+      "whyCorrect": "자료에서 새로운 레코드를 생성할 때는 반드시 소포 봉투 역할을 하는 `body` 속성을 개설하고 내부에 보낼 데이터를 주입해야 한다고 설명했다.",
+      "whyIncorrect": "header는 통신 포맷 설정(메타데이터), query와 url은 주소창 노출 영역이라 대용량/보안 데이터를 담기엔 부적절하다.",
+      "examPoint": "GET 요청엔 body가 없지만, POST/PUT에는 무거운 화물칸(body)이 달려서 기차가 출발한다는 통신 트레인 구조를 이해한다.",
+      "practicalExample": "`fetch(주소, { method: 'POST', body: JSON.stringify(데이터) })` 형태로 작성하여 화물을 단단히 묶어 배송한다."
+    }
+  },
+  {
+    "id": "q-etc-029",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "선배의 실무 꿀팁에서, 서버 응답 포장을 풀기 전(res.json)에 반드시 수행하라고 당부한 '바리케이드(방어벽) 검증 코드'의 올바른 구조는 무엇인가?",
+    "choices": [
+      "if (res.ok) { ... }",
+      "if (res.status == 404) { ... }",
+      "if (res.body == null) { ... }",
+      "if (res.headers == \"JSON\") { ... }"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "fetch API의 Response 객체 내부에 있는 `.ok` 속성은 서버의 상태 코드가 200번대(성공)일 때만 논리값 `true`를 반환하므로, 한 줄의 코드로 통신 에러를 완벽하게 걸러낼 수 있는 가장 직관적인 프로퍼티이다.",
+      "whyCorrect": "선배 팁에서 무조건 `res.ok` 또는 상태 코드가 200번대인지 검증하는 바리케이드 코드를 먼저 작성하라고 지시했으므로 `if(res.ok)`가 정답이다.",
+      "whyIncorrect": "404 검사(2번)는 부분적 에러만 잡고, 3, 4번은 지원하지 않는 속성 문법이다.",
+      "examPoint": "fetch는 네트워크 선이 완전히 끊어지지 않는 한 서버가 500 에러를 뱉어도 그걸 '통신 성공'으로 치고 then으로 넘어가 버리는 치명적 특성이 있으므로, 그 멱살을 잡고 에러 처리를 수동으로 해줘야 함을 묻는다.",
+      "practicalExample": "`.then(res => { if(!res.ok) throw new Error(\"서버 장애 발생!\"); return res.json(); })` 로 안전망을 구축한다."
+    }
+  },
+  {
+    "id": "q-etc-030",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "백엔드 데이터 조작 파이프라인에서, 사용자가 기입한 '새로운 캐릭터 정보 객체'를 서버로 날리기 직전 `const newHero = { name: \"주디\", team: \"hero\" };` 변수를 어떻게 가공해야 하는가?",
+    "choices": [
+      "자바스크립트 엔진이 자동으로 가공하므로 아무 조치 없이 `newHero` 그대로 전송한다.",
+      "객체의 모든 값을 숫자로 암호화한다.",
+      "`JSON.stringify(newHero)`를 사용하여 문자열(텍스트) 포맷 소포 박스로 테이프 포장한다.",
+      "`newHero.toString()` 메서드를 사용하여 배열로 변환한다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "클라이언트 메모리의 생생한 JS 객체를 HTTP 통신망에 태우기 위해서는, 반드시 직렬화 함수(`JSON.stringify`)를 써서 일렬로 된 JSON 텍스트 문자열 스트림으로 눌러 압축해 줘야 한다.",
+      "whyCorrect": "자료에서 자바스크립트 객체 데이터를 텍스트 포맷으로 가공하는 작업 비유와 함께 `JSON.stringify(newHero)` 포장 작업을 명시했다.",
+      "whyIncorrect": "자동 가공 불가, 암호화 아님, toString은 `[object Object]`라는 쓸모없는 쓰레기 텍스트를 반환하므로 절대 쓰면 안 된다.",
+      "examPoint": "프론트에서 백엔드로 나갈 때(POST)는 압축(`stringify`), 들어올 때(GET)는 해제(`json()`)라는 왕복 파이프라인 철칙을 묻는다.",
+      "practicalExample": "`fetch`의 body 옵션에 `{ name: '주디' }`를 넣으면 에러가 터지고, 반드시 `JSON.stringify({ name: '주디' })`를 통째로 넣어야 얌전히 전송된다."
+    }
+  },
+  {
+    "id": "q-etc-031",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "데이터베이스 통신에서 가장 치명적인 사고인 '테이블 전체 영구 삭제 대참사'를 막기 위해, REST 규약에서 삭제(DELETE) 요청 시 반드시 URL 엔드포인트의 가장 끝 자리에 붙여주어야 하는 정밀 타겟팅 식별자는?",
+    "choices": [
+      "삭제 권한을 승인하는 관리자 비밀번호",
+      "지우고자 하는 요소의 고유 식별 번호 (ID / Path Parameter)",
+      "삭제 후 이동할 새로운 페이지의 URL",
+      "JSON 포맷의 빈 객체 `{}`"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "RESTful 한 삭제 요청은 무차별 폭격(Bulk Delete)을 지양하고, 정확히 어느 리소스를 날릴 것인지 Path(경로) 끝에 고유 ID(Primary Key)를 박아 저격수처럼 쏘는 것이 표준 아키텍처이다.",
+      "whyCorrect": "자료에서 정밀 타겟팅 기법으로 '주소 엔드포인트의 가장 끝 자리에 지우고자 하는 요소의 고유 식별 번호(ID)를 경로 변수 형태로 명시하여 발송하라'고 강력히 지시했다.",
+      "whyIncorrect": "비밀번호는 헤더나 바디 인증 영역이고, 이동 주소나 빈 객체 전송은 삭제 API 설계 규격과 완전히 무관하다.",
+      "examPoint": "실무에서 삭제 버튼을 짤 때 타겟팅 코드를 실수로 누락하면, 해당 테이블을 싹 다 비워버리는 `TRUNCATE` 참사가 벌어질 수 있음을 경고한다.",
+      "practicalExample": "`fetch('.../characters')` 라고 쏘지 말고 꼭 `fetch('.../characters/3')` 이라고 3번 타겟을 지정해 쏴야 무고한 1, 2번 데이터가 살아남는다."
+    }
+  },
+  {
+    "id": "q-etc-032",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "JSON 객체 내부의 데이터에 접근할 때 활용하는 파싱 메커니즘을 고려할 때, `const data = { \"user\": { \"profile\": { \"age\": 25 } } };` 라는 중첩된 응답 데이터에서 나이(`25`)를 추출하기 위해 점 표기법(.)을 올바르게 구사한 코드는?",
+    "choices": [
+      "data.user.profile.age",
+      "data->user->profile->age",
+      "data[user][profile][age]",
+      "data.user(profile).age()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "자바스크립트 객체의 하위 프로퍼티(Key)에 접근하여 값을 빼낼 때는, 가장 바깥쪽부터 안쪽으로 징검다리를 건너듯 점(`.`)을 하나씩 찍어가며 순차 탐색(Chaining)을 수행한다.",
+      "whyCorrect": "자료의 점 표기법 파싱 메커니즘 원리에 따라, 가장 바깥 변수 `data`에서 출발하여 `.user` -> `.profile` -> `.age` 로 파고들어 간 1번이 문법적으로 완벽하다.",
+      "whyIncorrect": "화살표 포인터(2번), 따옴표 없는 대괄호 남발(3번), 소괄호 함수호출 짬뽕(4번)은 모두 JS 객체 탐색 문법 에러이다.",
+      "examPoint": "백엔드가 던져준 응답 포맷이 아무리 복잡한 러시아 마트료시카 인형 구조라도, 당황하지 않고 껍질을 하나씩 벗겨 타겟을 명중시키는 파싱 능력을 평가한다.",
+      "practicalExample": "기상청 API가 엄청나게 깊은 껍질 속에 서울 온도를 숨겨놨어도, `response.data.current.temp_c` 라고 점 3개만 딱딱 찍으면 온도가 툭 튀어나온다."
+    }
+  },
+  {
+    "id": "q-etc-033",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "네트워크 통신 중 `fetch()` 로직 내부에서 `.catch()` 구문이 주로 담당하는 통신 파이프라인 상의 역할은 무엇인가?",
+    "choices": [
+      "성공적으로 데이터를 받아와 화면에 정상적으로 렌더링하는 역할",
+      "사용자의 클릭 이벤트를 강제로 낚아채어 백엔드로 넘겨주는 역할",
+      "통신 도중 네트워크 단절이나 심각한 장애가 발생했을 때 이를 잡아내어(Catch) 에러 메시지를 띄우는 복구 역할",
+      "서버의 데이터베이스 데이터를 로컬 컴퓨터에 압축 파일로 다운로드하는 역할"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "프로미스(Promise) 체이닝 구조에서 `.then()`이 통신 성공 시의 약속 이행이라면, `.catch()`는 중간에 네트워크 선이 뽑히거나 서버가 응답을 거부하는 등 장애가 터졌을 때 앱이 죽지 않도록 에러를 잡아내는 예외 처리(Fallback) 구간이다.",
+      "whyCorrect": "자료의 안전장치 및 통신 흐름 제어 맥락에 비추어 볼 때, 에러가 발생했을 때 작동하는 에러 전용 복구 엔진 역할을 `.catch()`가 담당한다.",
+      "whyIncorrect": "성공 처리는 `.then()`, 이벤트 낚아채기는 `addEventListener`, 압축 다운로드는 전혀 무관한 기능이다.",
+      "examPoint": "성공(Happy Path)만 대비하는 반쪽짜리 코더가 아니라, 언제 터질지 모르는 서버 장애(Sad Path)까지 방어막을 구축하는 견고한 코딩 태도를 묻는다.",
+      "practicalExample": "지하철에서 와이파이가 끊겨 `fetch` 통신이 엎어졌을 때, `.catch(e => alert(\"인터넷 연결을 확인하세요\"))` 가 실행되어 앱 강제 종료를 막아준다."
+    }
+  },
+  {
+    "id": "q-etc-034",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "정적인 프론트엔드 코드 내부에 가짜 데이터를 고정해 두던 구시대적 방식에서 벗어나, 실제 데이터베이스와 통신하는 동적 애플리케이션으로 넘어가기 위해 극복해야 하는 과거의 개발 구조를 지칭하는 용어는?",
+    "choices": [
+      "하드코딩 (Hard-coding)",
+      "리팩토링 (Refactoring)",
+      "비동기 렌더링 (Async Rendering)",
+      "라우팅 (Routing)"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "하드코딩(Hard-coding)은 데이터를 외부 파일이나 서버에서 동적으로 불러오지 않고, 프론트엔드 소스코드 내부에 상수나 텍스트로 직접 박아두어 유연성이 떨어지는 코딩 방식을 말한다.",
+      "whyCorrect": "자료에서 정적인 프론트엔드 코드 내부에 가짜 데이터를 고정해 두던 구조를 '하드코딩(Hard-coding)'으로 정의하며 패러다임 전환을 강조했다.",
+      "whyIncorrect": "리팩토링은 코드 개선, 렌더링은 화면 그리기, 라우팅은 페이지 이동 기술이다.",
+      "examPoint": "백엔드 API가 왜 필요한지(하드코딩의 한계 극복) 그 아키텍처적 당위성을 이해하는가 묻는 기초 문제이다.",
+      "practicalExample": "HTML에 `<li>주디</li>`라고 직접 치는 것은 하드코딩이고, 백엔드에서 이름을 가져와 JS로 `<li>`를 생성하는 것은 동적 렌더링이다."
+    }
+  },
+  {
+    "id": "q-etc-035",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "서버가 정상적으로 요청을 처리했을 때 내려주는 2xx(성공) 상태 코드 중에서, 단순 조회가 아닌 '새로운 데이터의 적재(저장)가 성공적으로 완료되었음'을 명확히 구분하여 알려주는 코드는?",
+    "choices": [
+      "200 (OK)",
+      "201 (Created)",
+      "400 (Bad Request)",
+      "500 (Internal Server Error)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "HTTP 201 Created 코드는 POST 요청 등을 통해 서버 데이터베이스에 새로운 리소스가 성공적으로 생성(Create)되었음을 알리는 명시적인 성공 프로토콜이다.",
+      "whyCorrect": "자료의 상태 코드 규약 분석에서 데이터 저장 성공을 의미하는 코드로 `201 (Created)`를 명확히 구분하여 설명했다.",
+      "whyIncorrect": "200은 단순 조회 성공, 400은 클라이언트 요청 오류, 500은 서버 내부 장애 코드이다.",
+      "examPoint": "실무 API 설계 시 GET 요청 성공은 200, POST 요청 성공은 201로 구분하여 던져주는 백엔드의 섬세한 규약을 이해한다.",
+      "practicalExample": "회원가입 버튼을 누르고 응답을 받았을 때 상태 코드가 201이면 DB에 내 정보가 무사히 꽂혔음을 확신할 수 있다."
+    }
+  },
+  {
+    "id": "q-etc-036",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "RESTful API 설계에서, 엔드포인트 URL 주소 경로의 일부분으로 자원의 '고유 식별 번호'를 고정하여 콕 집어 타겟팅하는 방식을 무엇이라 부르는가?",
+    "choices": [
+      "Query String (쿼리 스트링)",
+      "Path Parameter (경로 변수)",
+      "JSON Payload (제이슨 페이로드)",
+      "Response Body (응답 바디)"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "경로 변수(Path Parameter)는 URL의 구조적 계층을 이용하여 특정 단일 리소스를 지목할 때 사용하는 REST 식별자 설계 방식이다.",
+      "whyCorrect": "자료에서 자원의 고유 식별 번호를 URL 경로의 일부분으로 고정하여 명시하는 구조를 '경로 변수 (Path Parameter / 경로에 박기)'로 정의했다.",
+      "whyIncorrect": "Query String은 물음표(?) 뒤에 붙는 필터링 옵션이며, Payload와 Body는 데이터를 담는 본문 영역이다.",
+      "examPoint": "경로 변수(`/users/1`)와 쿼리 스트링(`/users?id=1`)을 시각적으로 즉시 구별할 수 있는 API 독해력을 묻는다.",
+      "practicalExample": "게시판 5번 글의 상세 내용을 볼 때 백엔드로 `fetch('.../posts/5')` 형태의 Path Parameter 주소를 날린다."
+    }
+  },
+  {
+    "id": "q-etc-037",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "JSON 데이터 포맷의 구조적 특징에 대한 설명으로 올바르지 않은 것은?",
+    "choices": [
+      "화면과 백엔드가 네트워크를 타고 데이터를 주고받을 때 사용하는 경량 글자(텍스트) 형식이다.",
+      "내부 데이터는 항상 \"이름표(Key)\"와 \"값(Value)\" 구조의 쌍으로 저장된다.",
+      "자바스크립트의 일반 객체(Object) 형태와 마찬가지로 중괄호 `{ }` 꼴을 취한다.",
+      "데이터를 묶을 때 쌍따옴표(\"\") 대신 홑따옴표('')만 사용해야 한다는 엄격한 규약이 있다."
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "JSON(JavaScript Object Notation) 규격은 반드시 Key와 문자열 Value에 대해 **쌍따옴표(\"\")**만을 사용하도록 국제 표준으로 엄격히 강제하고 있다.",
+      "whyCorrect": "자료와 JSON 표준 스펙에 따르면 홑따옴표('')를 사용하는 것은 JSON 파싱 에러를 유발하는 문법 위반이므로 4번이 틀린 설명이다.",
+      "whyIncorrect": "경량 텍스트 형식, Key-Value 쌍, 중괄호 구조는 모두 JSON의 본질적인 특징을 올바르게 서술한 내용이다.",
+      "examPoint": "JS 코드 안에서는 작은따옴표를 써도 되지만, 통신 포맷인 JSON으로 넘어갈 때는 무조건 큰따옴표로 포맷팅됨을 구분할 줄 알아야 한다.",
+      "practicalExample": "`{'name': '주디'}` 라고 쓰면 서버에서 400 파싱 에러가 나며, 반드시 `{\"name\": \"주디\"}` 라고 쌍따옴표를 써야 정상 작동한다."
+    }
+  },
+  {
+    "id": "q-etc-038",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "실무 API 설계에서, 테이블 데이터 전체를 날리는 대참사를 막기 위해 DELETE 요청을 보낼 때 지켜야 하는 필수적인 REST 아키텍처 규칙은 무엇인가?",
+    "choices": [
+      "Body 영역에 삭제할 테이블의 모든 데이터를 JSON으로 담아서 보내야 한다.",
+      "GET 메서드와 조합하여 삭제 전 사용자 동의 팝업을 서버에 전송해야 한다.",
+      "주소 엔드포인트 가장 끝 자리에 지우고자 하는 요소의 고유 식별 번호(ID)를 경로 변수 형태로 명시하여 보내야 한다.",
+      "삭제 통신은 오직 포트 번호 80번을 통해서만 전송해야 한다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "DELETE 요청은 파괴적인 트랜잭션이므로, 광역 폭격이 되지 않도록 URL Path의 가장 꼬리 부분에 특정 자원(Resource)의 Primary Key(ID)를 타겟팅하는 것이 표준이다.",
+      "whyCorrect": "자료의 정밀 타겟팅 기법 파트에서 대참사를 막기 위해 주소 엔드포인트의 가장 끝 자리에 고유 식별 번호(ID)를 경로 변수로 명시하라고 규정했다.",
+      "whyIncorrect": "DELETE 요청은 기본적으로 Body를 동반하지 않는 것이 관행이며, 서버로 팝업을 보내거나 특정 포트(80)를 강제하는 규칙은 없다.",
+      "examPoint": "DB의 특정 행(Row)만 지워야 하는데 엉뚱하게 테이블 껍데기(Table) 전체를 날려먹지 않도록 하는 통신 타겟팅의 엄격함을 묻는다.",
+      "practicalExample": "게시글 지울 때 `fetch('/posts', {method: 'DELETE'})` 하면 백엔드에서 에러를 튕겨내거나 전체를 지울 위험이 있으니 `fetch('/posts/105', ...)` 로 쏴야 한다."
+    }
+  },
+  {
+    "id": "q-etc-039",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "로컬 가상 백엔드 도구인 `json-server`를 구축할 때, 프론트엔드가 데이터를 저장하고 읽어오는 데이터베이스(DB) 역할을 대신 수행하는 파일의 포맷은 무엇인가?",
+    "choices": [
+      "단 하나의 JSON 데이터 파일 (.json)",
+      "관계형 테이블 엑셀 파일 (.csv)",
+      "텍스트 압축 로그 파일 (.zip)",
+      "자바 소스 코드 파일 (.java)"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "json-server는 복잡한 RDBMS(MySQL 등) 설치 없이, 디렉토리에 있는 단순한 텍스트 파일인 `db.json` 하나를 메모리 DB처럼 취급하여 완벽한 REST API 인터페이스를 제공하는 가상 백엔드 라이브러리이다.",
+      "whyCorrect": "자료에서 실제 거대 데이터베이스 서버를 구축하기 전, '단 하나의 JSON 데이터 파일(.json)'을 기반으로 가상 서버 환경을 구축하는 도구로 소개했다.",
+      "whyIncorrect": "엑셀, 압축 파일, 자바 소스 코드 등은 json-server의 구동 기반 데이터 저장소가 아니다.",
+      "examPoint": "백엔드가 아직 설계되지 않은 프로젝트 초기 단계에, 프론트엔드 혼자서도 JSON 텍스트 파일 하나만 던져두고 완벽하게 테스트 서버를 띄울 수 있음을 묻는다.",
+      "practicalExample": "폴더 안에 `db.json`을 만들고 그 안에 `{ \"posts\": [] }` 라고 적어두기만 하면, `GET /posts`와 `POST /posts`가 즉시 마법처럼 동작한다."
+    }
+  },
+  {
+    "id": "q-etc-040",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "HTTP 상태 코드(Status Code) 규약에서, 프론트엔드의 요청은 멀쩡했으나 백엔드의 내부 로직 코드가 터졌거나 연결된 데이터베이스가 죽어서 처리에 실패한 최악의 서버 장애를 나타내는 코드 앞자리 묶음은?",
+    "choices": [
+      "2xx (예: 200, 201)",
+      "3xx (예: 301, 304)",
+      "4xx (예: 400, 404)",
+      "5xx (예: 500, 502)"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "HTTP 500번대 코드는 클라이언트(브라우저)의 잘못이 전혀 없고, 전적으로 리소스를 내어줘야 할 서버(인프라, 백엔드 코드) 쪽에 치명적인 장애가 생겼음을 의미하는 서버 측 오류 프로토콜이다.",
+      "whyCorrect": "자료에서 백엔드 내부 로직 에러나 데이터베이스 다운으로 처리에 실패한 상황을 '5xx (백엔드 서버 측 오류)'로 명확히 정의했다.",
+      "whyIncorrect": "2xx는 성공, 3xx는 이동(리다이렉트), 4xx는 클라이언트 측 오타나 요청 규격 오류를 뜻한다.",
+      "examPoint": "에러 창에 500이 떴다면 프론트 코드를 뜯어볼 게 아니라 백엔드 동료에게 \"서버 로그 좀 털어보세요\"라고 넘겨야 하는 책임 분담의 경계를 묻는다.",
+      "practicalExample": "대국민 수강신청 날 서버가 터져서 화면에 하얗게 `500 Internal Server Error`나 `502 Bad Gateway`가 뜨는 현상이다."
+    }
+  },
+  {
+    "id": "q-etc-041",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Swagger UI나 Talend API Tester 같은 API 시뮬레이션 인터페이스 도구들이 실무 프로덕션 개발 과정에서 제공하는 가장 본질적인 협업 효율(가치)은 무엇인가?",
+    "choices": [
+      "자바스크립트 코드를 자동으로 100% 짜주어 프론트 개발자가 타이핑할 필요가 없어진다.",
+      "백엔드 서버의 코드를 해킹하여 프론트엔드가 원하는 대로 데이터베이스를 조작할 수 있다.",
+      "실제 자바스크립트 코드를 작성하기 전에 백엔드가 설계한 API가 정상적으로 응답하는지 수동으로 요청을 쏴보며 눈으로 먼저 확인(검증)할 수 있다.",
+      "HTML 마크업과 CSS 디자인을 드래그 앤 드롭으로 예쁘게 만들어주는 그래픽 툴이다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "API 테스터 툴(Postman, Swagger 등)은 프론트 코드(fetch)에 버그가 있는지, 백엔드 API에 버그가 있는지 헷갈릴 때, 순수하게 백엔드 API만을 독립적으로 찔러보며(Mocking) 응답 규격을 확인하게 해주는 검증 샌드박스이다.",
+      "whyCorrect": "자료에서 실제 JS 코드를 작성하기 전에 백엔드 API가 정상 응답하는지 눈으로 먼저 확인하는 프로덕션 도구로 명시했다.",
+      "whyIncorrect": "자동 코딩(AI), 서버 해킹, CSS 그래픽 툴은 API 시뮬레이터의 목적과 완전히 거리가 멀다.",
+      "examPoint": "JS 코드로 짜다가 에러가 나면 1시간을 버리지만, 툴로 먼저 찔러보고 에러를 발견하면 1분 만에 백엔드 탓(?)을 할 수 있다는 디버깅의 순서를 묻는다.",
+      "practicalExample": "백엔드가 명세서에 `age`를 숫자로 달라고 해놓고 막상 스웨거로 찔러보니 문자열로 뱉어내는 버그를, 내가 코딩하기 전에 미리 적발할 수 있다."
+    }
+  },
+  {
+    "id": "q-etc-042",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사가 강조한 직렬화 메커니즘(`JSON.stringify`)의 목적은, 메모리의 복잡한 3차원 객체를 통신선을 통과할 수 있는 1차원 규격으로 납작하게 만드는 것이다. 이 작업 없이 순수 자바스크립트 객체(`{name: \"홍길동\"}`)를 그대로 `fetch` 바디에 실어 서버에 던지면 서버는 어떤 데이터를 받게 되는가?",
+    "choices": [
+      "정확히 `{name: \"홍길동\"}` 객체를 온전히 해독하여 받게 된다.",
+      "서버의 운영체제가 자동으로 직렬화를 대신 수행하여 정상 파싱한다.",
+      "자바스크립트 메모리 주소값이나 `[object Object]`라는 무의미한 쓰레기 텍스트로 치환된 값을 받게 되어 해독하지 못한다.",
+      "서버가 백업된 이전 데이터를 자동으로 불러와 에러를 회피한다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "HTTP 바디(Body)는 무조건 바이트/문자열(Text) 스트림만 허용한다. JS 객체를 문자열로 강제 변환(String 캐스팅)하면 자바스크립트는 친절하게 포장해 주지 않고 자신의 디폴트 객체 문자열인 `[object Object]`를 던져버린다.",
+      "whyCorrect": "강사의 인사이트에서 자바스크립트 객체를 포장 테이프 없이 그대로 서버에 던지면 서버는 해석하지 못한다고 경고한 현상의 기술적 뒷받침이다.",
+      "whyIncorrect": "온전한 해독, 서버 자동 직렬화, 에러 회피 등은 직렬화(Serialization)를 누락했을 때의 파괴적 결과를 인지하지 못한 오답이다.",
+      "examPoint": "백엔드 개발자가 \"프론트님, 데이터가 안 들어오고 자꾸 오브젝트 오브젝트라는 글자만 찍히는데요?\"라고 항의할 때 아차 하며 `stringify`를 빼먹었음을 깨달아야 한다.",
+      "practicalExample": "`fetch(url, { body: userObj })` 라고 실수로 짜면 서버에는 진짜로 `[object Object]` 라는 15글자의 텍스트만 날아간다."
+    }
+  },
+  {
+    "id": "q-etc-043",
+    "category": "기타",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "서버의 엔드포인트 URL 뒤에 붙이는 검색 조건인 쿼리 스트링(Query String)을 작성할 때, `?` 신호탄 이후에 데이터를 엮어 붙이는 기본 문법 구조는 무엇인가?",
+    "choices": [
+      "{Key: Value}",
+      "Key=Value",
+      "Key->Value",
+      "[Key, Value]"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "URL 파라미터(쿼리 스트링)는 `?`로 시작하며, `이름=값`의 쌍으로 작성된다. 만약 조건이 여러 개라면 앰퍼샌드(`&`)로 연결하여 `?key1=value1&key2=value2` 형태를 취한다.",
+      "whyCorrect": "자료에서 `?` 기호를 신호탄으로 터트리고 `Key=Value` 형태로 검색 조건이나 옵션 데이터를 엮어 붙인다고 명확히 규정했다.",
+      "whyIncorrect": "중괄호나 대괄호, 화살표 등은 JSON이나 프로그래밍 언어의 맵(Map) 구조일 뿐, URL 규격상 웹 브라우저가 인식하는 쿼리 문자열 포맷이 아니다.",
+      "examPoint": "웹서핑을 하면서 밥 먹듯이 보는 주소창의 꼬부랑 글씨들이 사실은 아주 단순한 `키=값`의 조건 검색어 묶음이라는 사실을 이해한다.",
+      "practicalExample": "구글 검색창 주소를 보면 `https://www.google.com/search?q=자바스크립트` 처럼 `q(키)=자바스크립트(값)` 포맷이 정직하게 적혀 있다."
+    }
+  },
+  {
+    "id": "q-etc-044",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "네트워크 통신은 언제나 지연(Delay)이 발생할 수 있는 비동기(Asynchronous) 환경이다. 이를 대기하고 제어하기 위한 약속 계약서 키워드인 `.then()` 구조에서, 내부 콜백 함수가 실행되는 정확한 시점은 언제인가?",
+    "choices": [
+      "`fetch` 명령어가 브라우저 콘솔에서 실행을 시작하는 즉시 동시에 실행된다.",
+      "사용자가 브라우저 화면의 특정 버튼을 클릭할 때 실행된다.",
+      "네트워크 선을 타고 백엔드 서버로부터 무사히 소포 상자(응답)가 도착했을 때 비로소 실행된다.",
+      "서버의 데이터베이스가 백업을 완료하는 매일 자정에 실행된다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Promise 객체에 체이닝된 `.then()` 블록은 이벤트 리스너와 마찬가지로 대기 상태(Pending)에 머물다, 비동기 통신이 완료(Fulfilled/Resolved)되어 결과 데이터가 도달하는 그 순간 브라우저 엔진에 의해 콜백 큐로 밀려가 실행된다.",
+      "whyCorrect": "자료에서 비동기 흐름 제어 맥락 상 \"소포 상자가 무사히 도착하면 그때 비로소 내부 봉인을 풀고 이 로직을 실행하라\"고 예약 시점을 명확히 짚어주었다.",
+      "whyIncorrect": "동시 실행이나 무작위 버튼 클릭, 자정 백업 등은 통신 응답 대기(Promise Resolve)라는 .then의 발동 시점 조건과 일치하지 않는다.",
+      "examPoint": "JS 엔진은 `.then` 안에 든 코드를 일단 메모리(Microtask Queue)에 킵(Keep)해두고 다음 코드로 먼저 넘어가버린다는 비동기 논 블로킹(Non-blocking) 철학을 묻는다.",
+      "practicalExample": "`fetch`를 쏘고 그 바로 아랫줄에 `console.log('완료')`를 쓰면 응답이 오기도 전에 '완료'가 먼저 찍힌다. 그래서 진짜 통신 완료 후 띄우려면 `console.log`도 `.then()` 블록 내부로 이사시켜야 한다."
+    }
+  },
+  {
+    "id": "q-etc-045",
+    "category": "기타",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "프론트엔드와 백엔드가 서로 다른 포트(Port) 방(예: 3000번과 3001번)을 점유하여 통신할 때, 한 컴퓨터 안에서 물리적인 통로를 찢어서 격리 운영하는 궁극적인 아키텍처적 목적은?",
+    "choices": [
+      "IP 주소를 분리하여 속도를 배로 올리기 위함이다.",
+      "하나의 포트 번호를 두 프로그램이 동시에 점유하려 할 때 발생하는 충돌(Address Already in Use) 에러를 방지하여 각 서버 프로그램이 무사히 기동되게 하기 위함이다.",
+      "프론트엔드 코드 내부의 JavaScript 엔진과 CSS 엔진을 물리적으로 분리하기 위함이다.",
+      "데이터베이스의 테이블을 2배로 확장하기 위함이다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "포트(Port)는 운영체제(OS) 단에서 네트워크 프로세스를 식별하는 번호이다. 같은 번호를 둘이 동시에 쓰려고 하면 OS가 후발 주자의 실행을 튕겨내 버린다.",
+      "whyCorrect": "강사의 핵심 인사이트에 기반하여 '네트워크 리소스 점유 충돌을 피하기 위한 아키텍처적 필수 격리 조치'이므로 방 번호를 찢는다는 2번이 완벽한 정답이다.",
+      "whyIncorrect": "IP 주소 분리, 엔진 분리, 테이블 확장 등은 개발 환경의 로컬 포트 격리 시스템과 전혀 관계없는 엉뚱한 해설이다.",
+      "examPoint": "프론트 개발자가 \"npm start를 쳤는데 서버가 안 켜져요!\"라고 할 때, \"혹시 포트 3000번에 다른 서버 이미 켜둔 거 아니에요?\"라고 1초 만에 진단할 수 있는 시야를 묻는다.",
+      "practicalExample": "리액트 서버를 켜둔 채로 실수로 터미널을 닫고 다시 리액트를 켜면 `Port 3000 is already in use` 에러가 뜬다. 이때 방 번호를 3001로 옮기면 정상적으로 켜진다."
+    }
+  }
+]
