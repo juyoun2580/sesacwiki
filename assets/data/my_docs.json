@@ -1,0 +1,52 @@
+{
+  "categories": ["전체", "문서", "노트", "이력서", "포트폴리오", "기타"],
+  "list": [
+    {
+      "id": "doc-001",
+      "icon": "📄",
+      "title": "신한은행 IT직무 자기소개서",
+      "tags": [{ "label": "이력서", "color": "green" }, { "label": "IT/개발", "color": "blue" }],
+      "date": "2025-05-20",
+      "isFavorite": true
+    },
+    {
+      "id": "doc-002",
+      "icon": "📋",
+      "title": "SQL JOIN 개념 정리 노트",
+      "tags": [{ "label": "노트", "color": "gray" }, { "label": "SQL", "color": "green" }],
+      "date": "2025-05-19",
+      "isFavorite": true
+    },
+    {
+      "id": "doc-003",
+      "icon": "🖼",
+      "title": "포트폴리오_웹 프로젝트 모음",
+      "tags": [{ "label": "포트폴리오", "color": "purple" }],
+      "date": "2025-05-18",
+      "isFavorite": true
+    },
+    {
+      "id": "doc-004",
+      "icon": "📄",
+      "title": "자주 묻는 면접 질문 정리",
+      "tags": [{ "label": "문서", "color": "gray" }],
+      "date": "2025-05-16",
+      "isFavorite": false
+    },
+    {
+      "id": "doc-005",
+      "icon": "📋",
+      "title": "Java OOP 개념 요약",
+      "tags": [{ "label": "노트", "color": "gray" }, { "label": "Java", "color": "orange" }],
+      "date": "2025-05-14",
+      "isFavorite": false
+    }
+  ],
+  "stats": { "total": 32, "favoriteCount": 12, "recentCount": 5, "storageUsed": "128MB" },
+  "categoryCounts": [
+    { "label": "이력서", "color": "green", "count": 8 },
+    { "label": "노트", "color": "gold", "count": 9 },
+    { "label": "문서", "color": "blue", "count": 7 },
+    { "label": "포트폴리오", "color": "purple", "count": 4 }
+  ]
+}

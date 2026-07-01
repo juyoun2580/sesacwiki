@@ -1,0 +1,432 @@
+/* ==========================================================================
+   Home 페이지 전용 스타일 (old/test.html의 /* HOME */ 블록 + 인라인 style 값을 이관)
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(130deg, var(--hero-grad-1) 0%, var(--hero-grad-2) 40%, var(--hero-grad-3) 100%);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--g100);
+  padding: var(--space-28) var(--space-32);
+  margin-bottom: var(--space-24);
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--sh-sm);
+}
+
+.hero__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.hey {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-5);
+  background: rgba(45, 122, 58, .12);
+  color: var(--g700);
+  padding: var(--space-3) var(--space-10);
+  border-radius: 20px;
+  font-size: var(--fs-11);
+  font-weight: 700;
+  margin-bottom: var(--space-10);
+}
+
+.hero__title {
+  font-size: var(--fs-26);
+  font-weight: 800;
+  color: var(--g900);
+  line-height: 1.3;
+  margin-bottom: var(--space-5);
+  letter-spacing: -.3px;
+}
+
+.hero__subtitle {
+  font-size: var(--fs-13);
+  color: var(--g700);
+  margin-bottom: var(--space-18);
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-10);
+}
+
+.hq {
+  background: rgba(255, 255, 255, .72);
+  backdrop-filter: blur(6px);
+  border-radius: var(--r-md);
+  padding: var(--space-14) var(--space-16);
+  font-size: var(--fs-12);
+  color: var(--g900);
+  line-height: 1.7;
+  border: 1px solid rgba(255, 255, 255, .8);
+  max-width: 160px;
+  flex-shrink: 0;
+}
+
+.hq::before {
+  content: '❝';
+  font-size: var(--fs-18);
+  color: var(--g500);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.hero__emoji {
+  font-size: var(--fs-80);
+  line-height: 1;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .15));
+}
+
+/* ---------- Section headings ---------- */
+.home-section-heading {
+  font-size: var(--fs-14);
+  font-weight: 800;
+  color: var(--g900);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.home-section-heading__desc {
+  font-size: var(--fs-12);
+  font-weight: 400;
+  color: var(--ink3);
+}
+
+/* ---------- Growth stat grid ---------- */
+.ggrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-14);
+  margin-bottom: var(--space-26);
+}
+
+.stat-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  padding: var(--space-18);
+  box-shadow: var(--sh-sm);
+  transition: box-shadow .2s;
+}
+
+.stat-card:hover {
+  box-shadow: var(--sh-md);
+}
+
+.stat-card__label {
+  font-size: var(--fs-11);
+  font-weight: 700;
+  color: var(--ink3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin-bottom: var(--space-10);
+}
+
+.stat-card .score-ring {
+  width: var(--space-68);
+  height: var(--space-68);
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.stat-card__number {
+  font-size: var(--fs-30);
+  font-weight: 800;
+  color: var(--g900);
+}
+
+.stat-card__meta {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+  margin-top: var(--space-2);
+}
+
+.stat-card__pill {
+  display: inline-block;
+  margin-top: var(--space-6);
+  padding: var(--space-3) var(--space-9);
+  border-radius: 20px;
+  font-size: var(--fs-11);
+  font-weight: 700;
+  background: var(--g50);
+  color: var(--g700);
+  border: 1px solid var(--g100);
+}
+
+.stat-card__pill--gold {
+  background: var(--gold-bg);
+  color: var(--brown-700);
+  border: 1px solid var(--gold-200);
+}
+
+.stat-card__progress {
+  margin-top: var(--space-8);
+}
+
+/* ---------- Roadmap scroller ---------- */
+.rm-scroll {
+  display: flex;
+  gap: var(--space-12);
+  overflow-x: auto;
+  padding-bottom: var(--space-6);
+  margin-bottom: var(--space-26);
+  list-style: none;
+}
+
+.rm-scroll::-webkit-scrollbar {
+  height: 3px;
+}
+
+.roadmap-card {
+  min-width: 172px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  padding: var(--space-16);
+  box-shadow: var(--sh-sm);
+  cursor: pointer;
+  transition: all .2s;
+  text-align: left;
+  display: block;
+}
+
+.roadmap-card:hover {
+  box-shadow: var(--sh-md);
+  transform: translateY(-3px);
+  border-color: var(--g300);
+}
+
+.roadmap-card__icon {
+  font-size: var(--fs-28);
+  margin-bottom: var(--space-8);
+}
+
+.roadmap-card__title {
+  font-size: var(--fs-13);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.roadmap-card__desc {
+  font-size: var(--fs-11);
+  color: var(--ink3);
+  margin-bottom: var(--space-10);
+}
+
+.roadmap-card__percent {
+  font-size: var(--fs-11);
+  color: var(--ink3);
+  margin-top: var(--space-4);
+  text-align: right;
+}
+
+/* ---------- 3-column summary cards ---------- */
+.h3g {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-16);
+  margin-bottom: var(--space-26);
+}
+
+.recent-list,
+.favorite-list {
+  list-style: none;
+}
+
+.recent-list__item,
+.favorite-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+  text-align: left;
+  background: none;
+}
+
+.recent-list__item:last-child,
+.favorite-list__item:last-child {
+  border: none;
+}
+
+.recent-list__item--clickable {
+  cursor: pointer;
+}
+
+.recent-list__icon {
+  font-size: var(--fs-15);
+}
+
+.recent-list__title,
+.favorite-list__title {
+  flex: 1;
+  font-size: var(--fs-12);
+  font-weight: 600;
+}
+
+.recent-list__time {
+  font-size: var(--fs-10);
+  color: var(--ink4);
+}
+
+.favorite-list__star {
+  color: var(--gold);
+  font-size: var(--fs-14);
+}
+
+.tag--sm {
+  font-size: var(--fs-10);
+}
+
+.word-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  list-style: none;
+}
+
+.word-chip {
+  padding: var(--space-5) var(--space-13);
+  border-radius: 20px;
+  background: var(--g50);
+  color: var(--g900);
+  font-size: var(--fs-12);
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid var(--g100);
+  transition: all .15s;
+}
+
+.word-chip:hover {
+  background: var(--g700);
+  color: #fff;
+  border-color: var(--g700);
+}
+
+.word-chip--muted {
+  background: var(--gray-100);
+  color: var(--ink3);
+  border-color: var(--border);
+}
+
+/* ---------- Streak card (side panel) ---------- */
+.streak-card__label {
+  font-size: var(--fs-12);
+  font-weight: 800;
+  color: var(--g900);
+  margin-bottom: var(--space-6);
+}
+
+.streak-card__value-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-5);
+}
+
+.streak-card__number {
+  font-size: var(--fs-36);
+  font-weight: 800;
+  color: var(--g900);
+  line-height: 1;
+}
+
+.streak-card__unit {
+  font-size: var(--fs-13);
+  color: var(--g700);
+  font-weight: 700;
+}
+
+.streak-card__note {
+  font-size: var(--fs-11);
+  color: var(--ink3);
+  margin-left: auto;
+}
+
+.streak-card__icon {
+  font-size: var(--fs-32);
+  text-align: center;
+  margin-top: var(--space-10);
+}
+
+/* ---------- Quote box (side panel) ---------- */
+.quote-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--space-12);
+  margin-bottom: var(--space-14);
+}
+
+.quote-box__label {
+  font-size: var(--fs-11);
+  font-weight: 800;
+  color: var(--g700);
+  margin-bottom: var(--space-5);
+}
+
+.quote-box__text {
+  font-size: var(--fs-12);
+  color: var(--ink2);
+  line-height: 1.6;
+}
+
+/* ---------- Shortcuts (side panel) ---------- */
+.shortcut-heading {
+  font-size: var(--fs-12);
+  font-weight: 800;
+  color: var(--ink2);
+  margin-bottom: var(--space-8);
+}
+
+.shortcut-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  margin-top: var(--space-6);
+  list-style: none;
+}
+
+.shortcut-btn {
+  width: 100%;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: var(--space-11) var(--space-6);
+  text-align: center;
+  font-size: var(--fs-11);
+  font-weight: 700;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.shortcut-btn:hover {
+  border-color: var(--g500);
+  color: var(--g700);
+  background: var(--g50);
+}
+
+.shortcut-btn__icon {
+  display: block;
+  font-size: var(--fs-20);
+  margin-bottom: var(--space-5);
+  font-style: normal;
+}
+
+.side-panel__decor {
+  display: block;
+  text-align: center;
+  font-size: var(--fs-52);
+  margin-top: var(--space-20);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .12));
+}

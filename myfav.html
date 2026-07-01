@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>즐겨찾기 — 마이핸드북 — 새싹트리</title>
+  <!-- ================================================= -->
+  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
+  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
+  <!-- ================================================= -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- 페이지 전용 CSS — MyPage(Job/My) 담당 소유 (my 목록과 공유, docs/PAGES.md 참고) -->
+  <link rel="stylesheet" href="assets/css/pages/my.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
+
+  <!-- ================================================= -->
+  <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
+  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
+  <!-- ================================================= -->
+  <header class="header">
+    <div class="header__logo">
+      <span class="header__logo-mark" aria-hidden="true">🌱</span>
+      <div>
+        <p class="header__logo-name">새싹트리</p>
+        <p class="header__logo-sub">나만의 취업 핸드북</p>
+      </div>
+    </div>
+    <div class="search-box">
+      <span class="search-box__icon" aria-hidden="true">🔍</span>
+      <label class="sr-only" for="global-search">검색</label>
+      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
+    </div>
+    <div class="header__right">
+      <button type="button" class="notification-btn" aria-label="알림">🔔<span
+          class="notification-btn__dot"></span></button>
+      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
+      <button type="button" class="user-chip">
+        <span class="avatar" aria-hidden="true">🌿</span>
+        <span>
+          <span class="user-chip__name">김새싹</span>
+          <span class="user-chip__level">Lv.3 잎새</span>
+        </span>
+        <span class="user-chip__caret" aria-hidden="true">▾</span>
+      </button>
+    </div>
+  </header>
+  <!-- COMMON HEADER END -->
+
+  <!-- ================================================= -->
+  <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
+  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
+  <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
+  <!-- ================================================= -->
+  <nav class="nav" aria-label="주 메뉴">
+    <a class="nav__item" href="index.html">🏠 홈</a>
+    <a class="nav__item" href="wiki.html">📖 새싹위키</a>
+    <a class="nav__item" href="exam.html">📝 모의고사</a>
+    <a class="nav__item" href="job.html">💼 취업핸드북</a>
+    <a class="nav__item nav__item--active" href="my.html" aria-current="page">📚 마이핸드북</a>
+  </nav>
+  <!-- COMMON NAVIGATION END -->
+
+  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
+
+  <main id="main-content">
+    <!-- ================================================= -->
+    <!-- MY FAV PAGE (즐겨찾기) -->
+    <!-- 담당 : feature/job -->
+    <!-- css : my.css -->
+    <!-- js : ui.js (즐겨찾기/필터탭/사이드바 토글), app.js/toast.js (공통) -->
+    <!-- json : 없음 (wiki.json / my_docs.json / words.json의 isFavorite 항목 취합) -->
+    <!-- ================================================= -->
+    <!-- MYFAV START -->
+    <section id="myfav" class="page page--active" aria-label="즐겨찾기">
+      <div class="shell">
+        <aside class="sidebar" aria-label="마이핸드북 메뉴">
+          <p class="sidebar__label">마이핸드북</p>
+          <a class="sidebar__item" href="my.html"><span class="sidebar__item-icon"
+              aria-hidden="true">📄</span>내 문서</a>
+          <button type="button" class="sidebar__item sidebar__item--active"><span class="sidebar__item-icon"
+              aria-hidden="true">⭐</span>즐겨찾기</button>
+          <a class="sidebar__item" href="mywords.html"><span class="sidebar__item-icon"
+              aria-hidden="true">📓</span>저장한 단어</a>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📋</span>학습
+            노트</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📄</span>나의
+            이력서</button>
+          <div class="sidebar__card sidebar__card--gold">중요한 자료는 즐겨찾기로 한눈에! 필요할 때 바로 찾아보세요 🌱
+            <p class="sidebar__card-icon" aria-hidden="true">🌿</p>
+          </div>
+        </aside>
+        <div class="page__content">
+          <h1 class="page-title">즐겨찾기 ⭐</h1>
+          <p class="page-subtitle">중요하다고 표시한 자료를 모아봤어요.</p>
+
+          <div class="filter-tabs">
+            <button type="button" class="filter-tab filter-tab--active">전체 (12)</button>
+            <button type="button" class="filter-tab">문서 (8)</button>
+            <button type="button" class="filter-tab">노트 (2)</button>
+            <button type="button" class="filter-tab">단어 (2)</button>
+          </div>
+
+          <ul class="fav-row-list">
+            <li><button type="button" class="fav-row">
+                <span class="fav-row__icon" aria-hidden="true">📄</span>
+                <span class="fav-row__body">
+                  <span class="fav-row__title">신한은행 IT직무 자기소개서</span>
+                  <span class="fav-row__desc">금융권 IT 직무 합격 자기소개서 예시</span>
+                </span>
+                <span class="tag tag--green">이력서</span>
+                <span class="fav-row__date">2025.05.20</span>
+                <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
+                  aria-label="즐겨찾기" data-toast-override="즐겨찾기가 해제됐어요.">★</span>
+                <span class="fav-row__more" aria-hidden="true">···</span>
+              </button></li>
+            <li><button type="button" class="fav-row">
+                <span class="fav-row__icon" aria-hidden="true">📋</span>
+                <span class="fav-row__body">
+                  <span class="fav-row__title">SQL JOIN 개념 정리 노트</span>
+                  <span class="fav-row__desc">JOIN 종류와 사용 예시 정리</span>
+                </span>
+                <span class="tag tag--gray">노트</span>
+                <span class="fav-row__date">2025.05.19</span>
+                <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
+                  aria-label="즐겨찾기" data-toast-override="즐겨찾기가 해제됐어요.">★</span>
+                <span class="fav-row__more" aria-hidden="true">···</span>
+              </button></li>
+            <li><button type="button" class="fav-row">
+                <span class="fav-row__icon" aria-hidden="true">🖼</span>
+                <span class="fav-row__body">
+                  <span class="fav-row__title">포트폴리오_웹 프로젝트 모음</span>
+                  <span class="fav-row__desc">개인 프로젝트 포트폴리오 링크 모음</span>
+                </span>
+                <span class="tag tag--purple">포트폴리오</span>
+                <span class="fav-row__date">2025.05.18</span>
+                <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
+                  aria-label="즐겨찾기" data-toast-override="즐겨찾기가 해제됐어요.">★</span>
+                <span class="fav-row__more" aria-hidden="true">···</span>
+              </button></li>
+            <li><button type="button" class="fav-row">
+                <span class="fav-row__icon" aria-hidden="true">📋</span>
+                <span class="fav-row__body">
+                  <span class="fav-row__title">면접 질문 모음 (개발 직무)</span>
+                  <span class="fav-row__desc">기술 면접 기출 질문과 답변 정리</span>
+                </span>
+                <span class="tag tag--gray">노트</span>
+                <span class="fav-row__date">2025.05.16</span>
+                <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
+                  aria-label="즐겨찾기" data-toast-override="즐겨찾기가 해제됐어요.">★</span>
+                <span class="fav-row__more" aria-hidden="true">···</span>
+              </button></li>
+            <li><button type="button" class="fav-row">
+                <span class="fav-row__icon" aria-hidden="true">#️⃣</span>
+                <span class="fav-row__body">
+                  <span class="fav-row__title">Algorithm (알고리즘)</span>
+                  <span class="fav-row__desc">문제를 해결하기 위한 절차나 방법</span>
+                </span>
+                <span class="tag tag--blue">단어</span>
+                <span class="fav-row__date">2025.05.14</span>
+                <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
+                  aria-label="즐겨찾기" data-toast-override="즐겨찾기가 해제됐어요.">★</span>
+                <span class="fav-row__more" aria-hidden="true">···</span>
+              </button></li>
+          </ul>
+
+          <div class="fav-complete">
+            <p class="fav-complete__icon" aria-hidden="true">🌿</p>
+            <p class="fav-complete__message">즐겨찾기한 자료를 잘 활용해서 목표를 이뤄보세요! 🌱</p>
+            <br>
+            <button type="button" class="btn btn--outline fav-complete__action" data-action="toast"
+              data-message="모두 확인 완료!">모두 확인했어요!</button>
+          </div>
+        </div>
+        <aside class="side-panel" aria-label="즐겨찾기 요약">
+          <p class="section-title section-title--sm">즐겨찾기 요약</p>
+          <div class="fav-summary">
+            <span class="fav-summary__icon" aria-hidden="true">⭐</span>
+            <p class="fav-summary__value">12개</p>
+            <p class="fav-summary__label">즐겨찾기한 자료</p>
+          </div>
+          <div class="divider"></div>
+          <div class="fav-summary-list">
+            <div class="fav-summary-list__row"><span>📄 문서</span><span class="fav-summary-list__count">8개</span></div>
+            <div class="fav-summary-list__row"><span>📋 노트</span><span class="fav-summary-list__count">2개</span></div>
+            <div class="fav-summary-list__row"><span>#️⃣ 단어</span><span class="fav-summary-list__count">2개</span></div>
+          </div>
+          <p class="section-title section-title--sm">최근 추가한 즐겨찾기 <button type="button" class="section-title__link">전체보기
+              ›</button></p>
+          <ul class="fav-recent-list">
+            <li class="fav-recent-list__row">📄 신한은행 IT직무 자기소개서<p class="fav-recent-list__date">2025.05.20</p>
+            </li>
+            <li class="fav-recent-list__row">📋 SQL JOIN 개념 정리 노트<p class="fav-recent-list__date">2025.05.19</p>
+            </li>
+            <li class="fav-recent-list__row">🖼 포트폴리오_웹 프로젝트 모음<p class="fav-recent-list__date">2025.05.18</p>
+            </li>
+          </ul>
+          <button type="button" class="btn btn--primary btn--sm fav-summary__submit" data-action="toast"
+            data-message="모두 확인 완료!">모두 확인했어요!</button>
+        </aside>
+      </div>
+    </section>
+    <!-- MYFAV END -->
+  </main>
+
+  <!-- ================================================= -->
+  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
+  <!-- 담당 : feature/core (공통 담당자 전용) -->
+  <!-- ================================================= -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- COMMON SHARED MARKUP END -->
+
+  <!-- ================================================= -->
+  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
+  <!-- 담당 : feature/core (공통 담당자 전용) -->
+  <!-- ================================================= -->
+  <script src="assets/js/toast.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+</body>
+
+</html>

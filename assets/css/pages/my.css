@@ -1,0 +1,521 @@
+/* ==========================================================================
+   Page: my / mywords / myfav (마이핸드북 / 저장한 단어 / 즐겨찾기)
+   old/test.html의 /* MY */ 블록(.drow/.stgrid/.stbox/.wsbar/.wsb/.wrow/.qwid/
+   .qwopt/.cbar/.frow2)을 BEM으로 재명명. 시각적 값은 전부 동일하게 유지.
+   ========================================================================== */
+
+/* ---------- 페이지 헤더 보조 (제목 + 액션 버튼 한 줄 배치) ---------- */
+.page-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+/* ---------- 검색/필터 툴바 (문서함 · 단어장 공통) ---------- */
+.my-toolbar {
+  display: flex;
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.my-toolbar__input {
+  flex: 1;
+  min-width: 160px;
+  padding: var(--space-8) var(--space-14);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-13);
+  outline: none;
+}
+
+.my-toolbar__select {
+  padding: var(--space-8) var(--space-12);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-12);
+  outline: none;
+  background: var(--surface);
+}
+
+/* ---------- 문서 행 (Document Row) ---------- */
+.doc-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-13) var(--space-16);
+  background: var(--surface);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-8);
+  cursor: pointer;
+  box-shadow: var(--sh-sm);
+  transition: all .15s;
+  width: 100%;
+  text-align: left;
+}
+
+.doc-row:hover {
+  box-shadow: var(--sh-md);
+  border-color: var(--g300);
+}
+
+.doc-row__icon {
+  font-size: var(--fs-22);
+  flex-shrink: 0;
+}
+
+.doc-row__title {
+  flex: 1;
+  font-size: var(--fs-13);
+  font-weight: 700;
+}
+
+.doc-row__date {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+  margin-left: var(--space-8);
+}
+
+.doc-row__more {
+  font-size: var(--fs-16);
+  color: var(--ink4);
+}
+
+/* ---------- 통계 그리드 (문서 통계 사이드 패널) ---------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+.stat-box {
+  background: var(--bg);
+  border-radius: var(--r-sm);
+  padding: var(--space-12);
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.stat-box__value {
+  font-size: var(--fs-22);
+  font-weight: 800;
+  color: var(--g900);
+}
+
+.stat-box__value--sm {
+  font-size: var(--fs-16);
+}
+
+.stat-box__value--gold {
+  color: var(--gold);
+}
+
+.stat-box__label {
+  font-size: var(--fs-10);
+  color: var(--ink4);
+  margin-top: 1px;
+}
+
+/* ---------- 카테고리별 문서 수 (범례 리스트) ---------- */
+.legend-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) 0;
+  font-size: var(--fs-11);
+}
+
+.legend-row__label {
+  display: flex;
+  align-items: center;
+}
+
+.legend-row__dot {
+  display: inline-block;
+  width: var(--space-10);
+  height: var(--space-10);
+  border-radius: 50%;
+  margin-right: var(--space-5);
+}
+
+.legend-row__dot--green {
+  background: var(--g700);
+}
+
+.legend-row__dot--gold {
+  background: var(--gold);
+}
+
+.legend-row__dot--blue {
+  background: var(--blue);
+}
+
+.legend-row__dot--purple {
+  background: var(--purple);
+}
+
+.legend-row__count {
+  font-weight: 800;
+}
+
+/* ---------- 사이드바 안내 카드 (핸드북 활용 팁) ---------- */
+.sidebar__card-title {
+  font-weight: 800;
+  margin-bottom: var(--space-5);
+}
+
+.sidebar__card-icon {
+  text-align: center;
+  font-size: 38px;
+  margin-top: var(--space-8);
+}
+
+.sidebar__card--green {
+  background: linear-gradient(135deg, var(--g50), var(--g100));
+}
+
+.sidebar__card--gold {
+  background: linear-gradient(135deg, var(--gold-bg), var(--gold-200));
+  border-color: var(--gold-200);
+}
+
+/* ---------- 단어장 통계 바 (Word Stats bar) ---------- */
+.word-stats {
+  display: flex;
+  gap: var(--space-10);
+  margin-bottom: var(--space-18);
+}
+
+.word-stats__box {
+  flex: 1;
+  background: var(--surface);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  padding: var(--space-14);
+  text-align: center;
+  box-shadow: var(--sh-sm);
+}
+
+.word-stats__value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--g900);
+}
+
+.word-stats__label {
+  font-size: var(--fs-10);
+  color: var(--ink4);
+}
+
+.word-stats__ring {
+  margin-bottom: var(--space-3);
+}
+
+.word-stats__ring-value {
+  font-size: var(--fs-11);
+  font-weight: 800;
+  color: var(--g900);
+}
+
+/* ---------- 단어 행 (Word Row) ---------- */
+.word-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-14) var(--space-16);
+  background: var(--surface);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-8);
+  box-shadow: var(--sh-sm);
+  transition: all .15s;
+}
+
+.word-row:hover {
+  box-shadow: var(--sh-md);
+  border-color: var(--g300);
+}
+
+.word-row__checkbox {
+  flex-shrink: 0;
+}
+
+.word-row__body {
+  flex: 1;
+}
+
+.word-row__term {
+  font-size: var(--fs-15);
+  font-weight: 800;
+}
+
+.word-row__pos {
+  font-size: var(--fs-10);
+  color: var(--ink4);
+  background: var(--bg);
+  padding: 1px var(--space-6);
+  border-radius: var(--r-xs);
+  margin-left: var(--space-5);
+}
+
+.word-row__def {
+  font-size: var(--fs-12);
+  color: var(--ink3);
+}
+
+.word-row__example {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+  font-style: italic;
+}
+
+.word-row__date {
+  font-size: var(--fs-10);
+  color: var(--ink4);
+}
+
+/* ---------- 오늘의 단어 퀴즈 위젯 (Word Quiz widget) ---------- */
+.word-quiz {
+  background: linear-gradient(135deg, var(--g50), var(--g100));
+  border-radius: var(--r-md);
+  padding: var(--space-16);
+  margin-bottom: var(--space-16);
+  border: 1px solid var(--g100);
+}
+
+.word-quiz__title {
+  font-size: var(--fs-12);
+  font-weight: 800;
+  color: var(--g900);
+  margin-bottom: var(--space-8);
+}
+
+.word-quiz__hint {
+  font-size: var(--fs-11);
+  color: var(--g700);
+  margin-bottom: var(--space-8);
+}
+
+.word-quiz__question {
+  font-size: var(--fs-13);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: var(--space-10);
+  line-height: 1.4;
+}
+
+.word-quiz__option {
+  padding: var(--space-7) var(--space-11);
+  background: var(--surface);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-12);
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all .15s;
+  margin-bottom: var(--space-5);
+  width: 100%;
+  text-align: left;
+}
+
+.word-quiz__option:hover {
+  border-color: var(--g500);
+  background: var(--g50);
+}
+
+.word-quiz__option--selected {
+  border-color: var(--g700);
+  background: var(--g50);
+}
+
+.word-quiz__submit {
+  width: 100%;
+  margin-top: var(--space-10);
+  padding: var(--space-9);
+  border-radius: var(--r-sm);
+  border: none;
+  background: var(--g700);
+  color: #fff;
+  font-size: var(--fs-12);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--sh-g);
+}
+
+/* ---------- 카테고리별 단어 수 (얇은 인라인 마스터율 바) ---------- */
+.category-stat-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-5) 0;
+  font-size: var(--fs-12);
+}
+
+.category-stat-row__label {
+  flex: 1;
+  font-weight: 600;
+}
+
+.category-stat-row__count {
+  width: var(--space-28);
+  text-align: right;
+  font-weight: 800;
+  font-size: var(--fs-11);
+}
+
+.progress-bar--thin {
+  height: 6px;
+  flex: 2;
+  border-radius: 3px;
+}
+
+/* ---------- 즐겨찾기 행 (Favorite row, 골드 hover 보더) ---------- */
+.fav-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-14) var(--space-16);
+  background: var(--surface);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-8);
+  cursor: pointer;
+  box-shadow: var(--sh-sm);
+  transition: all .15s;
+  width: 100%;
+  text-align: left;
+}
+
+.fav-row:hover {
+  box-shadow: var(--sh-md);
+  border-color: var(--gold);
+}
+
+.fav-row__icon {
+  font-size: var(--fs-22);
+  flex-shrink: 0;
+}
+
+.fav-row__body {
+  flex: 1;
+}
+
+.fav-row__title {
+  font-size: var(--fs-13);
+  font-weight: 700;
+}
+
+.fav-row__desc {
+  font-size: var(--fs-11);
+  color: var(--ink3);
+}
+
+.fav-row__date {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+  margin: 0 var(--space-8);
+}
+
+.fav-row__more {
+  font-size: var(--fs-16);
+  color: var(--ink4);
+}
+
+/* ---------- 즐겨찾기 완료 안내 (하단 CTA) ---------- */
+.fav-complete {
+  text-align: center;
+  padding: var(--space-28) 0 var(--space-8);
+}
+
+.fav-complete__icon {
+  font-size: var(--fs-52);
+  margin-bottom: var(--space-10);
+}
+
+.fav-complete__message {
+  font-size: var(--fs-12);
+  color: var(--g900);
+  background: var(--g50);
+  border-radius: 20px;
+  padding: var(--space-8) var(--space-16);
+  display: inline-block;
+  border: 1px solid var(--g100);
+}
+
+.fav-complete__action {
+  margin-top: var(--space-14);
+}
+
+/* ---------- 즐겨찾기 요약 (사이드 패널) ---------- */
+.fav-summary {
+  text-align: center;
+  padding: var(--space-8) 0 var(--space-14);
+}
+
+.fav-summary__icon {
+  font-size: var(--fs-28);
+}
+
+.fav-summary__value {
+  font-size: var(--fs-30);
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.fav-summary__label {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+}
+
+.fav-summary-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.fav-summary-list__row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-12);
+}
+
+.fav-summary-list__row:last-child {
+  border-bottom: none;
+}
+
+.fav-summary-list__count {
+  font-weight: 800;
+}
+
+/* ---------- 최근 추가한 즐겨찾기 (사이드 패널 리스트) ---------- */
+.fav-recent-list__row {
+  font-size: var(--fs-12);
+  color: var(--ink2);
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.fav-recent-list__row:last-child {
+  border-bottom: none;
+}
+
+.fav-recent-list__date {
+  font-size: var(--fs-10);
+  color: var(--ink4);
+}
+
+.fav-summary__submit {
+  width: 100%;
+  margin-top: var(--space-14);
+}
+
+.doc-row-list,
+.word-row-list,
+.fav-row-list,
+.fav-recent-list {
+  list-style: none;
+}

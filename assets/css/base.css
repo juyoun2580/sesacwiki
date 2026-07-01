@@ -1,0 +1,45 @@
+/* ==========================================================================
+   Base — 문서 전역 타이포그래피/배경 (old/test.html body 규칙 이관)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: var(--fs-14);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 접근성: 시각적으로는 숨기되 스크린 리더에는 노출 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 접근성: 키보드 사용자를 위한 본문 바로가기 링크 */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 8px;
+  z-index: 1000;
+  background: var(--g900);
+  color: #fff;
+  padding: var(--space-10) var(--space-16);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-13);
+  font-weight: 700;
+  transition: top .15s;
+}
+
+.skip-link:focus {
+  top: 8px;
+}

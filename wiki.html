@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>새싹위키 — 새싹트리</title>
+  <!-- ================================================= -->
+  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
+  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
+  <!-- ================================================= -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- 페이지 전용 CSS — Wiki 담당 소유 (docs/PAGES.md 참고) -->
+  <link rel="stylesheet" href="assets/css/pages/wiki.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
+
+  <!-- ================================================= -->
+  <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
+  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
+  <!-- ================================================= -->
+  <header class="header">
+    <div class="header__logo">
+      <span class="header__logo-mark" aria-hidden="true">🌱</span>
+      <div>
+        <p class="header__logo-name">새싹트리</p>
+        <p class="header__logo-sub">나만의 취업 핸드북</p>
+      </div>
+    </div>
+    <div class="search-box">
+      <span class="search-box__icon" aria-hidden="true">🔍</span>
+      <label class="sr-only" for="global-search">검색</label>
+      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
+    </div>
+    <div class="header__right">
+      <button type="button" class="notification-btn" aria-label="알림">🔔<span
+          class="notification-btn__dot"></span></button>
+      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
+      <button type="button" class="user-chip">
+        <span class="avatar" aria-hidden="true">🌿</span>
+        <span>
+          <span class="user-chip__name">김새싹</span>
+          <span class="user-chip__level">Lv.3 잎새</span>
+        </span>
+        <span class="user-chip__caret" aria-hidden="true">▾</span>
+      </button>
+    </div>
+  </header>
+  <!-- COMMON HEADER END -->
+
+  <!-- ================================================= -->
+  <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
+  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
+  <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
+  <!-- ================================================= -->
+  <nav class="nav" aria-label="주 메뉴">
+    <a class="nav__item" href="index.html">🏠 홈</a>
+    <a class="nav__item nav__item--active" href="wiki.html" aria-current="page">📖 새싹위키</a>
+    <a class="nav__item" href="exam.html">📝 모의고사</a>
+    <a class="nav__item" href="job.html">💼 취업핸드북</a>
+    <a class="nav__item" href="my.html">📚 마이핸드북</a>
+  </nav>
+  <!-- COMMON NAVIGATION END -->
+
+  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
+
+  <main id="main-content">
+    <!-- ================================================= -->
+    <!-- WIKI LIST PAGE -->
+    <!-- 담당 : feature/wiki -->
+    <!-- css : wiki.css -->
+    <!-- js : ui.js (정렬/즐겨찾기/사이드바 토글), toast.js -->
+    <!-- json : wiki.json -->
+    <!-- ================================================= -->
+    <!-- WIKI START -->
+    <section id="wiki" class="page page--active" aria-label="새싹위키">
+      <div class="shell">
+        <aside class="sidebar" aria-label="카테고리">
+          <p class="sidebar__label">카테고리</p>
+          <button type="button" class="sidebar__item sidebar__item--active"><span class="sidebar__item-icon"
+              aria-hidden="true">📋</span>전체</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">🗄️</span>SQL</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">☕</span>Java</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">🌐</span>HTML/CSS</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">⚡</span>JavaScript</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">🔀</span>Git</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">☁️</span>Salesforce</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">💡</span>CS
+            개념</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">🎤</span>면접
+            개념</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">💼</span>취업
+            가이드</button>
+        </aside>
+        <div class="page__content">
+          <h1 class="page-title">새싹위키 🌱</h1>
+          <p class="page-subtitle">새싹 과정에 필요한 모든 지식을 모아놓은 백과사전</p>
+
+          <div class="wiki-toolbar">
+            <label class="sr-only" for="wiki-search">위키 검색하기</label>
+            <input type="text" id="wiki-search" class="wiki-toolbar__input" placeholder="위키 검색하기...">
+            <div class="sort-pills">
+              <button type="button" class="sort-pill sort-pill--active">최신순</button>
+              <button type="button" class="sort-pill">인기순</button>
+              <button type="button" class="sort-pill">난이도순</button>
+            </div>
+          </div>
+
+          <ul class="wiki-row-list">
+            <li><a class="wiki-row" href="detail.html">
+                <span class="wiki-row__icon" aria-hidden="true">🗄️</span>
+                <span class="wiki-row__body">
+                  <span class="wiki-row__title">SQL SELECT 문법</span>
+                  <span class="wiki-row__desc">데이터베이스를 다루는 가장 기본적인 SQL 문법을 알아봅니다.</span>
+                </span>
+                <span class="wiki-row__meta">
+                  <span class="tag tag--green">SQL</span>
+                  <span class="wiki-row__level">입문</span>
+                  <span class="wiki-row__time">5분 전</span>
+                  <span class="wiki-row__percent">78%</span>
+                  <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
+                    aria-label="즐겨찾기">★</span>
+                </span>
+              </a></li>
+            <li><a class="wiki-row" href="detail.html">
+                <span class="wiki-row__icon" aria-hidden="true">🗄️</span>
+                <span class="wiki-row__body">
+                  <span class="wiki-row__title">SQL JOIN 완벽 정리</span>
+                  <span class="wiki-row__desc">다양한 JOIN의 종류와 사용법을 정리했습니다.</span>
+                </span>
+                <span class="wiki-row__meta">
+                  <span class="tag tag--green">SQL</span>
+                  <span class="wiki-row__level">중급</span>
+                  <span class="wiki-row__time">10분 전</span>
+                  <span class="wiki-row__percent">65%</span>
+                  <span class="favorite-star" role="button" tabindex="0" aria-pressed="false" aria-label="즐겨찾기">★</span>
+                </span>
+              </a></li>
+            <li><a class="wiki-row" href="detail.html">
+                <span class="wiki-row__icon" aria-hidden="true">☕</span>
+                <span class="wiki-row__body">
+                  <span class="wiki-row__title">Java 클래스와 객체</span>
+                  <span class="wiki-row__desc">객체지향의 핵심! 클래스와 객체를 이해해봅시다.</span>
+                </span>
+                <span class="wiki-row__meta">
+                  <span class="tag tag--orange">Java</span>
+                  <span class="wiki-row__level">기초</span>
+                  <span class="wiki-row__time">8분 전</span>
+                  <span class="wiki-row__percent">42%</span>
+                  <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
+                    aria-label="즐겨찾기">★</span>
+                </span>
+              </a></li>
+            <li><a class="wiki-row" href="detail.html">
+                <span class="wiki-row__icon" aria-hidden="true">🔀</span>
+                <span class="wiki-row__body">
+                  <span class="wiki-row__title">Git 기본 개념</span>
+                  <span class="wiki-row__desc">버전 관리 시스템 Git의 기본 개념을 정리했습니다.</span>
+                </span>
+                <span class="wiki-row__meta">
+                  <span class="tag tag--gray">Git</span>
+                  <span class="wiki-row__level">입문</span>
+                  <span class="wiki-row__time">6분 전</span>
+                  <span class="wiki-row__percent">55%</span>
+                  <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
+                    aria-label="즐겨찾기">★</span>
+                </span>
+              </a></li>
+            <li><a class="wiki-row" href="detail.html">
+                <span class="wiki-row__icon" aria-hidden="true">☁️</span>
+                <span class="wiki-row__body">
+                  <span class="wiki-row__title">Salesforce Flow 기초</span>
+                  <span class="wiki-row__desc">Flow의 기본 개념과 화면 Flow를 만들어봅니다.</span>
+                </span>
+                <span class="wiki-row__meta">
+                  <span class="tag tag--blue">Salesforce</span>
+                  <span class="wiki-row__level">중급</span>
+                  <span class="wiki-row__time">15분 전</span>
+                  <span class="wiki-row__percent">30%</span>
+                  <span class="favorite-star" role="button" tabindex="0" aria-pressed="false" aria-label="즐겨찾기">★</span>
+                </span>
+              </a></li>
+          </ul>
+
+          <nav class="pagination" aria-label="페이지 네비게이션">
+            <button type="button" class="pagination__btn" aria-label="이전 페이지">‹</button>
+            <button type="button" class="pagination__btn pagination__btn--active" aria-current="page">1</button>
+            <button type="button" class="pagination__btn">2</button>
+            <button type="button" class="pagination__btn">3</button>
+            <button type="button" class="pagination__btn">4</button>
+            <button type="button" class="pagination__btn">5</button>
+            <button type="button" class="pagination__btn" aria-label="다음 페이지">›</button>
+          </nav>
+        </div>
+        <aside class="side-panel" aria-label="많이 보는 위키">
+          <p class="section-title section-title--sm">많이 보는 위키</p>
+          <ol class="top-list">
+            <li class="top-list__item"><span class="rank-badge">1</span><span class="top-list__title">SQL SELECT
+                문법</span></li>
+            <li class="top-list__item"><span class="rank-badge">2</span><span class="top-list__title">Java 클래스와
+                객체</span></li>
+            <li class="top-list__item"><span class="rank-badge">3</span><span class="top-list__title">Git 기본 개념</span>
+            </li>
+            <li class="top-list__item"><span class="rank-badge rank-badge--muted">4</span><span
+                class="top-list__title">HTML 기본 구조</span></li>
+            <li class="top-list__item"><span class="rank-badge rank-badge--muted">5</span><span
+                class="top-list__title">면접 질문 모음</span></li>
+          </ol>
+          <div class="tip-box">
+            <p class="tip-box__title">💡 학습 팁</p>모르는 단어는 단어장에, 중요한 내용은 하이라이트로 나만의 핸드북을 만들어보세요!
+            <p class="tip-box__icon" aria-hidden="true">🌿</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <!-- WIKI END -->
+  </main>
+
+  <!-- ================================================= -->
+  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
+  <!-- 담당 : feature/core (공통 담당자 전용) -->
+  <!-- 이 페이지는 즐겨찾기 별 토글(ts())이 toast()를 호출하므로 -->
+  <!-- 공용 Toast 인스턴스가 필요하다 -->
+  <!-- ================================================= -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- COMMON SHARED MARKUP END -->
+
+  <!-- ================================================= -->
+  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
+  <!-- 담당 : feature/core (공통 담당자 전용) -->
+  <!-- ================================================= -->
+  <script src="assets/js/toast.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+</body>
+
+</html>

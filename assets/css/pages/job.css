@@ -1,0 +1,354 @@
+/* ==========================================================================
+   Page: JOB (취업핸드북)
+   old/test.html의 .strow/.stnod/.stc/.stlbl/.stline/.jcard/.jtask/.jobtip/
+   .prow/.resi/.tgrid/.tbtn 규칙을 BEM으로 재명명. 시각적 값은 전부 동일하게 유지.
+   ========================================================================== */
+
+/* ---------- Sidebar readiness card (사이드바 준비 지수 카드) ---------- */
+.job-readiness-card {
+  margin-top: var(--space-20);
+  background: linear-gradient(135deg, var(--g50), var(--g-tint));
+  border-radius: var(--r-md);
+  padding: var(--space-14);
+  border: 1px solid var(--g100);
+}
+
+.job-readiness-card__title {
+  font-weight: 800;
+  margin-bottom: var(--space-5);
+  font-size: var(--fs-13);
+  color: var(--ink);
+}
+
+.job-readiness-card__value {
+  font-size: var(--fs-32);
+  font-weight: 800;
+  color: var(--g900);
+  text-align: center;
+  margin: var(--space-8) 0 var(--space-2);
+}
+
+.job-readiness-card__delta {
+  font-size: var(--fs-11);
+  color: var(--g700);
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.job-readiness-card__btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: var(--space-10);
+}
+
+.job-readiness-card__decor {
+  text-align: center;
+  font-size: var(--fs-36);
+  margin-top: var(--space-8);
+}
+
+/* ---------- Step Stepper (직무 탐색 ~ 지원 관리 단계 표시) ---------- */
+.job-stepper {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--space-26);
+}
+
+.job-stepper__step {
+  display: flex;
+  align-items: flex-start;
+}
+
+.job-stepper__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: default;
+}
+
+.job-stepper__circle {
+  width: var(--space-42);
+  height: var(--space-42);
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-14);
+  font-weight: 800;
+  color: var(--ink4);
+  z-index: 1;
+  transition: all .2s;
+}
+
+.job-stepper__circle--done {
+  background: var(--g700);
+  border-color: var(--g700);
+  color: #fff;
+  box-shadow: var(--sh-g);
+}
+
+.job-stepper__circle--active {
+  background: var(--surface);
+  border-color: var(--g700);
+  color: var(--g900);
+  box-shadow: var(--act-ring);
+}
+
+.job-stepper__label {
+  font-size: var(--fs-10);
+  color: var(--ink3);
+  margin-top: var(--space-5);
+  text-align: center;
+  max-width: 58px;
+  line-height: 1.3;
+}
+
+.job-stepper__label--active {
+  color: var(--g900);
+  font-weight: 700;
+}
+
+.job-stepper__connector {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  margin: 21px var(--space-4) 0;
+}
+
+.job-stepper__connector--done {
+  background: var(--g500);
+}
+
+/* ---------- Job Card (자기소개서 등 단계 상세 카드) ---------- */
+.job-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  padding: var(--space-22);
+  box-shadow: var(--sh-sm);
+}
+
+.job-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-14);
+  margin-bottom: var(--space-16);
+}
+
+.job-card__head-icon {
+  font-size: var(--fs-32);
+}
+
+.job-card__head-body {
+  flex: 1;
+}
+
+.job-card__title {
+  font-size: var(--fs-17);
+  font-weight: 800;
+}
+
+.job-card__desc {
+  font-size: var(--fs-12);
+  color: var(--ink3);
+  margin: var(--space-3) 0 var(--space-8);
+}
+
+.job-card__progress {
+  width: 200px;
+}
+
+.job-card__percent {
+  font-size: var(--fs-13);
+  font-weight: 800;
+  color: var(--g700);
+}
+
+/* ---------- Job Task row (항목별 작성 / 검사하기 등) ---------- */
+.job-task {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-14);
+  background: var(--bg);
+  border-radius: var(--r-md);
+  margin-bottom: var(--space-8);
+  transition: all .15s;
+  border: 1px solid transparent;
+}
+
+.job-task:hover {
+  background: var(--g50);
+  border-color: var(--g100);
+}
+
+.job-task__icon {
+  font-size: var(--fs-22);
+  flex-shrink: 0;
+}
+
+.job-task__body {
+  flex: 1;
+}
+
+.job-task__title {
+  font-size: var(--fs-13);
+  font-weight: 700;
+}
+
+.job-task__desc {
+  font-size: var(--fs-11);
+  color: var(--ink3);
+}
+
+.job-task__meta {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+}
+
+.job-task__btn {
+  flex-shrink: 0;
+}
+
+.job-task__btn--feedback {
+  background: var(--orange-bg);
+  color: var(--orange);
+  border: 1.5px solid var(--orange-200);
+}
+
+/* ---------- Job Tip box (오늘의 취업 팁) ---------- */
+.job-tip {
+  background: linear-gradient(135deg, var(--g50), var(--g100));
+  border-radius: var(--r-md);
+  padding: var(--space-16);
+  margin-top: var(--space-16);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+  border: 1px solid var(--g100);
+}
+
+.job-tip__icon {
+  font-size: var(--fs-20);
+  flex-shrink: 0;
+}
+
+.job-tip__text {
+  font-size: var(--fs-12);
+  color: var(--g900);
+  line-height: 1.7;
+}
+
+.job-tip__decor {
+  font-size: var(--fs-36);
+  flex-shrink: 0;
+}
+
+/* ---------- Side panel: progress rows (나의 취업 준비 현황) ---------- */
+.job-progress-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-7) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-12);
+}
+
+.job-progress-row:last-child {
+  border: none;
+}
+
+.job-progress-row__label {
+  flex: 1;
+  font-weight: 600;
+}
+
+.job-progress-row__bar {
+  width: 80px;
+}
+
+.job-progress-row__value {
+  width: 30px;
+  text-align: right;
+  font-weight: 800;
+  font-size: var(--fs-11);
+}
+
+.job-progress-row__value--green {
+  color: var(--g700);
+}
+
+.job-progress-row__value--blue {
+  color: var(--blue);
+}
+
+.job-progress-row__value--gold {
+  color: var(--gold);
+}
+
+.job-progress-row__value--coral {
+  color: var(--coral);
+}
+
+.job-progress-row__value--purple {
+  color: var(--purple);
+}
+
+/* ---------- Side panel: result list item (최근 작성한 자기소개서) ---------- */
+.job-result-item {
+  padding: var(--space-9) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-12);
+}
+
+.job-result-item:last-child {
+  border: none;
+}
+
+.job-result-item__title {
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.job-result-item__date {
+  font-size: var(--fs-10);
+  color: var(--ink4);
+  margin-left: var(--space-6);
+}
+
+/* ---------- Side panel: tool grid (자주 사용하는 도구) ---------- */
+.job-tool-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.job-tool-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-9);
+  background: var(--bg);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-11);
+  font-weight: 700;
+  color: var(--ink2);
+  transition: all .15s;
+  border: 1px solid var(--border);
+}
+
+.job-tool-btn:hover {
+  background: var(--g50);
+  color: var(--g900);
+  border-color: var(--g100);
+}
+
+.job-task-list,
+.job-progress-list,
+.job-result-list {
+  list-style: none;
+}

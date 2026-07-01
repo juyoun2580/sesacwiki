@@ -1,0 +1,592 @@
+/* ==========================================================================
+   Page: 모의고사 목록 (exam) + 모의고사 응시 (quiz)
+   old/test.html의 .exrow/.exst/.reex/.odbox (EXAM)와
+   .qcard/.qtip/.qirow/.qbody/.cho/.choc/.qgrid/.qnum/.twrap/.tbg/.tfi/.tval/.memo (QUIZ)를
+   BEM으로 재명명. 시각적 값은 전부 동일하게 유지.
+   ========================================================================== */
+
+/* ---------- Exam sidebar card (오늘도 한 문제 도전) ---------- */
+.exam-sidebar-card {
+  margin-top: var(--space-20);
+  background: linear-gradient(135deg, var(--g50), var(--g-tint));
+  border-radius: var(--r-md);
+  padding: var(--space-14);
+  font-size: var(--fs-12);
+  color: var(--g900);
+  line-height: 1.6;
+  border: 1px solid var(--g100);
+}
+
+.exam-sidebar-card__title {
+  font-weight: 800;
+  margin-bottom: var(--space-5);
+}
+
+.exam-sidebar-card__emoji {
+  text-align: center;
+  font-size: 38px;
+  margin-top: var(--space-8);
+}
+
+/* ---------- Exam row (시험 카드) ---------- */
+.exam-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-14);
+  padding: var(--space-18);
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-10);
+  cursor: pointer;
+  box-shadow: var(--sh-sm);
+  transition: all .18s;
+  width: 100%;
+  text-align: left;
+}
+
+.exam-row:hover {
+  box-shadow: var(--sh-md);
+  border-color: var(--g300);
+}
+
+.exam-row__icon {
+  font-size: var(--fs-32);
+  flex-shrink: 0;
+}
+
+.exam-row__body {
+  flex: 1;
+}
+
+.exam-row__title {
+  font-size: var(--fs-15);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.exam-row__desc {
+  font-size: var(--fs-12);
+  color: var(--ink3);
+  margin-bottom: var(--space-8);
+}
+
+.exam-row__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--fs-11);
+  color: var(--ink3);
+}
+
+.exam-row__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-8);
+  flex-shrink: 0;
+}
+
+.exam-row__count {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+}
+
+/* ---------- Exam status summary (내 모의고사 현황) ---------- */
+.exam-status-ring-wrap {
+  text-align: center;
+  margin: var(--space-8) 0 var(--space-12);
+}
+
+.exam-status-ring-wrap__caption {
+  font-size: var(--fs-10);
+  color: var(--ink3);
+}
+
+.section-title--spaced {
+  margin-top: var(--space-16);
+}
+
+.exam-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-7) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-12);
+}
+
+.exam-stat:last-of-type {
+  border: none;
+}
+
+.exam-stat__label {
+  color: var(--ink3);
+}
+
+.exam-stat__value {
+  font-weight: 700;
+}
+
+/* ---------- Recent exam row (최근 응시한 시험) ---------- */
+.recent-exam {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-7) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-12);
+}
+
+.recent-exam:last-child {
+  border: none;
+}
+
+.recent-exam__icon {
+  font-size: var(--fs-15);
+}
+
+.recent-exam__title {
+  flex: 1;
+  font-weight: 600;
+}
+
+.recent-exam__score {
+  font-weight: 800;
+  color: var(--g900);
+}
+
+.recent-exam__score--low {
+  color: var(--coral);
+}
+
+/* ---------- Wrong-answer note box (오답노트 바로가기) ---------- */
+.wrong-note-box {
+  background: linear-gradient(135deg, var(--coral-bg), var(--odbox-grad));
+  border-radius: var(--r-md);
+  padding: var(--space-14);
+  margin-top: var(--space-14);
+  border: 1px solid var(--coral-200);
+  cursor: pointer;
+  transition: box-shadow .15s;
+  width: 100%;
+  text-align: left;
+}
+
+.wrong-note-box:hover {
+  box-shadow: var(--sh-md);
+}
+
+.wrong-note-box__title {
+  font-size: var(--fs-13);
+  font-weight: 800;
+  color: #C62828;
+  margin-bottom: var(--space-4);
+}
+
+.wrong-note-box__desc {
+  font-size: var(--fs-11);
+  color: var(--ink3);
+}
+
+.wrong-note-box__btn {
+  margin-top: var(--space-8);
+  width: 100%;
+  background: var(--coral-bg);
+  color: var(--coral);
+  border: 1.5px solid var(--coral-200);
+}
+
+/* ---------- Quiz header ---------- */
+.quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-14);
+}
+
+.quiz-header__back {
+  margin-bottom: var(--space-4);
+}
+
+.quiz-header__title {
+  font-size: var(--fs-20);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.quiz-header__meta {
+  font-size: var(--fs-12);
+  color: var(--ink3);
+  margin-top: var(--space-3);
+}
+
+/* ---------- Quiz layout ---------- */
+.quiz-layout {
+  display: flex;
+  gap: var(--space-20);
+}
+
+.quiz-layout__aside {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.quiz-layout__main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---------- Quiz info card ---------- */
+.quiz-info-card {
+  background: var(--surface);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  padding: var(--space-16);
+  margin-bottom: var(--space-12);
+  box-shadow: var(--sh-sm);
+}
+
+.quiz-info-card__title {
+  font-size: var(--fs-12);
+  font-weight: 800;
+  color: var(--g900);
+  margin-bottom: var(--space-10);
+}
+
+.quiz-info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-12);
+}
+
+.quiz-info-row:last-child {
+  border: none;
+}
+
+.quiz-info-row__label {
+  color: var(--ink3);
+}
+
+.quiz-info-row__value {
+  font-weight: 700;
+}
+
+/* ---------- Quiz tip card ---------- */
+.quiz-tip {
+  background: linear-gradient(135deg, var(--g50), var(--g100));
+  border-radius: var(--r-md);
+  padding: var(--space-14);
+  border: 1px solid var(--g100);
+}
+
+.quiz-tip__title {
+  font-size: var(--fs-12);
+  font-weight: 800;
+  color: var(--g900);
+  margin-bottom: var(--space-8);
+}
+
+.quiz-tip__list {
+  list-style: none;
+  font-size: var(--fs-11);
+  color: var(--g900);
+  line-height: 1.7;
+}
+
+.quiz-tip__emoji {
+  text-align: center;
+  font-size: 40px;
+  margin-top: var(--space-10);
+}
+
+/* ---------- Quiz progress ---------- */
+.quiz-progress {
+  margin-bottom: var(--space-14);
+}
+
+.quiz-progress__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-12);
+  color: var(--ink3);
+  font-weight: 600;
+  margin-bottom: var(--space-5);
+}
+
+.quiz-progress .progress-bar {
+  height: 9px;
+}
+
+/* ---------- Quiz question card ---------- */
+.quiz-question {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  padding: var(--space-26);
+  box-shadow: var(--sh-sm);
+}
+
+.quiz-question__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-10);
+}
+
+.quiz-question__num {
+  font-size: var(--fs-12);
+  font-weight: 700;
+  color: var(--g700);
+}
+
+.quiz-question__text {
+  font-size: var(--fs-16);
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: var(--space-22);
+  line-height: 1.55;
+}
+
+/* ---------- Choice ---------- */
+.choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-13) var(--space-16);
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--border);
+  margin-bottom: var(--space-9);
+  cursor: pointer;
+  transition: all .15s;
+  width: 100%;
+  text-align: left;
+  background: var(--surface);
+}
+
+.choice:hover {
+  border-color: var(--g500);
+  background: var(--g20);
+}
+
+.choice--selected {
+  border-color: var(--g700);
+  background: var(--g50);
+  box-shadow: var(--sel-ring);
+}
+
+.choice__circle {
+  width: var(--space-20);
+  height: var(--space-20);
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all .15s;
+}
+
+.choice--selected .choice__circle {
+  background: var(--g700);
+  border-color: var(--g700);
+}
+
+.choice--selected .choice__circle::after {
+  content: '';
+  width: var(--space-8);
+  height: var(--space-8);
+  background: #fff;
+  border-radius: 50%;
+}
+
+.choice__text {
+  font-size: var(--fs-14);
+}
+
+/* ---------- Quiz question footer ---------- */
+.quiz-question__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-22);
+}
+
+.quiz-question__later {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  font-size: var(--fs-12);
+  color: var(--ink3);
+  cursor: pointer;
+}
+
+.quiz-question__actions {
+  display: flex;
+  gap: var(--space-8);
+}
+
+/* ---------- Question grid (문제 목록) ---------- */
+.question-grid-legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  font-size: var(--fs-11);
+  color: var(--ink3);
+  margin-bottom: var(--space-10);
+  list-style: none;
+}
+
+.question-grid-legend__swatch {
+  display: inline-block;
+  width: var(--space-10);
+  height: var(--space-10);
+  border-radius: 2px;
+  margin-right: var(--space-5);
+}
+
+.question-grid-legend__swatch--done {
+  background: var(--g700);
+}
+
+.question-grid-legend__swatch--curr {
+  background: var(--g50);
+  border: 1.5px solid var(--g700);
+}
+
+.question-grid-legend__swatch--todo {
+  background: #fff;
+  border: 1.5px solid var(--border);
+}
+
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.question-grid__num {
+  width: var(--space-36);
+  height: var(--space-36);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-12);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--border);
+  transition: all .15s;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.question-grid__num--done {
+  background: var(--g700);
+  border-color: var(--g700);
+  color: #fff;
+}
+
+.question-grid__num--curr {
+  background: var(--g50);
+  border-color: var(--g700);
+  color: var(--g900);
+  box-shadow: var(--curr-ring);
+}
+
+/* ---------- Memo / timer panel ---------- */
+.memo-panel {
+  background: var(--surface);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  padding: var(--space-14);
+  box-shadow: var(--sh-sm);
+}
+
+.memo-panel--timer {
+  margin-bottom: var(--space-10);
+}
+
+.memo-panel__title {
+  font-size: var(--fs-12);
+  font-weight: 800;
+  color: var(--ink2);
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+
+.memo-panel__title--left {
+  text-align: left;
+  margin-bottom: var(--space-6);
+}
+
+.memo-panel__extend-btn {
+  width: 100%;
+  margin-top: var(--space-8);
+}
+
+.memo-panel__textarea {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: var(--space-9);
+  font-size: var(--fs-12);
+  resize: none;
+  outline: none;
+  height: 80px;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+.memo-panel__textarea:focus {
+  border-color: var(--g500);
+}
+
+/* ---------- Time ring (남은 시간, .score-ring과 크기가 달라 별도 컴포넌트로 유지) ---------- */
+.time-ring {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-8);
+}
+
+.time-ring svg {
+  display: block;
+  transform: rotate(-90deg);
+}
+
+.time-ring__bg {
+  fill: none;
+  stroke: #EFEFEF;
+  stroke-width: 6;
+}
+
+.time-ring__fill {
+  fill: none;
+  stroke: var(--g700);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 55;
+}
+
+.time-ring__value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-18);
+  font-weight: 800;
+  color: var(--g900);
+}
+
+.exam-row-list {
+  list-style: none;
+}

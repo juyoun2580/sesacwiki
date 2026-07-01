@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>저장한 단어 — 마이핸드북 — 새싹트리</title>
+  <!-- ================================================= -->
+  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
+  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
+  <!-- ================================================= -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- 페이지 전용 CSS — MyPage(Job/My) 담당 소유 (my 목록과 공유, docs/PAGES.md 참고) -->
+  <link rel="stylesheet" href="assets/css/pages/my.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
+
+  <!-- ================================================= -->
+  <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
+  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
+  <!-- ================================================= -->
+  <header class="header">
+    <div class="header__logo">
+      <span class="header__logo-mark" aria-hidden="true">🌱</span>
+      <div>
+        <p class="header__logo-name">새싹트리</p>
+        <p class="header__logo-sub">나만의 취업 핸드북</p>
+      </div>
+    </div>
+    <div class="search-box">
+      <span class="search-box__icon" aria-hidden="true">🔍</span>
+      <label class="sr-only" for="global-search">검색</label>
+      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
+    </div>
+    <div class="header__right">
+      <button type="button" class="notification-btn" aria-label="알림">🔔<span
+          class="notification-btn__dot"></span></button>
+      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
+      <button type="button" class="user-chip">
+        <span class="avatar" aria-hidden="true">🌿</span>
+        <span>
+          <span class="user-chip__name">김새싹</span>
+          <span class="user-chip__level">Lv.3 잎새</span>
+        </span>
+        <span class="user-chip__caret" aria-hidden="true">▾</span>
+      </button>
+    </div>
+  </header>
+  <!-- COMMON HEADER END -->
+
+  <!-- ================================================= -->
+  <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
+  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
+  <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
+  <!-- ================================================= -->
+  <nav class="nav" aria-label="주 메뉴">
+    <a class="nav__item" href="index.html">🏠 홈</a>
+    <a class="nav__item" href="wiki.html">📖 새싹위키</a>
+    <a class="nav__item" href="exam.html">📝 모의고사</a>
+    <a class="nav__item" href="job.html">💼 취업핸드북</a>
+    <a class="nav__item nav__item--active" href="my.html" aria-current="page">📚 마이핸드북</a>
+  </nav>
+  <!-- COMMON NAVIGATION END -->
+
+  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
+
+  <main id="main-content">
+    <!-- ================================================= -->
+    <!-- MY WORDS PAGE (저장한 단어) -->
+    <!-- 담당 : feature/job -->
+    <!-- css : my.css -->
+    <!-- js : ui.js(즐겨찾기/사이드바 토글), quiz.js(단어 퀴즈 선택지, exam 담당 소유), -->
+    <!--      app.js/toast.js(공통), modal.js(단어 추가 모달, 공통) -->
+    <!-- json : words.json -->
+    <!-- ================================================= -->
+    <!-- MYWORDS START -->
+    <section id="mywords" class="page page--active" aria-label="저장한 단어">
+      <div class="shell">
+        <aside class="sidebar" aria-label="마이핸드북 메뉴">
+          <p class="sidebar__label">마이핸드북</p>
+          <a class="sidebar__item" href="my.html"><span class="sidebar__item-icon"
+              aria-hidden="true">📄</span>내 문서</a>
+          <a class="sidebar__item" href="myfav.html"><span class="sidebar__item-icon"
+              aria-hidden="true">⭐</span>즐겨찾기</a>
+          <button type="button" class="sidebar__item sidebar__item--active"><span class="sidebar__item-icon"
+              aria-hidden="true">📓</span>저장한 단어</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📋</span>학습
+            노트</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📄</span>나의
+            이력서</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">🖼</span>포트폴리오</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📊</span>학습
+            기록</button>
+          <div class="sidebar__card sidebar__card--green">꾸준한 학습이<br>취업의 열매를 맺어요! 🌱
+            <p class="sidebar__card-icon" aria-hidden="true">🌿</p>
+          </div>
+        </aside>
+        <div class="page__content">
+          <h1 class="page-title">저장한 단어 🌱</h1>
+          <p class="page-subtitle">모르는 단어를 저장하고 복습하여 어휘력을 키워보세요.</p>
+
+          <div class="my-toolbar">
+            <label class="sr-only" for="word-search">단어 검색</label>
+            <input type="text" id="word-search" class="my-toolbar__input" placeholder="단어를 검색하세요">
+            <label class="sr-only" for="word-category">카테고리 선택</label>
+            <select id="word-category" class="my-toolbar__select">
+              <option>전체 카테고리</option>
+              <option>CS/IT</option>
+              <option>Java</option>
+              <option>SQL</option>
+            </select>
+            <button type="button" class="btn btn--primary btn--sm" data-action="open-modal" data-word="">+ 단어
+              추가</button>
+            <button type="button" class="btn btn--outline btn--sm" data-action="toast" data-message="단어를 내보내는 중이에요!">⬇
+              내보내기</button>
+          </div>
+
+          <div class="word-stats">
+            <div class="word-stats__box">
+              <p class="word-stats__value">127</p>
+              <p class="word-stats__label">전체 단어</p>
+            </div>
+            <div class="word-stats__box">
+              <p class="word-stats__value">15</p>
+              <p class="word-stats__label">오늘 학습</p>
+            </div>
+            <div class="word-stats__box">
+              <p class="word-stats__value">32</p>
+              <p class="word-stats__label">마스터한 단어</p>
+            </div>
+            <div class="word-stats__box">
+              <div class="score-ring word-stats__ring">
+                <svg viewBox="0 0 44 44" width="44" height="44" role="img" aria-label="마스터율 25%">
+                  <circle class="score-ring__bg" cx="22" cy="22" r="17" stroke-width="5" />
+                  <circle class="score-ring__fill" cx="22" cy="22" r="17" stroke="var(--g700)" stroke-width="5"
+                    stroke-dasharray="107" stroke-dashoffset="80" transform="rotate(-90 22 22)" />
+                </svg>
+                <div class="score-ring__text"><span class="word-stats__ring-value">25%</span></div>
+              </div>
+              <p class="word-stats__label">마스터율</p>
+            </div>
+          </div>
+
+          <ul class="word-row-list">
+            <li class="word-row">
+              <input type="checkbox" class="word-row__checkbox" aria-label="Algorithm 선택">
+              <div class="word-row__body">
+                <div><span class="word-row__term">Algorithm</span><span class="word-row__pos">명사</span></div>
+                <div class="word-row__def">문제를 해결하기 위한 절차나 방법</div>
+                <div class="word-row__example">Algorithm is the core of programming.</div>
+              </div>
+              <span class="tag tag--blue">CS/IT</span>
+              <span class="word-row__date">2025.05.20</span>
+              <button type="button" class="favorite-star favorite-star--on" aria-pressed="true"
+                aria-label="즐겨찾기">★</button>
+            </li>
+            <li class="word-row">
+              <input type="checkbox" class="word-row__checkbox" aria-label="Inheritance 선택">
+              <div class="word-row__body">
+                <div><span class="word-row__term">Inheritance</span><span class="word-row__pos">명사</span></div>
+                <div class="word-row__def">상속, 계승 (객체지향에서 상속)</div>
+                <div class="word-row__example">Inheritance allows code reusability.</div>
+              </div>
+              <span class="tag tag--orange">Java</span>
+              <span class="word-row__date">2025.05.19</span>
+              <button type="button" class="favorite-star" aria-pressed="false" aria-label="즐겨찾기">★</button>
+            </li>
+            <li class="word-row">
+              <input type="checkbox" class="word-row__checkbox" checked aria-label="Normalization 선택">
+              <div class="word-row__body">
+                <div><span class="word-row__term">Normalization</span><span class="word-row__pos">명사</span></div>
+                <div class="word-row__def">정규화 (데이터베이스 설계)</div>
+                <div class="word-row__example">Normalization reduces data redundancy.</div>
+              </div>
+              <span class="tag tag--green">SQL</span>
+              <span class="word-row__date">2025.05.18</span>
+              <button type="button" class="favorite-star favorite-star--on" aria-pressed="true"
+                aria-label="즐겨찾기">★</button>
+            </li>
+            <li class="word-row">
+              <input type="checkbox" class="word-row__checkbox" aria-label="API 선택">
+              <div class="word-row__body">
+                <div><span class="word-row__term">API</span><span class="word-row__pos">명사</span></div>
+                <div class="word-row__def">응용 프로그램 인터페이스</div>
+                <div class="word-row__example">The API connects different systems.</div>
+              </div>
+              <span class="tag tag--blue">IT/개발</span>
+              <span class="word-row__date">2025.05.17</span>
+              <button type="button" class="favorite-star" aria-pressed="false" aria-label="즐겨찾기">★</button>
+            </li>
+          </ul>
+
+          <nav class="pagination" aria-label="페이지 네비게이션">
+            <button type="button" class="pagination__btn" aria-label="이전 페이지">‹</button>
+            <button type="button" class="pagination__btn pagination__btn--active" aria-current="page">1</button>
+            <button type="button" class="pagination__btn">2</button>
+            <button type="button" class="pagination__btn">3</button>
+            <button type="button" class="pagination__btn" aria-label="다음 페이지">›</button>
+          </nav>
+        </div>
+        <aside class="side-panel" aria-label="단어 퀴즈 및 카테고리별 단어 수">
+          <div class="word-quiz">
+            <p class="word-quiz__title">오늘의 단어 퀴즈 ❓</p>
+            <p class="word-quiz__hint">저장한 단어로 퀴즈를 풀어보세요!</p>
+            <p class="word-quiz__question">Algorithm 의 의미로 가장 적절한 것은?</p>
+            <div class="word-quiz__option-list">
+              <button type="button" class="word-quiz__option">① 알고리즘</button>
+              <button type="button" class="word-quiz__option">② 데이터베이스</button>
+              <button type="button" class="word-quiz__option">③ 사용자 인터페이스</button>
+              <button type="button" class="word-quiz__option">④ 운영체제</button>
+            </div>
+            <button type="button" class="word-quiz__submit" data-action="toast" data-message="퀴즈를 시작해요! +30P 도전!">퀴즈
+              시작하기</button>
+          </div>
+          <div class="section-title section-title--sm">카테고리별 단어 수 <button type="button" class="section-title__link">전체보기
+              ›</button></div>
+          <div class="category-stat-row">
+            <span class="category-stat-row__label">CS/IT</span>
+            <div class="progress-bar progress-bar--thin" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+              aria-valuemax="100">
+              <div class="progress-bar__fill progress-bar__fill--green" data-progress="75"></div>
+            </div>
+            <span class="category-stat-row__count">45개</span>
+          </div>
+          <div class="category-stat-row">
+            <span class="category-stat-row__label">Java</span>
+            <div class="progress-bar progress-bar--thin" role="progressbar" aria-valuenow="55" aria-valuemin="0"
+              aria-valuemax="100">
+              <div class="progress-bar__fill progress-bar__fill--blue" data-progress="55"></div>
+            </div>
+            <span class="category-stat-row__count">28개</span>
+          </div>
+          <div class="category-stat-row">
+            <span class="category-stat-row__label">SQL</span>
+            <div class="progress-bar progress-bar--thin" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+              aria-valuemax="100">
+              <div class="progress-bar__fill progress-bar__fill--green" data-progress="40"></div>
+            </div>
+            <span class="category-stat-row__count">22개</span>
+          </div>
+          <div class="category-stat-row">
+            <span class="category-stat-row__label">비즈니스</span>
+            <div class="progress-bar progress-bar--thin" role="progressbar" aria-valuenow="30" aria-valuemin="0"
+              aria-valuemax="100">
+              <div class="progress-bar__fill progress-bar__fill--orange" data-progress="30"></div>
+            </div>
+            <span class="category-stat-row__count">18개</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <!-- MYWORDS END -->
+  </main>
+
+  <!-- ================================================= -->
+  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
+  <!-- 담당 : feature/core (공통 담당자 전용) -->
+  <!-- ================================================= -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- 단어 저장 모달 -->
+  <div class="modal-overlay" id="wmodal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="wmodal-title">
+      <p class="modal__title" id="wmodal-title">📓 단어장에 추가</p>
+      <div class="modal__field">
+        <label class="modal__label" for="mword">단어</label>
+        <input class="modal__input" id="mword" placeholder="단어를 입력하세요">
+      </div>
+      <div class="modal__field">
+        <label class="modal__label" for="mmeaning">뜻 (한국어)</label>
+        <input class="modal__input" id="mmeaning" placeholder="뜻을 입력하세요">
+      </div>
+      <div class="modal__field">
+        <label class="modal__label" for="mcategory">카테고리</label>
+        <select class="modal__input" id="mcategory">
+          <option>SQL</option>
+          <option>Java</option>
+          <option>CS/IT</option>
+          <option>비즈니스</option>
+          <option>기타</option>
+        </select>
+      </div>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--outline btn--sm" data-action="close-modal">취소</button>
+        <button type="button" class="btn btn--primary btn--sm" data-action="save-word">단어장에 저장</button>
+      </div>
+    </div>
+  </div>
+  <!-- COMMON SHARED MARKUP END -->
+
+  <!-- ================================================= -->
+  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
+  <!-- 담당 : feature/core (공통 담당자 전용) -->
+  <!-- ================================================= -->
+  <script src="assets/js/toast.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/modal.js" defer></script>
+  <!-- 페이지 전용 JS — Exam 담당 소유 (단어 퀴즈 선택지 토글, docs/PAGES.md 참고) -->
+  <script src="assets/js/pages/quiz.js" defer></script>
+</body>
+
+</html>

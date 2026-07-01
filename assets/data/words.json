@@ -1,0 +1,61 @@
+{
+  "list": [
+    {
+      "id": "word-001",
+      "title": "Algorithm",
+      "pos": "명사",
+      "definition": "문제를 해결하기 위한 절차나 방법",
+      "example": "Algorithm is the core of programming.",
+      "category": "CS/IT",
+      "categoryColor": "blue",
+      "date": "2025-05-20",
+      "isFavorite": true
+    },
+    {
+      "id": "word-002",
+      "title": "Inheritance",
+      "pos": "명사",
+      "definition": "상속, 계승 (객체지향에서 상속)",
+      "example": "Inheritance allows code reusability.",
+      "category": "Java",
+      "categoryColor": "orange",
+      "date": "2025-05-19",
+      "isFavorite": false
+    },
+    {
+      "id": "word-003",
+      "title": "Normalization",
+      "pos": "명사",
+      "definition": "정규화 (데이터베이스 설계)",
+      "example": "Normalization reduces data redundancy.",
+      "category": "SQL",
+      "categoryColor": "green",
+      "date": "2025-05-18",
+      "isFavorite": true
+    },
+    {
+      "id": "word-004",
+      "title": "API",
+      "pos": "명사",
+      "definition": "응용 프로그램 인터페이스",
+      "example": "The API connects different systems.",
+      "category": "IT/개발",
+      "categoryColor": "blue",
+      "date": "2025-05-17",
+      "isFavorite": false
+    }
+  ],
+  "stats": { "total": 127, "learnedToday": 15, "mastered": 32, "masteredPercent": 25 },
+  "todayQuiz": {
+    "wordId": "word-001",
+    "question": "Algorithm 의 의미로 가장 적절한 것은?",
+    "options": ["알고리즘", "데이터베이스", "사용자 인터페이스", "운영체제"],
+    "answerIndex": 0
+  },
+  "categoryCounts": [
+    { "label": "CS/IT", "percent": 75, "color": "green", "count": 45 },
+    { "label": "Java", "percent": 55, "color": "blue", "count": 28 },
+    { "label": "SQL", "percent": 40, "color": "green", "count": 22 },
+    { "label": "비즈니스", "percent": 30, "color": "orange", "count": 18 }
+  ]
+}

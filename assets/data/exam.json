@@ -1,0 +1,76 @@
+{
+  "categories": ["전체", "SQL", "Java", "HTML/CSS", "JavaScript", "Git", "Salesforce", "면접 대비"],
+  "list": [
+    {
+      "id": "exam-001",
+      "icon": "🗄️",
+      "title": "SQL 기초 10문제",
+      "description": "SQL 기본 문법을 확인할 수 있는 입문 모의고사",
+      "category": "SQL",
+      "level": "입문",
+      "questionCount": 10,
+      "estimatedMinutes": 10,
+      "avgScore": 72,
+      "attemptCount": 256,
+      "isRecommended": true
+    },
+    {
+      "id": "exam-002",
+      "icon": "☕",
+      "title": "Java 객체지향 개념 테스트",
+      "description": "클래스, 객체, 상속 등 객체지향 개념 확인",
+      "category": "Java",
+      "level": "기초~중급",
+      "questionCount": 15,
+      "estimatedMinutes": 15,
+      "avgScore": 68,
+      "attemptCount": 198,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-003",
+      "icon": "🌐",
+      "title": "HTML/CSS 기초 테스트",
+      "description": "HTML 태그와 CSS 속성에 대한 기본 실력 점검",
+      "category": "HTML/CSS",
+      "level": "입문",
+      "questionCount": 12,
+      "estimatedMinutes": 12,
+      "avgScore": 75,
+      "attemptCount": 173,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-004",
+      "icon": "🔀",
+      "title": "Git 기본 명령어 모의고사",
+      "description": "Git 명령어와 사용법을 확인하는 모의고사",
+      "category": "Git",
+      "level": "기초",
+      "questionCount": 10,
+      "estimatedMinutes": 10,
+      "avgScore": 65,
+      "attemptCount": 142,
+      "isRecommended": false
+    }
+  ],
+  "questions": {
+    "exam-001": [
+      {
+        "id": "q-001",
+        "num": 3,
+        "type": "객관식",
+        "point": 1,
+        "text": "WHERE 절의 역할로 가장 알맞은 것은?",
+        "choices": ["데이터를 추가한다", "조건에 맞는 데이터를 조회한다", "테이블을 삭제한다", "컬럼 이름을 변경한다"],
+        "answerIndex": 1
+      }
+    ]
+  },
+  "myStats": { "attemptCount": 4, "avgScore": 72, "bestScore": 88, "earnedPoints": 560 },
+  "recentAttempts": [
+    { "examId": "exam-001", "title": "SQL 기초 10문제", "score": 80 },
+    { "examId": "exam-002", "title": "Java 객체지향", "score": 65 },
+    { "examId": "exam-004", "title": "Git 기본 명령어", "score": 70 }
+  ]
+}

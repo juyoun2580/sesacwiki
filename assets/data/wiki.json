@@ -1,0 +1,121 @@
+{
+  "categories": ["전체", "SQL", "Java", "HTML/CSS", "JavaScript", "Git", "Salesforce", "CS 개념", "면접 개념", "취업 가이드"],
+  "list": [
+    {
+      "id": "wiki-001",
+      "icon": "🗄️",
+      "title": "SQL SELECT 문법",
+      "description": "데이터베이스를 다루는 가장 기본적인 SQL 문법을 알아봅니다.",
+      "category": "SQL",
+      "categoryColor": "green",
+      "level": "입문",
+      "percent": 78,
+      "isFavorite": true,
+      "updatedAt": "5분 전"
+    },
+    {
+      "id": "wiki-002",
+      "icon": "🗄️",
+      "title": "SQL JOIN 완벽 정리",
+      "description": "다양한 JOIN의 종류와 사용법을 정리했습니다.",
+      "category": "SQL",
+      "categoryColor": "green",
+      "level": "중급",
+      "percent": 65,
+      "isFavorite": false,
+      "updatedAt": "10분 전"
+    },
+    {
+      "id": "wiki-003",
+      "icon": "☕",
+      "title": "Java 클래스와 객체",
+      "description": "객체지향의 핵심! 클래스와 객체를 이해해봅시다.",
+      "category": "Java",
+      "categoryColor": "orange",
+      "level": "기초",
+      "percent": 42,
+      "isFavorite": true,
+      "updatedAt": "8분 전"
+    },
+    {
+      "id": "wiki-004",
+      "icon": "🔀",
+      "title": "Git 기본 개념",
+      "description": "버전 관리 시스템 Git의 기본 개념을 정리했습니다.",
+      "category": "Git",
+      "categoryColor": "gray",
+      "level": "입문",
+      "percent": 55,
+      "isFavorite": true,
+      "updatedAt": "6분 전"
+    },
+    {
+      "id": "wiki-005",
+      "icon": "☁️",
+      "title": "Salesforce Flow 기초",
+      "description": "Flow의 기본 개념과 화면 Flow를 만들어봅니다.",
+      "category": "Salesforce",
+      "categoryColor": "blue",
+      "level": "중급",
+      "percent": 30,
+      "isFavorite": false,
+      "updatedAt": "15분 전"
+    }
+  ],
+  "topList": [
+    { "id": "wiki-001", "title": "SQL SELECT 문법" },
+    { "id": "wiki-003", "title": "Java 클래스와 객체" },
+    { "id": "wiki-004", "title": "Git 기본 개념" },
+    { "id": "wiki-006", "title": "HTML 기본 구조" },
+    { "id": "wiki-007", "title": "면접 질문 모음" }
+  ],
+  "detail": {
+    "wiki-001": {
+      "title": "SQL SELECT 문법",
+      "tags": [{ "label": "SQL", "color": "green" }, { "label": "입문", "color": "gray" }],
+      "estimatedMinutes": 15,
+      "completionPercent": 78,
+      "toc": [
+        "1. SELECT 기본 문법",
+        "2. WHERE 조건절",
+        "3. ORDER BY 정렬",
+        "4. GROUP BY 집계",
+        "5. HAVING 필터",
+        "6. 실습 예제"
+      ],
+      "sections": [
+        {
+          "heading": "1. SELECT 기본 문법",
+          "body": "SELECT는 데이터베이스에서 데이터를 조회할 때 사용하는 가장 기본적인 SQL 명령어입니다. 테이블에서 원하는 컬럼을 선택해 결과를 가져옵니다. SELECT 뒤에 원하는 컬럼명을 쉼표로 구분하여 나열하고, FROM 뒤에 조회할 테이블명을 지정합니다.",
+          "highlightedTerms": [],
+          "code": "SELECT 컬럼명1, 컬럼명2\nFROM 테이블명\nWHERE 조건; -- 조건에 맞는 행만 반환"
+        },
+        {
+          "heading": "2. WHERE 조건절",
+          "body": "WHERE 절은 조회할 데이터의 조건을 지정합니다. WHERE 절은 조건에 맞는 행(row)만 결과로 반환합니다. 다양한 비교 연산자(=, !=, >, <, BETWEEN, LIKE, IN)를 사용할 수 있습니다.",
+          "highlightedTerms": ["WHERE 절"],
+          "code": "SELECT name, salary\nFROM employees\nWHERE department = 'IT'\n  AND salary > 3000000;"
+        },
+        {
+          "heading": "3. ORDER BY 정렬",
+          "body": "ORDER BY 절은 결과를 특정 컬럼 기준으로 정렬합니다. ASC는 오름차순, DESC는 내림차순입니다. 기본값은 ASC(오름차순)입니다.",
+          "highlightedTerms": ["ASC", "DESC"],
+          "code": "SELECT name, salary\nFROM employees\nORDER BY salary DESC;"
+        },
+        {
+          "heading": "4. GROUP BY 집계",
+          "body": "GROUP BY는 특정 컬럼을 기준으로 데이터를 그룹화합니다. COUNT, SUM, AVG, MAX, MIN 등의 집계 함수와 함께 사용하여 각 그룹에 대한 집계 결과를 얻습니다.",
+          "highlightedTerms": ["GROUP BY"],
+          "code": "SELECT department, COUNT(*) AS cnt, AVG(salary) AS avg_sal\nFROM employees\nGROUP BY department;"
+        }
+      ],
+      "related": [
+        { "id": "wiki-002", "title": "SQL JOIN 완벽 정리", "description": "다양한 JOIN의 종류와 사용법" },
+        { "id": "wiki-008", "title": "SQL 집계 함수 (GROUP BY)", "description": "COUNT, SUM, AVG 활용법" }
+      ],
+      "savedHighlights": [
+        { "id": "hl-init", "text": "SELECT는 데이터베이스에서 데이터를 조회할 때 사용하는 가장 기본적인 SQL 명령어입니다." }
+      ]
+    }
+  }
+}

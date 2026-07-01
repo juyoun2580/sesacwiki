@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모의고사 — 새싹트리</title>
+  <!-- ================================================= -->
+  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
+  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
+  <!-- ================================================= -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- 페이지 전용 CSS — Exam 담당 소유 (docs/PAGES.md 참고) -->
+  <link rel="stylesheet" href="assets/css/pages/exam.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
+
+  <!-- ================================================= -->
+  <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
+  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
+  <!-- ================================================= -->
+  <header class="header">
+    <div class="header__logo">
+      <span class="header__logo-mark" aria-hidden="true">🌱</span>
+      <div>
+        <p class="header__logo-name">새싹트리</p>
+        <p class="header__logo-sub">나만의 취업 핸드북</p>
+      </div>
+    </div>
+    <div class="search-box">
+      <span class="search-box__icon" aria-hidden="true">🔍</span>
+      <label class="sr-only" for="global-search">검색</label>
+      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
+    </div>
+    <div class="header__right">
+      <button type="button" class="notification-btn" aria-label="알림">🔔<span
+          class="notification-btn__dot"></span></button>
+      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
+      <button type="button" class="user-chip">
+        <span class="avatar" aria-hidden="true">🌿</span>
+        <span>
+          <span class="user-chip__name">김새싹</span>
+          <span class="user-chip__level">Lv.3 잎새</span>
+        </span>
+        <span class="user-chip__caret" aria-hidden="true">▾</span>
+      </button>
+    </div>
+  </header>
+  <!-- COMMON HEADER END -->
+
+  <!-- ================================================= -->
+  <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
+  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
+  <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
+  <!-- ================================================= -->
+  <nav class="nav" aria-label="주 메뉴">
+    <a class="nav__item" href="index.html">🏠 홈</a>
+    <a class="nav__item" href="wiki.html">📖 새싹위키</a>
+    <a class="nav__item nav__item--active" href="exam.html" aria-current="page">📝 모의고사</a>
+    <a class="nav__item" href="job.html">💼 취업핸드북</a>
+    <a class="nav__item" href="my.html">📚 마이핸드북</a>
+  </nav>
+  <!-- COMMON NAVIGATION END -->
+
+  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
+
+  <main id="main-content">
+    <!-- ================================================= -->
+    <!-- EXAM LIST PAGE -->
+    <!-- 담당 : feature/exam -->
+    <!-- css : exam.css -->
+    <!-- js : ui.js (필터탭 토글), app.js/toast.js (공통) -->
+    <!-- json : exam.json -->
+    <!-- ================================================= -->
+    <!-- EXAM START -->
+    <section id="exam" class="page page--active" aria-label="모의고사">
+      <div class="shell">
+        <aside class="sidebar" aria-label="모의고사 카테고리">
+          <p class="sidebar__label">모의고사</p>
+          <button type="button" class="sidebar__item sidebar__item--active"><span class="sidebar__item-icon"
+              aria-hidden="true">📋</span>전체 모의고사</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">🗄️</span>SQL</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">☕</span>Java</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">🌐</span>HTML/CSS</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">⚡</span>JavaScript</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">🔀</span>Git</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+              aria-hidden="true">☁️</span>Salesforce</button>
+          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">🎤</span>면접
+            대비</button>
+          <div class="exam-sidebar-card">
+            <p class="exam-sidebar-card__title">꾸준히 풀면 실력이 쑥쑥!</p>오늘도 한 문제 도전해보세요 🌱
+            <p class="exam-sidebar-card__emoji" aria-hidden="true">🌳</p>
+          </div>
+        </aside>
+        <div class="page__content">
+          <h1 class="page-title">모의고사 🌱</h1>
+          <p class="page-subtitle">중간평가, 실습평가, 취업 대비 문제를 풀어보세요.</p>
+
+          <div class="filter-tabs">
+            <button type="button" class="filter-tab filter-tab--active">전체</button>
+            <button type="button" class="filter-tab">SQL</button>
+            <button type="button" class="filter-tab">Java</button>
+            <button type="button" class="filter-tab">HTML/CSS</button>
+            <button type="button" class="filter-tab">JavaScript</button>
+            <button type="button" class="filter-tab">Git</button>
+            <button type="button" class="filter-tab">Salesforce</button>
+            <button type="button" class="filter-tab">면접 대비</button>
+          </div>
+
+          <ul class="exam-row-list">
+            <li><a class="exam-row" href="quiz.html">
+                <span class="exam-row__icon" aria-hidden="true">🗄️</span>
+                <span class="exam-row__body">
+                  <span class="exam-row__title">SQL 기초 10문제 <span class="tag tag--recommended">추천</span></span>
+                  <span class="exam-row__desc">SQL 기본 문법을 확인할 수 있는 입문 모의고사</span>
+                  <span class="exam-row__meta"><span>입문</span><span>·</span><span>10문제</span><span>·</span><span>예상
+                      10분</span><span>·</span><span>평균 72점</span></span>
+                </span>
+                <span class="exam-row__aside">
+                  <span class="exam-row__count">👥 256명 응시</span>
+                  <span class="btn btn--primary btn--sm">시작하기</span>
+                </span>
+              </a></li>
+            <li><a class="exam-row" href="quiz.html">
+                <span class="exam-row__icon" aria-hidden="true">☕</span>
+                <span class="exam-row__body">
+                  <span class="exam-row__title">Java 객체지향 개념 테스트</span>
+                  <span class="exam-row__desc">클래스, 객체, 상속 등 객체지향 개념 확인</span>
+                  <span class="exam-row__meta"><span>기초~중급</span><span>·</span><span>15문제</span><span>·</span><span>예상
+                      15분</span><span>·</span><span>평균 68점</span></span>
+                </span>
+                <span class="exam-row__aside">
+                  <span class="exam-row__count">👥 198명 응시</span>
+                  <span class="btn btn--primary btn--sm">시작하기</span>
+                </span>
+              </a></li>
+            <li><a class="exam-row" href="quiz.html">
+                <span class="exam-row__icon" aria-hidden="true">🌐</span>
+                <span class="exam-row__body">
+                  <span class="exam-row__title">HTML/CSS 기초 테스트</span>
+                  <span class="exam-row__desc">HTML 태그와 CSS 속성에 대한 기본 실력 점검</span>
+                  <span class="exam-row__meta"><span>입문</span><span>·</span><span>12문제</span><span>·</span><span>예상
+                      12분</span><span>·</span><span>평균 75점</span></span>
+                </span>
+                <span class="exam-row__aside">
+                  <span class="exam-row__count">👥 173명 응시</span>
+                  <span class="btn btn--primary btn--sm">시작하기</span>
+                </span>
+              </a></li>
+            <li><a class="exam-row" href="quiz.html">
+                <span class="exam-row__icon" aria-hidden="true">🔀</span>
+                <span class="exam-row__body">
+                  <span class="exam-row__title">Git 기본 명령어 모의고사</span>
+                  <span class="exam-row__desc">Git 명령어와 사용법을 확인하는 모의고사</span>
+                  <span class="exam-row__meta"><span>기초</span><span>·</span><span>10문제</span><span>·</span><span>예상
+                      10분</span><span>·</span><span>평균 65점</span></span>
+                </span>
+                <span class="exam-row__aside">
+                  <span class="exam-row__count">👥 142명 응시</span>
+                  <span class="btn btn--primary btn--sm">시작하기</span>
+                </span>
+              </a></li>
+          </ul>
+        </div>
+        <aside class="side-panel" aria-label="내 모의고사 현황">
+          <div class="section-title">내 모의고사 현황 <button type="button" class="section-title__link">전체보기 ›</button></div>
+          <div class="exam-status-ring-wrap">
+            <div class="score-ring">
+              <svg viewBox="0 0 80 80" width="80" height="80" role="img" aria-label="전체 평균 32%">
+                <circle class="score-ring__bg" cx="40" cy="40" r="30" stroke-width="7" />
+                <circle class="score-ring__fill" cx="40" cy="40" r="30" stroke="var(--g700)" stroke-width="7"
+                  stroke-dasharray="188" stroke-dashoffset="128" transform="rotate(-90 40 40)" />
+              </svg>
+              <div class="score-ring__text"><span class="score-ring__value">32%</span><span
+                  class="exam-status-ring-wrap__caption">전체 평균</span></div>
+            </div>
+          </div>
+          <div class="exam-stat"><span class="exam-stat__label">응시한 시험</span><span class="exam-stat__value">4회</span>
+          </div>
+          <div class="exam-stat"><span class="exam-stat__label">평균 점수</span><span class="exam-stat__value">72점</span>
+          </div>
+          <div class="exam-stat"><span class="exam-stat__label">최고 점수</span><span class="exam-stat__value">88점</span>
+          </div>
+          <div class="exam-stat"><span class="exam-stat__label">획득 포인트</span><span class="exam-stat__value">560P</span>
+          </div>
+
+          <div class="section-title section-title--spaced">최근 응시한 시험 <button type="button"
+              class="section-title__link">전체보기 ›</button></div>
+          <div class="recent-exam"><span class="recent-exam__icon" aria-hidden="true">🗄️</span><span
+              class="recent-exam__title">SQL 기초 10문제</span><span class="recent-exam__score">80점</span></div>
+          <div class="recent-exam"><span class="recent-exam__icon" aria-hidden="true">☕</span><span
+              class="recent-exam__title">Java 객체지향</span><span
+              class="recent-exam__score recent-exam__score--low">65점</span></div>
+          <div class="recent-exam"><span class="recent-exam__icon" aria-hidden="true">🔀</span><span
+              class="recent-exam__title">Git 기본 명령어</span><span class="recent-exam__score">70점</span></div>
+
+          <button type="button" class="wrong-note-box" data-action="toast" data-message="오답노트로 이동해요!">
+            <p class="wrong-note-box__title">📝 오답노트 바로가기</p>
+            <p class="wrong-note-box__desc">틀린 문제를 다시 풀고 약점을 보완해보세요!</p>
+            <span class="btn btn--sm wrong-note-box__btn">오답노트 보기</span>
+          </button>
+        </aside>
+      </div>
+    </section>
+    <!-- EXAM END -->
+  </main>
+
+  <!-- ================================================= -->
+  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
+  <!-- 담당 : feature/core (공통 담당자 전용) -->
+  <!-- ================================================= -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- COMMON SHARED MARKUP END -->
+
+  <!-- ================================================= -->
+  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
+  <!-- 담당 : feature/core (공통 담당자 전용) -->
+  <!-- ================================================= -->
+  <script src="assets/js/toast.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/ui.js" defer></script>
+</body>
+
+</html>

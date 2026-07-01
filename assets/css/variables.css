@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Design Tokens
+   color / spacing / radius / shadow 값은 반드시 이 파일의 변수를 참조한다.
+   (old/test.html의 시각적 결과와 동일한 값만 옮겨왔다 — 값 변경 없음)
+   ========================================================================== */
+:root {
+  /* --- color: green scale --- */
+  --g900: #1A5C28;
+  --g700: #2D7A3A;
+  --g500: #4CAF50;
+  --g300: #81C784;
+  --g100: #C8E6C9;
+  --g50: #E8F5E9;
+  --g20: #F1FAF2;
+  --g-tint: #DCF0DE;
+
+  /* --- color: accents --- */
+  --gold: #F9A825;
+  --gold-bg: #FFF8E1;
+  --gold-200: #FFE082;
+  --coral: #EF5350;
+  --coral-bg: #FFEBEE;
+  --coral-200: #FFCDD2;
+  --blue: #1565C0;
+  --blue-bg: #E3F2FD;
+  --blue-200: #BBDEFB;
+  --purple: #7B1FA2;
+  --purple-bg: #EDE7F6;
+  --purple-200: #D1C4E9;
+  --orange: #E65100;
+  --orange-bg: #FFF3E0;
+  --orange-200: #FFCC80;
+  --brown-700: #795548;
+
+  /* --- color: neutral / ink --- */
+  --ink: #1C1C1E;
+  --ink2: #3C3C43;
+  --ink3: #6C6C70;
+  --ink4: #AEAEB2;
+  --border: #E5E5EA;
+  --bg: #F4FAF5;
+  --surface: #FFFFFF;
+  --gray-100: #F2F2F7;
+  --gray-300: #D0D0D0;
+
+  /* --- color: gradients (hero / streak / tip cards) --- */
+  --hero-grad-1: #D7EED9;
+  --hero-grad-2: #C5E8C7;
+  --hero-grad-3: #B8E0BB;
+  --abox-grad: #D9EFD9;
+  --odbox-grad: #FFE4E4;
+
+  /* --- color: code block --- */
+  --code-bg: #1C1C2E;
+  --code-text: #CDD9E5;
+  --code-keyword: #F97583;
+  --code-string: #9ECBFF;
+  --code-comment: #6A737D;
+
+  /* --- color: highlight (텍스트 형광펜) --- */
+  --highlight-yellow: #FFF59D;
+  --highlight-yellow-bg: #FFF9C4;
+  --highlight-green: #C8E6C9;
+
+  /* --- radius --- */
+  --r-lg: 16px;
+  --r-md: 12px;
+  --r-sm: 8px;
+  --r-xs: 6px;
+
+  /* --- shadow --- */
+  --sh-sm: 0 1px 4px rgba(0, 0, 0, .06), 0 2px 8px rgba(0, 0, 0, .04);
+  --sh-md: 0 4px 16px rgba(0, 0, 0, .08), 0 1px 4px rgba(0, 0, 0, .04);
+  --sh-lg: 0 8px 32px rgba(0, 0, 0, .10), 0 2px 8px rgba(0, 0, 0, .06);
+  --sh-g: 0 4px 20px rgba(45, 122, 58, .18);
+  --sh-g-hover: 0 6px 24px rgba(45, 122, 58, .3);
+  --sh-logo: 0 2px 8px rgba(45, 122, 58, .35);
+  --focus-ring: 0 0 0 3px rgba(76, 175, 80, .15);
+  --focus-ring-sm: 0 0 0 3px rgba(76, 175, 80, .12);
+  --sel-ring: 0 0 0 3px rgba(76, 175, 80, .12);
+  --curr-ring: 0 0 0 3px rgba(76, 175, 80, .15);
+  --act-ring: 0 0 0 5px var(--g50);
+
+  /* --- spacing scale (기존에 쓰이던 px 값을 그대로 토큰화, 값 변경 없음) --- */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-6: 6px;
+  --space-7: 7px;
+  --space-8: 8px;
+  --space-9: 9px;
+  --space-10: 10px;
+  --space-11: 11px;
+  --space-12: 12px;
+  --space-13: 13px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-21: 21px;
+  --space-22: 22px;
+  --space-24: 24px;
+  --space-26: 26px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-34: 34px;
+  --space-36: 36px;
+  --space-38: 38px;
+  --space-40: 40px;
+  --space-42: 42px;
+  --space-44: 44px;
+  --space-48: 48px;
+  --space-52: 52px;
+  --space-62: 62px;
+  --space-68: 68px;
+  --space-80: 80px;
+
+  /* --- font size scale (본문 텍스트 크기, 기존 값 그대로 토큰화) --- */
+  --fs-10: 10px;
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-15: 15px;
+  --fs-16: 16px;
+  --fs-17: 17px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-22: 22px;
+  --fs-26: 26px;
+  --fs-28: 28px;
+  --fs-30: 30px;
+  --fs-32: 32px;
+  --fs-36: 36px;
+  --fs-44: 44px;
+  --fs-52: 52px;
+  --fs-80: 80px;
+}

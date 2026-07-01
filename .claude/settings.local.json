@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Read(//tmp/**)",
+      "Bash(node verify.mjs)",
+      "Bash(ls -la shot-*.png)",
+      "Bash(node -e ' *)"
+    ]
+  }
+}
