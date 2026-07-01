@@ -1,0 +1,243 @@
+// ══════════════════════════════════════════════
+//  Wiki 목록 렌더링 — assets/data/wiki-data.json을 읽어
+//  검색/카테고리 필터/정렬/페이지네이션을 처리한다.
+// ══════════════════════════════════════════════
+
+const WIKI_PAGE_SIZE = 5;
+
+const WIKI_CATEGORY_ICON = {
+  'SQL': '🗄️',
+  'Java': '☕',
+  'HTML/CSS': '🌐',
+  'JavaScript': '⚡',
+  'Git': '🔀',
+  'Salesforce': '☁️',
+  'CS 개념': '💡',
+  '면접 개념': '🎤',
+  '취업 가이드': '💼'
+};
+
+const WIKI_CATEGORY_TAG_COLOR = {
+  'SQL': 'green',
+  'Java': 'orange',
+  'HTML/CSS': 'blue',
+  'JavaScript': 'gold',
+  'Git': 'gray',
+  'Salesforce': 'purple',
+  'CS 개념': 'coral',
+  '면접 개념': 'coral',
+  '취업 가이드': 'gold'
+};
+
+const WIKI_LEVEL_ORDER = { '입문': 0, '기초': 1, '중급': 2 };
+
+let wikiAllItems = [];
+let wikiState = {
+  category: '전체',
+  search: '',
+  sort: 'latest',
+  page: 1
+};
+
+function wikiFilterItems() {
+  const query = wikiState.search.trim().toLowerCase();
+  return wikiAllItems.filter(item => {
+    const matchesCategory = wikiState.category === '전체' || item.category === wikiState.category;
+    const matchesSearch = !query ||
+      item.title.toLowerCase().includes(query) ||
+      item.description.toLowerCase().includes(query);
+    return matchesCategory && matchesSearch;
+  });
+}
+
+function wikiSortItems(items) {
+  const sorted = [...items];
+  if (wikiState.sort === 'popular') {
+    sorted.sort((a, b) => b.views - a.views);
+  } else if (wikiState.sort === 'level') {
+    sorted.sort((a, b) => WIKI_LEVEL_ORDER[a.level] - WIKI_LEVEL_ORDER[b.level]);
+  }
+  // 'latest'는 wiki-data.json에 등록된 순서를 그대로 사용한다.
+  return sorted;
+}
+
+function buildWikiFavoriteStar(item) {
+  const star = document.createElement('span');
+  star.className = 'favorite-star' + (item.bookmarked ? ' favorite-star--on' : '');
+  star.setAttribute('role', 'button');
+  star.setAttribute('tabindex', '0');
+  star.setAttribute('aria-pressed', String(item.bookmarked));
+  star.setAttribute('aria-label', '즐겨찾기');
+  star.textContent = '★';
+  // ui.js는 defer 스크립트 실행 시점에 존재하는 .favorite-star에만 클릭을 바인딩한다.
+  // fetch 이후 동적으로 추가되는 이 별은 토글 로직 재구현 없이 공통 함수 ts()만 연결한다.
+  star.addEventListener('click', e => {
+    e.stopPropagation();
+    ts(star);
+    item.bookmarked = star.classList.contains('favorite-star--on');
+  });
+  return star;
+}
+
+function buildWikiRow(item) {
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.className = 'wiki-row';
+  a.href = `detail.html?id=${encodeURIComponent(item.id)}`;
+
+  const icon = document.createElement('span');
+  icon.className = 'wiki-row__icon';
+  icon.setAttribute('aria-hidden', 'true');
+  icon.textContent = WIKI_CATEGORY_ICON[item.category] || '📄';
+
+  const title = document.createElement('span');
+  title.className = 'wiki-row__title';
+  title.textContent = item.title;
+
+  const desc = document.createElement('span');
+  desc.className = 'wiki-row__desc';
+  desc.textContent = item.description;
+
+  const body = document.createElement('span');
+  body.className = 'wiki-row__body';
+  body.append(title, desc);
+
+  const tag = document.createElement('span');
+  tag.className = `tag tag--${WIKI_CATEGORY_TAG_COLOR[item.category] || 'gray'}`;
+  tag.textContent = item.category;
+
+  const level = document.createElement('span');
+  level.className = 'wiki-row__level';
+  level.textContent = item.level;
+
+  const time = document.createElement('span');
+  time.className = 'wiki-row__time';
+  time.textContent = item.time;
+
+  const percent = document.createElement('span');
+  percent.className = 'wiki-row__percent';
+  percent.textContent = `${item.progress}%`;
+
+  const meta = document.createElement('span');
+  meta.className = 'wiki-row__meta';
+  meta.append(tag, level, time, percent, buildWikiFavoriteStar(item));
+
+  a.append(icon, body, meta);
+  li.appendChild(a);
+  return li;
+}
+
+function renderWikiEmptyState(listEl) {
+  const li = document.createElement('li');
+  const p = document.createElement('p');
+  p.className = 'wiki-empty';
+  p.textContent = '조건에 맞는 위키 문서가 없습니다.';
+  li.appendChild(p);
+  listEl.appendChild(li);
+}
+
+function renderWikiPagination(totalItems) {
+  const paginationEl = document.getElementById('wikiPagination');
+  paginationEl.innerHTML = '';
+  const totalPages = Math.max(1, Math.ceil(totalItems / WIKI_PAGE_SIZE));
+  if (wikiState.page > totalPages) wikiState.page = totalPages;
+  if (totalItems === 0) return;
+
+  const makeBtn = (label, page, opts = {}) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'pagination__btn' + (opts.active ? ' pagination__btn--active' : '');
+    if (opts.ariaLabel) btn.setAttribute('aria-label', opts.ariaLabel);
+    if (opts.active) btn.setAttribute('aria-current', 'page');
+    btn.disabled = !!opts.disabled;
+    btn.textContent = label;
+    btn.addEventListener('click', () => {
+      wikiState.page = page;
+      renderWikiList();
+    });
+    return btn;
+  };
+
+  paginationEl.appendChild(makeBtn('‹', wikiState.page - 1, { ariaLabel: '이전 페이지', disabled: wikiState.page <= 1 }));
+  for (let p = 1; p <= totalPages; p++) {
+    paginationEl.appendChild(makeBtn(String(p), p, { active: p === wikiState.page }));
+  }
+  paginationEl.appendChild(makeBtn('›', wikiState.page + 1, { ariaLabel: '다음 페이지', disabled: wikiState.page >= totalPages }));
+}
+
+function renderWikiList() {
+  const filtered = wikiFilterItems();
+  const sorted = wikiSortItems(filtered);
+  const start = (wikiState.page - 1) * WIKI_PAGE_SIZE;
+  const pageItems = sorted.slice(start, start + WIKI_PAGE_SIZE);
+
+  const listEl = document.getElementById('wikiRowList');
+  listEl.innerHTML = '';
+  if (pageItems.length === 0) {
+    renderWikiEmptyState(listEl);
+  } else {
+    pageItems.forEach(item => listEl.appendChild(buildWikiRow(item)));
+  }
+
+  renderWikiPagination(sorted.length);
+}
+
+function renderWikiTopList() {
+  const topListEl = document.getElementById('wikiTopList');
+  topListEl.innerHTML = '';
+  const top5 = [...wikiAllItems].sort((a, b) => b.views - a.views).slice(0, 5);
+  top5.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.className = 'top-list__item';
+
+    const badge = document.createElement('span');
+    badge.className = 'rank-badge' + (index >= 3 ? ' rank-badge--muted' : '');
+    badge.textContent = String(index + 1);
+
+    const title = document.createElement('span');
+    title.className = 'top-list__title';
+    title.textContent = item.title;
+
+    li.append(badge, title);
+    topListEl.appendChild(li);
+  });
+}
+
+function wikiBindControls() {
+  document.querySelectorAll('.sidebar__item[data-category]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      wikiState.category = btn.dataset.category;
+      wikiState.page = 1;
+      renderWikiList();
+    });
+  });
+
+  document.querySelectorAll('.sort-pill[data-sort]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      wikiState.sort = btn.dataset.sort;
+      wikiState.page = 1;
+      renderWikiList();
+    });
+  });
+
+  const searchInput = document.getElementById('wiki-search');
+  searchInput.addEventListener('input', () => {
+    wikiState.search = searchInput.value;
+    wikiState.page = 1;
+    renderWikiList();
+  });
+}
+
+fetch('assets/data/wiki-data.json')
+  .then(res => res.json())
+  .then(data => {
+    wikiAllItems = data;
+    wikiBindControls();
+    renderWikiList();
+    renderWikiTopList();
+  })
+  .catch(() => {
+    const listEl = document.getElementById('wikiRowList');
+    listEl.innerHTML = '';
+    renderWikiEmptyState(listEl);
+  });

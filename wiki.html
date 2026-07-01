@@ -86,33 +86,36 @@
     <!-- WIKI LIST PAGE -->
     <!-- 담당 : feature/wiki -->
     <!-- css : wiki.css -->
-    <!-- js : ui.js (정렬/즐겨찾기/사이드바 토글), toast.js -->
-    <!-- json : wiki.json -->
+    <!-- js : pages/wiki.js (목록 렌더링/검색/정렬/페이지네이션), ui.js (즐겨찾기/사이드바 토글), toast.js -->
+    <!-- json : wiki-data.json -->
     <!-- ================================================= -->
     <!-- WIKI START -->
     <section id="wiki" class="page page--active" aria-label="새싹위키">
       <div class="shell">
         <aside class="sidebar" aria-label="카테고리">
           <p class="sidebar__label">카테고리</p>
-          <button type="button" class="sidebar__item sidebar__item--active"><span class="sidebar__item-icon"
-              aria-hidden="true">📋</span>전체</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+          <button type="button" class="sidebar__item sidebar__item--active" data-category="전체"><span
+              class="sidebar__item-icon" aria-hidden="true">📋</span>전체</button>
+          <button type="button" class="sidebar__item" data-category="SQL"><span class="sidebar__item-icon"
               aria-hidden="true">🗄️</span>SQL</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+          <button type="button" class="sidebar__item" data-category="Java"><span class="sidebar__item-icon"
               aria-hidden="true">☕</span>Java</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+          <button type="button" class="sidebar__item" data-category="HTML/CSS"><span class="sidebar__item-icon"
               aria-hidden="true">🌐</span>HTML/CSS</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+          <button type="button" class="sidebar__item" data-category="JavaScript"><span class="sidebar__item-icon"
               aria-hidden="true">⚡</span>JavaScript</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+          <button type="button" class="sidebar__item" data-category="Git"><span class="sidebar__item-icon"
               aria-hidden="true">🔀</span>Git</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
+          <button type="button" class="sidebar__item" data-category="Salesforce"><span class="sidebar__item-icon"
               aria-hidden="true">☁️</span>Salesforce</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">💡</span>CS
+          <button type="button" class="sidebar__item" data-category="CS 개념"><span class="sidebar__item-icon"
+              aria-hidden="true">💡</span>CS
             개념</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">🎤</span>면접
+          <button type="button" class="sidebar__item" data-category="면접 개념"><span class="sidebar__item-icon"
+              aria-hidden="true">🎤</span>면접
             개념</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">💼</span>취업
+          <button type="button" class="sidebar__item" data-category="취업 가이드"><span class="sidebar__item-icon"
+              aria-hidden="true">💼</span>취업
             가이드</button>
         </aside>
         <div class="page__content">
@@ -123,112 +126,20 @@
             <label class="sr-only" for="wiki-search">위키 검색하기</label>
             <input type="text" id="wiki-search" class="wiki-toolbar__input" placeholder="위키 검색하기...">
             <div class="sort-pills">
-              <button type="button" class="sort-pill sort-pill--active">최신순</button>
-              <button type="button" class="sort-pill">인기순</button>
-              <button type="button" class="sort-pill">난이도순</button>
+              <button type="button" class="sort-pill sort-pill--active" data-sort="latest">최신순</button>
+              <button type="button" class="sort-pill" data-sort="popular">인기순</button>
+              <button type="button" class="sort-pill" data-sort="level">난이도순</button>
             </div>
           </div>
 
-          <ul class="wiki-row-list">
-            <li><a class="wiki-row" href="detail.html">
-                <span class="wiki-row__icon" aria-hidden="true">🗄️</span>
-                <span class="wiki-row__body">
-                  <span class="wiki-row__title">SQL SELECT 문법</span>
-                  <span class="wiki-row__desc">데이터베이스를 다루는 가장 기본적인 SQL 문법을 알아봅니다.</span>
-                </span>
-                <span class="wiki-row__meta">
-                  <span class="tag tag--green">SQL</span>
-                  <span class="wiki-row__level">입문</span>
-                  <span class="wiki-row__time">5분 전</span>
-                  <span class="wiki-row__percent">78%</span>
-                  <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
-                    aria-label="즐겨찾기">★</span>
-                </span>
-              </a></li>
-            <li><a class="wiki-row" href="detail.html">
-                <span class="wiki-row__icon" aria-hidden="true">🗄️</span>
-                <span class="wiki-row__body">
-                  <span class="wiki-row__title">SQL JOIN 완벽 정리</span>
-                  <span class="wiki-row__desc">다양한 JOIN의 종류와 사용법을 정리했습니다.</span>
-                </span>
-                <span class="wiki-row__meta">
-                  <span class="tag tag--green">SQL</span>
-                  <span class="wiki-row__level">중급</span>
-                  <span class="wiki-row__time">10분 전</span>
-                  <span class="wiki-row__percent">65%</span>
-                  <span class="favorite-star" role="button" tabindex="0" aria-pressed="false" aria-label="즐겨찾기">★</span>
-                </span>
-              </a></li>
-            <li><a class="wiki-row" href="detail.html">
-                <span class="wiki-row__icon" aria-hidden="true">☕</span>
-                <span class="wiki-row__body">
-                  <span class="wiki-row__title">Java 클래스와 객체</span>
-                  <span class="wiki-row__desc">객체지향의 핵심! 클래스와 객체를 이해해봅시다.</span>
-                </span>
-                <span class="wiki-row__meta">
-                  <span class="tag tag--orange">Java</span>
-                  <span class="wiki-row__level">기초</span>
-                  <span class="wiki-row__time">8분 전</span>
-                  <span class="wiki-row__percent">42%</span>
-                  <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
-                    aria-label="즐겨찾기">★</span>
-                </span>
-              </a></li>
-            <li><a class="wiki-row" href="detail.html">
-                <span class="wiki-row__icon" aria-hidden="true">🔀</span>
-                <span class="wiki-row__body">
-                  <span class="wiki-row__title">Git 기본 개념</span>
-                  <span class="wiki-row__desc">버전 관리 시스템 Git의 기본 개념을 정리했습니다.</span>
-                </span>
-                <span class="wiki-row__meta">
-                  <span class="tag tag--gray">Git</span>
-                  <span class="wiki-row__level">입문</span>
-                  <span class="wiki-row__time">6분 전</span>
-                  <span class="wiki-row__percent">55%</span>
-                  <span class="favorite-star favorite-star--on" role="button" tabindex="0" aria-pressed="true"
-                    aria-label="즐겨찾기">★</span>
-                </span>
-              </a></li>
-            <li><a class="wiki-row" href="detail.html">
-                <span class="wiki-row__icon" aria-hidden="true">☁️</span>
-                <span class="wiki-row__body">
-                  <span class="wiki-row__title">Salesforce Flow 기초</span>
-                  <span class="wiki-row__desc">Flow의 기본 개념과 화면 Flow를 만들어봅니다.</span>
-                </span>
-                <span class="wiki-row__meta">
-                  <span class="tag tag--blue">Salesforce</span>
-                  <span class="wiki-row__level">중급</span>
-                  <span class="wiki-row__time">15분 전</span>
-                  <span class="wiki-row__percent">30%</span>
-                  <span class="favorite-star" role="button" tabindex="0" aria-pressed="false" aria-label="즐겨찾기">★</span>
-                </span>
-              </a></li>
-          </ul>
+          <!-- assets/js/pages/wiki.js가 wiki-data.json을 읽어 이 안에 wiki-row를 렌더링한다 -->
+          <ul class="wiki-row-list" id="wikiRowList"></ul>
 
-          <nav class="pagination" aria-label="페이지 네비게이션">
-            <button type="button" class="pagination__btn" aria-label="이전 페이지">‹</button>
-            <button type="button" class="pagination__btn pagination__btn--active" aria-current="page">1</button>
-            <button type="button" class="pagination__btn">2</button>
-            <button type="button" class="pagination__btn">3</button>
-            <button type="button" class="pagination__btn">4</button>
-            <button type="button" class="pagination__btn">5</button>
-            <button type="button" class="pagination__btn" aria-label="다음 페이지">›</button>
-          </nav>
+          <nav class="pagination" id="wikiPagination" aria-label="페이지 네비게이션"></nav>
         </div>
         <aside class="side-panel" aria-label="많이 보는 위키">
           <p class="section-title section-title--sm">많이 보는 위키</p>
-          <ol class="top-list">
-            <li class="top-list__item"><span class="rank-badge">1</span><span class="top-list__title">SQL SELECT
-                문법</span></li>
-            <li class="top-list__item"><span class="rank-badge">2</span><span class="top-list__title">Java 클래스와
-                객체</span></li>
-            <li class="top-list__item"><span class="rank-badge">3</span><span class="top-list__title">Git 기본 개념</span>
-            </li>
-            <li class="top-list__item"><span class="rank-badge rank-badge--muted">4</span><span
-                class="top-list__title">HTML 기본 구조</span></li>
-            <li class="top-list__item"><span class="rank-badge rank-badge--muted">5</span><span
-                class="top-list__title">면접 질문 모음</span></li>
-          </ol>
+          <ol class="top-list" id="wikiTopList"></ol>
           <div class="tip-box">
             <p class="tip-box__title">💡 학습 팁</p>모르는 단어는 단어장에, 중요한 내용은 하이라이트로 나만의 핸드북을 만들어보세요!
             <p class="tip-box__icon" aria-hidden="true">🌿</p>
@@ -256,6 +167,10 @@
   <script src="assets/js/auth.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script src="assets/js/ui.js" defer></script>
+  <!-- 페이지 전용 스크립트 — Wiki 담당 소유. wiki-data.json 목록 렌더링을 위해 추가.
+       WORK_ORDER.md 기준 <script> 태그 목록은 공통 담당자 소유 블록이라 이 한 줄 추가는
+       PR에서 공통 담당자 확인이 필요하다. -->
+  <script src="assets/js/pages/wiki.js" defer></script>
 </body>
 
 </html>
