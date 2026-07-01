@@ -354,7 +354,7 @@ function finishQuiz() {
   // (그렇지 않으면 쉬운 소규모 재시도로 평균·최고 점수가 인위적으로 올라간다).
   if (!isWrongRetry) {
     const pointsEarned = computeEarnedPoints(exam.id, correctCount, total, isPerfect);
-    saveExamAttempt(exam, score, pointsEarned);
+    saveExamAttempt(exam, score, pointsEarned, lastWrongQuestions.map(q => q.id));
   }
 
   showQuizPhase('result');
@@ -430,7 +430,7 @@ function renderQuizResultQuestionList(questions, answers) {
   }).join('');
 }
 
-function saveExamAttempt(exam, score, pointsEarned) {
+function saveExamAttempt(exam, score, pointsEarned, wrongQuestionIds) {
   try {
     const list = getLocalExamAttempts();
     list.push({
@@ -439,7 +439,8 @@ function saveExamAttempt(exam, score, pointsEarned) {
       icon: exam.icon,
       score,
       pointsEarned,
-      date: new Date().toISOString().slice(0, 10)
+      date: new Date().toISOString().slice(0, 10),
+      wrongQuestionIds: wrongQuestionIds || [] // exam.js 사이드패널 "오답노트" 개인화에 사용
     });
     const trimmed = list.length > MAX_STORED_ATTEMPTS ? list.slice(-MAX_STORED_ATTEMPTS) : list;
     localStorage.setItem(SESAC_EXAM_ATTEMPTS_KEY, JSON.stringify(trimmed));

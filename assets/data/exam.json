@@ -28,6 +28,20 @@
       "isRecommended": false
     },
     {
+      "id": "exam-008",
+      "icon": "☁️",
+      "title": "세일즈포스 자동화 & 관리 심화",
+      "description": "LWC, Batch Apex, Sandbox, 데이터 로더 등 실무 자동화/운영 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 5,
+      "estimatedMinutes": 7,
+      "avgScore": 62,
+      "attemptCount": 41,
+      "isRecommended": false,
+      "isAdvanced": true
+    },
+    {
       "id": "exam-002",
       "icon": "☕",
       "title": "Java 객체지향 개념 테스트",
@@ -39,6 +53,20 @@
       "avgScore": 68,
       "attemptCount": 198,
       "isRecommended": false
+    },
+    {
+      "id": "exam-009",
+      "icon": "☕",
+      "title": "Java 컬렉션 & 예외처리 심화",
+      "description": "컬렉션 자료구조, 예외 처리, 제네릭, 동시성 기본 개념 점검",
+      "category": "Java",
+      "level": "중급~고급",
+      "questionCount": 5,
+      "estimatedMinutes": 7,
+      "avgScore": 60,
+      "attemptCount": 77,
+      "isRecommended": false,
+      "isAdvanced": true
     },
     {
       "id": "exam-003",
@@ -54,6 +82,20 @@
       "isRecommended": true
     },
     {
+      "id": "exam-010",
+      "icon": "🗄️",
+      "title": "SQL 인덱스 & 트랜잭션 심화",
+      "description": "인덱스, 트랜잭션 ACID, DISTINCT, DDL 등 실무 SQL 개념 점검",
+      "category": "SQL",
+      "level": "중급",
+      "questionCount": 5,
+      "estimatedMinutes": 7,
+      "avgScore": 63,
+      "attemptCount": 95,
+      "isRecommended": false,
+      "isAdvanced": true
+    },
+    {
       "id": "exam-004",
       "icon": "🌐",
       "title": "HTML 기초 테스트",
@@ -65,6 +107,20 @@
       "avgScore": 75,
       "attemptCount": 173,
       "isRecommended": false
+    },
+    {
+      "id": "exam-011",
+      "icon": "🌐",
+      "title": "HTML 멀티미디어 & 구조 심화",
+      "description": "video, table, section, select, aside 등 시맨틱/멀티미디어 태그 점검",
+      "category": "HTML",
+      "level": "중급",
+      "questionCount": 5,
+      "estimatedMinutes": 6,
+      "avgScore": 68,
+      "attemptCount": 54,
+      "isRecommended": false,
+      "isAdvanced": true
     },
     {
       "id": "exam-005",
@@ -80,6 +136,20 @@
       "isRecommended": false
     },
     {
+      "id": "exam-012",
+      "icon": "🎨",
+      "title": "CSS 애니메이션 & 반응형 심화",
+      "description": "transition, keyframes, 반응형 단위, flex-grow 등 심화 스타일링 점검",
+      "category": "CSS",
+      "level": "중급~고급",
+      "questionCount": 5,
+      "estimatedMinutes": 7,
+      "avgScore": 58,
+      "attemptCount": 49,
+      "isRecommended": false,
+      "isAdvanced": true
+    },
+    {
       "id": "exam-006",
       "icon": "⚡",
       "title": "JavaScript 핵심 문법 테스트",
@@ -91,6 +161,20 @@
       "avgScore": 64,
       "attemptCount": 165,
       "isRecommended": false
+    },
+    {
+      "id": "exam-013",
+      "icon": "⚡",
+      "title": "JavaScript 객체 & DOM 조작 심화",
+      "description": "Object.keys, DOM 선택, 배열 탐색, Promise.all, classList 등 실전 문법 점검",
+      "category": "JavaScript",
+      "level": "중급~고급",
+      "questionCount": 5,
+      "estimatedMinutes": 7,
+      "avgScore": 59,
+      "attemptCount": 63,
+      "isRecommended": false,
+      "isAdvanced": true
     },
     {
       "id": "exam-007",
@@ -106,84 +190,6 @@
       "isRecommended": false
     },
     {
-      "id": "exam-008",
-      "icon": "☁️",
-      "title": "세일즈포스 자동화 & 관리 심화",
-      "description": "LWC, Batch Apex, Sandbox, 데이터 로더 등 실무 자동화/운영 개념 점검",
-      "category": "세일즈포스",
-      "level": "중급~고급",
-      "questionCount": 5,
-      "estimatedMinutes": 7,
-      "avgScore": 62,
-      "attemptCount": 41,
-      "isRecommended": false
-    },
-    {
-      "id": "exam-009",
-      "icon": "☕",
-      "title": "Java 컬렉션 & 예외처리 심화",
-      "description": "컬렉션 자료구조, 예외 처리, 제네릭, 동시성 기본 개념 점검",
-      "category": "Java",
-      "level": "중급~고급",
-      "questionCount": 5,
-      "estimatedMinutes": 7,
-      "avgScore": 60,
-      "attemptCount": 77,
-      "isRecommended": false
-    },
-    {
-      "id": "exam-010",
-      "icon": "🗄️",
-      "title": "SQL 인덱스 & 트랜잭션 심화",
-      "description": "인덱스, 트랜잭션 ACID, DISTINCT, DDL 등 실무 SQL 개념 점검",
-      "category": "SQL",
-      "level": "중급",
-      "questionCount": 5,
-      "estimatedMinutes": 7,
-      "avgScore": 63,
-      "attemptCount": 95,
-      "isRecommended": false
-    },
-    {
-      "id": "exam-011",
-      "icon": "🌐",
-      "title": "HTML 멀티미디어 & 구조 심화",
-      "description": "video, table, section, select, aside 등 시맨틱/멀티미디어 태그 점검",
-      "category": "HTML",
-      "level": "중급",
-      "questionCount": 5,
-      "estimatedMinutes": 6,
-      "avgScore": 68,
-      "attemptCount": 54,
-      "isRecommended": false
-    },
-    {
-      "id": "exam-012",
-      "icon": "🎨",
-      "title": "CSS 애니메이션 & 반응형 심화",
-      "description": "transition, keyframes, 반응형 단위, flex-grow 등 심화 스타일링 점검",
-      "category": "CSS",
-      "level": "중급~고급",
-      "questionCount": 5,
-      "estimatedMinutes": 7,
-      "avgScore": 58,
-      "attemptCount": 49,
-      "isRecommended": false
-    },
-    {
-      "id": "exam-013",
-      "icon": "⚡",
-      "title": "JavaScript 객체 & DOM 조작 심화",
-      "description": "Object.keys, DOM 선택, 배열 탐색, Promise.all, classList 등 실전 문법 점검",
-      "category": "JavaScript",
-      "level": "중급~고급",
-      "questionCount": 5,
-      "estimatedMinutes": 7,
-      "avgScore": 59,
-      "attemptCount": 63,
-      "isRecommended": false
-    },
-    {
       "id": "exam-014",
       "icon": "🔀",
       "title": "기타 실무 도구 & 협업 심화",
@@ -194,7 +200,8 @@
       "estimatedMinutes": 6,
       "avgScore": 61,
       "attemptCount": 58,
-      "isRecommended": false
+      "isRecommended": false,
+      "isAdvanced": true
     }
   ],
   "combinedQuestions": {

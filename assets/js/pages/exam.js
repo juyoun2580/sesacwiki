@@ -39,9 +39,14 @@ async function loadExamPageData() {
     const res = await fetch('assets/data/exam.json');
     if (!res.ok) throw new Error('모의고사 데이터를 불러오지 못했습니다.');
     const data = await res.json();
-    examAttemptHistory = [...(data.attemptHistory || []), ...getLocalExamAttempts()];
+    // 실제 응시 기록이 하나라도 있으면 시드 더미 데이터는 통계에서 완전히 제외한다.
+    // 그래야 실제로 응시한 만큼만 정직하게 집계된다 (시드는 첫 방문 시 빈 화면을 막기 위한 데모용).
+    const localHistory = getLocalExamAttempts();
+    examAttemptHistory = localHistory.length ? localHistory : (data.attemptHistory || []);
+    renderExamList(data.list);
     renderExamStats(examAttemptHistory);
     renderWrongNoteAccordion(data);
+    initExamFilters(); // 카드가 렌더링된 뒤에 실행해야 필터가 실제 <li>를 찾을 수 있다
   } catch (e) {
     console.error(e);
     toast('데이터를 불러오지 못했어요. 다시 시도해주세요.');
@@ -54,6 +59,32 @@ async function loadExamPageData() {
       btn.addEventListener('click', loadExamPageData);
     });
   }
+}
+
+// exam.json의 list를 그대로 카드로 그린다 (더 이상 exam.html에 하드코딩하지 않음 — 새 시험 추가는 JSON만 수정하면 됨).
+function renderExamList(list) {
+  const listEl = document.getElementById('exam-row-list');
+  if (!listEl) return;
+  listEl.innerHTML = list.map(exam => {
+    const badges = [
+      exam.isRecommended ? '<span class="tag tag--recommended">추천</span>' : '',
+      exam.isAdvanced ? '<span class="tag tag--orange">🔥 심화</span>' : ''
+    ].join(' ');
+    return `
+      <li data-category="${escapeHtml(exam.category)}"><a class="exam-row" href="quiz.html?id=${escapeHtml(exam.id)}">
+          <span class="exam-row__icon" aria-hidden="true">${exam.icon}</span>
+          <span class="exam-row__body">
+            <span class="exam-row__title">${escapeHtml(exam.title)} ${badges}</span>
+            <span class="exam-row__desc">${escapeHtml(exam.description)}</span>
+            <span class="exam-row__meta"><span>${escapeHtml(exam.level)}</span><span>·</span><span>${exam.questionCount}문제</span><span>·</span><span>예상 ${exam.estimatedMinutes}분</span><span>·</span><span>평균 ${exam.avgScore}점</span></span>
+          </span>
+          <span class="exam-row__aside">
+            <span class="exam-row__count">👥 ${exam.attemptCount}명 응시</span>
+            <span class="btn btn--primary btn--sm">시작하기</span>
+          </span>
+        </a></li>
+    `;
+  }).join('');
 }
 
 function renderExamStats(history) {
@@ -103,10 +134,27 @@ function scoreTierEmoji(score) {
   return '🌱';
 }
 
+// 실제로 응시한 적이 있으면(1건이라도) 그 사람이 진짜 틀린 문제로 완전히 대체한다.
+// 응시 기록 자체가 없는 첫 방문자에게만 데모용 wrongNoteSamples를 보여준다.
+function buildWrongNoteRefs(data, localHistory) {
+  const refs = [];
+  const seen = new Set();
+  [...localHistory].reverse().forEach(attempt => {
+    (attempt.wrongQuestionIds || []).forEach(questionId => {
+      const key = `${attempt.examId}::${questionId}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+      refs.push({ examId: attempt.examId, questionId });
+    });
+  });
+  return refs.slice(0, 5);
+}
+
 function renderWrongNoteAccordion(data) {
   const listEl = document.getElementById('exam-wrong-note-list');
   if (!listEl) return;
-  const samples = data.wrongNoteSamples || [];
+  const localHistory = getLocalExamAttempts();
+  const samples = localHistory.length ? buildWrongNoteRefs(data, localHistory) : (data.wrongNoteSamples || []);
 
   const items = samples.map(ref => {
     const q = (data.questions[ref.examId] || []).find(item => item.id === ref.questionId);
@@ -169,4 +217,3 @@ document.getElementById('exam-recent-toggle')?.addEventListener('click', () => {
 });
 
 loadExamPageData();
-initExamFilters();
