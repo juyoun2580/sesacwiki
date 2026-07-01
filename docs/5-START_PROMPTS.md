@@ -23,6 +23,9 @@ docs/WORK_ORDER.md, docs/DECISION_TREE.md, docs/JSON_GUIDE.md를 먼저 읽고
 - 필요 시에만 생성: assets/js/pages/home.js (신규 인터랙션이 실제로 필요할 때만.
   생성하면 <script> 태그 추가는 공통 담당자에게 요청)
 
+git 브랜치는 feature/home 이다. main에서 새로 분기해서 작업하고,
+main에는 절대 직접 커밋하지 않는다.
+
 assets/data/home.json은 이미 더미 데이터로 생성되어 있으니 그 스키마를
 그대로 따라서 화면과 데이터를 연결하거나 확장해줘. 새로운 필드가 필요하면
 JSON_GUIDE.md 규칙(camelCase, id는 문자열, boolean은 is- 접두사, 날짜는

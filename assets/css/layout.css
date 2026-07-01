@@ -7,37 +7,28 @@
 /* ---------- Header ---------- */
 .header {
   position: fixed;
-  inset: 0 0 auto;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 200;
+  height: var(--space-62);
+  background: rgba(255, 255, 255, .94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
-
-  height: var(--space-62);
-  padding-inline: var(--space-24);
-
-  background: rgb(255 255 255 / 94%);
-  backdrop-filter: blur(14px);
-
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 0 rgb(0 0 0 / 6%);
-
-  gap: var(--space-24);
+  padding: 0 var(--space-24);
+  gap: var(--space-16);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .06);
 }
 
 .header__logo {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
-  text-decoration: none;
+  gap: var(--space-9);
+  white-space: nowrap;
 }
 
-.header__logo img {
-  display: block;
-  height: 30px; 
-  width: auto;
-}
-
-/* ~ 없앨 예정*/
 .header__logo-mark {
   width: var(--space-36);
   height: var(--space-36);
@@ -63,23 +54,12 @@
   font-weight: 500;
   margin-top: -2px;
 }
-/*없앨 예정 ~ */
-
-.header .search-box{
-  flex: 1;
-  width: 100%;
-  min-width: 280px;
-  max-width: 440px;
-  margin: 0;
-}
 
 .header__right {
-   display: flex;
+  display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: var(--space-12);
-
-  flex: 1;
+  gap: var(--space-10);
+  margin-left: auto;
 }
 
 /* ---------- Nav ---------- */
@@ -116,7 +96,7 @@
 .nav__item::after {
   content: '';
   position: absolute;
-  bottom: -7px;
+  bottom: -9px;
   left: var(--space-16);
   right: var(--space-16);
   height: 2.5px;
@@ -133,7 +113,7 @@
 
 .nav__item--active {
   color: var(--g900);
-  /* background: var(--g50); */
+  background: var(--g50);
 }
 
 .nav__item--active::after {
@@ -255,108 +235,4 @@
   font-size: var(--fs-13);
   color: var(--ink3);
   margin-bottom: var(--space-22);
-}
-
-/* ==========================================================================
-   Responsive — Desktop First (기본 = Desktop ≥1200px)
-   Tablet: 768px ~ 1199px / Mobile: ~767px
-   ========================================================================== */
-
-/* Desktop 기본값: hamburger-btn은 Mobile 미디어쿼리에서만 노출한다 */
-.hamburger-btn {
-  display: none;
-}
-
-/* ---------- Tablet: 768px ~ 1199px ---------- */
-@media (max-width: 1199px) {
-  .header {
-    padding-inline: var(--space-16);
-    gap: var(--space-12);
-  }
-
-  .header .search-box {
-    min-width: 0;
-  }
-
-  /* 보조 정보 패널은 tablet 이하에서 숨기고, mobile에서는 hamburger로 접근 */
-  .side-panel {
-    display: none;
-  }
-}
-
-/* ---------- Mobile: ~767px ---------- */
-@media (max-width: 767px) {
-  .header {
-    padding-inline: var(--space-8);
-    gap: var(--space-6);
-  }
-
-  .header__right {
-    gap: var(--space-6);
-  }
-
-  /* Mobile: header__logo / user-chip / hamburger-btn만 남기고 나머지는 숨긴다.
-     components.css가 layout.css보다 뒤에 로드되어 동일 명시도 규칙은 항상 components.css가
-     이기므로, .header로 명시도를 높여 mobile 숨김이 실제로 적용되게 한다 */
-  .header .search-box,
-  .header .notification-btn,
-  .header .point-badge {
-    display: none;
-  }
-
-  .hamburger-btn {
-    display: flex;
-  }
-
-  .nav {
-    /* overflow-x만 지정하면 overflow-y가 초기값 visible 대신 auto로 강제 연산되어
-       (CSS Overflow 스펙) 세로 스크롤이 함께 생긴다. overflow-y를 명시적으로 hidden
-       처리해 가로 스크롤만 남기고, 세로 스크롤/스크롤바로 인한 높이 변화를 막는다. */
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .shell {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    position: static;
-    width: 100%;
-    height: auto;
-    top: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .page__content {
-    padding: var(--space-20) var(--space-16) var(--space-32);
-  }
-
-  /* side-panel: 기본 숨김 → hamburger로 열면 우측 드로어로 표시 */
-  .side-panel {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: min(280px, 80vw);
-    z-index: 300;
-    transform: translateX(100%);
-    transition: transform .25s ease;
-    box-shadow: var(--sh-lg);
-  }
-
-  .side-panel.side-panel--open {
-    display: block;
-    transform: translateX(0);
-  }
-
-  body.side-panel-open::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 250;
-    background: rgb(0 0 0 / 40%);
-  }
 }
