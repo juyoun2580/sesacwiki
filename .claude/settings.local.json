@@ -12,7 +12,8 @@
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "PowerShell(git *)",
-      "Bash(start job.html)"
+      "Bash(start job.html)",
+      "PowerShell(vercel *)"
     ]
   }
 }

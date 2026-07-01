@@ -157,6 +157,19 @@ PR 전에 반드시 확인한다.
 
 ---
 
+# 🚀 Deploy Rule
+
+모든 작업(코드 수정, 파일 변경 등)이 끝난 후 **반드시** 프로덕션 배포를 실행한다.
+
+```bash
+vercel deploy --prod --yes
+```
+
+- 작업 완료 후 확인 없이 즉시 실행한다.
+- 배포 후 https://sesacwiki.vercel.app 에서 반영 여부를 확인한다.
+
+---
+
 # AI Development Principle
 
 Claude는 새로운 코드를 작성하는 것보다
