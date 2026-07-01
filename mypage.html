@@ -94,14 +94,8 @@
               aria-hidden="true">📓</span>저장한 단어</a>
           <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📋</span>학습
             노트</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📄</span>나의
-            이력서</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
-              aria-hidden="true">🖼</span>포트폴리오</button>
           <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📊</span>학습
             기록</button>
-          <a class="sidebar__item" href="mypage-edit.html"><span class="sidebar__item-icon"
-              aria-hidden="true">⚙️</span>설정</a>
           <div class="sidebar__card">
             <p class="sidebar__card-title">📌 성장 팁</p>매일 꾸준히 학습하면 다음 레벨까지 더 빨리 도달할 수 있어요!
             <p class="sidebar__card-icon" aria-hidden="true">🌿</p>
@@ -109,7 +103,7 @@
         </aside>
 
         <div class="page__content">
-          <h1 class="page-title">마이페이지 🌱</h1>
+          <h1 class="page-title">My Dashboard 🌱</h1>
           <p class="page-subtitle">나의 성장 현황과 활동을 한눈에 확인하세요.</p>
 
           <!-- 프로필 영역 -->
@@ -126,9 +120,12 @@
             </div>
           </div>
 
-          <!-- 현재 레벨 시스템 -->
+          <!-- 현재 레벨 시스템 (무한 확장형: 8개 테마 스테이지를 계속 순환하며 Lv.N으로 누적 표시) -->
           <div class="level-card">
-            <div class="section-title section-title--sm">현재 레벨</div>
+            <div class="level-card__header">
+              <div class="section-title section-title--sm">Level Progress</div>
+              <span class="level-card__badge">Lv.1</span>
+            </div>
             <div class="level-track">
               <div class="level-track__stage level-track__stage--active" data-stage="0">
                 <span class="level-track__icon" aria-hidden="true">🌱</span>
@@ -146,68 +143,61 @@
                 <span class="level-track__icon" aria-hidden="true">🌳</span>
                 <span class="level-track__label">나무</span>
               </div>
+              <div class="level-track__stage" data-stage="4">
+                <span class="level-track__icon" aria-hidden="true">🌸</span>
+                <span class="level-track__label">꽃</span>
+              </div>
+              <div class="level-track__stage" data-stage="5">
+                <span class="level-track__icon" aria-hidden="true">🍎</span>
+                <span class="level-track__label">열매</span>
+              </div>
+              <div class="level-track__stage" data-stage="6">
+                <span class="level-track__icon" aria-hidden="true">💧</span>
+                <span class="level-track__label">물</span>
+              </div>
+              <div class="level-track__stage" data-stage="7">
+                <span class="level-track__icon" aria-hidden="true">🌌</span>
+                <span class="level-track__label">우주</span>
+              </div>
             </div>
             <div class="progress-bar level-track__bar" role="progressbar" aria-valuenow="35" aria-valuemin="0"
               aria-valuemax="100">
               <div class="progress-bar__fill progress-bar__fill--green" data-progress="35"></div>
             </div>
-            <p class="level-track__hint">다음 단계(줄기)까지 <strong>35%</strong> 남았어요 · 1,240P / 2,000P</p>
+            <p class="level-track__hint">다음 단계(줄기)까지 <strong>35%</strong> 남았어요 · 1,240P / 2,000P · 8단계(우주) 이후에는
+              Lv.9부터 새싹부터 다시 순환하며 계속 성장해요</p>
           </div>
 
-          <!-- 나의 오답 & 단어 노트 -->
-          <div class="notebook-grid">
-            <div class="notebook-card">
-              <div class="section-title section-title--sm">오답 노트 <button type="button" class="section-title__link"
-                  data-action="toast" data-message="오답노트 전체보기는 준비 중이에요!">전체보기 ›</button></div>
-              <ul class="notebook-card__list">
-                <li class="notebook-card__row">
-                  <span class="tag tag--green">SQL</span>
-                  <span class="notebook-card__text">WHERE 절의 역할로 가장 알맞은 것은?</span>
-                  <span class="notebook-card__date">2025.05.20</span>
-                </li>
-                <li class="notebook-card__row">
-                  <span class="tag tag--orange">Java</span>
-                  <span class="notebook-card__text">상속(Inheritance)의 특징으로 옳지 않은 것은?</span>
-                  <span class="notebook-card__date">2025.05.18</span>
-                </li>
-                <li class="notebook-card__row">
-                  <span class="tag tag--green">SQL</span>
-                  <span class="notebook-card__text">GROUP BY와 함께 쓸 수 없는 것은?</span>
-                  <span class="notebook-card__date">2025.05.14</span>
-                </li>
-              </ul>
-            </div>
-            <div class="notebook-card">
-              <div class="section-title section-title--sm">저장한 단어 <a class="section-title__link"
-                  href="mywords.html">전체보기 ›</a></div>
-              <ul class="notebook-card__list">
-                <li class="notebook-card__row">
-                  <span class="tag tag--blue">CS/IT</span>
-                  <span class="notebook-card__text">Algorithm</span>
-                  <span class="notebook-card__date">2025.05.20</span>
-                </li>
-                <li class="notebook-card__row">
-                  <span class="tag tag--orange">Java</span>
-                  <span class="notebook-card__text">Inheritance</span>
-                  <span class="notebook-card__date">2025.05.19</span>
-                </li>
-                <li class="notebook-card__row">
-                  <span class="tag tag--green">SQL</span>
-                  <span class="notebook-card__text">Normalization</span>
-                  <span class="notebook-card__date">2025.05.18</span>
-                </li>
-              </ul>
-            </div>
+          <!-- Saved Notes: 저장한 단어/노트 연동 (오답 노트 섹션은 제거) -->
+          <div class="notebook-card">
+            <div class="section-title section-title--sm">Saved Notes <a class="section-title__link"
+                href="mywords.html">전체보기 ›</a></div>
+            <ul class="notebook-card__list">
+              <li class="notebook-card__row">
+                <span class="tag tag--blue">CS/IT</span>
+                <span class="notebook-card__text">Algorithm</span>
+                <span class="notebook-card__date">2025.05.20</span>
+              </li>
+              <li class="notebook-card__row">
+                <span class="tag tag--orange">Java</span>
+                <span class="notebook-card__text">Inheritance</span>
+                <span class="notebook-card__date">2025.05.19</span>
+              </li>
+              <li class="notebook-card__row">
+                <span class="tag tag--green">SQL</span>
+                <span class="notebook-card__text">Normalization</span>
+                <span class="notebook-card__date">2025.05.18</span>
+              </li>
+            </ul>
           </div>
-
         </div>
 
         <aside class="side-panel" aria-label="챌린지 및 활동 뱃지">
           <div class="streak-card">
-            <p class="streak-card__label">연속 학습 기록</p>
+            <p class="streak-card__label">Learning Streak 🔥</p>
             <div class="streak-card__value-row">
-              <span class="streak-card__number">7</span><span class="streak-card__unit">일</span>
-              <span class="streak-card__note">최고 기록 12일</span>
+              <span class="streak-card__number" id="streak-current">7</span><span class="streak-card__unit">일</span>
+              <span class="streak-card__note" id="streak-best">최고 기록 12일</span>
             </div>
             <p class="streak-card__icon" aria-hidden="true">📅</p>
           </div>

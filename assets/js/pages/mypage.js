@@ -147,6 +147,55 @@ if (deleteConfirmCheckbox && deleteAccountBtn) {
   });
 }
 
+// ── 연속 학습 기록(Streak) 위젯 — localStorage 기반 뼈대 로직 ──
+// 최초 방문 시 연속 7일/최고 12일로 초기화하고, 이후 접속할 때마다
+// 마지막 방문일과 오늘 날짜를 비교해 연속 기록을 계산한다.
+const STREAK_KEY = 'sesac.mypage.streak';
+
+function todayStr() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function daysBetween(fromStr, toStr) {
+  const ms = new Date(toStr) - new Date(fromStr);
+  return Math.round(ms / 86400000);
+}
+
+function updateStreak() {
+  let data;
+  try {
+    data = JSON.parse(localStorage.getItem(STREAK_KEY));
+  } catch {
+    data = null;
+  }
+
+  const today = todayStr();
+
+  if (!data) {
+    data = { currentStreak: 7, bestStreak: 12, lastVisitDate: today };
+  } else if (data.lastVisitDate !== today) {
+    const gap = daysBetween(data.lastVisitDate, today);
+    if (gap === 1) {
+      data.currentStreak += 1;
+    } else if (gap > 1) {
+      data.currentStreak = 1;
+    }
+    data.lastVisitDate = today;
+    data.bestStreak = Math.max(data.bestStreak, data.currentStreak);
+  }
+
+  localStorage.setItem(STREAK_KEY, JSON.stringify(data));
+  return data;
+}
+
+(function renderStreak() {
+  const streak = updateStreak();
+  const currentEl = document.getElementById('streak-current');
+  const bestEl = document.getElementById('streak-best');
+  if (currentEl) currentEl.textContent = streak.currentStreak;
+  if (bestEl) bestEl.textContent = `최고 기록 ${streak.bestStreak}일`;
+})();
+
 // ── Challenges / Activities 탭 전환 (대시보드 우측 패널) ──
 document.querySelectorAll('.achievement-tab').forEach(tabBtn => {
   tabBtn.addEventListener('click', () => {

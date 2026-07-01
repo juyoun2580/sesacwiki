@@ -10,18 +10,14 @@
     "isMarketingAgreed": false
   },
   "level": {
-    "stages": ["새싹", "줄기", "잎", "나무"],
+    "currentLevel": 1,
+    "stages": ["새싹", "줄기", "잎", "나무", "꽃", "열매", "물", "우주"],
     "currentStageIndex": 0,
     "currentPoints": 1240,
     "nextStagePoints": 2000,
     "percentToNext": 35
   },
   "notebook": {
-    "wrongAnswers": [
-      { "id": "wa-001", "title": "WHERE 절의 역할로 가장 알맞은 것은?", "category": "SQL", "categoryColor": "green", "date": "2025-05-20" },
-      { "id": "wa-002", "title": "상속(Inheritance)의 특징으로 옳지 않은 것은?", "category": "Java", "categoryColor": "orange", "date": "2025-05-18" },
-      { "id": "wa-003", "title": "GROUP BY와 함께 쓸 수 없는 것은?", "category": "SQL", "categoryColor": "green", "date": "2025-05-14" }
-    ],
     "savedWords": [
       { "id": "word-001", "title": "Algorithm", "category": "CS/IT", "categoryColor": "blue", "date": "2025-05-20" },
       { "id": "word-002", "title": "Inheritance", "category": "Java", "categoryColor": "orange", "date": "2025-05-19" },
@@ -39,8 +35,8 @@
   },
   "badges": [
     { "id": "badge-adx201", "label": "ADX 201", "category": "Salesforce", "icon": "☁️", "isEarned": false },
-    { "id": "badge-html", "label": "HTML", "category": "HTML", "icon": "🧱", "isEarned": true },
-    { "id": "badge-css", "label": "CSS", "category": "CSS", "icon": "🎨", "isEarned": true },
+    { "id": "badge-html", "label": "HTML5", "category": "HTML", "icon": "🧱", "isEarned": true },
+    { "id": "badge-css", "label": "CSS3", "category": "CSS", "icon": "🎨", "isEarned": true },
     { "id": "badge-java", "label": "Java", "category": "Java", "icon": "☕", "isEarned": false },
     { "id": "badge-sql", "label": "SQL", "category": "SQL", "icon": "🗄️", "isEarned": true },
     { "id": "badge-javascript", "label": "JavaScript", "category": "JavaScript", "icon": "⚡", "isEarned": false },
