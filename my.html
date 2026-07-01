@@ -1,252 +1,354 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>내 문서 — 마이핸드북 — 새싹트리</title>
-  <!-- ================================================= -->
-  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
-  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
-  <!-- ================================================= -->
-  <link rel="stylesheet" href="assets/css/reset.css">
-  <link rel="stylesheet" href="assets/css/variables.css">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-  <!-- 페이지 전용 CSS — MyPage(Job/My) 담당 소유 (docs/PAGES.md 참고) -->
-  <link rel="stylesheet" href="assets/css/pages/my.css">
-</head>
-
-<body>
-  <a class="skip-link" href="#main-content">본문 바로가기</a>
-
-  <!-- ================================================= -->
-  <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
-  <!-- 담당 : feature/core (공통 담당자 전용)                -->
-  <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
-  <!-- ================================================= -->
-  <header class="header">
-    <div class="header__logo">
-      <span class="header__logo-mark" aria-hidden="true">🌱</span>
-      <div>
-        <p class="header__logo-name">새싹트리</p>
-        <p class="header__logo-sub">나만의 취업 핸드북</p>
-      </div>
-    </div>
-    <div class="search-box">
-      <span class="search-box__icon" aria-hidden="true">🔍</span>
-      <label class="sr-only" for="global-search">검색</label>
-      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
-    </div>
-    <div class="header__right">
-      <button type="button" class="notification-btn" aria-label="알림">🔔<span
-          class="notification-btn__dot"></span></button>
-      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
-      <button type="button" class="user-chip">
-        <span class="avatar" aria-hidden="true">🌿</span>
-        <span>
-          <span class="user-chip__name">김새싹</span>
-          <span class="user-chip__level">Lv.3 잎새</span>
-        </span>
-        <span class="user-chip__caret" aria-hidden="true">▾</span>
-      </button>
-    </div>
-  </header>
-  <!-- COMMON HEADER END -->
-
-  <!-- ================================================= -->
-  <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
-  <!-- 담당 : feature/core (공통 담당자 전용)                -->
-  <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
-  <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
-  <!-- ================================================= -->
-  <nav class="nav" aria-label="주 메뉴">
-    <a class="nav__item" href="index.html">🏠 홈</a>
-    <a class="nav__item" href="wiki.html">📖 새싹위키</a>
-    <a class="nav__item" href="exam.html">📝 모의고사</a>
-    <a class="nav__item" href="job.html">💼 취업핸드북</a>
-    <a class="nav__item nav__item--active" href="my.html" aria-current="page">📚 마이핸드북</a>
-  </nav>
-  <!-- COMMON NAVIGATION END -->
-
-  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
-
-  <main id="main-content">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>내 문서 — 마이핸드북 — 새싹트리</title>
     <!-- ================================================= -->
-    <!-- MY DOCS PAGE (내 문서) -->
-    <!-- 담당 : feature/job -->
-    <!-- css : my.css -->
-    <!-- js : ui.js (필터탭/사이드바 토글), app.js/toast.js (공통) -->
-    <!-- json : my_docs.json -->
+    <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
+    <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
     <!-- ================================================= -->
-    <!-- MY START -->
-    <section id="my" class="page page--active" aria-label="마이핸드북">
-      <div class="shell">
-        <aside class="sidebar" aria-label="마이핸드북 메뉴">
-          <p class="sidebar__label">마이핸드북</p>
-          <button type="button" class="sidebar__item sidebar__item--active"><span class="sidebar__item-icon"
-              aria-hidden="true">📄</span>내 문서</button>
-          <a class="sidebar__item" href="myfav.html"><span class="sidebar__item-icon"
-              aria-hidden="true">⭐</span>즐겨찾기</a>
-          <a class="sidebar__item" href="mywords.html"><span class="sidebar__item-icon"
-              aria-hidden="true">📓</span>저장한 단어</a>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📋</span>학습
-            노트</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📄</span>나의
-            이력서</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
-              aria-hidden="true">🖼</span>포트폴리오</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📊</span>학습
-            기록</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
-              aria-hidden="true">⚙️</span>설정</button>
-          <div class="sidebar__card">
-            <p class="sidebar__card-title">📌 핸드북 활용 팁</p>중요한 자료는 카테고리별로 정리하고 태그를 활용하면 나중에 쉽게 찾아볼 수 있어요!
-            <p class="sidebar__card-icon" aria-hidden="true">🌿</p>
-          </div>
-        </aside>
-        <div class="page__content">
-          <div class="page-header-row">
-            <h1 class="page-title">내 문서 🌱</h1>
-            <button type="button" class="btn btn--primary btn--sm" data-action="toast"
-              data-message="새 문서 작성 화면으로 이동해요!">+ 새 문서 작성</button>
-          </div>
-          <p class="page-subtitle">저장하고 작성한 모든 문서를 한눈에 확인하세요.</p>
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <!-- 페이지 전용 CSS — MyPage(Job/My) 담당 소유 (docs/PAGES.md 참고) -->
+    <link rel="stylesheet" href="assets/css/pages/my.css" />
+  </head>
 
-          <div class="filter-tabs">
-            <button type="button" class="filter-tab filter-tab--active">전체</button>
-            <button type="button" class="filter-tab">문서</button>
-            <button type="button" class="filter-tab">노트</button>
-            <button type="button" class="filter-tab">이력서</button>
-            <button type="button" class="filter-tab">포트폴리오</button>
-            <button type="button" class="filter-tab">기타</button>
-          </div>
+  <body>
+    <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-          <div class="my-toolbar">
-            <label class="sr-only" for="doc-search">문서 제목 또는 내용 검색</label>
-            <input type="text" id="doc-search" class="my-toolbar__input" placeholder="문서 제목 또는 내용을 검색하세요">
-            <label class="sr-only" for="doc-category">카테고리 선택</label>
-            <select id="doc-category" class="my-toolbar__select">
-              <option>전체 카테고리</option>
-            </select>
-            <label class="sr-only" for="doc-sort">정렬 기준 선택</label>
-            <select id="doc-sort" class="my-toolbar__select">
-              <option>최신순</option>
-            </select>
-          </div>
-
-          <ul class="doc-row-list">
-            <li><button type="button" class="doc-row">
-                <span class="doc-row__icon" aria-hidden="true">📄</span>
-                <span class="doc-row__title">신한은행 IT직무 자기소개서 ★</span>
-                <span class="tag tag--green">이력서</span>
-                <span class="tag tag--blue">IT/개발</span>
-                <span class="doc-row__date">2025.05.20</span>
-                <span class="doc-row__more" aria-hidden="true">···</span>
-              </button></li>
-            <li><button type="button" class="doc-row">
-                <span class="doc-row__icon" aria-hidden="true">📋</span>
-                <span class="doc-row__title">SQL JOIN 개념 정리 노트</span>
-                <span class="tag tag--gray">노트</span>
-                <span class="tag tag--green">SQL</span>
-                <span class="doc-row__date">2025.05.19</span>
-                <span class="doc-row__more" aria-hidden="true">···</span>
-              </button></li>
-            <li><button type="button" class="doc-row">
-                <span class="doc-row__icon" aria-hidden="true">🖼</span>
-                <span class="doc-row__title">포트폴리오_웹 프로젝트 모음 ★</span>
-                <span class="tag tag--purple">포트폴리오</span>
-                <span class="doc-row__date">2025.05.18</span>
-                <span class="doc-row__more" aria-hidden="true">···</span>
-              </button></li>
-            <li><button type="button" class="doc-row">
-                <span class="doc-row__icon" aria-hidden="true">📄</span>
-                <span class="doc-row__title">자주 묻는 면접 질문 정리</span>
-                <span class="tag tag--gray">문서</span>
-                <span class="doc-row__date">2025.05.16</span>
-                <span class="doc-row__more" aria-hidden="true">···</span>
-              </button></li>
-            <li><button type="button" class="doc-row">
-                <span class="doc-row__icon" aria-hidden="true">📋</span>
-                <span class="doc-row__title">Java OOP 개념 요약</span>
-                <span class="tag tag--gray">노트</span>
-                <span class="tag tag--orange">Java</span>
-                <span class="doc-row__date">2025.05.14</span>
-                <span class="doc-row__more" aria-hidden="true">···</span>
-              </button></li>
-          </ul>
-
-          <nav class="pagination" aria-label="페이지 네비게이션">
-            <button type="button" class="pagination__btn" aria-label="이전 페이지">‹</button>
-            <button type="button" class="pagination__btn pagination__btn--active" aria-current="page">1</button>
-            <button type="button" class="pagination__btn">2</button>
-            <button type="button" class="pagination__btn">3</button>
-            <button type="button" class="pagination__btn" aria-label="다음 페이지">›</button>
-          </nav>
+    <!-- ================================================= -->
+    <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
+    <!-- 담당 : feature/core (공통 담당자 전용)                -->
+    <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
+    <!-- ================================================= -->
+    <header class="header">
+      <div class="header__logo">
+        <span class="header__logo-mark" aria-hidden="true">🌱</span>
+        <div>
+          <p class="header__logo-name">새싹트리</p>
+          <p class="header__logo-sub">나만의 취업 핸드북</p>
         </div>
-        <aside class="side-panel" aria-label="문서 통계">
-          <div class="section-title section-title--sm">문서 통계 <button type="button" class="section-title__link">전체보기
-              ›</button></div>
-          <div class="stat-grid">
-            <div class="stat-box">
-              <p class="stat-box__value">32</p>
-              <p class="stat-box__label">전체 문서</p>
-            </div>
-            <div class="stat-box">
-              <p class="stat-box__value stat-box__value--gold">12</p>
-              <p class="stat-box__label">즐겨찾기</p>
-            </div>
-            <div class="stat-box">
-              <p class="stat-box__value">5</p>
-              <p class="stat-box__label">최근 작성</p>
-            </div>
-            <div class="stat-box">
-              <p class="stat-box__value stat-box__value--sm">128MB</p>
-              <p class="stat-box__label">저장 용량</p>
-            </div>
-          </div>
-          <p class="section-title section-title--sm">카테고리별 문서 수</p>
-          <div class="legend-row">
-            <span class="legend-row__label"><span class="legend-row__dot legend-row__dot--green"
-                aria-hidden="true"></span>이력서</span>
-            <span class="legend-row__count">8개</span>
-          </div>
-          <div class="legend-row">
-            <span class="legend-row__label"><span class="legend-row__dot legend-row__dot--gold"
-                aria-hidden="true"></span>노트</span>
-            <span class="legend-row__count">9개</span>
-          </div>
-          <div class="legend-row">
-            <span class="legend-row__label"><span class="legend-row__dot legend-row__dot--blue"
-                aria-hidden="true"></span>문서</span>
-            <span class="legend-row__count">7개</span>
-          </div>
-          <div class="legend-row">
-            <span class="legend-row__label"><span class="legend-row__dot legend-row__dot--purple"
-                aria-hidden="true"></span>포트폴리오</span>
-            <span class="legend-row__count">4개</span>
-          </div>
-        </aside>
       </div>
-    </section>
-    <!-- MY END -->
-  </main>
+      <div class="search-box">
+        <span class="search-box__icon" aria-hidden="true">🔍</span>
+        <label class="sr-only" for="global-search">검색</label>
+        <input
+          type="text"
+          id="global-search"
+          class="search-box__input"
+          placeholder="궁금한 내용을 검색해보세요!"
+        />
+      </div>
+      <div class="header__right">
+        <button type="button" class="notification-btn" aria-label="알림">
+          🔔<span class="notification-btn__dot"></span>
+        </button>
+        <p class="point-badge">
+          <span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P
+        </p>
+        <button type="button" class="user-chip">
+          <span class="avatar" aria-hidden="true">🌿</span>
+          <span>
+            <span class="user-chip__name">김새싹</span>
+            <span class="user-chip__level">Lv.3 잎새</span>
+          </span>
+          <span class="user-chip__caret" aria-hidden="true">▾</span>
+        </button>
+      </div>
+    </header>
+    <!-- COMMON HEADER END -->
 
-  <!-- ================================================= -->
-  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <!-- COMMON SHARED MARKUP END -->
+    <!-- ================================================= -->
+    <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
+    <!-- 담당 : feature/core (공통 담당자 전용)                -->
+    <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
+    <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
+    <!-- ================================================= -->
+    <nav class="nav" aria-label="주 메뉴">
+      <a class="nav__item" href="index.html">🏠 홈</a>
+      <a class="nav__item" href="wiki.html">📖 새싹위키</a>
+      <a class="nav__item" href="exam.html">📝 모의고사</a>
+      <a class="nav__item" href="job.html">💼 취업핸드북</a>
+      <a class="nav__item nav__item--active" href="my.html" aria-current="page"
+        >📚 마이핸드북</a
+      >
+    </nav>
+    <!-- COMMON NAVIGATION END -->
 
-  <!-- ================================================= -->
-  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
-  <script src="assets/js/toast.js" defer></script>
-  <script src="assets/js/app.js" defer></script>
-  <script src="assets/js/ui.js" defer></script>
-</body>
+    <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
 
+    <main id="main-content">
+      <!-- ================================================= -->
+      <!-- MY DOCS PAGE (내 문서) -->
+      <!-- 담당 : feature/job -->
+      <!-- css : my.css -->
+      <!-- js : ui.js (필터탭/사이드바 토글), app.js/toast.js (공통) -->
+      <!-- json : my_docs.json -->
+      <!-- ================================================= -->
+      <!-- MY START -->
+      <section id="my" class="page page--active" aria-label="마이핸드북">
+        <div class="shell">
+          <aside class="sidebar" aria-label="마이핸드북 메뉴">
+            <a class="sidebar__item" href="mypage.html"
+              ><span class="sidebar__item-icon" aria-hidden="true">🏠</span
+              >대시보드</a
+            >
+            <button type="button" class="sidebar__item sidebar__item--active">
+              <span class="sidebar__item-icon" aria-hidden="true">📄</span>내
+              문서
+            </button>
+            <a class="sidebar__item" href="myfav.html"
+              ><span class="sidebar__item-icon" aria-hidden="true">⭐</span
+              >즐겨찾기</a
+            >
+            <a class="sidebar__item" href="mywords.html"
+              ><span class="sidebar__item-icon" aria-hidden="true">📓</span
+              >저장한 단어</a
+            >
+            <button type="button" class="sidebar__item">
+              <span class="sidebar__item-icon" aria-hidden="true">📋</span>학습
+              노트
+            </button>
+            <button type="button" class="sidebar__item">
+              <span class="sidebar__item-icon" aria-hidden="true">📄</span>나의
+              이력서
+            </button>
+            <button type="button" class="sidebar__item">
+              <span class="sidebar__item-icon" aria-hidden="true">🖼</span
+              >포트폴리오
+            </button>
+            <button type="button" class="sidebar__item">
+              <span class="sidebar__item-icon" aria-hidden="true">📊</span>학습
+              기록
+            </button>
+            <a class="sidebar__item" href="mypage-edit.html"
+              ><span class="sidebar__item-icon" aria-hidden="true">⚙️</span
+              >설정</a
+            >
+            <div class="sidebar__card">
+              <p class="sidebar__card-title">📌 핸드북 활용 팁</p>
+              중요한 자료는 카테고리별로 정리하고 태그를 활용하면 나중에 쉽게
+              찾아볼 수 있어요!
+              <p class="sidebar__card-icon" aria-hidden="true">🌿</p>
+            </div>
+          </aside>
+          <div class="page__content">
+            <div class="page-header-row">
+              <h1 class="page-title">내 문서 🌱</h1>
+              <button
+                type="button"
+                class="btn btn--primary btn--sm"
+                data-action="toast"
+                data-message="새 문서 작성 화면으로 이동해요!"
+              >
+                + 새 문서 작성
+              </button>
+            </div>
+            <p class="page-subtitle">
+              저장하고 작성한 모든 문서를 한눈에 확인하세요.
+            </p>
+
+            <div class="filter-tabs">
+              <button type="button" class="filter-tab filter-tab--active">
+                전체
+              </button>
+              <button type="button" class="filter-tab">문서</button>
+              <button type="button" class="filter-tab">노트</button>
+              <button type="button" class="filter-tab">이력서</button>
+              <button type="button" class="filter-tab">포트폴리오</button>
+              <button type="button" class="filter-tab">기타</button>
+            </div>
+
+            <div class="my-toolbar">
+              <label class="sr-only" for="doc-search"
+                >문서 제목 또는 내용 검색</label
+              >
+              <input
+                type="text"
+                id="doc-search"
+                class="my-toolbar__input"
+                placeholder="문서 제목 또는 내용을 검색하세요"
+              />
+              <label class="sr-only" for="doc-category">카테고리 선택</label>
+              <select id="doc-category" class="my-toolbar__select">
+                <option>전체 카테고리</option>
+              </select>
+              <label class="sr-only" for="doc-sort">정렬 기준 선택</label>
+              <select id="doc-sort" class="my-toolbar__select">
+                <option>최신순</option>
+              </select>
+            </div>
+
+            <ul class="doc-row-list">
+              <li>
+                <button type="button" class="doc-row">
+                  <span class="doc-row__icon" aria-hidden="true">📄</span>
+                  <span class="doc-row__title"
+                    >신한은행 IT직무 자기소개서 ★</span
+                  >
+                  <span class="tag tag--green">이력서</span>
+                  <span class="tag tag--blue">IT/개발</span>
+                  <span class="doc-row__date">2025.05.20</span>
+                  <span class="doc-row__more" aria-hidden="true">···</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="doc-row">
+                  <span class="doc-row__icon" aria-hidden="true">📋</span>
+                  <span class="doc-row__title">SQL JOIN 개념 정리 노트</span>
+                  <span class="tag tag--gray">노트</span>
+                  <span class="tag tag--green">SQL</span>
+                  <span class="doc-row__date">2025.05.19</span>
+                  <span class="doc-row__more" aria-hidden="true">···</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="doc-row">
+                  <span class="doc-row__icon" aria-hidden="true">🖼</span>
+                  <span class="doc-row__title"
+                    >포트폴리오_웹 프로젝트 모음 ★</span
+                  >
+                  <span class="tag tag--purple">포트폴리오</span>
+                  <span class="doc-row__date">2025.05.18</span>
+                  <span class="doc-row__more" aria-hidden="true">···</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="doc-row">
+                  <span class="doc-row__icon" aria-hidden="true">📄</span>
+                  <span class="doc-row__title">자주 묻는 면접 질문 정리</span>
+                  <span class="tag tag--gray">문서</span>
+                  <span class="doc-row__date">2025.05.16</span>
+                  <span class="doc-row__more" aria-hidden="true">···</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="doc-row">
+                  <span class="doc-row__icon" aria-hidden="true">📋</span>
+                  <span class="doc-row__title">Java OOP 개념 요약</span>
+                  <span class="tag tag--gray">노트</span>
+                  <span class="tag tag--orange">Java</span>
+                  <span class="doc-row__date">2025.05.14</span>
+                  <span class="doc-row__more" aria-hidden="true">···</span>
+                </button>
+              </li>
+            </ul>
+
+            <nav class="pagination" aria-label="페이지 네비게이션">
+              <button
+                type="button"
+                class="pagination__btn"
+                aria-label="이전 페이지"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                class="pagination__btn pagination__btn--active"
+                aria-current="page"
+              >
+                1
+              </button>
+              <button type="button" class="pagination__btn">2</button>
+              <button type="button" class="pagination__btn">3</button>
+              <button
+                type="button"
+                class="pagination__btn"
+                aria-label="다음 페이지"
+              >
+                ›
+              </button>
+            </nav>
+          </div>
+          <aside class="side-panel" aria-label="문서 통계">
+            <div class="section-title section-title--sm">
+              문서 통계
+              <button type="button" class="section-title__link">
+                전체보기 ›
+              </button>
+            </div>
+            <div class="stat-grid">
+              <div class="stat-box">
+                <p class="stat-box__value">32</p>
+                <p class="stat-box__label">전체 문서</p>
+              </div>
+              <div class="stat-box">
+                <p class="stat-box__value stat-box__value--gold">12</p>
+                <p class="stat-box__label">즐겨찾기</p>
+              </div>
+              <div class="stat-box">
+                <p class="stat-box__value">5</p>
+                <p class="stat-box__label">최근 작성</p>
+              </div>
+              <div class="stat-box">
+                <p class="stat-box__value stat-box__value--sm">128MB</p>
+                <p class="stat-box__label">저장 용량</p>
+              </div>
+            </div>
+            <p class="section-title section-title--sm">카테고리별 문서 수</p>
+            <div class="legend-row">
+              <span class="legend-row__label"
+                ><span
+                  class="legend-row__dot legend-row__dot--green"
+                  aria-hidden="true"
+                ></span
+                >이력서</span
+              >
+              <span class="legend-row__count">8개</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-row__label"
+                ><span
+                  class="legend-row__dot legend-row__dot--gold"
+                  aria-hidden="true"
+                ></span
+                >노트</span
+              >
+              <span class="legend-row__count">9개</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-row__label"
+                ><span
+                  class="legend-row__dot legend-row__dot--blue"
+                  aria-hidden="true"
+                ></span
+                >문서</span
+              >
+              <span class="legend-row__count">7개</span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-row__label"
+                ><span
+                  class="legend-row__dot legend-row__dot--purple"
+                  aria-hidden="true"
+                ></span
+                >포트폴리오</span
+              >
+              <span class="legend-row__count">4개</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <!-- MY END -->
+    </main>
+
+    <!-- ================================================= -->
+    <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
+    <!-- 담당 : feature/core (공통 담당자 전용) -->
+    <!-- ================================================= -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <!-- COMMON SHARED MARKUP END -->
+
+    <!-- ================================================= -->
+    <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
+    <!-- 담당 : feature/core (공통 담당자 전용) -->
+    <!-- ================================================= -->
+    <script src="assets/js/toast.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/ui.js" defer></script>
+  </body>
 </html>
