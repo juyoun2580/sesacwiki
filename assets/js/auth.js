@@ -1,7 +1,4 @@
-// ── 인증(로그인/회원가입) 프로토타입 — MyPage(Job/My) 담당, 마이페이지 진입 전 단계 ──
-// 신규 파일: 공식 WORK_ORDER.md 스코프 밖의 프로토타입이며, localStorage 상태
-// 저장 로직은 JSON_GUIDE.md 규칙상 원래 공통 담당자(feature/core)의 storage.js
-// 신설 판단 영역이다. 정식 반영 전 공통 담당자 리뷰가 필요하다.
+// ── 공통 인증 모듈 — 세션 관리 + Header 인증 상태(UserChip/Dropdown/로그아웃) ──
 // 실제 이메일 발송/서버 인증이 없는 정적 프론트엔드라, 이메일 인증은
 // "인증 대기 패널 + 확인 버튼"으로 모킹한다.
 const AUTH_USERS_KEY = 'sesac.auth.users';
@@ -24,12 +21,90 @@ function findUserByEmail(email) {
   return readUsers().find(u => u.email.toLowerCase() === email.toLowerCase());
 }
 
+function getSession() {
+  try {
+    return JSON.parse(localStorage.getItem(AUTH_SESSION_KEY));
+  } catch {
+    return null;
+  }
+}
+
 function setSession(user) {
   localStorage.setItem(AUTH_SESSION_KEY, JSON.stringify({
     name: user.name,
     email: user.email,
     loggedInAt: new Date().toISOString()
   }));
+}
+
+function removeSession() {
+  localStorage.removeItem(AUTH_SESSION_KEY);
+}
+
+// ── Header 인증 상태: data-auth 값만 갱신하면 components.css가 UserChip ↔ 로그인 버튼을 전환한다 ──
+function updateHeader() {
+  const session = getSession();
+  document.body.dataset.auth = session ? 'user' : 'guest';
+
+  if (session && session.name) {
+    const nameEl = document.querySelector('.user-chip__name');
+    if (nameEl) nameEl.textContent = session.name;
+  }
+}
+
+// ── Guest 상태에서 노출되는 로그인 버튼: login.html로 이동만 담당(세션 생성은 하지 않는다) ──
+function bindLoginButton() {
+  const loginBtn = document.querySelector('.auth-guest-only');
+  if (!loginBtn) return;
+
+  loginBtn.addEventListener('click', () => {
+    location.href = 'login.html';
+  });
+}
+
+// ── UserChip 클릭 시 Dropdown(마이페이지/로그아웃)만 열고 닫는다 ──
+function bindDropdown() {
+  const userMenu = document.querySelector('.user-menu');
+  const userChip = userMenu?.querySelector('.user-chip');
+  if (!userMenu || !userChip) return;
+
+  const closeUserMenu = () => {
+    userMenu.classList.remove('user-menu--open');
+    userChip.setAttribute('aria-expanded', 'false');
+  };
+
+  userChip.addEventListener('click', () => {
+    const isOpen = userMenu.classList.toggle('user-menu--open');
+    userChip.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  userMenu.querySelectorAll('.user-menu__item').forEach(item => {
+    item.addEventListener('click', closeUserMenu);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!userMenu.classList.contains('user-menu--open')) return;
+    if (userMenu.contains(e.target)) return;
+    closeUserMenu();
+  });
+}
+
+// ── Dropdown의 로그아웃 버튼: 세션 삭제 후 로그인 페이지로 이동 ──
+function bindLogout() {
+  const logoutBtn = document.querySelector('.user-menu button.user-menu__item');
+  if (!logoutBtn) return;
+
+  logoutBtn.addEventListener('click', () => {
+    removeSession();
+    location.href = 'login.html';
+  });
+}
+
+function initAuth() {
+  updateHeader();
+  bindLoginButton();
+  bindDropdown();
+  bindLogout();
 }
 
 // ── 회원가입 폼 ──

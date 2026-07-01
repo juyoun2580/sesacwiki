@@ -2,7 +2,8 @@
 // 신규 파일: 공식 WORK_ORDER.md 스코프 밖 프로토타입. 프로필 수정 내용을
 // 대시보드에 실시간 반영하기 위해 localStorage를 상태 저장소로 쓴다.
 // (JSON_GUIDE.md 규칙상 storage.js 신설은 원래 공통 담당자 판단 영역이라
-// 정식 반영 전 공통 담당자 리뷰가 필요하다 — assets/js/pages/auth.js와 동일한 결정.)
+// 정식 반영 전 공통 담당자 리뷰가 필요하다. 로그인 상태/Header UI/로그아웃은
+// assets/js/auth.js가 전담한다.)
 const PROFILE_KEY = 'sesac.mypage.profile';
 
 function readProfileOverride() {
@@ -213,43 +214,6 @@ document.querySelectorAll('.achievement-tab').forEach(tabBtn => {
     });
   });
 });
-
-// ── 헤더 로그인 상태 표시 제어 ──
-// 주의: 이 로직은 이 파일을 <script>로 불러오는 페이지(현재 mypage.html,
-// mypage-edit.html)에서만 동작한다. index.html/wiki.html 등 다른 8개 파일은
-// <script> 태그 목록이 공통 담당자 소유라 이 팀이 직접 추가할 수 없다.
-// 로그인 버튼 ↔ 사용자 이름 전환을 사이트 전체에 적용하려면, 공통 담당자가
-// 각 파일에 <script src="assets/js/pages/mypage.js" defer></script> 한 줄을
-// 추가하는 승인/작업이 필요하다.
-(function renderHeaderAuthState() {
-  const userChip = document.querySelector('.user-chip');
-  if (!userChip) return;
-
-  let session = null;
-  try {
-    session = JSON.parse(localStorage.getItem('sesac.auth.session'));
-  } catch {
-    session = null;
-  }
-
-  if (session && session.name) {
-    const nameEl = userChip.querySelector('.user-chip__name');
-    if (nameEl) nameEl.textContent = session.name;
-    userChip.addEventListener('click', () => { location.href = 'mypage.html'; });
-    return;
-  }
-
-  // 세션이 없으면(로그인 전 상태) user-chip 대신 로그인 버튼을 노출한다.
-  // (.user-chip은 components.css에 display:flex가 명시돼 있어 hidden 속성만으로는
-  // 가려지지 않는다 — 프로젝트 관례대로 클래스 토글로 처리한다.)
-  userChip.classList.add('is-hidden');
-  const loginBtn = document.createElement('button');
-  loginBtn.type = 'button';
-  loginBtn.className = 'btn btn--primary btn--sm';
-  loginBtn.textContent = '로그인';
-  loginBtn.addEventListener('click', () => { location.href = 'login.html'; });
-  userChip.insertAdjacentElement('afterend', loginBtn);
-})();
 
 // ── 나머지 8개 페이지가 공유하는 공통 GNB에서 "마이핸드북"을 완전히 없애려면
 // <nav> 마크업 자체를 편집해야 하며, 이는 공통 담당자 소유 영역이다. 이 팀의

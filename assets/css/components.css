@@ -116,7 +116,8 @@
 
 /* ---------- Auth Visibility ----------
    <body data-auth="guest|user"> 값에 따라 로그인 전/후 UI를 전환한다.
-   실제 로그인 로직은 미구현 — data-auth 값만 바꾸면 화면이 전환되는 구조. */
+   이 값은 HTML에 하드코딩하지 않고, assets/js/auth.js의 updateHeader()가
+   로그인 세션 유무를 확인해 페이지 로드 시 동적으로 설정한다. */
 body[data-auth="user"] .auth-guest-only {
   display: none;
 }
