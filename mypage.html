@@ -18,7 +18,8 @@
   <link rel="stylesheet" href="assets/css/pages/mypage.css">
 </head>
 
-<body>
+<body data-auth="user">
+<!-- 로그인 전: guest -->
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
   <!-- ================================================= -->
@@ -27,30 +28,39 @@
   <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
   <!-- ================================================= -->
   <header class="header">
-    <div class="header__logo">
-      <span class="header__logo-mark" aria-hidden="true">🌱</span>
-      <div>
-        <p class="header__logo-name">새싹트리</p>
-        <p class="header__logo-sub">나만의 취업 핸드북</p>
-      </div>
-    </div>
-    <div class="search-box">
-      <span class="search-box__icon" aria-hidden="true">🔍</span>
-      <label class="sr-only" for="global-search">검색</label>
-      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
-    </div>
+    <a href="index.html" class="header__logo" aria-label="새싹Wiki 홈">
+      <img src="./assets/img/logo.svg" alt="새싹Wiki">
+    </a>
     <div class="header__right">
-      <button type="button" class="notification-btn" aria-label="알림">🔔<span
-          class="notification-btn__dot"></span></button>
-      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
-      <button type="button" class="user-chip">
-        <span class="avatar" aria-hidden="true">🌿</span>
-        <span>
-          <span class="user-chip__name">김새싹</span>
-          <span class="user-chip__level">Lv.3 잎새</span>
-        </span>
-        <span class="user-chip__caret" aria-hidden="true">▾</span>
+      <button type="button" class="hamburger-btn" aria-label="메뉴 열기" aria-controls="side-panel" aria-expanded="false">
+        <span class="hamburger-btn__bar"></span>
+        <span class="hamburger-btn__bar"></span>
+        <span class="hamburger-btn__bar"></span>
       </button>
+      <div class="search-box">
+        <span class="search-box__icon" aria-hidden="true">🔍</span>
+        <label class="sr-only" for="global-search">검색</label>
+        <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
+      </div>
+      <button type="button" class="notification-btn" aria-label="알림">
+        🔔<span class="notification-btn__dot"></span>
+      </button>
+      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>0P</p>
+      <button type="button" class="btn btn--outline btn--sm auth-guest-only">로그인</button>
+      <div class="user-menu auth-user-only">
+        <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false"
+          aria-controls="user-menu-dropdown">
+          <span class="avatar" aria-hidden="true">🌱</span>
+          <span>
+            <span class="user-chip__name">김새싹</span>
+            <span class="user-chip__level">Lv.1 잎새</span>
+          </span>
+        </button>
+        <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
+          <a href="my.html" class="user-menu__item" role="menuitem">마이페이지</a>
+          <button type="button" class="user-menu__item" role="menuitem">로그아웃</button>
+        </div>
+      </div>
     </div>
   </header>
   <!-- COMMON HEADER END -->

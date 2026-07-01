@@ -7,7 +7,12 @@
       "Read(//tmp/**)",
       "Bash(node verify.mjs)",
       "Bash(ls -la shot-*.png)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "PowerShell(git *)",
+      "Bash(start job.html)"
     ]
   }
 }
