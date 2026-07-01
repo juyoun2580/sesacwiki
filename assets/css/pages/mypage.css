@@ -1,0 +1,511 @@
+/* ==========================================================================
+   MyPage Dashboard / Edit Profile — MyPage(Job/My) 담당, 신규 파일
+   mypage.html(대시보드) / mypage-edit.html(프로필 수정)이 이 CSS를 공유한다.
+   공통 레이아웃(.shell/.sidebar/.page__content/.side-panel)과 공통 컴포넌트
+   (.btn/.tag/.progress-bar/.streak-card/.section-title)는 그대로 재사용하고,
+   이 파일에는 두 화면 전용 요소만 정의한다.
+   ========================================================================== */
+
+/* 로그인 상태에 따라 헤더의 user-chip/GNB 항목을 JS로 감출 때 쓰는 유틸리티.
+   .user-chip/.nav__item은 components.css/layout.css에 display:flex가 명시돼
+   있어 hidden 속성만으로는 가려지지 않는다 — 이 프로젝트 관례대로 클래스 토글로 처리한다. */
+.is-hidden {
+  display: none !important;
+}
+
+/* ---------- 프로필 카드 ---------- */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-md);
+  padding: var(--space-24);
+  margin-bottom: var(--space-20);
+}
+
+.profile-card__avatar {
+  width: var(--space-62);
+  height: var(--space-62);
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--g700), var(--g500));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-28);
+  box-shadow: var(--sh-logo);
+  overflow: hidden;
+}
+
+.profile-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-card__name {
+  font-size: var(--fs-18);
+  font-weight: 800;
+  color: var(--g900);
+}
+
+.profile-card__username {
+  font-size: var(--fs-13);
+  color: var(--ink3);
+  margin-top: 2px;
+}
+
+.profile-card__actions {
+  display: flex;
+  gap: var(--space-8);
+  flex-shrink: 0;
+}
+
+/* ---------- 레벨 트랙 ---------- */
+.level-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-sm);
+  padding: var(--space-24);
+  margin-bottom: var(--space-20);
+}
+
+.level-track {
+  display: flex;
+  justify-content: space-between;
+  margin: var(--space-20) 0 var(--space-16);
+}
+
+.level-track__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  flex: 1;
+  opacity: .4;
+}
+
+.level-track__stage--active {
+  opacity: 1;
+}
+
+.level-track__icon {
+  width: var(--space-44);
+  height: var(--space-44);
+  border-radius: 50%;
+  background: var(--g50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-20);
+}
+
+.level-track__stage--active .level-track__icon {
+  background: var(--g100);
+  box-shadow: var(--curr-ring);
+}
+
+.level-track__label {
+  font-size: var(--fs-12);
+  font-weight: 700;
+  color: var(--ink2);
+}
+
+.level-track__hint {
+  font-size: var(--fs-12);
+  color: var(--ink3);
+  margin-top: var(--space-10);
+}
+
+.level-track__hint strong {
+  color: var(--g700);
+}
+
+/* ---------- 오답 & 단어 노트 ---------- */
+.notebook-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  margin-bottom: var(--space-20);
+}
+
+.notebook-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-sm);
+  padding: var(--space-20);
+}
+
+.notebook-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  margin-top: var(--space-12);
+}
+
+.notebook-card__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding-bottom: var(--space-10);
+  border-bottom: 1px solid var(--border);
+}
+
+.notebook-card__row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.notebook-card__text {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-13);
+  color: var(--ink2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.notebook-card__date {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+  flex-shrink: 0;
+}
+
+/* ---------- 챌린지 & 활동(뱃지) — 게임 업적 스타일 탭 위젯 (side-panel) ---------- */
+.achievement-panel {
+  margin-top: var(--space-20);
+}
+
+.achievement-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  background: var(--gray-100);
+  border-radius: var(--r-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-16);
+}
+
+.achievement-tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--ink3);
+  font-size: var(--fs-12);
+  font-weight: 700;
+  padding: var(--space-8) var(--space-10);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.achievement-tab--active {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: var(--sh-sm);
+}
+
+.achievement-tab-content {
+  display: none;
+}
+
+.achievement-tab-content--active {
+  display: block;
+}
+
+/* ---------- 활동 챌린지 (Challenges 탭) ---------- */
+.challenge-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+}
+
+.challenge-row__title {
+  font-size: var(--fs-12);
+  color: var(--ink2);
+  margin-bottom: var(--space-6);
+}
+
+/* ---------- 기술 뱃지 (Activities 탭) — 원형 업적 그리드 ---------- */
+.badge-grid--compact {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-10) var(--space-8);
+}
+
+.badge-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.badge-circle__icon {
+  position: relative;
+  width: var(--space-40);
+  height: var(--space-40);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--g100), var(--g50));
+  border: 1px solid var(--g100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-18);
+  box-shadow: var(--sh-sm);
+}
+
+.badge-circle__label {
+  font-size: var(--fs-10);
+  font-weight: 700;
+  color: var(--ink2);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.badge-circle--locked .badge-circle__icon {
+  background: var(--gray-100);
+  border-color: var(--border);
+  filter: grayscale(1);
+  opacity: .55;
+  box-shadow: none;
+}
+
+.badge-circle--locked .badge-circle__label {
+  color: var(--ink4);
+}
+
+.badge-circle__lock {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-13);
+}
+
+/* ==========================================================================
+   Edit Profile (mypage-edit.html)
+   ========================================================================== */
+
+.settings-content {
+  max-width: 780px;
+}
+
+.settings-content__title {
+  margin-top: var(--space-12);
+}
+
+.settings-file-label {
+  cursor: pointer;
+}
+
+.settings-section {
+  display: flex;
+  gap: var(--space-28);
+  align-items: flex-start;
+  margin-bottom: var(--space-28);
+}
+
+.settings-section__title {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.settings-section__title-main {
+  font-size: var(--fs-16);
+  font-weight: 800;
+  color: var(--g900);
+}
+
+.settings-section__title-sub {
+  font-size: var(--fs-12);
+  color: var(--ink3);
+  margin-top: var(--space-4);
+  line-height: 1.6;
+}
+
+.settings-section__card {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-sm);
+  padding: var(--space-24);
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.settings-label {
+  font-size: var(--fs-13);
+  font-weight: 700;
+  color: var(--ink2);
+}
+
+.settings-input {
+  height: var(--space-40);
+  padding: 0 var(--space-14);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-14);
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.settings-input:focus {
+  outline: none;
+  border-color: var(--g500);
+  box-shadow: var(--focus-ring);
+}
+
+.settings-input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+
+.settings-input-group__prefix {
+  padding: 0 var(--space-12);
+  font-size: var(--fs-13);
+  color: var(--ink3);
+  background: var(--gray-100);
+  height: var(--space-40);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.settings-input-group .settings-input {
+  border: none;
+  border-radius: 0;
+  flex: 1;
+}
+
+.settings-checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  font-size: var(--fs-12);
+  color: var(--ink2);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.settings-checkbox-row input[type="checkbox"] {
+  margin-top: 2px;
+  accent-color: var(--g700);
+  width: var(--space-16);
+  height: var(--space-16);
+  flex-shrink: 0;
+}
+
+.settings-form__footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-4);
+}
+
+.settings-warning {
+  font-size: var(--fs-12);
+  color: var(--coral);
+  margin-top: var(--space-4);
+  line-height: 1.6;
+}
+
+.settings-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+  margin-bottom: var(--space-16);
+}
+
+.settings-avatar-preview {
+  width: var(--space-68);
+  height: var(--space-68);
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--g50);
+  border: 1px solid var(--g100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-32);
+  overflow: hidden;
+}
+
+.settings-avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Delete Account 섹션 (위험 강조) */
+.settings-danger .settings-section__card {
+  background: var(--coral-bg);
+  border-color: var(--coral-200);
+}
+
+.settings-danger__warning {
+  font-size: var(--fs-13);
+  color: var(--ink2);
+  line-height: 1.7;
+  margin-bottom: var(--space-16);
+}
+
+/* 공통 .btn을 확장하는 페이지 전용 modifier — Save/Change email/Upload 버튼용 파랑
+   (components.css의 .btn--primary는 그린 브랜드 컬러라 별도 modifier가 필요) */
+.btn--info {
+  background: var(--blue);
+  color: #fff;
+  border: none;
+}
+
+.btn--info:hover {
+  filter: brightness(1.08);
+}
+
+.btn--danger:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+  filter: grayscale(.3);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .notebook-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-section {
+    flex-direction: column;
+  }
+
+  .settings-section__title {
+    width: 100%;
+  }
+}

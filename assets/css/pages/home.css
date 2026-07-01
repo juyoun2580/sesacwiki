@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Home 페이지 전용 스타일 (old/test.html의 /* HOME */ 블록 + 인라인 style 값을 이관)
+   Home 페이지 전용 스타일 (old/test.html의 / HOME / 블록 + 인라인 style 값을 이관
    ========================================================================== */
 
 /* ---------- Hero ---------- */
@@ -397,17 +397,36 @@
 }
 
 .shortcut-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
+  height: 78px; 
+
+  padding: var(--space-11) var(--space-6);
+
   background: var(--surface);
   border: 1.5px solid var(--border);
   border-radius: var(--r-sm);
-  padding: var(--space-11) var(--space-6);
+
+  color: var(--ink2);
+  text-decoration: none;
   text-align: center;
   font-size: var(--fs-11);
   font-weight: 700;
-  color: var(--ink2);
+
   cursor: pointer;
   transition: all .15s;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+button.shortcut-btn {
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .shortcut-btn:hover {
@@ -429,4 +448,43 @@
   font-size: var(--fs-52);
   margin-top: var(--space-20);
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .12));
+}
+
+/* ==========================================================================
+   Responsive — Mobile (~767px) 전용. Desktop/Tablet 레이아웃은 변경하지 않는다.
+   ========================================================================== */
+@media (max-width: 767px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-20);
+    gap: var(--space-16);
+  }
+
+  .hero__actions {
+    flex-wrap: wrap;
+  }
+
+  .hq {
+    max-width: 100%;
+  }
+
+  .hero__emoji {
+    text-align: center;
+    font-size: var(--fs-52);
+  }
+
+  .home-section-heading {
+    flex-wrap: wrap;
+  }
+
+  .ggrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-12);
+  }
+
+  .h3g {
+    grid-template-columns: 1fr;
+    gap: var(--space-14);
+  }
 }
