@@ -83,70 +83,70 @@
     <!-- JOB START -->
     <section id="job" class="page page--active" aria-label="취업핸드북">
       <div class="shell">
-
         <aside class="sidebar" aria-label="취업핸드북 메뉴">
           <p class="sidebar__label">취업핸드북</p>
-          <!-- steps 배열 → job.js가 채움 -->
           <div id="job-sidebar-menu"></div>
           <div class="job-readiness-card">
             <p class="job-readiness-card__title">나의 취업 준비 지수</p>
             <p class="job-readiness-card__value" id="job-readiness-value"></p>
             <p class="job-readiness-card__delta" id="job-readiness-delta"></p>
-            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="job-readiness-bar">
-              <div class="progress-bar__fill progress-bar__fill--green" id="job-readiness-fill"></div>
+            <div class="progress-bar" id="job-readiness-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar__fill progress-bar__fill--green" id="job-readiness-fill" data-progress="0"></div>
             </div>
             <button type="button" class="btn btn--outline btn--sm job-readiness-card__btn">상세 분석 보기</button>
             <p class="job-readiness-card__decor" aria-hidden="true">🌿</p>
           </div>
         </aside>
-
         <div class="page__content">
           <h1 class="page-title">취업핸드북 🌱</h1>
           <p class="page-subtitle">단계별로 차근차근 준비해서 꿈을 현실로 만들어보세요!</p>
 
-          <!-- steps 배열 → job.js가 채움 -->
           <nav class="job-stepper" id="job-stepper" aria-label="취업 준비 단계"></nav>
 
-          <article class="job-card">
+          <article class="job-card" id="job-card">
             <div class="job-card__head">
-              <span class="job-card__head-icon" aria-hidden="true" id="job-card-icon"></span>
+              <span class="job-card__head-icon" id="job-card-icon" aria-hidden="true"></span>
               <div class="job-card__head-body">
                 <p class="job-card__title" id="job-card-title"></p>
                 <p class="job-card__desc" id="job-card-desc"></p>
-                <div class="progress-bar job-card__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="job-card-bar">
-                  <div class="progress-bar__fill progress-bar__fill--blue" id="job-card-fill"></div>
+                <div class="progress-bar job-card__progress" id="job-card-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                  aria-valuemax="100">
+                  <div class="progress-bar__fill progress-bar__fill--blue" id="job-card-fill" data-progress="0"></div>
                 </div>
               </div>
               <p class="job-card__percent" id="job-card-percent"></p>
             </div>
-            <!-- tasks 배열 → job.js가 채움 -->
+
             <ul class="job-task-list" id="job-task-list"></ul>
+
             <div class="job-tip">
               <span class="job-tip__icon" aria-hidden="true">💡</span>
               <p class="job-tip__text" id="job-tip-text"></p>
               <span class="job-tip__decor" aria-hidden="true">🌿</span>
             </div>
           </article>
+
+          <!-- 기능 상세 패널 — 태스크 버튼 클릭 시 job-card와 교체되어 표시 -->
+          <section class="job-feature" id="job-feature" hidden aria-label="기능 상세 화면">
+            <div class="job-feature__header">
+              <button type="button" class="btn btn--ghost btn--sm job-feature__back" id="job-feature-back">← 단계로 돌아가기</button>
+              <h2 class="job-feature__title" id="job-feature-title"></h2>
+            </div>
+            <div id="job-feature-body"></div>
+          </section>
         </div>
 
         <aside class="side-panel" aria-label="취업 준비 현황 및 도구">
-          <div class="section-title">나의 취업 준비 현황
-            <button type="button" class="section-title__link">전체보기 ›</button>
-          </div>
-          <!-- progressByCategory 배열 → job.js가 채움 -->
+          <div class="section-title">나의 취업 준비 현황 <button type="button" class="section-title__link">전체보기 ›</button></div>
           <ul class="job-progress-list" id="job-progress-list"></ul>
 
-          <div class="section-title">최근 작성한 자기소개서
-            <button type="button" class="section-title__link">전체보기 ›</button>
+          <div class="section-title">최근 작성한 자기소개서 <button type="button" class="section-title__link">전체보기 ›</button>
           </div>
-          <!-- recentResults 배열 → job.js가 채움 -->
           <ul class="job-result-list" id="job-result-list"></ul>
 
           <p class="section-title section-title--sm">자주 사용하는 도구</p>
-          <!-- tools 배열 → job.js가 채움 -->
           <div class="job-tool-grid" id="job-tool-grid"></div>
         </aside>
-
       </div>
     </section>
     <!-- JOB END -->
@@ -166,7 +166,7 @@
   <script src="assets/js/toast.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script src="assets/js/ui.js" defer></script>
-  <!-- job.js — feature/job 담당. 공통 담당자(feature/core) 확인 요청 -->
+  <script src="assets/js/pages/job-features.js" defer></script>
   <script src="assets/js/pages/job.js" defer></script>
 </body>
 

@@ -1,68 +1,85 @@
 {
+  "_comment": "이 파일은 참고용입니다. 실제 데이터는 job.js의 STEP_CATALOG / localStorage에서 관리됩니다.",
+  "version": 2,
+  "activeStepId": 1,
   "steps": [
-    { "id": 1, "label": "직무 탐색",     "status": "done",   "icon": "🔍" },
-    { "id": 2, "label": "이력서 작성",   "status": "done",   "icon": "📄" },
-    { "id": 3, "label": "자기소개서",   "status": "active", "icon": "✏️" },
-    { "id": 4, "label": "포트폴리오",   "status": "todo",   "icon": "🖼" },
-    { "id": 5, "label": "면접 준비",     "status": "todo",   "icon": "🎤" },
-    { "id": 6, "label": "지원 관리",     "status": "todo",   "icon": "📊" }
+    {
+      "id": 1, "label": "직무 탐색", "icon": "🔍",
+      "title": "1. 직무 탐색",
+      "description": "나에게 맞는 직무를 탐색하고 목표를 설정해보세요.",
+      "tip": "직무 탐색은 취업 준비의 첫 걸음이에요! 관심 있는 직무의 실제 업무 내용과 필요한 역량을 꼼꼼히 조사해보세요.",
+      "tasks": [
+        { "icon": "🔍", "title": "관심 직무 조사",     "description": "관심 있는 직무의 역할과 요구 역량을 알아보세요.",         "actionLabel": "조사하기 ›", "variant": "primary", "toastMessage": "직무 조사 화면으로 이동해요!",    "completed": false },
+        { "icon": "📊", "title": "직무 적성 체크",     "description": "나의 강점과 직무 적합도를 확인해보세요.",               "actionLabel": "체크하기 ›", "variant": "outline", "toastMessage": "직무 적성 체크를 시작해요!",   "completed": false },
+        { "icon": "🏢", "title": "업계 분석",          "description": "관심 업계의 트렌드와 주요 기업을 분석해보세요.",         "actionLabel": "분석하기 ›", "variant": "outline", "toastMessage": "업계 분석 화면으로 이동해요!",   "completed": false },
+        { "icon": "📋", "title": "채용 공고 살펴보기", "description": "관심 직무의 채용 공고를 확인하고 요구사항을 파악해보세요.", "actionLabel": "살펴보기 ›", "variant": "outline", "toastMessage": "채용 공고 화면으로 이동해요!",   "completed": false }
+      ]
+    },
+    {
+      "id": 2, "label": "이력서 작성", "icon": "📄",
+      "title": "2. 이력서 작성",
+      "description": "나의 경험과 역량을 담은 이력서를 작성해보세요.",
+      "tip": "채용 담당자가 10초 안에 파악할 수 있도록 핵심 내용을 간결하게 정리하세요.",
+      "tasks": [
+        { "icon": "📄", "title": "이력서 양식 선택", "description": "지원 직무에 맞는 이력서 템플릿을 선택하세요.",   "actionLabel": "선택하기 ›",  "variant": "primary", "toastMessage": "이력서 양식 선택 화면으로 이동해요!", "completed": false },
+        { "icon": "🎓", "title": "학력 / 경력 입력", "description": "최신 순으로 학력과 경력 사항을 입력하세요.",     "actionLabel": "입력하기 ›",  "variant": "outline", "toastMessage": "학력/경력 입력 화면으로 이동해요!",  "completed": false },
+        { "icon": "💻", "title": "기술 스택 정리",   "description": "보유한 기술 스택을 숙련도와 함께 정리하세요.",   "actionLabel": "정리하기 ›",  "variant": "outline", "toastMessage": "기술 스택 정리 화면으로 이동해요!",  "completed": false },
+        { "icon": "🤖", "title": "AI 첨삭 받기",     "description": "AI가 이력서 내용과 문체를 점검해드려요.",        "actionLabel": "첨삭 받기 ›", "variant": "outline", "toastMessage": "AI 첨삭 화면으로 이동해요!",       "completed": false }
+      ]
+    },
+    {
+      "id": 3, "label": "자기소개서", "icon": "✏️",
+      "title": "3. 자기소개서",
+      "description": "나만의 스토리를 담은 자기소개서를 완성해보세요.",
+      "tip": "구체적인 숫자와 사례를 활용하면 설득력이 확 올라가요.",
+      "tasks": [
+        { "icon": "📋", "title": "자기소개서 항목 확인",   "description": "기업이 원하는 자기소개서 항목을 확인하세요.",        "actionLabel": "확인하기 ›",  "variant": "primary", "toastMessage": "자기소개서 항목 화면으로 이동해요!",  "completed": false },
+        { "icon": "🌱", "title": "성장 과정 작성",         "description": "나의 성장 스토리를 진솔하게 담아보세요.",            "actionLabel": "작성하기 ›",  "variant": "outline", "toastMessage": "성장 과정 작성 화면으로 이동해요!",   "completed": false },
+        { "icon": "🎯", "title": "지원 동기 작성",         "description": "이 기업에 지원하고 싶은 이유를 구체적으로 써보세요.", "actionLabel": "작성하기 ›",  "variant": "outline", "toastMessage": "지원 동기 작성 화면으로 이동해요!",   "completed": false },
+        { "icon": "🔎", "title": "AI 맞춤법 / 문체 검사", "description": "AI가 오탈자와 문체를 꼼꼼히 점검해드려요.",         "actionLabel": "검사하기 ›",  "variant": "outline", "toastMessage": "AI 검사 화면으로 이동해요!",           "completed": false }
+      ]
+    },
+    {
+      "id": 4, "label": "포트폴리오", "icon": "🖼",
+      "title": "4. 포트폴리오",
+      "description": "나의 역량을 보여주는 포트폴리오를 제작해보세요.",
+      "tip": "포트폴리오는 결과물과 기여도를 명확히 표현해보세요.",
+      "tasks": [
+        { "icon": "📦", "title": "프로젝트 목록 정리", "description": "참여한 모든 프로젝트를 날짜와 함께 나열하세요.",  "actionLabel": "정리하기 ›",  "variant": "primary", "toastMessage": "프로젝트 목록 화면으로 이동해요!",    "completed": false },
+        { "icon": "⭐", "title": "대표 프로젝트 선택", "description": "가장 임팩트 있는 대표 프로젝트를 골라보세요.",    "actionLabel": "선택하기 ›",  "variant": "outline", "toastMessage": "대표 프로젝트 선택 화면으로 이동해요!", "completed": false },
+        { "icon": "🖼", "title": "포트폴리오 구성",    "description": "스크린샷, 설명, 기술 스택을 포함해 구성하세요.", "actionLabel": "구성하기 ›",  "variant": "outline", "toastMessage": "포트폴리오 구성 화면으로 이동해요!",   "completed": false },
+        { "icon": "📑", "title": "PDF 내보내기",       "description": "완성된 포트폴리오를 PDF 파일로 저장하세요.",      "actionLabel": "내보내기 ›", "variant": "outline", "toastMessage": "PDF 내보내기를 시작해요!",             "completed": false }
+      ]
+    },
+    {
+      "id": 5, "label": "면접 준비", "icon": "🎤",
+      "title": "5. 면접 준비",
+      "description": "완벽한 면접을 위해 철저하게 준비해보세요.",
+      "tip": "예상 질문을 소리 내서 답변해보는 것이 가장 효과적이에요.",
+      "tasks": [
+        { "icon": "❓", "title": "예상 질문 확인",     "description": "직무별 자주 나오는 면접 질문을 확인하세요.",    "actionLabel": "확인하기 ›",   "variant": "primary", "toastMessage": "면접 예상 질문 화면으로 이동해요!",   "completed": false },
+        { "icon": "📝", "title": "답변 스크립트 작성", "description": "핵심 질문에 대한 나만의 답변을 준비하세요.",    "actionLabel": "작성하기 ›",   "variant": "outline", "toastMessage": "답변 스크립트 작성 화면으로 이동해요!", "completed": false },
+        { "icon": "🏢", "title": "기업 / 직무 리서치", "description": "지원 기업의 최근 동향과 직무 이해를 높이세요.", "actionLabel": "리서치하기 ›", "variant": "outline", "toastMessage": "기업 리서치 화면으로 이동해요!",        "completed": false },
+        { "icon": "🎬", "title": "모의 면접 진행",     "description": "실전처럼 모의 면접을 경험해보세요.",            "actionLabel": "시작하기 ›",   "variant": "outline", "toastMessage": "모의 면접 화면으로 이동해요!",         "completed": false }
+      ]
+    },
+    {
+      "id": 6, "label": "지원 관리", "icon": "📊",
+      "title": "6. 지원 관리",
+      "description": "지원 현황을 체계적으로 관리해보세요.",
+      "tip": "지원 현황을 한눈에 파악하면 다음 단계를 더 전략적으로 계획할 수 있어요.",
+      "tasks": [
+        { "icon": "📋", "title": "지원 기업 목록 작성", "description": "지원할 또는 지원한 기업 목록을 정리하세요.", "actionLabel": "작성하기 ›", "variant": "primary", "toastMessage": "지원 기업 목록 화면으로 이동해요!",  "completed": false },
+        { "icon": "📬", "title": "서류 전형 결과 확인", "description": "서류 합격 / 불합격 결과를 기록하세요.",      "actionLabel": "확인하기 ›", "variant": "outline", "toastMessage": "서류 전형 결과 화면으로 이동해요!",  "completed": false },
+        { "icon": "📅", "title": "면접 일정 관리",      "description": "면접 날짜와 장소를 달력에 등록하세요.",       "actionLabel": "관리하기 ›", "variant": "outline", "toastMessage": "면접 일정 관리 화면으로 이동해요!",  "completed": false },
+        { "icon": "💬", "title": "피드백 정리",         "description": "면접 후기와 개선점을 기록해두세요.",          "actionLabel": "정리하기 ›", "variant": "outline", "toastMessage": "면접 피드백 정리 화면으로 이동해요!", "completed": false }
+      ]
+    }
   ],
-  "activeStep": {
-    "id": 3,
-    "title": "3. 자기소개서",
-    "description": "나만의 경험과 강점을 잘 표현하는 자기소개서를 작성해보세요.",
-    "percent": 40,
-    "tasks": [
-      {
-        "icon": "📄",
-        "title": "항목별 작성",
-        "description": "기업별 자기소개서 항목을 작성하고 관리해보세요.",
-        "meta": "2 / 5 항목 작성",
-        "actionLabel": "작성하기 ›",
-        "variant": "primary",
-        "toastMessage": "자기소개서 작성 화면으로 이동해요!"
-      },
-      {
-        "icon": "✅",
-        "title": "맞춤법/문법 검사",
-        "description": "작성한 자기소개서의 맞춤법과 문법을 검사해보세요.",
-        "meta": "마지막 검사 2025-05-19",
-        "actionLabel": "검사하기 ›",
-        "variant": "outline",
-        "toastMessage": "맞춤법 검사를 실행해요!"
-      },
-      {
-        "icon": "⭐",
-        "title": "첨삭/피드백",
-        "description": "AI 피드백으로 자기소개서를 더 완성도 있게 만들어보세요.",
-        "meta": "피드백 1회 완료",
-        "actionLabel": "피드백 보기 ›",
-        "variant": "feedback",
-        "toastMessage": "피드백 내용을 확인해요!"
-      },
-      {
-        "icon": "💡",
-        "title": "우수 자기소개서 예시",
-        "description": "직무별/기업별 우수 자기소개서 예시를 확인해보세요.",
-        "meta": "",
-        "actionLabel": "예시 보기 ›",
-        "variant": "outline",
-        "toastMessage": "우수 예시를 확인해요!"
-      }
-    ],
-    "tip": "자기소개서는 '나'의 이야기를 '기업이 원하는 방식'으로 전달하는 것이 중요해요! STAR 기법을 활용해 구체적인 경험을 작성해보세요."
-  },
-  "readiness": { "percent": 45, "deltaFromLastWeek": 8 },
-  "progressByCategory": [
-    { "label": "이력서 작성", "percent": 70, "color": "green" },
-    { "label": "자기소개서", "percent": 40, "color": "blue" },
-    { "label": "포트폴리오", "percent": 20, "color": "orange" },
-    { "label": "면접 준비",   "percent": 10, "color": "coral" },
-    { "label": "지원 관리",   "percent": 30, "color": "purple" }
-  ],
-  "recentResults": [
-    { "id": "jr-001", "title": "신한은행 IT직무 자기소개서",        "status": "임시저장", "statusColor": "gold",  "date": "2025-05-20" },
-    { "id": "jr-002", "title": "카카오 백엔드 개발자 자기소개서", "status": "검토 완료", "statusColor": "green", "date": "2025-05-18" }
-  ],
-  "tools": ["📄 자소서 템플릿", "🏢 기업 분석", "🎯 핵심 역량 찾기", "❓ 면접 질문 모음"]
+  "tools": [
+    { "label": "📄 자소서 템플릿",  "toastMessage": "자소서 템플릿을 불러올게요!" },
+    { "label": "🏢 기업 분석",      "toastMessage": "기업 분석 화면으로 이동해요!" },
+    { "label": "🎯 핵심 역량 찾기", "toastMessage": "핵심 역량 찾기 화면으로 이동해요!" },
+    { "label": "❓ 면접 질문 모음", "toastMessage": "면접 질문 모음 화면으로 이동해요!" }
+  ]
 }
