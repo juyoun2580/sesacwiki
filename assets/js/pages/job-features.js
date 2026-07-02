@@ -499,6 +499,44 @@ function today() { return new Date().toISOString().slice(0, 10); }
 function T(msg)  { if (typeof toast === 'function') toast(msg); }
 function fmtDate(d) { return d ? d.replace(/-/g, '.') : ''; }
 
+function resizeImage(file, maxW, cb) {
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, maxW / img.width);
+      const canvas = document.createElement('canvas');
+      canvas.width  = Math.round(img.width  * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      cb(canvas.toDataURL('image/jpeg', 0.75));
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function projectCardHTML(x) {
+  const imgs = (x.images || []).map(img =>
+    `<img src="${img.dataUrl}" alt="${esc(img.name)}" class="ff-project-thumb">`
+  ).join('');
+  return `
+    <div class="ff-project-card${x.isFeatured ? ' ff-project-card--featured' : ''}">
+      ${x.isFeatured ? '<span class="tag tag--green">⭐ 대표</span>' : ''}
+      ${imgs ? `<div class="ff-project-card__images">${imgs}</div>` : ''}
+      <p class="ff-project-card__title">${esc(x.title)}</p>
+      ${x.period ? `<p class="ff-project-card__meta">${esc(x.period)} · ${esc(x.role)}</p>` : ''}
+      ${x.tech.length ? `<p class="ff-project-card__tech">${x.tech.map(t => `<span class="tag tag--blue">${esc(t)}</span>`).join('')}</p>` : ''}
+      ${x.desc ? `<p class="ff-project-card__desc">${esc(x.desc)}</p>` : ''}
+      ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener" class="ff-link">링크 →</a>` : ''}
+      <div class="ff-project-card__actions">
+        <button type="button" class="btn btn--outline btn--sm ff-pj-edit" data-id="${x.id}">✏️ 편집</button>
+        <button type="button" class="btn btn--outline btn--sm ff-pj-feature" data-id="${x.id}">${x.isFeatured ? '대표 해제' : '대표로 설정'}</button>
+        <button type="button" class="btn btn--ghost btn--sm ff-pj-del" data-id="${x.id}">삭제</button>
+      </div>
+    </div>`;
+}
+
 // ── 1. 관심 직무 조사 ─────────────────────────────────────────────────────
 function renderInterests(c, activeCat) {
   const f   = loadFeatures();
@@ -1273,51 +1311,123 @@ function renderPortfolioBuilder(c) {
   }
 }
 
-function renderProjects(c) {
-  const f = loadFeatures();
+function renderProjects(c, opts) {
+  const editId  = opts && opts.editId ? opts.editId : null;
+  const f       = loadFeatures();
+  const editing = editId ? f.projects.find(x => x.id === editId) : null;
+
+  let _pendingImgs = editing ? [...(editing.images || [])] : [];
+
+  function thumbsHTML(imgs) {
+    return imgs.map((img, i) => `
+      <div class="ff-upload-thumb-wrap">
+        <img src="${img.dataUrl}" alt="${esc(img.name)}" class="ff-upload-thumb">
+        <button type="button" class="ff-upload-thumb-del" data-idx="${i}" aria-label="이미지 삭제">×</button>
+      </div>`).join('');
+  }
+
   c.innerHTML = `
     <div class="ff-form ff-form--col">
+      ${editing ? `<p class="ff-section__title" style="color:var(--g700)">✏️ "${esc(editing.title)}" 수정 중</p>` : ''}
       <div class="ff-form ff-form--row">
-        <input id="pj-title"  class="ff-input" placeholder="프로젝트명">
-        <input id="pj-period" class="ff-input ff-input--sm" placeholder="기간 (예: 2024.03 ~ 2024.06)">
-        <input id="pj-role"   class="ff-input ff-input--sm" placeholder="역할 (예: 프론트엔드 개발)">
+        <input id="pj-title"  class="ff-input" placeholder="프로젝트명" value="${editing ? esc(editing.title) : ''}">
+        <input id="pj-period" class="ff-input ff-input--sm" placeholder="기간 (예: 2024.03 ~ 2024.06)" value="${editing ? esc(editing.period || '') : ''}">
+        <input id="pj-role"   class="ff-input ff-input--sm" placeholder="역할 (예: 프론트엔드 개발)" value="${editing ? esc(editing.role || '') : ''}">
       </div>
       <div class="ff-form ff-form--row">
-        <input id="pj-tech"   class="ff-input" placeholder="기술 스택 (쉼표로 구분: React, Node.js)">
-        <input id="pj-url"    class="ff-input ff-input--sm" placeholder="URL (GitHub 등)">
+        <input id="pj-tech" class="ff-input" placeholder="기술 스택 (쉼표로 구분: React, Node.js)" value="${editing ? esc((editing.tech || []).join(', ')) : ''}">
+        <input id="pj-url"  class="ff-input ff-input--sm" placeholder="URL (GitHub 등)" value="${editing ? esc(editing.url || '') : ''}">
       </div>
-      <textarea id="pj-desc" class="ff-textarea" rows="3" placeholder="프로젝트 설명 및 주요 성과"></textarea>
-      <button type="button" class="btn btn--primary btn--sm" id="pj-add">+ 프로젝트 추가</button>
+      <textarea id="pj-desc" class="ff-textarea" rows="3" placeholder="프로젝트 설명 및 주요 성과">${editing ? esc(editing.desc || '') : ''}</textarea>
+      <div class="ff-upload-zone" id="pj-upload-zone">
+        <input type="file" id="pj-images" accept="image/*" multiple class="ff-upload-input" aria-label="이미지 첨부">
+        <label for="pj-images" class="ff-upload-label">
+          <span>🖼 이미지 첨부</span>
+          <span class="ff-upload-label__hint">클릭하거나 드래그 · PNG, JPG 지원</span>
+        </label>
+        <div class="ff-upload-preview" id="pj-img-preview">${thumbsHTML(_pendingImgs)}</div>
+      </div>
+      <div class="ff-form ff-form--row" style="justify-content:flex-end;margin-bottom:0">
+        ${editing ? `<button type="button" class="btn btn--ghost btn--sm" id="pj-cancel">취소</button>` : ''}
+        <button type="button" class="btn btn--primary btn--sm" id="pj-submit">
+          ${editing ? '✓ 수정 저장' : '+ 프로젝트 추가'}
+        </button>
+      </div>
     </div>
     <div class="ff-project-grid" id="pj-grid">
-      ${f.projects.length ? f.projects.map(x => `
-        <div class="ff-project-card${x.isFeatured ? ' ff-project-card--featured' : ''}">
-          ${x.isFeatured ? '<span class="tag tag--green">⭐ 대표</span>' : ''}
-          <p class="ff-project-card__title">${esc(x.title)}</p>
-          ${x.period ? `<p class="ff-project-card__meta">${esc(x.period)} · ${esc(x.role)}</p>` : ''}
-          ${x.tech.length ? `<p class="ff-project-card__tech">${x.tech.map(t => `<span class="tag tag--blue">${esc(t)}</span>`).join('')}</p>` : ''}
-          ${x.desc ? `<p class="ff-project-card__desc">${esc(x.desc)}</p>` : ''}
-          ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener" class="ff-link">링크 →</a>` : ''}
-          <div class="ff-project-card__actions">
-            <button type="button" class="btn btn--outline btn--sm ff-pj-feature" data-id="${x.id}">${x.isFeatured ? '대표 해제' : '대표로 설정'}</button>
-            <button type="button" class="btn btn--ghost btn--sm ff-del" data-id="${x.id}">삭제</button>
-          </div>
-        </div>`).join('') : '<p class="ff-empty">프로젝트를 추가해보세요!</p>'}
+      ${f.projects.length ? f.projects.map(x => projectCardHTML(x)).join('') : '<p class="ff-empty">프로젝트를 추가해보세요!</p>'}
     </div>`;
-  c.querySelector('#pj-add').onclick = () => {
+
+  function refreshPreview() {
+    const preview = c.querySelector('#pj-img-preview');
+    preview.innerHTML = thumbsHTML(_pendingImgs);
+    preview.querySelectorAll('.ff-upload-thumb-del').forEach(b => b.onclick = () => {
+      _pendingImgs.splice(parseInt(b.dataset.idx, 10), 1);
+      refreshPreview();
+    });
+  }
+  refreshPreview();
+
+  c.querySelector('#pj-images').onchange = function () {
+    Array.from(this.files).forEach(file => {
+      resizeImage(file, 640, dataUrl => {
+        _pendingImgs.push({ name: file.name, dataUrl });
+        refreshPreview();
+      });
+    });
+    this.value = '';
+  };
+
+  const zone = c.querySelector('#pj-upload-zone');
+  zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('ff-upload-zone--drag'); });
+  zone.addEventListener('dragleave', ()  => zone.classList.remove('ff-upload-zone--drag'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('ff-upload-zone--drag');
+    Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/')).forEach(file => {
+      resizeImage(file, 640, dataUrl => {
+        _pendingImgs.push({ name: file.name, dataUrl });
+        refreshPreview();
+      });
+    });
+  });
+
+  c.querySelector('#pj-submit').onclick = () => {
     const title = c.querySelector('#pj-title').value.trim();
     if (!title) return T('프로젝트명을 입력하세요.');
     const tech = c.querySelector('#pj-tech').value.split(',').map(t => t.trim()).filter(Boolean);
-    f.projects.push({ id: genId(), title, period: c.querySelector('#pj-period').value.trim(), role: c.querySelector('#pj-role').value.trim(), tech, desc: c.querySelector('#pj-desc').value.trim(), url: c.querySelector('#pj-url').value.trim(), isFeatured: false });
-    saveFeatures(f); renderProjects(c);
+    const patch = {
+      title,
+      period: c.querySelector('#pj-period').value.trim(),
+      role:   c.querySelector('#pj-role').value.trim(),
+      tech,
+      desc:   c.querySelector('#pj-desc').value.trim(),
+      url:    c.querySelector('#pj-url').value.trim(),
+      images: _pendingImgs,
+    };
+    if (editing) {
+      const idx = f.projects.findIndex(x => x.id === editId);
+      if (idx !== -1) f.projects[idx] = { ...f.projects[idx], ...patch };
+      T('프로젝트를 수정했어요!');
+    } else {
+      f.projects.push({ id: genId(), isFeatured: false, ...patch });
+    }
+    saveFeatures(f);
+    renderProjects(c);
   };
+
+  c.querySelector('#pj-cancel')?.addEventListener('click', () => renderProjects(c));
+  c.querySelectorAll('.ff-pj-edit').forEach(b => b.onclick = () => renderProjects(c, { editId: b.dataset.id }));
   c.querySelectorAll('.ff-pj-feature').forEach(b => b.onclick = () => {
     f.projects.forEach(x => { x.isFeatured = (x.id === b.dataset.id) ? !x.isFeatured : false; });
-    saveFeatures(f); renderProjects(c);
+    saveFeatures(f);
+    renderProjects(c, editId ? { editId } : null);
   });
-  c.querySelectorAll('.ff-del').forEach(b => b.onclick = () => {
+  c.querySelectorAll('.ff-pj-del').forEach(b => b.onclick = () => {
+    if (!confirm(`"${f.projects.find(x => x.id === b.dataset.id)?.title}" 프로젝트를 삭제할까요?`)) return;
     f.projects = f.projects.filter(x => x.id !== b.dataset.id);
-    saveFeatures(f); renderProjects(c);
+    saveFeatures(f);
+    renderProjects(c, editId === b.dataset.id ? null : (editId ? { editId } : null));
   });
 }
 
@@ -1329,6 +1439,7 @@ function renderPortfolioView(c) {
     c.innerHTML = `<div class="ff-ai-stub"><p class="ff-ai-stub__icon">🖼</p><p class="ff-ai-stub__title">대표 프로젝트를 선택해주세요</p><p class="ff-ai-stub__desc">프로젝트 목록에서 대표 프로젝트를 선택하면 여기서 포트폴리오 구성을 미리볼 수 있어요.</p></div>`;
     return;
   }
+  const imgs = featured.images || [];
   c.innerHTML = `
     <div class="ff-portfolio">
       <div class="ff-portfolio__hero">
@@ -1338,6 +1449,13 @@ function renderPortfolioView(c) {
           ${featured.period ? `<p class="ff-portfolio__meta">${esc(featured.period)} · ${esc(featured.role)}</p>` : ''}
         </div>
       </div>
+      ${imgs.length ? `
+        <div class="ff-portfolio__gallery" role="list" aria-label="프로젝트 이미지">
+          ${imgs.map(img => `
+            <div class="ff-portfolio__gallery-item" role="listitem">
+              <img src="${img.dataUrl}" alt="${esc(img.name)}" class="ff-portfolio__gallery-img">
+            </div>`).join('')}
+        </div>` : ''}
       ${featured.tech.length ? `<div class="ff-portfolio__tech">${featured.tech.map(t => `<span class="tag tag--blue">${esc(t)}</span>`).join('')}</div>` : ''}
       ${featured.desc ? `<p class="ff-portfolio__desc">${esc(featured.desc)}</p>` : ''}
       ${featured.url ? `<a href="${esc(featured.url)}" target="_blank" rel="noopener" class="btn btn--outline btn--sm">🔗 프로젝트 링크 열기</a>` : ''}
@@ -1354,6 +1472,16 @@ function renderPortfolioView(c) {
           </div>`).join('')}
       </div>
     </div>`;
+
+  c.querySelectorAll('.ff-portfolio__gallery-img').forEach(img => {
+    img.addEventListener('click', () => {
+      const overlay = document.createElement('div');
+      overlay.className = 'ff-lightbox';
+      overlay.innerHTML = `<img src="${img.src}" alt="${img.alt}" class="ff-lightbox__img"><button class="ff-lightbox__close" aria-label="닫기">×</button>`;
+      document.body.appendChild(overlay);
+      overlay.addEventListener('click', () => overlay.remove());
+    });
+  });
 }
 
 // ── 12. PDF 내보내기 ───────────────────────────────────────────────────────
@@ -1496,8 +1624,10 @@ function renderResearch(c, activeCompany) {
 
 // ── 16. 모의 면접 ─────────────────────────────────────────────────────────
 let _mockIdx = 0;
+let _mockRecognition = null;
 
 function renderMockInterview(c) {
+  if (_mockRecognition) { try { _mockRecognition.abort(); } catch {} _mockRecognition = null; }
   const f    = loadFeatures();
   const allQ = [...DEFAULT_IQS, ...f.customIQs];
   if (!allQ.length) {
@@ -1543,31 +1673,30 @@ function renderMockInterview(c) {
     </div>`;
 
   if (SR) {
-    let recognition = null;
     let finalText   = '';
-    let isRecording = false;
+    let wantsRecord = false;
+    let hasError    = false;
 
     const recBtn     = c.querySelector('#mock-rec-btn');
     const recStatus  = c.querySelector('#mock-rec-status');
     const transcript = c.querySelector('#mock-transcript');
     const recActions = c.querySelector('#mock-rec-actions');
 
-    recBtn.onclick = () => {
-      if (isRecording) { recognition?.stop(); return; }
+    function startRec() {
+      hasError = false;
+      transcript.innerHTML = '<p class="ff-mock__transcript-placeholder">🎙 말씀해주세요...</p>';
+      recActions.hidden = true;
 
-      recognition = new SR();
-      recognition.lang            = 'ko-KR';
-      recognition.continuous      = true;
-      recognition.interimResults  = true;
+      const recognition = new SR();
+      _mockRecognition  = recognition;
+      recognition.lang           = 'ko-KR';
+      recognition.continuous     = true;
+      recognition.interimResults = true;
 
       recognition.onstart = () => {
-        isRecording = true;
-        finalText   = '';
         recBtn.textContent  = '⏹ 중지';
         recBtn.classList.add('ff-mock__rec-btn--active');
         recStatus.innerHTML = '<span class="ff-mock__rec-dot"></span> 녹음 중...';
-        transcript.innerHTML = '';
-        recActions.hidden = true;
       };
 
       recognition.onresult = (e) => {
@@ -1580,7 +1709,13 @@ function renderMockInterview(c) {
       };
 
       recognition.onend = () => {
-        isRecording = false;
+        _mockRecognition = null;
+        if (wantsRecord && !hasError) {
+          // Chrome 자동 세션 종료 → 자동 재시작
+          startRec();
+          return;
+        }
+        wantsRecord = false;
         recBtn.textContent = '🎤 다시 녹음';
         recBtn.classList.remove('ff-mock__rec-btn--active');
         recStatus.innerHTML = '';
@@ -1588,13 +1723,42 @@ function renderMockInterview(c) {
       };
 
       recognition.onerror = (e) => {
-        isRecording = false;
-        recBtn.textContent = '🎤 녹음 시작';
-        recBtn.classList.remove('ff-mock__rec-btn--active');
-        recStatus.textContent = e.error === 'not-allowed' ? '마이크 권한을 허용해주세요.' : `오류: ${e.error}`;
+        _mockRecognition = null;
+        if (e.error === 'not-allowed') {
+          hasError    = true;
+          wantsRecord = false;
+          recBtn.textContent = '🎤 녹음 시작';
+          recBtn.classList.remove('ff-mock__rec-btn--active');
+          recStatus.textContent = '⚠️ 마이크 권한을 허용해주세요.';
+        } else if (e.error === 'network') {
+          hasError    = true;
+          wantsRecord = false;
+          recBtn.textContent = '🎤 녹음 시작';
+          recBtn.classList.remove('ff-mock__rec-btn--active');
+          recStatus.textContent = '⚠️ 네트워크 오류. 인터넷 연결을 확인해주세요.';
+        } else if (e.error === 'no-speech' || e.error === 'aborted') {
+          // onend 자동 재시작에 맡김
+        } else {
+          hasError    = true;
+          wantsRecord = false;
+          recBtn.textContent = '🎤 녹음 시작';
+          recBtn.classList.remove('ff-mock__rec-btn--active');
+          recStatus.textContent = `⚠️ 오류: ${e.error}`;
+        }
       };
 
       recognition.start();
+    }
+
+    recBtn.onclick = () => {
+      if (wantsRecord) {
+        wantsRecord = false;
+        if (_mockRecognition) { try { _mockRecognition.stop(); } catch {} }
+        return;
+      }
+      wantsRecord = true;
+      finalText   = '';
+      startRec();
     };
 
     c.querySelector('#mock-download').onclick = () => {
@@ -2151,7 +2315,7 @@ const JOB_FEATURES = {
   'resume-history':      { title: '학력 / 경력 입력',  render: renderResumeHistory },
   'resume-skills':       { title: '기술 스택 정리',    render: renderResumeSkills },
   'cover-editor':        { title: '자기소개서 작성',   render: (c, opts) => renderCoverEditor(c, opts) },
-  'projects':            { title: '프로젝트 목록',     render: renderProjects },
+  'projects':            { title: '프로젝트 목록',     render: (c, opts) => renderProjects(c, opts) },
   'portfolio-view':      { title: '포트폴리오 구성',   render: renderPortfolioView },
   'pdf-export':          { title: 'PDF / 인쇄',        render: renderPdfExport },
   'interview-questions': { title: '예상 면접 질문',    render: renderInterviewQuestions },
