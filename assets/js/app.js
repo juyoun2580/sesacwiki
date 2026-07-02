@@ -1,3 +1,23 @@
+// fav icon 공통 적용
+function initMeta() {
+  document.title = "Sesac Wiki";
+
+  let favicon = document.querySelector("link[rel='icon']");
+
+  if (!favicon) {
+    favicon = document.createElement("link");
+    favicon.rel = "icon";
+    document.head.appendChild(favicon);
+  }
+
+  favicon.type = "image/png";
+  favicon.href = "assets/img/favicon.png";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initMeta();
+});
+
 // ── 진행률(%) 값은 HTML에 style= 로 하드코딩하지 않고 data-progress 로만 표기,
 // 실제 width 값은 여기서 한 번에 적용한다. ──
 function initProgressBars() {
