@@ -1,0 +1,1784 @@
+[
+  {
+    "id": "q-adx-salesservice-001",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "잠재 고객을 나타내는 오브젝트는?",
+    "choices": [
+      "Account",
+      "Contact",
+      "Lead",
+      "Opportunity"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Lead는 아직 검증되지 않은 잠재 고객 정보를 담는 오브젝트다.",
+      "whyCorrect": "Lead는 Convert 과정을 거쳐 Account, Contact, (선택적으로) Opportunity로 전환되므로 잠재 고객 자체를 나타내는 것은 Lead다.",
+      "whyIncorrect": "Account는 검증된 기업/거래처, Contact는 검증된 담당자, Opportunity는 실제 영업 기회로 모두 Lead 전환 이후 단계의 오브젝트다.",
+      "examPoint": "영업 프로세스의 첫 단계 = Lead, 이후 Convert로 Account/Contact/Opportunity 생성.",
+      "practicalExample": "웹사이트 문의 폼을 통해 처음 들어온 미검증 잠재 고객 정보는 Lead 레코드로 저장된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-002",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Lead Convert 시 자동 생성되지 않는 것은?",
+    "choices": [
+      "Account",
+      "Contact",
+      "선택",
+      "Case"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Lead Convert는 Account, Contact를 기본 생성하고 Opportunity는 선택적으로 생성한다.",
+      "whyCorrect": "Case는 Lead 전환 프로세스의 산출물이 아니므로 정답은 D다.",
+      "whyIncorrect": "Account와 Contact는 필수 생성, Opportunity 체크박스를 켜면 Opportunity도 함께 생성되지만 Case는 애초에 대상이 아니다.",
+      "examPoint": "Lead Convert 산출물 = Account + Contact(+선택 Opportunity), Case/Contract는 대상 아님.",
+      "practicalExample": "영업담당자가 Lead를 전환하면 Account와 Contact는 항상 생기지만 별도 Case가 자동으로 만들어지지는 않는다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-003",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "고객 문의/불만을 처리하는 오브젝트는?",
+    "choices": [
+      "Lead",
+      "Opportunity",
+      "Case",
+      "Knowledge"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Case는 고객의 문의, 불만, 요청을 접수하고 처리 과정을 추적하는 Service Cloud의 핵심 오브젝트다.",
+      "whyCorrect": "고객 지원 업무의 단위 레코드가 Case이므로 정답은 C다.",
+      "whyIncorrect": "Lead는 잠재 고객, Opportunity는 영업 기회, Knowledge는 해결책 문서 저장소로 각각 다른 목적을 가진다.",
+      "examPoint": "Service Cloud의 중심 오브젝트는 Case라는 점을 반드시 기억.",
+      "practicalExample": "고객이 배송 지연을 문의하면 상담원은 이를 Case로 생성해 처리 상태를 추적한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-004",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "이메일로 자동 케이스 생성 기능은?",
+    "choices": [
+      "웹 케이스 생성",
+      "이메일 케이스",
+      "Case Assignment Rule",
+      "Case Escalation Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Email-to-Case는 지정된 이메일 주소로 수신된 메일을 자동으로 Case로 변환하는 기능이다.",
+      "whyCorrect": "이메일 채널을 통한 Case 자동 생성은 Email-to-Case이므로 정답은 B다.",
+      "whyIncorrect": "Web-to-Case는 웹 폼 기반, Assignment Rule은 배정, Escalation Rule은 시간 초과 시 에스컬레이션 기능이다.",
+      "examPoint": "채널(이메일 vs 웹폼)에 따라 Email-to-Case / Web-to-Case를 구분.",
+      "practicalExample": "고객이 지원 이메일로 문제를 설명하면 자동으로 Case가 생성되고 담당자에게 전달된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-005",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹사이트 폼으로 자동 리드 생성 기능은?",
+    "choices": [
+      "웹 리드 생성",
+      "Email-to-Lead",
+      "Lead Assignment Rule",
+      "Lead Convert"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Web-to-Lead는 웹사이트에 HTML 폼을 삽입해 방문자가 제출하면 Lead 레코드를 자동 생성하는 기능이다.",
+      "whyCorrect": "웹 폼을 통한 Lead 자동 생성은 Web-to-Lead(웹 리드 생성)이므로 정답은 A다.",
+      "whyIncorrect": "Email-to-Lead는 존재하지 않는 기능이며, Assignment Rule은 생성 이후 배정, Lead Convert는 전환 단계다.",
+      "examPoint": "일일 500건 한도가 있다는 점도 함께 기억.",
+      "practicalExample": "홈페이지의 '무료 상담 신청' 폼을 Web-to-Lead로 연결하면 제출 즉시 새 Lead가 생성된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-006",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Lead Convert 시 반드시 생성되는 레코드는?",
+    "choices": [
+      "Account만",
+      "Account와 Contact",
+      "Account, Contact, Opportunity 모두",
+      "Opportunity만"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lead 전환 시 Account와 Contact는 항상 생성(또는 기존 레코드 연결)되고, Opportunity는 선택사항이다.",
+      "whyCorrect": "필수 생성 레코드는 Account와 Contact이므로 정답은 B다.",
+      "whyIncorrect": "Opportunity는 체크박스로 선택할 수 있어 필수가 아니며, Account만 또는 Opportunity만 생성되는 경우는 없다.",
+      "examPoint": "Account+Contact = 필수, Opportunity = 선택이라는 규칙을 반드시 암기.",
+      "practicalExample": "간단한 문의성 Lead는 Opportunity 체크를 끄고 Account/Contact만 생성해 전환할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-007",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Web-to-Lead의 일일 최대 생성 건수는?",
+    "choices": [
+      "100건",
+      "500건",
+      "1,000건",
+      "무제한"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Web-to-Lead는 조직당 하루 최대 500건의 Lead만 생성할 수 있도록 제한되어 있다.",
+      "whyCorrect": "표준 일일 한도는 500건이므로 정답은 B다.",
+      "whyIncorrect": "100건이나 1,000건은 실제 한도와 다르며, 무제한 생성은 스팸 방지를 위해 허용되지 않는다.",
+      "examPoint": "한도를 초과하면 초과분은 기본 Lead 생성자에게 이메일로 통지된다.",
+      "practicalExample": "대규모 마케팅 캠페인 시 하루 500건을 초과할 것으로 예상되면 별도 대응 방안을 마련해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-008",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Case Assignment Rule과 Case Escalation Rule의 차이는?",
+    "choices": [
+      "동일한 기능",
+      "Assignment는 생성 시 배정, Escalation은 미해결 시 자동 에스컬레이션",
+      "Assignment는 유료, Escalation은 무료",
+      "Escalation이 더 빠름"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Assignment Rule은 Case 생성 시점에 담당자를 정하는 기능이고, Escalation Rule은 일정 시간 후에도 미해결이면 상위로 넘기는 기능이다.",
+      "whyCorrect": "두 기능은 각각 '생성 시 배정'과 '시간 초과 시 에스컬레이션'으로 역할이 다르므로 정답은 B다.",
+      "whyIncorrect": "두 기능은 라이선스 유무와 무관하며 속도 비교 대상도 아니다.",
+      "examPoint": "Assignment = 최초 배정, Escalation = 시간 기반 후속 조치로 구분.",
+      "practicalExample": "Case가 생성되면 Assignment Rule로 담당 큐에 배정되고, 2시간 내 처리 안 되면 Escalation Rule이 관리자에게 알린다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-009",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce Knowledge의 주요 용도는?",
+    "choices": [
+      "고객 데이터 저장",
+      "승인된 해결책과 정보를 문서화하여 상담원과 고객이 검색 가능",
+      "케이스 자동 배정",
+      "이메일 자동 발송"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce Knowledge는 승인된 해결책 아티클을 작성·관리하는 지식 베이스 기능이다.",
+      "whyCorrect": "상담원과 고객이 검색해 활용할 수 있는 문서화된 정보를 제공하는 것이 목적이므로 정답은 B다.",
+      "whyIncorrect": "고객 데이터 저장은 Account/Contact, 케이스 배정은 Assignment Rule, 이메일 발송은 Auto-Response Rule의 역할이다.",
+      "examPoint": "Knowledge는 반복 문의에 대한 표준 답변을 제공해 응대 시간을 줄인다.",
+      "practicalExample": "'비밀번호 재설정 방법' 아티클을 작성해두면 여러 상담원이 반복해서 같은 설명을 쓰지 않아도 된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-010",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Opportunity의 Stage 필드가 나타내는 것은?",
+    "choices": [
+      "거래의 금액",
+      "영업 프로세스에서 거래의 현재 진행 단계",
+      "고객 만족도",
+      "담당 영업직원"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Stage 필드는 Opportunity가 영업 프로세스에서 어느 단계에 있는지를 나타낸다.",
+      "whyCorrect": "Prospecting, Proposal, Closed Won 등 진행 단계를 표현하므로 정답은 B다.",
+      "whyIncorrect": "금액은 Amount, 만족도는 별도 필드/설문, 담당자는 Owner 필드가 담당한다.",
+      "examPoint": "Stage는 확률(Probability)과 연동되어 예측(Forecast)에도 활용된다.",
+      "practicalExample": "Opportunity가 'Negotiation' Stage에 있다면 계약 조건을 협상 중이라는 뜻이다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-011",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Entitlement의 용도는?",
+    "choices": [
+      "케이스 자동 배정",
+      "고객별 서비스 수준 계약(SLA) 관리",
+      "케이스 중복 방지",
+      "보고서 자동 생성"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Entitlement는 고객이 받을 자격이 있는 지원 서비스 수준(SLA)을 정의하는 기능이다.",
+      "whyCorrect": "고객별 SLA 관리가 핵심 목적이므로 정답은 B다.",
+      "whyIncorrect": "배정은 Assignment Rule, 중복 방지는 Matching/Duplicate Rule, 보고서 생성은 Reports 기능이 담당한다.",
+      "examPoint": "Entitlement는 Milestones와 함께 사용해 응답/해결 시간 목표를 추적한다.",
+      "practicalExample": "프리미엄 고객에게는 '2시간 내 응답' Entitlement를, 일반 고객에게는 '24시간 내 응답' Entitlement를 각각 적용할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-012",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Account와 Contact의 기본 관계 유형은?",
+    "choices": [
+      "마스터-디테일",
+      "Lookup Relationship",
+      "Many-to-Many",
+      "External"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Account와 Contact는 기본적으로 Lookup 관계로 연결된다.",
+      "whyCorrect": "Contact에는 Account를 참조하는 Lookup 필드가 있으며, Account가 삭제되어도 Contact는 유지될 수 있으므로 정답은 B다.",
+      "whyIncorrect": "마스터-디테일이었다면 부모 삭제 시 자식도 함께 삭제되는데 Contact는 그렇지 않으며, 표준 관계는 다대다도 외부 참조도 아니다.",
+      "examPoint": "Lookup vs 마스터-디테일 차이(삭제 연쇄, 롤업 여부)는 자주 출제되는 포인트.",
+      "practicalExample": "회사(Account)가 통합되어 삭제되어도 담당자(Contact) 레코드 자체는 남아있을 수 있는 이유가 Lookup 관계 때문이다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-013",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Opportunity에서 Products를 추가할 때 필요한 것은?",
+    "choices": [
+      "Validation Rule",
+      "Price Book",
+      "Assignment Rule",
+      "웹 리드 생성"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Opportunity에 제품(Product)을 추가하려면 먼저 Price Book(가격 목록)이 연결되어 있어야 한다.",
+      "whyCorrect": "Price Book이 제품과 가격을 연결하는 카탈로그 역할을 하므로 정답은 B다.",
+      "whyIncorrect": "Validation Rule은 유효성 검사, Assignment Rule은 배정, Web-to-Lead는 리드 생성과 무관한 기능이다.",
+      "examPoint": "Standard Price Book과 Custom Price Book을 구분해 관리하는 것이 실무에서 중요하다.",
+      "practicalExample": "Opportunity에 노트북 제품을 추가하려면 해당 제품이 등록된 Price Book을 먼저 Opportunity에 연결해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-014",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Campaign Member란?",
+    "choices": [
+      "캠페인을 만든 사용자",
+      "캠페인과 연관된 Lead 또는 Contact",
+      "캠페인 예산 담당자",
+      "캠페인 보고서"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Campaign Member는 특정 캠페인에 연관된 Lead 또는 Contact 레코드를 의미한다.",
+      "whyCorrect": "캠페인 참여자로서 Lead/Contact가 연결되는 것이므로 정답은 B다.",
+      "whyIncorrect": "캠페인 생성자, 예산 담당자, 보고서는 Campaign Member의 정의와 무관한 개념이다.",
+      "examPoint": "Campaign Member Status로 참여자의 응답 상태(초대됨/참석함 등)를 추적할 수 있다.",
+      "practicalExample": "웨비나 캠페인에 등록한 잠재 고객들은 해당 캠페인의 Campaign Member로 기록된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-015",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Email-to-Case와 Web-to-Case의 차이는?",
+    "choices": [
+      "동일한 기능",
+      "Email-to-Case는 이메일로, Web-to-Case는 웹폼으로 케이스 생성",
+      "Email-to-Case는 유료",
+      "Web-to-Case는 모바일 전용"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "두 기능 모두 Case를 자동 생성하지만 입력 채널이 다르다.",
+      "whyCorrect": "Email-to-Case는 이메일 수신 기반, Web-to-Case는 웹사이트 폼 제출 기반이므로 정답은 B다.",
+      "whyIncorrect": "두 기능 모두 표준 기능으로 별도 유료 라이선스가 필요하지 않으며, 모바일 전용 기능도 아니다.",
+      "examPoint": "채널만 다를 뿐 둘 다 '자동 Case 생성'이라는 목적은 동일하다는 점에 유의.",
+      "practicalExample": "고객센터 이메일로 온 문의는 Email-to-Case로, 홈페이지 문의 폼 제출은 Web-to-Case로 각각 Case가 생성된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-016",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Activity Timeline에서 볼 수 있는 것은?",
+    "choices": [
+      "레코드 변경 이력",
+      "Task와 Event 등 모든 활동 기록",
+      "공유 설정 이력",
+      "승인 프로세스 이력"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Activity Timeline은 레코드와 관련된 Task(통화, 이메일)와 Event(미팅)를 시간순으로 통합해 보여준다.",
+      "whyCorrect": "모든 활동 기록을 한 곳에서 확인할 수 있으므로 정답은 B다.",
+      "whyIncorrect": "레코드 변경 이력은 Field History Tracking, 공유 이력은 Sharing 설정, 승인 이력은 Approval History가 각각 담당한다.",
+      "examPoint": "Task/Event 통합 뷰 = Activity Timeline이라는 점을 기억.",
+      "practicalExample": "Account 페이지에서 최근 통화와 예정된 미팅을 Activity Timeline 하나로 파악할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-017",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Lead Source 필드의 역할은?",
+    "choices": [
+      "Lead를 배정하는 기준",
+      "Lead가 어디서 유입되었는지 추적",
+      "Lead의 우선순위",
+      "Lead 담당자"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lead Source 필드는 해당 Lead가 어떤 경로(웹, 전시회, 광고 등)로 유입되었는지 기록한다.",
+      "whyCorrect": "유입 경로 추적이 목적이므로 정답은 B다.",
+      "whyIncorrect": "배정 기준은 Assignment Rule의 조건, 우선순위는 별도 필드, 담당자는 Owner 필드가 담당한다.",
+      "examPoint": "Lead Source는 마케팅 채널 효과 분석과 ROI 리포트의 핵심 필드다.",
+      "practicalExample": "전시회 부스에서 수집한 명함으로 만든 Lead에는 Lead Source = '전시회'로 기록된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-018",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Opportunity Stage와 Probability의 관계는?",
+    "choices": [
+      "항상 수동 입력",
+      "Stage에 따라 기본값 자동 설정, 수동 수정 가능",
+      "항상 100% 고정",
+      "관리자만 수정 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "각 Stage에는 기본 Probability 값이 매핑되어 있으며, Stage를 선택하면 자동으로 채워진다.",
+      "whyCorrect": "자동 설정 후에도 담당자가 수동으로 조정할 수 있으므로 정답은 B다.",
+      "whyIncorrect": "완전 수동 입력만 가능한 것도, 항상 100% 고정인 것도, 관리자만 수정 가능한 것도 아니다.",
+      "examPoint": "Stage-Probability 매핑은 Setup의 Sales Path/Opportunity Stage 설정에서 관리자가 정의한다.",
+      "practicalExample": "Stage를 'Negotiation'으로 바꾸면 Probability가 자동으로 75%로 채워지되, 담당자가 60%로 직접 조정할 수도 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-019",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Campaign Member의 정의는?",
+    "choices": [
+      "캠페인 생성자",
+      "캠페인과 연관된 Lead 또는 Contact",
+      "캠페인 예산 담당자",
+      "캠페인 보고서"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Campaign Member는 특정 캠페인과 연관된 Lead 또는 Contact 레코드다.",
+      "whyCorrect": "캠페인에 참여한 Lead/Contact를 나타내므로 정답은 B다.",
+      "whyIncorrect": "생성자, 예산 담당자, 보고서는 Campaign Member의 정의와 무관하다.",
+      "examPoint": "Campaign Member Status로 캠페인 응답 상태를 추적할 수 있다는 점을 함께 기억.",
+      "practicalExample": "세미나에 등록한 Contact들은 해당 캠페인의 Campaign Member로 자동 등록된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-020",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Self-Service 포털 구축에 사용하는 Salesforce 제품은?",
+    "choices": [
+      "Salesforce Mobile App",
+      "Experience Cloud",
+      "Chatter",
+      "Service Console"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Experience Cloud는 고객이 직접 로그인해 Case 제출, Knowledge 검색 등을 할 수 있는 외부 포털을 구축하는 플랫폼이다.",
+      "whyCorrect": "고객 셀프서비스 포털 구축이 핵심 용도이므로 정답은 B다.",
+      "whyIncorrect": "Mobile App은 내부 사용자용, Chatter는 협업 도구, Service Console은 상담원 작업 환경이라 고객 대상 포털과는 다르다.",
+      "examPoint": "고객이 직접 접속하는 채널 문제는 Experience Cloud(구 Customer Portal)를 떠올릴 것.",
+      "practicalExample": "고객이 로그인해 자신의 Case 진행 상황을 확인하고 Knowledge 아티클을 검색하는 포털을 Experience Cloud로 구축한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-021",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Opportunity에 제품을 추가하려면 필요한 것은?",
+    "choices": [
+      "Validation Rule",
+      "Price Book",
+      "Assignment Rule",
+      "웹 리드 생성"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Opportunity에 Product를 추가하려면 Price Book이 먼저 연결되어 있어야 한다.",
+      "whyCorrect": "Price Book이 제품-가격 카탈로그 역할을 하므로 정답은 B다.",
+      "whyIncorrect": "Validation Rule, Assignment Rule, 웹 리드 생성은 제품 추가 절차와 직접 관련이 없다.",
+      "examPoint": "Standard/Custom Price Book 개념을 함께 이해해둘 것.",
+      "practicalExample": "Price Book이 없으면 Opportunity의 Products Related List에서 제품을 추가할 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-022",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Entitlement의 주요 용도는?",
+    "choices": [
+      "케이스 자동 배정",
+      "고객별 SLA 관리",
+      "케이스 중복 방지",
+      "보고서 자동 생성"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Entitlement는 고객이 받을 자격이 있는 서비스 수준(SLA)을 정의하고 관리하는 기능이다.",
+      "whyCorrect": "SLA 관리가 핵심 목적이므로 정답은 B다.",
+      "whyIncorrect": "케이스 배정, 중복 방지, 보고서 생성은 각각 Assignment Rule, Matching/Duplicate Rule, Reports가 담당한다.",
+      "examPoint": "Entitlement + Milestones 조합으로 응답/해결 시간 목표를 추적한다는 점을 기억.",
+      "practicalExample": "VIP 고객 계약에 따라 '1시간 내 응답' Entitlement를 설정해 SLA 준수 여부를 관리한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-023",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Account Hierarchy란?",
+    "choices": [
+      "사용자 권한 계층",
+      "모회사와 자회사 관계를 표시하는 Account 간 계층 구조",
+      "영업 팀 조직도",
+      "보고 라인"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Account Hierarchy는 Parent Account 필드를 통해 모회사-자회사 관계를 시각화하는 기능이다.",
+      "whyCorrect": "기업 구조를 Account 레코드 간 계층으로 표현하므로 정답은 B다.",
+      "whyIncorrect": "사용자 권한 계층은 Role Hierarchy, 영업 팀 조직도나 보고 라인은 별도 개념으로 Account Hierarchy와 다르다.",
+      "examPoint": "Role Hierarchy(사용자)와 Account Hierarchy(회사)를 혼동하지 않도록 주의.",
+      "practicalExample": "글로벌 기업의 본사와 지사 Account를 Parent Account로 연결하면 Account Hierarchy 뷰에서 전체 구조를 한눈에 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-024",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Opportunity의 Close Date 필드의 역할은?",
+    "choices": [
+      "거래가 실제로 완료된 날짜",
+      "거래가 마감될 것으로 예상되는 날짜",
+      "계약 시작 날짜",
+      "첫 번째 미팅 날짜"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Close Date는 Opportunity가 Closed Won 또는 Closed Lost로 완료될 것으로 예상되는 날짜를 나타낸다.",
+      "whyCorrect": "예상 마감일이라는 의미이므로 정답은 B다.",
+      "whyIncorrect": "실제 완료일, 계약 시작일, 첫 미팅일은 각각 다른 개념이며 Close Date의 정의와 다르다.",
+      "examPoint": "Close Date는 Forecast(예측) 리포트의 기준 필드로도 사용된다.",
+      "practicalExample": "영업담당자가 '이번 달 말까지 계약 예정'이라고 판단하면 Close Date를 해당 월말로 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-025",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Case Priority 필드의 일반적인 값이 아닌 것은?",
+    "choices": [
+      "Low",
+      "Medium",
+      "High",
+      "Critical"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Case Priority의 표준 기본값은 Low, Medium, High 세 가지다.",
+      "whyCorrect": "Critical은 기본 제공되는 표준 값이 아니므로 정답은 D다.",
+      "whyIncorrect": "Low, Medium, High는 모두 표준으로 제공되는 값이다.",
+      "examPoint": "Critical이 필요하면 관리자가 Picklist 값을 직접 추가하는 커스터마이징이 필요하다.",
+      "practicalExample": "긴급도가 매우 높은 장애 대응을 위해 관리자가 Case Priority에 'Critical' 값을 추가로 만들 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-026",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Web-to-Lead 폼에서 수집한 데이터가 Salesforce에 어떻게 저장되나요?",
+    "choices": [
+      "Account로 바로 저장",
+      "Contact로 저장",
+      "Lead 레코드로 저장",
+      "Opportunity로 저장"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Web-to-Lead 폼 제출 데이터는 Salesforce의 Lead 레코드로 자동 저장된다.",
+      "whyCorrect": "즉시 Account/Contact가 아닌 Lead로 먼저 저장되므로 정답은 C다.",
+      "whyIncorrect": "Account, Contact, Opportunity는 Lead가 검증되어 Convert된 이후에 생성되는 레코드다.",
+      "examPoint": "Web-to-Lead는 항상 '미검증 상태'인 Lead를 만든다는 점을 기억.",
+      "practicalExample": "폼 제출 직후 영업팀은 새로 생성된 Lead를 검토한 뒤 검증되면 Convert한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-027",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Case가 생성되면 자동으로 고객에게 확인 이메일을 보내는 기능은?",
+    "choices": [
+      "Case Assignment Rule",
+      "Case Escalation Rule",
+      "Auto-Response Rule",
+      "이메일 케이스"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Auto-Response Rule은 Case 생성 시 조건에 맞는 이메일 템플릿을 자동으로 고객에게 발송하는 기능이다.",
+      "whyCorrect": "생성 즉시 확인 이메일을 보내는 것이 목적이므로 정답은 C다.",
+      "whyIncorrect": "Assignment Rule은 담당자 배정, Escalation Rule은 시간 초과 처리, Email-to-Case는 수신 이메일을 Case로 변환하는 기능이라 각각 다르다.",
+      "examPoint": "'접수 확인 이메일'이라는 키워드는 Auto-Response Rule로 직결.",
+      "practicalExample": "고객이 Case를 제출하면 '문의가 접수되었습니다'라는 자동 메일이 Auto-Response Rule에 의해 발송된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-028",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 Lead의 상태(Status)가 Converted로 변경되는 것은?",
+    "choices": [
+      "관리자가 수동으로 변경",
+      "Lead Convert 작업 실행 시 자동 변경",
+      "일정 시간이 지나면 자동 변경",
+      "영업담당자가 직접 변경"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lead를 Convert하면 Salesforce가 자동으로 해당 Lead의 Status를 Converted로 바꾼다.",
+      "whyCorrect": "Convert 작업 실행이 트리거이므로 정답은 B다.",
+      "whyIncorrect": "수동 변경, 시간 경과, 담당자의 직접 변경은 Converted 상태 전환의 표준 방식이 아니다.",
+      "examPoint": "IsConverted = True 필드와 Status = Converted가 함께 자동 설정된다는 점을 기억.",
+      "practicalExample": "영업담당자가 'Convert' 버튼을 눌러 전환을 완료하면 별도 조작 없이 Lead 상태가 Converted로 바뀐다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-029",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Service Level Agreement(SLA)를 Salesforce에서 관리하는 기능은?",
+    "choices": [
+      "Case Assignment Rule",
+      "Knowledge Base",
+      "Entitlements and Milestones",
+      "Escalation Rule만"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Entitlements는 고객별 지원 자격(SLA)을 정의하고, Milestones는 그 안의 시간 목표(예: 1시간 내 응답)를 추적한다.",
+      "whyCorrect": "SLA를 정의하고 시간 목표까지 함께 관리하는 것은 Entitlements and Milestones이므로 정답은 C다.",
+      "whyIncorrect": "Assignment Rule은 배정, Knowledge Base는 해결책 문서, Escalation Rule만으로는 SLA 전체를 정의할 수 없다.",
+      "examPoint": "SLA 관련 문제는 Entitlements + Milestones 조합을 최우선으로 고려.",
+      "practicalExample": "프리미엄 지원 계약 고객에게 '최초 응답 1시간' Milestone을 설정해 준수 여부를 대시보드로 추적한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-030",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Collaborative Forecasts의 주요 기능은?",
+    "choices": [
+      "케이스 예측",
+      "영업 팀의 예상 수익을 단계별로 집계하고 관리자가 조정 가능",
+      "마케팅 캠페인 효과 예측",
+      "재고 수요 예측"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Collaborative Forecasts는 Opportunity Stage와 예상 금액을 기반으로 팀 단위 예상 매출을 집계하는 기능이다.",
+      "whyCorrect": "예상 수익을 단계별로 집계하고 관리자가 조정(Override)할 수 있으므로 정답은 B다.",
+      "whyIncorrect": "케이스 예측, 캠페인 효과 예측, 재고 수요 예측은 Collaborative Forecasts의 범위가 아니다.",
+      "examPoint": "관리자가 각 레벨에서 수치를 Override할 수 있다는 점이 자주 출제된다.",
+      "practicalExample": "영업 관리자는 이번 분기 팀 전체 예상 매출을 확인하고 과대 예측된 팀원의 수치를 직접 하향 조정한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-031",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Contact의 Reports To 필드의 역할은?",
+    "choices": [
+      "Account 담당자 지정",
+      "Contact의 상사(보고 라인)를 다른 Contact으로 연결",
+      "Contact를 Lead로 변환",
+      "Contact 소유자 지정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Reports To 필드는 Contact의 조직 내 보고 라인을 다른 Contact 레코드로 연결해 나타낸다.",
+      "whyCorrect": "고객사 내부의 상하 보고 관계를 표현하므로 정답은 B다.",
+      "whyIncorrect": "Account 담당자 지정은 Account Owner, Lead 변환은 Convert 프로세스, 소유자 지정은 Contact Owner 필드가 담당한다.",
+      "examPoint": "Reports To로 고객사 조직도를 Salesforce 안에서 재현할 수 있다.",
+      "practicalExample": "팀장 Contact의 Reports To에 임원 Contact를 지정해 고객사 내부 조직 구조를 반영한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-032",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Cases 처리 시 사용하는 Service Console의 특징은?",
+    "choices": [
+      "영업팀 전용",
+      "상담원이 여러 케이스를 탭으로 동시에 처리할 수 있는 전문 UI",
+      "일반 Salesforce UI와 동일",
+      "모바일 전용"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Service Console은 상담원이 여러 Case를 멀티탭, 스플릿 뷰로 동시에 처리할 수 있도록 설계된 전문 작업 환경이다.",
+      "whyCorrect": "다중 Case 동시 처리에 최적화된 UI이므로 정답은 B다.",
+      "whyIncorrect": "영업팀 전용도, 일반 UI와 동일하지도, 모바일 전용도 아니다.",
+      "examPoint": "Service Console은 Lightning Console 앱의 일종으로 지원팀 생산성 향상이 목적이다.",
+      "practicalExample": "상담원이 세 개의 Case 탭을 열어놓고 동시에 응대하며 화면 전환 없이 작업을 처리한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-033",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Lead Convert 후 원본 Lead 레코드는?",
+    "choices": [
+      "자동 삭제",
+      "Converted 상태로 표시되어 보관, 새 Lead 생성에 사용 불가",
+      "Opportunity로 변환",
+      "보관함으로 이동"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lead Convert 후 원본 Lead는 삭제되지 않고 IsConverted = True로 표시되어 보관된다.",
+      "whyCorrect": "삭제되지 않고 Converted 상태로 남아 일반 Lead 목록에서는 제외되므로 정답은 B다.",
+      "whyIncorrect": "자동 삭제되지 않으며, Lead가 Opportunity 레코드로 직접 바뀌는 것도 아니고, 별도 보관함으로 물리적 이동도 하지 않는다.",
+      "examPoint": "Converted Lead는 기본 리스트뷰에서 제외되지만 리포트에서는 조회 가능하다는 점을 기억.",
+      "practicalExample": "이미 Convert된 Lead를 다시 검색하면 목록에는 안 보이지만 관련 Opportunity를 통해 원본 Lead 정보를 추적할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-034",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 Tasks의 상태(Status)로 기본 제공되지 않는 것은?",
+    "choices": [
+      "Not Started",
+      "In Progress",
+      "Completed",
+      "Pending Approval"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Task의 기본 Status 값은 Not Started, In Progress, Completed, Waiting on someone else, Deferred 등이다.",
+      "whyCorrect": "Pending Approval은 기본 제공되는 Task Status 값이 아니므로 정답은 D다.",
+      "whyIncorrect": "Not Started, In Progress, Completed는 모두 표준 기본값이다.",
+      "examPoint": "Approval Process의 상태 개념과 Task Status를 혼동하지 않도록 주의.",
+      "practicalExample": "승인 프로세스가 필요한 업무라면 Task가 아니라 Approval Process를 별도로 구성해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-035",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Opportunity에서 Amount 필드가 자동으로 계산되는 경우는?",
+    "choices": [
+      "항상 수동 입력",
+      "Product와 Price Book을 사용하여 Line Items 추가 시 자동 합산",
+      "Close Date에 따라 자동 계산",
+      "Stage에 따라 자동 설정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Opportunity에 Products(Line Items)를 추가하면 Amount 필드가 모든 Line Item 금액의 합계로 자동 계산된다.",
+      "whyCorrect": "Product+Price Book 기반 Line Item 추가가 자동 합산의 조건이므로 정답은 B다.",
+      "whyIncorrect": "Line Item 없이는 항상 수동 입력해야 하며, Close Date나 Stage는 Amount 계산과 직접 관련이 없다.",
+      "examPoint": "Product를 쓰지 않는 조직에서는 Amount를 수동으로 입력해야 한다는 점도 함께 기억.",
+      "practicalExample": "노트북 10대, 모니터 5대를 Line Item으로 추가하면 각 금액이 합산되어 Amount가 자동으로 채워진다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-036",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Person Account란?",
+    "choices": [
+      "관리자 계정",
+      "개인 소비자를 Account와 Contact를 합친 하나의 레코드로 관리하는 기능",
+      "외부 협력사 계정",
+      "테스트용 계정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Person Account는 B2C 비즈니스를 위해 Account와 Contact 정보를 하나의 레코드로 합쳐 관리하는 기능이다.",
+      "whyCorrect": "개인 소비자를 단일 레코드로 다루는 것이 목적이므로 정답은 B다.",
+      "whyIncorrect": "관리자 계정, 외부 협력사 계정, 테스트용 계정은 Person Account의 정의와 무관하다.",
+      "examPoint": "활성화하면 되돌릴 수 없는 조직 설정이라는 점에 주의(신중한 도입 필요).",
+      "practicalExample": "온라인 쇼핑몰처럼 개인 고객이 많은 B2C 비즈니스에서는 Person Account로 Account/Contact를 하나로 관리한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-037",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Opportunity에서 Next Step 필드의 역할은?",
+    "choices": [
+      "자동으로 계산되는 필드",
+      "담당자가 다음에 해야 할 행동을 기록하는 텍스트 필드",
+      "승인 프로세스 단계",
+      "Stage 자동 업데이트"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Next Step은 영업담당자가 다음으로 취할 행동을 자유롭게 기록하는 텍스트 필드다.",
+      "whyCorrect": "다음 행동을 메모하는 용도이므로 정답은 B다.",
+      "whyIncorrect": "자동 계산 필드도, 승인 프로세스 단계도, Stage 자동 업데이트 기능도 아니다.",
+      "examPoint": "Next Step은 팀원 간 진행 상황 공유에 유용하게 쓰인다.",
+      "practicalExample": "'다음 주 화요일 데모 일정 확정'처럼 다음에 할 일을 Next Step에 기록해둔다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-038",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants prospects who fill out a form on their website to automatically become Leads in Salesforce. What should be configured?",
+    "choices": [
+      "Email-to-Lead",
+      "웹 리드 생성",
+      "Lead Assignment Rule",
+      "Lead Conversion"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "웹사이트 폼 제출 → Lead 자동 생성은 Web-to-Lead(웹 리드 생성)의 표준 용도다.",
+      "whyCorrect": "HTML 폼 코드를 생성해 웹사이트에 삽입하면 제출 시 Lead가 자동 생성되므로 정답은 B다.",
+      "whyIncorrect": "Email-to-Lead는 존재하지 않는 기능이며, Assignment Rule은 생성 후 배정, Conversion은 전환 단계로 각각 다르다.",
+      "examPoint": "웹 폼 → Lead는 Web-to-Lead, 웹 폼 → Case는 Web-to-Case로 명확히 구분.",
+      "practicalExample": "회사 웹사이트의 '상담 신청' 폼을 Web-to-Lead로 연결하면 제출 즉시 영업팀에 새 Lead가 등록된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-039",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "When a Lead is converted, which combination of records is created by default?",
+    "choices": [
+      "Account, Contact",
+      "Account, Case",
+      "Contact, Campaign Member",
+      "Case, Campaign Member"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Lead 전환 시 기본으로 생성되는 것은 Account와 Contact이며 Opportunity는 선택사항이다.",
+      "whyCorrect": "필수 생성 레코드 조합은 Account와 Contact이므로 정답은 A다.",
+      "whyIncorrect": "Case는 Lead 전환 대상이 아니며, Campaign Member도 Lead 전환의 산출물이 아니라서 B, C, D는 모두 틀리다.",
+      "examPoint": "Lead Convert의 '항상 생성'과 '선택적 생성' 항목을 명확히 구분해서 기억할 것.",
+      "practicalExample": "Lead가 전환되면 Account와 Contact가 자동으로 생기고, 실제 거래가 논의될 때만 별도로 Opportunity를 추가한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-040",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A customer sends an email to support@universalcontainers.com and a Case is automatically created in Salesforce. Which feature is being used?",
+    "choices": [
+      "웹 케이스 생성",
+      "이메일 케이스",
+      "Case Assignment Rule",
+      "Auto-Response Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "지정된 이메일 주소로 수신된 메일이 자동으로 Case로 변환되는 것은 Email-to-Case의 동작이다.",
+      "whyCorrect": "이메일 채널을 통한 자동 Case 생성이므로 정답은 B다.",
+      "whyIncorrect": "Web-to-Case는 웹 폼 기반이고, Assignment Rule은 생성 후 배정, Auto-Response Rule은 확인 이메일 발송 기능이다.",
+      "examPoint": "이메일 → Case는 Email-to-Case로 직결.",
+      "practicalExample": "고객이 support@universalcontainers.com으로 보낸 메일이 자동으로 Case로 변환되고 제목/본문이 필드에 매핑된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-041",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants Cases submitted by Enterprise customers to be automatically routed to the Enterprise Support queue. What should be configured?",
+    "choices": [
+      "Case Escalation Rule",
+      "Case Assignment Rule",
+      "Auto-Response Rule",
+      "Sharing Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "특정 기준(Enterprise 고객)에 따라 Case를 자동으로 큐/담당자에 배정하는 것은 Case Assignment Rule의 역할이다.",
+      "whyCorrect": "조건 기반 자동 라우팅이 필요하므로 정답은 B다.",
+      "whyIncorrect": "Escalation Rule은 미해결 Case의 시간 초과 에스컬레이션, Auto-Response Rule은 확인 이메일, Sharing Rule은 레코드 접근 공유 기능이다.",
+      "examPoint": "'자동 라우팅/배정' 키워드는 Assignment Rule로 직결.",
+      "practicalExample": "Account Type = Enterprise인 Case는 Assignment Rule에 의해 Enterprise Support 큐로 자동 배정된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-042",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep is working on a deal with a potential revenue of $150,000. Which object should be used to track this deal?",
+    "choices": [
+      "Lead",
+      "Account",
+      "Opportunity",
+      "Quote"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "금액과 마감일이 있는 잠재 거래를 추적하는 표준 오브젝트는 Opportunity다.",
+      "whyCorrect": "$150,000 규모의 거래를 단계별로 추적해야 하므로 정답은 C다.",
+      "whyIncorrect": "Lead는 아직 검증되지 않은 잠재 고객, Account는 회사/고객사, Quote는 Opportunity에서 파생되는 견적서로 각각 다른 목적이다.",
+      "examPoint": "영업 거래(딜) 자체를 추적하는 오브젝트는 Opportunity라는 점을 기억.",
+      "practicalExample": "영업담당자는 $150,000 규모의 계약 논의를 Opportunity 레코드로 만들어 Stage와 Close Date를 관리한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-043",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at Universal Containers is converting a Lead. They want to create an Opportunity as part of the conversion. Which of the following is correct?",
+    "choices": [
+      "An Opportunity is always created during Lead conversion",
+      "An Opportunity is optional during Lead conversion",
+      "An Opportunity cannot be created during Lead conversion",
+      "Lead conversion only creates an Account"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lead 전환 시 Account와 Contact는 기본 생성되지만 Opportunity는 체크박스로 선택 가능한 옵션이다.",
+      "whyCorrect": "Opportunity 생성 여부는 선택사항이므로 정답은 B다.",
+      "whyIncorrect": "항상 생성되는 것도, 생성이 불가능한 것도, Account만 생성되는 것도 사실이 아니다.",
+      "examPoint": "Opportunity 생성 체크박스는 Lead Convert 화면에서 기본적으로 켜져 있지만 끌 수 있다.",
+      "practicalExample": "단순 정보성 문의였던 Lead는 Opportunity 체크를 끄고 Account/Contact만 생성해 전환할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-044",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants all new Leads from the Financial Services industry to be automatically assigned to the FinServ Sales team. What should be configured?",
+    "choices": [
+      "Case Assignment Rule",
+      "플로우",
+      "Lead Assignment Rule",
+      "Auto-Response Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "업종 기준으로 Lead를 특정 팀에 자동 배정하는 것은 Lead Assignment Rule의 표준 용도다.",
+      "whyCorrect": "Financial Services 업종 Lead를 FinServ 팀에 자동 배정해야 하므로 정답은 C다.",
+      "whyIncorrect": "Case Assignment Rule은 Case 전용이며, Flow로도 구현 가능하지만 전용 기능은 Lead Assignment Rule, Auto-Response Rule은 이메일 발송 기능이다.",
+      "examPoint": "업종/지역/소스 기준의 Lead 자동 배정 문제는 Lead Assignment Rule로 직결.",
+      "practicalExample": "Industry = Financial Services인 Lead는 Assignment Rule에 의해 자동으로 FinServ Sales 팀에 배정된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-045",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A customer sends an email to support@universalcontainers.com. The email automatically creates a Case in Salesforce. Which feature is being used?",
+    "choices": [
+      "웹 케이스 생성",
+      "이메일 케이스",
+      "Auto-Response Rule",
+      "Case Assignment Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "지정 이메일 주소로 수신된 메일을 자동으로 Case로 변환하는 것은 Email-to-Case다.",
+      "whyCorrect": "이메일 → Case 자동 생성이므로 정답은 B다.",
+      "whyIncorrect": "Web-to-Case는 HTML 폼 기반, Auto-Response Rule은 확인 이메일 발송, Assignment Rule은 생성 후 배정 기능이다.",
+      "examPoint": "채널이 이메일이면 Email-to-Case를 최우선으로 고려.",
+      "practicalExample": "support@universalcontainers.com으로 온 메일이 자동으로 Case로 등록된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-046",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to ensure that all Cases with Priority = Critical that remain unresolved after 2 hours are escalated to the Support Manager. What should be configured?",
+    "choices": [
+      "Case Assignment Rule",
+      "Case Escalation Rule",
+      "플로우",
+      "Approval Process"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "일정 시간 내 미해결 Case를 자동으로 상위에 넘기는 것은 Case Escalation Rule의 표준 용도다.",
+      "whyCorrect": "Critical Case가 2시간 내 해결되지 않으면 에스컬레이션해야 하므로 정답은 B다.",
+      "whyIncorrect": "Assignment Rule은 시간 조건 없는 최초 배정, Flow로도 가능하지만 전용 기능은 Escalation Rule, Approval Process는 승인 워크플로우로 목적이 다르다.",
+      "examPoint": "'N시간 내 미해결 시 자동 에스컬레이션'은 항상 Escalation Rule.",
+      "practicalExample": "Critical Case가 2시간 동안 처리되지 않으면 Escalation Rule이 자동으로 Support Manager에게 알린다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-047",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants customers to be able to check the status of their Cases and find answers in a knowledge base without calling support. What should be set up?",
+    "choices": [
+      "Chatter Groups",
+      "Experience Cloud (Community) site with Knowledge",
+      "Salesforce Mobile App",
+      "Case Assignment Rules"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "고객이 직접 접속해 Case 상태 확인과 지식 검색을 할 수 있는 셀프서비스 채널은 Experience Cloud + Knowledge 조합이다.",
+      "whyCorrect": "Case 조회와 Knowledge 검색을 함께 제공하는 외부 포털을 구축해야 하므로 정답은 B다.",
+      "whyIncorrect": "Chatter Groups는 내부 협업, Mobile App은 내부 사용자 전용, Assignment Rules는 내부 배정 기능으로 고객 대상 셀프서비스와는 무관하다.",
+      "examPoint": "고객 셀프서비스 문제는 항상 Experience Cloud를 우선 고려.",
+      "practicalExample": "고객이 포털에 로그인해 자신의 Case 진행 상황과 관련 아티클을 직접 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-048",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at Universal Containers needs to track all emails, calls, and meetings with a customer in one place on the Account record. Where is this information visible?",
+    "choices": [
+      "Related Lists tab",
+      "Chatter Feed",
+      "Activity Timeline",
+      "Notes & Attachments"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Account 레코드에서 통화, 이메일, 미팅 이력을 시간순으로 통합해 보여주는 것은 Activity Timeline이다.",
+      "whyCorrect": "모든 활동을 한 곳에서 시간순으로 봐야 하므로 정답은 C다.",
+      "whyIncorrect": "Related Lists는 항목별로 개별 표시되고, Chatter Feed는 협업 게시물, Notes & Attachments는 문서 첨부 기능으로 목적이 다르다.",
+      "examPoint": "'한 곳에서 시간순 통합'이라는 표현은 Activity Timeline으로 직결.",
+      "practicalExample": "영업담당자가 Account 페이지를 열면 최근 통화와 예정된 미팅을 Activity Timeline에서 한눈에 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-049",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to generate a PDF quote to send to customers directly from an Opportunity. Which Salesforce feature enables this?",
+    "choices": [
+      "Approval Process",
+      "Quotes",
+      "Products and Price Books only",
+      "Opportunity Line Items"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Opportunity에서 정식 견적서를 PDF로 생성해 발송하는 표준 기능은 Quotes다.",
+      "whyCorrect": "Opportunity Line Items를 기반으로 Quote를 만들고 PDF 출력이 가능하므로 정답은 B다.",
+      "whyIncorrect": "Approval Process는 승인 워크플로우, Price Books만으로는 PDF 생성 불가, Line Items는 Quote 구성의 일부일 뿐이다.",
+      "examPoint": "Opportunity → Quote → PDF 흐름이 표준 견적 프로세스임을 기억.",
+      "practicalExample": "영업담당자가 Opportunity의 제품을 기반으로 Quote를 생성해 PDF로 고객에게 이메일로 전달한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-050",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A new lead source at Universal Containers is a website contact form. When a visitor submits the form, a Lead should automatically appear in Salesforce. What should be configured?",
+    "choices": [
+      "Email-to-Lead",
+      "웹 리드 생성",
+      "Auto-Response Rule",
+      "Lead Assignment Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "웹사이트 폼 제출 시 Lead가 자동으로 생성되는 기능은 Web-to-Lead다.",
+      "whyCorrect": "HTML 폼 코드 생성 후 웹사이트에 삽입하면 제출 즉시 Lead가 생성되므로 정답은 B다.",
+      "whyIncorrect": "Email-to-Lead는 존재하지 않는 기능이며, Auto-Response Rule은 확인 이메일, Assignment Rule은 생성 후 배정 기능이다.",
+      "examPoint": "웹 폼 → Lead는 항상 Web-to-Lead로 연결.",
+      "practicalExample": "회사 웹사이트의 문의 폼을 Web-to-Lead로 연결하면 방문자가 제출한 순간 Lead가 생성된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-051",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to track which marketing campaign influenced each closed Opportunity. How is this tracked in Salesforce?",
+    "choices": [
+      "Campaign Member object",
+      "Primary Campaign Source field on Opportunity",
+      "Campaign Influence feature",
+      "Both B and C"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Opportunity에 영향을 준 캠페인은 Primary Campaign Source(단일 캠페인)와 Campaign Influence(다중 터치)로 각각 다른 방식으로 추적한다.",
+      "whyCorrect": "단일 귀속과 다중 터치 귀속을 모두 활용할 수 있으므로 정답은 D(Both B and C)다.",
+      "whyIncorrect": "Campaign Member object는 캠페인 참여자 자체를 나타낼 뿐, 어떤 캠페인이 Opportunity에 영향을 줬는지를 직접 추적하는 기능은 아니다.",
+      "examPoint": "단일 캠페인 귀속 = Primary Campaign Source, 다중 캠페인 귀속 = Campaign Influence, 두 기능이 상호 보완적이라는 점을 기억.",
+      "practicalExample": "이메일 캠페인과 웨비나를 모두 거친 고객의 Opportunity는 Primary Campaign Source에 대표 캠페인 하나가, Campaign Influence에는 두 캠페인 모두가 기록된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-052",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants support agents to quickly attach a pre-approved answer to a Case without rewriting the same solution repeatedly. Which feature should be used?",
+    "choices": [
+      "Chatter Post",
+      "Quick Text",
+      "Salesforce Knowledge Article",
+      "Email Template"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "사전 승인된 표준 답변을 Case에 반복해서 첨부할 수 있게 하는 것은 Salesforce Knowledge Article이다.",
+      "whyCorrect": "작성·승인·재사용이 가능한 지식 베이스 아티클이 필요하므로 정답은 C다.",
+      "whyIncorrect": "Chatter Post는 비공식적 게시물, Quick Text는 짧은 스니펫, Email Template는 이메일 발송용으로 각각 목적이 다르다.",
+      "examPoint": "'승인된 해결책의 반복 재사용'은 Knowledge Article의 전형적 사용 사례.",
+      "practicalExample": "'환불 정책' Knowledge Article을 만들어두면 여러 상담원이 매번 같은 설명을 새로 쓰지 않아도 된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-053",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers needs to ensure that Cases from VIP customers are always assigned to senior support agents. What should be configured?",
+    "choices": [
+      "Case Escalation Rule",
+      "Manual Assignment",
+      "Case Assignment Rule with criteria based on Account Type",
+      "Sharing Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "VIP 등급 같은 Account 속성 기준으로 Case를 특정 상담원 그룹에 자동 배정하는 것은 Case Assignment Rule의 역할이다.",
+      "whyCorrect": "Account Type 기준의 조건부 자동 배정이 필요하므로 정답은 C다.",
+      "whyIncorrect": "Escalation Rule은 시간 초과 기반, Manual Assignment는 자동화가 아니며, Sharing Rule은 레코드 접근 공유 기능이다.",
+      "examPoint": "배정 기준이 되는 필드(Account Type, Origin 등)로 Assignment Rule의 조건 항목을 구성.",
+      "practicalExample": "Account Type = VIP인 Case는 Assignment Rule에 의해 시니어 상담사 큐로 자동 배정된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-054",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales manager at Universal Containers wants to see the total value of all Opportunities in the pipeline, broken down by stage. Which Salesforce feature provides this view?",
+    "choices": [
+      "Account Hierarchy",
+      "Opportunity Kanban View",
+      "Pipeline Report or Dashboard",
+      "Forecast"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Stage별로 나눈 전체 파이프라인 금액을 확인하려면 그룹화와 집계가 가능한 Pipeline Report/Dashboard가 필요하다.",
+      "whyCorrect": "총액을 Stage 기준으로 분해해서 보여줘야 하므로 정답은 C다.",
+      "whyIncorrect": "Account Hierarchy는 회사 구조, Kanban View는 카드형 시각 UI일 뿐 집계 리포트는 아니며, Forecast는 예측치 위주라 현재 파이프라인 총액 breakdown과는 다르다.",
+      "examPoint": "Stage별 breakdown + 총액 = Summary Report/Dashboard 형태의 Pipeline Report.",
+      "practicalExample": "영업 관리자가 대시보드에서 Prospecting, Proposal, Negotiation 단계별 파이프라인 총액을 한눈에 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-055",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to track the revenue potential of products being sold across different countries with different currencies. Which Salesforce feature handles multi-currency?",
+    "choices": [
+      "Multiple Price Books",
+      "Multiple Record Types",
+      "Multi-Currency feature in Setup",
+      "Custom Currency formula fields"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "여러 국가의 서로 다른 통화로 거래를 추적하려면 Setup에서 Multi-Currency 기능을 활성화해야 한다.",
+      "whyCorrect": "다중 통화 지원 및 환율 관리는 Multi-Currency feature가 담당하므로 정답은 C다.",
+      "whyIncorrect": "Price Book은 가격 목록 관리일 뿐 통화 변환 기능이 아니며, Record Type은 레코드 유형 분기, 커스텀 수식 필드만으로는 공식적인 환율 지원이 되지 않는다.",
+      "examPoint": "Multi-Currency는 한 번 활성화하면 비활성화할 수 없는 조직 설정이라는 점에 유의.",
+      "practicalExample": "미국, 한국, 일본 지사의 거래를 각각 USD, KRW, JPY로 기록하고 관리 환율로 환산해 비교하려면 Multi-Currency를 활성화한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-056",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A support team at UC uses a shared email inbox to handle customer inquiries. They want Cases to be automatically created and routed based on the email subject. What should be configured?",
+    "choices": [
+      "웹 케이스 생성",
+      "Email-to-Case with Assignment Rules",
+      "Auto-Response Rules",
+      "Escalation Rules"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "공유 이메일 수신함으로 들어오는 문의를 Case로 자동 생성하고 제목 등 기준으로 라우팅하려면 Email-to-Case와 Assignment Rule을 함께 구성해야 한다.",
+      "whyCorrect": "생성은 Email-to-Case, 라우팅은 Assignment Rule이 담당하는 조합이 필요하므로 정답은 B다.",
+      "whyIncorrect": "Web-to-Case는 웹 폼 기반이라 이메일과 무관하며, Auto-Response Rule은 확인 이메일 발송, Escalation Rule은 시간 초과 처리 기능이다.",
+      "examPoint": "'이메일 기반 생성 + 라우팅'처럼 두 요구가 섞이면 두 기능의 조합이 정답인 경우가 많다.",
+      "practicalExample": "제목에 'Billing'이 포함된 이메일은 Email-to-Case로 Case가 생성된 뒤 Assignment Rule에 의해 결제팀 큐로 라우팅된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-057",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to track whether the committed delivery date on each Opportunity was met. They need a field that calculates the difference in days between Committed Date and Actual Delivery Date. Which field type?",
+    "choices": [
+      "Date Field",
+      "Rollup Summary",
+      "Formula Field",
+      "Cross-Object Formula"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "같은 레코드 안의 두 날짜 필드 차이를 계산하려면 Formula Field를 사용한다.",
+      "whyCorrect": "Committed Date와 Actual Delivery Date 차이(일수)를 자동 계산해야 하므로 정답은 C다.",
+      "whyIncorrect": "Date Field는 직접 입력만 가능하고, Roll-Up Summary는 자식 레코드 집계용, Cross-Object Formula는 부모 오브젝트 필드 참조용으로 이 시나리오와 맞지 않는다.",
+      "examPoint": "같은 오브젝트 내 필드 간 계산은 일반 Formula Field로 충분하다는 점을 기억.",
+      "practicalExample": "Actual Delivery Date - Committed Date 수식을 넣은 Formula Field로 납기 지연 일수를 자동 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-058",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers uses Price Books to manage product pricing. A customer is eligible for a special discount pricing tier. What should be created?",
+    "choices": [
+      "A separate Price Book for that customer",
+      "A discount Validation Rule",
+      "A custom Opportunity field",
+      "A custom Product record"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "고객별 특별 할인 가격 체계를 관리하려면 해당 고객 전용 Price Book을 별도로 만들어 연결하는 것이 표준 방법이다.",
+      "whyCorrect": "특수 가격 등급 관리는 별도 Price Book 생성으로 처리하므로 정답은 A다.",
+      "whyIncorrect": "Validation Rule은 유효성 검사 기능이라 가격 관리와 무관하고, 커스텀 필드나 커스텀 Product는 Price Book이라는 표준 가격 체계를 대체할 수 없다.",
+      "examPoint": "고객/등급별 차등 가격은 Custom Price Book으로 구성하는 것이 표준 패턴.",
+      "practicalExample": "우수 고객 전용 할인 Price Book을 만들어 해당 고객의 Opportunity에 연결하면 자동으로 할인가가 적용된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-059",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to automatically create a Case when a customer submits a form on their website. The Case should include the customers email and description of the issue. What should be configured?",
+    "choices": [
+      "이메일 케이스",
+      "Lead Capture Form",
+      "웹 케이스 생성",
+      "Flow with Screen"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Web-to-Case는 웹사이트에 HTML 폼을 삽입해 방문자가 제출한 내용을 Case 레코드로 자동 생성하는 기능이다.",
+      "whyCorrect": "웹사이트 폼 제출 시 고객 이메일과 이슈 설명을 담은 Case가 자동 생성돼야 하므로 정답은 C(웹 케이스 생성)다. Setup에서 폼 필드를 매핑하고 생성된 HTML 코드를 웹사이트에 삽입하면 제출 즉시 Case가 생성된다.",
+      "whyIncorrect": "A(이메일 케이스)는 이메일 기반이라 웹 폼과 무관하다. B(Lead Capture Form)는 표준 Salesforce 기능이 아니다. D(Flow with Screen)는 내부 사용자용 화면으로 외부 웹사이트 폼 제출과는 무관하다.",
+      "examPoint": "Email-to-Case vs Web-to-Case 구분 — 채널(이메일 vs 웹폼)에 주목.",
+      "practicalExample": "회사 홈페이지 '문의하기' 폼을 Web-to-Case로 연결하면 고객이 제출한 즉시 지원팀 Case 큐에 등록된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-060",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A support agent at Universal Containers resolves a Case by finding the answer in a Knowledge article. They want to link the article to the Case for tracking. Which feature enables this?",
+    "choices": [
+      "Chatter Post with article link",
+      "Knowledge Article attachment",
+      "Case-Knowledge relationship via Knowledge One",
+      "Notes & Attachments"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Knowledge One(Case Feed의 Knowledge 위젯)은 상담원이 Case를 벗어나지 않고 Knowledge 아티클을 검색해 첨부·연결할 수 있게 한다.",
+      "whyCorrect": "아티클을 찾은 뒤 Case에 링크해 추적하려면 Case-Article 관계를 만드는 Knowledge One 기능을 사용해야 하므로 정답은 C다. 이 연결은 Case의 관련 Article 목록에 기록되어 이후에도 추적 가능하다.",
+      "whyIncorrect": "A(Chatter Post)는 비공식 링크 공유일 뿐 정식 관계가 아니다. B(단순 첨부)는 표준 용어가 아니며 추적 가능한 관계를 형성하지 않는다. D(Notes & Attachments)는 파일 첨부 기능으로 Knowledge 아티클 연결과 무관하다.",
+      "examPoint": "Knowledge와 Case를 연결하는 표준 기능 이름(Knowledge One)을 기억.",
+      "practicalExample": "상담원이 '비밀번호 재설정' 아티클을 찾아 Case에 연결하면, 이후 유사 Case에서도 이 연결 이력을 참고할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-061",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to track the success rate of marketing campaigns by seeing how many Leads from each Campaign were converted to Opportunities. Which Salesforce feature provides this?",
+    "choices": [
+      "Campaign Hierarchy",
+      "Campaign ROI Report",
+      "Campaign Member Status",
+      "Campaign Influence"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Campaign ROI Report는 캠페인별 Lead 수, 전환 수, 생성된 Opportunity, 매출을 함께 보여주는 표준 리포트다.",
+      "whyCorrect": "캠페인별 Lead가 Opportunity로 전환된 비율을 확인해야 하므로 정답은 B(Campaign ROI Report)다. 이 리포트는 Campaign과 연결된 Lead/Opportunity 데이터를 종합해서 보여준다.",
+      "whyIncorrect": "A(Campaign Hierarchy)는 캠페인 간 상하위 구조만 보여준다. C(Campaign Member Status)는 개별 참여자의 응답 상태(초대됨/참석함 등)이지 전환율 집계가 아니다. D(Campaign Influence)는 Opportunity에 영향 준 캠페인 귀속이지 전환율 리포트가 아니다.",
+      "examPoint": "'전환율/성과 측정' 키워드가 나오면 ROI Report를 떠올릴 것.",
+      "practicalExample": "마케팅팀이 어떤 캠페인이 가장 많은 실거래로 이어졌는지 파악할 때 Campaign ROI Report를 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-062",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to ensure that when a Lead is converted, the original Lead source is preserved on the resulting Opportunity. How is this achieved?",
+    "choices": [
+      "Manually copy the Lead Source",
+      "The Lead Source field maps automatically during conversion",
+      "Create a Validation Rule to enforce it",
+      "Use a Flow to copy the value"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lead Convert 시 Lead의 표준 필드(Lead Source 포함)는 매핑 설정에 따라 자동으로 Account/Contact/Opportunity 필드로 이전된다.",
+      "whyCorrect": "Lead Source는 별도 조치 없이 Lead 변환 시 Opportunity의 Lead Source 필드로 자동 매핑되므로 정답은 B다.",
+      "whyIncorrect": "A(수동 복사)는 불필요한 수작업이다. C(Validation Rule)는 값 매핑이 아닌 유효성 검사 기능이다. D(Flow로 복사)는 표준 기능이 이미 처리하므로 불필요하다.",
+      "examPoint": "Lead Convert의 필드 매핑은 Setup > Lead에서 사전 구성되며 관리자가 커스텀 매핑을 추가/수정할 수 있다.",
+      "practicalExample": "'전시회'로 유입된 Lead를 전환하면, 생성된 Opportunity에도 Lead Source = '전시회'가 그대로 남아 캠페인 성과 분석에 활용된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-063",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales manager at Universal Containers wants to see a forecast of expected revenue for the next quarter based on Opportunity stages and probability. Which Salesforce feature provides this?",
+    "choices": [
+      "Pipeline Report",
+      "Opportunity Kanban",
+      "Collaborative Forecasts",
+      "Opportunity History Report"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Collaborative Forecasts는 Opportunity의 Stage·Amount·Close Date·Probability를 기반으로 팀/개인 단위 예상 매출을 집계하고 관리자가 조정(Override) 가능한 예측 도구다.",
+      "whyCorrect": "Stage와 확률 기반 다음 분기 예상 매출을 봐야 하므로 정답은 C(Collaborative Forecasts)다.",
+      "whyIncorrect": "A(Pipeline Report)는 현재 파이프라인 현황 스냅샷일 뿐 예측 조정 기능이 없다. B(Kanban)는 단계별 카드 UI다. D(History Report)는 과거 변경 이력이다.",
+      "examPoint": "'예측(Forecast)'이라는 단어가 나오면 Collaborative Forecasts를 우선 고려.",
+      "practicalExample": "영업 관리자가 이번 분기 팀 전체 예상 매출을 확인하고 특정 팀원의 과대 예측치를 직접 하향 조정한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-064",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to send an automated email to acknowledge receipt every time a customer submits a new Case. The email should come from a generic support address. What should be configured?",
+    "choices": [
+      "Workflow Email Alert",
+      "Auto-Response Rule for Cases",
+      "Record-Triggered Flow with Email action",
+      "Email-to-Case reply"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Auto-Response Rule은 Case 생성 시(출처와 무관하게) 조건에 맞춰 자동으로 확인 이메일을 발송하는 기능이다.",
+      "whyCorrect": "Case 제출 즉시 정형화된 확인 이메일을 보내야 하므로 Case용 Auto-Response Rule이 정답(B)이다.",
+      "whyIncorrect": "A(Workflow Email Alert)는 폐기 예정 기능이며 별도 규칙 설정이 더 번거롭다. C(Record-Triggered Flow)도 가능은 하나 이 요구에는 표준 기능인 Auto-Response Rule이 더 적합하다. D(Email-to-Case reply)는 수신 이메일 처리 기능으로 자동 확인 발송과 무관하다.",
+      "examPoint": "Case Auto-Response Rule은 원본이 Web-to-Case든 Email-to-Case든 상관없이 동작한다.",
+      "practicalExample": "고객이 웹 폼으로 Case를 제출하면 '문의가 접수되었습니다'라는 자동 이메일이 즉시 발송된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-065",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants every Opportunity in the Proposal stage to have a related Quote before it can be moved to Negotiation. What should be configured?",
+    "choices": [
+      "Approval Process",
+      "Validation Rule checking for related Quote",
+      "Required field on Opportunity",
+      "Assignment Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Validation Rule은 레코드 저장 시 조건을 검사해 조건 불충족 시 저장을 막는 기능이며, 관련 레코드(Quote) 존재 여부는 수식으로 확인할 수 있다.",
+      "whyCorrect": "Quote가 있어야만 Stage 변경을 허용하는 조건부 제약은 Validation Rule로 구현하므로 정답은 B다.",
+      "whyIncorrect": "A(Approval Process)는 승인자 경유 워크플로우로 단순 조건 차단에는 과하다. C(Required field)는 필드 필수 여부만 강제하며 관련 레코드 존재는 검증하지 못한다. D(Assignment Rule)는 담당자 배정 기능으로 무관하다.",
+      "examPoint": "'조건 충족 전 저장/전환 차단'은 Validation Rule의 전형적 사용 사례.",
+      "practicalExample": "Opportunity를 Negotiation으로 바꾸려 할 때 연결된 Quote가 없으면 저장이 거부되고 에러 메시지가 표시된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-066",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to see which Cases are taking the longest to resolve and identify bottlenecks. Which report type should be used?",
+    "choices": [
+      "Tabular Report of all open Cases",
+      "Summary Report grouped by Stage with age calculated",
+      "Matrix Report of Cases by Agent and Status",
+      "Joined Report of Cases and Accounts"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Summary Report는 그룹화 + 요약(합계/평균) 기능을 제공하며, 경과일 수를 계산하는 수식 필드와 결합해 병목을 파악할 수 있다.",
+      "whyCorrect": "Case를 상태별로 묶고 경과 시간을 함께 보여줘야 하므로 그룹화가 가능한 Summary Report가 필요해 정답은 B다.",
+      "whyIncorrect": "A(Tabular)는 그룹화·집계 기능이 없어 병목 파악에 부적합하다. C(Matrix)는 이중 그룹화(행+열)로 이 시나리오에는 과하다. D(Joined)는 서로 다른 오브젝트를 나란히 볼 때 사용하며 이 요구와 무관하다.",
+      "examPoint": "그룹화 1단계 요약이 필요하면 Summary, 2단계 교차 분석이 필요하면 Matrix.",
+      "practicalExample": "Status별로 그룹화한 Summary Report에 'Case Age(일)' 필드를 추가해 어떤 상태의 Case가 가장 오래 걸리는지 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-067",
+    "category": "세일즈포스",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants Leads generated from paid ads to be automatically assigned to the Digital Sales team and get a follow-up Task created within 24 hours. What should be configured?",
+    "choices": [
+      "Lead Assignment Rule + Record-Triggered Flow",
+      "Auto-Response Rule + Escalation Rule",
+      "Sharing Rule + Approval Process",
+      "Campaign + Workflow Rule"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Lead Assignment Rule은 조건 기반 담당자/팀 자동 배정을, Record-Triggered Flow는 레코드 생성/변경 시 후속 작업(Task 생성 등)을 자동화한다.",
+      "whyCorrect": "배정(팀 지정)은 Lead Assignment Rule, 후속 Task 생성은 Record-Triggered Flow가 담당하므로 두 기능의 조합인 A가 정답이다.",
+      "whyIncorrect": "B(Auto-Response + Escalation Rule)는 이메일 발송과 시간 초과 에스컬레이션 기능이라 배정·Task 생성과 무관하다. C(Sharing Rule + Approval Process)는 공유 권한과 승인 프로세스로 이 요구와 무관하다. D(Campaign + Workflow Rule)는 Workflow Rule이 폐기 예정이라 신규 구성에 부적합하다.",
+      "examPoint": "'자동 배정 + 후속 작업'처럼 두 가지 이상의 요구가 섞이면 정답도 두 기능의 조합인 경우가 많다.",
+      "practicalExample": "광고 유입 Lead가 생성되면 Assignment Rule로 Digital Sales 팀에 배정되고, Flow가 담당자에게 24시간 내 완료할 Follow-up Task를 자동 생성한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-068",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to track whether each Opportunity was influenced by any marketing campaigns before closing. Which feature provides multi-touch campaign attribution?",
+    "choices": [
+      "Primary Campaign Source field only",
+      "Campaign Hierarchy",
+      "Campaign Influence",
+      "Campaign Member Status"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Campaign Influence는 Opportunity 성사에 영향을 준 여러 캠페인을 모두 추적하는 다중 터치(Multi-Touch) 귀속 모델이다.",
+      "whyCorrect": "여러 캠페인이 영향을 미쳤는지를 추적해야 하므로 다중 터치를 지원하는 Campaign Influence가 정답(C)이다.",
+      "whyIncorrect": "A(Primary Campaign Source만)는 단일 캠페인만 기록한다. B(Campaign Hierarchy)는 캠페인 간 구조 파악용이다. D(Campaign Member Status)는 개별 참여자 응답 상태다.",
+      "examPoint": "단일 캠페인 귀속 = Primary Campaign Source, 다중 캠페인 귀속 = Campaign Influence.",
+      "practicalExample": "이메일 캠페인과 웨비나 캠페인 둘 다 거친 고객의 Opportunity에는 두 캠페인이 모두 Campaign Influence에 기록된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-069",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to display a customer-facing knowledge base where customers can search articles and submit Cases without contacting support directly. Which Salesforce product enables this?",
+    "choices": [
+      "Salesforce Mobile App",
+      "Customer Portal",
+      "Service Console",
+      "Chatter External"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Customer Portal(현재는 Experience Cloud로 통합)은 고객이 로그인해 Knowledge 아티클 검색과 Case 제출을 셀프서비스로 할 수 있는 외부 사이트다.",
+      "whyCorrect": "고객 대상 지식 베이스와 Case 제출 기능을 함께 제공하는 것은 Customer Portal(Experience Cloud)이므로 정답은 B다.",
+      "whyIncorrect": "A(Mobile App)는 내부 사용자용 앱이다. C(Service Console)는 상담원 내부 작업 환경이다. D(Chatter External)는 외부 협업자와의 제한적 Chatter 공유 기능으로 지식 베이스나 Case 제출 기능이 없다.",
+      "examPoint": "고객이 직접 접속하는 셀프서비스 채널은 Portal/Experience Cloud로 구성.",
+      "practicalExample": "고객이 로그인해 '배송 지연' 관련 아티클을 검색하고 해결 안 되면 바로 Case를 제출한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-070",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at Universal Containers needs to create a formal price quote for a customer based on the products in an Opportunity. Which standard Salesforce feature should be used?",
+    "choices": [
+      "Opportunity Line Items only",
+      "Quotes with Quote Line Items and PDF generation",
+      "Price Books with PDF export",
+      "Custom Quote__c object"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Quotes는 Opportunity의 Product(Line Items)를 기반으로 정식 견적서를 생성하고 PDF로 출력할 수 있는 표준 기능이다.",
+      "whyCorrect": "Opportunity 내 제품을 기반으로 공식 견적서를 만들어야 하므로 Quotes(+Quote Line Items, PDF 생성)가 정답(B)이다.",
+      "whyIncorrect": "A(Opportunity Line Items only)는 제품 목록만 있을 뿐 PDF 견적서 생성 기능이 없다. C(Price Books with PDF export)는 Price Book 자체는 PDF 출력 기능이 없다. D(Custom Quote__c object)는 표준 기능이 이미 존재하므로 불필요한 커스텀 개발이다.",
+      "examPoint": "Opportunity → Quote → PDF 흐름이 표준 견적 프로세스.",
+      "practicalExample": "영업담당자가 Opportunity의 제품을 기반으로 Quote를 생성하고 PDF로 내보내 고객에게 이메일로 전달한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-071",
+    "category": "세일즈포스",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants their inside sales team to be able to convert Leads to Opportunities without requiring an Account or Contact to be created. Is this possible?",
+    "choices": [
+      "No — Account and Contact are always required during Lead conversion",
+      "Yes — the option to create Account and Contact can be unchecked during conversion",
+      "Yes — if the Opportunity already exists",
+      "No — all three records must always be created"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lead Convert 화면에서는 기본적으로 Account/Contact 생성 체크박스가 켜져 있지만, '기존 Account에 연결' 옵션을 선택하면 새 레코드를 만들지 않고 기존 레코드에 연결할 수 있다.",
+      "whyCorrect": "Lead 전환 시 신규 Account/Contact 생성 대신 기존 레코드를 선택해 연결할 수 있으므로 정답은 B다.",
+      "whyIncorrect": "A(항상 필수)는 기존 레코드 재사용 옵션을 무시한 설명이다. C(Opportunity 존재 시에만 가능)는 조건과 무관하다. D(항상 세 레코드 모두 필요)는 Opportunity가 선택사항이라는 규칙과 모순된다.",
+      "examPoint": "Lead Convert 화면에서 Account/Contact는 '신규 생성 vs 기존 레코드 매칭' 중 선택 가능하다는 점을 기억.",
+      "practicalExample": "이미 존재하는 회사의 신규 담당자가 문의해왔다면, Lead 전환 시 기존 Account를 검색해 연결하고 새 Account를 만들지 않을 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-072",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A support agent at Universal Containers needs to look up the answer to a customer question and respond without leaving the Case. Which feature allows searching Knowledge articles directly from a Case?",
+    "choices": [
+      "Chatter search",
+      "Knowledge component on the Case page layout",
+      "Related list search",
+      "External website link"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Case Page Layout에 Knowledge 컴포넌트(Lightning Knowledge 사이드바)를 추가하면 상담원이 Case 화면을 벗어나지 않고 관련 아티클을 검색·삽입할 수 있다.",
+      "whyCorrect": "'Case를 벗어나지 않고 검색'이 핵심 조건이므로 Case 레이아웃에 내장된 Knowledge 컴포넌트가 정답(B)이다.",
+      "whyIncorrect": "A(Chatter 검색)는 게시물 검색이지 지식 아티클 검색이 아니다. C(Related list search)는 표준 기능이 아니며 Knowledge 전용 검색이 아니다. D(외부 링크)는 Salesforce 밖으로 나가야 하므로 조건에 위배된다.",
+      "examPoint": "상담원 생산성 문제에서 'Case를 벗어나지 않고'라는 표현이 나오면 Knowledge 컴포넌트/Knowledge One을 떠올릴 것.",
+      "practicalExample": "상담원이 Case 화면 옆 패널에서 '반품 정책' 아티클을 검색해 바로 답변에 삽입한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-073",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to track all phone calls, emails, and meetings with each Account in a single chronological feed. What Salesforce feature provides this unified activity view?",
+    "choices": [
+      "Related Lists for Tasks and Events separately",
+      "Activity Timeline on the Account record",
+      "Chatter feed only",
+      "Reports on Activities"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Activity Timeline은 레코드(Account 포함)에 연결된 Task와 Event를 시간순으로 통합해서 보여주는 표준 기능이다.",
+      "whyCorrect": "통화·이메일·미팅을 한 곳에서 시간순으로 봐야 하므로 Account의 Activity Timeline이 정답(B)이다.",
+      "whyIncorrect": "A(Related Lists 개별 탭)는 Task/Event가 따로 표시되어 통합된 시간순 뷰가 아니다. C(Chatter feed only)는 게시물 위주라 실제 활동 기록과 다르다. D(Reports on Activities)는 별도 리포트를 만들어야 해서 실시간 레코드 화면 확인용이 아니다.",
+      "examPoint": "'레코드에서 벗어나지 않고 통합된 활동 이력'을 물으면 Activity Timeline.",
+      "practicalExample": "영업담당자가 Account 페이지를 열자마자 최근 통화, 발송 이메일, 예정된 미팅을 한눈에 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-074",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to capture leads from a web form on their website and automatically create Lead records in Salesforce. What feature should be configured?",
+    "choices": [
+      "Email-to-Lead",
+      "Web-to-Lead",
+      "Web-to-Case",
+      "AppExchange Lead Capture app"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Web-to-Lead는 웹사이트에 삽입할 HTML 폼 코드를 생성해, 방문자가 폼을 제출하면 Salesforce에 Lead 레코드가 자동 생성되는 기능(일일 500건 한도)이다.",
+      "whyCorrect": "웹 폼 제출로 Lead 레코드를 자동 생성해야 하므로 Web-to-Lead가 정답(B)이다.",
+      "whyIncorrect": "A(Email-to-Lead)는 존재하지 않는 표준 기능이다. C(Web-to-Case)는 Case 생성용이지 Lead 생성용이 아니다. D(AppExchange 앱)는 표준 기능이 이미 있으므로 불필요하다.",
+      "examPoint": "웹 폼 → Lead는 Web-to-Lead, 웹 폼 → Case는 Web-to-Case로 명확히 구분.",
+      "practicalExample": "회사 홈페이지의 '무료 상담 신청' 폼을 Web-to-Lead로 연결하면 제출 즉시 영업팀에 새 Lead가 등록된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-075",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A customer emails support@universalcontainers.com with an issue. The admin wants these emails to automatically create Cases in Salesforce. What should be configured?",
+    "choices": [
+      "Web-to-Case",
+      "Email-to-Case",
+      "Auto-Response Rule",
+      "Assignment Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Email-to-Case는 지정된 이메일 주소로 수신된 메일을 자동으로 Case 레코드로 변환하는 기능이다.",
+      "whyCorrect": "고객이 지정 이메일 주소로 보낸 문의를 자동으로 Case로 만들어야 하므로 Email-to-Case가 정답(B)이다.",
+      "whyIncorrect": "A(Web-to-Case)는 웹 폼 기반이라 이메일과 무관하다. C(Auto-Response Rule)는 Case 생성 후 자동 응답 발송 기능이다. D(Assignment Rule)는 생성된 Case를 배정하는 기능으로 생성 자체와는 무관하다.",
+      "examPoint": "이메일 채널 자동화는 Email-to-Case, 웹 채널은 Web-to-Case.",
+      "practicalExample": "support@universalcontainers.com으로 온 메일이 자동으로 Case로 등록되고 제목/본문이 Case 필드에 매핑된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-076",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to measure whether Cases are resolved within committed support times. Which Salesforce feature supports this?",
+    "choices": [
+      "Case Assignment Rules",
+      "Escalation Rules",
+      "Entitlements and Milestones",
+      "Service Console layouts"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Entitlements는 고객이 받을 자격이 있는 지원 수준(SLA)을 정의하고, Milestones는 그 안에서 지켜야 할 시간 기반 목표(예: 최초 응답 시간)를 추적한다.",
+      "whyCorrect": "약속한 지원 시간 내 해결 여부를 측정해야 하므로 SLA 관리 기능인 Entitlements and Milestones가 정답(C)이다.",
+      "whyIncorrect": "A(Case Assignment Rules)는 담당자 배정 기능으로 시간 측정과 무관하다. B(Escalation Rules)는 미해결 시 에스컬레이션만 담당하며 SLA 자체를 정의하지는 않는다. D(Service Console layouts)는 UI 도구일 뿐 시간 측정 기능이 아니다.",
+      "examPoint": "SLA 관련 문제는 항상 Entitlements + Milestones 조합을 우선 고려.",
+      "practicalExample": "VIP 고객 Entitlement에 '2시간 내 첫 응답' Milestone을 설정해 지원팀이 이를 지켰는지 대시보드로 추적한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-077",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin needs to automatically send a confirmation email to a customer when they submit a Case via Web-to-Case. What should be configured?",
+    "choices": [
+      "Email Alert triggered by a Flow",
+      "Case Assignment Rule with email notification",
+      "Auto-Response Rule for Cases",
+      "Escalation Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Auto-Response Rule은 Case가 어떤 경로로 생성되든(Web-to-Case 포함) 조건에 맞춰 자동 확인 이메일을 발송한다.",
+      "whyCorrect": "Web-to-Case로 제출된 Case에 자동 확인 이메일을 보내야 하므로 Auto-Response Rule for Cases가 정답(C)이다.",
+      "whyIncorrect": "A(Flow로 트리거된 Email Alert)는 가능은 하나 표준 기능인 Auto-Response Rule보다 구현이 복잡하다. B(Assignment Rule with email notification)는 배정 기능이지 확인 이메일 발송이 주목적이 아니다. D(Escalation Rule)는 미해결 시 에스컬레이션이지 접수 확인과 무관하다.",
+      "examPoint": "'제출/접수 확인 이메일'은 Auto-Response Rule의 전형적 사용 사례.",
+      "practicalExample": "웹 폼으로 Case를 제출한 고객에게 즉시 '문의가 접수되었습니다' 이메일이 자동 발송된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-078",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to prevent duplicate Lead records based on matching email address. What combination should be configured?",
+    "choices": [
+      "Validation Rule on the Email field",
+      "Unique field setting on Email",
+      "Matching Rule and Duplicate Rule",
+      "Field History Tracking on Email"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Matching Rule은 어떤 필드(이메일 등)를 기준으로 중복을 판단할지 정의하고, Duplicate Rule은 매칭된 레코드 발견 시 경고·차단 등 행동을 정의한다.",
+      "whyCorrect": "이메일 일치를 기준으로 중복 Lead를 방지하려면 두 규칙을 함께 구성하는 Matching Rule + Duplicate Rule이 정답(C)이다.",
+      "whyIncorrect": "A(Validation Rule)는 다른 레코드를 조회하는 로직이 복잡해 중복 방지 표준 기능으로 부적합하다. B(Unique field setting)는 완전히 동일한 값만 차단하며 유사 값 매칭은 못 한다. D(Field History Tracking)는 변경 이력 기록일 뿐 중복 차단 기능이 없다.",
+      "examPoint": "중복 관리는 항상 Matching Rule(판단 기준) + Duplicate Rule(행동) 세트로 기억.",
+      "practicalExample": "같은 이메일로 두 번째 Lead를 생성하려 하면 Duplicate Rule이 경고 메시지를 띄우고 저장을 차단하거나 허용 여부를 관리자가 설정할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-079",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at Universal Containers is converting a qualified Lead. Which combination of records is ALWAYS created during Lead conversion?",
+    "choices": [
+      "Account, Contact",
+      "Account, Case",
+      "Contact, Contract",
+      "Case, Contract"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Lead Convert 시 Account와 Contact는 기본적으로 항상 생성(또는 기존 레코드에 연결)되며, Opportunity는 선택사항이다.",
+      "whyCorrect": "항상 생성되는 레코드 조합은 Account와 Contact이므로 정답은 A다.",
+      "whyIncorrect": "Case는 Lead 전환과 무관한 별도 오브젝트다. Contract도 Lead 전환 산출물이 아니며 Opportunity가 Closed Won된 후 별도로 생성되는 레코드라서 B, C, D는 모두 틀리다.",
+      "examPoint": "Lead Convert 필수 생성 = Account+Contact, 선택 = Opportunity, 생성 안 됨 = Case/Contract.",
+      "practicalExample": "영업담당자가 Lead를 전환하면 자동으로 Account와 Contact가 만들어지고, 실제 거래 논의가 시작되면 별도로 Opportunity를 체크해 생성한다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-080",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to automatically assign new Cases to the correct queue based on the Case Origin (Phone, Email, Web). What should be configured?",
+    "choices": [
+      "Escalation Rules",
+      "Auto-Response Rules",
+      "Case Assignment Rules with entries based on Case Origin",
+      "A Flow triggered on Case creation"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Case Assignment Rule은 Case Origin(Phone/Email/Web 등)을 포함한 다양한 기준으로 조건별 항목(entry)을 만들어 자동으로 큐/담당자에 배정한다.",
+      "whyCorrect": "접수 경로(Case Origin)에 따라 올바른 큐로 자동 배정해야 하므로 Case Origin 기준 항목을 포함한 Case Assignment Rules가 정답(C)이다.",
+      "whyIncorrect": "A(Escalation Rules)는 시간 초과 시 에스컬레이션 기능으로 최초 배정과 무관하다. B(Auto-Response Rules)는 확인 이메일 발송 기능이다. D(Flow triggered on Case creation)도 구현 가능하지만 이 요구에는 표준 기능인 Assignment Rule이 우선 정답이다.",
+      "examPoint": "배정 기준이 되는 필드(Origin, Type, 지역 등)로 여러 entry를 구성하는 것이 Assignment Rule의 핵심 사용법.",
+      "practicalExample": "Case Origin = 'Phone'이면 전화 지원팀 큐로, 'Web'이면 온라인 지원팀 큐로 자동 배정된다."
+    }
+  },
+  {
+    "id": "q-adx-salesservice-081",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to track that each Account has a valid Entitlement before Cases can be created. Which feature enforces this?",
+    "choices": [
+      "Case Assignment Rules",
+      "Validation Rules on Cases",
+      "Entitlements linked to Accounts",
+      "Auto-Response Rules"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Entitlement를 Account(또는 Contact/Asset)에 연결해두면, 해당 Account에 유효한 지원 자격이 있는지 확인하는 기준이 된다.",
+      "whyCorrect": "'Account에 유효한 Entitlement가 있어야 Case 생성 가능'이라는 요구를 강제하려면 Entitlement를 Account에 연결하는 기능이 정답(C)이다.",
+      "whyIncorrect": "A(Case Assignment Rules)는 배정 기능으로 자격 확인과 무관하다. B(Validation Rules on Cases)는 추가 구현이 필요한 우회 방법일 뿐 표준 Entitlement 기능이 아니다. D(Auto-Response Rules)는 이메일 발송 기능이다.",
+      "examPoint": "SLA/지원 자격 검증이 필요하면 Entitlements 기능을 최우선으로 고려.",
+      "practicalExample": "계약이 만료된 고객이 Case를 생성하려 하면 유효한 Entitlement가 없어 시스템이 경고하거나 생성을 제한하도록 설정한다."
+    }
+  }
+]

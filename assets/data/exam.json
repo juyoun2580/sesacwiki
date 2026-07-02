@@ -263,6 +263,71 @@
       "avgScore": 64,
       "attemptCount": 11,
       "isRecommended": false
+    },
+    {
+      "id": "exam-020",
+      "icon": "🤝",
+      "title": "ADX201-Sales/Service",
+      "description": "Lead 전환, Case 라이프사이클, Assignment/Escalation Rule, Entitlement, Quote, Campaign 귀속 등 Salesforce Admin 자격증(ADX201) Sales & Service Cloud 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 81,
+      "estimatedMinutes": 90,
+      "avgScore": 63,
+      "attemptCount": 9,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-021",
+      "icon": "⚙️",
+      "title": "ADX201-Automation",
+      "description": "Flow 4종류, Before/After-Save, Validation Rule, Approval Process, Assignment/Escalation Rule 등 Salesforce Admin 자격증(ADX201) Workflow & Automation 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 84,
+      "estimatedMinutes": 95,
+      "avgScore": 62,
+      "attemptCount": 8,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-022",
+      "icon": "🧱",
+      "title": "ADX201-Objects",
+      "description": "Custom/External Object, Lookup vs Master-Detail, Record Type, FLS, Roll-Up/Cross-Object Formula 등 Salesforce Admin 자격증(ADX201) Object Manager & Lightning 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 91,
+      "estimatedMinutes": 100,
+      "avgScore": 61,
+      "attemptCount": 7,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-023",
+      "icon": "🛠️",
+      "title": "ADX201-Configuration",
+      "description": "사용자 관리, Sandbox 종류, Data Loader vs Import Wizard, Setup Audit Trail, 보안 정책, Change Set 배포 등 Salesforce Admin 자격증(ADX201) Configuration & Setup 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 95,
+      "estimatedMinutes": 105,
+      "avgScore": 60,
+      "attemptCount": 6,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-024",
+      "icon": "🔐",
+      "title": "ADX201-DataAccess",
+      "description": "OWD, Role Hierarchy, Sharing Rules, Manual/Apex Managed Sharing, FLS, Profile vs Permission Set, View All/Modify All Data 등 Salesforce Admin 자격증(ADX201) Data & Analytics(레코드 보안) 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 97,
+      "estimatedMinutes": 110,
+      "avgScore": 59,
+      "attemptCount": 5,
+      "isRecommended": false
     }
   ],
   "combinedQuestions": {
