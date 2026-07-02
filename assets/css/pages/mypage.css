@@ -1,9 +1,9 @@
 /* ==========================================================================
    MyPage Dashboard / Edit Profile — MyPage(Job/My) 담당, 신규 파일
    mypage.html(대시보드) / mypage-edit.html(프로필 수정)이 이 CSS를 공유한다.
-   공통 레이아웃(.shell/.sidebar/.page__content/.side-panel)과 공통 컴포넌트
-   (.btn/.tag/.progress-bar/.streak-card/.section-title)는 그대로 재사용하고,
-   이 파일에는 두 화면 전용 요소만 정의한다.
+   공통 레이아웃(.shell/.page__content/.side-panel)과 공통 컴포넌트
+   (.btn/.tag/.progress-bar/.section-title)는 그대로 재사용하고,
+   이 파일에는 두 화면 전용 요소만 정의한다. (좌측 사이드바는 삭제됨)
    ========================================================================== */
 
 /* mypage.html/mypage-edit.html에서 공통 GNB의 "마이핸드북/취업핸드북" 항목을
@@ -148,16 +148,98 @@
   color: var(--g700);
 }
 
-/* ---------- Saved Notes (저장한 단어/노트) ---------- */
-.notebook-card {
+/* ---------- 카테고리 카드 그리드 (좌측 사이드바 대체) ----------
+   단어장 연동에 집중한 대시보드라 카드는 "저장한 단어"/"퀴즈 도전" 2개만 남긴다. */
+.category-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-12);
+  margin-bottom: var(--space-4);
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-16) var(--space-8);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   box-shadow: var(--sh-sm);
-  padding: var(--space-20);
-  margin-bottom: var(--space-20);
+  cursor: pointer;
+  text-align: center;
+  transition: all .15s;
+  font-family: inherit;
 }
 
+.category-card:hover {
+  border-color: var(--g300);
+  box-shadow: var(--sh-md);
+}
+
+.category-card--active {
+  border-color: var(--g700);
+  background: var(--g20);
+  box-shadow: var(--curr-ring);
+}
+
+.category-card__icon {
+  font-size: var(--fs-26);
+}
+
+.category-card__label {
+  font-size: var(--fs-13);
+  font-weight: 700;
+  color: var(--ink2);
+}
+
+.category-card__desc {
+  font-size: var(--fs-11);
+  color: var(--ink4);
+}
+
+/* ---------- 카테고리 상세 확장 패널 (In-Page, 아코디언 형태) ---------- */
+.category-detail-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: var(--r-lg);
+  transition: max-height .35s ease, opacity .25s ease, padding .35s ease, margin .35s ease;
+}
+
+.category-detail-panel--open {
+  max-height: 2000px;
+  opacity: 1;
+  margin-top: var(--space-16);
+  padding: var(--space-20);
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--sh-sm);
+}
+
+.category-detail__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-14);
+}
+
+.category-detail__title {
+  font-size: var(--fs-15);
+  font-weight: 800;
+  color: var(--g900);
+}
+
+.category-detail__note {
+  margin-top: var(--space-12);
+}
+
+/* ---------- 카테고리 상세 리스트(내 문서/즐겨찾기/오답노트 템플릿에서 재사용) ----------
+   과거 대시보드 상단에 고정 배치했던 "Saved Notes" 카드는 category-card-grid +
+   category-detail-panel(인페이지 확장 영역)로 대체되어 제거했다. 리스트 항목
+   스타일(__list/__row/__text/__date)만 그 안에서 계속 재사용한다. */
 .notebook-card__list {
   display: flex;
   flex-direction: column;
@@ -247,6 +329,84 @@
   font-size: var(--fs-12);
   color: var(--ink2);
   margin-bottom: var(--space-6);
+}
+
+/* ---------- 퀴즈 도전 과제 → 체크포인트 세분화 ---------- */
+.challenge-row__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+.challenge-row__count {
+  font-size: var(--fs-11);
+  font-weight: 700;
+  color: var(--ink4);
+}
+
+.checkpoint-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.checkpoint-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-8) var(--space-10);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  transition: all .15s;
+}
+
+.checkpoint-item:hover {
+  border-color: var(--g200);
+}
+
+.checkpoint-item--done {
+  opacity: 0.65;
+}
+
+.checkpoint-item--done .checkpoint-item__label {
+  text-decoration: line-through;
+  color: var(--ink4);
+}
+
+.checkpoint-item__check {
+  width: var(--space-20);
+  height: var(--space-20);
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-11);
+  font-weight: 800;
+  color: transparent;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.checkpoint-item__check:hover {
+  border-color: var(--g500);
+}
+
+.checkpoint-item__check--done {
+  background: var(--g700);
+  border-color: var(--g700);
+  color: #fff;
+}
+
+.checkpoint-item__label {
+  flex: 1;
+  font-size: var(--fs-12);
+  color: var(--ink);
 }
 
 /* ---------- 기술 뱃지 (Activities 탭) — 원형 업적 그리드 ---------- */
@@ -508,27 +668,18 @@
 }
 
 /* ---------- Responsive ----------
-   .shell/.sidebar/.side-panel은 layout.css(공통) 소유라 그 파일은 건드리지
-   않고, #mypage로 범위를 좁혀 이 페이지에서만 flex-wrap으로 재배치한다.
-   → 화면이 좁아져도 우측 챌린지 & 활동 뱃지 바가 잘리지 않고 프로필 영역
-   아래로 자연스럽게 떨어진다. */
+   .shell/.side-panel은 layout.css(공통) 소유라 그 파일은 건드리지 않고,
+   #mypage로 범위를 좁혀 이 페이지에서만 flex-wrap으로 재배치한다.
+   → 화면이 좁아져도 우측 챌린지 & 활동 뱃지 바가 잘리지 않고 메인 콘텐츠
+   아래로 자연스럽게 떨어진다. (좌측 사이드바는 삭제되어 더 이상 다루지 않는다) */
 @media (max-width: 1100px) {
   #mypage .shell {
     flex-wrap: wrap;
   }
 
-  #mypage .sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    order: 1;
-  }
-
   #mypage .page__content {
     width: 100%;
-    order: 2;
+    order: 1;
   }
 
   #mypage .side-panel {
@@ -537,7 +688,7 @@
     position: static;
     border-left: none;
     border-top: 1px solid var(--border);
-    order: 3;
+    order: 2;
   }
 
   .badge-grid--compact {
@@ -548,6 +699,10 @@
 }
 
 @media (max-width: 640px) {
+  .category-card-grid {
+    grid-template-columns: 1fr;
+  }
+
   .level-track {
     justify-content: center;
     gap: var(--space-12);

@@ -490,12 +490,80 @@ function renderWikiDetail(item) {
   renderWikiToc(item);
   renderWikiArticleBody(item);
   renderWikiRelated(item);
+  bindWikiHandbookSaveActions(item);
+  if (typeof restoreWikiHighlights === 'function') restoreWikiHighlights(item.id);
 
   // 학습 완료 버튼은 정적 마크업이라 app.js의 data-action="toast" 토스트는
   // 이미 동작한다. 여기서는 progress 갱신만 추가로 연결한다.
   document.getElementById('wikiCompleteBtn').addEventListener('click', () => {
     item.progress = 100;
     updateWikiDetailProgress(item);
+  });
+}
+
+// ══════════════════════════════════════════════
+//  "내 핸드북에 저장" 박스(aside.wiki-detail__aside) 연동
+//  즐겨찾기 → myfav.html, 단어장 → mywords.html/mypage.html이 읽는
+//  localStorage 저장소에 실제로 반영한다. modal.js/highlight.js의 기존
+//  토스트/토글 로직은 그대로 두고, 여기서는 리스너만 추가한다(충돌 없음).
+// ══════════════════════════════════════════════
+
+const WIKI_FAVORITES_KEY = 'sesac.myfavorites.list';
+
+// 위키 카테고리 → 단어장 모달의 카테고리 옵션(SQL/Java/CS·IT/비즈니스/기타) 매핑
+const WIKI_TO_WORD_CATEGORY = {
+  'SQL': 'SQL',
+  'Java': 'Java',
+  'HTML/CSS': 'CS/IT',
+  'JavaScript': 'CS/IT',
+  'Git': 'CS/IT',
+  'Salesforce': 'CS/IT',
+  'CS 개념': 'CS/IT',
+  '면접 개념': '기타',
+  '취업 가이드': '기타'
+};
+
+function wikiTodayStr() {
+  return new Date().toISOString().slice(0, 10).replace(/-/g, '.');
+}
+
+function saveWikiFavorite(item) {
+  let favorites = [];
+  try {
+    favorites = JSON.parse(localStorage.getItem(WIKI_FAVORITES_KEY)) || [];
+  } catch {
+    favorites = [];
+  }
+  if (favorites.some(f => f.wikiId === item.id)) return;
+  favorites.unshift({
+    id: `fav-${item.id}`,
+    wikiId: item.id,
+    title: item.title,
+    desc: item.description,
+    category: item.category,
+    categoryColor: WIKI_CATEGORY_TAG_COLOR[item.category] || 'gray',
+    icon: WIKI_CATEGORY_ICON[item.category] || '📄',
+    date: wikiTodayStr()
+  });
+  localStorage.setItem(WIKI_FAVORITES_KEY, JSON.stringify(favorites));
+}
+
+function prefillWordModalCategory(item) {
+  const categoryEl = document.getElementById('mcategory');
+  const mapped = WIKI_TO_WORD_CATEGORY[item.category];
+  if (categoryEl && mapped) categoryEl.value = mapped;
+}
+
+function bindWikiHandbookSaveActions(item) {
+  document.querySelectorAll('.save-box [data-action="quick-favorite"]').forEach(btn => {
+    btn.addEventListener('click', () => saveWikiFavorite(item));
+  });
+
+  document.querySelectorAll('.save-box [data-action="open-modal"]').forEach(btn => {
+    btn.addEventListener('click', () => prefillWordModalCategory(item));
+  });
+  document.querySelectorAll('[data-action="highlight-to-word"]').forEach(btn => {
+    btn.addEventListener('click', () => prefillWordModalCategory(item));
   });
 }
 
