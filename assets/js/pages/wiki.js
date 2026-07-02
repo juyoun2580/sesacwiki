@@ -548,6 +548,35 @@ function saveWikiFavorite(item) {
   localStorage.setItem(WIKI_FAVORITES_KEY, JSON.stringify(favorites));
 }
 
+// ══════════════════════════════════════════════
+//  "최근 본 페이지" 기록 — Home(index.html)의 recent-list가 읽는
+//  localStorage 저장소. detail.html에서 문서를 열 때마다 갱신한다.
+// ══════════════════════════════════════════════
+
+const RECENT_PAGES_KEY = 'sesac.recentPages.list';
+const RECENT_PAGES_MAX = 10;
+
+function saveRecentPage(item) {
+  let recentPages = [];
+  try {
+    recentPages = JSON.parse(localStorage.getItem(RECENT_PAGES_KEY)) || [];
+  } catch {
+    recentPages = [];
+  }
+  recentPages = recentPages.filter(p => p.wikiId !== item.id);
+  recentPages.unshift({
+    id: `rp-${item.id}`,
+    wikiId: item.id,
+    title: item.title,
+    category: item.category,
+    categoryColor: WIKI_CATEGORY_TAG_COLOR[item.category] || 'gray',
+    icon: WIKI_CATEGORY_ICON[item.category] || '📄',
+    visitedAt: new Date().toISOString()
+  });
+  recentPages = recentPages.slice(0, RECENT_PAGES_MAX);
+  localStorage.setItem(RECENT_PAGES_KEY, JSON.stringify(recentPages));
+}
+
 function prefillWordModalCategory(item) {
   const categoryEl = document.getElementById('mcategory');
   const mapped = WIKI_TO_WORD_CATEGORY[item.category];
@@ -574,7 +603,10 @@ function initWikiDetailPage() {
       wikiAllItems = data;
       const id = wikiGetIdFromUrl();
       const item = wikiAllItems.find(i => i.id === id) || wikiAllItems[0];
-      if (item) renderWikiDetail(item);
+      if (item) {
+        renderWikiDetail(item);
+        saveRecentPage(item);
+      }
     })
     .catch(() => {
       document.getElementById('artbody').innerHTML = '<p class="wiki-empty">문서를 불러오지 못했습니다.</p>';

@@ -14,18 +14,6 @@
     { "id": "rm-004", "icon": "📄", "title": "이력서 작성", "description": "핵심역량 정리하기", "percent": 50, "color": "orange", "goto": "job" },
     { "id": "rm-005", "icon": "💬", "title": "면접 준비", "description": "기출 면접 질문 풀이", "percent": 30, "color": "orange", "goto": "job" }
   ],
-  "recentPages": [
-    { "id": "rp-001", "icon": "🗄️", "title": "SQL SELECT 문법", "source": "새싹위키", "sourceColor": "green", "time": "5분 전" },
-    { "id": "rp-002", "icon": "☕", "title": "Java 상속과 다형성", "source": "새싹위키", "sourceColor": "green", "time": "1시간 전" },
-    { "id": "rp-003", "icon": "📄", "title": "이력서 작성 가이드", "source": "취업핸드북", "sourceColor": "gold", "time": "3시간 전" },
-    { "id": "rp-004", "icon": "📝", "title": "모의고사 1회", "source": "모의고사", "sourceColor": "blue", "time": "어제", "goto": "exam" }
-  ],
-  "favorites": [
-    { "id": "fv-001", "title": "SQL JOIN 완벽 정리", "source": "새싹위키", "sourceColor": "green" },
-    { "id": "fv-002", "title": "Java 예외 처리", "source": "새싹위키", "sourceColor": "green" },
-    { "id": "fv-003", "title": "면접 질문 모음 정리", "source": "취업핸드북", "sourceColor": "gold" },
-    { "id": "fv-004", "title": "Salesforce Flow 기초", "source": "새싹위키", "sourceColor": "green" }
-  ],
   "recentWords": ["JOIN", "Primary Key", "Apex", "Flow", "Callback"],
   "streak": { "days": 7, "best": 12 },
   "quote": "꾸준함이 실력이고,\n실력이 자신감이 됩니다!"
