@@ -56,7 +56,7 @@
           </span>
         </button>
         <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
-          <a href="my.html" class="user-menu__item" role="menuitem">마이페이지</a>
+          <a href="mypage.html" class="user-menu__item" role="menuitem">마이페이지</a>
           <button type="button" class="user-menu__item" role="menuitem">로그아웃</button>
         </div>
       </div>
@@ -87,29 +87,13 @@
     <!-- 담당 : feature/job -->
     <!-- css : my.css -->
     <!-- js : ui.js(즐겨찾기/사이드바 토글), quiz.js(단어 퀴즈 선택지, exam 담당 소유), -->
-    <!--      app.js/toast.js(공통), modal.js(단어 추가 모달, 공통) -->
+    <!--      app.js/toast.js/auth.js(공통), modal.js(단어 추가 모달, 공통), -->
+    <!--      pages/mypage.js(카테고리별 그룹 렌더링/즉시 삭제/CSV·Word 내보내기/뱃지 연동) -->
     <!-- json : words.json -->
     <!-- ================================================= -->
     <!-- MYWORDS START -->
     <section id="mywords" class="page page--active" aria-label="저장한 단어">
       <div class="shell">
-        <aside class="sidebar" aria-label="마이핸드북 메뉴">
-          <a class="sidebar__item" href="mypage.html"><span class="sidebar__item-icon"
-              aria-hidden="true">🏠</span>대시보드</a>
-          <a class="sidebar__item" href="my.html"><span class="sidebar__item-icon"
-              aria-hidden="true">📄</span>내 문서</a>
-          <a class="sidebar__item" href="myfav.html"><span class="sidebar__item-icon"
-              aria-hidden="true">⭐</span>즐겨찾기</a>
-          <button type="button" class="sidebar__item sidebar__item--active"><span class="sidebar__item-icon"
-              aria-hidden="true">📓</span>저장한 단어</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📋</span>학습
-            노트</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📊</span>학습
-            기록</button>
-          <div class="sidebar__card sidebar__card--green">꾸준한 학습이<br>취업의 열매를 맺어요! 🌱
-            <p class="sidebar__card-icon" aria-hidden="true">🌿</p>
-          </div>
-        </aside>
         <div class="page__content">
           <h1 class="page-title">저장한 단어 🌱</h1>
           <p class="page-subtitle">모르는 단어를 저장하고 복습하여 어휘력을 키워보세요.</p>
@@ -124,86 +108,29 @@
               <option>Java</option>
               <option>SQL</option>
             </select>
+            <div class="sort-pills">
+              <button type="button" class="sort-pill" data-sort="term">영어순</button>
+              <button type="button" class="sort-pill" data-sort="definition">이름순</button>
+            </div>
+            <button type="button" class="btn btn--outline btn--sm" data-action="toggle-favorites-only" aria-pressed="false">⭐ 즐겨찾기만</button>
             <button type="button" class="btn btn--primary btn--sm" data-action="open-modal" data-word="">+ 단어
               추가</button>
-            <button type="button" class="btn btn--outline btn--sm" data-action="toast" data-message="단어를 내보내는 중이에요!">⬇
-              내보내기</button>
           </div>
 
           <div class="word-stats">
             <div class="word-stats__box">
-              <p class="word-stats__value">127</p>
+              <p class="word-stats__value" id="word-total-count">0</p>
               <p class="word-stats__label">전체 단어</p>
-            </div>
-            <div class="word-stats__box">
-              <p class="word-stats__value">15</p>
-              <p class="word-stats__label">오늘 학습</p>
-            </div>
-            <div class="word-stats__box">
-              <p class="word-stats__value">32</p>
-              <p class="word-stats__label">마스터한 단어</p>
-            </div>
-            <div class="word-stats__box">
-              <div class="score-ring word-stats__ring">
-                <svg viewBox="0 0 44 44" width="44" height="44" role="img" aria-label="마스터율 25%">
-                  <circle class="score-ring__bg" cx="22" cy="22" r="17" stroke-width="5" />
-                  <circle class="score-ring__fill" cx="22" cy="22" r="17" stroke="var(--g700)" stroke-width="5"
-                    stroke-dasharray="107" stroke-dashoffset="80" transform="rotate(-90 22 22)" />
-                </svg>
-                <div class="score-ring__text"><span class="word-stats__ring-value">25%</span></div>
-              </div>
-              <p class="word-stats__label">마스터율</p>
             </div>
           </div>
 
-          <ul class="word-row-list">
-            <li class="word-row">
-              <input type="checkbox" class="word-row__checkbox" aria-label="Algorithm 선택">
-              <div class="word-row__body">
-                <div><span class="word-row__term">Algorithm</span><span class="word-row__pos">명사</span></div>
-                <div class="word-row__def">문제를 해결하기 위한 절차나 방법</div>
-                <div class="word-row__example">Algorithm is the core of programming.</div>
-              </div>
-              <span class="tag tag--blue">CS/IT</span>
-              <span class="word-row__date">2025.05.20</span>
-              <button type="button" class="favorite-star favorite-star--on" aria-pressed="true"
-                aria-label="즐겨찾기">★</button>
-            </li>
-            <li class="word-row">
-              <input type="checkbox" class="word-row__checkbox" aria-label="Inheritance 선택">
-              <div class="word-row__body">
-                <div><span class="word-row__term">Inheritance</span><span class="word-row__pos">명사</span></div>
-                <div class="word-row__def">상속, 계승 (객체지향에서 상속)</div>
-                <div class="word-row__example">Inheritance allows code reusability.</div>
-              </div>
-              <span class="tag tag--orange">Java</span>
-              <span class="word-row__date">2025.05.19</span>
-              <button type="button" class="favorite-star" aria-pressed="false" aria-label="즐겨찾기">★</button>
-            </li>
-            <li class="word-row">
-              <input type="checkbox" class="word-row__checkbox" checked aria-label="Normalization 선택">
-              <div class="word-row__body">
-                <div><span class="word-row__term">Normalization</span><span class="word-row__pos">명사</span></div>
-                <div class="word-row__def">정규화 (데이터베이스 설계)</div>
-                <div class="word-row__example">Normalization reduces data redundancy.</div>
-              </div>
-              <span class="tag tag--green">SQL</span>
-              <span class="word-row__date">2025.05.18</span>
-              <button type="button" class="favorite-star favorite-star--on" aria-pressed="true"
-                aria-label="즐겨찾기">★</button>
-            </li>
-            <li class="word-row">
-              <input type="checkbox" class="word-row__checkbox" aria-label="API 선택">
-              <div class="word-row__body">
-                <div><span class="word-row__term">API</span><span class="word-row__pos">명사</span></div>
-                <div class="word-row__def">응용 프로그램 인터페이스</div>
-                <div class="word-row__example">The API connects different systems.</div>
-              </div>
-              <span class="tag tag--blue">IT/개발</span>
-              <span class="word-row__date">2025.05.17</span>
-              <button type="button" class="favorite-star" aria-pressed="false" aria-label="즐겨찾기">★</button>
-            </li>
-          </ul>
+          <!-- 카테고리별 그룹/즉시 삭제/내보내기는 assets/js/pages/mypage.js가 -->
+          <!-- localStorage(sesac.mywords.list) 기반으로 렌더링한다 -->
+          <div class="word-export-bar">
+            <button type="button" class="word-export-bar__btn" data-action="export-words-csv">📄 Export to CSV</button>
+            <button type="button" class="word-export-bar__btn" data-action="export-words-doc">📝 Export to Word</button>
+          </div>
+          <div class="word-row-groups" id="word-row-groups"></div>
 
           <nav class="pagination" aria-label="페이지 네비게이션">
             <button type="button" class="pagination__btn" aria-label="이전 페이지">‹</button>
@@ -314,6 +241,9 @@
   <script src="assets/js/modal.js" defer></script>
   <!-- 페이지 전용 JS — Exam 담당 소유 (단어 퀴즈 선택지 토글, docs/PAGES.md 참고) -->
   <script src="assets/js/pages/quiz.js" defer></script>
+  <!-- 페이지 전용 JS — MyPage(Job/My) 담당. job/my/mywords/myfav 공통 로직 파일 -->
+  <!-- (docs/WORK_ORDER.md "4. MyPage(Job/My) 담당 생성 가능한 파일" 항목 참고) -->
+  <script src="assets/js/pages/mypage.js" defer></script>
 </body>
 
 </html>

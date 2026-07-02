@@ -56,7 +56,7 @@
           </span>
         </button>
         <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
-          <a href="my.html" class="user-menu__item" role="menuitem">마이페이지</a>
+          <a href="mypage.html" class="user-menu__item" role="menuitem">마이페이지</a>
           <button type="button" class="user-menu__item" role="menuitem">로그아웃</button>
         </div>
       </div>
@@ -86,7 +86,9 @@
     <!-- WIKI DETAIL PAGE (하이라이트 + 단어저장) -->
     <!-- 담당 : feature/wiki -->
     <!-- css : wiki.css -->
-    <!-- js : pages/wiki.js (상세 렌더링/목차 스크롤), highlight.js (전용), app.js/ui.js/toast.js/modal.js (공통) -->
+    <!-- js : pages/wiki.js (상세 렌더링/목차 스크롤/핸드북 저장 연동), highlight.js (전용), app.js/ui.js/toast.js/modal.js (공통) -->
+    <!-- pages/mypage.js : 단어장 모달의 "단어장에 저장" 버튼을 mywords.html/mypage.html과 동일한 -->
+    <!-- localStorage(sesac.mywords.list)에 실제로 적재하기 위해 추가 로드한다 (mywords.html과 동일 패턴) -->
     <!-- json : wiki-data.json -->
     <!-- ================================================= -->
     <!-- DETAIL START -->
@@ -217,6 +219,7 @@
   <!-- wiki.js 추가는 wiki.html과 동일하게 <script> 목록(공통 블록) 변경이라 PR에서 공통 담당자 확인 필요 -->
   <script src="assets/js/pages/wiki.js" defer></script>
   <script src="assets/js/pages/highlight.js" defer></script>
+  <script src="assets/js/pages/mypage.js" defer></script>
 </body>
 
 </html>

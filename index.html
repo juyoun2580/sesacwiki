@@ -1,288 +1,493 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>새싹트리 — 나만의 취업 핸드북</title>
+    <!-- ================================================= -->
+    <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
+    <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
+    <!-- ================================================= -->
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <!-- 페이지 전용 CSS — Home 담당 소유 (docs/PAGES.md 참고) -->
+    <link rel="stylesheet" href="assets/css/pages/home.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>새싹트리 — 나만의 취업 핸드북</title>
-  <!-- ================================================= -->
-  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
-  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
-  <!-- ================================================= -->
-  <link rel="stylesheet" href="assets/css/reset.css">
-  <link rel="stylesheet" href="assets/css/variables.css">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-  <!-- 페이지 전용 CSS — Home 담당 소유 (docs/PAGES.md 참고) -->
-  <link rel="stylesheet" href="assets/css/pages/home.css">
-</head>
+  <body>
+    <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-<body>
-  <a class="skip-link" href="#main-content">본문 바로가기</a>
-
-  <!-- ================================================= -->
-  <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
-  <!-- 담당 : feature/home (공통 담당자 전용)                -->
-  <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
-  <!-- ================================================= -->
-  <header class="header">
-    <a href="index.html" class="header__logo" aria-label="새싹Wiki 홈">
-      <img src="./assets/img/logo.svg" alt="새싹Wiki">
-    </a>
-    <div class="header__right">
-      <button type="button" class="hamburger-btn" aria-label="메뉴 열기" aria-controls="side-panel" aria-expanded="false">
-        <span class="hamburger-btn__bar"></span>
-        <span class="hamburger-btn__bar"></span>
-        <span class="hamburger-btn__bar"></span>
-      </button>
-      <div class="search-box">
-        <span class="search-box__icon" aria-hidden="true">🔍</span>
-        <label class="sr-only" for="global-search">검색</label>
-        <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
-      </div>
-      <button type="button" class="notification-btn" aria-label="알림">
-        🔔<span class="notification-btn__dot"></span>
-      </button>
-      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>0P</p>
-      <button type="button" class="btn btn--outline btn--sm auth-guest-only">로그인</button>
-      <div class="user-menu auth-user-only">
-        <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false"
-          aria-controls="user-menu-dropdown">
-          <span class="avatar" aria-hidden="true">🌱</span>
-          <span>
-            <span class="user-chip__name">김새싹</span>
-            <span class="user-chip__level">Lv.1 잎새</span>
-          </span>
+    <!-- ================================================= -->
+    <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
+    <!-- 담당 : feature/home (공통 담당자 전용)                -->
+    <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
+    <!-- ================================================= -->
+    <header class="header">
+      <a href="index.html" class="header__logo" aria-label="새싹Wiki 홈">
+        <img src="./assets/img/logo.svg" alt="새싹Wiki" />
+      </a>
+      <div class="header__right">
+        <button
+          type="button"
+          class="hamburger-btn"
+          aria-label="메뉴 열기"
+          aria-controls="side-panel"
+          aria-expanded="false"
+        >
+          <span class="hamburger-btn__bar"></span>
+          <span class="hamburger-btn__bar"></span>
+          <span class="hamburger-btn__bar"></span>
         </button>
-        <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
-          <a href="my.html" class="user-menu__item" role="menuitem">마이페이지</a>
-          <button type="button" class="user-menu__item" role="menuitem">로그아웃</button>
+        <div class="search-box">
+          <span class="search-box__icon" aria-hidden="true">🔍</span>
+          <label class="sr-only" for="global-search">검색</label>
+          <input
+            type="text"
+            id="global-search"
+            class="search-box__input"
+            placeholder="궁금한 내용을 검색해보세요!"
+          />
+        </div>
+        <button type="button" class="notification-btn" aria-label="알림">
+          🔔<span class="notification-btn__dot"></span>
+        </button>
+        <p class="point-badge">
+          <span class="point-badge__icon" aria-hidden="true">🪙</span>0P
+        </p>
+        <button type="button" class="btn btn--outline btn--sm auth-guest-only">
+          로그인
+        </button>
+        <div class="user-menu auth-user-only">
+          <button
+            type="button"
+            class="user-chip"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="user-menu-dropdown"
+          >
+            <span class="avatar" aria-hidden="true">🌱</span>
+            <span>
+              <span class="user-chip__name">김새싹</span>
+              <span class="user-chip__level">Lv.1 잎새</span>
+            </span>
+          </button>
+          <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
+            <a href="mypage.html" class="user-menu__item" role="menuitem"
+              >마이페이지</a
+            >
+            <button type="button" class="user-menu__item" role="menuitem">
+              로그아웃
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
-  <!-- COMMON HEADER END -->
+    </header>
+    <!-- COMMON HEADER END -->
 
-  <!-- ================================================= -->
-  <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
-  <!-- 담당 : feature/home (공통 담당자 전용)                -->
-  <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
-  <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
-  <!-- ================================================= -->
-  <nav class="nav" aria-label="주 메뉴">
-    <a class="nav__item nav__item--active" href="index.html" aria-current="page">🏠 홈</a>
-    <a class="nav__item" href="wiki.html">📖 새싹위키</a>
-    <a class="nav__item" href="exam.html">📝 모의고사</a>
-    <a class="nav__item" href="job.html">💼 취업핸드북</a>
-    <!-- <a class="nav__item" href="my.html">📚 마이핸드북</a> -->
-  </nav>
-  <!-- COMMON NAVIGATION END -->
-
-  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
-
-  <main id="main-content">
     <!-- ================================================= -->
-    <!-- HOME PAGE -->
-    <!-- 담당 : feature/home -->
-    <!-- css : home.css -->
-    <!-- js : app.js (data-progress 폭 적용) -->
-    <!-- json : home.json -->
+    <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
+    <!-- 담당 : feature/home (공통 담당자 전용)                -->
+    <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
+    <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
     <!-- ================================================= -->
-    <!-- HOME START -->
-    <section id="home" class="page page--active" aria-label="홈">
-      <div class="shell">
-        <div class="page__content">
-          <section class="hero">
-            <div class="hero__content">
-              <h1 class="hero__title">오늘도 새싹이 자라는 중이에요!</h1>
-              <p class="hero__subtitle">나만의 취업 핸드북</p>
-              <div class="hero__actions">
-                <a class="btn btn--primary" href="wiki.html">🌱 오늘 학습 시작하기</a>
-                <a class="btn btn--outline" href="my.html">📖 내 핸드북 보기</a>
-              </div>
-            </div>
-            <blockquote class="hq">작은 새싹이 나무가 되듯,<br>오늘의 공부가 내일의 내가 됩니다.</blockquote>
-          </section>
+    <nav class="nav" aria-label="주 메뉴">
+      <a
+        class="nav__item nav__item--active"
+        href="index.html"
+        aria-current="page"
+        >🏠 홈</a
+      >
+      <a class="nav__item" href="wiki.html">📖 새싹위키</a>
+      <a class="nav__item" href="exam.html">📝 모의고사</a>
+      <a class="nav__item" href="job.html">💼 취업핸드북</a>
+      <a class="nav__item" href="my.html">📚 마이핸드북</a>
+    </nav>
+    <!-- COMMON NAVIGATION END -->
 
-          <h2 class="home-section-heading">🌱 나의 성장 현황</h2>
-          <div class="ggrid">
-            <article class="stat-card">
-              <p class="stat-card__label"><span aria-hidden="true">📊</span>학습 진도율</p>
-              <div class="score-ring">
-                <svg viewBox="0 0 68 68" width="68" height="68" role="img" aria-label="학습 진도율 62%">
-                  <circle class="score-ring__bg" cx="34" cy="34" r="28" stroke-width="6" />
-                  <circle class="score-ring__fill" cx="34" cy="34" r="28" stroke="var(--g700)" stroke-width="6"
-                    stroke-dasharray="176" stroke-dashoffset="67" transform="rotate(-90 34 34)" />
-                </svg>
-                <div class="score-ring__text"><span class="score-ring__value">62%</span></div>
-              </div>
-              <p class="stat-card__meta">전체 진도</p>
-            </article>
-            <article class="stat-card">
-              <p class="stat-card__label"><span aria-hidden="true">📥</span>모의고사</p>
-              <p class="stat-card__number">3회</p>
-              <p class="stat-card__meta">총 완료 횟수</p>
-              <p class="stat-card__pill">평균 점수 72점</p>
-            </article>
-            <article class="stat-card">
-              <p class="stat-card__label"><span aria-hidden="true">💼</span>취업 준비율</p>
-              <p class="stat-card__number">45%</p>
-              <p class="stat-card__meta">전체 준비율</p>
-              <div class="stat-card__progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar__fill progress-bar__fill--orange" data-progress="45"></div>
+    <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
+
+    <main id="main-content">
+      <!-- ================================================= -->
+      <!-- HOME PAGE -->
+      <!-- 담당 : feature/home -->
+      <!-- css : home.css -->
+      <!-- js : app.js (data-progress 폭 적용) -->
+      <!-- json : home.json -->
+      <!-- ================================================= -->
+      <!-- HOME START -->
+      <section id="home" class="page page--active" aria-label="홈">
+        <div class="shell">
+          <div class="page__content">
+            <section class="hero">
+              <div class="hero__content">
+                <p class="hey">🌱 나의 취업 준비 핸드북</p>
+                <h1 class="hero__title">오늘도 새싹이<br />자라는 중이에요!</h1>
+                <p class="hero__subtitle">나만의 취업 핸드북</p>
+                <div class="hero__actions">
+                  <a class="btn btn--primary" href="wiki.html"
+                    >🌱 오늘 학습 시작하기</a
+                  >
+                  <a class="btn btn--outline" href="my.html"
+                    >📖 내 핸드북 보기</a
+                  >
                 </div>
               </div>
-            </article>
-            <article class="stat-card">
-              <p class="stat-card__label"><span aria-hidden="true">⭐</span>총 포인트</p>
-              <p class="stat-card__number">0P</p>
-              <p class="stat-card__pill stat-card__pill--gold">이번 주 +0P</p>
-            </article>
+              <blockquote class="hq">
+                작은 새싹이 나무가 되듯,<br />오늘의 공부가<br />내일의 내가
+                됩니다.
+              </blockquote>
+              <span class="hero__emoji" aria-hidden="true">🌳</span>
+            </section>
+
+            <h2 class="home-section-heading">🌱 나의 성장 현황</h2>
+            <div class="ggrid">
+              <article class="stat-card">
+                <p class="stat-card__label">
+                  <span aria-hidden="true">📊</span>학습 진도율
+                </p>
+                <div class="score-ring">
+                  <svg
+                    viewBox="0 0 68 68"
+                    width="68"
+                    height="68"
+                    role="img"
+                    aria-label="학습 진도율 62%"
+                  >
+                    <circle
+                      class="score-ring__bg"
+                      cx="34"
+                      cy="34"
+                      r="28"
+                      stroke-width="6"
+                    />
+                    <circle
+                      class="score-ring__fill"
+                      cx="34"
+                      cy="34"
+                      r="28"
+                      stroke="var(--g700)"
+                      stroke-width="6"
+                      stroke-dasharray="176"
+                      stroke-dashoffset="67"
+                      transform="rotate(-90 34 34)"
+                    />
+                  </svg>
+                  <div class="score-ring__text">
+                    <span class="score-ring__value">62%</span>
+                  </div>
+                </div>
+                <p class="stat-card__meta">전체 진도</p>
+              </article>
+              <article class="stat-card">
+                <p class="stat-card__label">
+                  <span aria-hidden="true">📥</span>모의고사
+                </p>
+                <p class="stat-card__number">3회</p>
+                <p class="stat-card__meta">총 완료 횟수</p>
+                <p class="stat-card__pill">평균 점수 72점</p>
+              </article>
+              <article class="stat-card">
+                <p class="stat-card__label">
+                  <span aria-hidden="true">💼</span>취업 준비율
+                </p>
+                <p class="stat-card__number">45%</p>
+                <p class="stat-card__meta">전체 준비율</p>
+                <div class="stat-card__progress">
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="45"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div
+                      class="progress-bar__fill progress-bar__fill--orange"
+                      data-progress="45"
+                    ></div>
+                  </div>
+                </div>
+              </article>
+              <article class="stat-card">
+                <p class="stat-card__label">
+                  <span aria-hidden="true">⭐</span>총 포인트
+                </p>
+                <p class="stat-card__number">0P</p>
+                <p class="stat-card__pill stat-card__pill--gold">이번 주 +0P</p>
+              </article>
+            </div>
+
+            <h2 class="home-section-heading">
+              🌱 추천 학습 로드맵
+              <span class="home-section-heading__desc"
+                >지금 나에게 딱 맞는 학습을 추천해드려요!</span
+              >
+            </h2>
+            <ul class="rm-scroll">
+              <li>
+                <a class="roadmap-card" href="detail.html">
+                  <span class="roadmap-card__icon" aria-hidden="true">🗄️</span>
+                  <p class="roadmap-card__title">SQL 기초 복습</p>
+                  <p class="roadmap-card__desc">SELECT, WHERE, JOIN</p>
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="70"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div
+                      class="progress-bar__fill progress-bar__fill--green"
+                      data-progress="70"
+                    ></div>
+                  </div>
+                  <p class="roadmap-card__percent">70%</p>
+                </a>
+              </li>
+              <li>
+                <a class="roadmap-card" href="detail.html">
+                  <span class="roadmap-card__icon" aria-hidden="true">☕</span>
+                  <p class="roadmap-card__title">Java 객체지향</p>
+                  <p class="roadmap-card__desc">클래스와 객체 이해하기</p>
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="40"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div
+                      class="progress-bar__fill progress-bar__fill--blue"
+                      data-progress="40"
+                    ></div>
+                  </div>
+                  <p class="roadmap-card__percent">40%</p>
+                </a>
+              </li>
+              <li>
+                <a class="roadmap-card" href="detail.html">
+                  <span class="roadmap-card__icon" aria-hidden="true">🔀</span>
+                  <p class="roadmap-card__title">Git 기본 개념</p>
+                  <p class="roadmap-card__desc">버전 관리와 협업</p>
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="30"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div
+                      class="progress-bar__fill progress-bar__fill--blue"
+                      data-progress="30"
+                    ></div>
+                  </div>
+                  <p class="roadmap-card__percent">30%</p>
+                </a>
+              </li>
+              <li>
+                <a class="roadmap-card" href="job.html">
+                  <span class="roadmap-card__icon" aria-hidden="true">📄</span>
+                  <p class="roadmap-card__title">이력서 작성</p>
+                  <p class="roadmap-card__desc">핵심역량 정리하기</p>
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div
+                      class="progress-bar__fill progress-bar__fill--orange"
+                      data-progress="50"
+                    ></div>
+                  </div>
+                  <p class="roadmap-card__percent">50%</p>
+                </a>
+              </li>
+              <li>
+                <a class="roadmap-card" href="job.html">
+                  <span class="roadmap-card__icon" aria-hidden="true">💬</span>
+                  <p class="roadmap-card__title">면접 준비</p>
+                  <p class="roadmap-card__desc">기출 면접 질문 풀이</p>
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    aria-valuenow="30"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div
+                      class="progress-bar__fill progress-bar__fill--orange"
+                      data-progress="30"
+                    ></div>
+                  </div>
+                  <p class="roadmap-card__percent">30%</p>
+                </a>
+              </li>
+            </ul>
+
+            <div class="h3g">
+              <div class="card">
+                <div class="card__body">
+                  <div class="section-title">
+                    최근 본 페이지
+                    <a class="section-title__link" href="wiki.html"
+                      >전체보기 ›</a
+                    >
+                  </div>
+                  <ul class="recent-list">
+                    <li class="recent-list__item">
+                      <span class="recent-list__icon" aria-hidden="true"
+                        >🗄️</span
+                      ><span class="recent-list__title">SQL SELECT 문법</span
+                      ><span class="tag tag--green tag--sm">새싹위키</span
+                      ><span class="recent-list__time">5분 전</span>
+                    </li>
+                    <li class="recent-list__item">
+                      <span class="recent-list__icon" aria-hidden="true"
+                        >☕</span
+                      ><span class="recent-list__title">Java 상속과 다형성</span
+                      ><span class="tag tag--green tag--sm">새싹위키</span
+                      ><span class="recent-list__time">1시간 전</span>
+                    </li>
+                    <li class="recent-list__item">
+                      <span class="recent-list__icon" aria-hidden="true"
+                        >📄</span
+                      ><span class="recent-list__title">이력서 작성 가이드</span
+                      ><span class="tag tag--gold tag--sm">취업핸드북</span
+                      ><span class="recent-list__time">3시간 전</span>
+                    </li>
+                    <li>
+                      <a
+                        class="recent-list__item recent-list__item--clickable"
+                        href="exam.html"
+                        ><span class="recent-list__icon" aria-hidden="true"
+                          >📝</span
+                        ><span class="recent-list__title">모의고사 1회</span
+                        ><span class="tag tag--blue tag--sm">모의고사</span
+                        ><span class="recent-list__time">어제</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card__body">
+                  <div class="section-title">
+                    즐겨찾기
+                    <a class="section-title__link" href="myfav.html"
+                      >전체보기 ›</a
+                    >
+                  </div>
+                  <ul class="favorite-list">
+                    <li class="favorite-list__item">
+                      <span class="favorite-list__star" aria-hidden="true"
+                        >★</span
+                      ><span class="favorite-list__title"
+                        >SQL JOIN 완벽 정리</span
+                      ><span class="tag tag--green tag--sm">새싹위키</span>
+                    </li>
+                    <li class="favorite-list__item">
+                      <span class="favorite-list__star" aria-hidden="true"
+                        >★</span
+                      ><span class="favorite-list__title">Java 예외 처리</span
+                      ><span class="tag tag--green tag--sm">새싹위키</span>
+                    </li>
+                    <li class="favorite-list__item">
+                      <span class="favorite-list__star" aria-hidden="true"
+                        >★</span
+                      ><span class="favorite-list__title"
+                        >면접 질문 모음 정리</span
+                      ><span class="tag tag--gold tag--sm">취업핸드북</span>
+                    </li>
+                    <li class="favorite-list__item">
+                      <span class="favorite-list__star" aria-hidden="true"
+                        >★</span
+                      ><span class="favorite-list__title"
+                        >Salesforce Flow 기초</span
+                      ><span class="tag tag--green tag--sm">새싹위키</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card__body">
+                  <div class="section-title">
+                    최근 저장한 단어
+                    <a class="section-title__link" href="mywords.html"
+                      >전체보기 ›</a
+                    >
+                  </div>
+                  <ul class="word-chip-list">
+                    <li class="word-chip">JOIN</li>
+                    <li class="word-chip">Primary Key</li>
+                    <li class="word-chip">Apex</li>
+                    <li class="word-chip">Flow</li>
+                    <li class="word-chip">Callback</li>
+                    <li class="word-chip word-chip--muted">+ 더보기</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <h2 class="home-section-heading">🌱 추천 학습 로드맵 <span class="home-section-heading__desc">지금 나에게 딱 맞는 학습을
-              추천해드려요!</span></h2>
-          <ul class="rm-scroll">
-            <li><a class="roadmap-card" href="detail.html">
-                <span class="roadmap-card__icon" aria-hidden="true">🗄️</span>
-                <p class="roadmap-card__title">SQL 기초 복습</p>
-                <p class="roadmap-card__desc">SELECT, WHERE, JOIN</p>
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar__fill progress-bar__fill--green" data-progress="70"></div>
-                </div>
-                <p class="roadmap-card__percent">70%</p>
-              </a></li>
-            <li><a class="roadmap-card" href="detail.html">
-                <span class="roadmap-card__icon" aria-hidden="true">☕</span>
-                <p class="roadmap-card__title">Java 객체지향</p>
-                <p class="roadmap-card__desc">클래스와 객체 이해하기</p>
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar__fill progress-bar__fill--blue" data-progress="40"></div>
-                </div>
-                <p class="roadmap-card__percent">40%</p>
-              </a></li>
-            <li><a class="roadmap-card" href="detail.html">
-                <span class="roadmap-card__icon" aria-hidden="true">🔀</span>
-                <p class="roadmap-card__title">Git 기본 개념</p>
-                <p class="roadmap-card__desc">버전 관리와 협업</p>
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar__fill progress-bar__fill--blue" data-progress="30"></div>
-                </div>
-                <p class="roadmap-card__percent">30%</p>
-              </a></li>
-            <li><a class="roadmap-card" href="job.html">
-                <span class="roadmap-card__icon" aria-hidden="true">📄</span>
-                <p class="roadmap-card__title">이력서 작성</p>
-                <p class="roadmap-card__desc">핵심역량 정리하기</p>
-                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar__fill progress-bar__fill--orange" data-progress="50"></div>
-                </div>
-                <p class="roadmap-card__percent">50%</p>
-              </a></li>
-            <li><a class="roadmap-card" href="job.html">
-                <span class="roadmap-card__icon" aria-hidden="true">💬</span>
-                <p class="roadmap-card__title">면접 준비</p>
-                <p class="roadmap-card__desc">기출 면접 질문 풀이</p>
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar__fill progress-bar__fill--orange" data-progress="30"></div>
-                </div>
-                <p class="roadmap-card__percent">30%</p>
-              </a></li>
-          </ul>
-
-          <div class="h3g">
-            <div class="card">
-              <div class="card__body">
-                <div class="section-title">최근 본 페이지 <a class="section-title__link" href="wiki.html">전체보기 ›</a></div>
-                <ul class="recent-list">
-                  <li class="recent-list__item"><span class="recent-list__icon" aria-hidden="true">🗄️</span><span
-                      class="recent-list__title">SQL SELECT 문법</span><span
-                      class="tag tag--green tag--sm">새싹위키</span><span class="recent-list__time">5분 전</span></li>
-                  <li class="recent-list__item"><span class="recent-list__icon" aria-hidden="true">☕</span><span
-                      class="recent-list__title">Java 상속과 다형성</span><span
-                      class="tag tag--green tag--sm">새싹위키</span><span class="recent-list__time">1시간 전</span></li>
-                  <li class="recent-list__item"><span class="recent-list__icon" aria-hidden="true">📄</span><span
-                      class="recent-list__title">이력서 작성 가이드</span><span class="tag tag--gold tag--sm">취업핸드북</span><span
-                      class="recent-list__time">3시간 전</span></li>
-                  <li><a class="recent-list__item recent-list__item--clickable" href="exam.html"><span
-                        class="recent-list__icon" aria-hidden="true">📝</span><span class="recent-list__title">모의고사
-                        1회</span><span class="tag tag--blue tag--sm">모의고사</span><span
-                        class="recent-list__time">어제</span></a></li>
-                </ul>
+          <aside
+            id="side-panel"
+            class="side-panel"
+            aria-label="바로가기 및 학습 기록"
+          >
+            <div class="streak-card">
+              <p class="streak-card__label">연속 학습 기록</p>
+              <div class="streak-card__value-row">
+                <span class="streak-card__number">7</span
+                ><span class="streak-card__unit">일</span
+                ><span class="streak-card__note">최고 기록 12일</span>
               </div>
+              <p class="streak-card__icon" aria-hidden="true">📅</p>
             </div>
-            <div class="card">
-              <div class="card__body">
-                <div class="section-title">즐겨찾기 <a class="section-title__link" href="myfav.html">전체보기
-                    ›</a></div>
-                <ul class="favorite-list">
-                  <li class="favorite-list__item"><span class="favorite-list__star" aria-hidden="true">★</span><span
-                      class="favorite-list__title">SQL JOIN 완벽 정리</span><span class="tag tag--green tag--sm">새싹위키</span>
-                  </li>
-                  <li class="favorite-list__item"><span class="favorite-list__star" aria-hidden="true">★</span><span
-                      class="favorite-list__title">Java 예외 처리</span><span class="tag tag--green tag--sm">새싹위키</span>
-                  </li>
-                  <li class="favorite-list__item"><span class="favorite-list__star" aria-hidden="true">★</span><span
-                      class="favorite-list__title">면접 질문 모음 정리</span><span class="tag tag--gold tag--sm">취업핸드북</span>
-                  </li>
-                  <li class="favorite-list__item"><span class="favorite-list__star" aria-hidden="true">★</span><span
-                      class="favorite-list__title">Salesforce Flow 기초</span><span
-                      class="tag tag--green tag--sm">새싹위키</span></li>
-                </ul>
-              </div>
+            <div class="quote-box">
+              <p class="quote-box__label">🌱 오늘의 한마디</p>
+              <p class="quote-box__text">
+                꾸준함이 실력이고,<br />실력이 자신감이 됩니다!
+              </p>
             </div>
-            <div class="card">
-              <div class="card__body">
-                <div class="section-title">최근 저장한 단어 <a class="section-title__link" href="mywords.html">전체보기
-                    ›</a></div>
-                <ul class="word-chip-list">
-                  <li class="word-chip">JOIN</li>
-                  <li class="word-chip">Primary Key</li>
-                  <li class="word-chip">Apex</li>
-                  <li class="word-chip">Flow</li>
-                  <li class="word-chip">Callback</li>
-                  <li class="word-chip word-chip--muted">+ 더보기</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+            <h2 class="shortcut-heading">바로가기</h2>
+            <ul class="shortcut-grid">
+              <li>
+                <a class="shortcut-btn" href="mywords.html"
+                  ><em class="shortcut-btn__icon">📓</em>단어장</a
+                >
+              </li>
+              <li>
+                <button type="button" class="shortcut-btn">
+                  <em class="shortcut-btn__icon">❌</em>오답노트
+                </button>
+              </li>
+              <li>
+                <button type="button" class="shortcut-btn">
+                  <em class="shortcut-btn__icon">✏️</em>하이라이트
+                </button>
+              </li>
+              <li>
+                <button type="button" class="shortcut-btn">
+                  <em class="shortcut-btn__icon">📈</em>진도 리포트
+                </button>
+              </li>
+            </ul>
+            <span class="side-panel__decor" aria-hidden="true">🌳</span>
+          </aside>
         </div>
+      </section>
+      <!-- HOME END -->
+    </main>
 
-        <aside id="side-panel" class="side-panel" aria-label="바로가기 및 학습 기록">
-          <div class="streak-card">
-            <p class="streak-card__label">연속 학습 기록</p>
-            <div class="streak-card__value-row">
-              <span class="streak-card__number">7</span><span class="streak-card__unit">일</span><span
-                class="streak-card__note">최고 기록 12일</span>
-            </div>
-            <p class="streak-card__icon" aria-hidden="true">📅</p>
-          </div>
-          <div class="quote-box">
-            <p class="quote-box__label">🌱 오늘의 한마디</p>
-            <p class="quote-box__text">꾸준함이 실력이고,<br>실력이 자신감이 됩니다!</p>
-          </div>
-          <h2 class="shortcut-heading">바로가기</h2>
-          <ul class="shortcut-grid">
-            <li><a class="shortcut-btn" href="mywords.html"><em class="shortcut-btn__icon">📓</em>단어장</a></li>
-            <li><button type="button" class="shortcut-btn"><em class="shortcut-btn__icon">❌</em>오답노트</button></li>
-            <li><button type="button" class="shortcut-btn"><em class="shortcut-btn__icon">✏️</em>하이라이트</button></li>
-            <li><button type="button" class="shortcut-btn"><em class="shortcut-btn__icon">📈</em>진도 리포트</button></li>
-          </ul>
-          <span class="side-panel__decor" aria-hidden="true">🌳</span>
-        </aside>
-      </div>
-    </section>
-    <!-- HOME END -->
-  </main>
-
-  <!-- ================================================= -->
-  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
-  <script src="assets/js/auth.js" defer></script>
-  <script src="assets/js/app.js" defer></script>
-</body>
-
+    <!-- ================================================= -->
+    <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
+    <!-- 담당 : feature/core (공통 담당자 전용) -->
+    <!-- ================================================= -->
+    <script src="assets/js/auth.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+  </body>
 </html>

@@ -1,164 +1,228 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>취업핸드북 — 새싹트리</title>
-  <!-- ================================================= -->
-  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
-  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
-  <!-- ================================================= -->
-  <link rel="stylesheet" href="assets/css/reset.css">
-  <link rel="stylesheet" href="assets/css/variables.css">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-  <!-- 페이지 전용 CSS — MyPage(Job/My) 담당 소유 (docs/PAGES.md 참고) -->
-  <link rel="stylesheet" href="assets/css/pages/job.css">
-</head>
-
-<body>
-  <a class="skip-link" href="#main-content">본문 바로가기</a>
-
-  <!-- ================================================= -->
-  <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
-  <!-- 담당 : feature/core (공통 담당자 전용)                -->
-  <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
-  <!-- ================================================= -->
-  <header class="header">
-    <div class="header__logo">
-      <span class="header__logo-mark" aria-hidden="true">🌱</span>
-      <div>
-        <p class="header__logo-name">새싹트리</p>
-        <p class="header__logo-sub">나만의 취업 핸드북</p>
-      </div>
-    </div>
-    <div class="search-box">
-      <span class="search-box__icon" aria-hidden="true">🔍</span>
-      <label class="sr-only" for="global-search">검색</label>
-      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
-    </div>
-    <div class="header__right">
-      <button type="button" class="notification-btn" aria-label="알림">🔔<span
-          class="notification-btn__dot"></span></button>
-      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
-      <button type="button" class="user-chip">
-        <span class="avatar" aria-hidden="true">🌿</span>
-        <span>
-          <span class="user-chip__name">김새싹</span>
-          <span class="user-chip__level">Lv.3 잎새</span>
-        </span>
-        <span class="user-chip__caret" aria-hidden="true">▾</span>
-      </button>
-    </div>
-  </header>
-  <!-- COMMON HEADER END -->
-
-  <!-- ================================================= -->
-  <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
-  <!-- 담당 : feature/core (공통 담당자 전용)                -->
-  <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
-  <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
-  <!-- ================================================= -->
-  <nav class="nav" aria-label="주 메뉴">
-    <a class="nav__item" href="index.html">🏠 홈</a>
-    <a class="nav__item" href="wiki.html">📖 새싹위키</a>
-    <a class="nav__item" href="exam.html">📝 모의고사</a>
-    <a class="nav__item nav__item--active" href="job.html" aria-current="page">💼 취업핸드북</a>
-    <a class="nav__item" href="my.html">📚 마이핸드북</a>
-  </nav>
-  <!-- COMMON NAVIGATION END -->
-
-  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
-
-  <main id="main-content">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>취업핸드북 — 새싹트리</title>
     <!-- ================================================= -->
-    <!-- JOB HANDBOOK PAGE -->
-    <!-- 담당 : feature/job -->
-    <!-- css : job.css -->
-    <!-- js : ui.js (사이드바 토글), app.js/toast.js (공통) -->
-    <!-- json : job.json -->
+    <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
+    <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
     <!-- ================================================= -->
-    <!-- JOB START -->
-    <section id="job" class="page page--active" aria-label="취업핸드북">
-      <div class="shell">
-        <aside class="sidebar" aria-label="취업핸드북 메뉴">
-          <p class="sidebar__label">취업핸드북</p>
-          <div id="job-sidebar-menu"></div>
-        </aside>
-        <div class="page__content">
-          <h1 class="page-title">취업핸드북 🌱</h1>
-          <p class="page-subtitle">단계별로 차근차근 준비해서 꿈을 현실로 만들어보세요!</p>
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <!-- 페이지 전용 CSS — MyPage(Job/My) 담당 소유 (docs/PAGES.md 참고) -->
+    <link rel="stylesheet" href="assets/css/pages/job.css" />
+  </head>
 
-          <nav class="job-stepper" id="job-stepper" aria-label="취업 준비 단계"></nav>
+  <body>
+    <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-          <article class="job-card" id="job-card">
-            <div class="job-card__head">
-              <span class="job-card__head-icon" id="job-card-icon" aria-hidden="true"></span>
-              <div class="job-card__head-body">
-                <p class="job-card__title" id="job-card-title"></p>
-                <p class="job-card__desc" id="job-card-desc"></p>
-                <div class="progress-bar job-card__progress" id="job-card-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                  aria-valuemax="100">
-                  <div class="progress-bar__fill progress-bar__fill--blue" id="job-card-fill" data-progress="0"></div>
-                </div>
-              </div>
-              <p class="job-card__percent" id="job-card-percent"></p>
-            </div>
-
-            <ul class="job-task-list" id="job-task-list"></ul>
-
-            <div class="job-tip">
-              <span class="job-tip__icon" aria-hidden="true">💡</span>
-              <p class="job-tip__text" id="job-tip-text"></p>
-              <span class="job-tip__decor" aria-hidden="true">🌿</span>
-            </div>
-          </article>
-
-          <!-- 기능 상세 패널 — 태스크 버튼 클릭 시 job-card와 교체되어 표시 -->
-          <section class="job-feature" id="job-feature" hidden aria-label="기능 상세 화면">
-            <div class="job-feature__header">
-              <h2 class="job-feature__title" id="job-feature-title"></h2>
-            </div>
-            <div id="job-feature-body"></div>
-          </section>
+    <!-- ================================================= -->
+    <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
+    <!-- 담당 : feature/core (공통 담당자 전용)                -->
+    <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
+    <!-- ================================================= -->
+    <header class="header">
+      <a href="index.html" class="header__logo" aria-label="새싹Wiki 홈">
+        <img src="./assets/img/logo.svg" alt="새싹Wiki" />
+      </a>
+      <div class="header__right">
+        <button
+          type="button"
+          class="hamburger-btn"
+          aria-label="메뉴 열기"
+          aria-controls="side-panel"
+          aria-expanded="false"
+        >
+          <span class="hamburger-btn__bar"></span>
+          <span class="hamburger-btn__bar"></span>
+          <span class="hamburger-btn__bar"></span>
+        </button>
+        <div class="search-box">
+          <span class="search-box__icon" aria-hidden="true">🔍</span>
+          <label class="sr-only" for="global-search">검색</label>
+          <input
+            type="text"
+            id="global-search"
+            class="search-box__input"
+            placeholder="궁금한 내용을 검색해보세요!"
+          />
         </div>
-
-        <aside class="side-panel" aria-label="취업 준비 현황 및 도구">
-          <div class="section-title">나의 취업 준비 현황</div>
-          <ul class="job-progress-list" id="job-progress-list"></ul>
-
-          <div class="section-title">최근 완료한 항목
-            <button type="button" class="section-title__link"
-                    data-action="toggle-all-results">전체보기 ›</button>
+        <button type="button" class="notification-btn" aria-label="알림">
+          🔔<span class="notification-btn__dot"></span>
+        </button>
+        <p class="point-badge">
+          <span class="point-badge__icon" aria-hidden="true">🪙</span>0P
+        </p>
+        <button type="button" class="btn btn--outline btn--sm auth-guest-only">
+          로그인
+        </button>
+        <div class="user-menu auth-user-only">
+          <button
+            type="button"
+            class="user-chip"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="user-menu-dropdown"
+          >
+            <span class="avatar" aria-hidden="true">🌱</span>
+            <span>
+              <span class="user-chip__name">김새싹</span>
+              <span class="user-chip__level">Lv.1 잎새</span>
+            </span>
+          </button>
+          <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
+            <a href="mypage.html" class="user-menu__item" role="menuitem"
+              >마이페이지</a
+            >
+            <button type="button" class="user-menu__item" role="menuitem">
+              로그아웃
+            </button>
           </div>
-          <ul class="job-result-list" id="job-result-list"></ul>
-
-          <p class="section-title section-title--sm">자주 사용하는 도구</p>
-          <div class="job-tool-grid" id="job-tool-grid"></div>
-        </aside>
+        </div>
       </div>
-    </section>
-    <!-- JOB END -->
-  </main>
+    </header>
+    <!-- COMMON HEADER END -->
 
-  <!-- ================================================= -->
-  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <!-- COMMON SHARED MARKUP END -->
+    <!-- ================================================= -->
+    <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
+    <!-- 담당 : feature/core (공통 담당자 전용)                -->
+    <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
+    <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
+    <!-- ================================================= -->
+    <nav class="nav" aria-label="주 메뉴">
+      <a class="nav__item" href="index.html">🏠 홈</a>
+      <a class="nav__item" href="wiki.html">📖 새싹위키</a>
+      <a class="nav__item" href="exam.html">📝 모의고사</a>
+      <a class="nav__item nav__item--active" href="job.html" aria-current="page"
+        >💼 취업핸드북</a
+      >
+      <a class="nav__item" href="my.html">📚 마이핸드북</a>
+    </nav>
+    <!-- COMMON NAVIGATION END -->
 
-  <!-- ================================================= -->
-  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
-  <script src="assets/js/toast.js" defer></script>
-  <script src="assets/js/app.js" defer></script>
-  <script src="assets/js/ui.js" defer></script>
-  <script src="assets/js/pages/job-features.js" defer></script>
-  <script src="assets/js/pages/job.js" defer></script>
-</body>
+    <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
 
+    <main id="main-content">
+      <!-- ================================================= -->
+      <!-- JOB HANDBOOK PAGE -->
+      <!-- 담당 : feature/job -->
+      <!-- css : job.css -->
+      <!-- js : ui.js (사이드바 토글), app.js/toast.js (공통) -->
+      <!-- json : job.json -->
+      <!-- ================================================= -->
+      <!-- JOB START -->
+      <section id="job" class="page page--active" aria-label="취업핸드북">
+        <div class="shell">
+          <aside class="sidebar" aria-label="취업핸드북 메뉴">
+            <p class="sidebar__label">취업핸드북</p>
+            <div id="job-sidebar-menu"></div>
+          </aside>
+          <div class="page__content">
+            <h1 class="page-title">취업핸드북 🌱</h1>
+            <p class="page-subtitle">
+              단계별로 차근차근 준비해서 꿈을 현실로 만들어보세요!
+            </p>
+
+            <nav
+              class="job-stepper"
+              id="job-stepper"
+              aria-label="취업 준비 단계"
+            ></nav>
+
+            <article class="job-card" id="job-card">
+              <div class="job-card__head">
+                <span
+                  class="job-card__head-icon"
+                  id="job-card-icon"
+                  aria-hidden="true"
+                ></span>
+                <div class="job-card__head-body">
+                  <p class="job-card__title" id="job-card-title"></p>
+                  <p class="job-card__desc" id="job-card-desc"></p>
+                  <div
+                    class="progress-bar job-card__progress"
+                    id="job-card-bar"
+                    role="progressbar"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div
+                      class="progress-bar__fill progress-bar__fill--blue"
+                      id="job-card-fill"
+                      data-progress="0"
+                    ></div>
+                  </div>
+                </div>
+                <p class="job-card__percent" id="job-card-percent"></p>
+              </div>
+
+              <ul class="job-task-list" id="job-task-list"></ul>
+
+              <div class="job-tip">
+                <span class="job-tip__icon" aria-hidden="true">💡</span>
+                <p class="job-tip__text" id="job-tip-text"></p>
+                <span class="job-tip__decor" aria-hidden="true">🌿</span>
+              </div>
+            </article>
+
+            <!-- 기능 상세 패널 — 태스크 버튼 클릭 시 job-card와 교체되어 표시 -->
+            <section
+              class="job-feature"
+              id="job-feature"
+              hidden
+              aria-label="기능 상세 화면"
+            >
+              <div class="job-feature__header">
+                <h2 class="job-feature__title" id="job-feature-title"></h2>
+              </div>
+              <div id="job-feature-body"></div>
+            </section>
+          </div>
+
+          <aside class="side-panel" aria-label="취업 준비 현황 및 도구">
+            <div class="section-title">나의 취업 준비 현황</div>
+            <ul class="job-progress-list" id="job-progress-list"></ul>
+
+            <div class="section-title">
+              최근 완료한 항목
+              <button
+                type="button"
+                class="section-title__link"
+                data-action="toggle-all-results"
+              >
+                전체보기 ›
+              </button>
+            </div>
+            <ul class="job-result-list" id="job-result-list"></ul>
+
+            <p class="section-title section-title--sm">자주 사용하는 도구</p>
+            <div class="job-tool-grid" id="job-tool-grid"></div>
+          </aside>
+        </div>
+      </section>
+      <!-- JOB END -->
+    </main>
+
+    <!-- ================================================= -->
+    <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
+    <!-- 담당 : feature/core (공통 담당자 전용) -->
+    <!-- ================================================= -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <!-- COMMON SHARED MARKUP END -->
+
+    <!-- ================================================= -->
+    <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
+    <!-- 담당 : feature/core (공통 담당자 전용) -->
+    <!-- ================================================= -->
+    <script src="assets/js/toast.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/ui.js" defer></script>
+    <script src="assets/js/pages/job-features.js" defer></script>
+    <script src="assets/js/pages/job.js" defer></script>
+  </body>
 </html>
