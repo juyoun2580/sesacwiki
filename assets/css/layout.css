@@ -19,7 +19,7 @@
   backdrop-filter: blur(14px);
 
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 0 rgb(0 0 0 / 6%);
+  /* box-shadow: 0 1px 0 rgb(0 0 0 / 6%); */
 
   gap: var(--space-24);
 }
@@ -104,7 +104,7 @@
   gap: var(--space-6);
   padding: var(--space-8) var(--space-16);
   border-radius: var(--r-sm);
-  font-size: var(--fs-13);
+  font-size: var(--fs-14);
   font-weight: 600;
   color: var(--ink3);
   cursor: pointer;
@@ -116,7 +116,7 @@
 .nav__item::after {
   content: '';
   position: absolute;
-  bottom: -7px;
+  bottom: -6px;
   left: var(--space-16);
   right: var(--space-16);
   height: 2.5px;
