@@ -41,6 +41,38 @@ function removeSession() {
   localStorage.removeItem(AUTH_SESSION_KEY);
 }
 
+// ── 로그인 여부 확인 ──
+function isLoggedIn() {
+  return !!getSession();
+}
+
+// ── 현재 로그인한 사용자 정보 반환(비로그인 시 null) ──
+function getCurrentUser() {
+  const session = getSession();
+  if (!session) return null;
+
+  return {
+    name: session.name,
+    email: session.email,
+    loggedInAt: session.loggedInAt
+  };
+}
+
+// ── 로그인 필수 페이지에서 호출: 비로그인 시 login.html로 이동 ──
+function requireAuth() {
+  if (isLoggedIn()) return true;
+
+  location.href = 'login.html';
+  return false;
+}
+
+// ── login.html 전용: 이미 로그인된 경우 mypage.html로 이동 ──
+function redirectIfLoggedIn() {
+  if (!isLoggedIn()) return;
+
+  location.href = 'mypage.html';
+}
+
 // ── Header 인증 상태: data-auth 값만 갱신하면 components.css가 UserChip ↔ 로그인 버튼을 전환한다 ──
 function updateHeader() {
   const session = getSession();
@@ -96,7 +128,7 @@ function bindLogout() {
 
   logoutBtn.addEventListener('click', () => {
     removeSession();
-    location.href = 'login.html';
+    location.href = 'index.html';
   });
 }
 
@@ -190,3 +222,10 @@ document.querySelectorAll('[data-action="mock-verify"]').forEach(btn => {
 document.querySelectorAll('[data-action="mock-resend"]').forEach(btn => {
   btn.addEventListener('click', () => toast('📩 인증 메일을 다시 보냈어요! (모킹)'));
 });
+
+// ── Public API (다른 페이지 스크립트에서 사용 가능) ──
+// - initAuth()          : Header 인증 상태 초기화(UserChip/Dropdown/로그아웃 바인딩)
+// - isLoggedIn()         : 현재 로그인 여부(boolean)
+// - getCurrentUser()     : 로그인한 사용자 정보({ name, email, loggedInAt }) 또는 null
+// - requireAuth()        : 비로그인 시 login.html로 이동 후 false, 로그인 상태면 true
+// - redirectIfLoggedIn() : login.html에서 이미 로그인된 경우 mypage.html로 이동

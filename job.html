@@ -26,40 +26,31 @@
   <!-- 담당 : feature/core (공통 담당자 전용)                -->
   <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
   <!-- ================================================= -->
- <header class="header">
-    <a href="index.html" class="header__logo" aria-label="새싹Wiki 홈">
-      <img src="./assets/img/logo.svg" alt="새싹Wiki">
-    </a>
+  <header class="header">
+    <div class="header__logo">
+      <span class="header__logo-mark" aria-hidden="true">🌱</span>
+      <div>
+        <p class="header__logo-name">새싹트리</p>
+        <p class="header__logo-sub">나만의 취업 핸드북</p>
+      </div>
+    </div>
+    <div class="search-box">
+      <span class="search-box__icon" aria-hidden="true">🔍</span>
+      <label class="sr-only" for="global-search">검색</label>
+      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
+    </div>
     <div class="header__right">
-      <button type="button" class="hamburger-btn" aria-label="메뉴 열기" aria-controls="side-panel" aria-expanded="false">
-        <span class="hamburger-btn__bar"></span>
-        <span class="hamburger-btn__bar"></span>
-        <span class="hamburger-btn__bar"></span>
+      <button type="button" class="notification-btn" aria-label="알림">🔔<span
+          class="notification-btn__dot"></span></button>
+      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
+      <button type="button" class="user-chip">
+        <span class="avatar" aria-hidden="true">🌿</span>
+        <span>
+          <span class="user-chip__name">김새싹</span>
+          <span class="user-chip__level">Lv.3 잎새</span>
+        </span>
+        <span class="user-chip__caret" aria-hidden="true">▾</span>
       </button>
-      <div class="search-box">
-        <span class="search-box__icon" aria-hidden="true">🔍</span>
-        <label class="sr-only" for="global-search">검색</label>
-        <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
-      </div>
-      <button type="button" class="notification-btn" aria-label="알림">
-        🔔<span class="notification-btn__dot"></span>
-      </button>
-      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>0P</p>
-      <button type="button" class="btn btn--outline btn--sm auth-guest-only">로그인</button>
-      <div class="user-menu auth-user-only">
-        <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false"
-          aria-controls="user-menu-dropdown">
-          <span class="avatar" aria-hidden="true">🌱</span>
-          <span>
-            <span class="user-chip__name">김새싹</span>
-            <span class="user-chip__level">Lv.1 잎새</span>
-          </span>
-        </button>
-        <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
-          <a href="my.html" class="user-menu__item" role="menuitem">마이페이지</a>
-          <button type="button" class="user-menu__item" role="menuitem">로그아웃</button>
-        </div>
-      </div>
     </div>
   </header>
   <!-- COMMON HEADER END -->
@@ -95,16 +86,6 @@
         <aside class="sidebar" aria-label="취업핸드북 메뉴">
           <p class="sidebar__label">취업핸드북</p>
           <div id="job-sidebar-menu"></div>
-          <div class="job-readiness-card">
-            <p class="job-readiness-card__title">나의 취업 준비 지수</p>
-            <p class="job-readiness-card__value" id="job-readiness-value"></p>
-            <p class="job-readiness-card__delta" id="job-readiness-delta"></p>
-            <div class="progress-bar" id="job-readiness-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar__fill progress-bar__fill--green" id="job-readiness-fill" data-progress="0"></div>
-            </div>
-            <button type="button" class="btn btn--outline btn--sm job-readiness-card__btn">상세 분석 보기</button>
-            <p class="job-readiness-card__decor" aria-hidden="true">🌿</p>
-          </div>
         </aside>
         <div class="page__content">
           <h1 class="page-title">취업핸드북 🌱</h1>
@@ -138,7 +119,6 @@
           <!-- 기능 상세 패널 — 태스크 버튼 클릭 시 job-card와 교체되어 표시 -->
           <section class="job-feature" id="job-feature" hidden aria-label="기능 상세 화면">
             <div class="job-feature__header">
-              <button type="button" class="btn btn--ghost btn--sm job-feature__back" id="job-feature-back">← 단계로 돌아가기</button>
               <h2 class="job-feature__title" id="job-feature-title"></h2>
             </div>
             <div id="job-feature-body"></div>
@@ -146,10 +126,12 @@
         </div>
 
         <aside class="side-panel" aria-label="취업 준비 현황 및 도구">
-          <div class="section-title">나의 취업 준비 현황 <button type="button" class="section-title__link">전체보기 ›</button></div>
+          <div class="section-title">나의 취업 준비 현황</div>
           <ul class="job-progress-list" id="job-progress-list"></ul>
 
-          <div class="section-title">최근 작성한 자기소개서 <button type="button" class="section-title__link">전체보기 ›</button>
+          <div class="section-title">최근 완료한 항목
+            <button type="button" class="section-title__link"
+                    data-action="toggle-all-results">전체보기 ›</button>
           </div>
           <ul class="job-result-list" id="job-result-list"></ul>
 
@@ -173,7 +155,6 @@
   <!-- 담당 : feature/core (공통 담당자 전용) -->
   <!-- ================================================= -->
   <script src="assets/js/toast.js" defer></script>
-  <script src="assets/js/auth.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script src="assets/js/ui.js" defer></script>
   <script src="assets/js/pages/job-features.js" defer></script>

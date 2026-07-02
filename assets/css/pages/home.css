@@ -4,7 +4,8 @@
 
 /* ---------- Hero ---------- */
 .hero {
-  background: linear-gradient(130deg, var(--hero-grad-1) 0%, var(--hero-grad-2) 40%, var(--hero-grad-3) 100%);
+  /* background: linear-gradient(130deg, var(--hero-grad-1) 0%, var(--hero-grad-2) 40%, var(--hero-grad-3) 100%); */
+  background: url(../../img/hero-bg.png) center no-repeat;
   border-radius: var(--r-lg);
   border: 1px solid var(--g100);
   padding: var(--space-28) var(--space-32);
@@ -14,7 +15,6 @@
   gap: var(--space-20);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--sh-sm);
 }
 
 .hero__content {
@@ -64,7 +64,7 @@
   color: var(--g900);
   line-height: 1.7;
   border: 1px solid rgba(255, 255, 255, .8);
-  max-width: 160px;
+  max-width: 250px;
   flex-shrink: 0;
 }
 
