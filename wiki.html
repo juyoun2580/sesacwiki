@@ -95,19 +95,21 @@
         <aside class="sidebar" aria-label="카테고리">
           <p class="sidebar__label">카테고리</p>
           <button type="button" class="sidebar__item sidebar__item--active" data-category="전체"><span
-              class="sidebar__item-icon" aria-hidden="true">📋</span>전체</button>
+              class="sidebar__item-icon" aria-hidden="true">📋</span>전과목</button>
           <button type="button" class="sidebar__item" data-category="Salesforce"><span class="sidebar__item-icon"
-              aria-hidden="true">☁️</span>Salesforce</button>
-          <button type="button" class="sidebar__item" data-category="Git"><span class="sidebar__item-icon"
-              aria-hidden="true">🔀</span>Git/Vibecoding</button>
-          <button type="button" class="sidebar__item" data-category="SQL"><span class="sidebar__item-icon"
-              aria-hidden="true">🗄️</span>SQL</button>
+              aria-hidden="true">☁️</span>세일즈포스</button>
           <button type="button" class="sidebar__item" data-category="Java"><span class="sidebar__item-icon"
               aria-hidden="true">☕</span>Java</button>
-          <button type="button" class="sidebar__item" data-category="HTML/CSS"><span class="sidebar__item-icon"
-              aria-hidden="true">🌐</span>HTML/CSS</button>
+          <button type="button" class="sidebar__item" data-category="SQL"><span class="sidebar__item-icon"
+              aria-hidden="true">🗄️</span>SQL</button>
+          <button type="button" class="sidebar__item" data-category="HTML"><span class="sidebar__item-icon"
+              aria-hidden="true">🌐</span>HTML</button>
+          <button type="button" class="sidebar__item" data-category="CSS"><span class="sidebar__item-icon"
+              aria-hidden="true">🎨</span>CSS</button>
           <button type="button" class="sidebar__item" data-category="JavaScript"><span class="sidebar__item-icon"
               aria-hidden="true">⚡</span>JavaScript</button>
+          <button type="button" class="sidebar__item" data-category="Git"><span class="sidebar__item-icon"
+              aria-hidden="true">🔀</span>기타</button>
         </aside>
         <div class="page__content">
           <h1 class="page-title">새싹위키 🌱</h1>
@@ -117,8 +119,6 @@
             <label class="sr-only" for="wiki-search">위키 검색하기</label>
             <input type="text" id="wiki-search" class="wiki-toolbar__input" placeholder="위키 검색하기...">
             <div class="sort-pills">
-              <button type="button" class="sort-pill sort-pill--active" data-sort="latest">최신순</button>
-              <button type="button" class="sort-pill" data-sort="popular">인기순</button>
               <button type="button" class="sort-pill" data-sort="level">난이도순</button>
             </div>
           </div>
@@ -128,12 +128,14 @@
 
           <nav class="pagination" id="wikiPagination" aria-label="페이지 네비게이션"></nav>
         </div>
-        <aside class="side-panel" aria-label="많이 보는 위키">
-          <p class="section-title section-title--sm">많이 보는 위키</p>
-          <ol class="top-list" id="wikiTopList"></ol>
-          <div class="tip-box">
-            <p class="tip-box__title">💡 학습 팁</p>모르는 단어는 단어장에, 중요한 내용은 하이라이트로 나만의 핸드북을 만들어보세요!
-            <p class="tip-box__icon" aria-hidden="true">🌿</p>
+        <aside class="side-panel" aria-label="즐겨찾기">
+          <div class="favorite-box">
+            <div class="favorite-box__header">
+              <p class="section-title section-title--sm">⭐ 즐겨찾기</p>
+              <button type="button" class="favorite-box__toggle" id="wikiFavoriteToggle" hidden>▼ 펼치기</button>
+            </div>
+            <!-- assets/js/pages/wiki.js가 즐겨찾기(bookmarked)한 항목으로 채운다 -->
+            <ul class="favorite-list" id="wikiFavoriteList"></ul>
           </div>
         </aside>
       </div>
