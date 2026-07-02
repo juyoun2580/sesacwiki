@@ -810,9 +810,18 @@ function renderMockInterview(c) {
             <p class="ff-mock__transcript-label">실시간 텍스트</p>
             <p class="ff-mock__transcript-text" id="mock-transcript-text"></p>
           </div>
-          <button type="button" class="btn btn--outline btn--sm" id="mock-save-btn" hidden>💾 답변으로 저장</button>
         </div>` : `
         <p class="ff-mock__rec-unsupported">⚠️ 이 브라우저는 음성 인식을 지원하지 않아요. Chrome 또는 Edge를 사용해주세요.</p>`}
+
+        <div class="ff-mock__write-zone">
+          <label class="ff-mock__write-label" for="mock-write-ta">✏️ 내 답변 작성</label>
+          <textarea id="mock-write-ta" class="ff-textarea ff-mock__write-ta" rows="5"
+                    placeholder="음성 인식 결과가 여기에 채워지거나, 직접 답변을 입력할 수 있어요.">${esc(answer)}</textarea>
+          <div class="ff-mock__write-footer">
+            <span class="ff-char-count" id="mock-write-count">${answer.length}자</span>
+            <button type="button" class="btn btn--primary btn--sm" id="mock-save-btn">💾 저장</button>
+          </div>
+        </div>
 
         <button type="button" class="btn btn--ghost btn--sm" id="mock-toggle">내 준비 답변 보기</button>
         <div class="ff-mock__answer" id="mock-ans" hidden>
@@ -836,6 +845,27 @@ function renderMockInterview(c) {
   c.querySelector('#mock-prev').onclick = () => { _mockIdx--; renderMockInterview(c); };
   c.querySelector('#mock-next').onclick = () => { _mockIdx++; renderMockInterview(c); };
 
+  const writeTa    = c.querySelector('#mock-write-ta');
+  const writeCount = c.querySelector('#mock-write-count');
+  const saveBtn    = c.querySelector('#mock-save-btn');
+
+  writeTa.oninput = () => {
+    writeCount.textContent = writeTa.value.length + '자';
+  };
+
+  saveBtn.onclick = () => {
+    const text = writeTa.value.trim();
+    if (!text) return T('저장할 답변을 입력해주세요.');
+    const f2 = loadFeatures();
+    f2.interviewAnswers[q.id] = text;
+    saveFeatures(f2);
+    T('답변을 저장했어요! ✅');
+    const ansEl = c.querySelector('#mock-ans');
+    ansEl.innerHTML = `<p class="ff-mock__answer-text">${esc(text)}</p>`;
+    c.querySelector('#mock-toggle').textContent = '내 준비 답변 보기';
+    ansEl.hidden = true;
+  };
+
   if (!SR) return;
 
   let finalText   = '';
@@ -845,7 +875,6 @@ function renderMockInterview(c) {
   const recBtn        = c.querySelector('#mock-rec-btn');
   const transcriptBox = c.querySelector('#mock-transcript');
   const transcriptTxt = c.querySelector('#mock-transcript-text');
-  const saveBtn       = c.querySelector('#mock-save-btn');
 
   function updateTranscript(interim) {
     transcriptTxt.innerHTML =
@@ -856,7 +885,6 @@ function renderMockInterview(c) {
   function startRec() {
     hasError = false;
     updateTranscript('');
-    saveBtn.hidden = true;
 
     const rec = new SR();
     _mockRecognition = rec;
@@ -879,6 +907,8 @@ function renderMockInterview(c) {
         else interim += text;
       }
       updateTranscript(interim);
+      writeTa.value = finalText + (interim ? ' ' + interim : '');
+      writeCount.textContent = writeTa.value.length + '자';
     };
 
     rec.onend = () => {
@@ -892,7 +922,8 @@ function renderMockInterview(c) {
       recBtn.innerHTML = '<span class="ff-mock__rec-dot" aria-hidden="true"></span>🎤 다시 녹음';
       recBtn.classList.remove('ff-mock__rec-btn--active');
       if (!hasError) updateTranscript('');
-      if (finalText.trim()) saveBtn.hidden = false;
+      writeTa.value = finalText;
+      writeCount.textContent = writeTa.value.length + '자';
     };
 
     rec.onerror = e => {
@@ -945,20 +976,6 @@ function renderMockInterview(c) {
     wantsRecord = true;
     finalText   = '';
     startRec();
-  };
-
-  saveBtn.onclick = () => {
-    const text = finalText.trim();
-    if (!text) return;
-    const f2 = loadFeatures();
-    f2.interviewAnswers[q.id] = text;
-    saveFeatures(f2);
-    T('답변을 저장했어요! ✅');
-    saveBtn.hidden = true;
-    const ansEl = c.querySelector('#mock-ans');
-    ansEl.innerHTML = `<p class="ff-mock__answer-text">${esc(text)}</p>`;
-    c.querySelector('#mock-toggle').textContent = '내 준비 답변 보기';
-    ansEl.hidden = true;
   };
 }
 

@@ -1172,6 +1172,30 @@
   text-align: center;
 }
 
+/* ---------- Mock Interview Write Zone ---------- */
+.ff-mock__write-zone {
+  margin-top: var(--space-14);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.ff-mock__write-label {
+  font-size: var(--fs-13);
+  font-weight: 600;
+  color: var(--ink2);
+}
+
+.ff-mock__write-ta {
+  resize: vertical;
+}
+
+.ff-mock__write-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* ---------- Lightbox ---------- */
 .ff-lightbox {
   position: fixed;
