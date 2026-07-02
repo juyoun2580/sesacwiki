@@ -1682,21 +1682,27 @@ function renderMockInterview(c) {
     const transcript = c.querySelector('#mock-transcript');
     const recActions = c.querySelector('#mock-rec-actions');
 
+    function setRecStopped(label) {
+      recBtn.textContent = label;
+      recBtn.classList.remove('ff-mock__rec-btn--active');
+      recStatus.innerHTML = '';
+    }
+
     function startRec() {
       hasError = false;
-      transcript.innerHTML = '<p class="ff-mock__transcript-placeholder">🎙 말씀해주세요...</p>';
-      recActions.hidden = true;
 
       const recognition = new SR();
       _mockRecognition  = recognition;
       recognition.lang           = 'ko-KR';
-      recognition.continuous     = true;
+      recognition.continuous     = false; // false가 Chrome에서 onresult를 더 안정적으로 발화
       recognition.interimResults = true;
+      recognition.maxAlternatives = 1;
 
       recognition.onstart = () => {
         recBtn.textContent  = '⏹ 중지';
         recBtn.classList.add('ff-mock__rec-btn--active');
         recStatus.innerHTML = '<span class="ff-mock__rec-dot"></span> 녹음 중...';
+        if (!finalText) transcript.innerHTML = '<p class="ff-mock__transcript-placeholder">🎙 말씀해주세요...</p>';
       };
 
       recognition.onresult = (e) => {
@@ -1711,14 +1717,12 @@ function renderMockInterview(c) {
       recognition.onend = () => {
         _mockRecognition = null;
         if (wantsRecord && !hasError) {
-          // Chrome 자동 세션 종료 → 자동 재시작
-          startRec();
+          // 한 발화 처리 후 자동 재시작 (200ms 딜레이로 Chrome 안정화)
+          setTimeout(startRec, 200);
           return;
         }
         wantsRecord = false;
-        recBtn.textContent = '🎤 다시 녹음';
-        recBtn.classList.remove('ff-mock__rec-btn--active');
-        recStatus.innerHTML = '';
+        setRecStopped('🎤 다시 녹음');
         if (finalText.trim()) recActions.hidden = false;
       };
 
@@ -1727,27 +1731,31 @@ function renderMockInterview(c) {
         if (e.error === 'not-allowed') {
           hasError    = true;
           wantsRecord = false;
-          recBtn.textContent = '🎤 녹음 시작';
-          recBtn.classList.remove('ff-mock__rec-btn--active');
+          setRecStopped('🎤 녹음 시작');
           recStatus.textContent = '⚠️ 마이크 권한을 허용해주세요.';
         } else if (e.error === 'network') {
           hasError    = true;
           wantsRecord = false;
-          recBtn.textContent = '🎤 녹음 시작';
-          recBtn.classList.remove('ff-mock__rec-btn--active');
+          setRecStopped('🎤 녹음 시작');
           recStatus.textContent = '⚠️ 네트워크 오류. 인터넷 연결을 확인해주세요.';
         } else if (e.error === 'no-speech' || e.error === 'aborted') {
-          // onend 자동 재시작에 맡김
+          // onend에서 재시작 처리
         } else {
           hasError    = true;
           wantsRecord = false;
-          recBtn.textContent = '🎤 녹음 시작';
-          recBtn.classList.remove('ff-mock__rec-btn--active');
+          setRecStopped('🎤 녹음 시작');
           recStatus.textContent = `⚠️ 오류: ${e.error}`;
         }
       };
 
-      recognition.start();
+      try {
+        recognition.start();
+      } catch (err) {
+        _mockRecognition = null;
+        wantsRecord = false;
+        setRecStopped('🎤 녹음 시작');
+        recStatus.textContent = '⚠️ 녹음을 시작할 수 없어요.';
+      }
     }
 
     recBtn.onclick = () => {
@@ -1758,6 +1766,8 @@ function renderMockInterview(c) {
       }
       wantsRecord = true;
       finalText   = '';
+      recActions.hidden = true;
+      transcript.innerHTML = '<p class="ff-mock__transcript-placeholder">🎙 말씀해주세요...</p>';
       startRec();
     };
 
