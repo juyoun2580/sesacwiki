@@ -113,6 +113,10 @@
   position: relative;
 }
 
+.nav .nav__item:last-child{
+  display: none;
+}
+
 .nav__item::after {
   content: '';
   position: absolute;
