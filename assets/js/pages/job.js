@@ -6,7 +6,7 @@
 // ──────────────────────────────────────────────────────────────────────────────
 
 const JOB_KEY      = 'job_data';
-const DATA_VERSION = 18;
+const DATA_VERSION = 19;
 let _showAllResults = false;
 
 // ── 단계 / 태스크 카탈로그 ─────────────────────────────────────────────────────
@@ -288,11 +288,9 @@ function freshData() {
 
   saveData(data);
 
-  if (!localStorage.getItem('job_features')) {
-    try {
-      localStorage.setItem('job_features', JSON.stringify(DEMO_JOB_FEATURES));
-    } catch { /* ignore */ }
-  }
+  try {
+    localStorage.setItem('job_features', JSON.stringify(DEMO_JOB_FEATURES));
+  } catch { /* ignore */ }
 
   return data;
 }
