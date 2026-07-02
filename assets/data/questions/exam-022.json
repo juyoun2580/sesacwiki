@@ -1,0 +1,2004 @@
+[
+  {
+    "id": "q-adx-objects-001",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "커스텀 오브젝트 API 이름 끝에 붙는 것은?",
+    "choices": [
+      "__custom",
+      "__obj",
+      "__c",
+      "__x"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "커스텀 오브젝트는 API 이름 끝에 __c가 붙는다.",
+      "whyCorrect": "표준 명명 규칙상 커스텀 오브젝트 접미사는 __c이므로 정답은 C다.",
+      "whyIncorrect": "__custom, __obj는 실제 사용되는 접미사가 아니며, __x는 External Object의 접미사다.",
+      "examPoint": "커스텀 오브젝트 = __c, External Object = __x로 명확히 구분.",
+      "practicalExample": "Project__c처럼 커스텀 오브젝트의 API 이름 끝에는 항상 __c가 붙는다."
+    }
+  },
+  {
+    "id": "q-adx-objects-002",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "자동 계산되며 수동 수정 불가한 필드 타입은?",
+    "choices": [
+      "Text",
+      "Number",
+      "Formula",
+      "Roll-Up Summary"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Formula 필드는 지정된 수식에 따라 자동으로 계산되며 사용자가 직접 값을 입력하거나 수정할 수 없다.",
+      "whyCorrect": "자동 계산 + 수동 수정 불가라는 두 조건을 모두 만족하는 것은 Formula이므로 정답은 C다.",
+      "whyIncorrect": "Text와 Number는 사용자가 직접 입력하는 필드이며, Roll-Up Summary는 자식 레코드 값을 집계하는 별개의 필드 타입이다.",
+      "examPoint": "Formula 필드는 항상 읽기 전용이라는 점을 기억.",
+      "practicalExample": "Amount * 0.1 같은 수식을 넣은 Formula 필드는 자동으로 계산될 뿐 사용자가 직접 값을 고칠 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-objects-003",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "부모 삭제 시 자식도 함께 삭제되는 관계는?",
+    "choices": [
+      "Lookup Relationship",
+      "Many-to-Many",
+      "마스터-디테일",
+      "Junction Object"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Master-Detail 관계에서는 부모 레코드가 삭제되면 자식 레코드도 자동으로 함께 삭제(Cascade Delete)된다.",
+      "whyCorrect": "부모 삭제와 자식 삭제가 연동되는 것은 Master-Detail 관계의 특징이므로 정답은 C다.",
+      "whyIncorrect": "Lookup Relationship은 부모 삭제 시 자식이 유지되고 필드만 비워지며, Many-to-Many와 Junction Object는 관계 유형이 아니라 구현 패턴/오브젝트 명칭이다.",
+      "examPoint": "Cascade Delete = Master-Detail의 핵심 특징이라는 점을 항상 기억.",
+      "practicalExample": "Project__c(Master-Detail)가 삭제되면 그 아래 연결된 Task__c도 함께 자동 삭제된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-004",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "하위 레코드 값을 집계하는 필드 타입은?",
+    "choices": [
+      "Formula",
+      "Roll-Up Summary",
+      "Currency",
+      "Number"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Roll-Up Summary는 Master-Detail 관계에서 자식 레코드의 값을 SUM/COUNT/MIN/MAX로 부모에 집계하는 필드다.",
+      "whyCorrect": "자식 레코드 값 집계가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "Formula는 같은 레코드 내 계산, Currency와 Number는 단순 숫자 입력 필드로 집계 기능이 없다.",
+      "examPoint": "Roll-Up Summary는 Master-Detail에서만 사용 가능하다는 점을 함께 기억.",
+      "practicalExample": "Opportunity 하위 Line Item들의 금액 합계를 Roll-Up Summary로 부모 Opportunity에 자동 집계한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-005",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "같은 오브젝트에서 유형별 다른 Picklist/레이아웃 적용은?",
+    "choices": [
+      "Page Layout",
+      "FLS",
+      "Record Type",
+      "Permission Set"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Record Type을 사용하면 같은 오브젝트 안에서 비즈니스 프로세스별로 다른 Picklist 값 세트와 페이지 레이아웃을 적용할 수 있다.",
+      "whyCorrect": "유형별 분기가 핵심 목적이므로 정답은 C다.",
+      "whyIncorrect": "Page Layout은 화면 배치만 담당하고, FLS는 필드 접근 권한, Permission Set은 사용자 권한 부여 기능이다.",
+      "examPoint": "'레코드 유형별 다른 화면'은 항상 Record Type으로 직결.",
+      "practicalExample": "Opportunity에서 New Business와 Renewal을 Record Type으로 구분해 각기 다른 Stage 목록과 레이아웃을 적용한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-006",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "External Object의 API 이름 끝에 붙는 것은?",
+    "choices": [
+      "__c",
+      "__x",
+      "__ext",
+      "__obj"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "External Object는 외부 데이터 소스를 참조하는 오브젝트로 API 이름 끝에 __x가 붙는다.",
+      "whyCorrect": "외부 오브젝트의 표준 접미사는 __x이므로 정답은 B다.",
+      "whyIncorrect": "__c는 커스텀 오브젝트 접미사이며, __ext와 __obj는 실제 사용되지 않는 접미사다.",
+      "examPoint": "커스텀 오브젝트 = __c, External Object = __x로 구분.",
+      "practicalExample": "외부 ERP 시스템 데이터를 실시간 연결하는 External Object는 API 이름이 Product__x처럼 끝난다."
+    }
+  },
+  {
+    "id": "q-adx-objects-007",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Lookup 관계에서 부모 레코드를 삭제하면?",
+    "choices": [
+      "자식 레코드도 함께 삭제",
+      "자식 레코드는 남지만 Lookup 필드가 빈값이 됨",
+      "오류가 발생해 삭제 불가",
+      "자식 레코드가 다른 부모에 자동 연결"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lookup 관계에서 부모를 삭제하면 자식 레코드는 그대로 유지되고 Lookup 필드 값만 null이 된다.",
+      "whyCorrect": "자식 레코드가 유지된다는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "함께 삭제되는 것은 Master-Detail의 동작이며, 오류로 삭제가 막히거나 다른 부모에 자동 연결되는 것은 Lookup의 기본 동작이 아니다.",
+      "examPoint": "Master-Detail(Cascade Delete) vs Lookup(필드만 null)의 차이를 명확히 구분.",
+      "practicalExample": "Account를 삭제해도 Lookup으로 연결된 Equipment__c 레코드는 남고 Account 필드만 비워진다."
+    }
+  },
+  {
+    "id": "q-adx-objects-008",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Roll-Up Summary 필드를 사용할 수 있는 관계 유형은?",
+    "choices": [
+      "Lookup Relationship만",
+      "Master-Detail Relationship만",
+      "두 관계 모두 가능",
+      "외부 오브젝트 관계만"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Roll-Up Summary 필드는 Master-Detail 관계에서만 사용할 수 있으며 Lookup 관계에서는 지원되지 않는다.",
+      "whyCorrect": "Master-Detail 전용이라는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "Lookup Relationship이나 외부 오브젝트 관계에서는 Roll-Up Summary를 사용할 수 없으며 두 관계 모두 가능하다는 설명도 사실이 아니다.",
+      "examPoint": "Roll-Up Summary = Master-Detail 전용이라는 규칙을 예외 없이 기억.",
+      "practicalExample": "Lookup으로 연결된 오브젝트의 자식 개수를 세려면 Roll-Up Summary 대신 다른 방법(Flow, 리포트 등)을 써야 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-009",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Many-to-Many 관계를 구현하는 방법은?",
+    "choices": [
+      "Lookup 필드 2개",
+      "두 개의 Master-Detail 관계",
+      "Formula 필드",
+      "External Object"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Many-to-Many 관계는 Junction Object를 만들고 각 오브젝트에 Master-Detail 관계를 하나씩 연결하여 구현한다.",
+      "whyCorrect": "Master-Detail 관계 2개로 다대다를 구현하는 것이 표준 방법이므로 정답은 B다.",
+      "whyIncorrect": "Lookup 필드 2개로는 Cascade Delete나 Roll-Up Summary 같은 Master-Detail 전용 기능을 쓸 수 없고, Formula 필드나 External Object는 관계 자체를 생성하는 도구가 아니다.",
+      "examPoint": "다대다 = Junction Object + Master-Detail 2개라는 공식을 암기.",
+      "practicalExample": "Contact와 Product가 서로 여러 개씩 연결되는 구조를 Junction Object로 구현한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-010",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Picklist와 Multi-Select Picklist의 차이는?",
+    "choices": [
+      "Picklist는 무제한 선택, Multi-Select는 1개만",
+      "Picklist는 1개 선택, Multi-Select는 여러 개 선택 가능",
+      "둘 다 동일한 기능",
+      "Picklist는 커스텀, Multi-Select는 표준"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Picklist는 하나의 값만 선택 가능하고, Multi-Select Picklist는 여러 값을 동시에 선택할 수 있다.",
+      "whyCorrect": "선택 가능 개수의 차이가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "선택 개수가 반대로 설명된 A는 틀리며, 두 필드는 명백히 다른 기능이고 표준/커스텀 여부와도 무관하다.",
+      "examPoint": "단일 선택 = Picklist, 복수 선택 = Multi-Select Picklist.",
+      "practicalExample": "고객이 관심 있는 제품군을 여러 개 선택해야 한다면 Multi-Select Picklist를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-011",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Auto Number 필드의 특징은?",
+    "choices": [
+      "사용자가 직접 입력",
+      "자동으로 순차적 번호 부여, 수정 불가",
+      "다른 필드 값으로 자동 계산",
+      "외부 시스템에서 가져온 값"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Auto Number 필드는 레코드 생성 시 자동으로 순차적인 번호(예: CASE-0001)를 부여하며 사용자가 수정할 수 없다.",
+      "whyCorrect": "자동 순번 부여 + 수정 불가가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "사용자 직접 입력은 Text 필드의 특징이고, 다른 필드 기반 계산은 Formula 필드, 외부 시스템 값은 External ID의 특징이다.",
+      "examPoint": "자동 순번 + 특정 형식 지정 = Auto Number 필드.",
+      "practicalExample": "새 Case가 생성될 때마다 Auto Number 필드가 CASE-0001, CASE-0002 순으로 자동 번호를 매긴다."
+    }
+  },
+  {
+    "id": "q-adx-objects-012",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Record Type의 주요 용도는?",
+    "choices": [
+      "레코드 접근 권한 제어",
+      "같은 오브젝트에서 다른 Picklist 값과 페이지 레이아웃 적용",
+      "필드 유효성 검사",
+      "자동화 트리거"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Record Type은 같은 오브젝트에서 사용자나 비즈니스 프로세스에 따라 다른 Picklist 값 세트와 페이지 레이아웃을 적용할 때 사용한다.",
+      "whyCorrect": "값 세트 + 레이아웃 분기가 핵심 용도이므로 정답은 B다.",
+      "whyIncorrect": "접근 권한 제어는 공유 설정/권한 관리, 유효성 검사는 Validation Rule, 자동화 트리거는 Flow의 역할이다.",
+      "examPoint": "Record Type은 '어떤 값을 보여줄지'와 '어떤 화면을 보여줄지'를 함께 제어한다는 점을 기억.",
+      "practicalExample": "Opportunity에서 New Business와 Renewal Record Type에 각기 다른 Stage 값과 레이아웃을 지정한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-013",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Field Dependency의 용도는?",
+    "choices": [
+      "필드 값을 자동으로 계산",
+      "하나의 필드 값에 따라 다른 필드의 선택 옵션을 제한",
+      "두 필드를 하나로 합치기",
+      "필드 접근 권한 제어"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Field Dependency는 컨트롤링 필드의 값에 따라 종속 필드에 표시되는 선택 옵션을 자동으로 필터링한다.",
+      "whyCorrect": "한 필드 값에 따라 다른 필드의 옵션을 제한하는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "자동 계산은 Formula, 필드 병합 기능은 존재하지 않으며, 접근 권한 제어는 FLS의 역할이다.",
+      "examPoint": "Field Dependency = 컨트롤링 필드 → 종속 필드 옵션 필터링.",
+      "practicalExample": "Type이 'Internal'일 때만 Phase 필드에 특정 값들만 나타나도록 Field Dependency를 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-014",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "External ID 필드의 주요 용도는?",
+    "choices": [
+      "Salesforce 내부 레코드 ID 저장",
+      "외부 시스템의 고유 ID를 저장하여 데이터 동기화 시 활용",
+      "자동 번호 생성",
+      "다른 오브젝트와의 관계 설정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "External ID 필드는 외부 시스템의 고유 식별자를 저장하는 필드로, Data Loader의 Upsert 작업 시 기존 레코드를 식별하는 키로 사용된다.",
+      "whyCorrect": "외부 시스템 ID 저장 및 동기화 활용이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "Salesforce 내부 ID는 Record ID가 자동으로 관리하며, 자동 번호 생성은 Auto Number, 관계 설정은 Lookup/Master-Detail 필드의 역할이다.",
+      "examPoint": "External ID + Upsert 조합은 데이터 동기화 문제에서 항상 함께 등장.",
+      "practicalExample": "레거시 시스템의 ID를 External ID 필드에 저장해두면 향후 Upsert로 손쉽게 데이터를 동기화할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-objects-015",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Page Layout에서 설정할 수 없는 것은?",
+    "choices": [
+      "필드 배치",
+      "관련 목록 순서",
+      "버튼 표시",
+      "FLS"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Page Layout은 필드 배치, 관련 목록, 버튼 표시를 설정하지만 필드 접근 권한(FLS)은 별도로 설정해야 한다.",
+      "whyCorrect": "FLS는 Page Layout이 아닌 별도 보안 설정 영역이므로 정답은 D다.",
+      "whyIncorrect": "필드 배치, 관련 목록 순서, 버튼 표시는 모두 Page Layout에서 직접 설정 가능한 항목이다.",
+      "examPoint": "'화면 구성'은 Page Layout, '필드 접근 권한'은 FLS로 명확히 구분.",
+      "practicalExample": "필드를 완전히 숨기려면 Page Layout에서 제거하는 것만으로는 부족하고 FLS를 Hidden으로 설정해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-016",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Global Value Set(전역 값 집합)의 장점은?",
+    "choices": [
+      "여러 오브젝트에서 같은 Picklist 값을 재사용 가능",
+      "자동으로 값이 업데이트됨",
+      "더 많은 Picklist 값을 저장 가능",
+      "코드 없이 자동화 가능"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Global Value Set을 사용하면 동일한 Picklist 값 세트를 여러 오브젝트의 여러 필드에서 재사용할 수 있다.",
+      "whyCorrect": "여러 오브젝트 간 값 재사용이 핵심 장점이므로 정답은 A다.",
+      "whyIncorrect": "값이 자동 업데이트되거나 저장 용량이 늘어나는 기능은 아니며, 자동화와도 직접 관련이 없다.",
+      "examPoint": "여러 오브젝트에서 동일한 Picklist가 필요하면 Global Value Set으로 일관성을 유지.",
+      "practicalExample": "Account, Lead, Contact 모두에서 사용하는 'Industry' 값을 Global Value Set 하나로 관리한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-017",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Cross-Object Formula 필드란?",
+    "choices": [
+      "두 오브젝트를 하나로 합치는 필드",
+      "관련된 다른 오브젝트의 필드 값을 참조하는 수식 필드",
+      "여러 오브젝트를 교차 분석하는 보고서 필드",
+      "외부 오브젝트와 연결하는 필드"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Cross-Object Formula는 Lookup 또는 Master-Detail 관계를 통해 부모 오브젝트의 필드 값을 자식 오브젝트에서 자동으로 표시하는 수식 필드다.",
+      "whyCorrect": "다른 오브젝트의 필드 값을 참조하는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "오브젝트 병합 기능은 없으며, 보고서 필드나 외부 오브젝트 연결과도 다른 개념이다.",
+      "examPoint": "Cross-Object Formula는 값을 저장하지 않고 매번 부모의 최신 값을 실시간으로 참조한다는 점을 기억.",
+      "practicalExample": "Contact에서 Account.BillingCity를 참조하는 Cross-Object Formula로 도시 정보를 자동 표시한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-018",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "커스텀 오브젝트 생성 시 자동으로 생성되는 표준 필드가 아닌 것은?",
+    "choices": [
+      "Name",
+      "Created Date",
+      "Last Modified Date",
+      "Owner Email"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "커스텀 오브젝트를 생성하면 Name, Created Date, Last Modified Date, Owner 등의 표준 필드가 자동으로 함께 생성된다.",
+      "whyCorrect": "Owner Email은 자동 생성 필드 목록에 포함되지 않으므로 정답은 D다.",
+      "whyIncorrect": "Name, Created Date, Last Modified Date는 모두 커스텀 오브젝트 생성 시 기본적으로 함께 만들어진다.",
+      "examPoint": "Owner 필드는 자동 생성되지만 Owner의 Email까지 별도 필드로 자동 생성되지는 않는다는 점에 유의.",
+      "practicalExample": "관리자가 필요하면 Owner의 이메일을 표시하는 Cross-Object Formula를 별도로 만들어야 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-019",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Master-Detail 관계에서 자식 레코드의 공유 설정은?",
+    "choices": [
+      "자식이 독립적으로 공유 설정을 가짐",
+      "부모의 공유 설정을 상속받음",
+      "항상 Public Read/Write",
+      "OWD 설정에 따름"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Master-Detail 관계에서 자식 레코드의 공유 설정은 항상 부모 레코드의 공유 설정을 그대로 상속받는다.",
+      "whyCorrect": "부모 공유 설정 상속이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "자식이 독립적인 공유 설정을 갖거나 항상 Public Read/Write로 고정되는 것이 아니며, 자식만의 별도 OWD 설정도 존재하지 않는다.",
+      "examPoint": "Master-Detail의 자식 OWD는 'Controlled by Parent'로 고정되며 변경 불가.",
+      "practicalExample": "Account가 Private OWD라면 그 아래 Master-Detail로 연결된 자식 레코드도 Account 접근 권한이 있는 사용자만 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-objects-020",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "오브젝트에서 필드 삭제 후 복원 가능 기간은?",
+    "choices": [
+      "즉시 영구 삭제",
+      "7일",
+      "15일",
+      "30일"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "삭제된 필드는 즉시 영구 삭제되지 않고 15일간 Deleted Fields 섹션에 보관되어 복원할 수 있다.",
+      "whyCorrect": "복원 가능 기간이 15일이므로 정답은 C다.",
+      "whyIncorrect": "즉시 영구 삭제되지 않으며, 7일이나 30일은 실제 보관 기간과 다르다.",
+      "examPoint": "필드 삭제 후 15일 이내 복원 가능하다는 구체적인 기간을 암기.",
+      "practicalExample": "실수로 필드를 삭제해도 15일 안에 Deleted Fields에서 복원해 데이터를 되살릴 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-objects-021",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Schema Builder의 주요 용도는?",
+    "choices": [
+      "코드 작성 IDE",
+      "오브젝트 관계를 시각화하고 필드/오브젝트 생성",
+      "보고서 시각화",
+      "Flow 생성"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Schema Builder는 Salesforce 데이터 모델을 시각적 다이어그램으로 보여주며 드래그앤드롭으로 새 오브젝트와 필드를 생성할 수 있다.",
+      "whyCorrect": "오브젝트 관계 시각화 + 생성 도구가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "코드 작성 IDE, 보고서 시각화, Flow 생성은 각각 별개의 도구(Apex 에디터, Reports, Flow Builder)가 담당한다.",
+      "examPoint": "'오브젝트 관계 시각화'는 항상 Schema Builder로 직결.",
+      "practicalExample": "여러 커스텀 오브젝트 간의 Lookup/Master-Detail 관계를 한눈에 보기 위해 Schema Builder를 연다."
+    }
+  },
+  {
+    "id": "q-adx-objects-022",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Compact Layout의 용도는?",
+    "choices": [
+      "레코드 상세 페이지 전체 레이아웃",
+      "모바일 앱과 팝업에서 주요 필드를 간략하게 표시",
+      "보고서 레이아웃",
+      "대시보드 레이아웃"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Compact Layout은 모바일 앱이나 레코드 호버 팝업에서 핵심 정보를 간략하게 표시하기 위한 레이아웃이다.",
+      "whyCorrect": "모바일·팝업의 간략 표시가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "전체 상세 페이지 레이아웃은 Page Layout, 보고서와 대시보드 레이아웃은 각각 별개의 설정 영역이다.",
+      "examPoint": "핵심 필드 몇 개만 간략히 보여줄 때는 Compact Layout.",
+      "practicalExample": "모바일 앱에서 Opportunity를 열면 Compact Layout에 설정된 핵심 필드(Amount, Stage 등)만 상단에 요약 표시된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-023",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Rich Text Area와 Text Area의 차이는?",
+    "choices": [
+      "글자 수 제한만 다름",
+      "Rich Text Area는 서식(볼드, 이미지 등)을 지원",
+      "Text Area가 더 최신",
+      "Rich Text Area는 검색 불가"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Rich Text Area는 볼드, 이탤릭, 이미지 삽입 등의 서식을 지원하는 반면 Text Area는 일반 텍스트만 저장한다.",
+      "whyCorrect": "서식 지원 여부가 핵심 차이이므로 정답은 B다.",
+      "whyIncorrect": "단순히 글자 수 제한 차이만 있는 것이 아니며, 최신 여부나 검색 가능 여부와는 무관하다.",
+      "examPoint": "서식이 필요하면 Rich Text Area, 순수 텍스트만 필요하면 Text Area.",
+      "practicalExample": "제품 설명에 이미지와 굵은 글씨를 넣고 싶다면 Rich Text Area 필드를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-024",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "오브젝트 탭 가시성을 설정하는 곳은?",
+    "choices": [
+      "Object Manager",
+      "프로필의 Tab Settings",
+      "FLS 설정",
+      "OWD 설정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "오브젝트 탭의 가시성(Default On, Default Off, Tab Hidden)은 각 프로필의 Tab Settings에서 설정한다.",
+      "whyCorrect": "탭 가시성 설정 위치가 프로필의 Tab Settings이므로 정답은 B다.",
+      "whyIncorrect": "Object Manager는 오브젝트/필드 자체를 정의하는 곳이며, FLS는 필드 접근 권한, OWD는 레코드 접근 범위를 다루는 별개 설정이다.",
+      "examPoint": "탭 노출 여부는 Profile의 Tab Settings, 필드 노출 여부는 FLS로 구분.",
+      "practicalExample": "특정 프로필에서 커스텀 오브젝트 탭이 보이지 않도록 Tab Settings에서 Tab Hidden으로 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-025",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "오브젝트에서 필드를 필수로 만드는 방법이 아닌 것은?",
+    "choices": [
+      "Object Manager에서 필드 설정",
+      "Page Layout에서 Required 체크",
+      "Validation Rule",
+      "FLS를 Hidden으로 설정"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "FLS를 Hidden으로 설정하면 필드 자체가 보이지 않게 될 뿐, 필수 입력을 강제하는 기능이 아니다.",
+      "whyCorrect": "FLS Hidden은 필수화가 아니라 숨김 처리이므로 정답은 D다.",
+      "whyIncorrect": "Object Manager 설정, Page Layout의 Required 체크, Validation Rule은 모두 필드를 필수로 만드는 실제 방법들이다.",
+      "examPoint": "'필드 숨기기'는 FLS, '필드 필수화'는 Object Manager/Page Layout/Validation Rule로 구분.",
+      "practicalExample": "FLS를 Hidden으로 하면 그 필드는 아예 보이지 않으므로 필수 입력조차 요구할 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-objects-026",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "커스텀 오브젝트에서 Reports & Dashboards에 표시되려면?",
+    "choices": [
+      "자동으로 모든 보고서에 포함",
+      "Allow Reports 옵션을 활성화해야 함",
+      "표준 오브젝트로 변환 필요",
+      "별도 설정 없이 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "커스텀 오브젝트 생성 시 Allow Reports 옵션을 활성화해야 해당 오브젝트의 데이터가 보고서와 대시보드에서 사용 가능해진다.",
+      "whyCorrect": "명시적으로 Allow Reports를 켜야 한다는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "자동으로 모든 보고서에 포함되지 않으며, 표준 오브젝트로 변환할 필요도 없고 별도 설정 없이 가능한 것도 아니다.",
+      "examPoint": "커스텀 오브젝트를 만들 때 Allow Reports, Allow Search 등의 옵션을 확인하는 습관이 필요.",
+      "practicalExample": "새로 만든 Project__c 오브젝트로 리포트를 만들려면 먼저 Allow Reports 옵션을 켜야 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-027",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "수식 필드에서 TODAY() 함수가 반환하는 값은?",
+    "choices": [
+      "현재 날짜와 시간",
+      "현재 날짜만(시간 정보 없음)",
+      "마지막 수정 날짜",
+      "특정 형식으로 변환된 텍스트"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "TODAY() 함수는 시간 정보 없이 오늘의 날짜(년/월/일)만 반환하는 함수다.",
+      "whyCorrect": "날짜만 반환하고 시간은 포함하지 않는다는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "날짜와 시간을 함께 반환하는 것은 NOW() 함수의 역할이며, 마지막 수정 날짜나 텍스트 변환은 TODAY()의 기능이 아니다.",
+      "examPoint": "날짜만 필요하면 TODAY(), 날짜+시간이 필요하면 NOW()로 구분.",
+      "practicalExample": "Close Date가 오늘 이전인지 확인하는 Validation Rule에서 CloseDate < TODAY() 같은 수식을 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-028",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 레코드 생성 시 Record Type을 선택하게 되는 조건은?",
+    "choices": [
+      "항상 선택",
+      "프로필에 2개 이상의 Record Type이 할당된 경우",
+      "관리자가 설정한 경우만",
+      "커스텀 오브젝트에서만"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "프로필에 2개 이상의 Record Type이 할당된 경우에만 레코드 생성 시 Record Type 선택 화면이 표시된다.",
+      "whyCorrect": "선택 화면이 나타나는 조건은 2개 이상 할당이므로 정답은 B다.",
+      "whyIncorrect": "항상 선택 화면이 뜨는 것은 아니며, 1개만 할당된 경우 자동으로 선택되어 화면이 나타나지 않는다. 커스텀 오브젝트에만 국한된 것도 아니다.",
+      "examPoint": "1개 Record Type = 자동 선택, 2개 이상 = 선택 화면 표시라는 규칙을 기억.",
+      "practicalExample": "영업담당자 프로필에 'New Business'와 'Renewal' 두 Record Type이 할당되어 있으면, Opportunity 생성 시 어느 유형인지 선택하는 화면이 먼저 나타난다."
+    }
+  },
+  {
+    "id": "q-adx-objects-029",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "오브젝트 간 관계에서 Lookup의 삭제 동작 설정 옵션이 아닌 것은?",
+    "choices": [
+      "Clear the value of this field",
+      "Restrict Delete",
+      "Cascade Delete",
+      "Archive Child"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Lookup 관계의 삭제 동작 옵션은 Clear the value of this field(값 비우기)와 Restrict Delete(자식이 있으면 부모 삭제 차단)가 있다.",
+      "whyCorrect": "Archive Child는 존재하지 않는 옵션이므로 정답은 D다.",
+      "whyIncorrect": "Clear the value of this field와 Restrict Delete는 실제 Lookup 삭제 동작 옵션이며, Cascade Delete는 Master-Detail 관계의 동작이라 Lookup 옵션 목록에는 없다.",
+      "examPoint": "Lookup 삭제 옵션(Clear/Restrict) vs Master-Detail 동작(Cascade)을 구분해서 기억.",
+      "practicalExample": "관리자가 Lookup 필드에 Restrict Delete를 설정하면, 자식 레코드가 있는 부모는 삭제할 수 없게 된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-030",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "관련 목록(Related List)이 레코드 페이지에 표시되지 않을 때 확인할 것은?",
+    "choices": [
+      "OWD 설정",
+      "Page Layout에서 해당 Related List가 추가되어 있는지",
+      "FLS 설정",
+      "Role Hierarchy"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "관련 목록은 Page Layout의 Related Lists 섹션에 추가되어 있어야 레코드 페이지에 표시된다.",
+      "whyCorrect": "표시 여부를 결정하는 것은 Page Layout 구성이므로 정답은 B다.",
+      "whyIncorrect": "OWD는 레코드 접근 범위, FLS는 필드 접근 권한, Role Hierarchy는 조직 구조 기반 접근 확장 기능으로 관련 목록 표시 여부와는 직접 관련이 없다.",
+      "examPoint": "관련 목록이 안 보이면 가장 먼저 Page Layout 구성을 확인.",
+      "practicalExample": "Contact 레이아웃에 Opportunities Related List를 추가해야 Contact 페이지에서 관련 Opportunity 목록이 보인다."
+    }
+  },
+  {
+    "id": "q-adx-objects-031",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "오브젝트의 Search Layout 설정은 무엇을 제어하나요?",
+    "choices": [
+      "레코드 저장 시 유효성 검사",
+      "검색 결과 목록에서 표시되는 필드",
+      "레코드 접근 권한",
+      "보고서에 표시되는 필드"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Search Layout은 Salesforce 검색 결과 목록, Lookup 대화 상자, 목록 뷰 등에서 표시되는 필드를 설정한다.",
+      "whyCorrect": "검색 결과에서 표시되는 필드 제어가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "저장 시 유효성 검사는 Validation Rule, 레코드 접근 권한은 공유 설정, 보고서 표시 필드는 리포트 자체의 컬럼 선택 기능이 담당한다.",
+      "examPoint": "'검색/Lookup 대화상자에서 보이는 필드'는 Search Layout으로 직결.",
+      "practicalExample": "Lookup 검색 창에서 Account를 찾을 때 표시되는 열(Name, Phone 등)을 Search Layout으로 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-032",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "인라인 편집(Inline Editing)이 불가능한 필드 유형은?",
+    "choices": [
+      "Text",
+      "Picklist",
+      "Formula Field",
+      "Date"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Formula Field는 자동으로 계산되는 읽기 전용 필드이므로 사용자가 화면에서 직접 값을 바꾸는 인라인 편집이 불가능하다.",
+      "whyCorrect": "읽기 전용 특성 때문에 인라인 편집이 안 되는 것은 Formula Field이므로 정답은 C다.",
+      "whyIncorrect": "Text, Picklist, Date는 모두 사용자가 값을 직접 입력하거나 선택할 수 있는 필드로 인라인 편집이 가능하다.",
+      "examPoint": "Formula 필드 = 항상 읽기 전용이라는 규칙이 인라인 편집 불가의 근거.",
+      "practicalExample": "리스트 뷰에서 Amount는 바로 수정할 수 있지만, 계산된 Formula 필드는 더블클릭해도 편집되지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-objects-033",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "오브젝트에서 Sharing Button을 활성화하면?",
+    "choices": [
+      "OWD가 자동으로 변경됨",
+      "레코드 소유자가 수동 공유 버튼을 사용할 수 있게 됨",
+      "모든 사용자가 레코드를 공유할 수 있게 됨",
+      "역할 계층이 활성화됨"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "오브젝트의 Sharing 버튼을 활성화하면 레코드 소유자와 관리자가 레코드 페이지에서 Share 버튼을 통해 수동 공유를 할 수 있게 된다.",
+      "whyCorrect": "수동 공유 기능을 사용할 수 있게 되는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "OWD가 자동으로 바뀌지 않으며, 모든 사용자에게 공유 권한이 부여되는 것도 아니고, 역할 계층은 별도로 이미 구성된 조직 구조 기능이다.",
+      "examPoint": "Sharing Button = 개별 레코드에 대한 수동 공유 UI 활성화.",
+      "practicalExample": "특정 Opportunity를 다른 팀원에게 임시로 열람 권한을 주기 위해 Share 버튼으로 수동 공유한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-034",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "커스텀 오브젝트에서 기본으로 생성되지 않는 표준 필드는?",
+    "choices": [
+      "Name",
+      "Created By",
+      "Last Modified By",
+      "Email"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "커스텀 오브젝트 생성 시 Name, Created By, Last Modified By, Owner, Record ID 등의 표준 필드가 자동 생성된다.",
+      "whyCorrect": "Email 필드는 자동 생성 목록에 포함되지 않으므로 정답은 D다.",
+      "whyIncorrect": "Name, Created By, Last Modified By는 모두 커스텀 오브젝트 생성 시 기본적으로 함께 만들어진다.",
+      "examPoint": "Email처럼 업무 특화된 필드는 관리자가 직접 추가해야 한다는 점을 기억.",
+      "practicalExample": "관리자가 필요하면 커스텀 오브젝트에 Email 필드를 별도로 새로 만들어야 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-035",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Formula Field에서 다른 오브젝트의 필드를 참조하려면?",
+    "choices": [
+      "직접 참조 불가",
+      "Lookup 또는 Master-Detail 관계를 통해 참조 가능",
+      "별도 API 코드 필요",
+      "Roll-Up Summary 사용"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Cross-Object Formula를 사용하면 Lookup 또는 Master-Detail 관계를 통해 연결된 다른 오브젝트의 필드 값을 참조할 수 있다.",
+      "whyCorrect": "관계를 통한 참조가 가능하다는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "직접 참조가 불가능하다는 것은 사실이 아니며(관계를 통하면 가능), 별도 API 코드나 Roll-Up Summary가 필요한 것도 아니다.",
+      "examPoint": "Cross-Object Formula는 관계를 타고 부모의 값을 실시간으로 참조한다는 개념을 기억.",
+      "practicalExample": "Contact의 Formula 필드가 관계를 통해 Account.BillingCity 값을 그대로 보여준다."
+    }
+  },
+  {
+    "id": "q-adx-objects-036",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "오브젝트의 Record Name 필드 유형으로 설정 가능한 것은?",
+    "choices": [
+      "Text 또는 Auto Number",
+      "Text만",
+      "Auto Number만",
+      "Date"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "오브젝트의 Record Name 필드는 Text(직접 입력) 또는 Auto Number(자동 순번) 유형으로 설정할 수 있다.",
+      "whyCorrect": "두 가지 유형 모두 가능하므로 정답은 A다.",
+      "whyIncorrect": "Text만 가능하다거나 Auto Number만 가능하다는 설명은 둘 중 하나를 배제해 틀리며, Date는 Record Name 유형으로 사용되지 않는다.",
+      "examPoint": "Record Name은 오브젝트 생성 시 Text 또는 Auto Number 중 선택하는 초기 설정이라는 점을 기억.",
+      "practicalExample": "Case 오브젝트의 Record Name을 Auto Number로 설정해 CASE-0001처럼 자동 부여되게 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-037",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "오브젝트에서 필드 레이블과 API 이름의 차이는?",
+    "choices": [
+      "동일하다",
+      "레이블은 사용자에게 표시되는 이름, API 이름은 코드에서 사용하는 이름",
+      "API 이름이 더 길다",
+      "레이블만 변경 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "필드 레이블은 UI에서 사용자에게 표시되는 이름이고, API 이름은 코드·수식·워크플로우에서 사용하는 기술적 이름이다.",
+      "whyCorrect": "표시용 이름과 기술적 이름으로 역할이 다르므로 정답은 B다.",
+      "whyIncorrect": "두 이름은 동일하지 않으며, 길이 차이가 본질적 구분점도 아니고, API 이름 역시 필드 생성 시(신중하게) 지정할 수 있다.",
+      "examPoint": "레이블 = 사람이 보는 이름, API 이름 = 코드가 참조하는 이름으로 구분.",
+      "practicalExample": "레이블은 '고객 만족도'로 표시되지만 API 이름은 Customer_Satisfaction__c처럼 언더스코어를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-038",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Long Text Area 필드의 최대 저장 크기는?",
+    "choices": [
+      "255자",
+      "1,000자",
+      "약 128KB",
+      "무제한"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Long Text Area 필드는 최대 131,072자(약 128KB)까지 저장할 수 있다.",
+      "whyCorrect": "약 128KB가 실제 최대 저장 크기이므로 정답은 C다.",
+      "whyIncorrect": "255자는 일반 Text 필드의 최대 크기이며, 1,000자는 실제 한도와 다르고, 무제한도 아니다.",
+      "examPoint": "일반 Text = 255자, Long Text Area = 약 128KB(131,072자)로 구분해서 기억.",
+      "practicalExample": "긴 상담 메모나 상세 설명을 저장할 때는 Text 대신 Long Text Area 필드를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-039",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Dependent Picklist에서 Controlling Field로 사용할 수 있는 것은?",
+    "choices": [
+      "Text 필드",
+      "Standard Picklist 또는 Checkbox",
+      "Roll-Up Summary",
+      "Formula Field"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Dependent Picklist의 Controlling Field(컨트롤 필드)는 Standard Picklist 필드 또는 Checkbox 필드만 사용할 수 있다.",
+      "whyCorrect": "허용되는 컨트롤 필드 유형은 Picklist와 Checkbox이므로 정답은 B다.",
+      "whyIncorrect": "Text 필드, Roll-Up Summary, Formula Field는 Controlling Field로 사용할 수 없다.",
+      "examPoint": "Controlling Field 자격 제한(Picklist/Checkbox만)은 시험에 자주 나오는 세부 규칙.",
+      "practicalExample": "Type이라는 Standard Picklist를 Controlling Field로 삼아 Phase 종속 Picklist의 옵션을 필터링한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-040",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "오브젝트에서 Unique 설정을 하면?",
+    "choices": [
+      "필드가 필수 입력됨",
+      "해당 필드에 중복 값을 저장할 수 없음",
+      "필드가 읽기 전용이 됨",
+      "다른 오브젝트와 연결됨"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "필드에 Unique 설정을 하면 해당 필드에 동일한 값이 다른 레코드에 저장될 수 없다.",
+      "whyCorrect": "중복 값 저장 방지가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "Unique 설정 자체가 필수 입력을 의미하지는 않으며, 읽기 전용이 되거나 다른 오브젝트와 자동으로 연결되지도 않는다.",
+      "examPoint": "Unique는 '중복 금지'이지 '필수 입력'과는 별개 개념이라는 점에 유의.",
+      "practicalExample": "이메일 주소나 외부 시스템 ID 필드에 Unique 설정을 걸어 동일 값의 레코드가 중복 생성되지 않도록 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-041",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC needs to track project milestones that are not covered by any standard Salesforce object. What should the administrator create?",
+    "choices": [
+      "A new Standard Object",
+      "A Custom Object",
+      "An External Object",
+      "A Junction Object"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "표준 오브젝트로 다루지 못하는 업무 데이터를 저장하려면 Custom Object를 직접 만들어야 한다.",
+      "whyCorrect": "표준 오브젝트가 커버하지 못하는 신규 데이터 추적이 필요하므로 정답은 B다.",
+      "whyIncorrect": "A(표준 오브젝트)는 관리자가 새로 추가 생성할 수 없다. C(External Object)는 외부 데이터를 연결할 뿐 자체 저장용이 아니다. D(Junction Object)는 다대다 관계를 위한 특수 목적 오브젝트다.",
+      "examPoint": "표준으로 없는 업무 데이터는 항상 Custom Object로 직결.",
+      "practicalExample": "'프로젝트 마일스톤'처럼 표준 오브젝트에 없는 개념은 Milestone__c 같은 Custom Object로 만든다."
+    }
+  },
+  {
+    "id": "q-adx-objects-042",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An administrator wants to automatically calculate the total value of all Opportunity Line Items on the parent Opportunity record. Which field type should be used?",
+    "choices": [
+      "Formula Field",
+      "Roll-Up Summary",
+      "Currency Field",
+      "Cross-Object Formula"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Roll-Up Summary는 Master-Detail 관계에서 자식 레코드 값을 SUM/COUNT/MIN/MAX로 부모에 집계하는 필드다.",
+      "whyCorrect": "자식(Line Items) 값을 부모(Opportunity)에 자동 합산해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Formula Field)는 같은 레코드 내 계산이라 자식 집계에는 쓸 수 없다. C(Currency Field)는 단순 숫자 필드일 뿐 자동 집계 기능이 없다. D(Cross-Object Formula)는 반대 방향(부모→자식)으로 참조하는 필드다.",
+      "examPoint": "자식→부모 집계는 Roll-Up Summary, 부모→자식 참조는 Cross-Object Formula로 방향을 구분.",
+      "practicalExample": "Opportunity Line Item들의 금액을 Roll-Up Summary로 합산해 Opportunity의 총액 필드에 자동 반영한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-043",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which field type automatically calculates its value based on other fields and cannot be manually edited by users?",
+    "choices": [
+      "Currency",
+      "Roll-Up Summary",
+      "Formula",
+      "Picklist"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Formula 필드는 다른 필드나 함수를 참조해 값을 자동으로 계산하며 사용자가 직접 수정할 수 없다.",
+      "whyCorrect": "자동 계산 + 수정 불가라는 조건에 정확히 부합하므로 정답은 C다.",
+      "whyIncorrect": "Currency는 직접 편집 가능한 숫자 필드다. Roll-Up Summary는 자식 레코드 집계라는 별개의 메커니즘이다. Picklist는 선택형 필드로 계산 기능이 없다.",
+      "examPoint": "Formula 필드는 항상 읽기 전용이라는 규칙을 기억.",
+      "practicalExample": "Discount Amount 필드가 Amount * Discount %로 자동 계산되도록 Formula 필드로 만든다."
+    }
+  },
+  {
+    "id": "q-adx-objects-044",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC needs to relate Contacts to multiple Accounts (many-to-many relationship). What should be created?",
+    "choices": [
+      "A Lookup field on Contact",
+      "A Master-Detail field on Account",
+      "A Junction Object with two Master-Detail relationships",
+      "A Formula field"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Contact와 Account 사이의 다대다 관계는 각각에 Master-Detail로 연결된 Junction Object로 구현한다.",
+      "whyCorrect": "여러 Contact가 여러 Account와 연결되어야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Lookup 필드 1개)는 다대일 관계만 표현한다. B(Master-Detail 1개)도 일대다 관계만 가능하다. D(Formula field)는 관계 자체를 만들지 못한다.",
+      "examPoint": "다대다 관계 문제는 항상 Junction Object + Master-Detail 2개로 직결.",
+      "practicalExample": "Contact가 여러 프로젝트 Account에 동시에 연결되어야 하는 구조를 Junction Object로 구현한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-045",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "What happens to child records when a Master-Detail parent record is deleted?",
+    "choices": [
+      "Child records are archived and can be restored.",
+      "Child records remain but the parent field becomes blank.",
+      "Child records are automatically deleted.",
+      "Child records are transferred to the admin."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Master-Detail 관계에서는 부모 레코드가 삭제되면 자식 레코드도 자동으로 함께 삭제(Cascade Delete)된다.",
+      "whyCorrect": "부모 삭제 시 자식도 함께 삭제되는 것이 Master-Detail의 핵심 특징이므로 정답은 C다.",
+      "whyIncorrect": "A(아카이브 후 복원)는 존재하지 않는 기능이다. B(필드만 빈값이 됨)는 Lookup 관계의 동작이다. D(관리자에게 이전)는 사실이 아니다.",
+      "examPoint": "Cascade Delete = Master-Detail 관계의 핵심 특징이라는 점을 항상 기억.",
+      "practicalExample": "Project__c(Master-Detail 부모)를 삭제하면 그 아래 연결된 Task__c도 함께 자동 삭제된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-046",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to show different Picklist values and page layouts for Opportunities based on whether the deal is a New Business or a Renewal. What should be used?",
+    "choices": [
+      "Validation Rules",
+      "Page Layouts only",
+      "Record Types",
+      "Permission Sets"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "같은 오브젝트 안에서 비즈니스 유형별로 다른 Picklist 값과 페이지 레이아웃을 적용하는 표준 기능은 Record Type이다.",
+      "whyCorrect": "New Business와 Renewal에 각기 다른 값/레이아웃을 적용해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Validation Rules)는 데이터 검증 기능이다. B(Page Layouts only)만으로는 Picklist 값 자체를 다르게 제어할 수 없다. D(Permission Sets)는 권한 관리 기능이다.",
+      "examPoint": "'레코드 유형별 다른 값+화면'은 항상 Record Type으로 직결.",
+      "practicalExample": "Opportunity의 New Business Record Type과 Renewal Record Type에 각각 다른 Stage 목록과 레이아웃을 연결한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-047",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A user can see the Account object but cannot see the Annual Revenue field in reports or list views. What is the most likely cause?",
+    "choices": [
+      "The field is hidden in the page layout.",
+      "Field-Level Security is restricting the field for the users profile.",
+      "The OWD for Account is set to Private.",
+      "The user does not have a permission set."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "FLS(Field-Level Security)는 레코드 상세 화면뿐 아니라 리포트, 리스트 뷰, API 등 모든 곳에 동일하게 적용되는 필드 접근 제어다.",
+      "whyCorrect": "리포트와 리스트 뷰에서까지 필드가 안 보이는 것은 FLS 제한 때문이므로 정답은 B다.",
+      "whyIncorrect": "A(Page Layout 숨김)는 레코드 상세 화면에만 영향을 주고 리포트에는 여전히 표시된다. C(OWD Private)는 레코드 전체 접근을 제어할 뿐 특정 필드만 숨기지 못한다. D(Permission Set 부재)는 권한을 추가하지 않았다는 뜻일 뿐 직접적 원인이 아니다.",
+      "examPoint": "'레코드는 보이는데 특정 필드만 어디서도 안 보인다'는 항상 FLS로 직결.",
+      "practicalExample": "영업 전략 관련 사용자 프로필에서 Annual Revenue 필드를 FLS로 Hidden 처리하면 리포트에서도 그 필드가 나타나지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-objects-048",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which relationship type should be used when the child record must always have a parent and the parent controls the security of the child?",
+    "choices": [
+      "Lookup Relationship",
+      "Many-to-Many Relationship",
+      "Master-Detail Relationship",
+      "External Lookup"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Master-Detail 관계는 자식이 반드시 부모를 가져야 하며, 자식의 보안(공유 설정)이 부모에 종속되는 관계 유형이다.",
+      "whyCorrect": "부모 필수 + 보안 상속이라는 두 조건을 모두 만족하는 것은 Master-Detail이므로 정답은 C다.",
+      "whyIncorrect": "A(Lookup)는 부모가 선택사항이며 보안도 독립적이다. B(Many-to-Many)는 관계 유형 이름이 아니라 구현 패턴을 가리키는 표현이다. D(External Lookup)는 외부 오브젝트 연결용이다.",
+      "examPoint": "'부모 필수 + 자식이 부모 보안을 상속'이라는 조건은 항상 Master-Detail로 직결.",
+      "practicalExample": "커스텀 오브젝트가 Account 없이는 존재할 수 없고 Account의 공유 설정을 그대로 물려받아야 한다면 Master-Detail을 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-049",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to ensure users cannot save an Opportunity record if the Close Date is set to a date in the past. What should be configured?",
+    "choices": [
+      "A required field on the page layout",
+      "A Workflow Rule",
+      "A Validation Rule",
+      "An Assignment Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Validation Rule은 조건 수식이 TRUE일 때 저장을 차단하며, TODAY() 함수로 현재 날짜와 비교하는 조건도 만들 수 있다.",
+      "whyCorrect": "과거 날짜 저장을 막아야 하므로 Validation Rule이 정답(C)이다.",
+      "whyIncorrect": "A(필수 필드)는 값이 비어있는지만 검사할 뿐 날짜 조건을 검증하지 못한다. B(Workflow Rule)는 폐기된 도구다. D(Assignment Rule)는 배정 기능으로 저장 차단과 무관하다.",
+      "examPoint": "필드 조건 기반 저장 차단은 항상 Validation Rule을 우선 고려.",
+      "practicalExample": "CloseDate < TODAY()가 TRUE면 Validation Rule이 저장을 차단해 과거 날짜 입력을 막는다."
+    }
+  },
+  {
+    "id": "q-adx-objects-050",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to automatically calculate the total number of closed Cases on each Account. The Cases are related to Accounts via a Master-Detail relationship. Which field type should be used on Account?",
+    "choices": [
+      "Formula Field",
+      "Roll-Up Summary",
+      "Cross-Object Formula",
+      "Workflow Field Update"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Roll-Up Summary는 Master-Detail 관계에서 조건에 맞는 자식 레코드 개수를 부모에 집계할 수 있다(COUNT + 필터).",
+      "whyCorrect": "Case 중 Closed 상태인 것의 개수를 Account에 집계해야 하므로 Roll-Up Summary가 정답(B)이다.",
+      "whyIncorrect": "A(Formula Field)는 같은 레코드 내 계산이라 자식 집계가 불가능하다. C(Cross-Object Formula)는 부모→자식 참조 방향이라 반대다. D(Workflow Field Update)는 폐기된 도구다.",
+      "examPoint": "'자식 레코드 개수/합계를 부모에'라는 요구는 항상 Roll-Up Summary(Master-Detail 필요).",
+      "practicalExample": "Status = Closed 조건의 Case 개수를 Roll-Up Summary로 집계해 Account의 'Closed Case Count' 필드에 자동 반영한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-051",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC needs to create a field on Contact that displays the Account billing city automatically without the user entering it. What should be created?",
+    "choices": [
+      "Formula Field",
+      "Roll-Up Summary",
+      "Cross-Object Formula Field",
+      "Lookup Field"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Cross-Object Formula는 Lookup 관계를 통해 연결된 다른 오브젝트(Account)의 필드 값을 자동으로 표시한다.",
+      "whyCorrect": "Contact에서 사용자가 직접 입력하지 않고 Account의 도시 정보를 자동 표시해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Formula Field)는 같은 오브젝트 내 계산이며 다른 오브젝트 값을 직접 참조하려면 결국 Cross-Object Formula가 된다. B(Roll-Up Summary)는 자식→부모 집계 방향이라 반대다. D(Lookup Field)는 관계를 생성할 뿐 값을 표시하는 필드는 아니다.",
+      "examPoint": "'다른 오브젝트 값을 자동으로 그대로 보여줌'은 Cross-Object Formula로 직결.",
+      "practicalExample": "Contact의 Cross-Object Formula 필드가 Account.BillingCity 값을 실시간으로 그대로 보여준다."
+    }
+  },
+  {
+    "id": "q-adx-objects-052",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An administrator at Universal Containers needs to ensure that every Contact record must be linked to an Account, and if the Account is deleted, the Contact should also be deleted. Which relationship type should be used?",
+    "choices": [
+      "Lookup Relationship",
+      "Many-to-Many",
+      "Master-Detail Relationship",
+      "External Relationship"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Master-Detail 관계는 자식이 항상 부모를 가져야 하고, 부모 삭제 시 자식도 함께 삭제(Cascade Delete)되는 관계다.",
+      "whyCorrect": "Contact가 항상 Account를 가져야 하고, Account 삭제 시 Contact도 삭제되어야 하므로 Master-Detail이 정답(C)이다.",
+      "whyIncorrect": "A(Lookup)는 부모가 선택사항이며 삭제 시 자식이 유지된다. B(Many-to-Many)는 구현 패턴이지 관계 유형 이름이 아니다. D(External Relationship)는 외부 오브젝트 연결용이다.",
+      "examPoint": "'항상 부모 필요 + 부모 삭제 시 자식도 삭제'는 Master-Detail의 정의 그대로.",
+      "practicalExample": "Contact가 Master-Detail로 Account에 연결되어 있으면, Account가 삭제될 때 관련 Contact도 함께 삭제된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-053",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to track which products are included in each Opportunity and calculate the total product revenue automatically. What standard Salesforce feature enables this?",
+    "choices": [
+      "Custom Object with Roll-Up Summary",
+      "Products and Price Books with Opportunity Line Items",
+      "Junction Object",
+      "Quotes and Quote Line Items"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Products, Price Books, Opportunity Line Items는 Opportunity에 제품을 추가하고 금액을 자동 합산하는 표준 기능이다.",
+      "whyCorrect": "제품 포함 및 총 매출 자동 계산은 표준 기능인 Products + Price Books + Opportunity Line Items로 정답(B)이다.",
+      "whyIncorrect": "A(커스텀 오브젝트+Roll-Up Summary)는 이미 존재하는 표준 기능을 재발명하는 불필요한 방법이다. C(Junction Object)는 다대다 관계용 커스텀 솔루션이다. D(Quotes and Quote Line Items)는 견적서 생성 기능으로 Opportunity 자체의 제품 추적과는 다르다.",
+      "examPoint": "'Opportunity + 제품 + 자동 합산'은 항상 표준 Products/Price Books/Line Items 기능으로 직결.",
+      "practicalExample": "Opportunity에 노트북 10대를 Line Item으로 추가하면 Amount가 자동으로 합산된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-054",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to allow a single Contact to be related to multiple Accounts (not just one). Which Salesforce feature enables this?",
+    "choices": [
+      "Master-Detail Relationship",
+      "Junction Object",
+      "shared contacts",
+      "Cross-Object Formula"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Contacts to Multiple Accounts는 Contact를 기본 Account 외에 여러 Account에 추가로 연결할 수 있게 하는 표준 기능으로 Account 설정에서 활성화한다.",
+      "whyCorrect": "하나의 Contact가 여러 Account와 연관되어야 하므로 표준 기능인 이것이 정답(C)이다.",
+      "whyIncorrect": "A(Master-Detail)는 오직 하나의 부모만 가질 수 있다. B(Junction Object)는 표준 기능이 있으므로 불필요한 커스텀 솔루션이다. D(Cross-Object Formula)는 값 참조만 할 뿐 관계 자체를 만들지 못한다.",
+      "examPoint": "Contact-Account 다대다는 커스텀 개발 없이 표준 기능(Contacts to Multiple Accounts)으로 해결.",
+      "practicalExample": "한 컨설턴트가 여러 고객사 Account 프로젝트에 동시에 참여할 때 이 기능으로 연결한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-055",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A system administrator needs to create a field that shows users a predefined list of options and allows them to select MULTIPLE values. Which field type should be used?",
+    "choices": [
+      "Picklist",
+      "Multi-Select Picklist",
+      "Text Area",
+      "Checkbox"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Multi-Select Picklist는 미리 정의된 목록에서 여러 값을 동시에 선택할 수 있는 필드다.",
+      "whyCorrect": "사전 정의된 목록에서 여러 값을 선택해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Picklist)는 하나의 값만 선택 가능하다. C(Text Area)는 자유 텍스트라 목록 형태가 아니다. D(Checkbox)는 단순 참/거짓 값만 가진다.",
+      "examPoint": "복수 선택이 필요한 사전 정의 목록은 항상 Multi-Select Picklist.",
+      "practicalExample": "관심 있는 여러 제품군을 동시에 선택해야 하는 필드는 Multi-Select Picklist로 만든다."
+    }
+  },
+  {
+    "id": "q-adx-objects-056",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers uses a custom object Project__c with a Master-Detail relationship to Account. An admin tries to delete an Account record but receives an error. What is the most likely cause?",
+    "choices": [
+      "The Account has related Opportunities",
+      "The Account has related Project__c records that cannot be deleted first",
+      "The OWD prevents Account deletion",
+      "The user lacks Delete permission"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Master-Detail 관계에서는 부모 삭제 시 자식도 자동 삭제되는 것이 원칙이지만, 특정 상황(예: 삭제 제한 설정, 대량 자식 레코드)에서는 오류가 발생할 수 있다.",
+      "whyCorrect": "Project__c가 Master-Detail 자식으로 연결되어 있어 삭제 처리 중 문제가 발생했을 가능성이 가장 크므로 정답은 B다.",
+      "whyIncorrect": "A(관련 Opportunity)는 이 시나리오와 직접 관련이 없는 별개의 관계다. C(OWD가 삭제를 막음)는 OWD의 역할이 아니다. D(Delete 권한 부족)라면 오류 메시지가 권한 관련으로 나타나야 하지만 문제의 핵심은 자식 레코드다.",
+      "examPoint": "Master-Detail 자식 레코드와 관련된 삭제 오류는 먼저 자식 레코드 존재 여부를 확인.",
+      "practicalExample": "Account를 삭제하기 전에 관련된 모든 Project__c 자식 레코드 상태를 먼저 점검해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-057",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to track which Contacts attended which Events, and each Contact can attend many Events and each Event can have many Contacts. How should this be modeled?",
+    "choices": [
+      "Two Lookup fields",
+      "One Master-Detail from Contact to Event",
+      "A Junction Object with two Master-Detail relationships",
+      "A Cross-Object Formula"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Contact와 Event가 서로 여러 개씩 연결되는 다대다 관계는 Junction Object + Master-Detail 2개로 구현한다.",
+      "whyCorrect": "각 Contact가 여러 Event에, 각 Event가 여러 Contact에 연결되어야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Lookup 2개)는 Roll-Up Summary 등 Master-Detail 전용 기능을 쓸 수 없다. B(Master-Detail 1개)는 일대다 관계만 표현한다. D(Cross-Object Formula)는 값 참조 기능일 뿐 관계를 만들지 못한다.",
+      "examPoint": "다대다 관계는 항상 Junction Object + Master-Detail 2개로 직결.",
+      "practicalExample": "Attendance__c라는 Junction Object를 만들어 Contact와 Event 각각에 Master-Detail로 연결한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-058",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers needs to ensure that a specific picklist field shows different values depending on the Record Type selected. What should be configured?",
+    "choices": [
+      "Validation Rule",
+      "Field Dependency",
+      "Record Type Picklist Values",
+      "Global Picklist"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Record Type 설정에서는 각 Record Type마다 특정 Picklist 필드에서 사용 가능한 값의 부분 집합을 지정할 수 있다.",
+      "whyCorrect": "Record Type에 따라 다른 Picklist 값을 보여줘야 하므로 Record Type Picklist Values가 정답(C)이다.",
+      "whyIncorrect": "A(Validation Rule)로도 부분적으로 제어할 수 있지만 드롭다운 자체의 값 제어는 Record Type의 역할이다. B(Field Dependency)는 다른 필드 값 기준으로 옵션을 필터링하는 별개 메커니즘이다. D(Global Picklist)는 값 공유용일 뿐 필터링 기능이 아니다.",
+      "examPoint": "Record Type별로 Picklist 값을 다르게 하는 것은 Record Type Picklist Values 설정.",
+      "practicalExample": "Opportunity의 'New Business' Record Type에는 초기 Stage 값만, 'Renewal' Record Type에는 갱신 관련 Stage 값만 보이도록 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-059",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants all picklist fields for \"Industry\" to use the same set of values across Account, Lead, and Contact objects. What is the most efficient approach?",
+    "choices": [
+      "Manually create the same picklist values on each object",
+      "Use a Global Value Set and reference it in each object field",
+      "Create a custom object for Industry",
+      "Use a Validation Rule to enforce consistency"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Global Value Set은 하나의 값 세트를 정의해 여러 오브젝트의 여러 Picklist 필드에서 재사용할 수 있게 해준다.",
+      "whyCorrect": "여러 오브젝트에서 동일한 값 세트를 효율적으로 재사용해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(각 오브젝트에 수동 생성)는 값 불일치 위험이 크고 비효율적이다. C(Industry용 커스텀 오브젝트)는 과도한 설계다. D(Validation Rule)는 값 검증 기능이지 값 세트 재사용 기능이 아니다.",
+      "examPoint": "여러 오브젝트에 동일 Picklist가 필요하면 항상 Global Value Set을 우선 고려.",
+      "practicalExample": "Industry Global Value Set을 한 번 정의해 Account, Lead, Contact 필드가 모두 참조하도록 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-060",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "What is the maximum number of Master-Detail relationships a custom object can have?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "Unlimited"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "커스텀 오브젝트가 가질 수 있는 Master-Detail 관계의 최대 개수는 2개다.",
+      "whyCorrect": "최대 2개라는 것이 정확한 제한이므로 정답은 B다.",
+      "whyIncorrect": "1개, 3개, 무제한은 실제 제한과 다르다.",
+      "examPoint": "이 2개 제한이 바로 Junction Object 패턴(정확히 2개의 Master-Detail)의 근거가 된다는 점을 기억.",
+      "practicalExample": "다대다 관계 구현 시 Junction Object에 정확히 2개의 Master-Detail을 연결하는 것은 이 제한 때문이다."
+    }
+  },
+  {
+    "id": "q-adx-objects-061",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers created a custom object Equipment__c with a Lookup to Account. An Account is deleted. What happens to related Equipment__c records?",
+    "choices": [
+      "Equipment__c records are deleted",
+      "Equipment__c records remain with the Account lookup field blank",
+      "An error prevents Account deletion",
+      "Equipment__c records are archived"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lookup 관계에서 부모(Account)가 삭제되면 자식(Equipment__c)은 유지되고 Lookup 필드 값만 null이 된다.",
+      "whyCorrect": "자식 레코드가 유지되고 필드만 비워지는 것이 Lookup의 동작이므로 정답은 B다.",
+      "whyIncorrect": "A(자동 삭제)는 Master-Detail의 동작이다. C(삭제 자체가 막힘)는 Lookup의 기본 동작이 아니다. D(아카이브)는 존재하지 않는 기능이다.",
+      "examPoint": "Lookup = 자식 유지+필드만 null, Master-Detail = 자식도 함께 삭제로 명확히 구분.",
+      "practicalExample": "Account가 삭제되어도 Lookup으로 연결된 Equipment__c 레코드는 남고 Account 필드만 비워진다."
+    }
+  },
+  {
+    "id": "q-adx-objects-062",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin needs to display the number of days since an Opportunity was last modified. The value should update automatically each day. Which field type should be used?",
+    "choices": [
+      "Date Field",
+      "Roll-Up Summary",
+      "Formula Field using TODAY()",
+      "Text Formula"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "TODAY() 함수를 사용한 Formula Field는 오늘 날짜를 기준으로 매번 재계산되므로 마지막 수정일로부터 경과 일수를 매일 자동으로 갱신해서 보여줄 수 있다.",
+      "whyCorrect": "매일 자동으로 갱신되는 경과 일수 계산이 필요하므로 정답은 C다.",
+      "whyIncorrect": "A(Date Field)는 직접 입력하는 정적 값이다. B(Roll-Up Summary)는 자식 레코드 집계 기능으로 이 시나리오와 무관하다. D(Text Formula)는 텍스트를 반환할 뿐 날짜 계산과 직접 관련이 없다.",
+      "examPoint": "'매일 자동 갱신되는 날짜 계산'은 TODAY()를 활용한 Formula Field로 직결.",
+      "practicalExample": "TODAY() - LastModifiedDate 수식을 넣은 Formula Field가 매일 자동으로 경과 일수를 갱신해서 보여준다."
+    }
+  },
+  {
+    "id": "q-adx-objects-063",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to ensure users see a different set of fields on the Case record page depending on whether the Case is a Billing issue or a Technical issue. What should be configured?",
+    "choices": [
+      "Two Validation Rules",
+      "Two Page Layouts assigned via Record Types",
+      "Two Profiles",
+      "Two OWD settings"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Billing 이슈와 Technical 이슈를 각각 다른 Record Type으로 만들고, 각 Record Type에 서로 다른 Page Layout을 연결하면 필드 구성을 다르게 보여줄 수 있다.",
+      "whyCorrect": "Case 유형별로 다른 필드 세트(레이아웃)를 보여줘야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Validation Rule 2개)는 레이아웃 자체를 제어하지 못한다. C(Profile 2개)는 사용자 역할 구분이지 레이아웃과 직접 연결되지 않는다. D(OWD 설정 2개)는 접근 제어 기능이다.",
+      "examPoint": "'레코드 유형별 다른 화면 구성'은 항상 Record Type + Page Layout 조합.",
+      "practicalExample": "Case의 Billing Record Type과 Technical Record Type에 각각 다른 Page Layout을 배정한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-064",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to ensure that the Phase field on a custom object only shows certain values when the Type field is set to Internal. Which feature should be used?",
+    "choices": [
+      "Record Types",
+      "Validation Rule",
+      "Field Dependency",
+      "Page Layout"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Field Dependency는 컨트롤링 필드(Type)의 값에 따라 종속 필드(Phase)에 표시되는 선택 옵션을 자동으로 필터링한다.",
+      "whyCorrect": "Type이 Internal일 때만 Phase에서 특정 값들만 보여야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Record Types)는 전체 레코드 유형 자체를 분기하는 더 큰 단위의 기능이다. B(Validation Rule)는 저장을 제어할 뿐 드롭다운 옵션 필터링은 아니다. D(Page Layout)는 화면 배치일 뿐 값 필터링과 무관하다.",
+      "examPoint": "'한 필드 값에 따라 다른 필드 옵션 필터링'은 항상 Field Dependency로 직결.",
+      "practicalExample": "Type = Internal일 때만 Phase 드롭다운에 내부 프로세스 단계 값들만 나타나도록 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-065",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin creates a custom object Project__c with a lookup to Account. Later they realize they should have used Master-Detail. Can they change the relationship type?",
+    "choices": [
+      "Yes, directly in Object Manager",
+      "No, you must delete and recreate the field",
+      "Only if no data exists in the field",
+      "Only with a Salesforce support ticket"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lookup 관계를 Master-Detail로 직접 변환하는 기능은 제공되지 않으며, 필드를 삭제하고 새로 Master-Detail 필드를 생성해야 한다.",
+      "whyCorrect": "직접 변환이 불가능하고 재생성이 필요하므로 정답은 B다.",
+      "whyIncorrect": "A(Object Manager에서 직접 변환)는 실제로 지원되지 않는다. C(데이터가 없을 때만 가능)는 조건과 무관하게 항상 재생성이 필요하다. D(지원 티켓 필요)는 사실이 아니다.",
+      "examPoint": "Lookup ↔ Master-Detail 상호 변환은 직접 지원되지 않는다는 규칙을 기억.",
+      "practicalExample": "Lookup 필드를 삭제하고 새 Master-Detail 필드를 만든 뒤 기존 관계 데이터를 다시 연결해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-066",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "What is an External ID field used for in Salesforce?",
+    "choices": [
+      "To link Salesforce records to records in external systems during data import/upsert",
+      "To provide a public URL for accessing records",
+      "To store encrypted sensitive data",
+      "To enable cross-object formulas"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "External ID 필드는 외부 시스템의 고유 식별자를 저장해 데이터 임포트/Upsert 시 매칭 키로 활용된다.",
+      "whyCorrect": "외부 시스템과의 레코드 매칭이 핵심 용도이므로 정답은 A다.",
+      "whyIncorrect": "B(공개 URL 제공)는 External ID의 기능이 아니다. C(암호화된 민감 데이터 저장)는 Shield Platform Encryption 등 별도 기능의 역할이다. D(Cross-Object Formula 활성화)는 External ID와 직접 관련이 없다.",
+      "examPoint": "External ID + Upsert는 데이터 동기화 문제에서 항상 함께 등장.",
+      "practicalExample": "레거시 시스템 ID를 External ID 필드에 저장해 Upsert 시 매칭 키로 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-067",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers needs to create a field on Opportunity that stores a value from 1 to 5 representing customer satisfaction. Users should select the value from a dropdown. Which field type is best?",
+    "choices": [
+      "Number Field",
+      "Text Field",
+      "Picklist",
+      "Rating Formula"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Picklist는 미리 정의된 값 목록에서 하나를 선택하는 드롭다운 필드로, 고정된 값 범위(1~5) 선택에 적합하다.",
+      "whyCorrect": "사용자가 드롭다운에서 1~5 중 하나의 값을 선택해야 하므로 Picklist가 정답(C)이다.",
+      "whyIncorrect": "A(Number Field)는 자유 입력이라 값 범위를 강제하지 못한다. B(Text Field)도 자유 입력이라 값이 일관되지 않을 수 있다. D(Rating Formula)는 존재하지 않는 표준 필드 유형이다.",
+      "examPoint": "고정된 선택지 중 하나만 골라야 하면 Picklist가 표준 해법.",
+      "practicalExample": "고객 만족도 조사에서 담당자가 드롭다운으로 1~5점 중 하나를 선택해 Opportunity에 기록한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-068",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to display the Account Owner name on the Opportunity record without users entering it manually. The Account is linked to Opportunity via a Lookup. Which field type should be created on Opportunity?",
+    "choices": [
+      "Formula Field referencing Account.Owner.Name",
+      "Roll-Up Summary",
+      "Standard Owner field",
+      "Cross-Object Lookup"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Cross-Object Formula 필드는 Lookup/Master-Detail 관계를 통해 연결된 다른 레코드(Account)의 필드 값을 자동으로 표시할 수 있다.",
+      "whyCorrect": "Opportunity에서 연결된 Account의 Owner 이름을 사용자 입력 없이 자동으로 보여줘야 하므로, Account.Owner.Name을 참조하는 Formula Field가 정답(A)이다.",
+      "whyIncorrect": "B(Roll-Up Summary)는 자식→부모 방향의 집계이며 이 시나리오(부모 값 표시)와는 방향이 다르다. C(Standard Owner field)는 Opportunity 자체의 소유자이지 Account의 소유자가 아니다. D(Cross-Object Lookup)는 존재하지 않는 필드 유형명이다.",
+      "examPoint": "부모(다른 오브젝트)의 값을 자식에서 자동 표시 = Cross-Object Formula(=다른 오브젝트 필드를 참조하는 Formula Field).",
+      "practicalExample": "Opportunity 목록에서 담당 Account의 소유자 이름을 별도 조회 없이 바로 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-objects-069",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers creates a custom object with two Master-Detail relationships — one to Account and one to Contact. What type of object is this?",
+    "choices": [
+      "External Object",
+      "Lookup Object",
+      "Junction Object",
+      "Detail Object"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "두 개의 Master-Detail 관계를 가진 커스텀 오브젝트는 두 오브젝트 사이의 다대다 관계를 구현하는 Junction Object다.",
+      "whyCorrect": "Account와 Contact 각각에 Master-Detail 관계를 가진 오브젝트는 정의상 Junction Object이므로 정답은 C다.",
+      "whyIncorrect": "A(External Object)는 외부 데이터 연결용으로 Master-Detail 관계와 무관하다. B(Lookup Object)는 공식 용어가 아니다. D(Detail Object)는 자식 측을 가리키는 일반적 표현일 뿐 정확한 공식 명칭은 Junction Object다.",
+      "examPoint": "Master-Detail 관계 2개 = Junction Object라는 정의를 그대로 기억.",
+      "practicalExample": "Account와 Contact를 다대다로 연결하는 Junction Object를 만들어 한 Contact가 여러 Account의 프로젝트에 참여할 수 있게 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-070",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to make a picklist field required only when another field has a specific value. They want to avoid making it universally required. What is the best approach?",
+    "choices": [
+      "Mark it required on the page layout",
+      "Create a Validation Rule with conditional logic",
+      "Use a Record Type",
+      "Set it as required in Object Manager"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Validation Rule에 IF/AND 등 조건부 수식을 사용하면 특정 조건에서만 필드를 필수로 만드는 유연한 검증이 가능하다.",
+      "whyCorrect": "전체적으로 필수가 아니라 특정 조건에서만 필수로 만들어야 하므로 조건부 Validation Rule이 정답(B)이다.",
+      "whyIncorrect": "A(Page Layout에서 필수 체크)는 조건 없이 항상 필수가 되어 요구사항과 맞지 않는다. C(Record Type)는 값 세트를 분기할 뿐 조건부 필수 여부를 직접 제어하지 않는다. D(Object Manager에서 필수 설정)도 항상 필수가 되어 조건부 요구를 충족하지 못한다.",
+      "examPoint": "'특정 조건에서만 필수'라는 요구는 항상 Validation Rule의 조건부 수식으로 구현.",
+      "practicalExample": "Case Type이 'Escalated'일 때만 Escalation Reason 필드를 필수로 만들고, 그 외에는 선택사항으로 둔다."
+    }
+  },
+  {
+    "id": "q-adx-objects-071",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants a field on Case that always shows the SLA level (Gold, Silver, Bronze) from the related Account, even if it changes on the Account later. Which field type should be used?",
+    "choices": [
+      "Formula Field",
+      "Roll-Up Summary",
+      "manually maintained",
+      "Cross-Object Formula"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Cross-Object Formula는 저장된 값이 아니라 매번 부모 레코드의 현재 값을 실시간으로 참조하므로, 부모 값이 바뀌면 자동으로 반영된다.",
+      "whyCorrect": "Account의 SLA 값이 나중에 바뀌어도 항상 최신 값을 보여줘야 하므로, 실시간 참조 방식인 Cross-Object Formula가 정답(D)이다.",
+      "whyIncorrect": "A(Formula Field)는 같은 레코드 내 필드만 계산할 뿐 다른 오브젝트 값을 참조하려면 결국 Cross-Object Formula가 되어야 한다. B(Roll-Up Summary)는 자식→부모 방향 집계로 이 시나리오와 방향이 반대다. C(수동 유지)는 자동화가 아니라 매번 사람이 갱신해야 해 요구사항에 맞지 않는다.",
+      "examPoint": "'부모 값이 바뀌면 자동 반영'이라는 조건은 Cross-Object Formula의 실시간 참조 특성으로 직결.",
+      "practicalExample": "Account의 SLA가 Gold에서 Platinum으로 바뀌면, 관련 Case의 Cross-Object Formula 필드도 별도 조치 없이 즉시 Platinum으로 표시된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-072",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers is creating a custom object. They want to ensure records are automatically numbered (e.g., CASE-0001, CASE-0002). Which field type enables this?",
+    "choices": [
+      "Text Field with default value",
+      "Formula Field",
+      "Auto Number Field",
+      "Sequence Field"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Auto Number 필드는 레코드 생성 시 지정된 형식(예: CASE-{0000})으로 순차 번호를 자동 부여하며 사용자가 수정할 수 없다.",
+      "whyCorrect": "CASE-0001, CASE-0002처럼 자동 순번을 형식화해서 부여해야 하므로 Auto Number Field가 정답(C)이다.",
+      "whyIncorrect": "A(Text Field with default value)는 기본값이 고정되어 자동 증가하지 않는다. B(Formula Field)는 계산된 값을 표시할 뿐 순차 카운터 기능이 없다. D(Sequence Field)는 존재하지 않는 필드 유형명이다.",
+      "examPoint": "'자동 순번 + 특정 형식'이 나오면 항상 Auto Number Field.",
+      "practicalExample": "새 Case가 생성될 때마다 Auto Number 필드가 CASE-0001, CASE-0002 순으로 자동 번호를 매긴다."
+    }
+  },
+  {
+    "id": "q-adx-objects-073",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has a custom object Event__c with a lookup to Account. They want to count the number of related Events on each Account automatically. Can they use a Roll-Up Summary field?",
+    "choices": [
+      "Yes, Lookup relationships support Roll-Up Summary",
+      "No, Roll-Up Summary only works with Master-Detail relationships",
+      "Yes, but only for COUNT not SUM",
+      "No, custom objects cannot use Roll-Up Summary"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Roll-Up Summary 필드는 자식이 부모의 보안·존재를 완전히 종속받는 Master-Detail 관계에서만 사용할 수 있으며 Lookup 관계에서는 지원되지 않는다.",
+      "whyCorrect": "Event__c가 Account에 Lookup으로 연결되어 있으므로 Roll-Up Summary를 사용할 수 없어 정답은 B다.",
+      "whyIncorrect": "A(Lookup도 지원)는 사실이 아니다. C(COUNT만 가능)도 Lookup 자체에서 Roll-Up이 아예 지원되지 않으므로 틀리다. D(커스텀 오브젝트는 불가)는 관계 유형이 아니라 오브젝트 종류를 이유로 든 잘못된 설명이다.",
+      "examPoint": "Roll-Up Summary = Master-Detail 전용이라는 규칙은 예외 없이 적용.",
+      "practicalExample": "Account-Event가 Lookup 관계라면, 관련 Event 개수를 세려면 Roll-Up Summary 대신 Flow나 리포트를 사용해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-074",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to prevent users from selecting more than 3 values in a Multi-Select Picklist field. What is the best way to enforce this?",
+    "choices": [
+      "Set maximum selections in field settings",
+      "Create a Validation Rule to count selected values",
+      "Use a Formula Field instead",
+      "Multi-Select Picklists cannot be limited"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce는 Multi-Select Picklist의 최대 선택 개수를 직접 제한하는 필드 설정을 제공하지 않으므로, INCLUDES() 함수를 활용한 Validation Rule로 개수를 검사해야 한다.",
+      "whyCorrect": "3개를 초과해 선택하지 못하도록 강제해야 하며 이를 위한 표준 필드 설정이 없으므로 Validation Rule로 구현하는 B가 정답이다.",
+      "whyIncorrect": "A(필드 설정에서 최대 선택 지정)는 존재하지 않는 옵션이다. C(Formula Field로 대체)는 선택 자체를 막지 못한다. D(제한 불가)는 사실이 아니다 — Validation Rule로 우회 구현이 가능하다.",
+      "examPoint": "Multi-Select Picklist의 선택 개수 제한은 항상 Validation Rule + 로직으로 우회 구현.",
+      "practicalExample": "관리자가 '선택한 값이 3개를 초과하면 저장 차단'하는 Validation Rule을 작성해 Lost Reason 필드의 과도한 선택을 막는다."
+    }
+  },
+  {
+    "id": "q-adx-objects-075",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers wants to track the history of changes to the Status field on a Case. What should be enabled?",
+    "choices": [
+      "설정 감사 추적",
+      "Field History Tracking on the Status field",
+      "Debug Log",
+      "Event Monitoring"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Field History Tracking을 활성화하면 필드 값의 변경 이력(이전 값, 이후 값, 변경자, 변경 시각)이 자동으로 기록된다.",
+      "whyCorrect": "Case의 Status 필드 변경 이력을 추적해야 하므로 해당 필드에 Field History Tracking을 활성화하는 것이 정답(B)이다.",
+      "whyIncorrect": "A(설정 감사 추적)는 관리자의 시스템 설정 변경 이력을 추적할 뿐 레코드 필드 값 변경과는 다르다. C(Debug Log)는 코드 실행 로그다. D(Event Monitoring)는 사용자 활동/API 호출 등을 추적하는 유료 기능으로 필드 값 이력과는 다르다.",
+      "examPoint": "'필드 값의 변경 이력(누가, 언제, 무엇을)'을 추적해야 하면 항상 Field History Tracking.",
+      "practicalExample": "Case Status가 New → In Progress → Closed로 바뀐 이력을 모두 Field History Tracking에서 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-objects-076",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers needs to create a relationship between Contacts and Products where each Contact can be linked to many Products and each Product can have many Contacts. What is needed?",
+    "choices": [
+      "Two Lookup fields",
+      "One Master-Detail from Contact to Product",
+      "A Junction Object with two Master-Detail relationships",
+      "A Cross-Object Formula"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "두 오브젝트 사이의 다대다(N:M) 관계는 각각에 Master-Detail로 연결된 Junction Object를 만들어 구현한다.",
+      "whyCorrect": "Contact와 Product가 서로 여러 개씩 연결될 수 있어야 하므로, Junction Object with two Master-Detail relationships가 정답(C)이다.",
+      "whyIncorrect": "A(Lookup 필드 2개)는 Cascade Delete나 Roll-Up Summary 등 Master-Detail 전용 기능을 사용할 수 없다. B(Master-Detail 1개)는 일대다 관계만 표현할 뿐 다대다는 구현하지 못한다. D(Cross-Object Formula)는 값 참조 기능일 뿐 관계 자체를 생성하지 못한다.",
+      "examPoint": "다대다 관계 문제는 항상 Junction Object + Master-Detail 2개로 직결.",
+      "practicalExample": "한 Contact가 여러 Product를 관심 목록에 등록하고, 한 Product도 여러 Contact와 연결되는 구조를 Junction Object로 구현한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-077",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to display a Picklist field on a record page that shows different available values based on the users Profile. Which feature enables this?",
+    "choices": [
+      "Field Dependency",
+      "Record Type with Profile assignment",
+      "Validation Rule",
+      "Dynamic Forms"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Record Type은 Profile별로 배정되며, 각 Record Type에는 서로 다른 Picklist 값 세트를 지정할 수 있어 결과적으로 프로필에 따라 다른 선택지가 노출된다.",
+      "whyCorrect": "사용자 Profile에 따라 다른 Picklist 값을 보여줘야 하므로, Profile에 배정된 Record Type을 활용하는 것이 정답(B)이다.",
+      "whyIncorrect": "A(Field Dependency)는 다른 필드의 값에 따라 옵션을 필터링하는 기능으로 Profile 기준이 아니다. C(Validation Rule)는 저장 여부를 검증할 뿐 표시되는 선택지 자체를 바꾸지 못한다. D(Dynamic Forms)는 필드/섹션의 노출 여부를 조건부로 제어하는 레이아웃 기능으로 Picklist 값 자체를 바꾸는 기능이 아니다.",
+      "examPoint": "'Profile에 따라 다른 값/화면'이라는 요구는 Record Type + Profile 배정 조합으로 직결.",
+      "practicalExample": "영업팀 Profile에는 'Sales Record Type', 지원팀 Profile에는 'Support Record Type'을 배정해 각기 다른 Picklist 옵션을 보여준다."
+    }
+  },
+  {
+    "id": "q-adx-objects-078",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A custom object Equipment__c at Universal Containers has an External ID field called Legacy_ID__c. The admin wants to import records and update existing ones if the Legacy ID matches. Which Data Loader operation should be used?",
+    "choices": [
+      "Insert",
+      "Update",
+      "Delete",
+      "Upsert"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Upsert는 External ID 값이 기존 레코드와 일치하면 Update, 일치하지 않으면 Insert를 자동으로 판단해 처리하는 Data Loader 작업이다.",
+      "whyCorrect": "Legacy ID가 일치하면 기존 레코드를 갱신하고 일치하지 않으면 새로 생성해야 하므로 Upsert가 정답(D)이다.",
+      "whyIncorrect": "A(Insert)만 사용하면 이미 존재하는 레코드가 중복 생성된다. B(Update)만 사용하면 매칭되지 않는 신규 레코드가 생성되지 않는다. C(Delete)는 레코드를 삭제하는 작업으로 이 시나리오와 무관하다.",
+      "examPoint": "'매칭되면 갱신, 안 되면 신규 생성'이라는 요구는 항상 Upsert + External ID로 직결.",
+      "practicalExample": "레거시 시스템의 ID를 Legacy_ID__c(External ID)로 매핑해 Upsert하면 기존 Equipment 레코드는 갱신되고 신규 장비는 새로 생성된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-079",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to display different related lists on the Opportunity page for Sales Reps vs. Sales Managers. What should be configured?",
+    "choices": [
+      "Two Profiles",
+      "Two Record Types with different Page Layouts",
+      "Two OWD settings",
+      "Two Permission Sets"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Record Type마다 서로 다른 Page Layout을 연결할 수 있으며, Page Layout에서 관련 목록(Related List) 구성도 각각 다르게 설정할 수 있다.",
+      "whyCorrect": "Sales Rep과 Sales Manager에게 서로 다른 관련 목록을 보여줘야 하므로, 두 Record Type에 서로 다른 Page Layout을 연결하는 것이 정답(B)이다.",
+      "whyIncorrect": "A(Two Profiles)만으로는 같은 레코드에 대해 다른 관련 목록 구성을 자동으로 제공하지 못하며 Page Layout 연결이 필요하다. C(Two OWD settings)는 레코드 접근 범위를 다루는 기능으로 관련 목록 구성과 무관하다. D(Two Permission Sets)는 권한 부여 기능으로 화면 레이아웃 구성과는 다르다.",
+      "examPoint": "'역할별로 다른 화면 구성'은 Record Type + Page Layout 조합으로 직결.",
+      "practicalExample": "Sales Rep용 Record Type의 Page Layout에는 Activity Related List를, Manager용 Record Type의 Page Layout에는 Team Performance Related List를 배치한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-080",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers needs a field that stores a unique identifier from an external HR system for each Contact. This field will be used for future data syncs. What type of field should be created?",
+    "choices": [
+      "Text Field with Unique constraint",
+      "External ID field",
+      "Auto Number Field",
+      "Formula Field"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "External ID 필드는 외부 시스템의 고유 식별자를 저장해 향후 데이터 동기화(Upsert)의 매칭 키로 활용할 수 있다.",
+      "whyCorrect": "외부 HR 시스템의 고유 ID를 저장하고 향후 동기화에 사용해야 하므로 External ID field가 정답(B)이다.",
+      "whyIncorrect": "A(Text Field with Unique constraint)는 중복만 막을 뿐 External ID의 Upsert 매칭 최적화 기능이 없다. C(Auto Number Field)는 Salesforce 내부에서 자동 생성되는 값이라 외부 시스템 ID를 그대로 저장하는 용도가 아니다. D(Formula Field)는 계산된 값을 표시할 뿐 외부 ID를 저장하는 필드가 아니다.",
+      "examPoint": "'외부 시스템 ID 저장 + 향후 동기화'는 항상 External ID field로 직결.",
+      "practicalExample": "HR 시스템의 직원 ID를 Contact의 External ID 필드에 저장해두면, 이후 HR 데이터와 Salesforce Contact를 Upsert로 손쉽게 동기화할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-objects-081",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to track the history of changes to the Opportunity Stage field including old value, new value, who changed it, and when. What should the admin enable?",
+    "choices": [
+      "Setup Audit Trail for Opportunity",
+      "Field History Tracking on the Stage field",
+      "Debug Log for field changes",
+      "Event Monitoring"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Field History Tracking을 특정 필드에 활성화하면 이전 값, 새 값, 변경자, 변경 시각이 자동으로 기록된다.",
+      "whyCorrect": "Opportunity Stage 필드의 변경 이력(누가, 언제, 무엇을)을 추적해야 하므로 Stage 필드에 Field History Tracking을 활성화하는 것이 정답(B)이다.",
+      "whyIncorrect": "A(Setup Audit Trail)는 관리자의 시스템 설정 변경 이력을 추적할 뿐 레코드 필드 값과는 다르다. C(Debug Log for field changes)는 코드 실행 로그로 이 목적에 맞지 않는다. D(Event Monitoring)는 사용자 활동이나 API 호출을 추적하는 유료 기능으로 필드 값 이력과는 별개다.",
+      "examPoint": "필드 값 변경 이력 추적은 항상 Field History Tracking.",
+      "practicalExample": "Opportunity Stage가 Prospecting → Proposal → Closed Won으로 바뀐 전 과정을 Field History Tracking에서 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-objects-082",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to ensure that the Opportunity Name field always follows the format: AccountName - ProductName - Year. Which field type can auto-generate this?",
+    "choices": [
+      "Auto Number Field",
+      "Formula Field combining Account Name and other fields",
+      "Text Field with default value",
+      "Validation Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Formula Field는 같은 레코드 내 다른 필드나 관련 레코드의 필드 값을 조합해 원하는 형식의 텍스트를 자동으로 생성할 수 있다.",
+      "whyCorrect": "'AccountName - ProductName - Year' 형식을 자동으로 조합해야 하므로 여러 필드를 결합하는 Formula Field가 정답(B)이다.",
+      "whyIncorrect": "A(Auto Number Field)는 순차 번호만 부여할 뿐 다른 필드 값을 조합하지 못한다. C(Text Field with default value)는 고정된 기본값만 채울 뿐 필드 조합 로직을 수행하지 못한다. D(Validation Rule)는 저장을 차단할 뿐 값을 자동 생성하지 않는다.",
+      "examPoint": "여러 필드를 조합한 자동 텍스트 생성은 항상 Formula Field(TEXT() 함수 등 활용).",
+      "practicalExample": "Formula Field가 Account.Name, Product Name, YEAR(CloseDate)를 조합해 'Acme Corp - Widget X - 2026'과 같은 Opportunity Name을 자동으로 만들어낸다."
+    }
+  },
+  {
+    "id": "q-adx-objects-083",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers needs to capture up to 5 different reasons why an Opportunity was lost. Users should be able to select multiple reasons from a predefined list. Which field type is best?",
+    "choices": [
+      "5 separate Checkbox fields",
+      "Picklist field",
+      "Multi-Select Picklist field",
+      "Text Area field"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Multi-Select Picklist는 미리 정의된 목록에서 여러 값을 동시에 선택할 수 있는 필드 유형이다.",
+      "whyCorrect": "최대 5개의 사유를 목록에서 복수 선택해야 하므로 Multi-Select Picklist field가 정답(C)이다.",
+      "whyIncorrect": "A(5개의 개별 Checkbox 필드)는 관리와 리포팅이 번거로운 비효율적 대안이다. B(Picklist field)는 하나의 값만 선택 가능해 복수 선택 요구를 충족하지 못한다. D(Text Area field)는 자유 텍스트라 값의 일관성을 보장하지 못한다.",
+      "examPoint": "'목록에서 여러 값 선택'이라는 요구는 항상 Multi-Select Picklist.",
+      "practicalExample": "영업담당자가 Opportunity가 실패한 이유로 '가격', '타이밍', '경쟁사'를 동시에 선택해 기록한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-084",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants the Priority field on Cases to default to Medium when a new Case is created. How should this be configured?",
+    "choices": [
+      "Validation Rule setting default values",
+      "Default Field Value set to Medium on the Priority field",
+      "Flow to set the field on creation",
+      "Page Layout required field"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Default Field Value는 레코드 생성 시 사용자가 별도로 입력하지 않아도 필드에 지정된 기본값을 자동으로 채워주는 설정이다.",
+      "whyCorrect": "새 Case 생성 시 Priority가 항상 Medium으로 시작해야 하므로 Priority 필드에 Default Field Value를 Medium으로 설정하는 것이 정답(B)이다.",
+      "whyIncorrect": "A(Validation Rule로 기본값 설정)는 Validation Rule의 목적(저장 차단)과 맞지 않으며 기본값 설정 기능이 아니다. C(Flow to set the field on creation)로도 가능하지만 이런 단순 기본값 설정에는 Default Field Value가 훨씬 간단하다. D(Page Layout required field)는 필수 여부만 강제할 뿐 기본값을 채우지 못한다.",
+      "examPoint": "단순한 고정 기본값 설정은 항상 Default Field Value가 가장 간단한 해법.",
+      "practicalExample": "상담원이 별도로 선택하지 않아도 새 Case의 Priority가 자동으로 Medium으로 채워져 있다."
+    }
+  },
+  {
+    "id": "q-adx-objects-085",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to prevent users from creating more than one active Contract per Account. Which approach is BEST?",
+    "choices": [
+      "Validation Rule checking for existing active Contracts via a Roll-Up Summary field",
+      "Duplicate Rules with a Matching Rule on Contract fields",
+      "Unique field on Contract",
+      "Field History Tracking on Contract Status"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Roll-Up Summary로 Account에 연결된 활성 Contract 개수를 집계해두면, Validation Rule에서 그 집계 값을 조건으로 활용해 저장을 차단할 수 있다.",
+      "whyCorrect": "이미 활성 Contract가 존재하는 Account에 새 활성 Contract가 추가되지 않도록 막아야 하므로, 집계 값을 확인하는 Validation Rule이 정답(A)이다.",
+      "whyIncorrect": "B(Duplicate Rules with Matching Rule)는 완전히 동일하거나 유사한 레코드를 찾는 기능이라 '활성 개수 제한'이라는 비즈니스 규칙에는 맞지 않는다. C(Unique field on Contract)는 필드 값의 유일성만 보장할 뿐 개수 제한 로직을 구현하지 못한다. D(Field History Tracking)는 이력 기록 기능일 뿐 저장 자체를 막지 못한다.",
+      "examPoint": "'개수 제한' 같은 집계 기반 검증은 Roll-Up Summary + Validation Rule 조합으로 구현.",
+      "practicalExample": "Account에 이미 활성 Contract가 1건 있으면, Roll-Up Summary 값이 1 이상일 때 새 활성 Contract 저장을 Validation Rule이 차단한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-086",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has a custom object for Projects. When a Project is deleted, all related Task records should also be deleted. Which relationship type achieves this?",
+    "choices": [
+      "Lookup Relationship",
+      "Master-Detail Relationship",
+      "Hierarchical Relationship",
+      "External Lookup"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Master-Detail 관계에서는 부모 레코드가 삭제되면 자식 레코드도 함께 자동 삭제(Cascade Delete)된다.",
+      "whyCorrect": "Project가 삭제될 때 관련 Task도 함께 삭제되어야 하므로 Master-Detail Relationship이 정답(B)이다.",
+      "whyIncorrect": "A(Lookup Relationship)는 부모 삭제 시 자식이 유지되고 Lookup 필드만 비워진다. C(Hierarchical Relationship)는 User 오브젝트에서만 사용되는 특수 관계로 이 시나리오와 무관하다. D(External Lookup)는 외부 오브젝트 연결용이다.",
+      "examPoint": "'부모 삭제 시 자식도 함께 삭제'라는 요구는 항상 Master-Detail Relationship으로 직결.",
+      "practicalExample": "Project__c가 삭제되면 그 아래 연결된 모든 Task__c 레코드도 자동으로 함께 삭제된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-087",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin needs to display the Account Billing City on the related Contact record without storing a separate value. What field type should be used on Contact?",
+    "choices": [
+      "Roll-Up Summary field",
+      "Text field with a default value",
+      "Cross-Object Formula field referencing Account.BillingCity",
+      "External ID field"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Cross-Object Formula는 별도의 값을 저장하지 않고, Lookup/Master-Detail로 연결된 부모 레코드의 필드 값을 매번 실시간으로 참조해 보여준다.",
+      "whyCorrect": "별도 값을 저장하지 않으면서 Account의 Billing City를 Contact에서 자동으로 보여줘야 하므로 Cross-Object Formula field가 정답(C)이다.",
+      "whyIncorrect": "A(Roll-Up Summary field)는 자식→부모 방향의 집계 기능으로 이 시나리오(부모→자식 표시)와 방향이 반대다. B(Text field with a default value)는 고정된 기본값만 채울 뿐 부모 값을 실시간으로 반영하지 못한다. D(External ID field)는 외부 시스템 ID 저장용으로 목적이 다르다.",
+      "examPoint": "'값을 저장하지 않고 부모 필드를 그대로 보여줌'은 항상 Cross-Object Formula.",
+      "practicalExample": "Account의 Billing City가 바뀌면 Contact에 표시되는 Cross-Object Formula 값도 자동으로 함께 갱신된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-088",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers needs a field that auto-generates a unique sequential number like CASE-0001 for each new Case. Which field type should be used?",
+    "choices": [
+      "Text field with Unique constraint",
+      "External ID",
+      "Auto Number",
+      "Formula field"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Auto Number 필드는 지정된 형식에 맞춰 레코드 생성 시마다 고유한 순차 번호를 자동으로 부여한다.",
+      "whyCorrect": "매번 새 Case마다 CASE-0001 형식의 고유 순번을 자동 생성해야 하므로 Auto Number가 정답(C)이다.",
+      "whyIncorrect": "A(Text field with Unique constraint)는 중복만 방지할 뿐 자동 순번 생성 기능이 없다. B(External ID)는 외부 시스템 ID 저장용이다. D(Formula field)는 계산된 값을 표시할 뿐 자동 증가하는 카운터 역할을 하지 못한다.",
+      "examPoint": "자동 순번 생성은 항상 Auto Number 필드로 직결.",
+      "practicalExample": "신규 Case가 생성될 때마다 Auto Number 필드가 CASE-0001, CASE-0002 순으로 번호를 자동 부여한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-089",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to create a relationship where one Contact can be associated with multiple Accounts beyond the primary Account. Which feature supports this?",
+    "choices": [
+      "Master-Detail Relationship from Contact to Account",
+      "Lookup Relationship",
+      "Contacts to Multiple Accounts (enabled in Account Settings)",
+      "Junction Object with two Master-Detail fields"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Contacts to Multiple Accounts는 기본 Account 외에 Contact를 여러 Account에 추가로 연결할 수 있게 해주는 표준 기능으로, Account Settings에서 활성화한다.",
+      "whyCorrect": "하나의 Contact가 기본 Account 외에 여러 Account와 연관되어야 하므로, 표준 기능인 Contacts to Multiple Accounts가 정답(C)이다.",
+      "whyIncorrect": "A(Master-Detail Relationship from Contact to Account)는 오직 하나의 부모만 가질 수 있어 다대다 요구를 충족하지 못한다. B(Lookup Relationship)도 단일 연결만 가능하다. D(Junction Object with two Master-Detail fields)는 커스텀 솔루션으로, 이미 표준 기능이 존재하므로 불필요하다.",
+      "examPoint": "Contact-Account 다대다는 커스텀 Junction Object가 아니라 표준 기능인 Contacts to Multiple Accounts로 직결.",
+      "practicalExample": "한 컨설턴트 Contact가 여러 고객사 Account 프로젝트에 동시에 참여하는 경우 Contacts to Multiple Accounts로 연결한다."
+    }
+  },
+  {
+    "id": "q-adx-objects-090",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin needs to create a field on Opportunity that always shows the Account Industry without storing a separate value. What should be created?",
+    "choices": [
+      "A Roll-Up Summary field on Opportunity",
+      "A Cross-Object Formula field referencing Account.Industry",
+      "A text field populated by a Flow on save",
+      "An External ID field"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Cross-Object Formula는 저장 없이 부모 레코드(Account)의 필드 값을 실시간으로 참조해 자식 레코드(Opportunity)에서 보여준다.",
+      "whyCorrect": "별도 값을 저장하지 않고 Account의 Industry를 Opportunity에서 항상 최신으로 보여줘야 하므로 Cross-Object Formula field가 정답(B)이다.",
+      "whyIncorrect": "A(Roll-Up Summary field on Opportunity)는 자식→부모 집계용으로 방향이 반대다. C(Flow로 저장 시 값 복사)는 저장 시점의 정적 값만 복사해 이후 Account 값이 바뀌어도 반영되지 않는다. D(External ID field)는 외부 시스템 ID 저장용으로 목적이 다르다.",
+      "examPoint": "'저장하지 않고 항상 최신 부모 값 표시'는 Cross-Object Formula의 정체성.",
+      "practicalExample": "Account의 Industry가 변경되면 관련 Opportunity에 표시되는 Cross-Object Formula 값도 즉시 갱신된다."
+    }
+  },
+  {
+    "id": "q-adx-objects-091",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Master-Detail 관계의 Detail(자식) 오브젝트 OWD 설정에 대해 옳은 것은?",
+    "choices": [
+      "Controlled by Parent로 고정되며 변경 불가",
+      "Private으로 변경 가능",
+      "Public Read Only로 고정되며 변경 불가",
+      "부모와 무관하게 독립적으로 설정 가능"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Master-Detail 관계의 Detail(자식) 오브젝트는 별도의 OWD를 가지지 않고 항상 'Controlled by Parent'로 고정되며, 이 설정 자체를 관리자가 변경할 수 없다.",
+      "whyCorrect": "자식 레코드의 접근 권한은 부모 레코드의 공유 설정을 그대로 상속받도록 고정되어 있으므로 정답은 A다.",
+      "whyIncorrect": "B(Private으로 변경 가능)는 Detail 오브젝트의 OWD를 직접 바꿀 수 없다는 규칙에 어긋난다. C(Public Read Only로 고정)는 실제 고정값(Controlled by Parent)과 다르다. D(독립적으로 설정 가능)는 Master-Detail의 핵심 특징(부모 종속)과 정반대다.",
+      "examPoint": "Master-Detail의 자식 오브젝트 OWD는 항상 Controlled by Parent로 고정, 변경 불가라는 규칙을 암기.",
+      "practicalExample": "Account가 Private OWD라면, Master-Detail로 연결된 자식 커스텀 오브젝트 레코드도 Account에 접근 권한이 있는 사용자만 볼 수 있다."
+    }
+  }
+]

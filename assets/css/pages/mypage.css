@@ -6,8 +6,8 @@
    이 파일에는 두 화면 전용 요소만 정의한다.
    ========================================================================== */
 
-/* 로그인 상태에 따라 헤더의 user-chip/GNB 항목을 JS로 감출 때 쓰는 유틸리티.
-   .user-chip/.nav__item은 components.css/layout.css에 display:flex가 명시돼
+/* mypage.html/mypage-edit.html에서 공통 GNB의 "마이핸드북/취업핸드북" 항목을
+   JS로 감출 때 쓰는 유틸리티. .nav__item은 layout.css에 display:flex가 명시돼
    있어 hidden 속성만으로는 가려지지 않는다 — 이 프로젝트 관례대로 클래스 토글로 처리한다. */
 .is-hidden {
   display: none !important;
@@ -69,7 +69,7 @@
   flex-shrink: 0;
 }
 
-/* ---------- 레벨 트랙 ---------- */
+/* ---------- 레벨 트랙 (무한 확장형: 8개 테마 스테이지 순환 + Lv.N 배지) ---------- */
 .level-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -79,9 +79,27 @@
   margin-bottom: var(--space-20);
 }
 
+.level-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.level-card__badge {
+  font-size: var(--fs-12);
+  font-weight: 800;
+  color: var(--g900);
+  background: var(--g50);
+  border: 1px solid var(--g100);
+  border-radius: 999px;
+  padding: var(--space-4) var(--space-12);
+}
+
 .level-track {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  row-gap: var(--space-16);
   margin: var(--space-20) 0 var(--space-16);
 }
 
@@ -90,7 +108,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-6);
-  flex: 1;
+  flex: 1 1 60px;
   opacity: .4;
 }
 
@@ -99,14 +117,14 @@
 }
 
 .level-track__icon {
-  width: var(--space-44);
-  height: var(--space-44);
+  width: var(--space-40);
+  height: var(--space-40);
   border-radius: 50%;
   background: var(--g50);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fs-20);
+  font-size: var(--fs-18);
 }
 
 .level-track__stage--active .level-track__icon {
@@ -130,20 +148,14 @@
   color: var(--g700);
 }
 
-/* ---------- 오답 & 단어 노트 ---------- */
-.notebook-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
-  margin-bottom: var(--space-20);
-}
-
+/* ---------- Saved Notes (저장한 단어/노트) ---------- */
 .notebook-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   box-shadow: var(--sh-sm);
   padding: var(--space-20);
+  margin-bottom: var(--space-20);
 }
 
 .notebook-card__list {
@@ -495,10 +507,55 @@
   filter: grayscale(.3);
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 900px) {
-  .notebook-grid {
-    grid-template-columns: 1fr;
+/* ---------- Responsive ----------
+   .shell/.sidebar/.side-panel은 layout.css(공통) 소유라 그 파일은 건드리지
+   않고, #mypage로 범위를 좁혀 이 페이지에서만 flex-wrap으로 재배치한다.
+   → 화면이 좁아져도 우측 챌린지 & 활동 뱃지 바가 잘리지 않고 프로필 영역
+   아래로 자연스럽게 떨어진다. */
+@media (max-width: 1100px) {
+  #mypage .shell {
+    flex-wrap: wrap;
+  }
+
+  #mypage .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    order: 1;
+  }
+
+  #mypage .page__content {
+    width: 100%;
+    order: 2;
+  }
+
+  #mypage .side-panel {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    order: 3;
+  }
+
+  .badge-grid--compact {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .level-track {
+    justify-content: center;
+    gap: var(--space-12);
+  }
+
+  .level-track__stage {
+    flex: 0 0 auto;
+    width: 25%;
   }
 
   .settings-section {

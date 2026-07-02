@@ -1,0 +1,447 @@
+[
+  {
+    "id": "q-js-101",
+    "num": 1,
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "객체의 속성 이름(key)들을 배열 형태로 가져오는 메서드는?",
+    "choices": [
+      "Object.keys()",
+      "Object.values()",
+      "Object.entries()",
+      "Object.freeze()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Object.keys(obj)는 객체 자신이 가진 열거 가능한 속성 이름들을 배열로 반환한다.",
+      "whyCorrect": "Object.keys({a:1, b:2})는 ['a', 'b']를 반환해, 이후 map/forEach 등으로 각 키를 순회할 수 있게 해준다.",
+      "whyIncorrect": "Object.values()는 값만, Object.entries()는 [키, 값] 쌍을 반환하고, Object.freeze()는 객체를 동결(수정 불가)시키는 메서드라 키 목록 추출과는 다르다.",
+      "examPoint": "keys(키만) / values(값만) / entries(쌍) 세 메서드의 반환 형태 차이를 구분해서 기억한다.",
+      "practicalExample": "카테고리별 문제 개수를 담은 객체를 화면에 그릴 때 Object.keys()로 카테고리 이름 목록을 먼저 뽑는다."
+    }
+  },
+  {
+    "id": "q-js-102",
+    "num": 2,
+    "category": "JavaScript",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "DOM에서 특정 id를 가진 요소 하나를 선택하는 메서드는?",
+    "choices": [
+      "document.getElementById()",
+      "document.getElementsByClass()",
+      "document.queryAll()",
+      "document.findId()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "document.getElementById(id)는 문서 내에서 지정한 id 속성을 가진 요소 하나를 반환하는 표준 DOM 메서드다.",
+      "whyCorrect": "id는 문서 내에서 유일해야 하므로, 이 메서드는 배열이 아니라 단일 요소(또는 null)를 반환한다.",
+      "whyIncorrect": "document.getElementsByClass()는 실제로는 getElementsByClassName()이 올바른 이름이고, document.queryAll()/document.findId()는 존재하지 않는 메서드다.",
+      "examPoint": "id 선택은 getElementById 또는 querySelector('#id') 두 가지 방식이 모두 가능하다는 점을 알아둔다.",
+      "practicalExample": "이 프로젝트의 quiz.js 전반에서 document.getElementById('quiz-choices')처럼 특정 영역을 선택할 때 사용한다."
+    }
+  },
+  {
+    "id": "q-js-103",
+    "num": 3,
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "배열에서 특정 조건을 만족하는 첫 번째 요소를 찾아 반환하는 메서드는?",
+    "choices": [
+      "find()",
+      "filter()",
+      "some()",
+      "includes()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "find()는 배열을 순회하며 콜백 조건을 만족하는 첫 번째 요소를 찾으면 즉시 그 요소를 반환하고 순회를 멈춘다.",
+      "whyCorrect": "arr.find(x => x.id === 'exam-003')처럼 조건에 맞는 단일 객체를 바로 얻을 수 있다.",
+      "whyIncorrect": "filter()는 조건에 맞는 모든 요소를 배열로 반환하고, some()/includes()는 존재 여부를 boolean으로만 알려줄 뿐 요소 자체를 반환하지 않는다.",
+      "examPoint": "'요소 하나를 찾고 싶다'면 find(), '조건에 맞는 전부'가 필요하면 filter()를 쓰는 것이 관례다.",
+      "practicalExample": "이 프로젝트의 quiz.js에서 data.list.find(item => item.id === examId)로 현재 시험 정보를 찾는다."
+    }
+  },
+  {
+    "id": "q-js-104",
+    "num": 4,
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "여러 개의 Promise가 모두 완료(또는 하나라도 실패)될 때까지 기다리는 메서드는?",
+    "choices": [
+      "Promise.all()",
+      "Promise.race()",
+      "Promise.resolve()",
+      "Promise.any()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Promise.all()은 배열로 전달된 여러 Promise가 모두 성공할 때까지 기다렸다가, 그 결과를 배열로 한 번에 반환한다.",
+      "whyCorrect": "하나라도 실패(reject)하면 즉시 그 실패로 처리되며, 전부 성공해야만 전체 결과 배열을 얻을 수 있다.",
+      "whyIncorrect": "Promise.race()는 가장 먼저 끝나는 것 하나만 기다리고, Promise.resolve()는 이미 완료된 Promise를 만드는 메서드, Promise.any()는 하나라도 성공하면 끝나는 메서드라 동작이 다르다.",
+      "examPoint": "all(전부 성공 필요) / race(가장 빠른 것) / any(하나라도 성공) / allSettled(성공·실패 모두 수집)의 차이를 표로 정리해두면 좋다.",
+      "practicalExample": "여러 카테고리의 JSON을 동시에 불러와야 할 때 각 fetch를 배열로 모아 Promise.all()로 한 번에 기다린다."
+    }
+  },
+  {
+    "id": "q-js-105",
+    "num": 5,
+    "category": "JavaScript",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "요소의 클래스 목록에서 특정 클래스를 '있으면 제거, 없으면 추가'하는 메서드는?",
+    "choices": [
+      "classList.toggle()",
+      "classList.add()",
+      "classList.remove()",
+      "classList.replace()"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "classList.toggle(className)은 요소가 해당 클래스를 이미 가지고 있으면 제거하고, 없으면 추가하는 동작을 한 번에 처리한다.",
+      "whyCorrect": "on/off 상태를 매번 조건문으로 확인할 필요 없이 toggle() 한 줄로 상태를 뒤집을 수 있다.",
+      "whyIncorrect": "add()는 항상 추가만, remove()는 항상 제거만 하고, replace()는 클래스 이름 자체를 다른 이름으로 바꾸는 메서드라 토글 동작과는 다르다.",
+      "examPoint": "toggle(className, force) 두 번째 인자로 boolean을 주면 무조건 추가/제거하도록 강제할 수도 있다는 점을 알아두면 좋다.",
+      "practicalExample": "이 프로젝트의 mywords 단어 퀴즈 옵션 선택 로직에서도 classList.toggle 계열 패턴으로 선택 상태를 표시한다."
+    }
+  },
+  {
+    "id": "q-js-106",
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트에 따르면, `let gold = 100; gold = 500;` 처럼 자바스크립트 메모리 상의 변수 값을 변경했음에도 사용자 브라우저 화면의 골드 수치가 여전히 100으로 떠 있는 이유는 무엇인가?",
+    "choices": [
+      "let으로 선언된 변수는 한 번 대입하면 값을 변경할 수 없는 상수이기 때문이다.",
+      "변수 값만 변경했을 뿐, 변경된 데이터를 타겟 DOM 객체의 속성(.textContent)에 다시 대입하여 갱신하는 DOM 조작 코드를 명시적으로 실행하지 않았기 때문이다.",
+      "브라우저가 보안을 위해 자바스크립트의 숫자 데이터 연산을 의도적으로 차단했기 때문이다.",
+      "화면에 데이터를 즉시 동기화하려면 화면을 새로고침(F5)해야만 하기 때문이다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "일반적인 바닐라 JavaScript 환경(Imperative DOM)에서는 데이터(변수)가 바뀌었다고 해서 View(화면)가 자동으로 업데이트되지 않는다. 개발자가 직접 명령어를 통해 화면에 값을 꽂아줘야 한다.",
+      "whyCorrect": "강사는 변수 상자는 메모리 속에 있고 화면 렌더링은 눈앞에 있으므로, 둘을 이어주는 DOM 조작 코드(.textContent)라는 징검다리를 놓아주어야 한다고 강조했다.",
+      "whyIncorrect": "let은 재할당이 가능하고, 연산 차단이나 전체 새로고침 강제는 틀린 설명이다. '데이터와 뷰의 단절'을 이해해야 한다.",
+      "examPoint": "초보자들이 가장 많이 헤매는 '로직(변수)은 바뀌었는데 왜 화면은 그대로지?'라는 질문의 근본 원인을 파헤치는 통찰력 문제이다.",
+      "practicalExample": "`gold = 500;`을 연산한 후, 반드시 `document.querySelector('#gold-display').textContent = gold;` 코드가 뒤따라와야 화면의 숫자가 500으로 바뀐다."
+    }
+  },
+  {
+    "id": "q-js-107",
+    "category": "JavaScript",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "세일즈포스의 LWC(Lightning Web Components) 프레임워크가 일반 바닐라 자바스크립트(Imperative DOM)와 비교했을 때 개발자에게 제공하는 '데이터 바인딩 혁신'의 가장 핵심적인 특징은 무엇인가?",
+    "choices": [
+      "버튼 클릭 이벤트를 감지하기 위해 자바스크립트 대신 CSS 파일만 사용하도록 강제한다.",
+      "변수 값만 수정해도 프레임워크가 변동을 감지하여 `querySelector` 조작 없이 화면을 알아서 '자동 갱신(동기화)' 해준다.",
+      "LWC에서는 데이터 저장을 위해 반드시 백엔드 오라클 DB와 비동기로만 통신해야 한다.",
+      "자바스크립트 엔진을 브라우저 밖 외부 서버로 분리하여 코드 실행 속도를 10배 이상 향상시킨다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "LWC나 React 같은 현대적 프론트엔드 프레임워크는 '반응형 데이터 바인딩(Reactive Data Binding)'을 지원하여, 데이터 상태(State)가 변경되면 DOM 조작 명령어 없이도 연결된 UI가 자동으로 렌더링(갱신)된다.",
+      "whyCorrect": "자료에서 LWC 환경에서는 변수 값만 바꾸면 실시간 데이터 바인딩 기술을 통해 HTML 화면을 알아서 동기화(자동 갱신)해 주어, 번거로운 DOM 직접 조작 단계를 지워버린다고 설명했다.",
+      "whyIncorrect": "CSS 강제, DB 비동기 강제, 엔진 외부 분리 등은 LWC의 반응형 DOM 아키텍처 원리와 무관한 오답이다.",
+      "examPoint": "바닐라 JS에서 지겹도록 치던 `document.querySelector().textContent = ...` 노동이 프레임워크 환경에서 왜 생략될 수 있는지 그 철학적 배경을 묻는다.",
+      "practicalExample": "LWC의 JS 파일에서 `@track gold = 100;`을 선언하고 함수에서 `this.gold = 500;`으로 바꾸기만 하면, HTML 화면의 숫자가 마법처럼 알아서 500으로 바뀐다."
+    }
+  },
+  {
+    "id": "q-js-108",
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "일반적인 자바스크립트의 프로그램 런타임 라이프사이클 흐름을 4단계로 올바르게 나열한 것은?",
+    "choices": [
+      "[화면 갱신] -> [이벤트 대기] -> [변수 설정] -> [조건 분기]",
+      "[변수 설정] -> [조건 분기] -> [이벤트 대기] -> [화면 갱신]",
+      "[이벤트 대기] -> [변수 설정] -> [화면 갱신] -> [조건 분기]",
+      "[변수 설정] -> [이벤트 대기] -> [조건 분기] -> [화면 갱신(DOM 조작)]"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "웹 프로그램은 초기 상태(변수)를 세팅하고, 사용자 신호를 상시 대기하다가, 신호가 들어오면 조건에 맞게 판단(분기)하여, 최종적으로 뷰(DOM)를 갱신하는 사이클을 돈다.",
+      "whyCorrect": "자료의 런타임 흐름 파트에서 [변수 설정] ➔ [이벤트 대기] ➔ [조건 분기] ➔ [화면 갱신(DOM 직접 조작)] 순서로 4단계를 명확히 제시했다.",
+      "whyIncorrect": "이벤트가 들어오기도 전에 화면을 갱신하거나 조건 분기를 먼저 하는 것은 이벤트 주도형(Event-driven) 프로그래밍 논리에 맞지 않는다.",
+      "examPoint": "웹 개발자가 코드를 짤 때 이 4단계의 거시적 아키텍처 흐름(초기화 -> 대기 -> 판단 -> 렌더링)을 염두에 두고 구조를 설계할 수 있는지 평가하는 통합적 사고력 문제이다.",
+      "practicalExample": "골드를 0으로 세팅(변수) -> 클릭 센서 달기(대기) -> 골드가 1000이 넘었나 확인(분기) -> 텍스트에 골드값 꽂아넣기(화면 갱신) 순으로 코딩한다."
+    }
+  },
+  {
+    "id": "q-js-109",
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "개발자 A는 사용자 경험 점수를 기록하는 로직을 작성하면서, 점수가 누적되지 않고 에러(TypeError: Assignment to constant variable)가 발생하는 문제를 겪었다. 다음 중 가장 유력한 원인은?",
+    "choices": [
+      "점수 변수를 let 키워드로 선언했기 때문이다.",
+      "점수 변수를 함수 내부에 선언하지 않고 전역에 선언했기 때문이다.",
+      "점수 변수를 const 키워드로 선언하여 값의 변경(재할당)이 차단되었기 때문이다.",
+      "점수에 문자열과 숫자를 더하는 잘못된 연산을 수행했기 때문이다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "const 키워드로 선언된 상수(Constant)는 초기화 시점 이후에 새로운 값을 재할당할 수 없으며, 시도 시 런타임 에러(TypeError)를 뱉는다.",
+      "whyCorrect": "자료에서 const는 절대 고정되어 변하지 않는 보호 값을 담으며, 한 번 대입하면 재할당을 불허하여 TypeError가 발생한다고 설명했다.",
+      "whyIncorrect": "let은 재할당이 가능하므로 정상 동작하며, 전역 선언이나 문자열 연산은 타입 에러(할당 오류)의 직접적 원인이 아니다.",
+      "examPoint": "에러 로그(Assignment to constant variable)만 보고도 '아, 변할 값을 실수로 const 상자에 넣었구나'라고 디버깅할 수 있는 능력을 묻는다.",
+      "practicalExample": "`const score = 10; score = 20;` 코드가 실행되는 순간 프로그램이 즉시 중단되고 해당 에러가 콘솔에 찍힌다."
+    }
+  },
+  {
+    "id": "q-js-110",
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 회원가입 화면에서 `<input>` 태그에 직접 키보드로 입력한 이메일 주소 데이터를 자바스크립트 변수로 낚아채(추출)오기 위해 반드시 접근해야 하는 객체 속성은?",
+    "choices": [
+      ".innerText",
+      ".innerHTML",
+      ".textContent",
+      ".value"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "입력 폼 컨트롤(input, textarea, select) 요소가 품고 있는 현재의 입력 상태값은 DOM 객체의 `.value` 프로퍼티를 통해서만 접근 가능하다.",
+      "whyCorrect": "자료에서 사용자가 입력창에 타이핑하여 넣은 동적 데이터를 낚아챌 때 사용하는 입력 요소 전용 속성을 `.value`로 설명했다.",
+      "whyIncorrect": "innerText나 textContent는 일반 태그의 글씨를 가져오는 속성이며, 닫는 태그가 없는 빈 태그인 `<input>`은 내부에 텍스트 자식을 갖지 않으므로 이를 쓸 수 없다.",
+      "examPoint": "'텍스트(글자)'라는 본질은 같아 보이지만, 화면에 출력된 고정 글자(textContent)와 사용자가 동적으로 입력 중인 폼 데이터(value)의 DOM 상의 위치가 다름을 구별해야 한다.",
+      "practicalExample": "`const userEmail = document.querySelector('.email-input').value;` 로 작성해야 사용자가 친 이메일 문자열이 userEmail 변수에 쏙 들어온다."
+    }
+  },
+  {
+    "id": "q-js-111",
+    "category": "JavaScript",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트인 '데이터와 화면의 괴리' 현상을 극복하기 위해, 바닐라 자바스크립트 환경에서 데이터(변수)의 변경을 브라우저 화면(View)에 반영하는 가장 올바른 코딩 패턴은?",
+    "choices": [
+      "변수 값을 변경한 뒤, 브라우저가 화면을 알아서 새로 그릴 때까지 3초 정도 기다려준다.",
+      "변수 값을 변경한 직후, `document.querySelector`로 타겟을 찾아 속성(.textContent)에 변경된 변수를 직접 대입해 준다.",
+      "HTML 문서의 `<head>` 태그 안에 `<meta refresh>` 태그를 삽입하여 화면을 깜빡이게 만든다.",
+      "변수를 반드시 const로 선언하여 메모리와 화면이 실시간 연동되도록 강제한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "바닐라(순수) 자바스크립트는 데이터(Model)가 바뀌었다고 화면(View)이 자동 갱신되지 않는다. 따라서 '요소 찾기 -> 새 값 넣기'라는 DOM 조작 명령을 수동으로 실행해야 한다.",
+      "whyCorrect": "강사는 변수 상자와 화면 렌더링을 이어주는 'DOM 조작 코드(.textContent)라는 징검다리를 명시적으로 놓아주어야 한다'고 코딩 패턴을 제시했다.",
+      "whyIncorrect": "기다리거나 화면 새로고침(refresh)을 하는 것은 동적 웹 어플리케이션(SPA)의 목적에 어긋나며, const는 재할당 불가 키워드라 값 변경 자체가 불가능하다.",
+      "examPoint": "변수 값을 `+1` 하는 '로직'과, 그 `+1`된 결과를 눈에 보이게 그리는 '렌더링'은 별개의 독립적 행위임을 뼈저리게 깨닫게 하는 문제이다.",
+      "practicalExample": "장바구니 수량(`let count = 0`)을 늘릴 때, `count++`를 한 후 반드시 `countBox.textContent = count;`까지 써줘야 화면의 0이 1로 바뀐다."
+    }
+  },
+  {
+    "id": "q-js-112",
+    "category": "JavaScript",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "세일즈포스의 프론트엔드 프레임워크인 LWC가 일반 바닐라 자바스크립트 아키텍처와 비교하여 '화면 자동 갱신(Reactive DOM)'을 제공함으로써 개발자가 얻는 가장 큰 생산성 이점은 무엇인가?",
+    "choices": [
+      "HTML 화면을 설계할 필요 없이 Apex 코드가 화면을 자동으로 생성해 준다.",
+      "복잡하고 번거로운 `document.querySelector` 조작 코드를 수십 줄씩 작성하지 않고 오직 비즈니스 로직(데이터 흐름)에만 집중할 수 있다.",
+      "모든 데이터가 세일즈포스 서버에 0.1초 단위로 자동 저장된다.",
+      "자바스크립트의 변수 선언(let, const)을 생략해도 메모리가 스스로 관리된다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "LWC나 React의 핵심 가치는 뷰(DOM) 조작의 복잡성을 프레임워크가 추상화(자동화)하여, 개발자는 '상태(데이터) 관리'라는 본질적인 로직 작성에만 에너지를 쏟게 해준다는 것이다.",
+      "whyCorrect": "자료에서 프레임워크가 HTML을 알아서 동기화해주므로, 개발자는 querySelector 구문을 작성할 필요 없이 비즈니스 로직과 데이터 흐름에만 집중할 수 있는 생산성을 얻는다고 강조했다.",
+      "whyIncorrect": "Apex 화면 자동 생성, 무한 자동 저장, 변수 선언 생략 등은 최신 프론트엔드 프레임워크의 존재 목적을 심각하게 오해한 설명들이다.",
+      "examPoint": "왜 굳이 바닐라 JS 놔두고 LWC나 React를 배워야 하냐는 질문에 대한 가장 완벽한 실무적 대답(아키텍처 관점의 DOM 조작 비용 절감)을 평가한다.",
+      "practicalExample": "바닐라 JS에서 입력값 검증과 화면 오류 메시지 출력을 위해 50줄의 querySelector 범벅이 되던 코드가, LWC에서는 변수 하나와 템플릿 if문으로 10줄 안에 끝난다."
+    }
+  },
+  {
+    "id": "q-js-113",
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "실무 프로덕션 빌드 단계에서 복잡한 화살표 함수와 이벤트를 엮을 때 통째로 빌드가 튕겨 나가는 치명적 장애를 예방하기 위해, 선배가 실무 꿀팁에서 '시니어 엔지니어로 가는 지름길'로 강조한 코딩 습관은?",
+    "choices": [
+      "함수 안에 주석(Comment)을 한 줄도 남기지 않고 코드를 극단적으로 압축하는 습관",
+      "코드 구문 끝에 세미콜론(;) 처리를 누락하지 않고, 괄호 짝 `})`을 완벽히 맞추어 마무리를 단정히 정리하는 습관",
+      "변수 이름을 1~2글자로 짧게 지어 타이핑 속도를 최대한 올리는 습관",
+      "모든 에러를 무시하도록 `try-catch` 블록을 페이지 전체에 감싸두는 습관"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "구문(Syntax)의 완결성, 즉 괄호의 페어(Pair)와 실행문의 종료(세미콜론)를 명확히 하는 것은 번들러(Webpack)나 컴파일러가 소스코드를 해석할 때 오작동을 막는 가장 근본적인 규칙이다.",
+      "whyCorrect": "선배 팁에서 괄호 짝 `})`을 맞추지 않거나 세미콜론 누락 시 프로덕션 빌드에서 튕겨 나간다며, 구문 마무리를 단정히 정리하는 습관을 강조했다.",
+      "whyIncorrect": "주석 미사용, 무의미한 짧은 변수명, 에러 무시(try-catch 남용)는 오히려 실무에서 절대 해서는 안 될 최악의 안티 패턴(Anti-pattern)들이다.",
+      "examPoint": "JS 엔진이 똑똑해서 대충 돌아가는 '로컬 환경'의 환상에서 벗어나, 깐깐하게 빌드되는 '실무 운영(Prod) 환경'의 엄격함을 이해하고 있는지 묻는다.",
+      "practicalExample": "prettier나 ESLint 같은 도구를 에디터에 세팅해 두면, 저장할 때 자동으로 빠진 세미콜론을 붙여주고 괄호 짝을 찾아주어 이 습관을 강제할 수 있다."
+    }
+  },
+  {
+    "id": "q-js-114",
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "웹 프로그램의 런타임 흐름 아키텍처 중, `addEventListener`를 통해 '상시 대기하는 루프'로 진입하는 단계의 철학적 본질을 강사는 무엇이라 설명했는가?",
+    "choices": [
+      "서버의 데이터베이스와 통신하기 위해 코드가 완전히 멈춰서 휴식하는 상태이다.",
+      "사용자가 클릭이라는 신호탄을 터트릴 때마다 기민하게 분기하여 반응하는 '살아있는 유기체'와 같다.",
+      "브라우저의 화면 렌더링을 완전히 잠그고(Lock) 해킹을 감시하는 보안 방화벽이다.",
+      "모든 HTML 태그를 한 줄씩 순서대로 읽고 파싱하는 로딩 초기화 작업이다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "자바스크립트의 실행 환경은 코드를 한 번 쭉 읽고 끝나는 동기적 순차 실행이 아니라, 이벤트 루프(Event Loop)를 통해 언제 일어날지 모르는 이벤트를 무한 대기하며 비동기적으로 반응하는 모델이다.",
+      "whyCorrect": "강사의 핵심 인사이트에서 웹 프로그램은 멈춰있는 유물이 아니라, 센서를 사방에 배치해두고 신호탄이 터질 때마다 반응하는 살아있는 유기체와 같다고 비유했다.",
+      "whyIncorrect": "멈춰서 휴식하거나, 렌더링을 잠그거나, 초기화 파싱을 하는 것은 '상시 대기하며 반응'하는 이벤트 주도(Event-driven) 철학과 정반대의 개념들이다.",
+      "examPoint": "JS 코드는 위에서 아래로 한 번 실행되고 끝이 아니라, '방아쇠(이벤트)가 당겨질 때마다 장전된 총알(함수)이 격발되는' 이벤트 루프 세계관을 이해해야 한다.",
+      "practicalExample": "쇼핑몰 사이트는 로딩이 끝난 뒤 아무 일도 안 하는 것 같지만, 실은 장바구니 버튼에 붙여둔 수십 개의 `addEventListener` 센서들이 1밀리초의 간격도 없이 클릭을 대기하며 살아 숨 쉬고 있다."
+    }
+  },
+  {
+    "id": "q-js-115",
+    "category": "JavaScript",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "바닐라 자바스크립트(Imperative DOM) 환경에서 구현한 '사용자 입력값(input) 화면 출력' 로직을 세일즈포스 LWC(Reactive Framework) 환경으로 마이그레이션(전환)한다고 가정할 때, 가장 드라마틱하게 삭제(제거)되는 코드는 무엇인가?",
+    "choices": [
+      "let이나 const로 선언했던 모든 변수 초기화 코드",
+      "document.querySelector('#target').textContent = newValue; 와 같은 DOM 직접 조작 코드",
+      "if (조건) { ... } else { ... } 와 같은 비즈니스 조건 분기 코드",
+      "사용자 클릭을 감지하는 버튼 요소 자체"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "LWC 프레임워크 도입의 최대 목적은 화면을 강제로 갱신하는 '명령형 DOM 조작(Imperative)'의 수고를 덜고, 상태 변경 시 화면이 스스로 반응하는 '선언형(Reactive) 렌더링'의 혜택을 누리는 것이다.",
+      "whyCorrect": "자료에서 LWC 환경은 변수 값만 수정하면 화면을 자동 갱신하므로, 개발자는 복잡한 `document.querySelector` 구문을 수십 줄씩 작성할 필요가 사라진다고 명확히 대조했다.",
+      "whyIncorrect": "변수 초기화, 비즈니스 분기(if), UI 버튼(HTML) 등은 프레임워크 유무와 상관없이 앱이 굴러가기 위해 반드시 존재해야 하는 뼈대 로직이다.",
+      "examPoint": "도구(LWC)를 쓸 때 단순히 문법만 외우는 것이 아니라, 이 도구가 과거의 방식(바닐라 JS)이 지닌 어떤 치명적 귀찮음(DOM 조작)을 해결해 주었는가를 통찰할 수 있어야 한다.",
+      "practicalExample": "바닐라 JS에서는 입력값이 변할 때마다 `document.getElementById('nameBox').innerText = e.target.value;`를 쳐야 했지만, LWC에서는 HTML에 `{name}`이라고 변수 바인딩만 해두면 JS 코드를 한 줄도 안 짜도 화면이 알아서 바뀐다."
+    }
+  },
+  {
+    "id": "q-js-116",
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "전통적인 자바스크립트 함수 선언 방식을 현대적인 화살표 함수(Arrow Function)로 변환할 때, `function` 키워드를 대체하며 함수의 본문(블록)을 연결하는 기호 조합으로 올바른 것은?",
+    "choices": [
+      "() => { ... }",
+      "() <- { ... }",
+      "function => { ... }",
+      "() == { ... }"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "화살표 함수는 소괄호 `()`로 매개변수를 받고, 화살표 `=>`를 거쳐, 중괄호 `{}` 안에 실행될 코드를 배치하는 문법적 설탕(Syntactic Sugar)이다.",
+      "whyCorrect": "자료에서 `function`이라는 긴 단어를 생략하고 `=>` 기호를 활용한다고 설명된 화살표 함수의 정확한 문법 구조는 `() => { ... }`이다.",
+      "whyIncorrect": "<- 화살표나 == 비교 연산자는 문법 에러이며, function 키워드를 생략하는 것이 화살표 함수의 목적이므로 같이 쓰지 않는다.",
+      "examPoint": "기존의 복잡한 함수 선언문을 시각적으로 평탄화하여 콜백 함수 등에서 코드 가독성을 극대화하는 모던 JS의 트렌드를 묻는다.",
+      "practicalExample": "과거에는 `setTimeout(function() { alert('펑!'); }, 1000);`라고 쳤다면, 요즘은 `setTimeout(() => { alert('펑!'); }, 1000);`라고 날렵하게 친다."
+    }
+  },
+  {
+    "id": "q-js-117",
+    "category": "JavaScript",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "세일즈포스의 LWC 프레임워크가 바닐라 자바스크립트의 'Imperative DOM(명령형 DOM 조작)' 방식을 'Reactive Framework(반응형 프레임워크)' 구조로 혁신하면서 발생한 가장 큰 아키텍처적 차이점은 무엇인가?",
+    "choices": [
+      "개발자가 `document.querySelector`로 대상을 찾아 화면을 직접 갱신하는 휴먼 에러 위험 단계가 내부적으로 완전히 자동화(삭제)되었다.",
+      "클릭 이벤트를 더 이상 자바스크립트가 감지할 수 없어, 서버의 Apex 코드가 대신 클릭을 감지하도록 구조가 변경되었다.",
+      "LWC에서는 데이터 변수 설정 시 반드시 `const` 키워드만 사용하도록 강제하여 메모리 오염을 막는다.",
+      "기존의 4단계 런타임 흐름 중 [이벤트 대기] 단계가 사라지고 무한 루프 모드로만 동작한다."
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "LWC는 데이터 바인딩(Data Binding) 기술을 통해, 데이터 상태(변수)가 바뀌면 프레임워크가 알아서 연관된 HTML DOM을 갱신하므로 개발자의 수동 DOM 조작 수고와 휴먼 에러를 제거한다.",
+      "whyCorrect": "자료의 Salesforce Preview에서 '가장 번거롭고 에러가 많이 발생하는 화면 직접 갱신(DOM 조작) 단계를 아키텍처 내부적으로 완전히 자동화하여 지워버렸다'고 명확히 비교했다.",
+      "whyIncorrect": "클릭 감지나 이벤트 루프는 정상 동작하며, const 강제 선언도 LWC 반응형 혁신의 본질과는 무관하다.",
+      "examPoint": "현대 프론트엔드 생태계(React, Vue, LWC 등)의 존재 의의가 바로 '상태(State) 중심의 선언적 UI 렌더링'에 있다는 거시적 철학을 묻는다.",
+      "practicalExample": "LWC에서는 자바스크립트 파일에서 `@track message = '안녕';`을 `'잘가';`로 바꾸기만 하면, HTML 파일의 `<div>{message}</div>` 부분이 개발자 몰래 0.01초 만에 갱신된다."
+    }
+  },
+  {
+    "id": "q-js-118",
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "선배의 실무 꿀팁에서 제안한 '안전망의 정석' 코딩 원칙에 비추어 볼 때, 아래 4가지 변수 중 `let` 키워드로 선언해야 하는 단 하나의 상황은 무엇인가?",
+    "choices": [
+      "게임의 난이도 기준이 되는 최대 목표 점수 (절대 고정값)",
+      "HTML 화면에서 `querySelector`로 찾아온 로그인 버튼 DOM 객체",
+      "반복문이 실행될 때마다 1씩 증가해야 하는 카운터 인덱스(i) 데이터",
+      "서버에서 한 번 받아와 화면에 고정 노출시키는 사용자의 고유 회원 번호"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "실무에서는 모든 변수를 일단 불변 상수인 `const`로 선언하여 데이터 오염을 막고, 반복문 인덱스나 누적 점수처럼 코드 흐름상 '반드시 재할당이 일어나는' 예외적인 경우에만 가변 상자인 `let`으로 개방한다.",
+      "whyCorrect": "선배 팁에서 '루프 변수나 누적 점수처럼 명확히 변해야만 하는 값에 한해서만 let을 개방하라'고 조언했다. 카운터 인덱스(i)는 루프마다 값이 바뀌므로 let이 필수적이다.",
+      "whyIncorrect": "고정된 목표 점수, 변경될 일 없는 버튼 DOM 객체, 고유 회원 번호 등은 재할당될 일이 없으므로 오염 방지를 위해 무조건 `const`로 보호해야 한다.",
+      "examPoint": "변수가 '값을 담는 상자'라는 기초를 넘어, 시스템의 무결성을 지키기 위해 변수의 생명주기(Life Cycle)를 보수적으로 설계하는 능력을 평가한다.",
+      "practicalExample": "반복문 작성 시 `for (let i = 0; i < 5; i++)` 라고 쓰지 않고 실수로 `for (const i = 0; ...)` 라고 쓰면 첫 번째 바퀴에서 i를 1로 증가시키려다 TypeError 에러가 나며 터진다."
+    }
+  },
+  {
+    "id": "q-js-119",
+    "category": "JavaScript",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "일반 바닐라 자바스크립트의 프로그램 런타임 4단계 흐름(라이프사이클) 중, 다음의 코드가 수행하는 단계를 순서대로 올바르게 짝지은 것은? \n1. `let score = 0;` \n2. `btn.addEventListener('click', ...);` \n3. `document.querySelector('#board').textContent = score;`",
+    "choices": [
+      "1. 변수 설정 -> 2. 이벤트 대기 -> 3. 화면 갱신",
+      "1. 조건 분기 -> 2. 변수 설정 -> 3. 화면 갱신",
+      "1. 화면 갱신 -> 2. 이벤트 대기 -> 3. 조건 분기",
+      "1. 이벤트 대기 -> 2. 화면 갱신 -> 3. 변수 설정"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "자바스크립트 애플리케이션은 초기 상태 정의(변수) -> 사용자 행동 주시(이벤트 대기) -> 로직 처리 후 UI 반영(화면 갱신)이라는 사이클로 굴러간다.",
+      "whyCorrect": "1번 코드는 초기 변수 설정, 2번 코드는 클릭 감지 센서를 다는 이벤트 대기, 3번 코드는 텍스트를 갈아끼우는 화면 갱신(DOM 직접 조작) 단계에 완벽히 매칭된다.",
+      "whyIncorrect": "코드의 목적과 런타임 흐름의 단계 정의가 어긋난 오답들이다. (if문이 없으므로 조건 분기는 보기에 없다.)",
+      "examPoint": "문법을 외우는 것을 넘어, 내가 지금 짜고 있는 이 한 줄의 코드가 전체 프로그램 구조에서 어떤 역할을 하는 부품인지 숲을 보는 능력을 평가한다.",
+      "practicalExample": "이 4단계 흐름도만 머릿속에 있으면, '일단 점수 상자(변수) 만들고 -> 클릭하면 상자 값 올리고(이벤트+분기) -> 화면 글자 갈아치우자(갱신)'라는 구현 시나리오가 자동으로 세워진다."
+    }
+  },
+  {
+    "id": "q-js-120",
+    "category": "JavaScript",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사가 \"DOM 조작 코드(.textContent)라는 징검다리를 명시적으로 놓아주어야 데이터가 흐른다\"고 표현한 것을 비추어 볼 때, 이 징검다리를 놓는 작업을 개발자가 직접 하지 않아도 되게끔 '아키텍처 혁신'을 이룬 세일즈포스의 프레임워크 기술은 무엇인가?",
+    "choices": [
+      "Apex Database 쿼리 시스템",
+      "Imperative DOM (명령형 문서 객체 모델)",
+      "LWC (Lightning Web Components) 프레임워크의 반응형(Reactive) 데이터 바인딩",
+      "Visualforce (비주얼포스) 페이지"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "LWC(Lightning Web Components)는 바닐라 JS의 수동 DOM 조작 패러다임을 벗어나, 상태(데이터)가 변하면 프레임워크가 알아서 반응(Reactive)하여 화면을 갱신하는 현대적 웹 표준 프레임워크이다.",
+      "whyCorrect": "자료의 Salesforce Preview에서 '가장 번거롭고 에러가 많이 발생하는 화면 직접 갱신 단계를 자동화'하는 혁신을 제공하는 시스템으로 LWC 프레임워크를 명시했다.",
+      "whyIncorrect": "Apex나 Visualforce는 서버사이드/구형 기술이며, Imperative DOM은 바닐라 JS의 한계를 나타내는 용어이다.",
+      "examPoint": "복잡한 프론트엔드 프레임워크(LWC, React, Vue)를 사용하는 가장 궁극적인 목적이 바로 'View(화면)와 Model(데이터) 간의 자동 동기화'라는 거시적 통찰을 평가한다.",
+      "practicalExample": "장바구니 수량 변수 `count`만 10으로 올려주면, 내가 깜빡하고 `querySelector`로 화면을 갱신하지 않아도 LWC 엔진이 알아서 화면의 빨간 뱃지 숫자를 10으로 바꿔놓고 퇴근한다."
+    }
+  }
+]

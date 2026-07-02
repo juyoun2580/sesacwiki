@@ -18,8 +18,7 @@
   <link rel="stylesheet" href="assets/css/pages/home.css">
 </head>
 
-<body data-auth="user">
-  <!-- 로그인 전: guest -->
+<body>
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
   <!-- ================================================= -->
@@ -76,7 +75,7 @@
     <a class="nav__item" href="wiki.html">📖 새싹위키</a>
     <a class="nav__item" href="exam.html">📝 모의고사</a>
     <a class="nav__item" href="job.html">💼 취업핸드북</a>
-    <a class="nav__item" href="my.html">📚 마이핸드북</a>
+    <!-- <a class="nav__item" href="my.html">📚 마이핸드북</a> -->
   </nav>
   <!-- COMMON NAVIGATION END -->
 
@@ -96,16 +95,14 @@
         <div class="page__content">
           <section class="hero">
             <div class="hero__content">
-              <p class="hey">🌱 나의 취업 준비 핸드북</p>
-              <h1 class="hero__title">오늘도 새싹이<br>자라는 중이에요!</h1>
+              <h1 class="hero__title">오늘도 새싹이 자라는 중이에요!</h1>
               <p class="hero__subtitle">나만의 취업 핸드북</p>
               <div class="hero__actions">
                 <a class="btn btn--primary" href="wiki.html">🌱 오늘 학습 시작하기</a>
                 <a class="btn btn--outline" href="my.html">📖 내 핸드북 보기</a>
               </div>
             </div>
-            <blockquote class="hq">작은 새싹이 나무가 되듯,<br>오늘의 공부가<br>내일의 내가 됩니다.</blockquote>
-            <span class="hero__emoji" aria-hidden="true">🌳</span>
+            <blockquote class="hq">작은 새싹이 나무가 되듯,<br>오늘의 공부가 내일의 내가 됩니다.</blockquote>
           </section>
 
           <h2 class="home-section-heading">🌱 나의 성장 현황</h2>
@@ -283,8 +280,8 @@
   <!-- ================================================= -->
   <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
   <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- 이 페이지는 progress bar 폭 적용(app.js)만 필요하다 -->
   <!-- ================================================= -->
+  <script src="assets/js/auth.js" defer></script>
   <script src="assets/js/app.js" defer></script>
 </body>
 

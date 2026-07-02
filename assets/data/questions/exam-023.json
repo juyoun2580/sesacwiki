@@ -1,0 +1,2092 @@
+[
+  {
+    "id": "q-adx-configuration-001",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "퇴사한 직원의 계정 처리 방법은?",
+    "choices": [
+      "Delete",
+      "Deactivate",
+      "프로필 제거",
+      "비밀번호 변경"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "퇴사자 계정은 삭제하지 않고 Deactivate(비활성화)해 로그인은 막되 소유 레코드와 이력은 그대로 보존해야 한다.",
+      "whyCorrect": "삭제 시 데이터 무결성이 깨지므로 비활성화가 정답(B)이다.",
+      "whyIncorrect": "Delete는 소유 레코드 관계를 파괴할 위험이 있고, 프로필 제거나 비밀번호 변경만으로는 로그인을 완전히 차단하지 못한다.",
+      "examPoint": "Salesforce는 애초에 사용자를 완전히 삭제하는 기능을 제공하지 않는다는 점도 함께 기억.",
+      "practicalExample": "퇴사자의 계정을 비활성화하면 그가 소유했던 Opportunity, Account 등의 레코드는 그대로 남고 다른 사람이 이어받아 관리할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-002",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "설정 변경 내역 추적 도구는?",
+    "choices": [
+      "Debug Log",
+      "설정 감사 추적",
+      "Event Monitoring",
+      "Login History"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Setup Audit Trail(설정 감사 추적)은 관리자가 Setup에서 변경한 내역을 최근 180일간 기록한다.",
+      "whyCorrect": "설정 변경 이력 추적이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "Debug Log는 코드 실행 로그, Event Monitoring은 유료 활동 추적 기능, Login History는 로그인 기록으로 각각 목적이 다르다.",
+      "examPoint": "'누가 설정을 바꿨나'는 항상 Setup Audit Trail로 직결.",
+      "practicalExample": "새 Validation Rule을 누가 언제 만들었는지 Setup Audit Trail에서 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-003",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "프로덕션에 영향 없이 테스트하는 환경은?",
+    "choices": [
+      "Developer Console",
+      "Sandbox",
+      "Workbench",
+      "Audit Trail"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Sandbox는 프로덕션 조직의 복사본으로, 운영 데이터에 영향을 주지 않고 새 기능이나 설정을 안전하게 테스트할 수 있는 환경이다.",
+      "whyCorrect": "프로덕션과 분리된 안전한 테스트 환경이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "Developer Console은 코드 실행/디버깅 도구, Workbench는 데이터/메타데이터 조작 도구, Audit Trail은 변경 이력 조회 도구로 테스트 환경 자체는 아니다.",
+      "examPoint": "운영 영향 없는 테스트 = Sandbox라는 개념을 항상 기억.",
+      "practicalExample": "새 Flow를 프로덕션에 적용하기 전 Sandbox에서 충분히 테스트한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-004",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "전체 데이터 포함 가장 완전한 테스트 환경은?",
+    "choices": [
+      "Developer",
+      "Developer Pro",
+      "Partial Copy",
+      "Full"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Full Sandbox는 프로덕션의 모든 데이터와 설정을 그대로 복사한 가장 완전한 테스트 환경이다.",
+      "whyCorrect": "전체 데이터 포함이 핵심이므로 정답은 D다.",
+      "whyIncorrect": "Developer와 Developer Pro는 데이터가 없고, Partial Copy는 일부 샘플 데이터만 포함한다.",
+      "examPoint": "Full Sandbox는 UAT(최종 사용자 승인 테스트)에 최적이라는 점을 기억.",
+      "practicalExample": "출시 직전 최종 검증 단계에서는 Full Sandbox로 실제와 동일한 환경을 재현한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-005",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Setup Audit Trail은 최근 몇 일간의 기록을 보관하나요?",
+    "choices": [
+      "30일",
+      "90일",
+      "180일",
+      "365일"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Setup Audit Trail은 최근 180일(약 6개월)간의 설정 변경 기록을 보관한다.",
+      "whyCorrect": "보관 기간이 180일이므로 정답은 C다.",
+      "whyIncorrect": "30일, 90일, 365일은 실제 보관 기간과 다르다.",
+      "examPoint": "Setup Audit Trail = 180일이라는 구체적인 숫자를 정확히 암기.",
+      "practicalExample": "감사 담당자가 지난 6개월간의 설정 변경 내역을 요청하면 Setup Audit Trail에서 다운로드해 제공한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-006",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Data Import Wizard의 최대 가져오기 건수는?",
+    "choices": [
+      "10,000건",
+      "50,000건",
+      "500,000건",
+      "5,000,000건"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Data Import Wizard는 최대 50,000건의 레코드를 가져올 수 있는 UI 기반 임포트 도구다.",
+      "whyCorrect": "정확한 한도는 50,000건이므로 정답은 B다.",
+      "whyIncorrect": "10,000건, 500,000건, 5,000,000건은 실제 한도와 다르다.",
+      "examPoint": "50,000건 초과 시에는 Data Loader를 사용해야 한다는 점을 함께 기억.",
+      "practicalExample": "3만 건의 신규 Lead를 가져올 때는 Data Import Wizard로 충분히 처리할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-007",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Data Loader의 최대 가져오기 건수는?",
+    "choices": [
+      "50,000건",
+      "500,000건",
+      "5,000,000건",
+      "무제한"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Data Loader는 최대 5,000,000건의 레코드를 가져오거나 내보낼 수 있는 대용량 데이터 도구다.",
+      "whyCorrect": "정확한 한도는 5,000,000건이므로 정답은 C다.",
+      "whyIncorrect": "50,000건은 Data Import Wizard의 한도이며, 500,000건은 실제 한도와 다르고, 무제한도 아니다.",
+      "examPoint": "Data Loader = 최대 500만 건, UI 기반 마법사 = 최대 5만 건으로 구분.",
+      "practicalExample": "300만 건의 레거시 데이터를 이전할 때는 Data Loader를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-008",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC가 200만 건의 레코드를 가져와야 합니다. 어떤 도구를 사용해야 하나요?",
+    "choices": [
+      "가져오기 마법사",
+      "Manual Entry",
+      "Data Loader",
+      "Workbench"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "200만 건은 Data Import Wizard의 한도(5만 건)를 크게 초과하므로 최대 500만 건까지 지원하는 Data Loader를 사용해야 한다.",
+      "whyCorrect": "대량 임포트 요구에 맞는 도구는 Data Loader이므로 정답은 C다.",
+      "whyIncorrect": "가져오기 마법사는 한도를 초과해 사용할 수 없고, 수동 입력은 비현실적이며, Workbench는 대량 임포트 전용 도구가 아니다.",
+      "examPoint": "50,000건을 기준으로 Data Import Wizard와 Data Loader를 구분.",
+      "practicalExample": "200만 건의 제품 데이터를 CSV로 준비해 Data Loader의 Insert 작업으로 가져온다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-009",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자를 삭제하면 안 되고 비활성화해야 하는 이유는?",
+    "choices": [
+      "비용이 절감되기 때문",
+      "삭제 시 해당 사용자 소유 레코드에 문제가 생기기 때문",
+      "비활성화가 더 빠르기 때문",
+      "Salesforce 정책상 삭제가 불가능하기 때문"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "사용자를 삭제하면 그가 소유한 레코드, 관련 이력, 승인 프로세스 등과의 연결에 문제가 생길 수 있다.",
+      "whyCorrect": "데이터 무결성 문제가 핵심 이유이므로 정답은 B다.",
+      "whyIncorrect": "비용 절감이나 속도는 비활성화를 선택하는 본질적 이유가 아니며, D처럼 단순히 '정책상 불가능'이라기보다 실제로는 데이터 무결성 보호가 근본 이유다.",
+      "examPoint": "비활성화는 로그인만 막고 레코드 소유권과 이력은 그대로 유지한다는 점을 기억.",
+      "practicalExample": "퇴사자를 비활성화하면 그가 담당했던 Opportunity 데이터가 그대로 남아 인수인계가 가능하다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-010",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Sandbox를 사용해야 하는 주된 이유는?",
+    "choices": [
+      "비용 절감",
+      "프로덕션 데이터 보호 및 안전한 테스트",
+      "더 빠른 성능",
+      "더 많은 저장 공간"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Sandbox는 프로덕션 환경에 영향을 주지 않고 새로운 기능이나 설정을 안전하게 테스트할 수 있는 환경을 제공한다.",
+      "whyCorrect": "프로덕션 보호와 안전한 테스트가 핵심 목적이므로 정답은 B다.",
+      "whyIncorrect": "Sandbox 사용이 비용을 절감하거나 더 빠른 성능, 더 많은 저장 공간을 제공하는 것은 아니다.",
+      "examPoint": "Sandbox의 존재 이유는 '실서비스를 건드리지 않고 테스트'라는 점을 항상 기억.",
+      "practicalExample": "새로운 Validation Rule을 프로덕션에 적용하기 전 Sandbox에서 먼저 검증한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-011",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Developer Sandbox의 특징은?",
+    "choices": [
+      "프로덕션 전체 데이터 포함",
+      "일부 데이터만 포함",
+      "데이터 없음, 코드 테스트용",
+      "유료 옵션"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Developer Sandbox는 가장 작은 규모의 Sandbox로 프로덕션 데이터 없이 설정과 코드만 복사한다.",
+      "whyCorrect": "데이터가 전혀 없는 코드/설정 테스트 환경이 핵심이므로 정답은 C다.",
+      "whyIncorrect": "전체 데이터나 일부 데이터를 포함하는 것은 Full/Partial Copy Sandbox의 특징이며, Developer Sandbox 자체가 별도 유료 옵션인 것도 아니다(Salesforce 라이선스에 포함).",
+      "examPoint": "데이터 없음 = Developer/Developer Pro, 샘플 데이터 = Partial Copy, 전체 데이터 = Full로 구분.",
+      "practicalExample": "Apex 코드를 처음 작성하고 디버깅할 때는 가볍고 빠른 Developer Sandbox를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-012",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "퇴사자 레코드를 새 담당자에게 한 번에 이전하는 기능은?",
+    "choices": [
+      "가져오기 마법사",
+      "Mass Transfer Records",
+      "Change Set",
+      "Sandbox Refresh"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Mass Transfer Records는 특정 사용자가 소유한 여러 레코드를 다른 사용자에게 한 번에 대량으로 이전하는 기능이다.",
+      "whyCorrect": "레코드 소유권 대량 이전이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "가져오기 마법사는 데이터 임포트용, Change Set은 메타데이터 배포용, Sandbox Refresh는 Sandbox 갱신 작업으로 각각 목적이 다르다.",
+      "examPoint": "퇴사자의 레코드 재배정은 항상 Mass Transfer Records로 직결.",
+      "practicalExample": "퇴사한 영업담당자가 소유했던 Opportunity 200건을 후임자에게 Mass Transfer Records로 일괄 이전한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-013",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Login History로 확인할 수 있는 정보는?",
+    "choices": [
+      "설정 변경 내역",
+      "로그인 성공/실패 기록과 IP 주소",
+      "필드 값 변경 이력",
+      "데이터 가져오기 기록"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Login History는 사용자의 로그인 시도(성공/실패), 일시, IP 주소, 브라우저 정보를 최대 6개월간 보관한다.",
+      "whyCorrect": "로그인 관련 기록이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "설정 변경 내역은 Setup Audit Trail, 필드 값 변경 이력은 Field History Tracking, 데이터 가져오기 기록은 별도 추적 기능이 담당한다.",
+      "examPoint": "'누가 언제 로그인했나'는 항상 Login History로 직결.",
+      "practicalExample": "특정 날짜에 어떤 사용자가 로그인에 실패했는지 Login History에서 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-014",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Change Set으로 배포할 수 없는 것은?",
+    "choices": [
+      "커스텀 필드",
+      "Validation Rule",
+      "플로우",
+      "실제 데이터 레코드"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Change Set은 메타데이터(설정 변경 사항)만 배포할 수 있으며 실제 데이터 레코드는 배포 대상이 아니다.",
+      "whyCorrect": "데이터 레코드는 Change Set의 배포 범위 밖이므로 정답은 D다.",
+      "whyIncorrect": "커스텀 필드, Validation Rule, Flow는 모두 메타데이터로서 Change Set을 통해 배포 가능하다.",
+      "examPoint": "Change Set = 메타데이터 전용, 데이터 이전은 Data Loader라는 구분을 기억.",
+      "practicalExample": "새 Validation Rule과 커스텀 필드는 Change Set으로 배포하지만, 실제 레코드 데이터는 별도로 Data Loader를 사용해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-015",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Partial Copy Sandbox의 특징은?",
+    "choices": [
+      "전체 프로덕션 데이터 포함",
+      "선택한 일부 데이터만 포함",
+      "데이터 전혀 없음",
+      "코드만 복사"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Partial Copy Sandbox는 관리자가 미리 정의한 샘플링 규칙에 따라 오브젝트별 일부 데이터를 포함하는 Sandbox다.",
+      "whyCorrect": "선택된 일부 데이터 포함이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "전체 데이터 포함은 Full Sandbox, 데이터 전혀 없음은 Developer/Developer Pro Sandbox의 특징이며, '코드만 복사'라는 설명도 정확하지 않다.",
+      "examPoint": "Partial Copy = 현실적인 샘플 데이터로 QA/테스트에 적합하다는 점을 기억.",
+      "practicalExample": "QA 팀이 실제와 유사한 데이터를 다루면서도 저장 공간을 절약하기 위해 Partial Copy Sandbox를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-016",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "비밀번호 정책(Password Policy)에서 설정할 수 없는 것은?",
+    "choices": [
+      "최소 길이",
+      "복잡도 요구사항",
+      "만료 기간",
+      "비밀번호 자동 생성"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "비밀번호 정책에서는 최소 길이, 복잡도, 만료 기간, 이전 비밀번호 재사용 제한 등을 설정할 수 있지만 비밀번호 자체를 자동 생성해주는 기능은 없다.",
+      "whyCorrect": "자동 생성 기능이 빠져있는 것이 핵심이므로 정답은 D다.",
+      "whyIncorrect": "최소 길이, 복잡도 요구사항, 만료 기간은 모두 Password Policies에서 실제로 설정 가능한 항목이다.",
+      "examPoint": "Password Policies는 '규칙'을 정의할 뿐 비밀번호 값 자체를 생성해주지는 않는다는 점에 유의.",
+      "practicalExample": "관리자가 최소 10자, 특수문자 포함, 90일 만료를 Password Policies에서 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-017",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Login IP Ranges와 Trusted IP Ranges의 차이는?",
+    "choices": [
+      "둘 다 같은 기능",
+      "Login IP Ranges는 접근 제한, Trusted IP Ranges는 이메일 인증 생략",
+      "Trusted IP Ranges가 더 강력한 제한",
+      "Login IP Ranges는 관리자만 설정 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Login IP Ranges는 지정된 IP 외의 접속을 차단하는 강력한 제한이고, Trusted IP Ranges는 지정된 IP에서 접속 시 이메일 인증만 생략해주는 편의 기능이다.",
+      "whyCorrect": "차단(제한) vs 인증 생략(편의)이라는 역할 차이가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "두 기능은 동일하지 않으며, Trusted IP Ranges는 오히려 제한이 아닌 편의 기능이고, Login IP Ranges 설정이 관리자로 한정된다는 설명도 정확하지 않다.",
+      "examPoint": "Login IP Ranges = 차단, Trusted IP Ranges = 인증 생략으로 명확히 구분.",
+      "practicalExample": "사무실 IP를 Trusted IP Ranges에 등록하면 직원들이 사무실에서 로그인할 때 추가 이메일 인증 없이 바로 접속할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-018",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "데이터 내보내기(Data Export)의 주요 용도는?",
+    "choices": [
+      "다른 org로 데이터 이전",
+      "백업 및 외부 시스템 동기화",
+      "중복 레코드 제거",
+      "보고서 생성"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Data Export는 Salesforce 데이터를 CSV 파일로 내보내어 백업하거나 외부 시스템과 동기화하는 데 사용된다.",
+      "whyCorrect": "백업 및 외부 동기화가 핵심 목적이므로 정답은 B다.",
+      "whyIncorrect": "다른 org로의 데이터 이전은 Data Export 자체의 주된 목적이 아니며, 중복 제거는 Duplicate Rules, 보고서 생성은 Reports 기능의 역할이다.",
+      "examPoint": "Data Export = 백업용 CSV 추출이라는 개념을 기억.",
+      "practicalExample": "매주 자동 Weekly Data Export로 전체 데이터를 백업해 안전하게 보관한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-019",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "세션 설정(Session Settings)에서 설정할 수 있는 것은?",
+    "choices": [
+      "비밀번호 복잡도",
+      "세션 타임아웃 시간",
+      "로그인 가능 IP 범위",
+      "사용자별 권한"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Session Settings에서는 세션 타임아웃 시간, HTTPS 강제 설정, 동시 로그인 제한 등 세션 관련 보안 설정을 구성할 수 있다.",
+      "whyCorrect": "세션 타임아웃 설정이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "비밀번호 복잡도는 Password Policies, IP 범위는 Login IP Ranges/Trusted IP Ranges, 사용자별 권한은 Profile/Permission Set이 담당한다.",
+      "examPoint": "'세션 관련 설정'은 항상 Session Settings로 직결.",
+      "practicalExample": "30분간 활동이 없으면 자동 로그아웃되도록 Session Settings에서 타임아웃을 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-020",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Sandbox를 Refresh(새로 고침)하면 어떻게 되나요?",
+    "choices": [
+      "Sandbox 데이터만 삭제",
+      "프로덕션의 최신 데이터와 설정으로 Sandbox가 업데이트됨",
+      "Sandbox가 영구 삭제됨",
+      "프로덕션이 Sandbox로 변환됨"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Sandbox Refresh는 프로덕션의 현재 데이터와 설정을 기반으로 Sandbox를 새로 만드는 작업이다.",
+      "whyCorrect": "프로덕션 기준 최신 상태로 갱신되는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "단순히 데이터만 삭제되는 것이 아니며, Sandbox가 영구 삭제되는 것도 아니고, 프로덕션이 Sandbox로 바뀌는 것도 아니다.",
+      "examPoint": "Refresh 시 기존 Sandbox의 테스트 데이터는 덮어씌워진다는 점을 기억.",
+      "practicalExample": "Full Sandbox를 Refresh하면 지난달의 최신 프로덕션 데이터와 설정으로 갱신된다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-021",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Field History Tracking을 활성화하면 무엇을 추적할 수 있나요?",
+    "choices": [
+      "설정 변경 내역",
+      "이전값, 새값, 변경자, 시간",
+      "Login History",
+      "레코드 삭제 이력"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Field History Tracking을 특정 필드에 활성화하면 해당 필드의 변경 이력(이전 값, 새 값, 변경한 사용자, 변경 시간)이 자동으로 기록된다.",
+      "whyCorrect": "필드 값 변경 이력 추적이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "설정 변경 내역은 Setup Audit Trail, 로그인 기록은 Login History가 담당하며, 레코드 삭제 이력 추적은 Field History Tracking의 기본 범위가 아니다.",
+      "examPoint": "필드별 최대 20개까지 Field History Tracking을 활성화할 수 있다는 점도 함께 기억.",
+      "practicalExample": "Case의 Status 필드에 Field History Tracking을 활성화하면 New → In Progress → Closed로 바뀐 이력을 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-022",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Sandbox에서 변경 사항을 프로덕션에 적용하는 방법은?",
+    "choices": [
+      "Sandbox에서 직접 업데이트",
+      "Change Set으로 배포",
+      "데이터를 다시 입력",
+      "Sandbox와 프로덕션 교체"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Sandbox에서 테스트가 완료된 설정은 Change Set을 통해 프로덕션으로 배포한다.",
+      "whyCorrect": "표준 배포 방법은 Change Set이므로 정답은 B다.",
+      "whyIncorrect": "Sandbox가 프로덕션을 직접 업데이트하지 않으며, 데이터를 재입력하거나 두 환경을 교체하는 것은 실제 배포 방식이 아니다.",
+      "examPoint": "Sandbox → Production 메타데이터 이전은 항상 Change Set(또는 SFDX)로 직결.",
+      "practicalExample": "Sandbox에서 검증한 새 Flow와 필드를 Change Set으로 묶어 프로덕션에 배포한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-023",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Full Sandbox 새로고침 최소 간격은?",
+    "choices": [
+      "매일",
+      "매주",
+      "29일",
+      "6개월"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Full Sandbox는 최소 29일 간격으로만 새로고침(Refresh)할 수 있다.",
+      "whyCorrect": "정확한 최소 간격이 29일이므로 정답은 C다.",
+      "whyIncorrect": "매일이나 매주는 Developer/Developer Pro의 간격이며, 6개월은 실제 간격과 다르다.",
+      "examPoint": "Developer/Developer Pro = 1일, Partial Copy = 5일, Full = 29일이라는 간격을 명확히 구분해 암기.",
+      "practicalExample": "지난달 Full Sandbox를 새로고침했다면 최소 29일이 지나야 다시 새로고침할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-024",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "삭제된 레코드 복원 가능 기간은?",
+    "choices": [
+      "7일",
+      "15일",
+      "30일",
+      "90일"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "삭제된 레코드는 15일간 Recycle Bin(휴지통)에 보관되며, 이 기간 안에 복원할 수 있다.",
+      "whyCorrect": "복원 가능 기간이 15일이므로 정답은 B다.",
+      "whyIncorrect": "7일, 30일, 90일은 실제 보관 기간과 다르다.",
+      "examPoint": "필드 삭제 복원 기간도 15일로 동일하다는 점을 함께 기억.",
+      "practicalExample": "실수로 Opportunity를 삭제해도 15일 이내라면 Recycle Bin에서 복원할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-025",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "대량 가져오기 시 중복 방지에 가장 효과적인 방법은?",
+    "choices": [
+      "Validation Rule 생성",
+      "External ID와 Upsert 사용",
+      "모든 기존 데이터 삭제 후 재가져오기",
+      "수동 확인"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "External ID 필드를 사용한 Upsert 작업은 값이 일치하는 기존 레코드가 있으면 업데이트하고, 없으면 새로 생성해 중복 없이 안전하게 대량 임포트할 수 있다.",
+      "whyCorrect": "대량 임포트에서 중복 없이 처리하는 표준 방법은 External ID + Upsert이므로 정답은 B다.",
+      "whyIncorrect": "Validation Rule은 저장 조건 검증일 뿐 중복 매칭 기능이 아니며, 기존 데이터 전체 삭제 후 재가져오기는 위험하고, 수동 확인은 대량 데이터에 비현실적이다.",
+      "examPoint": "대량 임포트의 중복 방지는 항상 External ID + Upsert 조합으로 직결.",
+      "practicalExample": "레거시 시스템 ID를 External ID로 매핑해 Upsert하면 이미 존재하는 레코드는 갱신되고 신규 레코드만 추가된다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-026",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "로그인 시간 제한 설정 위치는?",
+    "choices": [
+      "사용자 레코드",
+      "설정 감사 추적",
+      "프로필의 Login Hours",
+      "세션 설정"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "로그인 가능 시간 제한은 Profile의 Login Hours에서 요일별, 시간대별로 설정한다.",
+      "whyCorrect": "Login Hours가 위치하는 곳이 Profile이므로 정답은 C다.",
+      "whyIncorrect": "사용자 레코드에서는 직접 설정할 수 없고, Setup Audit Trail은 변경 이력 조회, Session Settings는 세션 타임아웃 관련 설정이다.",
+      "examPoint": "'요일/시간대별 로그인 제한'은 항상 Profile의 Login Hours로 직결.",
+      "practicalExample": "영업 프로필에는 평일 9시~18시만 로그인 가능하도록 Login Hours를 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-027",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "메타데이터 배포 도구가 아닌 것은?",
+    "choices": [
+      "Change Set",
+      "Salesforce CLI",
+      "Workbench",
+      "Data Loader"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Change Set, Salesforce CLI(SFDX), Workbench는 모두 메타데이터(설정)를 배포/관리하는 도구이며, Data Loader는 데이터 레코드를 이전하는 도구다.",
+      "whyCorrect": "메타데이터가 아니라 데이터를 다루는 도구는 Data Loader이므로 정답은 D다.",
+      "whyIncorrect": "Change Set, Salesforce CLI, Workbench는 모두 실제로 메타데이터 배포에 사용되는 도구들이다.",
+      "examPoint": "메타데이터 배포 도구(Change Set/CLI/Workbench) vs 데이터 이전 도구(Data Loader)를 구분.",
+      "practicalExample": "새 Validation Rule은 Change Set으로, 대량 레코드는 Data Loader로 각각 다른 도구를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-028",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Org 수준 이메일 주소를 설정하는 곳은?",
+    "choices": [
+      "사용자 레코드",
+      "Organization-Wide Email Addresses",
+      "Email Templates",
+      "Auto-Response Rules"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Organization-Wide Email Addresses를 설정하면 모든 사용자가 공통 이메일 주소(예: support@company.com)로 이메일을 발송할 수 있다.",
+      "whyCorrect": "조직 공통 발신 이메일 주소를 설정하는 곳이 이것이므로 정답은 B다.",
+      "whyIncorrect": "사용자 레코드는 개인 이메일 설정용이며, Email Templates는 이메일 본문 양식, Auto-Response Rules는 자동 응답 규칙으로 각각 다른 기능이다.",
+      "examPoint": "조직 공통 발신 주소 = Organization-Wide Email Addresses로 직결.",
+      "practicalExample": "지원팀 전체가 support@company.com이라는 공통 주소로 고객에게 이메일을 발송하도록 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-029",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce 조직의 기본 통화와 시간대를 설정하는 곳은?",
+    "choices": [
+      "사용자 프로필",
+      "Company Information in Setup",
+      "Session Settings",
+      "Password Policies"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Setup의 Company Information에서 조직의 기본 통화, 시간대, 언어 등 전반적인 조직 설정을 관리한다.",
+      "whyCorrect": "조직 전체의 기본 설정을 관리하는 곳이 Company Information이므로 정답은 B다.",
+      "whyIncorrect": "사용자 프로필은 권한 설정, Session Settings는 세션 관련, Password Policies는 비밀번호 규칙을 다루는 별개 영역이다.",
+      "examPoint": "조직 전반의 기본값(통화/시간대/언어)은 Company Information으로 직결.",
+      "practicalExample": "한국 지사의 기본 통화를 KRW, 시간대를 Asia/Seoul로 Company Information에서 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-030",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "새 사용자 생성 시 반드시 지정해야 하는 것이 아닌 것은?",
+    "choices": [
+      "Username",
+      "Email",
+      "Profile",
+      "Role"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "사용자 생성 시 Username, Email, Profile은 필수 항목이지만 Role은 선택사항으로 나중에 할당할 수 있다.",
+      "whyCorrect": "필수가 아닌 항목은 Role이므로 정답은 D다.",
+      "whyIncorrect": "Username, Email, Profile은 모두 사용자 생성 시 반드시 입력해야 하는 필수 필드다.",
+      "examPoint": "Role은 조직 구조(공유 확장)를 위한 선택 항목이라는 점을 기억.",
+      "practicalExample": "신규 입사자를 우선 Profile만 배정해 생성하고, 조직도가 확정되면 나중에 Role을 추가로 지정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-031",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자 라이선스 유형 중 가장 저렴하고 기본적인 것은?",
+    "choices": [
+      "Salesforce",
+      "Salesforce Platform",
+      "Identity Only",
+      "Chatter Free"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Identity Only 라이선스는 SSO와 인증 기능만 제공하는 가장 저렴한 라이선스로 CRM 데이터 접근 권한이 없다.",
+      "whyCorrect": "가장 저렴하고 기본적인 라이선스는 Identity Only이므로 정답은 C다.",
+      "whyIncorrect": "Salesforce 라이선스는 풀 CRM 기능을 제공해 가장 비싸고, Salesforce Platform은 커스텀 앱 전용, Chatter Free는 협업 전용이라 각각 목적이 다르다.",
+      "examPoint": "SSO/인증만 필요한 사용자에게는 Identity Only가 가장 경제적인 선택.",
+      "practicalExample": "외부 협력사 직원이 SSO로만 접속하면 되는 경우 Identity Only 라이선스를 부여한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-032",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 사용자당 최대 몇 개의 프로필을 가질 수 있나요?",
+    "choices": [
+      "1개",
+      "2개",
+      "5개",
+      "무제한"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Salesforce에서 각 사용자는 정확히 1개의 프로필만 가질 수 있으며, 추가 권한이 필요하면 Permission Set으로 부여한다.",
+      "whyCorrect": "사용자당 프로필은 반드시 1개이므로 정답은 A다.",
+      "whyIncorrect": "2개, 5개, 무제한은 실제 규칙과 다르다.",
+      "examPoint": "1 사용자 = 1 Profile + 여러 Permission Set이라는 구조를 기억.",
+      "practicalExample": "영업 프로필을 가진 사용자에게 추가로 필요한 권한은 별도 Permission Set을 부여해 확장한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-033",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "데이터 품질 관리를 위해 중복 레코드를 자동 감지하는 기능은?",
+    "choices": [
+      "Validation Rules",
+      "Duplicate Rules and Matching Rules",
+      "FLS",
+      "Mass Delete"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Duplicate Rules와 Matching Rules가 함께 작동해 저장 시 중복 레코드를 감지하고 경고를 표시하거나 저장을 차단한다.",
+      "whyCorrect": "중복 자동 감지의 표준 기능이 이것이므로 정답은 B다.",
+      "whyIncorrect": "Validation Rules는 일반 저장 조건 검증, FLS는 필드 접근 권한, Mass Delete는 대량 삭제 기능으로 각각 목적이 다르다.",
+      "examPoint": "중복 방지는 항상 Matching Rule(판단 기준) + Duplicate Rule(행동) 세트.",
+      "practicalExample": "같은 이메일로 새 Lead를 만들려 하면 Duplicate Rule이 경고를 표시한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-034",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "조직 간 메타데이터 배포를 자동화하고 스크립트로 관리하는 도구는?",
+    "choices": [
+      "Change Sets",
+      "Workbench",
+      "SFDX",
+      "Data Loader"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Salesforce CLI(SFDX)는 명령줄 도구로 메타데이터 배포를 자동화하고 Git 같은 버전 관리 시스템과 통합해 DevOps 파이프라인을 구축할 수 있다.",
+      "whyCorrect": "자동화 및 스크립트 기반 배포가 핵심이므로 정답은 C다.",
+      "whyIncorrect": "Change Sets는 UI 기반 수동 배포 도구이고, Workbench는 개발자용 데이터/메타데이터 조회 도구, Data Loader는 데이터 이전 도구다.",
+      "examPoint": "Git 연동 + 자동화 배포는 항상 SFDX(Salesforce CLI)로 직결.",
+      "practicalExample": "개발팀이 Git 커밋마다 자동으로 Sandbox에 배포되는 CI/CD 파이프라인을 SFDX로 구축한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-035",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 비밀번호를 잊었을 때 스스로 재설정할 수 있게 하는 기능은?",
+    "choices": [
+      "관리자만 가능",
+      "Forgot Your Password 링크를 통한 자가 재설정",
+      "Chatter를 통한 요청",
+      "IT 팀에 티켓 제출"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce 로그인 페이지의 Forgot Your Password 링크를 통해 사용자가 이메일로 재설정 링크를 받아 스스로 비밀번호를 재설정할 수 있다.",
+      "whyCorrect": "자가 재설정 기능이 표준으로 제공되므로 정답은 B다.",
+      "whyIncorrect": "관리자만 가능하다거나 Chatter/IT 티켓을 거쳐야 한다는 것은 표준 절차가 아니다.",
+      "examPoint": "비밀번호 분실 시 항상 로그인 페이지의 자가 재설정 링크를 우선 안내.",
+      "practicalExample": "사용자가 비밀번호를 잊으면 로그인 화면에서 Forgot Your Password를 클릭해 이메일로 받은 링크로 직접 재설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-036",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce 조직의 저장 공간이 부족할 때 취할 수 있는 조치가 아닌 것은?",
+    "choices": [
+      "불필요한 레코드 삭제",
+      "저장 공간 추가 구매",
+      "Data Archive 사용",
+      "프로필 수 줄이기"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "저장 공간은 데이터 레코드 수와 파일 크기에 따라 소비되며, 프로필의 개수는 저장 공간 사용량과 무관하다.",
+      "whyCorrect": "프로필 수를 줄이는 것은 저장 공간 확보와 관련이 없으므로 정답은 D다.",
+      "whyIncorrect": "불필요한 레코드 삭제, 저장 공간 추가 구매, Data Archive 사용은 모두 실제로 저장 공간을 확보하는 방법이다.",
+      "examPoint": "저장 공간 문제는 레코드/파일 데이터에서 접근하고, 프로필은 권한 구조라는 별개 개념임을 기억.",
+      "practicalExample": "저장 공간이 부족하면 오래된 첨부파일을 Data Archive로 옮기거나 불필요한 레코드를 정리한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-037",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce 사용자가 로그인 후 보게 되는 첫 화면을 설정하는 것은?",
+    "choices": [
+      "Default Homepage",
+      "App Launcher",
+      "Profile의 Default Landing Page",
+      "Session Settings"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Profile 설정에서 Default Landing Page(기본 랜딩 페이지)를 지정하면 사용자가 로그인 후 처음 보게 되는 페이지를 설정할 수 있다.",
+      "whyCorrect": "로그인 후 첫 화면 설정이 Profile의 Default Landing Page이므로 정답은 C다.",
+      "whyIncorrect": "Default Homepage나 App Launcher는 그 자체로 첫 화면 지정 기능이 아니며, Session Settings는 세션 관련 보안 설정을 다룬다.",
+      "examPoint": "'로그인 후 첫 화면'은 항상 Profile의 Default Landing Page로 직결.",
+      "practicalExample": "영업 프로필 사용자는 로그인 즉시 Sales 앱의 홈 화면으로 이동하도록 Default Landing Page를 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-038",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 이메일 발송 한도(Daily Email Limit)를 초과하면?",
+    "choices": [
+      "계정이 잠김",
+      "초과된 이메일이 큐에 저장되어 다음날 발송",
+      "초과된 이메일은 발송되지 않고 오류 발생",
+      "자동으로 한도 증가"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "일일 이메일 한도를 초과하면 초과된 이메일은 전송되지 않고 다음날 한도가 초기화되면서 이후 발송이 재개된다.",
+      "whyCorrect": "초과분이 전송되지 않는다는 것이 핵심이므로 정답은 C다.",
+      "whyIncorrect": "계정이 잠기는 것도 아니고, 초과분이 큐에 저장돼 다음날 자동 발송되는 것도 아니며, 한도가 자동으로 늘어나지도 않는다.",
+      "examPoint": "일일 한도를 초과하는 대량 발송 계획이 있다면 사전에 한도를 확인하고 분산 발송하는 것이 중요.",
+      "practicalExample": "대량 마케팅 이메일을 하루 한도 이상 예약했다면 초과분은 발송되지 않으므로 발송 계획을 나눠야 한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-039",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "조직에서 사용자 생성 권한을 가진 프로필 권한은?",
+    "choices": [
+      "View All Data",
+      "Manage Users",
+      "Customize Application",
+      "Modify All Data"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Manage Users 권한이 있는 사용자는 새 사용자를 생성하고 관리할 수 있으며, 이 권한은 System Administrator 프로필에 기본 포함된다.",
+      "whyCorrect": "사용자 생성/관리 권한은 Manage Users이므로 정답은 B다.",
+      "whyIncorrect": "View All Data와 Modify All Data는 레코드 데이터 접근/수정 권한이고, Customize Application은 설정 커스터마이징 권한으로 사용자 관리와는 별개다.",
+      "examPoint": "'사용자 생성/관리'는 항상 Manage Users 권한으로 직결.",
+      "practicalExample": "HR팀 담당자에게 Manage Users 권한이 포함된 Permission Set을 부여해 신규 입사자 계정을 직접 만들 수 있게 한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-040",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Sandbox와 프로덕션 간 연결을 설정하는 것은?",
+    "choices": [
+      "Change Set만으로 자동 연결",
+      "Deployment Connections 설정",
+      "API 토큰 교환",
+      "별도 설정 불필요"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Change Set으로 배포하려면 Setup > Deployment Settings에서 Deployment Connection을 설정해 Sandbox와 프로덕션이 서로를 신뢰하도록 구성해야 한다.",
+      "whyCorrect": "명시적인 신뢰 관계 설정이 필요하므로 정답은 B다.",
+      "whyIncorrect": "Change Set만으로 자동 연결되지 않으며, 별도 API 토큰 교환 절차나 무설정으로 되는 것도 아니다.",
+      "examPoint": "Change Set 배포 전에는 항상 Deployment Connections 사전 설정이 필요하다는 점을 기억.",
+      "practicalExample": "Sandbox에서 Production으로 처음 배포하려면 먼저 두 환경 간 Deployment Connection을 활성화해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-041",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce Inspector 또는 Workbench는 주로 어떤 용도로 사용하나요?",
+    "choices": [
+      "마케팅 캠페인 관리",
+      "SOQL 쿼리 실행 및 데이터/메타데이터 관리",
+      "보고서 생성",
+      "사용자 관리"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Workbench는 SOQL 쿼리 실행, 레코드 조회/수정, 메타데이터 관리 등을 위한 무료 개발자/관리자 도구다.",
+      "whyCorrect": "SOQL 실행 및 데이터/메타데이터 직접 조작이 핵심 용도이므로 정답은 B다.",
+      "whyIncorrect": "마케팅 캠페인 관리, 보고서 생성, 사용자 관리는 각각 Campaign, Reports, User 관리 화면에서 이루어지는 별개 작업이다.",
+      "examPoint": "Workbench는 UI 없는 저수준 데이터/메타데이터 접근 도구라는 점을 기억.",
+      "practicalExample": "개발자가 SOQL로 특정 조건의 레코드를 빠르게 조회하고 싶을 때 Workbench를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-042",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce 사용자 정의 도메인(My Domain)의 주요 이점은?",
+    "choices": [
+      "더 빠른 페이지 로딩",
+      "브랜드 맞춤 URL, SSO 설정 필수 조건, 보안 강화",
+      "무제한 저장 공간",
+      "무료 라이선스 추가"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "My Domain을 설정하면 company.salesforce.com 형식의 맞춤 URL을 사용할 수 있고, SSO 설정과 Lightning의 일부 기능에도 필수 전제 조건이 된다.",
+      "whyCorrect": "브랜드 URL + SSO 전제 조건 + 보안 강화가 핵심 이점이므로 정답은 B다.",
+      "whyIncorrect": "My Domain 자체가 페이지 로딩 속도, 저장 공간, 라이선스 수를 직접 늘려주지는 않는다.",
+      "examPoint": "SSO를 구성하려면 My Domain이 먼저 활성화되어 있어야 한다는 점을 기억.",
+      "practicalExample": "회사 로고가 들어간 login.company.com 같은 맞춤 URL로 SSO 로그인 페이지를 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-043",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce 조직의 기본 언어를 설정하는 곳은?",
+    "choices": [
+      "개별 사용자 설정",
+      "Company Information in Setup",
+      "Session Settings",
+      "Password Policies"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Setup의 Company Information에서 조직의 기본 언어를 설정하며, 개별 사용자는 자신의 개인 언어를 별도로 설정할 수 있다.",
+      "whyCorrect": "조직 전체의 기본 언어 설정 위치가 Company Information이므로 정답은 B다.",
+      "whyIncorrect": "개별 사용자 설정은 개인 언어를 바꿀 뿐 조직 기본값은 아니며, Session Settings와 Password Policies는 각각 세션/비밀번호 관련 설정이다.",
+      "examPoint": "조직 기본 언어/통화/시간대는 모두 Company Information에서 한 번에 관리된다는 점을 기억.",
+      "practicalExample": "한국 지사 조직의 기본 언어를 한국어로 Company Information에서 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-044",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "An employee has left the company. What should the administrator do to their Salesforce account?",
+    "choices": [
+      "Delete the user account permanently.",
+      "Deactivate the user account.",
+      "Remove the users profile.",
+      "Change the users password and lock them out."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "퇴사자 계정은 삭제하지 않고 비활성화(Deactivate)해 로그인은 차단하되 소유 레코드와 이력을 보존해야 한다.",
+      "whyCorrect": "Salesforce는 사용자를 삭제하는 기능 자체를 제공하지 않으므로 정답은 B다.",
+      "whyIncorrect": "A(Delete)는 데이터 무결성을 파괴할 위험이 있다. C(Profile 제거)는 비활성화와 다르며 접근 문제를 완전히 해결하지 못한다. D(비밀번호 변경 후 잠금)만으로는 기존 세션이 남을 수 있다.",
+      "examPoint": "퇴사자 처리는 항상 Deactivate로 직결.",
+      "practicalExample": "퇴사자 계정을 비활성화하면 로그인은 즉시 막히지만 소유했던 Opportunity 등의 레코드는 그대로 유지된다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-045",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A system administrator wants to see who changed a profile setting 2 months ago. What should be used?",
+    "choices": [
+      "Login History",
+      "Debug Log",
+      "설정 감사 추적",
+      "Event Monitoring"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Setup Audit Trail(설정 감사 추적)은 최근 180일간의 설정 변경 이력을 기록해 누가 언제 무엇을 바꿨는지 확인할 수 있게 한다.",
+      "whyCorrect": "2개월 전 Profile 설정 변경자를 확인해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Login History)는 로그인 기록일 뿐 설정 변경과 무관하다. B(Debug Log)는 Apex 코드 실행 로그다. D(Event Monitoring)는 유료 기능으로 이 시나리오의 표준 해법이 아니다.",
+      "examPoint": "'누가 설정을 바꿨나'는 항상 Setup Audit Trail로 직결.",
+      "practicalExample": "관리자가 두 달 전 Profile의 권한 변경 내역을 Setup Audit Trail에서 조회한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-046",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to test a new Flow before deploying it to production without affecting live data. What should be used?",
+    "choices": [
+      "A Developer Console",
+      "A Sandbox environment",
+      "The Setup Audit Trail",
+      "A Validation Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Sandbox는 프로덕션 조직의 복사본으로, 라이브 데이터에 영향 없이 새 기능을 안전하게 테스트할 수 있는 환경이다.",
+      "whyCorrect": "운영 데이터에 영향 없이 테스트해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Developer Console)는 코드 실행 도구, C(Setup Audit Trail)는 변경 이력 조회, D(Validation Rule)는 데이터 검증 도구로 테스트 환경 자체는 아니다.",
+      "examPoint": "'운영 영향 없이 테스트'는 항상 Sandbox로 직결.",
+      "practicalExample": "새 Flow를 Sandbox에서 충분히 검증한 뒤 프로덕션에 배포한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-047",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which Sandbox type contains a full copy of all production data and is best for final user acceptance testing?",
+    "choices": [
+      "Developer Sandbox",
+      "Developer Pro Sandbox",
+      "Partial Copy Sandbox",
+      "Full Sandbox"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Full Sandbox는 프로덕션의 모든 데이터와 설정을 그대로 복사해 실서비스와 동일한 환경을 제공한다.",
+      "whyCorrect": "전체 데이터 포함 + 최종 UAT에 최적인 것은 Full Sandbox이므로 정답은 D다.",
+      "whyIncorrect": "A(Developer)와 B(Developer Pro)는 데이터가 없고, C(Partial Copy)는 샘플 데이터(오브젝트당 최대 1만 건)만 포함한다.",
+      "examPoint": "최종 UAT는 항상 Full Sandbox로 직결.",
+      "practicalExample": "출시 직전 최종 검증 단계에서 Full Sandbox로 실제와 동일한 환경을 재현해 테스트한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-048",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to import 200,000 records into a custom object. Which tool should be used?",
+    "choices": [
+      "가져오기 마법사",
+      "Manual entry",
+      "Data Loader",
+      "Workbench only"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Data Loader는 최대 500만 건까지 지원하며 커스텀 오브젝트를 포함한 모든 오브젝트에 사용할 수 있다.",
+      "whyCorrect": "200,000건은 Data Import Wizard 한도(5만 건)를 초과하므로 Data Loader가 정답(C)이다.",
+      "whyIncorrect": "A(가져오기 마법사)는 5만 건 한도를 초과해 사용할 수 없다. B(수동 입력)는 비현실적인 규모다. D(Workbench only)는 대량 임포트 전용 도구가 아니다.",
+      "examPoint": "5만 건을 기준으로 Data Import Wizard와 Data Loader를 구분.",
+      "practicalExample": "20만 건의 커스텀 오브젝트 레코드를 CSV로 준비해 Data Loader Insert 작업으로 가져온다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-049",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "The administrator at UC accidentally imported 5,000 duplicate records. Which two tools can be used to remove them? Choose 2.",
+    "choices": [
+      "Data Loader",
+      "설정 감사 추적",
+      "Mass Delete Records",
+      "Weekly Data Export"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "대량 레코드를 삭제하는 표준 두 가지 방법은 CSV의 레코드 ID로 삭제하는 Data Loader와 Setup의 조건 기반 삭제 기능인 Mass Delete Records다.",
+      "whyCorrect": "5,000건의 중복 레코드를 대량 삭제해야 하므로 Data Loader와 Mass Delete Records가 정답이다.",
+      "whyIncorrect": "설정 감사 추적(Setup Audit Trail)은 설정 변경 이력 조회 도구이고, Weekly Data Export는 백업용 기능으로 삭제 기능이 아니다.",
+      "examPoint": "대량 삭제는 Data Loader(CSV ID 기반) + Mass Delete Records(조건 기반) 두 가지를 기억.",
+      "practicalExample": "잘못 임포트된 5,000건을 Mass Delete Records로 한 번에 삭제하거나, Data Loader로 레코드 ID를 지정해 삭제한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-050",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "How many days of configuration change history does the Setup Audit Trail retain?",
+    "choices": [
+      "30 days",
+      "90 days",
+      "180 days",
+      "365 days"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Setup Audit Trail은 최근 180일간의 설정 변경 기록을 보관한다.",
+      "whyCorrect": "정확한 보관 기간이 180일이므로 정답은 C다.",
+      "whyIncorrect": "30일, 90일, 365일은 실제 보관 기간과 다르다.",
+      "examPoint": "Setup Audit Trail = 180일이라는 구체적인 숫자를 정확히 암기.",
+      "practicalExample": "감사 담당자가 지난 6개월간의 설정 변경 내역을 요청하면 Setup Audit Trail에서 다운로드해 제공한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-051",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to enforce that all users must verify their identity with a second factor when logging in. What should be configured?",
+    "choices": [
+      "Login IP Restrictions",
+      "Password Policies",
+      "MFA, 다중 인증",
+      "SSO"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "MFA(Multi-Factor Authentication, 다중 인증)는 로그인 시 비밀번호 외에 추가 인증 수단을 요구하는 기능으로 Salesforce의 모든 운영 조직에 의무화되어 있다.",
+      "whyCorrect": "모든 로그인에 2차 인증을 요구해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Login IP Restrictions)는 위치 기반 제한이지 2차 인증이 아니다. B(Password Policies)는 비밀번호 규칙일 뿐 2차 인증과 별개다. D(SSO)는 인증 통합 방식으로 그 자체로 2차 인증을 의미하지 않는다.",
+      "examPoint": "'2차 인증/추가 인증'이라는 요구는 항상 MFA로 직결.",
+      "practicalExample": "사용자가 비밀번호 입력 후 인증 앱의 코드를 추가로 입력해야 로그인이 완료되도록 MFA를 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-052",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to prevent users from logging into Salesforce outside of business hours (9 AM to 6 PM weekdays). What should the administrator configure?",
+    "choices": [
+      "Trusted IP Ranges",
+      "Login Hours on the Profile",
+      "Password Policies",
+      "Two-Factor Authentication"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Login Hours는 Profile별로 요일과 시간대를 지정해 해당 시간 외에는 로그인을 차단할 수 있는 설정이다.",
+      "whyCorrect": "업무 시간(평일 9시~18시)에만 로그인을 허용해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Trusted IP Ranges)는 이메일 인증 생략 기능이지 시간 제한이 아니다. C(Password Policies)는 비밀번호 규칙이다. D(Two-Factor Authentication)는 인증 강화 기능으로 시간 제한과는 무관하다.",
+      "examPoint": "'특정 시간에만 로그인 허용'은 항상 Profile의 Login Hours로 직결.",
+      "practicalExample": "영업 프로필에 평일 9시~18시만 로그인 가능하도록 Login Hours를 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-053",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers needs to restrict Salesforce access so users can only log in from the office network. What should be configured?",
+    "choices": [
+      "Login Hours",
+      "Trusted IP Ranges",
+      "Login IP Ranges on the Profile",
+      "Session Settings"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Login IP Ranges는 Profile 수준에서 지정된 IP 대역 외의 접속을 차단하는 강력한 접근 제한 기능이다.",
+      "whyCorrect": "사무실 네트워크에서만 접속을 허용해야 하므로(다른 IP 차단) 정답은 C다.",
+      "whyIncorrect": "A(Login Hours)는 시간 기반 제한이다. B(Trusted IP Ranges)는 이메일 인증을 생략해줄 뿐 다른 IP를 차단하지 않는다. D(Session Settings)는 세션 타임아웃 관련 설정이다.",
+      "examPoint": "Login IP Ranges = 차단, Trusted IP Ranges = 인증 생략(편의)이라는 차이를 명확히 구분.",
+      "practicalExample": "사무실 IP 대역만 Login IP Ranges에 등록하면 그 외의 위치에서는 로그인 자체가 차단된다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-054",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers imported 5,000 duplicate Account records by mistake. The admin needs to delete them immediately. Which TWO tools can be used? (Choose 2)",
+    "choices": [
+      "Data Loader",
+      "Mass Delete Records",
+      "설정 감사 추적",
+      "Data Export"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "대량 레코드 삭제의 표준 두 가지 방법은 CSV의 레코드 ID로 삭제하는 Data Loader와 Setup에서 오브젝트별 조건으로 삭제하는 Mass Delete Records다.",
+      "whyCorrect": "5,000건의 중복 Account를 신속히 삭제해야 하므로 Data Loader와 Mass Delete Records가 정답이다.",
+      "whyIncorrect": "설정 감사 추적(Setup Audit Trail)은 설정 변경 이력 조회 기능이고, Data Export는 백업용 데이터 내보내기 기능으로 삭제 기능이 아니다.",
+      "examPoint": "대량 삭제 도구 두 가지(Data Loader/Mass Delete Records)를 함께 기억.",
+      "practicalExample": "관리자가 Mass Delete Records로 조건에 맞는 중복 Account를 한 번에 삭제한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-055",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A new Salesforce user at Universal Containers says they can log in but cannot see any tabs or objects. What should the administrator check first?",
+    "choices": [
+      "The users Role assignment",
+      "The users Profile — it may have no object permissions or app access",
+      "The OWD settings",
+      "The users Permission Sets"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "탭과 오브젝트 접근 권한은 기본적으로 Profile에서 결정되므로, 로그인은 되지만 아무것도 보이지 않는다면 Profile의 오브젝트 권한/앱 접근 설정을 가장 먼저 확인해야 한다.",
+      "whyCorrect": "탭/오브젝트가 전혀 안 보이는 문제의 첫 확인 지점은 Profile이므로 정답은 B다.",
+      "whyIncorrect": "A(Role)는 레코드 공유 확장 기능으로 접근 자체를 부여하지 않는다. C(OWD)는 레코드 접근 범위를 다루지만 이 문제의 1차 원인은 아니다. D(Permission Sets)는 Profile 확인 이후에 살펴볼 추가 권한이다.",
+      "examPoint": "탭/오브젝트가 전혀 안 보이면 항상 Profile을 가장 먼저 점검.",
+      "practicalExample": "새 사용자의 Profile에 해당 오브젝트에 대한 Read 권한이 없어서 탭 자체가 보이지 않았던 경우가 흔하다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-056",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to ensure that when users reset their passwords, the new password must be at least 12 characters and include numbers and symbols. Where should this be configured?",
+    "choices": [
+      "User record settings",
+      "Session Settings in Setup",
+      "Password Policies in Setup",
+      "Profile settings"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Password Policies in Setup에서 조직 전체 또는 Profile별로 최소 길이, 복잡도(숫자/특수문자 포함) 요구사항을 설정할 수 있다.",
+      "whyCorrect": "12자 이상 + 숫자/특수문자 포함이라는 비밀번호 규칙을 강제해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(개별 사용자 레코드)에서는 이런 정책을 설정할 수 없다. B(Session Settings)는 세션 관련 설정이다. D(Profile settings)에서 일부 세부 설정이 가능하지만 중앙 관리는 Setup의 Password Policies에서 이루어진다.",
+      "examPoint": "비밀번호 규칙(길이/복잡도/만료)은 항상 Password Policies로 직결.",
+      "practicalExample": "관리자가 Password Policies에서 최소 12자, 숫자+특수문자 포함 규칙을 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-057",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An administrator at Universal Containers needs to move configuration changes (new custom fields, validation rules, page layouts) from Sandbox to production. What is the correct tool?",
+    "choices": [
+      "Data Loader",
+      "Change Set",
+      "Sandbox Refresh",
+      "Mass Transfer"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Change Set은 UI 기반으로 커스텀 필드, Validation Rule, Page Layout 등 메타데이터를 Sandbox에서 Production으로 배포하는 표준 도구다.",
+      "whyCorrect": "설정 변경 사항을 이전해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Data Loader)는 데이터 레코드 이전용이지 설정 이전용이 아니다. C(Sandbox Refresh)는 운영 데이터로 Sandbox를 재구성하는 반대 방향의 작업이다. D(Mass Transfer)는 레코드 소유자 일괄 변경 기능이다.",
+      "examPoint": "Sandbox → Production 메타데이터 이전은 항상 Change Set으로 직결.",
+      "practicalExample": "Sandbox에서 검증한 커스텀 필드와 Validation Rule을 Change Set으로 묶어 프로덕션에 배포한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-058",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to give all new sales hires the same set of permissions on their first day without creating individual permission sets for each person. What is the most efficient approach?",
+    "choices": [
+      "Assign the correct Profile",
+      "Create a Permission Set Group and assign it",
+      "Use a Sharing Rule",
+      "Modify the Standard User profile"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Permission Set Group은 여러 Permission Set을 하나의 그룹으로 묶어 한 번에 사용자에게 할당할 수 있게 해준다.",
+      "whyCorrect": "신규 입사자에게 동일한 권한 세트를 일괄 부여해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Profile 배정)는 기본 권한이지만 추가 권한 묶음까지 한 번에 관리하기엔 Permission Set Group이 더 효율적이다. C(Sharing Rule)는 레코드 공유 기능이다. D(표준 프로필 수정)는 영향 범위가 지나치게 넓어 위험하다.",
+      "examPoint": "여러 권한을 그룹화해 한 번에 부여해야 하면 항상 Permission Set Group.",
+      "practicalExample": "신규 영업직원에게 필요한 여러 Permission Set을 하나의 Permission Set Group으로 묶어 입사 첫날 한 번에 할당한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-059",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A system administrator at Universal Containers accidentally deleted a record 5 days ago. Can the record be recovered?",
+    "choices": [
+      "No, deleted records are gone immediately",
+      "Yes, from the Recycle Bin within 15 days",
+      "Yes, from the Recycle Bin within 30 days",
+      "Only if a backup was made"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "삭제된 레코드는 즉시 사라지지 않고 15일간 Recycle Bin에 보관되어 그 안에 복원할 수 있다.",
+      "whyCorrect": "삭제한 지 5일이 지났으므로 아직 15일 이내이고 Recycle Bin에서 복원 가능해 정답은 B다.",
+      "whyIncorrect": "A(즉시 삭제)는 사실이 아니다. C(30일 이내)는 실제 보관 기간(15일)과 다르다. D(백업이 있어야만 가능)도 사실이 아니다 — 별도 백업 없이도 15일 내 복원 가능하다.",
+      "examPoint": "삭제된 레코드의 표준 복원 기간은 15일이라는 점을 정확히 기억.",
+      "practicalExample": "5일 전 실수로 삭제한 Account 레코드를 Recycle Bin에서 즉시 복원할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-060",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has 3 Sandbox environments. A developer wants the most complete testing environment with full production data. Which Sandbox type should be used?",
+    "choices": [
+      "Developer Sandbox",
+      "Developer Pro Sandbox",
+      "Partial Copy Sandbox",
+      "Full Sandbox"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Full Sandbox는 프로덕션의 모든 데이터를 포함한 가장 완전한 테스트 환경이다.",
+      "whyCorrect": "전체 운영 데이터를 포함한 가장 완전한 환경이 필요하므로 정답은 D다.",
+      "whyIncorrect": "A(Developer)와 B(Developer Pro)는 데이터가 전혀 없고, C(Partial Copy)는 샘플 데이터만 포함한다.",
+      "examPoint": "'가장 완전한 환경 + 전체 데이터'는 항상 Full Sandbox로 직결.",
+      "practicalExample": "개발자가 실제 운영 데이터 규모에서 성능을 검증하려면 Full Sandbox를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-061",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which of the following actions can be tracked using the Setup Audit Trail?",
+    "choices": [
+      "Record changes made by users",
+      "Configuration changes made in Setup",
+      "Login/Logout activity",
+      "Data imports via Data Loader"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Setup Audit Trail은 Setup에서 이루어진 설정(Configuration) 변경만 추적하며 레코드 데이터 변경이나 로그인 활동은 추적하지 않는다.",
+      "whyCorrect": "설정 변경 추적이 Setup Audit Trail의 범위이므로 정답은 B다.",
+      "whyIncorrect": "A(레코드 변경)는 Field History Tracking의 역할이다. C(로그인/로그아웃 활동)는 Login History가 담당한다. D(Data Loader 임포트)는 Setup Audit Trail에서 별도로 추적되지 않는다.",
+      "examPoint": "Setup Audit Trail = 설정 변경 전용, 레코드/로그인은 각각 다른 도구가 담당한다는 구분을 기억.",
+      "practicalExample": "Profile 변경이나 새 필드 생성 같은 설정 작업은 Setup Audit Trail에 기록되지만, 일반 레코드의 값 변경은 여기 나타나지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-062",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to deploy a new custom object, fields, and a Flow from Sandbox to production. The production org already has users and live data. What is the safest approach?",
+    "choices": [
+      "Make changes directly in production",
+      "Use a Change Set to deploy from Sandbox",
+      "Export data and reimport",
+      "Use Data Loader to push the changes"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Change Set은 라이브 데이터에 영향을 주지 않으면서 메타데이터만 Sandbox에서 Production으로 안전하게 배포하는 표준 방법이다.",
+      "whyCorrect": "이미 실사용자와 라이브 데이터가 있는 프로덕션에 안전하게 배포해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(운영 환경 직접 변경)는 검증되지 않은 변경을 바로 적용해 위험하다. C(데이터 내보내기/재가져오기)는 설정 이전 방법이 아니다. D(Data Loader)는 데이터 레코드를 다루는 도구이지 메타데이터 배포 도구가 아니다.",
+      "examPoint": "실사용 중인 프로덕션에 대한 설정 배포는 항상 Change Set을 통해 안전하게 진행.",
+      "practicalExample": "Sandbox에서 완성된 커스텀 오브젝트와 Flow를 Change Set으로 묶어 프로덕션에 배포한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-063",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An administrator needs to import 45,000 Contact records with a user-friendly interface and no command line. Which tool should be used?",
+    "choices": [
+      "Data Loader",
+      "가져오기 마법사",
+      "Workbench",
+      "SOQL Query"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Data Import Wizard는 최대 5만 건까지 지원하며 명령줄 없이 사용자 친화적인 가이드 UI로 데이터를 가져올 수 있다.",
+      "whyCorrect": "45,000건은 한도(5만 건) 이내이며 UI 기반, 명령줄 없음이라는 조건에 부합하므로 정답은 B다.",
+      "whyIncorrect": "A(Data Loader)는 명령줄/설치형 도구로 이 조건에 덜 적합하다. C(Workbench)는 개발자용 도구다. D(SOQL Query)는 쿼리 언어로 임포트 도구가 아니다.",
+      "examPoint": "5만 건 이하 + UI 기반 + 중복 관리 지원은 항상 Data Import Wizard로 직결.",
+      "practicalExample": "전시회에서 수집한 45,000건의 Contact 명함 데이터를 Data Import Wizard로 손쉽게 임포트한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-064",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to track which administrator changed the Lead Assignment Rule last week. What should be used?",
+    "choices": [
+      "Login History",
+      "Debug Log",
+      "설정 감사 추적",
+      "Event Monitoring"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Setup Audit Trail은 최근 180일간의 설정 변경 이력을 기록해 어떤 관리자가 언제 Assignment Rule을 바꿨는지 확인할 수 있게 한다.",
+      "whyCorrect": "지난주 Lead Assignment Rule 변경자를 확인해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Login History)는 로그인 기록이다. B(Debug Log)는 코드 실행 로그다. D(Event Monitoring)는 유료 기능으로 이 상황의 표준 해법이 아니다.",
+      "examPoint": "설정 변경 이력 조회는 항상 Setup Audit Trail로 직결.",
+      "practicalExample": "관리자가 지난주에 Lead Assignment Rule을 수정한 사람을 Setup Audit Trail에서 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-065",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A Salesforce administrator at Universal Containers wants to ensure users from a specific IP range never have to verify their identity via email when logging in. What should be configured?",
+    "choices": [
+      "Login IP Ranges on Profile",
+      "Trusted IP Ranges in Setup",
+      "Login Hours on Profile",
+      "MFA Exemption"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Trusted IP Ranges in Setup은 지정된 IP 대역에서 로그인할 때 이메일 인증 단계를 생략해주는 편의 기능이다.",
+      "whyCorrect": "특정 IP에서 이메일 인증을 생략해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Login IP Ranges on Profile)는 다른 IP를 아예 차단하는 더 강력한 제한이지 인증 생략 기능이 아니다. C(Login Hours)는 시간 제한이다. D(MFA Exemption)는 별도 개념으로 이메일 인증 생략과 직접 관련이 없다.",
+      "examPoint": "Login IP Ranges = 차단, Trusted IP Ranges = 인증 생략(편의)이라는 차이를 명확히 구분.",
+      "practicalExample": "사무실 IP 대역을 Trusted IP Ranges에 등록하면 직원들이 사무실에서 로그인할 때 이메일 인증 단계를 건너뛴다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-066",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC accidentally imported 10,000 records into the wrong custom object. They need to delete all 10,000 as fast as possible. Which is the FASTEST approach?",
+    "choices": [
+      "Delete records one by one",
+      "Use Mass Delete Records in Setup",
+      "Export and re-import to fix",
+      "Use Data Loader with a delete operation"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Data Loader로 삭제할 레코드의 ID를 CSV에 담아 Delete 작업을 실행하면 대량의 레코드를 매우 빠르게 삭제할 수 있다.",
+      "whyCorrect": "1만 건을 최대한 빨리 삭제해야 하므로 Data Loader의 Delete 작업이 정답(D)이다.",
+      "whyIncorrect": "A(하나씩 삭제)는 대량 삭제에 비현실적이다. B(Mass Delete Records)도 가능하지만 대량·대규모 처리에는 Data Loader가 더 빠르고 유연하다. C(내보내기 후 재임포트)는 삭제 방법이 아니다.",
+      "examPoint": "가장 빠른 대량 삭제는 Data Loader + Delete 작업으로 직결.",
+      "practicalExample": "잘못 임포트된 1만 건의 레코드 ID를 CSV로 추출해 Data Loader Delete 작업으로 일괄 삭제한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-067",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants all users to be automatically logged out of Salesforce after 30 minutes of inactivity. Where should this be configured?",
+    "choices": [
+      "User Profile",
+      "Password Policies",
+      "Session Settings in Setup",
+      "Login Hours"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Session Settings in Setup에서는 사용자의 비활동 시간에 따른 세션 타임아웃(자동 로그아웃)을 설정할 수 있다.",
+      "whyCorrect": "30분간 비활동 시 자동 로그아웃되어야 하므로 정답은 C다.",
+      "whyIncorrect": "A(User Profile)는 로그인 시간/IP 제한을 다루지만 세션 타임아웃 자체는 Session Settings에서 관리한다. B(Password Policies)는 비밀번호 규칙이다. D(Login Hours)는 접속 허용 시간대를 다루는 기능이다.",
+      "examPoint": "'비활동 시간에 따른 자동 로그아웃'은 항상 Session Settings로 직결.",
+      "practicalExample": "30분간 아무 작업이 없으면 자동으로 로그아웃되도록 Session Settings에서 타임아웃을 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-068",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers needs to see which users logged in on a specific date and whether their login was successful. What should be checked?",
+    "choices": [
+      "설정 감사 추적",
+      "Login History",
+      "Event Monitoring",
+      "Debug Log"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Login History는 사용자의 로그인 시도(성공/실패), 날짜, IP 주소, 브라우저 정보를 최대 6개월간 보관한다.",
+      "whyCorrect": "특정 날짜의 로그인 성공/실패 여부를 확인해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Setup Audit Trail)는 설정 변경 이력이다. C(Event Monitoring)는 유료 기능이다. D(Debug Log)는 코드 실행 로그다.",
+      "examPoint": "'특정 날짜/시간의 로그인 여부'는 항상 Login History로 직결.",
+      "practicalExample": "특정 날짜에 어떤 사용자가 로그인에 실패했는지 Login History에서 IP와 함께 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-069",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers needs to move metadata changes (custom fields, flows, validation rules) from Sandbox to Production. The admin wants to do this without the command line. What should be used?",
+    "choices": [
+      "Data Loader",
+      "Change Sets",
+      "Workbench",
+      "SFDX CLI"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Change Sets는 UI 기반으로 커스텀 필드, Flow, Validation Rule 등 메타데이터를 명령줄 없이 Sandbox에서 Production으로 배포할 수 있는 도구다.",
+      "whyCorrect": "명령줄 없이 메타데이터를 배포해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Data Loader)는 데이터 이전용이다. C(Workbench)는 개발자용 저수준 도구다. D(SFDX CLI)는 이름 그대로 명령줄이 필요해 이 조건에 맞지 않는다.",
+      "examPoint": "'명령줄 없이 메타데이터 배포'는 항상 Change Sets로 직결.",
+      "practicalExample": "관리자가 Sandbox에서 만든 커스텀 필드와 Flow를 Change Sets의 UI로 프로덕션에 배포한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-070",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants all users to be required to change their passwords every 90 days. Where should this be configured?",
+    "choices": [
+      "User records",
+      "Login Hours on Profiles",
+      "Password Policies in Setup",
+      "Session Settings"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Password Policies in Setup에서 비밀번호 만료 기간(예: 90일)을 조직 전체 또는 Profile별로 설정할 수 있다.",
+      "whyCorrect": "90일마다 비밀번호 변경을 강제해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(개별 사용자 레코드)에서는 이 정책을 설정할 수 없다. B(Login Hours)는 접속 시간 제한이다. D(Session Settings)는 세션 타임아웃 관련 설정이다.",
+      "examPoint": "비밀번호 만료 주기는 항상 Password Policies로 직결.",
+      "practicalExample": "관리자가 Password Policies에서 만료 기간을 90일로 설정하면 사용자는 주기적으로 비밀번호를 변경해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-071",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers needs to create a test environment that contains a representative sample of production data (about 10,000 records) for UAT. Which Sandbox type is most appropriate?",
+    "choices": [
+      "Developer Sandbox",
+      "Developer Pro Sandbox",
+      "Partial Copy Sandbox",
+      "Full Sandbox"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Partial Copy Sandbox는 관리자가 정의한 샘플링 규칙에 따라 오브젝트별 최대 1만 건의 대표 샘플 데이터를 포함해 현실적인 UAT 환경을 제공한다.",
+      "whyCorrect": "약 1만 건 규모의 대표 샘플 데이터가 필요하므로 정답은 C다.",
+      "whyIncorrect": "A(Developer)와 B(Developer Pro)는 데이터가 없다. D(Full Sandbox)는 전체 데이터를 포함해 이 요구보다 과도하고 비용도 높다.",
+      "examPoint": "'대표 샘플 데이터(약 1만 건) + UAT'는 항상 Partial Copy Sandbox로 직결.",
+      "practicalExample": "QA팀이 실제와 유사한 샘플 데이터로 UAT를 진행할 때 Partial Copy Sandbox를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-072",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to ensure that when a user resets their password, they cannot reuse any of their last 5 passwords. Where should this be configured?",
+    "choices": [
+      "User Settings",
+      "Session Settings",
+      "Password Policies — Password History",
+      "Profile Security Settings"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Password Policies의 Password History 설정은 최근 사용한 비밀번호 개수를 지정해 그 안에서는 재사용을 금지할 수 있다.",
+      "whyCorrect": "최근 5개 비밀번호 재사용을 막아야 하므로 정답은 C다.",
+      "whyIncorrect": "A(User Settings)에서는 이 정책을 설정할 수 없다. B(Session Settings)는 세션 관련 설정이다. D(Profile Security Settings)는 정확한 설정 위치가 아니다.",
+      "examPoint": "비밀번호 재사용 방지는 항상 Password Policies의 Password History로 직결.",
+      "practicalExample": "Password History를 5로 설정하면 사용자는 최근 5개와 다른 새 비밀번호를 만들어야 한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-073",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to import new Leads from a trade show spreadsheet with 8,000 records. The admin wants a simple UI-based approach with duplicate checking. Which tool should be used?",
+    "choices": [
+      "Data Loader",
+      "가져오기 마법사",
+      "Workbench",
+      "SOQL Insert"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Data Import Wizard는 5만 건 이하의 데이터를 가이드 UI로 가져오며 중복 관리 기능도 내장되어 있다.",
+      "whyCorrect": "8,000건, UI 기반, 중복 체크가 필요하므로 정답은 B다.",
+      "whyIncorrect": "A(Data Loader)는 명령줄/설치형 도구다. C(Workbench)는 개발자용 도구다. D(SOQL Insert)는 프로그래밍 기반 접근이다.",
+      "examPoint": "5만 건 이하 + UI + 중복 관리는 항상 Data Import Wizard로 직결.",
+      "practicalExample": "전시회에서 수집한 8,000건의 Lead 스프레드시트를 Data Import Wizard로 중복 체크와 함께 임포트한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-074",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A system administrator at Universal Containers wants to check which users have NOT logged into Salesforce in the past 30 days. Which feature provides this information?",
+    "choices": [
+      "설정 감사 추적",
+      "Login History",
+      "User Management report",
+      "Debug Log"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Login History는 사용자별 로그인 날짜와 시간을 최대 6개월간 기록하므로, 이를 통해 30일간 로그인하지 않은 사용자를 파악할 수 있다.",
+      "whyCorrect": "최근 30일 내 미로그인 사용자를 확인해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Setup Audit Trail)는 설정 변경 이력이다. C(User Management report)는 표준 명칭이 아니며 결국 Login History 데이터를 기반으로 만든다. D(Debug Log)는 코드 실행 로그다.",
+      "examPoint": "'로그인 여부/빈도'를 확인하려면 항상 Login History로 직결.",
+      "practicalExample": "관리자가 Login History를 조회해 30일 이상 로그인하지 않은 계정을 찾아 비활성화를 검토한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-075",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers uses a Partial Copy Sandbox for testing. How often can this Sandbox be refreshed from production?",
+    "choices": [
+      "Daily",
+      "Weekly",
+      "Every 5 days",
+      "Every 90 days"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Partial Copy Sandbox는 최소 5일 간격으로만 프로덕션에서 새로고침(Refresh)할 수 있다.",
+      "whyCorrect": "Partial Copy의 실제 최소 새로고침 간격은 5일이므로 정답은 C다.",
+      "whyIncorrect": "A(Daily)는 Developer/Developer Pro Sandbox의 간격이지 Partial Copy의 간격이 아니다. B(Weekly)와 D(Every 90 days)는 실제 간격과 다르다.",
+      "examPoint": "Developer/Developer Pro = 1일, Partial Copy = 5일, Full = 29일이라는 새로고침 간격을 정확히 구분해 암기.",
+      "practicalExample": "지난주 Partial Copy Sandbox를 새로고침했다면 최소 5일이 지나야 다시 새로고침할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-076",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC has 500 users. The admin needs to update the Profile assignment for 200 users at once. What is the most efficient approach?",
+    "choices": [
+      "Edit each user record individually",
+      "Use Mass Update Users via Data Loader",
+      "Use the Mass Reassign functionality in Setup",
+      "Clone the profile for each user group"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "User 오브젝트는 API로 접근 가능한 표준 오브젝트이므로, Data Loader로 여러 User 레코드의 ProfileId 필드를 한 번에 업데이트할 수 있다.",
+      "whyCorrect": "200명의 Profile을 한 번에 효율적으로 바꿔야 하므로 Data Loader를 이용한 대량 업데이트가 정답(B)이다.",
+      "whyIncorrect": "A(개별 수정)는 200명 규모에 비효율적이다. C(Setup의 Mass Reassign 기능)는 존재하지 않는 표준 기능명이다. D(그룹별 Profile 복제)는 이 작업의 목적(기존 Profile 재배정)과 맞지 않는 불필요한 작업이다.",
+      "examPoint": "다수 User 레코드의 필드를 일괄 변경할 때는 Data Loader의 Update 작업을 우선 고려.",
+      "practicalExample": "CSV에 200명의 User ID와 새 ProfileId를 담아 Data Loader Update로 한 번에 반영한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-077",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to track the IP addresses from which users are logging into Salesforce. Which feature provides this?",
+    "choices": [
+      "설정 감사 추적",
+      "Login History",
+      "Event Monitoring",
+      "Trusted IP Ranges"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Login History는 로그인 시도마다 IP 주소, 브라우저, 기기 정보를 함께 기록한다.",
+      "whyCorrect": "사용자들이 어떤 IP에서 로그인하는지 추적해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Setup Audit Trail)는 설정 변경 이력이다. C(Event Monitoring)는 유료 기능으로 이 기본적인 요구에는 과하다. D(Trusted IP Ranges)는 IP 목록을 등록하는 설정일 뿐 로그인 IP를 추적하는 기능이 아니다.",
+      "examPoint": "'로그인한 IP 주소 확인'은 항상 Login History로 직결.",
+      "practicalExample": "특정 계정이 평소와 다른 IP에서 로그인했는지 Login History에서 확인해 이상 로그인을 점검한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-078",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin needs to set up a developer environment to test new Apex code without any production data. Which Sandbox is best?",
+    "choices": [
+      "Full Sandbox",
+      "Partial Copy Sandbox",
+      "Developer Sandbox",
+      "Developer Pro Sandbox"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Developer Sandbox는 프로덕션 데이터 없이 코드와 설정만 복사하는 가장 작고 가벼운 Sandbox 유형이다.",
+      "whyCorrect": "운영 데이터 없이 Apex 코드만 테스트해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Full Sandbox)는 모든 데이터를 포함해 이 요구보다 과도하다. B(Partial Copy Sandbox)는 샘플 데이터를 포함한다. D(Developer Pro Sandbox)도 데이터가 없다는 점은 같지만 더 큰 저장 용량이 필요할 때 쓰는 옵션으로, 단순 코드 테스트에는 기본 Developer Sandbox가 더 적합하다.",
+      "examPoint": "데이터 없이 순수 코드 테스트만 필요하면 항상 Developer Sandbox를 우선 고려.",
+      "practicalExample": "새로운 Apex 클래스를 작성하고 단위 테스트를 실행할 때는 가볍고 빠른 Developer Sandbox를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-079",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC is going through a security audit. The auditors need to see all configuration changes made in the past 6 months in Salesforce. What should the admin provide?",
+    "choices": [
+      "Login History export",
+      "Setup Audit Trail download",
+      "User Activity report",
+      "Debug Log export"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Setup Audit Trail은 최근 180일(약 6개월)간의 모든 설정 변경 내역을 기록하며 CSV로 다운로드할 수 있다.",
+      "whyCorrect": "지난 6개월간의 모든 설정 변경 내역을 감사팀에 제공해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Login History export)는 로그인 기록일 뿐 설정 변경 내역이 아니다. C(User Activity report)는 표준 기능명이 아니다. D(Debug Log export)는 코드 실행 로그로 설정 변경과 무관하다.",
+      "examPoint": "보안 감사에서 '설정 변경 내역'을 요구하면 항상 Setup Audit Trail 다운로드로 직결.",
+      "practicalExample": "관리자가 Setup Audit Trail을 CSV로 다운로드해 지난 6개월간의 모든 설정 변경 이력을 감사팀에 제출한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-080",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to prevent users from accessing Salesforce via mobile devices. What should be configured?",
+    "choices": [
+      "Disable mobile license",
+      "Set Login Hours to exclude all times on mobile",
+      "Create a Mobile Login IP Restriction",
+      "Set Session Settings to restrict access to Lightning desktop only"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Session Settings에는 특정 클라이언트 유형(예: Lightning 데스크탑)으로만 접근을 제한하는 옵션이 있어 모바일 접근을 차단하는 데 활용할 수 있다.",
+      "whyCorrect": "모바일 기기를 통한 접근 자체를 막아야 하므로, Session Settings에서 데스크탑 전용으로 제한하는 D가 정답이다.",
+      "whyIncorrect": "A(모바일 라이선스 비활성화)는 존재하지 않는 설정이다. B(Login Hours로 모바일 시간을 모두 제외)는 Login Hours가 기기 유형이 아닌 시간대만 제어하므로 이 목적에 맞지 않는다. C(Mobile Login IP Restriction)는 존재하지 않는 기능명이다.",
+      "examPoint": "'기기 유형별 접근 제한'은 Session Settings의 클라이언트 접근 설정으로 직결.",
+      "practicalExample": "회사 정책상 모바일 앱 사용을 금지하려면 Session Settings에서 데스크탑 브라우저 접근만 허용하도록 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-081",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A new admin at Universal Containers wants to understand what changes were made to the org before they joined. How far back can the Setup Audit Trail provide this information?",
+    "choices": [
+      "30 days",
+      "90 days",
+      "180 days",
+      "1 year"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Setup Audit Trail은 최근 180일(약 6개월)간의 설정 변경 기록만 보관하며 그 이전 기록은 조회할 수 없다.",
+      "whyCorrect": "조회 가능한 최대 과거 기간이 180일이므로 정답은 C다.",
+      "whyIncorrect": "30일, 90일은 실제 보관 기간보다 짧고, 1년은 실제 보관 기간(180일)보다 길다.",
+      "examPoint": "Setup Audit Trail의 보관 한도는 정확히 180일이라는 점을 다시 한 번 기억.",
+      "practicalExample": "새 관리자는 최근 180일 이내의 설정 변경 내역만 Setup Audit Trail에서 확인할 수 있고, 그 이전 기록은 남아있지 않다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-082",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to require that users verify their email address before completing a password reset. Which feature controls this behavior?",
+    "choices": [
+      "MFA Settings",
+      "Email Verification in User Settings",
+      "Password Policies - require email verification",
+      "Identity Verification Settings in Session Settings"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Password Policies에는 비밀번호 재설정 시 이메일 인증을 요구하는 신원 확인 관련 설정이 포함되어 있다.",
+      "whyCorrect": "비밀번호 재설정 완료 전 이메일 인증을 요구해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(MFA Settings)는 로그인 시 2차 인증에 관한 설정으로 비밀번호 재설정 흐름과는 별개다. B(User Settings의 Email Verification)는 존재하지 않는 표준 메뉴다. D(Session Settings의 Identity Verification)는 정확한 설정 위치가 아니다.",
+      "examPoint": "비밀번호 재설정 관련 정책은 항상 Password Policies에서 확인.",
+      "practicalExample": "관리자가 Password Policies에서 이메일 인증 요구 옵션을 켜면, 사용자가 비밀번호를 재설정할 때 이메일로 받은 링크를 통해 본인 확인을 거쳐야 한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-083",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC runs a Partial Copy Sandbox for UAT. They need to refresh it to get the latest production configuration. Their last refresh was 3 days ago. Can they refresh now?",
+    "choices": [
+      "Yes, Partial Copy can be refreshed anytime",
+      "No, Partial Copy has a 5-day minimum between refreshes",
+      "No, Partial Copy can only be refreshed once a month",
+      "Yes, but only if no testing is in progress"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Partial Copy Sandbox는 새로고침 사이에 최소 5일의 간격을 두어야 한다.",
+      "whyCorrect": "마지막 새로고침이 3일 전이라 아직 5일이 지나지 않았으므로 지금은 새로고침할 수 없어 정답은 B다.",
+      "whyIncorrect": "A(언제든 가능)는 5일 최소 간격 규칙을 무시한 설명이다. C(한 달에 한 번만)는 실제 간격(5일)과 다르다. D(테스트 진행 여부와 무관하게 최소 간격 규칙 자체는 예외 없이 적용되므로 이 조건부 설명도 맞지 않는다.",
+      "examPoint": "Partial Copy Sandbox 새로고침 최소 간격은 5일이라는 점을 정확히 암기.",
+      "practicalExample": "지난 새로고침이 3일 전이었다면 앞으로 최소 2일을 더 기다려야 다시 새로고침할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-084",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to automatically deactivate users who have not logged in for 90 days. What is the best approach?",
+    "choices": [
+      "Manually check Login History monthly",
+      "Build a Schedule-Triggered Flow to check last login and deactivate",
+      "Use Password Expiry to force them out",
+      "Create a Validation Rule on the User object"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Schedule-Triggered Flow는 매일 실행되어 사용자의 마지막 로그인 날짜를 조회하고, 조건(90일 이상 미접속)에 맞는 사용자를 자동으로 비활성화 처리할 수 있다.",
+      "whyCorrect": "90일간 로그인하지 않은 사용자를 자동으로 비활성화해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(매달 수동 확인)는 자동화가 아니라 수작업이라 효율적이지 않다. C(Password Expiry로 강제 로그아웃)는 로그인을 막을 뿐 계정을 비활성화하지 못한다. D(User 오브젝트에 Validation Rule)는 저장 시점 검증 기능일 뿐 시간 경과 기반 자동화에는 적합하지 않다.",
+      "examPoint": "'시간 조건에 따라 정기적으로 검사 후 자동 처리'는 항상 Schedule-Triggered Flow로 직결.",
+      "practicalExample": "매일 실행되는 Schedule-Triggered Flow가 User의 LastLoginDate를 확인해 90일 이상 미접속 계정을 자동으로 비활성화한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-085",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at UC needs to import 3 million records from a legacy system. Data Import Wizard cannot handle this volume. Which tool and operation should be used?",
+    "choices": [
+      "Workbench with REST API",
+      "Data Loader with Insert operation",
+      "Manual CSV import in batches",
+      "Salesforce Connect External Object"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Data Loader는 최대 500만 건까지 지원하므로 300만 건 규모의 신규 데이터 임포트에 적합하며, 완전히 새로운 레코드이므로 Insert 작업을 사용한다.",
+      "whyCorrect": "300만 건은 Data Import Wizard의 한도를 크게 초과하므로 Data Loader의 Insert 작업이 정답(B)이다.",
+      "whyIncorrect": "A(Workbench with REST API)는 대량 처리에 비효율적이고 번거롭다. C(수동 CSV 배치 임포트)는 비현실적으로 느리다. D(Salesforce Connect External Object)는 실시간 외부 데이터 연결용으로 대량 일회성 임포트와는 목적이 다르다.",
+      "examPoint": "5만 건 초과 대량 신규 데이터는 항상 Data Loader + Insert로 직결.",
+      "practicalExample": "레거시 시스템의 300만 건 데이터를 CSV로 준비해 Data Loader Insert 작업으로 가져온다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-086",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers is going live with Salesforce next month. The admin wants to ensure all users have strong passwords from day one. What should be configured before go-live?",
+    "choices": [
+      "Send emails asking users to choose strong passwords",
+      "Configure Password Policies requiring minimum 10 characters with complexity",
+      "Enable MFA only",
+      "Set Login Hours to business hours only"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Password Policies에서 최소 길이와 복잡도 요구사항을 설정하면 모든 사용자가 시스템적으로 강력한 비밀번호를 사용하도록 강제할 수 있다.",
+      "whyCorrect": "출시 첫날부터 모든 사용자가 강력한 비밀번호를 갖도록 시스템적으로 강제해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(이메일로 요청)는 강제성이 없어 일관된 준수를 보장하지 못한다. C(MFA만 활성화)는 2차 인증일 뿐 비밀번호 자체의 강도를 강제하지 않는다. D(Login Hours를 업무 시간으로 제한)는 비밀번호 강도와 무관하다.",
+      "examPoint": "'강력한 비밀번호를 시스템적으로 강제'는 항상 Password Policies로 직결.",
+      "practicalExample": "출시 전 Password Policies에서 최소 10자 이상, 숫자/특수문자 포함 규칙을 설정해 모든 신규 계정에 적용한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-087",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to track the history of changes to the Opportunity Stage field over time. What should the admin configure?",
+    "choices": [
+      "Setup Audit Trail",
+      "Field History Tracking on the Stage field",
+      "a Validation Rule on the Stage field",
+      "a Record-Triggered Flow to log changes"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Field History Tracking을 Stage 필드에 활성화하면 이전 값, 새 값, 변경자, 변경 시각이 자동으로 기록된다.",
+      "whyCorrect": "Opportunity Stage 필드의 시간에 따른 변경 이력을 추적해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Setup Audit Trail)는 설정 변경 이력일 뿐 레코드 필드 값 변경과는 다르다. C(Validation Rule)는 저장을 제어할 뿐 이력을 기록하지 않는다. D(Record-Triggered Flow로 로그 기록)도 가능하지만 표준 기능인 Field History Tracking이 훨씬 간단하다.",
+      "examPoint": "필드 값의 변경 이력 추적은 항상 Field History Tracking으로 직결.",
+      "practicalExample": "Opportunity Stage가 Prospecting → Proposal → Closed Won으로 바뀐 전체 이력을 Field History Tracking에서 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-088",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers needs to capture a unique identifier from an external ERP system on Contact records to use during data imports. Which field type should be used?",
+    "choices": [
+      "Text with Unique constraint",
+      "Auto Number",
+      "External ID field",
+      "Formula field"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "External ID 필드는 외부 시스템의 고유 식별자를 저장해 데이터 임포트 시 Upsert 매칭 키로 활용할 수 있다.",
+      "whyCorrect": "외부 ERP 시스템의 고유 식별자를 저장하고 향후 임포트에 활용해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Text with Unique constraint)는 중복만 방지할 뿐 Upsert 매칭 최적화 기능이 없다. B(Auto Number)는 Salesforce 내부에서 자동 생성되는 값으로 외부 ID 저장 용도가 아니다. D(Formula field)는 계산된 값을 표시할 뿐 외부 ID 저장 필드가 아니다.",
+      "examPoint": "'외부 시스템 ID 저장 + 향후 동기화'는 항상 External ID field로 직결.",
+      "practicalExample": "ERP 시스템의 거래처 ID를 Contact의 External ID 필드에 저장해두면 이후 Upsert로 손쉽게 동기화할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-089",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to ensure sales reps cannot save an Opportunity without entering a Close Date. What is the BEST approach?",
+    "choices": [
+      "Make the field required on the Page Layout",
+      "Create a Validation Rule requiring Close Date is not blank",
+      "Set a default value on the field",
+      "Use a Flow to check the field on save"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Validation Rule은 UI뿐 아니라 API를 포함한 모든 저장 방식에 동일하게 적용되므로, Close Date가 비어있으면 저장 자체를 확실히 차단할 수 있다.",
+      "whyCorrect": "가장 확실하게 Close Date 입력을 강제하는 방법은 Validation Rule이므로 정답은 B다.",
+      "whyIncorrect": "A(Page Layout 필수 필드)는 UI에서만 강제되고 API로는 우회 가능하다. C(기본값 설정)는 값이 비어있지 않게만 할 뿐 사용자가 임의로 지울 수 있어 강제력이 약하다. D(Flow로 확인)도 가능하지만 이런 단순 필수 검증에는 Validation Rule이 더 간단하고 확실하다.",
+      "examPoint": "'절대 비어있으면 안 되는 필드'는 항상 Validation Rule(ISBLANK 활용)로 직결.",
+      "practicalExample": "ISBLANK(CloseDate)가 TRUE면 Validation Rule이 저장을 차단해 Close Date 없는 Opportunity 저장을 막는다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-090",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin is creating a custom picklist field. The company wants the same picklist values reused across multiple objects consistently. What should the admin use?",
+    "choices": [
+      "Copy the field to each object manually",
+      "Create a Global Value Set",
+      "Use a Formula field to reference one picklist",
+      "Create a Custom Metadata Type"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Global Value Set은 하나의 값 세트를 정의해 여러 오브젝트의 여러 Picklist 필드에서 일관되게 재사용할 수 있게 해준다.",
+      "whyCorrect": "여러 오브젝트에서 동일한 Picklist 값을 일관되게 재사용해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(각 오브젝트에 수동 복사)는 값 불일치 위험이 크다. C(Formula field로 참조)는 Picklist 선택 UI를 제공하지 못한다. D(Custom Metadata Type)는 설정 데이터 저장용으로 Picklist 값 재사용의 표준 방법이 아니다.",
+      "examPoint": "여러 오브젝트에 동일 Picklist가 필요하면 항상 Global Value Set을 우선 고려.",
+      "practicalExample": "Industry Global Value Set을 한 번 정의해 Account, Lead, Contact가 모두 참조하도록 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-091",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to log every configuration change made in Salesforce over the past 6 months for a security audit. What should the admin provide?",
+    "choices": [
+      "Login History export",
+      "Setup Audit Trail download",
+      "Debug Log export",
+      "User Activity Report"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Setup Audit Trail은 최근 180일간의 모든 설정 변경 내역을 기록하며 CSV로 다운로드해 감사 자료로 제출할 수 있다.",
+      "whyCorrect": "지난 6개월간의 모든 설정 변경 내역을 보안 감사용으로 제공해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Login History export)는 로그인 기록일 뿐 설정 변경과 무관하다. C(Debug Log export)는 코드 실행 로그다. D(User Activity Report)는 표준 기능명이 아니다.",
+      "examPoint": "보안 감사를 위한 설정 변경 이력 요청은 항상 Setup Audit Trail 다운로드로 직결.",
+      "practicalExample": "관리자가 Setup Audit Trail을 다운로드해 지난 6개월간의 모든 설정 변경 이력을 감사팀에 제출한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-092",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A Salesforce admin wants to give a specific user the ability to manage other users in certain roles without granting full System Administrator access. What should be configured?",
+    "choices": [
+      "Clone the System Administrator profile",
+      "Assign the Delegated Administration feature",
+      "Grant the Manage Users permission via Permission Set",
+      "Create a new Profile with Manage Users checked"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Delegated Administration은 특정 Role 이하 사용자의 관리(생성, 비밀번호 초기화, Role/Profile 변경 등) 권한을 제한된 범위로 위임하는 표준 기능이다.",
+      "whyCorrect": "전체 관리자 권한 없이 특정 범위의 사용자만 관리할 수 있게 해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(System Administrator 프로필 복제)는 과도하게 넓은 권한을 부여한다. C(Manage Users 권한을 Permission Set으로 부여)는 조직 전체 사용자를 관리할 수 있게 해 범위 제한이 안 된다. D(Manage Users가 체크된 새 Profile 생성)도 마찬가지로 범위를 제한하지 못한다.",
+      "examPoint": "'제한된 범위의 사용자 관리 권한 위임'은 항상 Delegated Administration으로 직결.",
+      "practicalExample": "지역 매니저에게 자신의 팀(특정 Role) 사용자만 관리할 수 있는 Delegated Administration 권한을 부여한다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-093",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to display a related list of child Contacts on an Account record page. The relationship is a Lookup. What must the admin do?",
+    "choices": [
+      "Create a Roll-Up Summary field on Account",
+      "Add the Contact Related List to the Account Page Layout",
+      "Change the relationship to Master-Detail",
+      "Create a Sharing Rule connecting both objects"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lookup 관계에서도 관련 목록(Related List)은 Page Layout에 추가하기만 하면 정상적으로 표시할 수 있다.",
+      "whyCorrect": "Account 페이지에 자식 Contact 목록을 표시하려면 Page Layout에 해당 Related List를 추가하는 것으로 충분하므로 정답은 B다.",
+      "whyIncorrect": "A(Roll-Up Summary field)는 Master-Detail에서만 사용 가능한 집계 필드로 목록 표시와 무관하다. C(Master-Detail로 관계 변경)는 불필요하게 관계 유형을 바꾸는 과도한 조치다. D(Sharing Rule 생성)는 레코드 접근 공유 기능으로 관련 목록 표시와는 관련이 없다.",
+      "examPoint": "Lookup 관계에서도 관련 목록은 Roll-Up Summary 없이 Page Layout 추가만으로 표시 가능하다는 점을 기억.",
+      "practicalExample": "Account Page Layout의 Related Lists 섹션에 Contacts를 추가하면 Lookup 관계여도 자식 Contact 목록이 정상적으로 보인다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-094",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to track when the Opportunity Close Date is changed and who changed it. What should be enabled?",
+    "choices": [
+      "Setup Audit Trail",
+      "Field History Tracking on the CloseDate field",
+      "A Record-Triggered Flow logging changes to a custom object",
+      "Debug Log"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Field History Tracking을 CloseDate 필드에 활성화하면 이전 값, 새 값, 변경자, 변경 시각이 자동으로 기록된다.",
+      "whyCorrect": "Close Date가 언제, 누구에 의해 바뀌었는지 추적해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Setup Audit Trail)는 설정 변경 이력일 뿐 레코드 필드 값 변경과는 다르다. C(Record-Triggered Flow로 커스텀 오브젝트에 로그 기록)도 가능하지만 이런 요구에는 표준 기능인 Field History Tracking이 훨씬 간단하다. D(Debug Log)는 코드 실행 로그다.",
+      "examPoint": "특정 필드의 변경 이력(누가, 언제)을 추적하려면 항상 Field History Tracking.",
+      "practicalExample": "CloseDate 필드에 Field History Tracking을 활성화하면 담당자가 마감일을 몇 번이나 미뤘는지 이력으로 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-configuration-095",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to ensure that when an Opportunity Stage is set to Closed Lost, a Reason field becomes required. What is the BEST solution?",
+    "choices": [
+      "Make the Reason field required on the Page Layout",
+      "Create a Validation Rule: if Stage is Closed Lost and Reason is blank, show an error",
+      "Create an Assignment Rule",
+      "Use a Flow to set a default Reason value"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Validation Rule에 조건부 수식(IF)을 사용하면 Stage가 Closed Lost일 때만 Reason 필드를 필수로 만들 수 있다.",
+      "whyCorrect": "특정 조건(Closed Lost)에서만 Reason을 필수로 만들어야 하므로 조건부 Validation Rule이 정답(B)이다.",
+      "whyIncorrect": "A(Page Layout에서 항상 필수)는 Stage와 무관하게 항상 강제되어 요구사항과 맞지 않는다. C(Assignment Rule)는 배정 기능으로 필수 필드 검증과 무관하다. D(Flow로 기본값 설정)는 값을 자동으로 채울 뿐 사용자의 실제 입력을 강제하지 못한다.",
+      "examPoint": "'특정 조건에서만 필수'라는 요구는 항상 Validation Rule의 조건부 수식으로 구현.",
+      "practicalExample": "Stage가 Closed Lost로 바뀌는데 Reason이 비어있으면 Validation Rule이 저장을 차단해 실패 사유 입력을 강제한다."
+    }
+  }
+]

@@ -1,0 +1,491 @@
+[
+  {
+    "id": "q-css-101",
+    "num": 1,
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "요소의 상태 변화(예: hover)를 부드럽게 전환시키는 CSS 속성은?",
+    "choices": [
+      "transition",
+      "animation-name",
+      "transform-origin",
+      "will-change"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "transition은 특정 속성 값이 변할 때 그 변화를 지정한 시간 동안 부드럽게 보간(interpolation)해주는 속성이다.",
+      "whyCorrect": "transition: background-color .2s;처럼 지정하면 hover 시 배경색이 즉시 바뀌지 않고 서서히 바뀐다.",
+      "whyIncorrect": "animation-name은 @keyframes 애니메이션을 지정하는 속성, transform-origin은 변형 기준점, will-change는 브라우저 최적화 힌트라 전환 효과 자체를 만들지 않는다.",
+      "examPoint": "transition(상태 변화 시 1회성 보간)과 animation(반복 가능한 시퀀스)의 차이를 구분해야 한다.",
+      "practicalExample": "이 프로젝트의 .exam-row:hover에서 box-shadow가 부드럽게 바뀌는 것도 transition 덕분이다."
+    }
+  },
+  {
+    "id": "q-css-102",
+    "num": 2,
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "여러 단계의 스타일 변화를 정의해 반복 재생 가능한 애니메이션을 만드는 CSS 규칙은?",
+    "choices": [
+      "@keyframes",
+      "@media",
+      "@supports",
+      "@font-face"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "@keyframes는 애니메이션의 시작(0%/from)부터 끝(100%/to)까지 여러 단계의 스타일을 정의하는 규칙이다.",
+      "whyCorrect": "정의한 @keyframes 이름을 animation-name 속성으로 연결하면 반복·역재생 등 다양한 애니메이션을 만들 수 있다.",
+      "whyIncorrect": "@media는 반응형 조건, @supports는 브라우저 기능 지원 여부 분기, @font-face는 커스텀 폰트 정의용이라 애니메이션 단계를 정의하지 않는다.",
+      "examPoint": "transition은 두 상태 사이만 보간하지만, @keyframes는 중간에 여러 지점을 세밀하게 지정할 수 있다는 차이를 기억한다.",
+      "practicalExample": "로딩 스피너가 계속 회전하는 효과를 만들 때 @keyframes spin과 무한 반복 animation을 사용한다."
+    }
+  },
+  {
+    "id": "q-css-103",
+    "num": 3,
+    "category": "CSS",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "뷰포트(화면) 너비의 1%를 나타내는 CSS 단위는?",
+    "choices": [
+      "vw",
+      "vh",
+      "rem",
+      "%"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "vw(viewport width)는 브라우저 뷰포트 너비를 100 등분한 상대 단위로, 1vw는 뷰포트 너비의 1%다.",
+      "whyCorrect": "화면 크기에 비례해 요소 크기를 조절하고 싶을 때 vw를 사용하면 화면이 커지고 작아짐에 따라 값도 함께 변한다.",
+      "whyIncorrect": "vh는 뷰포트 '높이' 기준 단위이고, rem은 루트 요소(html)의 font-size 기준, %는 부모 요소 기준이라 뷰포트 너비 자체를 기준으로 하지 않는다.",
+      "examPoint": "vw/vh(뷰포트 기준), rem(루트 폰트 기준), em(부모 폰트 기준), %(부모 크기 기준)의 기준점 차이를 표로 정리해두면 좋다.",
+      "practicalExample": "히어로 배너의 큰 제목 글자 크기를 화면 크기에 비례해 키우고 싶을 때 font-size: 5vw처럼 사용한다."
+    }
+  },
+  {
+    "id": "q-css-104",
+    "num": 4,
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flexbox에서 자식 요소가 남는 공간을 얼마나 차지할지 정하는 속성은?",
+    "choices": [
+      "flex-grow",
+      "flex-basis",
+      "align-self",
+      "order"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "flex-grow는 flex container 안에서 남는 여유 공간을 형제 요소들과 비교해 얼마나 더 가져갈지 비율로 지정하는 속성이다.",
+      "whyCorrect": "flex-grow: 1인 요소는 남는 공간을 모두 차지하고, flex-grow: 2인 요소는 flex-grow: 1인 요소보다 2배 더 많은 여유 공간을 가져간다.",
+      "whyIncorrect": "flex-basis는 기본 크기, align-self는 교차축 개별 정렬, order는 시각적 순서를 다루는 속성이라 남는 공간 배분과는 다른 역할이다.",
+      "examPoint": "flex: 1 1 0;처럼 flex 단축 속성이 grow/shrink/basis를 한 번에 지정한다는 점도 함께 알아두면 실전에서 유용하다.",
+      "practicalExample": "검색창은 남는 공간을 모두 차지하고 우측 아이콘들은 고정 크기로 두고 싶을 때 검색창에 flex-grow: 1을 지정한다."
+    }
+  },
+  {
+    "id": "q-css-105",
+    "num": 5,
+    "category": "CSS",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "요소를 화면에서 완전히 숨기면서 차지하던 공간도 없애는 속성값은?",
+    "choices": [
+      "display: none",
+      "visibility: hidden",
+      "opacity: 0",
+      "position: absolute"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "display: none은 요소를 렌더링 트리에서 아예 제거해, 화면에 보이지 않는 것은 물론 차지하던 공간도 사라지게 한다.",
+      "whyCorrect": "display: none이 적용된 요소는 레이아웃 계산에서 완전히 제외되어 다른 요소들이 그 공간을 채운다.",
+      "whyIncorrect": "visibility: hidden과 opacity: 0은 보이지 않게만 할 뿐 공간은 그대로 차지하고, position: absolute는 숨김과 무관한 배치 속성이다.",
+      "examPoint": "display: none(공간까지 제거) vs visibility: hidden(공간 유지, 상호작용 불가) vs opacity: 0(공간·상호작용 유지, 시각적으로만 투명)의 차이를 표로 익혀둔다.",
+      "practicalExample": "이 프로젝트에서 문제 세트를 카테고리별로 필터링할 때, 조건에 안 맞는 .exam-row를 display: none으로 숨긴다."
+    }
+  },
+  {
+    "id": "q-css-106",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "브라우저의 렌더링 엔진이 화면의 모든 HTML 요소를 인식하는 '박스 모델(Box Model)'의 4겹 구조를 중심(가장 안쪽)부터 바깥쪽 순서로 바르게 나열한 것은?",
+    "choices": [
+      "Content -> Margin -> Border -> Padding",
+      "Padding -> Content -> Border -> Margin",
+      "Content -> Padding -> Border -> Margin",
+      "Margin -> Border -> Padding -> Content"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "박스 모델은 중심의 알맹이(Content), 그 알맹이를 감싸는 안쪽 여백(Padding), 상자의 경계선(Border), 그리고 다른 상자와의 간격인 바깥쪽 여백(Margin) 순으로 겹겹이 구성된다.",
+      "whyCorrect": "자료의 박스 모델 설명에 따르면 'Content -> Padding(안쪽) -> Border(테두리) -> Margin(바깥쪽)'의 순서를 가진다.",
+      "whyIncorrect": "Margin이 안쪽으로 오거나 Padding과 Content의 위치가 뒤바뀐 나머지 보기는 박스 모델 아키텍처에 위배된다.",
+      "examPoint": "요소의 전체 너비를 계산할 때 이 4가지 요소가 모두 합산된다는 점을 이해하기 위해 물리적 순서를 반드시 암기해야 한다.",
+      "practicalExample": "택배 상자 안의 물건(Content), 물건을 보호하는 뽁뽁이(Padding), 택배 종이상자 껍데기(Border), 옆 택배상자와 띄워둔 간격(Margin)으로 비유할 수 있다."
+    }
+  },
+  {
+    "id": "q-css-107",
+    "category": "CSS",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "요소들을 가로 방향으로 나란히 배치하고 세밀하게 정렬하는 현대식 'Flexbox' 레이아웃을 사용할 때, 정렬 명령을 선언해야 하는 '지휘자' 역할의 타겟은 누구인가?",
+    "choices": [
+      "정렬되어야 하는 각각의 자식 요소(개별 태그)들",
+      "전체 문서를 감싸는 <html> 루트 태그",
+      "자식 요소들을 직접 감싸고 있는 무조건 바깥쪽 상자(부모 컨테이너)",
+      "정렬과 무관하게 독립적으로 존재하는 외부 <script> 태그"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Flexbox의 가장 핵심적인 설계 사상은, 정렬을 원하는 개별 요소들이 아니라 그 요소들을 품고 있는 '부모 컨테이너'에 정렬 속성을 부여한다는 것이다.",
+      "whyCorrect": "자료에서 정렬 명령은 개별 요소가 아닌 무조건 '바깥쪽 상자(부모 컨테이너)'에 선언해야 작동한다는 메커니즘을 강조했다.",
+      "whyIncorrect": "자식 요소들에 정렬 명령(justify-content 등)을 직접 입력하면 브라우저가 이를 무시하여 정렬이 작동하지 않는다.",
+      "examPoint": "강사의 핵심 인사이트에 나오듯, Flexbox 정렬 실패의 90% 원인이 '부모가 아닌 자식에게 명령을 내렸기 때문'임을 간파해야 한다.",
+      "practicalExample": "세 개의 버튼을 가운데 정렬하고 싶다면, 버튼 태그 각각에 속성을 넣는 게 아니라 버튼들을 묶고 있는 <div>에 `display: flex; justify-content: center;`를 준다."
+    }
+  },
+  {
+    "id": "q-css-108",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flexbox 환경에서 부모 컨테이너에 부여했을 때, '가로축(주축) 방향'을 기준으로 요소들의 좌우 정렬 상태(예: 중앙 정렬, 양끝 정렬 등)를 통제하는 속성은?",
+    "choices": [
+      "justify-content",
+      "align-items",
+      "flex-wrap",
+      "text-align"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "justify-content 속성은 Flex 컨테이너의 메인 축(기본값은 가로축)을 따라 내부 아이템들을 어떻게 정렬하고 분배할지 결정한다.",
+      "whyCorrect": "자료에서 가로축(주축) 방향을 기준으로 정렬 상태를 제어하는 속성으로 명확히 justify-content를 지목했다.",
+      "whyIncorrect": "align-items는 세로축(교차축) 정렬, flex-wrap은 줄바꿈 제어, text-align은 텍스트 내부 문단 정렬 속성이다.",
+      "examPoint": "justify-content(가로/주축)와 align-items(세로/교차축)의 역할을 정확히 반대로 헷갈리지 않고 기억해야 한다.",
+      "practicalExample": "양끝에 요소를 바짝 붙이고 싶을 때 `justify-content: space-between;`을 사용하면 완벽하게 양쪽으로 갈라져 배치된다."
+    }
+  },
+  {
+    "id": "q-css-109",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "세일즈포스의 LWC(Lightning Web Component) 프레임워크에서 UI 카드 컴포넌트를 구현할 때 적용되는 마크업 렌더링 원리에 대한 설명으로 올바른 것은?",
+    "choices": [
+      "LWC 전용 CSS 엔진을 따로 사용하므로 표준 CSS의 display: flex; 문법은 작동하지 않는다.",
+      "LWC 내부의 .html과 .css 파일은 표준 웹의 클래스 선택자 연산과 Flexbox 방식을 100% 동일하게 기반으로 구동된다.",
+      "세일즈포스 표준 개체를 출력할 때는 HTML/CSS 마크업 없이 백엔드 Apex 코드만으로 화면을 자동 생성한다.",
+      "LWC에서는 박스 모델의 Margin과 Padding 개념이 존재하지 않으며, 오직 좌표값으로만 요소를 배치한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "LWC는 최신 웹 컴포넌트 표준을 수용하므로, 브라우저가 이해하는 바닐라 CSS 문법(Flexbox, 클래스 선택자, 박스모델 등)이 변형 없이 그대로 적용된다.",
+      "whyCorrect": "자료에서 'LWC 개발 시 HTML 태그 구조와 CSS 스타일시트 마크업 원리가 100% 그대로 적용된다'고 설명하고 있다.",
+      "whyIncorrect": "LWC는 독자 CSS 엔진을 강제하거나 좌표 배치 방식을 쓰지 않으며, 화면단 UI는 결국 프론트엔드 언어(HTML/CSS)로 구현된다.",
+      "examPoint": "특정 플랫폼(Salesforce) 개발자라도 기본기가 되는 W3C 표준 웹 기술(HTML/CSS)을 마스터하는 것이 곧 플랫폼 UI 통제의 핵심임을 묻는다.",
+      "practicalExample": "구글링해서 얻은 예쁜 CSS 카드 디자인 코드를 복사해서 LWC의 .css 파일에 붙여넣기만 해도 찰떡같이 똑같은 화면이 세일즈포스 내부에 구현된다."
+    }
+  },
+  {
+    "id": "q-css-110",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트에서 지적한 것처럼, Flexbox 정렬이 전혀 작동하지 않는 초보자(주니어)들의 코드를 분석했을 때 가장 흔하게 발견되는 구조적 결함은 무엇인가?",
+    "choices": [
+      "display: flex; 선언 마지막에 세미콜론(;) 대신 콤마(,)를 사용했다.",
+      "정렬 명령(지휘)을 부모 상자(컨테이너)가 아닌 자식 태그에 직접 부여했다.",
+      "HTML의 head 구역에 Flexbox 코드를 작성하지 않고 body에 작성했다.",
+      "박스 모델의 Margin과 Padding 값을 모두 0으로 초기화하지 않았다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Flexbox는 '컨테이너(부모)'와 '아이템(자식)'이라는 이원화된 제어 체계를 갖는다. 전체 공간의 분배와 정렬은 공간의 주인인 부모 컨테이너가 통제해야 한다.",
+      "whyCorrect": "강사는 주니어들이 십중팔구 '자식 태그에 대고 정렬 속성을 적어두는' 실수를 저지르며, 명령은 무조건 부모 컨테이너의 지휘 아래 내려져야 한다고 지적했다.",
+      "whyIncorrect": "콤마 오타나 Margin 초기화 미흡 등은 특정 정렬 기능이 통째로 먹통이 되는 Flexbox 아키텍처 결함의 근본적 이유가 아니다.",
+      "examPoint": "Flexbox의 속성 중 컨테이너에 적용하는 속성(justify-content 등)과 아이템에 적용하는 속성(flex-grow 등)을 혼동하지 않도록 뼈대를 세워준다.",
+      "practicalExample": "<span> 3개를 정렬하려고 span 태그에 justify-content: center; 를 줘봤자 요지부동이다. span을 감싸는 부모 <div>에 명령을 내려야 움직인다."
+    }
+  },
+  {
+    "id": "q-css-111",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "카드 구조 설계를 위해 열어둔 <div> 태그를 실수로 닫지 않았을 때(</div> 누락), 브라우저 화면에서 나타나는 가장 대표적인 에러 현상은?",
+    "choices": [
+      "해당 <div> 안의 텍스트가 모두 엑스박스(X) 기호로 변환된다.",
+      "CSS 파일이 자동으로 연결을 끊어버려 디자인이 초기화된다.",
+      "부모-자식 관계의 끝을 알 수 없게 되어 하위 레이아웃 전체가 도미노처럼 붕괴된다.",
+      "브라우저가 누락된 태그를 스스로 유추하여 아무 문제 없이 렌더링한다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "HTML 문서에서 블록 컨테이너(div)의 닫는 태그가 누락되면, 그 뒤에 나오는 모든 형제 요소들이 닫히지 않은 div의 자식으로 빨려 들어가 렌더링 트리가 붕괴된다.",
+      "whyCorrect": "실수 점검 리스트에서 `<div>`를 열고 닫지 않으면 하위 레이아웃 전체가 도미노처럼 붕괴된다고 명확히 경고하고 있다.",
+      "whyIncorrect": "텍스트 변환, CSS 연결 끊김은 발생하지 않으며, 브라우저가 어느 정도 유추하려 시도하지만 완벽히 복구하지 못해 결국 화면이 심하게 깨진다.",
+      "examPoint": "퍼블리싱 중 화면 레이아웃이 상하좌우로 기괴하게 틀어졌을 때, 가장 먼저 HTML 닫기 태그의 누락을 의심해야 한다는 실무적 디버깅 사고방식을 묻는다.",
+      "practicalExample": "상단 메뉴바(Header)의 `</div>`를 빼먹으면, 메인 본문(Section) 전체가 상단 메뉴바 안으로 들어가 버려 글자들이 겹쳐서 출력된다."
+    }
+  },
+  {
+    "id": "q-css-112",
+    "category": "CSS",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "세일즈포스의 LWC 컴포넌트 마크업 파일 구조 도식도에 따르면, `class=\"sales-card\"`가 부여된 <div> 요소는 LWC 화면 상에서 어떻게 구현되는가?",
+    "choices": [
+      "해당 요소는 Apex 클래스로 자동 변환되어 눈에 보이지 않는 백엔드 로직으로만 동작한다.",
+      "세일즈포스 시스템이 class 속성을 무시하고 무조건 기본 텍스트 형태로만 렌더링한다.",
+      "CSS 패딩/마진 등 스타일이 적용된 세일즈포스 전용 카드 화면(UI)으로 렌더링된다.",
+      "HTML 파일 내의 클래스명은 보안 이슈로 인해 실행 시 무작위 난수로 변경되어 CSS 적용이 불가능하다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "LWC는 표준 웹 기술(HTML/CSS)을 그대로 수용하므로, HTML 템플릿에 지정된 클래스명은 LWC의 CSS 파일과 완벽히 연동되어 화면의 디자인(카드 레이아웃 등)을 창조한다.",
+      "whyCorrect": "도식도와 설명에서 `<div class='sales-card'>`는 'CSS 패딩/마진이 적용된 세일즈포스 전용 카드 화면'으로 실제 렌더링된다고 명시했다.",
+      "whyIncorrect": "백엔드로 변환되거나, 스타일이 무시되거나, 클래스명이 무작위로 막혀 CSS 적용이 불가능하다는 것은 모두 최신 웹 표준 프레임워크의 동작 원리에 위배된다.",
+      "examPoint": "글로벌 CRM 플랫폼(Salesforce) 환경이라 할지라도, UI를 다루는 가장 밑바탕에는 결국 바닐라 CSS 클래스 선택자(.) 메커니즘이 깔려 있다는 통찰을 묻는다.",
+      "practicalExample": "LWC의 `salesCard.css` 파일에 `.sales-card { padding: 20px; border: 1px solid gray; }`라고 작성하면 세일즈포스 화면에 예쁜 네모 카드가 나타난다."
+    }
+  },
+  {
+    "id": "q-css-113",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "선배의 실무 꿀팁에서 '구조(HTML)와 꾸밈(CSS)은 무조건 분리하여 관리하는 것이 유지보수의 정석이다'라고 강조한 이유를 뒷받침하는 가장 적절한 사례는?",
+    "choices": [
+      "HTML 파일 내에 <style> 태그를 길게 쓰면, 화면 구조가 커졌을 때 어떤 스타일이 꼬였는지 찾을 수 없는 스파게티 코드가 되기 때문이다.",
+      "외부 CSS 파일을 쓰지 않으면 최신 브라우저들이 화면 렌더링을 고의로 차단하기 때문이다.",
+      "HTML 파일 내부에 CSS를 적으면 자바스크립트가 이를 해킹 코드로 오인하여 삭제하기 때문이다.",
+      "모든 CSS 속성은 반드시 외부 서버에서 비동기로 불러와야만 적용되는 웹 표준 규칙이 신설되었기 때문이다."
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "HTML 문서 안에 `<style>` 태그를 이용해 CSS를 작성(내부 스타일시트)하면, 코드가 수천 줄로 길어질 경우 구조와 디자인이 뒤엉켜 가독성과 유지보수성이 최악으로 떨어진다.",
+      "whyCorrect": "선배의 팁에서 HTML 내부에 코드를 길게 작성하면 나중에 스타일이 꼬였을 때 찾을 수 없는 '스파게티 코드'가 되므로 분리하라고 명시했다.",
+      "whyIncorrect": "브라우저 차단, JS의 오인 삭제, 비동기 호출 강제 등은 모두 시스템적인 에러를 과장한 오답이며, 본질은 '사람의 유지보수성(가독성)' 문제이다.",
+      "examPoint": "인라인 스타일이나 내부 스타일시트가 기술적으로 '불가능'한 것은 아니지만, 아키텍처 관점에서 왜 '금기'시되는지 그 실무적 배경을 묻는다.",
+      "practicalExample": "페이지가 10개인 웹사이트에서 버튼 색상을 파란색에서 빨간색으로 바꾸려면, CSS 파일이 분리되어 있을 땐 파일 1개만 고치면 되지만 분리 안 되어 있으면 10개 HTML 파일을 다 열어서 수정해야 한다."
+    }
+  },
+  {
+    "id": "q-css-114",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "부모 컨테이너에 `display: flex;`만 선언하고 `flex-wrap: wrap;` 속성을 선언하지 않은 상태에서, 자식 요소들의 총 너비가 브라우저 화면 너비보다 커질 경우 발생하는 현상은?",
+    "choices": [
+      "자식 요소들이 자동으로 아랫줄로 줄바꿈 되어 정렬된다.",
+      "자식 요소들이 브라우저 밖으로 삐져나가거나, 억지로 크기가 찌그러지며 한 줄에 강제 배치된다.",
+      "브라우저가 경고창을 띄우고 CSS 렌더링을 완전히 중단한다.",
+      "부모 컨테이너가 자식들의 크기에 맞춰 가로로 끝없이 무한 확장된다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Flexbox는 기본적으로 자식 요소들을 무조건 '한 줄(single line)' 안에 배치하려는 속성(flex-wrap: nowrap)을 가진다.",
+      "whyCorrect": "자료에서 `flex-wrap: wrap;`을 '자식들이 좁아질 때 깨지거나 삐져나가지 않고 아랫줄로 줄바꿈 되는 안전장치'라고 설명했으므로, 이 안전장치가 없다면 요소들이 깨지거나 찌그러지며 한 줄에 억지로 배치된다.",
+      "whyIncorrect": "자동 줄바꿈은 `wrap`을 줬을 때의 현상이고, 브라우저 중단이나 끝없는 확장은 일어나지 않으며 억지로 한 줄에 우겨넣는(Shrink) 현상이 발생한다.",
+      "examPoint": "웹사이트를 스마트폰으로 볼 때 메뉴나 카드가 가로로 심하게 찌그러져 있다면, 프론트엔드 개발자가 `flex-wrap: wrap;`을 빼먹었음을 추론해 낼 수 있어야 한다.",
+      "practicalExample": "너비가 200px인 사진 10장을 Flexbox에 넣었을 때, 모바일 화면에서 사진 1장의 너비가 30px로 끔찍하게 찌그러져 보이는 현상이 나타난다."
+    }
+  },
+  {
+    "id": "q-css-115",
+    "category": "CSS",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트에 따르면, 마진(Margin)과 패딩(Padding)의 경계선을 혼동하여 코딩할 경우 겪게 되는 가장 치명적인 문제는 무엇인가?",
+    "choices": [
+      "화면 내의 모든 텍스트가 명조체로 강제 변환된다.",
+      "자바스크립트 변수들이 모두 Null로 초기화된다.",
+      "화면 요소들이 의도한 레이아웃을 벗어나 사방으로 튕겨 나가는 아키텍처 오류를 겪게 된다.",
+      "CSS 파일의 용량이 기하급수적으로 늘어나 서버 다운을 유발한다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "박스 모델에서 안쪽 여백과 바깥 여백을 잘못 계산하면 요소의 실제 차지 너비가 비정상적으로 커지거나 좁아져 레이아웃(틀) 전체가 붕괴된다.",
+      "whyCorrect": "강사는 '이 경계선을 혼동하여 코딩하면 화면 요소들이 사방으로 튕겨 나가는 아키텍처 오류를 겪게 된다'고 강력히 경고했다.",
+      "whyIncorrect": "폰트 변환, JS 초기화, 용량 증가는 여백(Margin/Padding) 설정 오류와 기술적으로 아무런 연관이 없는 현상들이다.",
+      "examPoint": "버튼 사이를 벌리려고 패딩을 주면 버튼 자체가 거대해지고, 버튼 크기를 키우려고 마진을 주면 버튼 위치만 이동하는 실무 초보자들의 실수를 꼬집는 문제이다.",
+      "practicalExample": "두 개의 div를 나란히 배치했는데, 간격을 띄우려고 Padding을 주면 박스가 뚱뚱해져서 자리가 부족해져 아래로 툭 떨어져 버린다. 이때는 Margin을 주어야 한다."
+    }
+  },
+  {
+    "id": "q-css-116",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "프로젝트 협업과 포트폴리오 관리를 위해 선배가 제안한 '학습 기록 자산화'의 구체적인 방법론으로 가장 적절한 것은?",
+    "choices": [
+      "작성한 코드를 인쇄하여 파일철에 모아둔다.",
+      "HTML 구조와 CSS 코드를 화면 렌더링 결과물(캡처본)과 함께 블로그나 지식 관리 시스템에 포스팅해 둔다.",
+      "코드의 모든 줄에 주석을 달아 메일로 매일 강사에게 전송한다.",
+      "코드를 무조건 외워서 머릿속에만 기억하고 별도로 기록하지 않는다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "코딩 학습의 결과를 단순히 눈으로 보고 끝내지 않고, 마크업 코드와 시각적 결과물(렌더링)을 매칭하여 문서화(포스팅)하는 것은 실력 향상과 포트폴리오 구축에 필수적이다.",
+      "whyCorrect": "선배의 실무 꿀팁에서 인덱스 파일과 CSS 코드, 화면 결과물을 캡처하여 블로그 등에 일목요연하게 포스팅하는 습관이 거대한 밑거름이 된다고 조언했다.",
+      "whyIncorrect": "인쇄, 메일 전송, 암기 위주의 방식은 현대 IT 업계의 디지털 자산화 및 지식 공유(Knowledge Management) 트렌드와 거리가 멀다.",
+      "examPoint": "프론트엔드 작업은 '시각적 산출물'이 명확하므로, 코드 스니펫과 화면 캡처를 세트로 묶어 정리하는 아카이빙 능력이 실무자의 훌륭한 덕목임을 일깨운다.",
+      "practicalExample": "벨로그(Velog)나 깃허브 블로그에 'Flexbox를 이용한 반응형 카드 레이아웃 만들기'라는 제목으로 코드와 화면 스크린샷을 올리면 훌륭한 면접 무기가 된다."
+    }
+  },
+  {
+    "id": "q-css-117",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "동일한 디자인의 '상품 카드' 50개를 웹 화면에 일관되게 배치하려 한다. 이때 HTML 태그에 부여하고 CSS에서 타겟팅하기에 가장 적합한 선택자 방식은?",
+    "choices": [
+      "각 카드마다 서로 다른 아이디(id)를 50개 부여하고, CSS에서 태그 선택자로 제어한다.",
+      "각 카드에 동일한 클래스(class)를 부여하고, CSS에서 점(.) 기호로 타겟팅하여 한 번에 제어한다.",
+      "카드를 감싸는 <body> 태그에 스타일을 주고, 모든 자식 카드가 상속받게 둔다.",
+      "아이디 선택자(#)를 50개의 카드에 동일하게 중복 선언하여 일괄 제어한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "클래스 선택자(Class Selector)는 하나의 웹페이지 내에서 동일한 디자인을 여러 요소에 중복해서 적용(재사용)할 수 있는 가장 범용적인 식별자이다.",
+      "whyCorrect": "여러 개의 요소에 중복 적용이 가능해야 하므로 클래스 선택자를 사용해야 하며, CSS에서는 점(.)을 붙여 호출한다.",
+      "whyIncorrect": "아이디(id)는 페이지 내에서 유일해야 하므로 중복 부여가 불가능하며, 50개의 개별 id를 만드는 것은 비효율적이다. body 태그 상속만으로는 카드 모양을 디테일하게 제어할 수 없다.",
+      "examPoint": "아이디는 고유한 '단일 객체'에, 클래스는 디자인이 같은 '다중 객체'에 사용한다는 실무적 설계 원칙을 평가한다.",
+      "practicalExample": "50개의 `<div class='product-card'>`를 HTML에 만들고, CSS에서 `.product-card { padding: 10px; }` 한 줄만 쓰면 50개 모두 10px의 여백을 갖게 된다."
+    }
+  },
+  {
+    "id": "q-css-118",
+    "category": "CSS",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "강사의 핵심 인사이트에 따르면, 요소의 '마진(Margin)'과 '패딩(Padding)' 속성을 혼동하여 적용할 때 발생하는 가장 대표적인 현상은?",
+    "choices": [
+      "CSS 파일이 HTML에 연결되지 않아 기본 스타일로 렌더링된다.",
+      "브라우저의 렌더링 엔진이 과부하에 걸려 페이지 로딩이 중단된다.",
+      "요소가 커져야 할 때 밀려나거나, 밀려나야 할 때 요소가 커져서 화면 요소들이 사방으로 튕겨 나가는 레이아웃 붕괴를 겪는다.",
+      "요소 내부의 글자(Content)가 모두 지워져 버린다."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "마진(외부 여백)과 패딩(내부 여백)은 박스 전체의 크기와 위치 배정에 결정적 영향을 미친다. 이 둘을 반대로 적용하면 상자 크기 연산이 어긋나 레이아웃 붕괴가 발생한다.",
+      "whyCorrect": "강사는 '이 경계선을 혼동하여 코딩하면 화면 요소들이 사방으로 튕겨 나가는 아키텍처 오류를 겪게 된다'고 경고했다.",
+      "whyIncorrect": "연결 끊김, 로딩 중단, 글자 지워짐 등은 여백(Box Model) 설정 실수로 인해 발생하는 현상이 아니다.",
+      "examPoint": "개발자가 의도한 것은 '버튼 간의 간격(마진)'이었는데 실수로 '패딩'을 줘서 버튼이 거대해져 옆 요소를 쳐내버리는 실무 에러를 상기시킨다.",
+      "practicalExample": "두 박스의 간격을 벌리려고 패딩을 주면 박스 자체가 뚱뚱해져 공간을 차지해버리므로, 결국 화면 끝으로 밀려나다 다음 줄로 튕겨 떨어지는 레이아웃 붕괴가 일어난다."
+    }
+  },
+  {
+    "id": "q-css-119",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "주니어 프론트엔드 개발자가 Flexbox를 사용하여 3개의 버튼을 화면 중앙에 정렬하려 했으나 전혀 작동하지 않았다. 강사의 핵심 인사이트에 비추어 볼 때 가장 유력한 원인은?",
+    "choices": [
+      "버튼 태그(<button>) 자체는 Flexbox의 영향을 받지 않는 특수 요소이기 때문이다.",
+      "3개의 버튼을 감싸는 부모 컨테이너가 아닌, 개별 버튼 3개 각각에 `justify-content: center;`를 선언했기 때문이다.",
+      "HTML의 <head> 영역 안에 Flexbox 코드를 선언했기 때문이다.",
+      "브라우저가 Flexbox를 과거의 구형 기술로 판단하여 차단했기 때문이다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Flexbox 레이아웃에서 공간의 분배와 정렬(justify-content, align-items 등) 명령은 반드시 자식들을 통제하는 '부모 컨테이너'에 부여해야 작동한다.",
+      "whyCorrect": "강사의 핵심 인사이트에서 주니어들의 흔한 실수로 '자식 태그에 대고 정렬 속성을 적어둔 것'을 지적하며, 통제는 부모 컨테이너 지휘 아래 내려져야 한다고 명시했다.",
+      "whyIncorrect": "버튼도 Flex 아이템이 될 수 있고, head 내의 style 태그 작성 자체는 에러가 아니며, Flexbox는 현대의 표준 기술이므로 차단되지 않는다.",
+      "examPoint": "정렬이 실패했을 때 속성 오타를 찾기 전에 '내가 정렬 명령을 부모(판)에 내렸는가, 자식(말)에 내렸는가'를 점검하는 디버깅 시야를 평가한다.",
+      "practicalExample": "버튼 3개를 묶은 `<div class='btn-group'>`이 부모이므로, CSS에서 `.btn-group { display: flex; justify-content: center; }`를 주어야 버튼 3개가 한 덩어리로서 가운데로 온다."
+    }
+  },
+  {
+    "id": "q-css-120",
+    "category": "CSS",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "세일즈포스 플랫폼의 LWC 프레임워크에서 화면 UI를 컴포넌트 단위로 개발할 때 적용되는 마크업 및 스타일링 규칙에 대한 설명으로 가장 올바른 것은?",
+    "choices": [
+      "LWC는 독자적인 스타일 엔진을 쓰기 때문에 표준 CSS의 Flexbox나 박스 모델 속성은 무시된다.",
+      "HTML 구조와 CSS 꾸밈이 분리된 파일로 관리되며, 이는 배운 바닐라(표준) 마크업 연산 원리가 100% 그대로 적용된 것이다.",
+      "세일즈포스의 데이터 보안 정책상 CSS 클래스 선택자(.) 사용이 금지되며 오로지 아이디(#)만 사용해야 한다.",
+      "LWC에서는 <div> 태그로 카드를 묶는 것이 불가능하며, 오직 자바스크립트로만 화면을 그려야 한다."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "LWC(Lightning Web Component)는 W3C 웹 표준을 준수하는 프레임워크이므로, 표준 HTML 태그(div)와 CSS 문법(flex, class 선택자 등)이 동일하게 구동된다.",
+      "whyCorrect": "Salesforce Preview 섹션에서 LWC 개발 시 HTML 태그 구조와 CSS 스타일시트 마크업 원리가 100% 그대로 적용된다고 명시했다.",
+      "whyIncorrect": "LWC가 표준 CSS를 무시하거나, 클래스 사용이 금지되거나, div 태그 사용이 불가하다는 설명은 모두 웹 컴포넌트 표준 아키텍처에 정면으로 위배되는 오답이다.",
+      "examPoint": "프레임워크(LWC, React 등)를 배우더라도, 결국 화면을 이쁘게 그리는 기술의 종착점은 '표준 HTML/CSS'에 대한 깊은 이해에 있음을 강조한다.",
+      "practicalExample": "세일즈포스 개발자가 LWC로 멋진 대시보드 카드를 만들 때, 구글에서 'CSS Card Flexbox'로 검색해서 나온 표준 코드를 그대로 복붙해도 화면에 완벽하게 렌더링된다."
+    }
+  },
+  {
+    "id": "q-css-121",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "개발 환경을 세팅할 때, 코드를 수정하고 저장(Ctrl+S)하는 즉시 웹 브라우저가 이를 감지하고 화면을 새로고침(Reload)하여 실시간 동기화를 지원하는 VS Code 확장 프로그램은?",
+    "choices": [
+      "Live Server",
+      "Prettier",
+      "Debugger for Chrome",
+      "GitLens"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Live Server 확장 프로그램은 로컬 웹 서버를 구동시켜 파일 시스템의 변화를 감지하고, 브라우저 화면을 자동으로 갱신(Hot Reloading)하여 퍼블리싱 생산성을 높여준다.",
+      "whyCorrect": "생산성 도구 가이드에서 저장하자마자 웹 브라우저 화면에 실시간 변경 사항이 새로고침 없이 동기화되는 도구로 Live Server를 적극 활용하라고 권장했다.",
+      "whyIncorrect": "Prettier는 코드 정렬(포매팅), Debugger는 에러 추적, GitLens는 소스코드 버전 이력 확인 도구이다.",
+      "examPoint": "코드 한 줄 바꾸고 브라우저 새로고침(F5)을 수백 번 누르는 비효율을 없애주는, 현대 프론트엔드 개발의 필수 세팅 도구를 숙지하고 있는지 평가한다.",
+      "practicalExample": "VS Code 우측 하단의 'Go Live' 버튼을 누르면 브라우저 창이 뜨고, 에디터에서 CSS 색상을 수정 후 저장하면 0.1초 만에 브라우저에 새로운 색상이 반영된다."
+    }
+  },
+  {
+    "id": "q-css-122",
+    "category": "CSS",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "선배의 실무 꿀팁에서 '학습 기록 자산화'를 위해 포스팅(블로그 등)할 때 반드시 포함하라고 권장한 핵심 요소들의 조합으로 가장 알맞은 것은?",
+    "choices": [
+      "HTML 구조 소스코드, CSS 스타일시트 코드, 브라우저 화면 렌더링 결과물(캡처본)",
+      "데이터베이스 ERD 다이어그램, 백엔드 서버 로그, 보안 인증서 파일",
+      "자바스크립트의 무한 루프 에러 로그, 서버 메모리 사용량 그래프",
+      "포토샵 디자인 원본(PSD) 파일, 폰트 저작권 확인서"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "프론트엔드 학습의 결과물은 코드가 화면에 어떻게 시각적으로 구현(렌더링)되었는지 증명하는 것이므로, 코드와 그 결과물 캡처본을 함께 아카이빙해야 지식 자산으로 가치가 있다.",
+      "whyCorrect": "자료에서 실습한 index.html 구조와 style.css 선택자 코드, 그리고 '화면 렌더링 결과물과 함께 코드 캡처본'을 첨부하여 포스팅하라고 명확히 지시했다.",
+      "whyIncorrect": "백엔드 로그, 보안 인증서, 디자인 원본 파일 등은 HTML/CSS 마크업 실습 기록의 핵심 자산 요소와는 거리가 멀다.",
+      "examPoint": "개발자의 포트폴리오는 '내가 짠 코드가 실제 눈에 보이는 어떤 결과(UI)를 만들어냈는가'를 설득하는 과정임을 일깨우는 실무적 가이드라인이다.",
+      "practicalExample": "노션(Notion)에 오늘 배운 Flexbox를 정리할 때, CSS 코드 블럭을 넣고 바로 아래에 그 코드로 만들어진 예쁜 버튼 스크린샷을 붙여두면 나중에 찾아볼 때 이해가 쏙쏙 된다."
+    }
+  }
+]

@@ -1,0 +1,117 @@
+[
+  {
+    "id": "q-sf-101",
+    "num": 1,
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Lightning 웹 컴포넌트(LWC)를 개발할 때 사용하는 주요 언어 조합은?",
+    "choices": [
+      "HTML + JavaScript",
+      "Apex + CSS",
+      "Visualforce + jQuery",
+      "Java + XML"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "LWC는 웹 표준 기술(HTML, JavaScript)을 기반으로 만든 Salesforce의 최신 컴포넌트 프레임워크다.",
+      "whyCorrect": "LWC 컴포넌트는 HTML 템플릿과 JavaScript 클래스로 구성되며, 별도 CSS 파일로 스타일을 입힌다.",
+      "whyIncorrect": "Apex는 서버 로직용 언어이고, Visualforce+jQuery는 이전 세대 UI 기술이라 LWC의 핵심 언어 조합이 아니다.",
+      "examPoint": "LWC는 표준 웹 컴포넌트 스펙을 따르기 때문에 프론트엔드 경험이 있는 개발자가 빠르게 적응할 수 있다는 점이 자주 강조된다.",
+      "practicalExample": "고객 상세 화면에 커스텀 위젯을 추가할 때 LWC로 HTML+JS 컴포넌트를 만들어 배치한다."
+    }
+  },
+  {
+    "id": "q-sf-102",
+    "num": 2,
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "대량의 레코드를 비동기로 나눠 처리할 때 사용하는 Apex 실행 방식은?",
+    "choices": [
+      "Batch Apex",
+      "Trigger",
+      "Visualforce Controller",
+      "SOQL"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Batch Apex는 수백만 건 단위의 레코드를 정해진 크기(batch size)로 나눠 비동기로 처리하는 실행 방식이다.",
+      "whyCorrect": "start-execute-finish 3단계 구조로, governor limit을 피하면서 대량 데이터를 안전하게 처리할 수 있다.",
+      "whyIncorrect": "Trigger는 레코드 저장 시점의 실시간 로직, Visualforce Controller는 화면 로직, SOQL은 조회 쿼리라 대량 비동기 처리와는 목적이 다르다.",
+      "examPoint": "Batch Apex, Queueable Apex, Scheduled Apex의 용도 차이를 구분해서 알아두면 좋다.",
+      "practicalExample": "전체 고객 100만 건의 등급을 매일 밤 재계산하는 작업을 Batch Apex로 처리한다."
+    }
+  },
+  {
+    "id": "q-sf-103",
+    "num": 3,
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "개발 중인 기능을 실제 운영 조직에 영향을 주지 않고 테스트하는 별도 환경은?",
+    "choices": [
+      "Sandbox",
+      "Production",
+      "Trailhead",
+      "AppExchange"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Sandbox는 운영(Production) 조직과 분리된 복사본 환경으로, 안전하게 개발/테스트를 진행할 수 있다.",
+      "whyCorrect": "Sandbox에서 검증을 마친 변경 사항만 Production으로 배포하는 것이 표준 릴리스 프로세스다.",
+      "whyIncorrect": "Production은 실제 운영 데이터가 있는 환경이라 직접 테스트하면 위험하고, Trailhead는 학습 플랫폼, AppExchange는 앱 마켓플레이스라 개발 환경이 아니다.",
+      "examPoint": "Developer/Partial Copy/Full Copy 등 Sandbox 종류별 특징(데이터 포함 여부)을 구분해서 알아두면 좋다.",
+      "practicalExample": "새로운 자동화 Flow를 만들 때 먼저 Sandbox에서 테스트한 뒤 Production에 배포한다."
+    }
+  },
+  {
+    "id": "q-sf-104",
+    "num": 4,
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "여러 레코드를 한 번에 가져오거나 내보낼 때 사용하는 도구는?",
+    "choices": [
+      "Data Loader",
+      "Flow Builder",
+      "Report Builder",
+      "Setup Menu"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Data Loader는 CSV 파일을 이용해 대량의 레코드를 삽입/수정/삭제/조회할 수 있는 데이터 이관 도구다.",
+      "whyCorrect": "수만 건 단위의 초기 데이터 이관이나 일괄 업데이트에는 UI로 하나씩 처리하는 대신 Data Loader를 사용한다.",
+      "whyIncorrect": "Flow Builder는 자동화 도구, Report Builder는 리포트 작성 도구, Setup Menu는 조직 설정 화면이라 대량 데이터 이관 용도가 아니다.",
+      "examPoint": "Data Loader(대량, CLI/GUI)와 Import Wizard(소량, 표준 객체 한정)의 차이를 함께 알아두면 좋다.",
+      "practicalExample": "엑셀로 정리된 5만 건의 신규 리드를 한 번에 등록할 때 Data Loader를 사용한다."
+    }
+  },
+  {
+    "id": "q-sf-105",
+    "num": 5,
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 승인 절차(예: 휴가 신청 승인)를 구현하는 선언형 기능은?",
+    "choices": [
+      "Approval Process",
+      "Validation Rule",
+      "Workflow Field Update",
+      "Escalation Rule"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Approval Process는 특정 조건을 만족하는 레코드를 지정된 승인자에게 순서대로 전달해 승인/반려를 받는 선언형 기능이다.",
+      "whyCorrect": "단계별 승인자 지정, 승인/반려 시 필드 자동 변경 등을 코드 없이 구성할 수 있다.",
+      "whyIncorrect": "Validation Rule은 값 검증, Workflow Field Update는 단순 필드 자동 변경, Escalation Rule은 Case 에스컬레이션 전용이라 다단계 승인과는 다르다.",
+      "examPoint": "승인 절차는 레코드 잠금(lock) 기능과 함께 동작해 승인 진행 중에는 필드 수정이 제한된다는 점도 함께 기억한다.",
+      "practicalExample": "일정 금액 이상의 견적서는 팀장 승인을 거쳐야 확정되도록 Approval Process를 구성한다."
+    }
+  }
+]

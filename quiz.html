@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SQL 기초 10문제 응시 — 새싹트리</title>
+  <title>모의고사 응시 — 새싹트리</title>
   <!-- ================================================= -->
   <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
   <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
@@ -26,31 +26,40 @@
   <!-- 담당 : feature/core (공통 담당자 전용)                -->
   <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
   <!-- ================================================= -->
-  <header class="header">
-    <div class="header__logo">
-      <span class="header__logo-mark" aria-hidden="true">🌱</span>
-      <div>
-        <p class="header__logo-name">새싹트리</p>
-        <p class="header__logo-sub">나만의 취업 핸드북</p>
-      </div>
-    </div>
-    <div class="search-box">
-      <span class="search-box__icon" aria-hidden="true">🔍</span>
-      <label class="sr-only" for="global-search">검색</label>
-      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
-    </div>
+ <header class="header">
+    <a href="index.html" class="header__logo" aria-label="새싹Wiki 홈">
+      <img src="./assets/img/logo.svg" alt="새싹Wiki">
+    </a>
     <div class="header__right">
-      <button type="button" class="notification-btn" aria-label="알림">🔔<span
-          class="notification-btn__dot"></span></button>
-      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
-      <button type="button" class="user-chip">
-        <span class="avatar" aria-hidden="true">🌿</span>
-        <span>
-          <span class="user-chip__name">김새싹</span>
-          <span class="user-chip__level">Lv.3 잎새</span>
-        </span>
-        <span class="user-chip__caret" aria-hidden="true">▾</span>
+      <button type="button" class="hamburger-btn" aria-label="메뉴 열기" aria-controls="side-panel" aria-expanded="false">
+        <span class="hamburger-btn__bar"></span>
+        <span class="hamburger-btn__bar"></span>
+        <span class="hamburger-btn__bar"></span>
       </button>
+      <div class="search-box">
+        <span class="search-box__icon" aria-hidden="true">🔍</span>
+        <label class="sr-only" for="global-search">검색</label>
+        <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
+      </div>
+      <button type="button" class="notification-btn" aria-label="알림">
+        🔔<span class="notification-btn__dot"></span>
+      </button>
+      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>0P</p>
+      <button type="button" class="btn btn--outline btn--sm auth-guest-only">로그인</button>
+      <div class="user-menu auth-user-only">
+        <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false"
+          aria-controls="user-menu-dropdown">
+          <span class="avatar" aria-hidden="true">🌱</span>
+          <span>
+            <span class="user-chip__name">김새싹</span>
+            <span class="user-chip__level">Lv.1 잎새</span>
+          </span>
+        </button>
+        <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
+          <a href="my.html" class="user-menu__item" role="menuitem">마이페이지</a>
+          <button type="button" class="user-menu__item" role="menuitem">로그아웃</button>
+        </div>
+      </div>
     </div>
   </header>
   <!-- COMMON HEADER END -->
@@ -88,10 +97,10 @@
             <div>
               <a class="back-link quiz-header__back" href="exam.html">‹ 모의고사 목록으로</a>
               <h1 class="quiz-header__title"><span id="quiz-title-text">모의고사</span> <span id="quiz-level-tag"
-                  class="tag tag--gray"></span></h1>
+                  class="tag tag--gray">-</span></h1>
               <p class="quiz-header__meta" id="quiz-meta">문제를 불러오는 중이에요…</p>
             </div>
-            <button type="button" class="btn btn--danger" id="quiz-end-btn">시험 종료하기</button>
+            <button type="button" class="btn btn--danger" id="quiz-end-btn">응시 중단하기</button>
           </div>
 
           <!-- 설정 단계: 난이도/문항 수를 고르고 시작하기 -->
@@ -118,8 +127,8 @@
             <aside class="quiz-layout__aside" aria-label="시험 정보">
               <div class="quiz-info-card">
                 <p class="quiz-info-card__title">📋 시험 정보</p>
-                <div class="quiz-info-row"><span class="quiz-info-row__label">출제 유형</span><span
-                    class="quiz-info-row__value">객관식</span></div>
+                <div class="quiz-info-row"><span class="quiz-info-row__label">출제 유형</span><span id="quiz-info-type"
+                    class="quiz-info-row__value">-</span></div>
                 <div class="quiz-info-row"><span class="quiz-info-row__label">배점</span><span id="quiz-info-point"
                     class="quiz-info-row__value">-</span></div>
                 <div class="quiz-info-row"><span class="quiz-info-row__label">제한 시간</span><span id="quiz-info-time"
@@ -130,9 +139,9 @@
               <div class="quiz-tip">
                 <p class="quiz-tip__title">💡 시험 팁</p>
                 <ul class="quiz-tip__list">
-                  <li>✓ SQL 문법을 정확히 이해하는 것이 중요해요.</li>
+                  <li>✓ 문제를 꼼꼼히 읽고 함정 보기에 주의하세요.</li>
                   <li>✓ 모르는 문제는 체크해두고 넘어가세요.</li>
-                  <li>✓ 시간을 잘 분배해서 풀어보세요!</li>
+                  <li>✓ 시간을 잘 분배해서 끝까지 풀어보세요!</li>
                 </ul>
                 <p class="quiz-tip__emoji" aria-hidden="true">🌱</p>
               </div>
@@ -152,7 +161,11 @@
               <div class="quiz-question">
                 <div class="quiz-question__head">
                   <span class="quiz-question__num" id="quiz-question-num">Q-.</span>
-                  <span class="tag tag--gray" id="quiz-question-meta-tag">-</span>
+                  <span class="quiz-question__badges">
+                    <span class="tag tag--gray" id="quiz-question-difficulty-tag">-</span>
+                    <span class="tag tag--gray" id="quiz-question-category-tag">-</span>
+                    <span class="tag tag--gray" id="quiz-question-meta-tag">-</span>
+                  </span>
                 </div>
                 <p class="quiz-question__text" id="quiz-question-text">문제를 불러오는 중이에요…</p>
 
@@ -160,7 +173,7 @@
 
                 <div class="quiz-question__footer">
                   <label class="quiz-question__later">
-                    <input type="checkbox"> 나중에 다시 풀기
+                    <input type="checkbox" id="quiz-flag-checkbox"> 나중에 다시 풀기
                   </label>
                   <div class="quiz-question__actions">
                     <button type="button" class="btn btn--outline" id="quiz-prev-btn">‹ 이전 문제</button>
@@ -178,6 +191,8 @@
                     aria-hidden="true"></span>풀었어요</li>
                 <li><span class="question-grid-legend__swatch question-grid-legend__swatch--curr"
                     aria-hidden="true"></span>현재 문제</li>
+                <li><span class="question-grid-legend__swatch question-grid-legend__swatch--flagged"
+                    aria-hidden="true"></span>나중에 다시 풀기</li>
                 <li><span class="question-grid-legend__swatch question-grid-legend__swatch--todo"
                     aria-hidden="true"></span>아직 안 풀었어요</li>
               </ul>
@@ -192,8 +207,8 @@
                   </svg>
                   <div class="time-ring__value" id="timer">07:24</div>
                 </div>
-                <button type="button" class="btn btn--outline btn--sm memo-panel__extend-btn" data-action="toast"
-                  data-message="시간을 2분 연장했어요!">⟳ 시간 연장하기</button>
+                <button type="button" class="btn btn--outline btn--sm memo-panel__extend-btn" id="quiz-extend-btn">⟳
+                  시간 연장하기</button>
               </div>
 
               <div class="memo-panel">
@@ -206,22 +221,32 @@
           <!-- 결과 단계: 채점 완료 후 -->
           <div class="quiz-result" id="quiz-result" hidden>
             <div class="quiz-question quiz-result__card">
-              <p class="quiz-result__emoji" aria-hidden="true">🌱</p>
-              <p class="quiz-result__title">수고하셨습니다!</p>
+              <p class="quiz-result__emoji" id="quiz-result-emoji" aria-hidden="true">🌱</p>
+              <p class="quiz-result__title" id="quiz-result-title">수고하셨습니다!</p>
               <p class="quiz-result__desc" id="quiz-result-desc"></p>
               <div class="quiz-result__actions">
                 <button type="button" class="btn btn--outline" id="quiz-result-score-btn">📊 점수 보기</button>
+                <button type="button" class="btn btn--outline" id="quiz-result-retry-btn">🔁 다시 풀기</button>
+                <button type="button" class="btn btn--outline" id="quiz-result-retry-wrong-btn" hidden>📝 오답만 다시
+                  풀기</button>
                 <a class="btn btn--primary" href="exam.html" id="quiz-result-exit-btn">시험 종료하기</a>
               </div>
               <div class="quiz-result__breakdown" id="quiz-result-breakdown" hidden>
+                <div class="quiz-result__category-breakdown" id="quiz-result-category-breakdown" hidden></div>
                 <div class="exam-status-ring-wrap">
                   <div class="score-ring">
                     <svg id="quiz-result-ring-svg" viewBox="0 0 80 80" width="80" height="80" role="img"
                       aria-label="이번 응시 점수 0%">
+                      <defs>
+                        <linearGradient id="quiz-result-ring-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="var(--g500)" />
+                          <stop offset="100%" stop-color="var(--g900)" />
+                        </linearGradient>
+                      </defs>
                       <circle class="score-ring__bg" cx="40" cy="40" r="30" stroke-width="7" />
                       <circle id="quiz-result-ring-fill" class="score-ring__fill" cx="40" cy="40" r="30"
-                        stroke="var(--g700)" stroke-width="7" stroke-dasharray="188" stroke-dashoffset="188"
-                        transform="rotate(-90 40 40)" />
+                        stroke="url(#quiz-result-ring-gradient)" stroke-width="7" stroke-dasharray="188"
+                        stroke-dashoffset="188" transform="rotate(-90 40 40)" />
                     </svg>
                     <div class="score-ring__text"><span id="quiz-result-score-value"
                         class="score-ring__value">0%</span><span class="exam-status-ring-wrap__caption">이번 점수</span>
@@ -251,6 +276,7 @@
   <!-- 담당 : feature/core (공통 담당자 전용) -->
   <!-- ================================================= -->
   <script src="assets/js/toast.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <!-- 페이지 전용 JS — Exam 담당 소유 (docs/PAGES.md 참고) -->
   <script src="assets/js/pages/quiz.js" defer></script>

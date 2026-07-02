@@ -1,0 +1,1300 @@
+[
+  {
+    "id": "q-adx-productivity-001",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce 레코드에 직접 댓글을 달고 파일을 공유하는 기능은?",
+    "choices": [
+      "Email",
+      "Tasks",
+      "Chatter",
+      "Notes"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Chatter는 Salesforce 내 소셜 협업 도구로, 레코드에 직접 댓글을 달고 파일을 공유하며 @멘션으로 특정 사용자에게 알릴 수 있다.",
+      "whyCorrect": "레코드에 댓글/파일 공유가 가능한 기능은 Chatter이므로 C가 정답이다.",
+      "whyIncorrect": "Email은 Salesforce 밖으로 나가는 통신이고, Tasks는 할 일 항목이며, Notes는 서식 있는 메모 기능일 뿐 소셜 댓글 기능은 아니다.",
+      "examPoint": "'레코드에 직접 코멘트 + 팀원 알림'이라는 조합은 항상 Chatter로 연결된다.",
+      "practicalExample": "Opportunity 레코드에 '이번 주 안에 계약 성사될 것 같아요'라고 Chatter로 남기면 팔로워들이 그 소식을 피드에서 바로 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-002",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "시작/종료 시간이 있는 캘린더 항목을 나타내는 활동 유형은?",
+    "choices": [
+      "Task",
+      "Event",
+      "Note",
+      "Email"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Event는 시작 시간과 종료 시간이 있는 캘린더 항목이고, Task는 마감일(Due Date)만 있는 할 일 항목이다.",
+      "whyCorrect": "시작/종료 시간이 있는 캘린더 항목은 Event의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "Task는 마감일만 있을 뿐 시작/종료 시간이 없고, Note와 Email은 활동(Activity) 유형이 아니다.",
+      "examPoint": "Task=마감일만/캘린더 미표시, Event=시작·종료시간/캘린더 표시라는 표를 기억해두면 이 유형은 바로 풀린다.",
+      "practicalExample": "고객과의 1시간짜리 화상 미팅을 등록하면 시작·종료 시간이 있는 Event로 캘린더에 표시된다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-003",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "코드 없이 Lightning 레코드 페이지의 레이아웃과 컴포넌트를 구성하는 도구는?",
+    "choices": [
+      "Page Layout Editor",
+      "Lightning App Builder",
+      "Flow Builder",
+      "Object Manager"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lightning App Builder는 드래그앤드롭 방식으로 코드 없이 앱 페이지, 레코드 페이지, 홈 페이지의 컴포넌트 구성을 만드는 도구다.",
+      "whyCorrect": "코드 없이 레이아웃/컴포넌트를 구성하는 도구는 Lightning App Builder이므로 B가 정답이다.",
+      "whyIncorrect": "Page Layout Editor는 필드·관련목록 배치만 다루고, Flow Builder는 자동화 로직 도구이며, Object Manager는 오브젝트/필드 설정 도구라 페이지 컴포넌트 배치와는 다르다.",
+      "examPoint": "'코드 없이 페이지 커스터마이즈'는 항상 Lightning App Builder로 연결되는 시험 단골 패턴이다.",
+      "practicalExample": "Opportunity 레코드 페이지에 차트 컴포넌트와 관련 Case 목록을 나란히 배치하려면 Lightning App Builder에서 드래그앤드롭으로 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-004",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "AppExchange 앱을 프로덕션에 설치하기 전 권장되는 단계는?",
+    "choices": [
+      "바로 프로덕션에 설치",
+      "Sandbox에서 먼저 테스트",
+      "개발자에게 검토 요청",
+      "Trailhead에서 확인"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "AppExchange에서 받은 앱은 기존 설정/데이터와 충돌할 수 있어, 반드시 Sandbox에서 먼저 테스트한 뒤 프로덕션에 설치하는 것이 모범 사례다.",
+      "whyCorrect": "프로덕션 설치 전 권장 단계는 Sandbox 테스트이므로 B가 정답이다.",
+      "whyIncorrect": "바로 프로덕션에 설치하면 충돌 위험이 있고, 개발자 검토나 Trailhead 확인만으로는 실제 조직 환경에서의 충돌 여부를 확인할 수 없다.",
+      "examPoint": "'AppExchange 앱 설치'라는 키워드가 나오면 항상 'Sandbox 먼저 테스트'가 정답이라는 패턴을 기계적으로 연결하자.",
+      "practicalExample": "새로운 전자서명 앱을 도입하기 전, Full Sandbox에 먼저 설치해 기존 승인 프로세스와 충돌하지 않는지 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-005",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Page Layout과 Lightning App Builder의 차이점은?",
+    "choices": [
+      "차이 없음",
+      "Page Layout은 필드 배치, Lightning App Builder는 전체 페이지 구성",
+      "Lightning App Builder가 더 오래된 도구",
+      "Page Layout은 코드 필요"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Page Layout은 레코드 상세/편집 화면의 필드와 관련 목록 배치를 제어하고, Lightning App Builder는 페이지 전체의 컴포넌트 구조를 제어한다.",
+      "whyCorrect": "두 도구의 역할 차이가 정확히 '필드 배치 vs 전체 페이지 구성'이므로 B가 정답이다.",
+      "whyIncorrect": "두 도구는 서로 다른 역할을 하며 동일하지 않고, Lightning App Builder가 더 오래된 것도 아니며, 둘 다 코드 없이 사용 가능하다.",
+      "examPoint": "Page Layout(세부 필드 단위) vs Lightning App Builder(페이지 전체 구조)라는 스케일 차이로 기억하면 명확하다.",
+      "practicalExample": "Opportunity 레코드에서 어떤 필드가 어느 순서로 보일지는 Page Layout이, 그 페이지에 차트를 추가할지는 Lightning App Builder가 결정한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-006",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Chatter Group을 Private으로 설정하면?",
+    "choices": [
+      "모든 사용자가 볼 수 있다",
+      "그룹 구성원만 게시물을 볼 수 있다",
+      "관리자만 접근 가능하다",
+      "외부 사용자도 접근 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Private Chatter Group은 초대받은 구성원만 게시물과 파일을 볼 수 있는 비공개 협업 공간이다.",
+      "whyCorrect": "구성원만 게시물을 볼 수 있다는 것이 Private Group의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "모든 사용자 공개는 Public Group의 특성이고, 관리자만 접근이나 외부 사용자 접근은 Private Group의 실제 동작과 다르다.",
+      "examPoint": "Public(누구나)/Private(멤버만)/Unlisted(멤버만+검색도 안 됨) 세 종류를 표로 정리해서 기억하자.",
+      "practicalExample": "인사팀 전용 민감한 논의를 하려면 Private Chatter Group을 만들어 인사팀원만 초대한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-007",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Quick Action의 용도는?",
+    "choices": [
+      "자동화된 승인 프로세스",
+      "레코드 생성, 업데이트, 통화 기록 등을 빠르게 수행하는 단축 기능",
+      "보고서를 빠르게 생성",
+      "Flow를 빠르게 실행"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Quick Action은 레코드 페이지를 벗어나지 않고 레코드 생성, 필드 업데이트, 전화 기록 등을 빠르게 수행할 수 있는 단축 기능이다.",
+      "whyCorrect": "Quick Action의 정의가 '빠르게 레코드 생성/업데이트/통화 기록을 수행'이므로 B가 정답이다.",
+      "whyIncorrect": "승인 프로세스 자동화는 Approval Process의 역할이고, 보고서나 Flow를 실행하는 것은 Quick Action의 본래 목적과 다르다.",
+      "examPoint": "Quick Action은 'Object-specific(특정 오브젝트에서만)'과 'Global(어디서나)' 두 종류가 있다는 것도 함께 기억해두자.",
+      "practicalExample": "영업사원이 고객과 통화한 직후 Opportunity 페이지를 떠나지 않고 'Log a Call' Quick Action으로 바로 통화 내용을 기록한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-008",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Macros in Salesforce의 용도는?",
+    "choices": [
+      "데이터를 자동으로 가져오기",
+      "상담원이 반복적인 작업(이메일 발송, 케이스 업데이트 등)을 한 번의 클릭으로 수행",
+      "보고서를 자동 생성",
+      "Flow를 자동으로 실행"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Macros는 Service Cloud 기능으로, 상담원이 자주 반복하는 여러 단계 작업(이메일 발송+케이스 상태 업데이트 등)을 한 번의 클릭으로 묶어 실행한다.",
+      "whyCorrect": "반복 작업을 한 번의 클릭으로 자동화하는 것이 Macros의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "데이터 가져오기, 보고서 자동 생성, Flow 자동 실행은 Macros의 목적과 다르다.",
+      "examPoint": "Macros는 'Service Console에서 상담원이 쓰는 단축 자동화'라는 맥락으로 이해하면 헷갈리지 않는다.",
+      "practicalExample": "문의가 종료될 때마다 '감사 이메일 발송 + Case를 Closed로 변경'을 매크로 하나로 한 번에 처리한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-009",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce Mobile App에서 Quick Actions의 역할은?",
+    "choices": [
+      "모바일에서는 사용 불가",
+      "모바일에서 레코드 생성, 업데이트 등을 빠르게 수행",
+      "모바일 화면 레이아웃 설정",
+      "오프라인 데이터 동기화"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Quick Actions는 데스크탑뿐 아니라 Salesforce Mobile App에서도 동일하게 사용되어 이동 중에도 빠른 레코드 처리를 지원한다.",
+      "whyCorrect": "모바일에서도 레코드 생성/업데이트를 빠르게 수행할 수 있다는 것이 정확한 설명이므로 B가 정답이다.",
+      "whyIncorrect": "모바일에서 사용 불가라는 것은 사실과 다르고, 화면 레이아웃 설정이나 오프라인 동기화는 Quick Actions의 역할이 아니다.",
+      "examPoint": "Quick Action은 플랫폼(데스크탑/모바일)에 관계없이 동일한 개념으로 동작한다는 점을 기억하자.",
+      "practicalExample": "영업사원이 고객사를 방문한 직후 스마트폰에서 Quick Action으로 바로 방문 기록을 남긴다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-010",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Lightning App Builder에서 만들 수 없는 것은?",
+    "choices": [
+      "App Page",
+      "Record Page",
+      "Home Page",
+      "Custom Object"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Lightning App Builder는 App/Record/Home 페이지의 컴포넌트 구성을 만드는 도구일 뿐, 커스텀 오브젝트 자체를 만드는 기능은 없다.",
+      "whyCorrect": "커스텀 오브젝트는 Object Manager에서 만들어야 하므로, Lightning App Builder에서 만들 수 없는 것은 Custom Object(D)다.",
+      "whyIncorrect": "App Page, Record Page, Home Page는 모두 Lightning App Builder로 만들 수 있는 페이지 유형이다.",
+      "examPoint": "'페이지를 꾸미는 도구'와 '데이터 구조를 만드는 도구'를 구분하는 것이 핵심 — 오브젝트 생성은 항상 Object Manager다.",
+      "practicalExample": "새로운 커스텀 오브젝트 '프로젝트'를 만들려면 Object Manager에서 만들고, 그 레코드 페이지 디자인은 Lightning App Builder에서 한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-011",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Task와 Event의 공통점은?",
+    "choices": [
+      "둘 다 캘린더에 표시",
+      "둘 다 Activity(활동)로 분류되며 레코드에 연결 가능",
+      "둘 다 마감일과 시작/종료 시간이 있음",
+      "둘 다 이메일로 자동 알림"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Task와 Event는 세부 속성은 다르지만 둘 다 Activity(활동)로 분류되며 Account, Contact, Opportunity 등 레코드에 연결해 이력을 추적할 수 있다.",
+      "whyCorrect": "공통점은 둘 다 Activity로 분류되고 레코드에 연결 가능하다는 점이므로 B가 정답이다.",
+      "whyIncorrect": "캘린더 표시는 Event만의 특성이고, 마감일/시작·종료시간을 둘 다 갖는 것도 아니며, 이메일 자동 알림은 기본 동작이 아니다.",
+      "examPoint": "차이점(캘린더 표시 여부, 시간 속성)과 공통점(Activity 분류, 레코드 연결)을 따로 정리해서 기억하면 문제 유형에 상관없이 대응할 수 있다.",
+      "practicalExample": "어떤 Opportunity에 통화(Task)와 미팅(Event)을 둘 다 기록해도, Activity Timeline에서 시간순으로 함께 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-012",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "AppExchange 앱 설치 시 가장 먼저 해야 할 것은?",
+    "choices": [
+      "바로 프로덕션에 설치",
+      "Sandbox에서 먼저 테스트 후 프로덕션에 설치",
+      "Salesforce 지원팀에 문의",
+      "앱 소스 코드 검토"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "AppExchange 앱은 기존 설정이나 데이터와의 충돌 여부를 확인하기 위해 반드시 Sandbox에서 먼저 테스트한 후 프로덕션에 설치해야 한다.",
+      "whyCorrect": "설치 전 가장 먼저 해야 할 일은 Sandbox 테스트이므로 B가 정답이다.",
+      "whyIncorrect": "바로 프로덕션 설치는 위험하고, Salesforce 지원팀 문의나 소스 코드 검토는 일반적인 설치 절차의 필수 단계가 아니다.",
+      "examPoint": "AppExchange 관련 문제는 거의 예외 없이 'Sandbox 먼저 테스트'가 정답이라는 반복 패턴을 확실히 기억해두자.",
+      "practicalExample": "영업 자동화 앱을 도입하기 전 Sandbox에 설치해 기존 Flow와 충돌하지 않는지 먼저 검증한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-013",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Quick Text의 특징은?",
+    "choices": [
+      "Flow를 빠르게 실행",
+      "이메일이나 Chatter에서 미리 정의된 텍스트를 빠르게 삽입",
+      "보고서를 빠르게 생성",
+      "레코드를 빠르게 복제"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Quick Text는 자주 쓰는 짧은 문구를 미리 저장해두고, 이메일이나 Chatter, SMS 작성 시 단축키로 빠르게 삽입하는 기능이다.",
+      "whyCorrect": "미리 정의된 텍스트를 빠르게 삽입하는 것이 Quick Text의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "Flow 실행, 보고서 생성, 레코드 복제는 Quick Text와 무관한 기능이다.",
+      "examPoint": "Quick Text(짧은 문구)와 Email Template(완전한 이메일 형식)의 차이를 구분하는 문제가 자주 나온다는 점을 기억하자.",
+      "practicalExample": "자주 쓰는 '문의 감사합니다. 확인 후 24시간 내 답변드리겠습니다'라는 문구를 Quick Text로 저장해두고 케이스 응답 시 즉시 불러온다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-014",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Chatter Group을 Private으로 설정하면? (재확인)",
+    "choices": [
+      "모든 사용자가 볼 수 있다",
+      "그룹 구성원만 볼 수 있다",
+      "관리자만 접근 가능",
+      "외부 사용자도 접근 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Private Chatter Group은 초대된 구성원만 게시물과 파일을 열람할 수 있는 비공개 협업 그룹이다.",
+      "whyCorrect": "구성원만 볼 수 있다는 것이 Private Group의 정확한 동작이므로 B가 정답이다.",
+      "whyIncorrect": "전체 공개는 Public Group의 특성이고, 관리자 전용이나 외부 사용자 개방은 Private Group의 실제 동작이 아니다.",
+      "examPoint": "Chatter Group의 공개 범위(Public/Private/Unlisted)는 반복 출제되는 기본 개념이니 확실히 암기해두자.",
+      "practicalExample": "특정 프로젝트 팀만 논의할 채널이 필요하면 Private Group을 만들어 그 팀원만 초대한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-015",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Quick Action의 용도는? (재확인)",
+    "choices": [
+      "자동화된 승인 프로세스",
+      "레코드 생성, 업데이트 등을 빠르게 수행하는 단축 기능",
+      "보고서 빠른 생성",
+      "Flow 빠른 실행"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Quick Action은 레코드 페이지에서 벗어나지 않고 레코드 생성, 업데이트, 통화 기록 등을 즉시 수행할 수 있게 해주는 단축 기능이다.",
+      "whyCorrect": "레코드 생성/업데이트를 빠르게 수행하는 것이 정의이므로 B가 정답이다.",
+      "whyIncorrect": "승인 프로세스, 보고서 생성, Flow 실행은 Quick Action의 정의와 다른 기능이다.",
+      "examPoint": "Object-specific Quick Action과 Global Action의 차이(특정 오브젝트 전용 vs 어디서나)도 함께 기억해두자.",
+      "practicalExample": "Case 페이지를 벗어나지 않고 Quick Action으로 새 후속 Task를 바로 생성한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-016",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Kanban View의 장점은?",
+    "choices": [
+      "더 많은 레코드 한번에 보기",
+      "레코드를 Stage별로 카드 형태로 시각화, 드래그앤드롭으로 이동",
+      "더 빠른 데이터 로딩",
+      "복잡한 필터 설정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Kanban View는 Opportunity의 Stage나 Case의 Status 같은 Picklist 값을 기준으로 레코드를 카드 형태로 시각화하고, 드래그앤드롭으로 단계를 옮길 수 있다.",
+      "whyCorrect": "Stage별 카드 시각화와 드래그앤드롭 이동이 Kanban View의 핵심 장점이므로 B가 정답이다.",
+      "whyIncorrect": "더 많은 레코드 표시, 빠른 로딩, 복잡한 필터 설정은 Kanban View의 목적이 아니다.",
+      "examPoint": "Kanban View는 Picklist 필드로 그룹핑된 List View를 전환해서 쓴다는 전제 조건도 함께 기억해두자.",
+      "practicalExample": "영업 파이프라인을 Stage별 칸반 보드로 보면서, 딜이 진행될 때마다 카드를 드래그해서 다음 단계로 옮긴다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-017",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Einstein Activity Capture의 역할은?",
+    "choices": [
+      "AI가 활동 자동 생성",
+      "이메일과 캘린더를 Salesforce와 자동 동기화",
+      "AI 기반 보고서 생성",
+      "케이스 자동 분류"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Einstein Activity Capture는 이메일과 캘린더 이벤트를 Salesforce 레코드에 자동으로 연결해, 사용자가 일일이 활동을 수동 기록하는 부담을 줄여준다.",
+      "whyCorrect": "이메일/캘린더를 Salesforce와 자동 동기화하는 것이 이 기능의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "활동을 AI가 처음부터 만들어내는 것이 아니라 기존 이메일/캘린더를 연결하는 것이며, AI 보고서 생성이나 케이스 분류와는 목적이 다르다.",
+      "examPoint": "'수동 활동 기록 부담을 줄여준다'는 표현이 나오면 Einstein Activity Capture를 떠올리자.",
+      "practicalExample": "영업사원이 고객과 주고받은 이메일을 따로 Task로 기록하지 않아도, Einstein Activity Capture가 자동으로 Opportunity의 Activity Timeline에 반영한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-018",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Quick Text와 Email Template의 차이는?",
+    "choices": [
+      "동일한 기능",
+      "Quick Text는 짧은 텍스트 단편, Email Template은 전체 이메일 형식",
+      "Email Template이 더 빠름",
+      "Quick Text는 관리자만 사용"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Quick Text는 짧은 문장/구절 단위로 빠르게 삽입하는 텍스트이고, Email Template은 제목·본문·머리글/바닥글까지 포함한 완전한 이메일 형식이다.",
+      "whyCorrect": "'짧은 텍스트 단편 vs 완전한 이메일 형식'이 정확한 차이이므로 B가 정답이다.",
+      "whyIncorrect": "두 기능은 동일하지 않고, 속도 비교나 관리자 전용 여부는 실제 차이점과 무관하다.",
+      "examPoint": "Quick Text(문장 단위)와 Email Template(전체 이메일 구조)의 스케일 차이로 기억하면 헷갈리지 않는다.",
+      "practicalExample": "한 문장짜리 인사말은 Quick Text로, 완전한 형식을 갖춘 영업 제안 이메일은 Email Template으로 만든다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-019",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 Macros를 주로 사용하는 팀은?",
+    "choices": [
+      "영업팀",
+      "개발팀",
+      "Service Console 사용",
+      "마케팅팀"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Macros는 Service Cloud의 Service Console에서 상담원이 반복 작업을 자동화할 때 주로 사용하는 기능이다.",
+      "whyCorrect": "Macros가 활용되는 대표적 환경은 Service Console을 사용하는 팀이므로 C가 정답이다.",
+      "whyIncorrect": "영업팀, 개발팀, 마케팅팀이 Macros를 전혀 못 쓰는 것은 아니지만, Macros가 설계된 핵심 무대는 Service Console(고객 지원)이다.",
+      "examPoint": "Macros = Service Cloud/Service Console과 강하게 연결된 기능이라는 것을 문맥으로 기억해두자.",
+      "practicalExample": "상담원이 문의를 마칠 때마다 매크로 하나로 '감사 이메일 발송 + Case 종료 처리'를 한 번에 끝낸다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-020",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce Files의 특징은?",
+    "choices": [
+      "이메일 첨부 파일만 저장",
+      "버전 관리, 공유, 레코드 첨부가 가능한 통합 파일 관리 시스템",
+      "코드 파일 전용",
+      "외부 스토리지 연결"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce Files는 문서, 이미지 등을 저장하고 버전 관리, 레코드 첨부, 팀 간 공유가 가능한 통합 파일 관리 시스템이다.",
+      "whyCorrect": "버전 관리·공유·레코드 첨부를 아우르는 통합 파일 관리가 Files의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "이메일 첨부만 저장하는 것이 아니고, 코드 파일 전용도 아니며, 외부 스토리지 연결이 핵심 특징도 아니다.",
+      "examPoint": "Files는 단순 첨부가 아니라 '버전 관리'가 가능하다는 점이 다른 첨부 방식과의 차별점이라는 것을 기억하자.",
+      "practicalExample": "제안서 파일을 수정할 때마다 새 버전으로 올리면 이전 버전 기록이 남아 언제든 되돌아볼 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-021",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Lightning Component란?",
+    "choices": [
+      "Salesforce의 데이터 단위",
+      "Lightning 플랫폼에서 재사용 가능한 UI 빌딩 블록",
+      "자동화 도구",
+      "보고서 유형"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Lightning Component는 Lightning App Builder에서 사용하는 재사용 가능한 UI 빌딩 블록으로, 표준 컴포넌트뿐 아니라 커스텀 개발도 가능하다.",
+      "whyCorrect": "'재사용 가능한 UI 빌딩 블록'이 Lightning Component의 정확한 정의이므로 B가 정답이다.",
+      "whyIncorrect": "데이터 단위, 자동화 도구, 보고서 유형은 각각 필드/오브젝트, Flow, Report의 개념이라 Lightning Component와 다르다.",
+      "examPoint": "컴포넌트는 '조립 블록'이라는 이미지로 기억하면, 페이지가 여러 컴포넌트의 조합으로 이뤄진다는 구조가 이해된다.",
+      "practicalExample": "관련 Case 목록 컴포넌트, 차트 컴포넌트, Chatter 피드 컴포넌트를 조합해 하나의 Opportunity 페이지를 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-022",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 Notes 기능의 특징은?",
+    "choices": [
+      "이메일 기록 저장",
+      "레코드에 연결된 서식 있는 텍스트 메모 작성 가능",
+      "파일 첨부 전용",
+      "승인 요청 메모"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Enhanced Notes는 서식 있는 텍스트와 체크리스트를 지원하며, 여러 레코드에 동시에 연결할 수 있는 메모 기능이다.",
+      "whyCorrect": "레코드에 연결된 서식 있는 텍스트 메모라는 것이 Notes의 정확한 특징이므로 B가 정답이다.",
+      "whyIncorrect": "이메일 기록 저장은 Activity Timeline의 역할이고, 파일 첨부 전용이나 승인 요청 메모는 Notes와 다른 기능이다.",
+      "examPoint": "옛 Notes와 Enhanced Notes(새 Notes)의 차이(서식 지원 여부, 다중 레코드 연결)까지 알아두면 응용 문제에도 대응된다.",
+      "practicalExample": "고객 미팅 중 논의된 세부 요구사항을 서식(굵게, 목록)을 갖춰 Account 레코드의 Notes에 정리해둔다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-023",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce Connect의 역할은?",
+    "choices": [
+      "내부 오브젝트 연결",
+      "외부 시스템 데이터를 복사 없이 실시간 조회",
+      "자동화 연결 도구",
+      "이메일 통합"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce Connect는 외부 시스템의 데이터를 Salesforce에 복사하지 않고, External Object를 통해 실시간으로 조회할 수 있게 해주는 통합 기능이다.",
+      "whyCorrect": "복사 없이 외부 데이터를 실시간 조회한다는 것이 Salesforce Connect의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "내부 오브젝트 연결이나 이메일 통합은 Salesforce Connect의 목적이 아니며, 단순 '자동화 연결 도구'라는 설명도 정확하지 않다.",
+      "examPoint": "'데이터를 복사하지 않고 실시간으로'라는 표현은 항상 Salesforce Connect + External Object로 연결된다.",
+      "practicalExample": "외부 창고 관리 시스템의 재고 데이터를 Salesforce에 복사해 저장하지 않고, External Object로 실시간 재고 수량을 조회한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-024",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "List View(목록 보기)의 특징은?",
+    "choices": [
+      "보고서와 동일한 기능",
+      "특정 기준으로 필터링된 레코드를 목록 형태로 보는 기능",
+      "대시보드 구성 요소",
+      "Flow 실행 화면"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "List View는 특정 필터 조건에 맞는 레코드들을 목록 형태로 보여주며, 여러 레코드를 한 화면에서 인라인 편집할 수 있다.",
+      "whyCorrect": "필터링된 레코드를 목록으로 보는 기능이 List View의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "Report와 동일한 기능이 아니며(리포트가 훨씬 강력한 집계 기능을 가짐), 대시보드 구성 요소나 Flow 실행 화면과는 다른 개념이다.",
+      "examPoint": "List View(단순 필터+인라인 편집)와 Report(그룹화·집계·차트)의 스케일 차이를 구분하는 것이 핵심이다.",
+      "practicalExample": "이번 달 마감인 Opportunity만 필터링한 List View를 만들어두고, 필드 값을 그 화면에서 바로 수정한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-025",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce Path란?",
+    "choices": [
+      "URL 경로 설정",
+      "영업 또는 서비스 프로세스의 단계를 시각적으로 안내하는 기능",
+      "Flow의 다른 이름",
+      "보고서 경로"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce Path는 Opportunity의 Stage나 Case의 Status 같은 핵심 단계를 시각적으로 보여주고, 각 단계에서 필요한 작업 가이드를 제공하는 기능이다.",
+      "whyCorrect": "프로세스 단계를 시각적으로 안내하는 것이 Path의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "URL 경로 설정과는 이름만 비슷할 뿐 관련이 없고, Flow의 다른 이름도 아니며 보고서 경로라는 개념도 존재하지 않는다.",
+      "examPoint": "Path는 '단계별 시각적 안내'라는 UX 기능이라는 점, Flow(자동화 로직)와는 완전히 다른 개념이라는 점을 구분하자.",
+      "practicalExample": "Opportunity 상단에 '검토중 → 협상 → 계약체결' 단계가 막대 형태로 보이고, 각 단계마다 체크해야 할 항목이 함께 안내된다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-026",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "모바일 앱에서 오프라인 작업을 위한 기능은?",
+    "choices": [
+      "자동으로 모든 기능 사용 가능",
+      "Mobile Offline 설정으로 특정 레코드를 기기에 캐시",
+      "VPN 연결 필요",
+      "별도 앱 설치 필요"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce Mobile App의 Offline 기능을 설정하면 인터넷이 없어도 미리 캐시된 레코드를 조회·수정할 수 있고, 연결이 복구되면 변경사항이 동기화된다.",
+      "whyCorrect": "Mobile Offline 설정으로 레코드를 기기에 캐시하는 것이 정확한 방법이므로 B가 정답이다.",
+      "whyIncorrect": "오프라인이 자동으로 모든 기능을 지원하는 것은 아니고, VPN 연결이나 별도 앱 설치가 오프라인 기능의 전제 조건은 아니다.",
+      "examPoint": "'오프라인 작업'이라는 키워드는 항상 Mobile Offline 설정(캐시+동기화)으로 연결된다.",
+      "practicalExample": "현장 기술자가 인터넷이 안 되는 지하 시설에서도 미리 캐시된 작업 지시서 레코드를 열람하고 수정할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-027",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 칸반(Kanban) 보드를 사용하기 위한 조건은?",
+    "choices": [
+      "Opportunity에서만 사용 가능",
+      "Picklist 필드로 그룹핑된 List View에서 Kanban으로 전환 가능",
+      "별도 앱 설치 필요",
+      "관리자만 사용 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Kanban 보드는 Picklist 필드(Stage, Status 등)로 그룹핑된 List View를 Kanban 보기로 전환해서 사용하는 방식이다.",
+      "whyCorrect": "Picklist 그룹핑 List View를 전제로 Kanban 전환이 가능하다는 것이 정확한 조건이므로 B가 정답이다.",
+      "whyIncorrect": "Opportunity 외 다른 오브젝트(Case 등)에서도 사용 가능하고, 별도 앱 설치나 관리자 전용 제한도 실제 조건이 아니다.",
+      "examPoint": "Kanban은 독립된 별도 기능이 아니라 'List View의 보기 방식 중 하나'라는 점을 이해하는 것이 핵심이다.",
+      "practicalExample": "Case Status로 그룹핑된 List View를 Kanban으로 전환하면, 신규/진행중/해결완료 열로 케이스가 카드처럼 나열된다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-028",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Global Actions의 특징은?",
+    "choices": [
+      "특정 오브젝트에만 사용 가능",
+      "오브젝트에 관계없이 어디서나 접근 가능한 Quick Action",
+      "관리자 전용 기능",
+      "보고서 생성 전용"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Global Actions는 특정 오브젝트 레코드 페이지에 종속되지 않고, Salesforce 어디서나 접근 가능한 Quick Action이다.",
+      "whyCorrect": "오브젝트 관계없이 어디서나 쓸 수 있다는 것이 Global Action의 정의이므로 B가 정답이다.",
+      "whyIncorrect": "특정 오브젝트 전용은 Object-specific Action의 특성이고, 관리자 전용이나 보고서 전용이라는 제한은 실제와 다르다.",
+      "examPoint": "Object-specific Action(그 오브젝트 페이지에서만)과 Global Action(어디서나)의 차이를 구분하는 문제가 반복 출제된다.",
+      "practicalExample": "어느 페이지에 있든 상단 글로벌 액션 메뉴에서 바로 'New Contact'를 만들 수 있는 것이 Global Action의 예다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-029",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce에서 Chatter Free 라이선스 사용자가 할 수 없는 것은?",
+    "choices": [
+      "Chatter 피드 보기",
+      "파일 공유",
+      "CRM 레코드 접근",
+      "그룹 참여"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Chatter Free 라이선스는 협업 기능(피드, 파일 공유, 그룹)만 이용할 수 있고, Account/Opportunity/Case 같은 CRM 레코드에는 접근할 수 없다.",
+      "whyCorrect": "CRM 레코드 접근이 Chatter Free 라이선스로는 불가능하므로 C가 정답이다.",
+      "whyIncorrect": "Chatter 피드 보기, 파일 공유, 그룹 참여는 모두 Chatter Free 라이선스가 제공하는 기본 기능이다.",
+      "examPoint": "Chatter Free는 '협업은 되지만 CRM 데이터는 접근 불가'라는 라이선스 경계를 정확히 기억해두자.",
+      "practicalExample": "외부 협력사 직원에게 Chatter Free 라이선스를 주면 프로젝트 그룹에서 소통은 가능해도 Opportunity 금액 같은 CRM 데이터는 볼 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-030",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at Universal Containers wants to notify their manager about an important update on an Opportunity record without leaving Salesforce. What should they use?",
+    "choices": [
+      "Send an external email",
+      "Create a Task",
+      "Post on Chatter with an @mention",
+      "Create an Event"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Salesforce를 벗어나지 않고 팀원에게 레코드 관련 소식을 알리려면 Chatter에 게시하며 @멘션으로 특정 사용자를 지정한다.",
+      "whyCorrect": "레코드에 직접 코멘트를 남기고 특정 사용자에게 알림을 보낼 수 있는 것이 Chatter @멘션이므로 C가 정답이다.",
+      "whyIncorrect": "외부 이메일은 Salesforce 안에 기록이 남지 않고, Task는 할 일 목록일 뿐 즉시 알림 성격이 약하며, Event는 캘린더 항목이라 알림 목적과 다르다.",
+      "examPoint": "'Salesforce 안에서 + 즉시 알림 + 기록 남김'이라는 조합은 항상 Chatter @멘션으로 연결된다.",
+      "practicalExample": "큰 계약이 성사되면 Opportunity에 '계약 성사됐습니다 @매니저님' 이라고 게시해 즉시 알린다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-031",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to build a custom Lightning page for the Opportunity record that includes a chart component, related cases list, and Chatter feed — all without writing code. What tool should be used?",
+    "choices": [
+      "Page Layout Editor",
+      "Visualforce",
+      "Lightning App Builder",
+      "Flow Builder"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "차트, 관련 목록, Chatter 피드 같은 여러 컴포넌트를 코드 없이 배치해 커스텀 Lightning 페이지를 만드는 도구는 Lightning App Builder다.",
+      "whyCorrect": "여러 컴포넌트를 코드 없이 드래그앤드롭으로 배치하는 요구사항에 정확히 부합하므로 C가 정답이다.",
+      "whyIncorrect": "Page Layout Editor는 필드/관련 목록 배치만 가능하고, Visualforce는 코드 작성이 필요하며, Flow Builder는 자동화 도구라 페이지 디자인 도구가 아니다.",
+      "examPoint": "'여러 컴포넌트를 코드 없이 조합'이라는 요구사항은 Lightning App Builder로 직결된다.",
+      "practicalExample": "Opportunity 페이지에 매출 차트, 관련 Case 목록, Chatter 피드를 나란히 배치해 한눈에 보이게 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-032",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "What is the difference between a Task and an Event in Salesforce?",
+    "choices": [
+      "There is no difference",
+      "Tasks have a start and end time; Events only have a due date",
+      "Tasks are to-do items with a due date; Events are calendar items with start and end times",
+      "Tasks are for managers only; Events are for all users"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Task는 마감일만 있는 할 일 항목(통화, 이메일, 후속 조치 등)이고 Event는 시작·종료 시간이 있는 캘린더 항목(회의, 데모 등)이다.",
+      "whyCorrect": "Task=마감일만 있는 할 일, Event=시작·종료 시간 있는 캘린더 항목이라는 설명이 정확하므로 C가 정답이다.",
+      "whyIncorrect": "둘은 명확히 다르고, B는 설명이 정반대이며, 역할(관리자/일반 사용자) 기준 구분도 실제와 다르다.",
+      "examPoint": "Task/Event 차이는 이 영역에서 가장 기본이자 반복 출제되는 개념이니 표로 확실히 암기해두자.",
+      "practicalExample": "'다음 주 화요일까지 견적서 보내기'는 Task, '수요일 오후 2시 데모 미팅'은 Event로 등록한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-033",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to install a third-party integration app to sync data with an external system. Where should they find and install this app?",
+    "choices": [
+      "Salesforce Help & Training",
+      "Setup > Custom Apps",
+      "AppExchange",
+      "Trailhead"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "서드파티 통합 앱을 찾고 설치하는 공식 채널은 Salesforce의 앱 마켓플레이스인 AppExchange다.",
+      "whyCorrect": "서드파티 앱을 찾고 설치하는 곳이 AppExchange이므로 C가 정답이다.",
+      "whyIncorrect": "Help & Training은 문서/학습 자료이고, Setup > Custom Apps는 이미 설치된 앱을 관리하는 곳이며, Trailhead는 학습 플랫폼이라 앱 설치 채널이 아니다.",
+      "examPoint": "'서드파티 앱을 찾는다'는 표현은 항상 AppExchange로 연결된다.",
+      "practicalExample": "전자서명 기능이 필요하면 AppExchange에서 관련 앱을 검색해 설치한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-034",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Before installing an AppExchange app in the production org, what is the recommended best practice?",
+    "choices": [
+      "Install directly in production to save time",
+      "Test in a Sandbox environment first",
+      "Get approval from Salesforce support",
+      "Review the app in Trailhead"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "AppExchange 앱을 프로덕션에 설치하기 전에는 반드시 Sandbox 환경에서 먼저 테스트해 충돌 여부를 확인해야 한다.",
+      "whyCorrect": "프로덕션 설치 전 권장되는 모범 사례는 Sandbox 테스트이므로 B가 정답이다.",
+      "whyIncorrect": "시간 절약을 위해 바로 설치하는 것은 위험하고, Salesforce 지원 승인이나 Trailhead 리뷰는 실제 필수 절차가 아니다.",
+      "examPoint": "AppExchange 관련 문제는 반복적으로 'Sandbox 먼저 테스트'가 정답이라는 것을 확실히 기억해두자.",
+      "practicalExample": "새 프로젝트 관리 앱을 도입하기 전 Sandbox에서 먼저 설치해 기존 자동화와 충돌하지 않는지 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-035",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "What is the key difference between a Page Layout and Lightning App Builder in Salesforce?",
+    "choices": [
+      "They are the same tool",
+      "Page Layout controls field arrangement on a record; Lightning App Builder controls the overall page structure and components",
+      "Lightning App Builder is only for mobile",
+      "Page Layout requires code; Lightning App Builder does not"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Page Layout은 레코드 상세/편집 화면의 필드 배치를 제어하고, Lightning App Builder는 페이지 전체 구조와 컴포넌트 배치를 제어한다.",
+      "whyCorrect": "필드 배치(Page Layout)와 전체 페이지 구조(Lightning App Builder)의 차이를 정확히 설명하므로 B가 정답이다.",
+      "whyIncorrect": "두 도구는 동일하지 않고, Lightning App Builder는 데스크탑에서도 쓰이며, Page Layout도 코드가 필요하지 않다.",
+      "examPoint": "'세부 필드 vs 전체 페이지 구조'라는 스케일 차이를 다시 한번 확인하는 문제 유형이다.",
+      "practicalExample": "Opportunity의 필드 순서 조정은 Page Layout, 그 페이지에 컴포넌트를 추가하는 것은 Lightning App Builder다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-036",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A manager at Universal Containers wants to see a timeline of all past interactions with a customer — calls, emails, and meetings — on the Account record. Where is this information displayed?",
+    "choices": [
+      "Related Lists",
+      "Chatter Feed",
+      "Activity Timeline",
+      "Notes & Attachments"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "통화, 이메일, 미팅 등 모든 활동 이력을 시간순으로 통합해서 보여주는 것이 Activity Timeline이다.",
+      "whyCorrect": "과거 상호작용 이력을 시간순으로 통합 표시하는 기능이 Activity Timeline이므로 C가 정답이다.",
+      "whyIncorrect": "Related Lists는 개별 목록을 탭으로 나눠 보여줄 뿐 시간순 통합이 아니고, Chatter Feed는 협업 게시물이며, Notes & Attachments는 첨부 파일 영역이다.",
+      "examPoint": "'시간순으로 모든 활동을 한눈에'라는 표현은 항상 Activity Timeline으로 연결된다.",
+      "practicalExample": "담당자가 바뀌어도 Activity Timeline만 보면 그 고객과 나눈 모든 통화·이메일·미팅 이력을 한 번에 파악할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-037",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at Universal Containers wants to add a note about a customer conversation directly to the Account record so the entire team can see it. Which feature should be used?",
+    "choices": [
+      "Send an email from Salesforce",
+      "Task",
+      "Post on Chatter on the Account record",
+      "Create an Event"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "팀 전체가 볼 수 있도록 레코드에 메모를 남기려면 그 레코드에 직접 Chatter로 게시해야 한다.",
+      "whyCorrect": "레코드에 직접 게시하고 팔로워들에게 알림이 가는 방식이 Chatter이므로 C가 정답이다.",
+      "whyIncorrect": "이메일 발송은 Salesforce 내부 기록으로 남지 않고, Task는 할 일 목록이며, Event는 캘린더 항목이라 팀 공유 메모 목적과는 다르다.",
+      "examPoint": "'팀 전체 공유 + 레코드에 남김'이라는 조합은 항상 해당 레코드에 대한 Chatter 게시로 연결된다.",
+      "practicalExample": "고객과의 통화 내용 요약을 Account 레코드에 Chatter로 남기면 그 계정을 팔로우하는 모든 팀원이 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-038",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to display a custom Lightning component on the Opportunity record page that shows related project status from a custom object. Which tool should be used to add this component to the page?",
+    "choices": [
+      "Page Layout Editor",
+      "Visualforce Page",
+      "Lightning App Builder",
+      "Flow Builder"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "커스텀 컴포넌트를 레코드 페이지에 배치하려면 Lightning App Builder에서 코드 없이 드래그앤드롭으로 추가한다.",
+      "whyCorrect": "컴포넌트를 페이지에 추가하는 도구는 Lightning App Builder이므로 C가 정답이다.",
+      "whyIncorrect": "Page Layout Editor는 필드/관련 목록만 다루고, Visualforce는 코드가 필요하며, Flow Builder는 자동화 로직 도구라 컴포넌트 배치와는 다르다.",
+      "examPoint": "어떤 종류의 컴포넌트든(표준/커스텀) 페이지에 배치하는 것은 항상 Lightning App Builder의 역할이다.",
+      "practicalExample": "커스텀 오브젝트인 '프로젝트'의 진행 상태를 보여주는 컴포넌트를 Opportunity 페이지에 Lightning App Builder로 추가한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-039",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A manager at Universal Containers wants to see upcoming meetings with customers listed on their Salesforce Home page. Which Activity type appears on the calendar/home page?",
+    "choices": [
+      "Tasks",
+      "Events",
+      "Notes",
+      "Chatter Posts"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "시작·종료 시간이 있는 Event만 캘린더와 홈 페이지의 일정 위젯에 표시되고, Task는 목록 형태로만 보인다.",
+      "whyCorrect": "캘린더/홈 페이지에 표시되는 활동 유형은 Events이므로 B가 정답이다.",
+      "whyIncorrect": "Tasks는 캘린더에 표시되지 않고 목록으로만 보이며, Notes와 Chatter Posts는 캘린더/일정 개념과 무관하다.",
+      "examPoint": "'캘린더에 나온다 = Event, 안 나온다 = Task'라는 대응을 정확히 기억해두면 이 유형은 실수 없이 풀린다.",
+      "practicalExample": "다음 주 고객 미팅(Event)은 홈 페이지 일정에 뜨지만, '견적서 보내기' 같은 Task는 별도 Task 목록에서만 확인된다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-040",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to install a third-party document signing app. The admin finds the app on AppExchange. Before installing in production, what is the recommended best practice?",
+    "choices": [
+      "Install directly in production — it is from a trusted source",
+      "Test it in a Full Sandbox first",
+      "Get written approval from Salesforce",
+      "Review it in Trailhead first"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "신뢰할 수 있는 소스에서 받은 앱이라도, 조직 고유의 설정/데이터와 충돌할 수 있어 Full Sandbox에서 먼저 테스트해야 한다.",
+      "whyCorrect": "설치 전 권장 절차는 Full Sandbox 테스트이므로 B가 정답이다.",
+      "whyIncorrect": "신뢰받는 소스라도 테스트는 필요하고, Salesforce의 서면 승인이나 Trailhead 확인은 실제 필수 절차가 아니다.",
+      "examPoint": "'신뢰할 수 있는 곳에서 받았다'는 표현이 있어도 정답은 여전히 'Sandbox 먼저 테스트'라는 함정에 유의하자.",
+      "practicalExample": "유명 서명 솔루션이라도 Full Sandbox에 먼저 설치해 기존 승인 프로세스와의 충돌 여부를 검증한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-041",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep created a Task to follow up with a customer next Monday. Where can the rep find this Task in Salesforce?",
+    "choices": [
+      "On the Chatter Feed",
+      "In the Activity Timeline on the related record and in the Task list view",
+      "In the Opportunity Kanban View",
+      "In the Campaign related list"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "생성된 Task는 관련 레코드의 Activity Timeline과 별도의 Task 목록 뷰(내 할 일 목록) 양쪽에서 확인할 수 있다.",
+      "whyCorrect": "Task가 표시되는 위치는 관련 레코드의 Activity Timeline과 Task 목록 뷰이므로 B가 정답이다.",
+      "whyIncorrect": "Chatter Feed에는 Task가 나타나지 않고, Kanban View는 Opportunity 단계를 보여줄 뿐이며, Campaign 관련 목록은 캠페인 대상자 관리용이라 Task와는 무관하다.",
+      "examPoint": "Task는 '레코드에 연결된 상태'로도, '독립적인 할 일 목록'으로도 동시에 확인 가능하다는 점이 핵심이다.",
+      "practicalExample": "Contact 레코드의 Activity Timeline에서도, 별도의 '내 Task' 목록 뷰에서도 같은 후속 조치 Task를 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-042",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to allow sales reps to quickly insert pre-written phrases into emails and Chatter posts while working in Salesforce. Which feature supports this?",
+    "choices": [
+      "Email Templates",
+      "Quick Text",
+      "Macros",
+      "Lightning Snippets"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "미리 작성해둔 짧은 문구를 이메일이나 Chatter 게시물에 빠르게 삽입하는 기능은 Quick Text다.",
+      "whyCorrect": "짧은 문구를 빠르게 삽입하는 기능이 Quick Text이므로 B가 정답이다.",
+      "whyIncorrect": "Email Templates는 완전한 이메일 형식이고, Macros는 여러 동작을 묶은 자동화이며, Lightning Snippets는 실제 존재하는 기능이 아니다.",
+      "examPoint": "'빠르게 문구를 삽입'이라는 표현이 나오면 Quick Text를 먼저 떠올리자.",
+      "practicalExample": "자주 쓰는 인사 문구를 Quick Text로 저장해두고 케이스 이메일 답장 시 즉시 불러와 삽입한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-043",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to build a custom app in Salesforce that groups specific objects (Accounts, Opportunities, custom objects) and tabs for the sales team. Which tool should be used?",
+    "choices": [
+      "Lightning App Builder",
+      "App Manager in Setup",
+      "Object Manager",
+      "Flow Builder"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "특정 오브젝트와 탭을 그룹으로 묶은 Lightning App 자체를 만드는 도구는 Setup의 App Manager다.",
+      "whyCorrect": "탭과 오브젝트를 묶은 커스텀 앱을 만드는 것은 App Manager의 역할이므로 B가 정답이다.",
+      "whyIncorrect": "Lightning App Builder는 페이지 내부 컴포넌트 배치를 다루고, Object Manager는 오브젝트/필드 설정이며, Flow Builder는 자동화 도구라 앱 생성 자체와는 다르다.",
+      "examPoint": "'앱을 만든다(탭 묶음)'는 App Manager, '페이지를 꾸민다(컴포넌트 배치)'는 Lightning App Builder로 역할을 구분하자.",
+      "practicalExample": "영업팀을 위해 Account, Opportunity, 커스텀 오브젝트 탭만 모은 'Sales Hub'라는 앱을 App Manager에서 만든다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-044",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at Universal Containers wants to log a phone call they had with a customer and link it to both the Contact and the related Opportunity. What should be created?",
+    "choices": [
+      "A Chatter post on both records",
+      "A Task with both the Contact and Opportunity as related records",
+      "An Event with primary and secondary invitees",
+      "A Note on the Opportunity"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "통화 기록처럼 마감일 개념이 없는 완료된 활동은 Task로 만들고, 관련 레코드(Contact와 Opportunity)를 둘 다 연결할 수 있다.",
+      "whyCorrect": "통화 기록을 Contact와 Opportunity 양쪽에 연결하려면 두 레코드를 관련 레코드로 지정한 Task를 만들어야 하므로 B가 정답이다.",
+      "whyIncorrect": "Chatter post는 협업 게시물일 뿐 활동 기록의 정식 형태가 아니고, Event는 미래 일정을 위한 캘린더 항목이며, Note는 관련 레코드 연결 방식이 Task와 다르다.",
+      "examPoint": "이미 끝난 활동(통화, 이메일)의 기록은 Task, 앞으로 있을 일정은 Event라는 시점 차이를 다시 확인하는 문제다.",
+      "practicalExample": "고객과의 통화 내용을 기록할 때 Task를 만들고 '관련 항목'에 Contact와 Opportunity를 둘 다 추가해 양쪽에서 조회 가능하게 한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-045",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to allow field reps to access and update Salesforce records while offline on their mobile devices. What should be configured?",
+    "choices": [
+      "Enable Salesforce for Outlook",
+      "Configure Salesforce Mobile App with offline settings",
+      "Install a third-party mobile sync app",
+      "Enable Mobile Lightning"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "현장 직원이 인터넷 없이도 레코드를 조회/수정하게 하려면 Salesforce Mobile App의 오프라인 설정을 구성해야 한다.",
+      "whyCorrect": "오프라인 레코드 접근/수정을 지원하는 정확한 설정은 Mobile App의 오프라인 설정이므로 B가 정답이다.",
+      "whyIncorrect": "Salesforce for Outlook은 이메일 연동 기능이고, 서드파티 동기화 앱이나 'Mobile Lightning'이라는 명칭의 기능은 표준 해결책이 아니다.",
+      "examPoint": "모바일 오프라인 요구사항은 항상 Salesforce Mobile App 자체의 오프라인 설정으로 해결한다는 것을 기억하자.",
+      "practicalExample": "지하 매장을 순회하는 현장 직원이 인터넷이 끊겨도 재고 레코드를 조회·수정할 수 있도록 오프라인 설정을 활성화한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-046",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to group users into teams based on their department for Chatter collaboration. Users should be able to post updates visible only to their department team. What should be created?",
+    "choices": [
+      "A Role for each department",
+      "A Chatter Group for each department",
+      "A Profile for each department",
+      "A Public Group for each department"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "부서별로 게시물을 그 부서 팀원만 볼 수 있게 하려면 부서마다 Chatter Group을 만들어야 한다.",
+      "whyCorrect": "협업·소통 목적의 부서별 그룹은 Chatter Group으로 만드는 것이 정확한 방법이므로 B가 정답이다.",
+      "whyIncorrect": "Role은 레코드 공유 계층 구조이고, Profile은 권한 설정이며, Public Group은 공유 규칙에 쓰이는 보안 그룹이라 협업 게시물 공개 범위와는 목적이 다르다.",
+      "examPoint": "Chatter Group(협업/소통)과 Public Group(보안/공유 규칙)은 이름이 비슷해도 완전히 다른 용도라는 것이 반복 출제되는 핵심 함정이다.",
+      "practicalExample": "인사팀 전용 Chatter Group을 만들면 그 그룹에 속한 인사팀원만 게시물을 보고 쓸 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-047",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales manager at Universal Containers wants to see all overdue Tasks assigned to their team on a single dashboard component. Which report type should be used as the source?",
+    "choices": [
+      "Tabular Report on Events",
+      "Summary Report on Activities grouped by Assigned To",
+      "Joined Report combining Tasks and Events",
+      "Matrix Report on Tasks"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "담당자별로 기한 초과 Task를 그룹화해서 대시보드에 보여주려면, Activities를 Assigned To 기준으로 그룹화한 Summary Report를 소스로 사용한다.",
+      "whyCorrect": "담당자별 그룹화 + 집계가 필요한 요구사항에는 Summary Report가 정확히 부합하므로 B가 정답이다.",
+      "whyIncorrect": "Tabular Report는 그룹화가 없어 대시보드 집계에 부적합하고, Task/Event를 합치는 Joined Report나 이중 그룹화용 Matrix Report는 이 단순한 요구사항엔 과도하다.",
+      "examPoint": "'담당자별로 그룹화해서 보여줘'라는 요구사항은 대부분 Summary Report로 해결된다는 패턴을 기억해두자.",
+      "practicalExample": "팀장이 대시보드에서 각 팀원별로 기한 초과 Task가 몇 건인지 한눈에 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-048",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to create a custom navigation app for the executive team that shows only Accounts, Dashboards, and a custom object. What should be configured?",
+    "choices": [
+      "Modify the Standard Sales app",
+      "Create a new Lightning App in App Manager with selected tabs",
+      "Create a new Profile for executives",
+      "Use Lightning App Builder to hide tabs"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "경영진 전용으로 특정 탭(Accounts, Dashboards, 커스텀 오브젝트)만 보여주는 전용 앱은 App Manager에서 원하는 탭만 선택해 새 Lightning App으로 만든다.",
+      "whyCorrect": "특정 탭만 골라 새 앱을 만드는 것이 정확한 방법이므로 B가 정답이다.",
+      "whyIncorrect": "표준 Sales 앱을 수정하면 다른 사용자에게도 영향이 가고, Profile 생성은 권한 분리일 뿐 탭 구성과는 별개이며, Lightning App Builder로는 탭 자체를 숨기는 기능을 제공하지 않는다.",
+      "examPoint": "'특정 그룹만을 위한 전용 앱'이라는 요구사항은 항상 App Manager에서 새 앱을 만드는 것으로 해결한다.",
+      "practicalExample": "경영진에게는 Accounts, Dashboards, 커스텀 KPI 오브젝트 탭만 보이는 'Executive View'라는 별도 앱을 만들어준다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-049",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to send a standardized follow-up email to all Leads after a trade show. The email should include the reps name and a custom message. Which feature should be used?",
+    "choices": [
+      "Auto-Response Rule",
+      "Quick Text",
+      "Email Template with merge fields",
+      "Chatter message"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "담당자 이름 같은 개인화된 값을 포함한 표준화된 이메일을 대량 발송하려면 Merge Field가 포함된 Email Template을 사용한다.",
+      "whyCorrect": "이름·메시지가 자동으로 채워지는 표준 이메일은 Merge Field를 활용한 Email Template으로 구현하므로 C가 정답이다.",
+      "whyIncorrect": "Auto-Response Rule은 특정 트리거 조건에서 자동 발송되는 규칙일 뿐 형식 자체를 제공하지 않고, Quick Text는 짧은 문구용이며, Chatter message는 이메일이 아니다.",
+      "examPoint": "'이름이 자동으로 채워지는 표준 이메일'이라는 요구는 항상 Email Template + Merge Fields로 연결된다.",
+      "practicalExample": "전시회 후 모든 Lead에게 '{!Lead.FirstName}님, 만나서 반가웠습니다'로 시작하는 이메일을 Merge Field로 개인화해 일괄 발송한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-050",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A support manager at UC wants all new Cases to appear on their Home page in a prioritized list. What should be configured?",
+    "choices": [
+      "Create a Chatter Group for new Cases",
+      "Add a Report or List View component to the Home Page via Lightning App Builder",
+      "Set up an Auto-Response Rule for Cases",
+      "Create a Dashboard with Case metrics"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "홈 페이지에 우선순위가 매겨진 Case 목록을 보여주려면, Lightning App Builder로 홈 페이지에 Report나 List View 컴포넌트를 추가한다.",
+      "whyCorrect": "홈 페이지에 목록을 노출시키는 정확한 방법은 Lightning App Builder를 통한 Report/List View 컴포넌트 추가이므로 B가 정답이다.",
+      "whyIncorrect": "Chatter Group은 협업 공간일 뿐 목록 표시 기능이 아니고, Auto-Response Rule은 자동 응답용이며, 별도 Dashboard 생성만으로는 홈 페이지에 자동 노출되지 않는다(컴포넌트로 추가해야 함).",
+      "examPoint": "'홈 페이지에 무언가를 보여달라'는 요구사항은 항상 Lightning App Builder로 홈 페이지를 편집하는 문제로 귀결된다.",
+      "practicalExample": "담당 매니저의 홈 페이지에 '우선순위 높은 신규 Case' List View 컴포넌트를 추가해 로그인하자마자 볼 수 있게 한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-051",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to create reusable canned responses that agents can insert into Case emails with a single click. Which feature should be used?",
+    "choices": [
+      "Email Templates",
+      "Quick Text",
+      "Macros",
+      "Chatter Snippets"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "상담원이 한 번의 클릭으로 미리 준비된 짧은 문구를 Case 이메일에 삽입하는 기능은 Quick Text다.",
+      "whyCorrect": "한 번의 클릭으로 재사용 가능한 문구를 삽입하는 기능이 Quick Text이므로 B가 정답이다.",
+      "whyIncorrect": "Email Templates는 완전한 이메일 형식이라 더 무거운 단위이고, Macros는 여러 동작의 자동화이며, Chatter Snippets는 실제 존재하는 기능이 아니다.",
+      "examPoint": "'재사용 가능한 짧은 문구, 한 클릭 삽입'이라는 표현은 항상 Quick Text로 연결된다.",
+      "practicalExample": "자주 쓰는 '문제가 해결되었는지 확인 부탁드립니다'라는 문구를 Quick Text로 저장해 여러 Case 이메일에 반복 삽입한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-052",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants sales reps to have a quick way to create follow-up Tasks from the Opportunity record with pre-filled Subject and Due Date. What should be configured?",
+    "choices": [
+      "A Screen Flow launched as a Quick Action",
+      "A Page Layout with a default Task field",
+      "An Auto-Response Rule",
+      "A Workflow Rule that creates Tasks"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Subject와 Due Date가 미리 채워진 후속 Task를 원클릭으로 생성하려면, Screen Flow를 만들어 그것을 Quick Action으로 연결한다.",
+      "whyCorrect": "미리 채워진 값으로 사용자가 즉시 실행할 수 있는 화면형 작업은 Screen Flow를 Quick Action으로 노출하는 방식이므로 A가 정답이다.",
+      "whyIncorrect": "Page Layout에는 필드 기본값을 이런 방식으로 지정하는 기능이 없고, Auto-Response Rule은 자동 이메일 발송용이며, Workflow Rule은 조건 기반 자동 생성이라 사용자가 직접 클릭해 실행하는 요구사항과는 다르다.",
+      "examPoint": "'미리 채워진 값 + 사용자가 클릭해서 실행'이라는 조합은 Screen Flow를 Quick Action으로 연결하는 패턴으로 구현한다.",
+      "practicalExample": "Opportunity 페이지에서 'Quick Follow-up' 버튼을 누르면 제목과 마감일이 이미 채워진 Task 생성 화면이 바로 뜬다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-053",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants a Lightning component on the Opportunity page that shows a map of the Accounts billing address. What should be used to add this component?",
+    "choices": [
+      "Page Layout Editor",
+      "Visualforce Page",
+      "Lightning App Builder with Map component",
+      "Flow Builder"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Account의 청구지 주소를 지도로 보여주는 표준 Map 컴포넌트는 Lightning App Builder에서 페이지에 추가한다.",
+      "whyCorrect": "Map이라는 표준 컴포넌트를 페이지에 배치하는 도구는 Lightning App Builder이므로 C가 정답이다.",
+      "whyIncorrect": "Page Layout Editor는 필드/관련목록만 다루고, Visualforce Page는 코드가 필요하며, Flow Builder는 자동화 도구라 지도 컴포넌트 배치와는 무관하다.",
+      "examPoint": "Map처럼 이미 만들어진 표준 컴포넌트도 결국 Lightning App Builder로 페이지에 얹는다는 점을 기억하자.",
+      "practicalExample": "Opportunity 페이지에 Map 컴포넌트를 추가해 연결된 Account의 주소를 지도로 바로 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-054",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants reps to be able to log calls directly from their mobile phone after a customer meeting, with pre-filled information. Which feature should be configured?",
+    "choices": [
+      "Salesforce for Outlook",
+      "Mobile Quick Actions for Log a Call",
+      "Chatter mobile post",
+      "Mobile Report"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "모바일에서 통화 기록을 미리 채워진 정보와 함께 빠르게 남기려면 'Log a Call' Quick Action을 모바일에서도 사용할 수 있게 구성한다.",
+      "whyCorrect": "모바일에서 통화 기록을 빠르게 남기는 정확한 기능은 Mobile Quick Actions의 Log a Call이므로 B가 정답이다.",
+      "whyIncorrect": "Salesforce for Outlook은 이메일 클라이언트 연동이고, Chatter mobile post는 협업 게시물이며, Mobile Report는 리포트 조회 기능이라 통화 기록과는 다르다.",
+      "examPoint": "Quick Action은 데스크탑과 모바일에서 동일한 개념으로 동작한다는 점을 다시 확인하는 문제다.",
+      "practicalExample": "영업사원이 고객 미팅 직후 주차장에서 스마트폰으로 'Log a Call' Quick Action을 눌러 즉시 통화 내용을 기록한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-055",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to reduce manual data entry by letting users create related records from a record page without navigating away. Which feature supports this?",
+    "choices": [
+      "Quick Actions",
+      "Compact Layouts",
+      "Related Lists",
+      "Custom Buttons"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "현재 페이지를 벗어나지 않고 관련 레코드를 즉시 생성할 수 있게 해주는 기능은 Quick Actions다.",
+      "whyCorrect": "페이지 이탈 없이 관련 레코드를 생성하는 것이 Quick Actions의 핵심 목적이므로 A가 정답이다.",
+      "whyIncorrect": "Compact Layouts는 모바일/팝업에 보이는 필드를 정의할 뿐이고, Related Lists는 이미 존재하는 관련 레코드를 조회하는 용도이며, Custom Buttons는 다른 방식의 커스텀 동작이라 이 요구사항의 표준 해법이 아니다.",
+      "examPoint": "'페이지를 벗어나지 않고 즉시 생성'이라는 표현은 항상 Quick Actions로 연결된다.",
+      "practicalExample": "Account 페이지를 벗어나지 않고 Quick Action으로 새 Contact를 바로 만들어 연결한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-056",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep uses the Salesforce mobile app in areas with no internet. The rep needs to create and edit Account records while offline. What must the admin enable?",
+    "choices": [
+      "Enable caching in Salesforce for Android and iOS",
+      "Enable Mobile Push Notifications",
+      "Enable Salesforce Anywhere (Quip)",
+      "Enable offline create, edit, and delete in Salesforce for Android and iOS"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "오프라인 상태에서 레코드를 생성·수정·삭제까지 하려면, 단순 캐싱을 넘어 '오프라인 생성·편집·삭제' 기능 자체를 활성화해야 한다.",
+      "whyCorrect": "캐싱만으로는 조회만 가능하고, 생성/수정/삭제까지 하려면 오프라인 생성·편집·삭제 기능을 별도로 활성화해야 하므로 D가 정답이다.",
+      "whyIncorrect": "단순 캐싱 활성화는 조회만 지원하고, Push Notifications는 알림 기능이며, Salesforce Anywhere(Quip)는 실시간 협업 도구라 오프라인 레코드 편집과는 다른 기능이다.",
+      "examPoint": "'오프라인에서 보기만'과 '오프라인에서 생성/편집까지'는 서로 다른 설정 단계라는 점이 이 문제의 핵심 함정이다.",
+      "practicalExample": "인터넷이 끊긴 현장에서도 Account 정보를 수정하고 저장하려면, 캐싱뿐 아니라 오프라인 편집 기능까지 켜져 있어야 한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-057",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants support agents to manage multiple Cases simultaneously with all related information visible on one screen. What should the admin configure?",
+    "choices": [
+      "A custom Home Page layout",
+      "Salesforce Mobile App",
+      "Service Console App",
+      "Standard Lightning App with related lists"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "여러 Case를 동시에 다루면서 관련 정보를 한 화면에서 확인하려면 분할 화면과 멀티탭을 지원하는 Service Console App을 사용해야 한다.",
+      "whyCorrect": "여러 레코드를 동시에, 관련 정보와 함께 다루는 전용 인터페이스가 Service Console App이므로 C가 정답이다.",
+      "whyIncorrect": "커스텀 홈 페이지는 개요 화면일 뿐 멀티탭 처리를 지원하지 않고, Mobile App은 개별 레코드 화면 위주이며, 표준 Lightning App은 Service Console 같은 분할 화면 기능을 기본 제공하지 않는다.",
+      "examPoint": "'여러 레코드 동시 처리 + 분할 화면'이라는 요구사항은 항상 Service Console App으로 연결된다.",
+      "practicalExample": "상담원이 Service Console에서 여러 Case 탭을 동시에 열어두고, 옆 화면에서 고객 이력을 함께 참고하며 응대한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-058",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers needs to install a third-party app from AppExchange for the sales team. What is the recommended best practice?",
+    "choices": [
+      "Install directly in production since it is from a trusted AppExchange source",
+      "Request Salesforce Support to install and test it",
+      "Test the app in a Sandbox environment first, then deploy to production",
+      "Review the app listing on Trailhead before installing in production"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "AppExchange 앱은 Sandbox에서 먼저 설치·테스트한 뒤 검증이 끝나면 프로덕션에 배포하는 것이 모범 사례다.",
+      "whyCorrect": "Sandbox 테스트 후 프로덕션 배포라는 순서가 정확한 모범 사례이므로 C가 정답이다.",
+      "whyIncorrect": "신뢰받는 소스라도 바로 설치하는 것은 위험하고, Salesforce 지원팀의 설치 대행이나 Trailhead 리뷰만으로는 실제 조직 환경 충돌 여부를 확인할 수 없다.",
+      "examPoint": "AppExchange 관련 문제의 정답은 거의 항상 'Sandbox 먼저, 검증 후 Production'이라는 2단계 절차임을 기억하자.",
+      "practicalExample": "영업팀을 위한 견적 자동화 앱을 Sandbox에서 두 달 검증 기간을 거쳐 문제가 없음을 확인한 뒤에야 프로덕션에 배포한다."
+    }
+  },
+  {
+    "id": "q-adx-productivity-059",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants its sales team to receive Salesforce push notifications on mobile when assigned a new Task. What should the admin configure?",
+    "choices": [
+      "Email Alerts for Task assignment",
+      "Push Notifications in Mobile Administration Settings",
+      "Chatter Follow notifications",
+      "A Flow with an email action on Task creation"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Task 배정 같은 특정 이벤트가 발생했을 때 모바일 푸시 알림을 받으려면 Mobile Administration의 Salesforce Notifications 설정을 구성해야 한다.",
+      "whyCorrect": "어떤 이벤트가 푸시 알림을 트리거할지 관리자가 지정하는 곳이 Mobile Administration Settings이므로 B가 정답이다.",
+      "whyIncorrect": "Email Alerts는 이메일을 보낼 뿐 모바일 푸시가 아니고, Chatter Follow notifications는 팔로우한 레코드 알림이며, Flow의 이메일 액션 역시 푸시 알림이 아니다.",
+      "examPoint": "'이메일 알림'과 '모바일 푸시 알림'은 서로 다른 설정 영역(Email Alerts vs Mobile Administration)이라는 점을 구분해야 한다.",
+      "practicalExample": "새 Task가 배정되면 스마트폰 화면에 즉시 팝업 알림이 뜨도록 Mobile Administration에서 Task 배정 이벤트에 푸시 알림을 연결한다."
+    }
+  }
+]

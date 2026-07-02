@@ -1,0 +1,1850 @@
+[
+  {
+    "id": "q-adx-automation-001",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "코드 없이 자동화를 구현하는 Salesforce 권장 도구는?",
+    "choices": [
+      "Apex",
+      "워크플로우 규칙",
+      "플로우",
+      "Process Builder"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Salesforce는 신규 자동화에 Flow를 표준 도구로 권장한다.",
+      "whyCorrect": "코드 없는 자동화의 표준은 Flow이므로 정답은 C다.",
+      "whyIncorrect": "Apex는 코드가 필요하고, Workflow Rule과 Process Builder는 2025년 12월 31일부로 폐기된 레거시 도구다.",
+      "examPoint": "Flow가 표준, Workflow Rule/Process Builder는 폐기라는 점을 반드시 기억.",
+      "practicalExample": "새로운 자동화 요구사항이 생기면 코드 작성 없이 Flow Builder로 구현하는 것이 표준 접근이다."
+    }
+  },
+  {
+    "id": "q-adx-automation-002",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "레코드 생성/수정 시 자동 실행되는 Flow 종류는?",
+    "choices": [
+      "화면 플로우",
+      "레코드 트리거",
+      "일정 트리거",
+      "자동 실행"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Record-Triggered Flow는 레코드가 생성, 수정, 삭제될 때 자동으로 실행되는 Flow다.",
+      "whyCorrect": "레코드 변경 시점에 자동 실행되는 것이 핵심 조건이므로 정답은 B다.",
+      "whyIncorrect": "화면 플로우는 사용자 상호작용, 일정 트리거는 시간 기반, 자동 실행은 다른 프로세스 호출로 각각 트리거 방식이 다르다.",
+      "examPoint": "트리거 시점(레코드 변경 vs 시간 vs 호출)으로 Flow 종류를 구분.",
+      "practicalExample": "Opportunity가 Closed Won으로 바뀌면 Record-Triggered Flow가 자동으로 실행되어 후속 작업을 처리한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-003",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "잘못된 데이터 저장을 방지하는 기능은?",
+    "choices": [
+      "플로우",
+      "Validation Rule",
+      "Approval Process",
+      "Assignment Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Validation Rule은 조건 수식이 TRUE일 때 저장을 차단하고 오류 메시지를 표시하는 데이터 검증 기능이다.",
+      "whyCorrect": "기준에 맞지 않는 데이터 저장을 막는 것이 목적이므로 정답은 B다.",
+      "whyIncorrect": "Flow는 자동화 실행, Approval Process는 승인 워크플로우, Assignment Rule은 배정 기능으로 각각 목적이 다르다.",
+      "examPoint": "데이터 저장 자체를 막는 것은 Validation Rule뿐이라는 점을 기억.",
+      "practicalExample": "필수 항목이 비어있으면 Validation Rule이 오류 메시지와 함께 저장을 거부한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-004",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "할인율 초과 시 관리자 승인이 필요하도록 설정하는 것은?",
+    "choices": [
+      "Validation Rule",
+      "플로우",
+      "Approval Process",
+      "Assignment Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Approval Process는 레코드가 특정 조건을 충족할 때 지정된 승인자의 검토를 거치도록 하는 다단계 워크플로우다.",
+      "whyCorrect": "할인율 초과 시 승인자 검토가 필요하므로 정답은 C다.",
+      "whyIncorrect": "Validation Rule은 저장 자체를 차단할 뿐 승인 절차가 없고, Flow는 승인 개념이 없으며, Assignment Rule은 배정 기능이다.",
+      "examPoint": "승인자 개입이 필요한 요구는 항상 Approval Process.",
+      "practicalExample": "할인율이 20%를 넘는 Opportunity는 Approval Process를 통해 지역 관리자의 승인을 받아야 한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-005",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "지정 시간에 주기적으로 자동 실행되는 Flow는?",
+    "choices": [
+      "화면 플로우",
+      "레코드 트리거",
+      "일정 트리거",
+      "이벤트 트리거"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Schedule-Triggered Flow는 지정된 시간이나 반복 주기에 자동으로 실행되는 Flow다.",
+      "whyCorrect": "시간 기반 반복 실행이 핵심이므로 정답은 C다.",
+      "whyIncorrect": "화면 플로우는 사용자 조작, 레코드 트리거는 레코드 변경, 이벤트 트리거는 존재하지 않는 Flow 유형이다.",
+      "examPoint": "배치성 대량 처리는 대부분 Schedule-Triggered Flow로 구현.",
+      "practicalExample": "매일 자정 실행되는 Schedule-Triggered Flow가 오래된 Lead를 정리한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-006",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 화면을 통해 단계별로 진행하는 Flow 종류는?",
+    "choices": [
+      "레코드 트리거",
+      "화면 플로우",
+      "일정 트리거",
+      "자동 실행"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Screen Flow는 사용자가 여러 화면을 거치며 정보를 입력하는 안내형 Flow다.",
+      "whyCorrect": "화면을 통한 단계별 진행이 핵심 조건이므로 정답은 B다.",
+      "whyIncorrect": "레코드 트리거는 자동 백그라운드 실행, 일정 트리거는 시간 기반, 자동 실행은 UI 없는 백그라운드 실행이다.",
+      "examPoint": "사용자 상호작용이 필요하면 항상 Screen Flow.",
+      "practicalExample": "신규 고객 등록 마법사를 여러 화면으로 나눠 Screen Flow로 구현한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-007",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Workflow Rules와 Process Builder가 지원 종료된 날짜는?",
+    "choices": [
+      "2024년 12월 31일",
+      "2025년 6월 30일",
+      "2025년 12월 31일",
+      "2026년 12월 31일"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Salesforce는 Workflow Rules와 Process Builder를 2025년 12월 31일부로 공식 폐기했다.",
+      "whyCorrect": "정확한 폐기 날짜는 2025년 12월 31일이므로 정답은 C다.",
+      "whyIncorrect": "나머지 날짜들은 실제 폐기일과 다르다.",
+      "examPoint": "레거시 자동화 도구 폐기일은 시험에 자주 등장하는 날짜이므로 정확히 암기.",
+      "practicalExample": "2025년 12월 31일 이후로는 기존 Workflow Rule을 새로 만들 수 없고 Flow로 전환해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-008",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "페이지 레이아웃에서 필수 필드로 만드는 것과 Validation Rule로 만드는 것의 차이는?",
+    "choices": [
+      "차이 없다",
+      "Validation Rule은 API에도 적용된다",
+      "페이지 레이아웃이 더 강력하다",
+      "Validation Rule은 관리자만 우회 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Page Layout 필수 필드는 UI에서만 강제되지만, Validation Rule은 API/Data Loader를 포함한 모든 저장 방식에 적용된다.",
+      "whyCorrect": "Validation Rule이 API에도 적용되어 더 강력하므로 정답은 B다.",
+      "whyIncorrect": "두 방식은 명확히 차이가 있고, 오히려 Validation Rule이 더 강력하며, 관리자도 기본적으로 Validation Rule의 적용을 받는다.",
+      "examPoint": "UI만 강제 = Page Layout 필수, UI+API+Data Loader 모두 강제 = Validation Rule.",
+      "practicalExample": "API로 데이터를 대량 입력해도 Validation Rule 조건을 충족하지 못하면 저장이 거부된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-009",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Assignment Rule의 용도는?",
+    "choices": [
+      "레코드 저장 전 유효성 검사",
+      "Lead나 Case를 자동으로 특정 사용자나 큐에 배정",
+      "레코드 삭제 방지",
+      "필드 값 자동 업데이트"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Assignment Rule은 Lead나 Case가 생성될 때 정의된 기준에 따라 자동으로 담당자나 큐에 배정하는 기능이다.",
+      "whyCorrect": "자동 배정이 핵심 목적이므로 정답은 B다.",
+      "whyIncorrect": "유효성 검사는 Validation Rule, 삭제 방지는 권한 설정, 필드 자동 업데이트는 Flow/Workflow의 역할이다.",
+      "examPoint": "Lead/Case 생성 시 자동 배정은 Assignment Rule로 직결.",
+      "practicalExample": "웹사이트에서 유입된 Lead가 지역 기준으로 자동으로 해당 영업팀에 배정된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-010",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Escalation Rule의 용도는?",
+    "choices": [
+      "케이스를 자동 배정",
+      "일정 시간 내 해결되지 않은 케이스를 자동으로 에스컬레이션",
+      "케이스에 자동 응답 이메일 발송",
+      "케이스 중복 방지"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Escalation Rule은 Case가 지정된 시간 내에 해결되지 않으면 자동으로 상위 담당자에게 재배정하거나 알림을 보내는 기능이다.",
+      "whyCorrect": "시간 초과 시 에스컬레이션이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "자동 배정은 Assignment Rule, 자동 응답 이메일은 Auto-Response Rule, 중복 방지는 Duplicate Rule의 역할이다.",
+      "examPoint": "Escalation Rule = 시간 기반이라는 점을 항상 기억.",
+      "practicalExample": "2시간 내 미해결 Critical Case는 Escalation Rule에 의해 관리자에게 자동으로 알려진다."
+    }
+  },
+  {
+    "id": "q-adx-automation-011",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Auto-Response Rule의 용도는?",
+    "choices": [
+      "케이스를 자동 배정",
+      "케이스나 리드 생성 시 자동으로 확인 이메일 발송",
+      "유효하지 않은 데이터 차단",
+      "승인 요청 자동 처리"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Auto-Response Rule은 Web-to-Lead나 Web-to-Case로 생성된 레코드에 자동으로 확인 이메일을 발송하는 기능이다.",
+      "whyCorrect": "생성 즉시 확인 이메일 발송이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "배정은 Assignment Rule, 데이터 차단은 Validation Rule, 승인 처리는 Approval Process의 역할이다.",
+      "examPoint": "'접수 확인 이메일'은 항상 Auto-Response Rule로 연결.",
+      "practicalExample": "고객이 웹 폼으로 문의를 제출하면 즉시 접수 확인 이메일이 자동 발송된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-012",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow에서 Get Records 요소의 역할은?",
+    "choices": [
+      "새 레코드 생성",
+      "기존 레코드 데이터 조회",
+      "레코드 삭제",
+      "이메일 발송"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Get Records 요소는 지정된 조건에 맞는 Salesforce 레코드를 조회해 Flow 내에서 사용할 수 있도록 가져온다.",
+      "whyCorrect": "기존 레코드 데이터 조회가 핵심 역할이므로 정답은 B다.",
+      "whyIncorrect": "레코드 생성은 Create Records, 삭제는 Delete Records, 이메일 발송은 Send Email 요소가 담당한다.",
+      "examPoint": "Flow 4대 CRUD 요소(Get/Create/Update/Delete Records) 중 조회는 Get Records.",
+      "practicalExample": "Flow가 특정 Account를 조회해 그 Industry 값을 이후 로직에서 참조한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-013",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Before-Save Flow와 After-Save Flow의 주요 차이는?",
+    "choices": [
+      "실행 순서만 다르고 기능은 동일",
+      "Before-Save는 같은 레코드 필드 업데이트 시 DML 불필요, After-Save는 별도 DML 필요",
+      "Before-Save는 삭제 시에만 실행",
+      "After-Save가 더 빠르다"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Before-Save Flow는 레코드 저장 전에 실행되어 같은 레코드 필드를 DML 없이 업데이트할 수 있다.",
+      "whyCorrect": "이 효율성 차이가 핵심 구분점이므로 정답은 B다.",
+      "whyIncorrect": "단순 실행 순서 차이가 아니며, Before-Save가 삭제 전용도 아니고, 속도는 상황에 따라 다르다.",
+      "examPoint": "같은 레코드 수정 = Before-Save(효율적), 다른 레코드 수정 = After-Save(DML 필요).",
+      "practicalExample": "Opportunity의 Discount % 필드를 저장 전 자동 계산할 때는 Before-Save Flow가 가장 효율적이다."
+    }
+  },
+  {
+    "id": "q-adx-automation-014",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Duplicate Rules의 역할은?",
+    "choices": [
+      "중복 레코드를 자동으로 병합",
+      "중복으로 감지된 레코드 저장 시 알림 또는 차단",
+      "중복 필드 값 방지를 위한 유효성 검사",
+      "중복 보고서 생성"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Duplicate Rules는 Matching Rules와 함께 작동해 중복 레코드 저장 시 경고를 표시하거나 저장을 차단한다.",
+      "whyCorrect": "저장 시 알림 또는 차단이 핵심 역할이므로 정답은 B다.",
+      "whyIncorrect": "자동 병합, 유효성 검사(Validation Rule), 보고서 생성은 Duplicate Rules의 직접적인 기능이 아니다.",
+      "examPoint": "Matching Rule(판단 기준) + Duplicate Rule(행동) 세트로 기억.",
+      "practicalExample": "같은 이메일로 두 번째 Lead를 저장하려 하면 Duplicate Rule이 경고 팝업을 띄운다."
+    }
+  },
+  {
+    "id": "q-adx-automation-015",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow의 Decision 요소의 역할은?",
+    "choices": [
+      "레코드를 생성한다",
+      "조건에 따라 Flow의 경로를 분기한다",
+      "변수 값을 변경한다",
+      "루프를 만든다"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Decision 요소는 if-else 조건문처럼 지정된 조건에 따라 Flow를 다른 경로로 분기시킨다.",
+      "whyCorrect": "조건부 경로 분기가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "레코드 생성은 Create Records, 변수 값 변경은 Assignment, 반복 처리는 Loop 요소의 역할이다.",
+      "examPoint": "조건에 따라 다른 흐름을 타야 하면 Decision 요소.",
+      "practicalExample": "Amount가 $10,000 이상인지에 따라 Decision 요소가 서로 다른 후속 작업 경로로 분기시킨다."
+    }
+  },
+  {
+    "id": "q-adx-automation-016",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Autolaunched Flow는 언제 실행되나요?",
+    "choices": [
+      "사용자가 버튼을 클릭할 때",
+      "다른 프로세스나 Apex 코드에서 호출될 때",
+      "특정 시간에 자동으로",
+      "레코드 저장 시 항상"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Autolaunched Flow는 사용자 인터페이스 없이 다른 Flow, Apex 코드, API에서 호출되어 실행된다.",
+      "whyCorrect": "외부 호출에 의한 실행이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "버튼 클릭은 Screen Flow(Quick Action 경유), 특정 시간은 Schedule-Triggered, 저장 시 항상은 Record-Triggered의 특징이다.",
+      "examPoint": "UI 없는 백그라운드 실행 + 외부 호출 기반이라는 점이 Autolaunched Flow의 정체성.",
+      "practicalExample": "Apex 코드가 복잡한 배치 로직 일부를 Autolaunched Flow로 호출해 재사용한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-017",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Validation Rule에서 오류가 발생하는 조건은?",
+    "choices": [
+      "수식이 FALSE를 반환할 때",
+      "수식이 TRUE를 반환할 때",
+      "필드가 비어있을 때만",
+      "관리자가 저장할 때"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Validation Rule은 오류 조건 수식이 TRUE를 반환할 때 저장을 차단하고 오류 메시지를 표시한다.",
+      "whyCorrect": "TRUE일 때 오류가 발생하는 것이 규칙의 동작 방식이므로 정답은 B다.",
+      "whyIncorrect": "FALSE일 때는 오히려 저장이 허용되며, 필드가 비어있을 때만으로 한정되지 않고, 관리자 저장 여부와도 무관하다.",
+      "examPoint": "'저장을 막고 싶은 상황이 TRUE가 되도록' 수식을 작성해야 한다는 원칙을 기억.",
+      "practicalExample": "Amount가 비어있는데 Stage가 Closed Won이면 그 조건이 TRUE가 되어 저장이 차단된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-018",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Approval Process에서 Final Approval Action이란?",
+    "choices": [
+      "첫 번째 승인자에게 알림을 보내는 것",
+      "모든 승인 단계 완료 후 실행되는 자동화 작업",
+      "승인 요청을 제출하는 것",
+      "승인을 거절하는 것"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Final Approval Action은 모든 승인 단계가 완료된 후 자동으로 실행되는 작업이다.",
+      "whyCorrect": "승인 완료 후 실행되는 후속 작업이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "첫 승인자 알림, 제출, 거절은 각각 다른 단계에서 발생하는 별개의 이벤트다.",
+      "examPoint": "승인 완료 → Final Approval Actions(필드 업데이트, 이메일 등) 실행이라는 흐름을 기억.",
+      "practicalExample": "할인 요청이 최종 승인되면 Final Approval Action이 Opportunity의 Discount Approved 필드를 True로 바꾼다."
+    }
+  },
+  {
+    "id": "q-adx-automation-019",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow의 Loop 요소는 언제 사용하나요?",
+    "choices": [
+      "Flow를 반복 실행할 때",
+      "컬렉션(여러 레코드)의 각 항목을 순서대로 처리할 때",
+      "조건 분기 시",
+      "이메일을 여러 명에게 발송할 때"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Loop 요소는 Get Records 등으로 가져온 여러 레코드 컬렉션을 하나씩 반복 처리할 때 사용한다.",
+      "whyCorrect": "컬렉션의 각 항목을 순회하는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "Flow 자체의 반복 실행은 Loop의 목적이 아니고, 조건 분기는 Decision, 다수 이메일 발송은 Loop 안에서 조합해 쓸 수 있는 별개 개념이다.",
+      "examPoint": "컬렉션 처리가 필요하면 Get Records(컬렉션) → Loop로 이어지는 패턴을 기억.",
+      "practicalExample": "10개의 관련 Opportunity Line Item을 Loop로 하나씩 순회하며 각각의 할인율을 계산한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-020",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Approval Process에서 Delegated Approver의 역할은?",
+    "choices": [
+      "승인 프로세스를 생성하는 사람",
+      "승인자 대신 승인/거절할 수 있는 대리인",
+      "승인 요청을 제출하는 사람",
+      "최종 승인자"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Delegated Approver는 사용자 레코드에 지정된 대리 승인자로, 원래 승인자가 부재 시 대신 승인하거나 거절할 수 있다.",
+      "whyCorrect": "대리 승인 권한이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "프로세스 생성자, 요청 제출자, 최종 승인자는 각각 다른 역할이며 Delegated Approver의 정의와 다르다.",
+      "examPoint": "부재 시 대리 승인은 항상 User 레코드의 Delegated Approver 설정으로 연결.",
+      "practicalExample": "팀장이 휴가 중이면 User 레코드에 지정된 Delegated Approver가 대신 승인 요청을 처리한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-021",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow의 Get Records 요소 역할은?",
+    "choices": [
+      "새 레코드 생성",
+      "기존 레코드 데이터 조회",
+      "레코드 삭제",
+      "이메일 발송"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Get Records 요소는 지정된 조건에 맞는 Salesforce 레코드를 조회해 Flow 내에서 사용할 수 있도록 가져온다.",
+      "whyCorrect": "기존 레코드 조회가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "생성, 삭제, 이메일 발송은 각각 Create Records, Delete Records, Send Email 요소가 담당한다.",
+      "examPoint": "Flow의 CRUD 4요소 중 조회 담당은 Get Records라는 점을 기억.",
+      "practicalExample": "Flow가 Case의 관련 Contact 레코드를 Get Records로 조회해 이메일 주소를 가져온다."
+    }
+  },
+  {
+    "id": "q-adx-automation-022",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Validation Rule에서 ISBLANK() 함수의 역할은?",
+    "choices": [
+      "필드가 비어있으면 TRUE 반환",
+      "필드 길이 반환",
+      "필드 값을 비교",
+      "필드를 비운다"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "ISBLANK(field)는 해당 필드가 비어있으면 TRUE, 값이 있으면 FALSE를 반환하는 함수다.",
+      "whyCorrect": "필드 공백 여부 판별이 핵심 기능이므로 정답은 A다.",
+      "whyIncorrect": "길이 반환은 LEN(), 값 비교는 ISPICKVAL() 등 다른 함수의 역할이며, ISBLANK()는 필드를 비우는 동작이 아니다.",
+      "examPoint": "필수 입력 검증에 ISBLANK()가 가장 흔하게 사용된다는 점을 기억.",
+      "practicalExample": "ISBLANK(Email)이 TRUE면 이메일이 비어있다는 뜻으로 Validation Rule에서 저장을 차단하는 조건으로 활용된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-023",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Record-Triggered Flow에서 무한 루프를 방지하는 방법은?",
+    "choices": [
+      "Flow 비활성화",
+      "Entry Conditions를 설정하여 특정 조건에서만 실행되도록 제한",
+      "Apex Trigger 추가",
+      "Debug 로그 활성화"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Entry Conditions를 올바르게 설정하면 Flow가 필요한 경우에만 실행되어 무한 루프를 방지할 수 있다.",
+      "whyCorrect": "조건을 좁혀 불필요한 재실행을 막는 것이 핵심 해법이므로 정답은 B다.",
+      "whyIncorrect": "Flow 비활성화는 자동화 자체를 멈추는 근본 해법이 아니며, Apex Trigger 추가나 Debug 로그 활성화는 무한 루프 방지와 직접 관련이 없다.",
+      "examPoint": "재트리거 방지의 정석은 항상 Entry Conditions를 정교하게 좁히는 것.",
+      "practicalExample": "특정 필드가 특정 값으로 '변경될 때만' 실행되도록 Entry Conditions를 설정해 Flow 자신의 업데이트로 인한 재실행을 막는다."
+    }
+  },
+  {
+    "id": "q-adx-automation-024",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow에서 Update Records 요소를 사용하는 경우는?",
+    "choices": [
+      "새 레코드 생성",
+      "기존 레코드의 필드 값 변경",
+      "레코드 삭제",
+      "레코드 조회"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Update Records 요소는 이미 존재하는 레코드의 필드 값을 변경하는 데 사용된다.",
+      "whyCorrect": "기존 레코드 필드 값 변경이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "새 레코드 생성은 Create Records, 삭제는 Delete Records, 조회는 Get Records 요소가 담당한다.",
+      "examPoint": "Flow CRUD 4요소 중 수정 담당은 Update Records.",
+      "practicalExample": "Case가 접수되면 Update Records 요소로 Status 필드를 'In Progress'로 변경한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-025",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Approval Process에서 Unanimous 설정이란?",
+    "choices": [
+      "한 명만 승인하면 통과",
+      "모든 승인자가 동의해야 통과",
+      "자동 승인",
+      "무작위 승인자 선택"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Unanimous 설정은 해당 단계의 모든 승인자가 승인해야 다음 단계로 진행되는 옵션이다.",
+      "whyCorrect": "전원 동의가 조건이므로 정답은 B다.",
+      "whyIncorrect": "한 명만 승인해도 통과하는 방식, 자동 승인, 무작위 선택은 Unanimous의 정의와 다르다.",
+      "examPoint": "복수 승인자 단계에서 만장일치 요구 여부는 Unanimous 설정으로 제어.",
+      "practicalExample": "고액 계약 승인은 부서장 3명 모두(Unanimous) 동의해야 최종 승인된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-026",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Process Builder와 Flow 중 2025년 이후 새 자동화에 권장되는 것은?",
+    "choices": [
+      "Process Builder",
+      "플로우",
+      "둘 다 동일",
+      "워크플로우 규칙"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce는 2025년 12월 31일부로 Process Builder와 Workflow Rules를 지원 종료했다.",
+      "whyCorrect": "이후 모든 신규 자동화는 Flow를 사용해야 하므로 정답은 B다.",
+      "whyIncorrect": "Process Builder와 Workflow Rules는 모두 폐기된 레거시 도구라 신규 자동화에 사용할 수 없다.",
+      "examPoint": "2025.12.31 이후 자동화는 예외 없이 Flow.",
+      "practicalExample": "새로운 자동화 요구가 생기면 관리자는 무조건 Flow Builder로 구현을 시작한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-027",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow에서 Assignment 요소의 역할은?",
+    "choices": [
+      "레코드를 특정 사용자에게 배정",
+      "변수 값을 설정하거나 변경",
+      "조건 분기",
+      "레코드를 삭제"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Flow의 Assignment 요소는 변수의 값을 설정하거나 변경하는 요소로, 레코드를 사람에게 배정하는 Assignment Rule과는 이름만 비슷할 뿐 전혀 다른 기능이다.",
+      "whyCorrect": "변수 값 설정/변경이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "레코드를 사용자에게 배정하는 것은 Assignment Rule의 역할이지 Flow의 Assignment 요소가 아니며, 조건 분기는 Decision, 삭제는 Delete Records 요소가 담당한다.",
+      "examPoint": "Flow의 'Assignment 요소'와 Lead/Case의 'Assignment Rule'을 혼동하지 않도록 각별히 주의.",
+      "practicalExample": "Flow가 컬렉션 변수에 새 항목을 추가할 때 Assignment 요소를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-028",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Salesforce Flow에서 Scheduled Path란?",
+    "choices": [
+      "Flow를 예약 실행하는 설정",
+      "레코드 저장 후 특정 시간이 지나면 실행되는 경로",
+      "화면 Flow의 일정 표시",
+      "승인 프로세스 타임라인"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Scheduled Path는 Record-Triggered Flow에서 트리거 이후 특정 시간(예: 3일 후)에 추가 자동화를 실행하는 경로다.",
+      "whyCorrect": "저장 이후 지연 실행이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "Flow 전체의 예약 실행 설정이 아니며, 화면 Flow의 일정 표시나 승인 프로세스 타임라인과도 다른 개념이다.",
+      "examPoint": "'N일/N시간 후 실행'이라는 요구는 항상 Scheduled Path.",
+      "practicalExample": "Opportunity가 Closed Won된 3일 후 Scheduled Path가 자동으로 후속 이메일을 발송한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-029",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow에서 Fault Path의 역할은?",
+    "choices": [
+      "Flow 실행 속도 제한",
+      "오류 발생 시 실행되는 대체 경로",
+      "Flow 디버그 모드",
+      "관리자에게 오류 알림"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Fault Path는 Flow 실행 중 오류(DML 오류, 권한 오류 등)가 발생할 때 실행되는 대체 경로다.",
+      "whyCorrect": "오류 발생 시 대체 처리 경로가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "속도 제한이나 디버그 모드는 Fault Path의 기능이 아니며, 관리자 알림은 Fault Path 안에서 구성할 수 있는 하나의 선택지일 뿐 Fault Path 자체의 정의는 아니다.",
+      "examPoint": "오류 복구 로직 필요 시 Fault Path를 연결하는 것이 모범 사례.",
+      "practicalExample": "레코드 생성 중 필수 필드 누락으로 오류가 나면 Fault Path가 실행되어 사용자에게 안내 메시지를 표시한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-030",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Subflow란?",
+    "choices": [
+      "작은 크기의 Flow",
+      "다른 Flow에서 호출되는 Flow",
+      "모바일용 Flow",
+      "외부 시스템을 호출하는 Flow"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Subflow는 다른(상위) Flow에서 호출되어 실행되는 재사용 가능한 Flow다.",
+      "whyCorrect": "다른 Flow에서 호출되는 구조가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "크기와는 무관하며, 모바일 전용도 아니고, 외부 시스템 호출은 Subflow의 정의와 직접 관련이 없다.",
+      "examPoint": "공통 로직을 여러 Flow에서 재사용할 때 Subflow로 분리하는 것이 모범 사례.",
+      "practicalExample": "'주소 검증' 로직을 Subflow로 만들어 여러 Screen Flow에서 공통으로 호출한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-031",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Validation Rule이 API를 통한 데이터 업데이트에도 적용되나요?",
+    "choices": [
+      "아니요, UI에서만 적용",
+      "예, 모든 저장 방법에 적용",
+      "관리자는 우회 가능",
+      "특정 프로필은 제외 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Validation Rule은 UI, API, Data Loader 등 모든 방법으로 레코드를 저장할 때 동일하게 적용된다.",
+      "whyCorrect": "모든 저장 방법에 적용된다는 것이 핵심 특징이므로 정답은 B다.",
+      "whyIncorrect": "UI에서만 적용되는 것은 Page Layout 필수 필드의 특징이며, 관리자도 기본적으로 예외가 아니고, 특정 프로필 제외는 수식에 명시적으로 조건을 추가해야만 가능하다.",
+      "examPoint": "이것이 Page Layout 필수 필드보다 Validation Rule이 더 강력한 이유임을 기억.",
+      "practicalExample": "API로 대량 데이터를 업로드해도 Validation Rule 조건을 위반하는 레코드는 저장이 거부된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-032",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow에서 Get Records 후 레코드가 없을 때 처리 방법은?",
+    "choices": [
+      "Flow가 자동으로 종료",
+      "변수가 null이 되며 Decision으로 null 체크 필요",
+      "오류가 발생하여 Fault Path로 이동",
+      "기본값이 자동 설정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Get Records에서 조건에 맞는 레코드를 찾지 못하면 결과를 담는 변수가 null이 된다.",
+      "whyCorrect": "이후 Decision 요소로 null 여부를 확인해 분기하는 것이 모범 사례이므로 정답은 B다.",
+      "whyIncorrect": "레코드가 없다고 Flow가 자동 종료되지 않고, 오류(Fault)로 처리되지도 않으며, 기본값이 자동으로 채워지지도 않는다.",
+      "examPoint": "Get Records 뒤에는 항상 null 체크용 Decision을 붙이는 습관이 필요.",
+      "practicalExample": "특정 Account를 조회했는데 존재하지 않으면 변수가 null이 되고, Decision이 이를 감지해 새 Account를 생성하는 경로로 분기한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-033",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Approval Process에서 Final Rejection Action이란?",
+    "choices": [
+      "첫 번째 승인 단계",
+      "모든 거절 처리 완료 후 실행되는 자동화 작업",
+      "승인 요청 취소",
+      "승인자 변경"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Final Rejection Action은 Approval Process에서 거절이 최종 확정된 후 자동으로 실행되는 작업이다.",
+      "whyCorrect": "거절 확정 후 실행되는 후속 작업이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "첫 승인 단계, 요청 취소(Recall), 승인자 변경은 각각 다른 이벤트이며 Final Rejection Action과는 다르다.",
+      "examPoint": "거절 확정 → Final Rejection Actions(원래 값 복원, 알림 등) 실행 흐름을 기억.",
+      "practicalExample": "할인 요청이 최종 거절되면 Final Rejection Action이 Opportunity의 Discount % 필드를 원래 값으로 되돌린다."
+    }
+  },
+  {
+    "id": "q-adx-automation-034",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow에서 DML Statement란?",
+    "choices": [
+      "오류 처리",
+      "데이터베이스에 레코드를 생성/수정/삭제하는 작업",
+      "변수 선언",
+      "조건 평가"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "DML(Data Manipulation Language) Statement는 Create Records, Update Records, Delete Records 등 데이터베이스에 실제 변경을 가하는 작업이다.",
+      "whyCorrect": "실제 데이터베이스 변경 작업이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "오류 처리는 Fault Path, 변수 선언은 Flow 변수 설정, 조건 평가는 Decision 요소의 역할이다.",
+      "examPoint": "DML은 '실제로 데이터를 바꾸는 동작'이라는 개념을 정확히 기억.",
+      "practicalExample": "Create Records 요소가 실행될 때마다 하나의 DML Statement가 발생해 새 레코드가 데이터베이스에 저장된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-035",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "After-Save Flow에서 같은 레코드를 업데이트하면?",
+    "choices": [
+      "문제없이 동작",
+      "추가 DML이 발생하고 다시 트리거될 수 있어 무한 루프 주의 필요",
+      "항상 오류 발생",
+      "자동으로 방지됨"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "After-Save Flow에서 같은 레코드를 업데이트하면 추가 DML이 발생하고 Flow가 다시 트리거될 수 있다.",
+      "whyCorrect": "이 재트리거 가능성 때문에 무한 루프 주의가 필요하므로 정답은 B다.",
+      "whyIncorrect": "문제없이 동작한다고 단정할 수 없고, 항상 오류가 발생하는 것도 아니며, 자동으로 방지되지도 않는다.",
+      "examPoint": "같은 레코드를 After-Save에서 업데이트해야 한다면 Before-Save로 전환하거나 Entry Conditions로 재트리거를 막아야 한다.",
+      "practicalExample": "After-Save Flow가 자기 자신을 업데이트하도록 방치하면 저장이 반복되어 성능 문제나 governor limit 초과가 발생할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-automation-036",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Approval Process 요청을 제출(Submit)할 수 있는 사람은?",
+    "choices": [
+      "레코드 소유자만",
+      "관리자만",
+      "레코드를 Edit할 수 있는 모든 사용자 또는 지정된 사용자",
+      "승인자만"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "기본적으로 레코드를 편집할 수 있는 모든 사용자가 승인 요청을 제출할 수 있으며, 특정 사용자만 제출 가능하도록 제한할 수도 있다.",
+      "whyCorrect": "제출 권한이 편집 권한자 또는 지정된 사용자로 유연하게 설정 가능하므로 정답은 C다.",
+      "whyIncorrect": "소유자만, 관리자만, 승인자만으로 한정되지 않으며 Setup에서 제출 가능 사용자를 별도로 지정할 수도 있다.",
+      "examPoint": "제출 권한 설정은 유연하다는 점, 기본값은 편집 권한 보유자라는 점을 함께 기억.",
+      "practicalExample": "영업담당자가 자신이 담당하는 Opportunity의 할인 승인 요청을 직접 제출할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-automation-037",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow를 비활성화(Deactivate)하면?",
+    "choices": [
+      "Flow가 삭제됨",
+      "Flow가 더 이상 실행되지 않지만 설정은 유지됨",
+      "진행 중인 모든 인스턴스가 즉시 중단",
+      "사용자가 Flow에 접근 불가"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Flow를 비활성화하면 새로운 실행은 중단되지만 Flow 자체의 설정과 정의는 그대로 유지된다.",
+      "whyCorrect": "삭제가 아니라 실행 중단이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "삭제되지 않으며, 이미 진행 중인 인스턴스가 즉시 중단되는 것도 아니고, 관리자는 여전히 Flow 설정에 접근할 수 있다.",
+      "examPoint": "비활성화 = 실행만 멈춤, 설정은 보존이라는 점을 기억. 문제 해결 후 재활성화 가능.",
+      "practicalExample": "새로운 Flow 버전에 버그가 있으면 이전 버전을 다시 활성화하기 전에 문제 버전을 비활성화해 실행을 막는다."
+    }
+  },
+  {
+    "id": "q-adx-automation-038",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow 버전 관리의 특징은?",
+    "choices": [
+      "버전 관리 없음, 항상 최신 버전만",
+      "여러 버전이 존재하며 활성 버전만 실행되고 나머지는 비활성 상태",
+      "모든 버전이 동시에 실행",
+      "버전당 별도 라이선스 필요"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Flow는 버전 관리를 지원해 여러 버전을 저장할 수 있으며, 그중 활성(Active) 상태인 버전만 실제로 실행된다.",
+      "whyCorrect": "활성 버전만 실행되고 나머지는 비활성 상태로 보관된다는 점이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "버전 관리가 없다는 것은 사실이 아니고, 여러 버전이 동시에 실행되지도 않으며, 버전별 별도 라이선스도 필요하지 않다.",
+      "examPoint": "문제가 생기면 이전 버전으로 손쉽게 롤백할 수 있다는 것이 버전 관리의 실무적 장점.",
+      "practicalExample": "새 버전 배포 후 오류가 발견되면 관리자가 이전 안정 버전을 다시 활성화해 즉시 롤백한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-039",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Custom Notification in Flow의 용도는?",
+    "choices": [
+      "이메일 발송",
+      "Salesforce 앱 내 알림(벨 아이콘) 발송",
+      "SMS 발송",
+      "Chatter 게시물 작성"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Flow의 Custom Notification 요소는 Salesforce 앱의 벨 아이콘 알림을 특정 사용자에게 발송한다.",
+      "whyCorrect": "앱 내 인앱 알림 발송이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "이메일 발송은 Send Email 요소, SMS 발송은 표준 Flow 요소가 아니며, Chatter 게시물 작성도 별도 요소다.",
+      "examPoint": "이메일 없이 즉시 앱 내 알림만 필요할 때 Custom Notification을 사용.",
+      "practicalExample": "High Priority Case가 생성되면 Custom Notification으로 담당자의 벨 아이콘에 즉시 알림이 뜬다."
+    }
+  },
+  {
+    "id": "q-adx-automation-040",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Approval Process에서 Recall Approval의 의미는?",
+    "choices": [
+      "승인자가 승인을 철회",
+      "요청자가 제출한 승인 요청을 취소하여 Recalled 상태로 변경",
+      "승인 프로세스 삭제",
+      "에스컬레이션"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Recall Approval은 승인 요청을 제출한 사람이 아직 처리되지 않은 요청을 취소하는 기능이다.",
+      "whyCorrect": "요청자 본인이 제출을 취소하는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "승인자의 승인 철회, 프로세스 자체의 삭제, 에스컬레이션과는 다른 개념이다.",
+      "examPoint": "요청 취소 시 Recalled 상태가 되고 Recall Actions가 실행된다는 흐름을 기억.",
+      "practicalExample": "담당자가 실수로 제출한 할인 승인 요청을 Recall Approval로 취소하고 값을 수정한 뒤 다시 제출한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-041",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Flow Builder에서 디버그(Debug) 기능의 용도는?",
+    "choices": [
+      "Flow를 삭제",
+      "Flow를 실제 실행하지 않고 테스트 데이터로 각 단계를 시뮬레이션",
+      "Flow를 복사",
+      "Flow 오류 기록"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Flow Builder의 Debug 기능은 테스트 데이터를 입력해 실제 데이터 변경 없이 Flow의 각 단계 실행 결과를 시뮬레이션한다.",
+      "whyCorrect": "실제 데이터 변경 없는 테스트 시뮬레이션이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "삭제, 복사, 오류 기록은 Debug 기능과 무관한 별개의 동작이다.",
+      "examPoint": "배포 전 반드시 Debug로 각 단계를 확인하는 것이 안전한 개발 습관.",
+      "practicalExample": "관리자가 새로 만든 Flow를 실제 레코드에 영향을 주지 않고 테스트 데이터로 Debug 실행해 로직을 검증한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-042",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to automatically send a notification email to the account owner when a related Opportunity is marked as Closed Won. What is the recommended tool?",
+    "choices": [
+      "워크플로우 규칙",
+      "Process Builder",
+      "레코드 트리거",
+      "Apex Trigger"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Closed Won 시 이메일 알림을 보내는 자동화의 권장 도구는 Record-Triggered Flow다.",
+      "whyCorrect": "레코드 변경(Closed Won)에 반응하는 자동화이며 Workflow Rules와 Process Builder는 2025년 12월 31일 폐기되었으므로 정답은 C다.",
+      "whyIncorrect": "A(워크플로우 규칙)는 폐기됐다. B(Process Builder)도 폐기됐다. D(Apex Trigger)는 코드가 필요해 코드 없는 표준 권장 방식이 아니다.",
+      "examPoint": "레코드 변경 기반 자동화는 항상 Record-Triggered Flow를 최우선 고려.",
+      "practicalExample": "Opportunity가 Closed Won으로 바뀌면 Record-Triggered Flow가 Account Owner에게 이메일을 자동 발송한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-043",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC needs to route large discount requests (over 20%) to a regional manager for approval before the Opportunity can be closed. What should be configured?",
+    "choices": [
+      "A Validation Rule",
+      "A Record-Triggered Flow",
+      "An Approval Process",
+      "An Assignment Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "특정 조건(할인 20% 초과)을 충족할 때 승인자에게 라우팅하는 것은 Approval Process가 특화된 영역이다.",
+      "whyCorrect": "다단계 승인 구현이 필요하므로 정답은 C다.",
+      "whyIncorrect": "A(Validation Rule)는 저장을 차단할 뿐 승인 절차가 없다. B(Record-Triggered Flow)는 자동화는 가능하지만 다단계 승인 구현이 복잡하다. D(Assignment Rule)는 레코드 소유자 할당 기능이다.",
+      "examPoint": "승인자 개입이 필요한 조건부 워크플로우는 항상 Approval Process.",
+      "practicalExample": "할인율이 20%를 초과하면 Approval Process가 자동으로 지역 관리자에게 승인 요청을 보낸다."
+    }
+  },
+  {
+    "id": "q-adx-automation-044",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "A user needs to be guided through a series of screens to collect information and create multiple related records at once. What type of Flow should be used?",
+    "choices": [
+      "레코드 트리거",
+      "일정 트리거",
+      "화면 플로우",
+      "자동 실행"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "여러 화면에 걸쳐 정보를 수집해야 하는 시나리오는 Screen Flow의 전형적인 용도다.",
+      "whyCorrect": "사용자와 인터랙티브하게 상호작용하며 여러 화면을 진행해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Record-Triggered)는 백그라운드 자동화다. B(Schedule-Triggered)는 시간 기반이다. D(Autolaunched)는 UI 없는 백그라운드 실행이다.",
+      "examPoint": "사용자 상호작용이 필요한 다단계 정보 수집은 항상 Screen Flow.",
+      "practicalExample": "고객 온보딩 담당자가 Screen Flow로 여러 화면을 거치며 Account, Contact, Opportunity를 한 번에 생성한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-045",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to automatically update a field on all open Cases every night at midnight. What should be used?",
+    "choices": [
+      "레코드 트리거",
+      "화면 플로우",
+      "일정 트리거",
+      "Approval Process"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "매일 자정에 자동 실행되는 배치성 작업은 Schedule-Triggered Flow의 전형적인 용도다.",
+      "whyCorrect": "반복 스케줄 기반 처리가 필요하므로 정답은 C다.",
+      "whyIncorrect": "A(Record-Triggered)는 레코드 변경 시 실행된다. B(Screen Flow)는 사용자 상호작용이 필요하다. D(Approval Process)는 승인 워크플로우다.",
+      "examPoint": "반복 시간 조건이 나오면 항상 Schedule-Triggered Flow.",
+      "practicalExample": "매일 자정 Schedule-Triggered Flow가 모든 열린 Case의 경과일 필드를 자동 갱신한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-046",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which of the following automation tools was officially retired on December 31, 2025?",
+    "choices": [
+      "레코드 트리거",
+      "화면 플로우",
+      "워크플로우 규칙",
+      "일정 트리거"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "2025년 12월 31일 공식 폐기된 도구는 Workflow Rules(및 Process Builder)다.",
+      "whyCorrect": "폐기 대상은 워크플로우 규칙이므로 정답은 C다.",
+      "whyIncorrect": "A(Flow Builder)는 현재 Salesforce 표준이다. B(화면 플로우)는 Flow의 일종으로 계속 지원된다. D(일정 트리거)도 Flow의 일종으로 계속 지원된다.",
+      "examPoint": "폐기된 것은 Workflow Rules와 Process Builder뿐, Flow 계열은 모두 계속 지원된다는 점에 유의.",
+      "practicalExample": "기존에 사용하던 Workflow Rule은 2025년 12월 31일 이후 신규 생성이 불가능해 Flow로 마이그레이션해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-047",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to prevent support reps from closing a Case without filling in the Resolution field. What is the best solution?",
+    "choices": [
+      "Make Resolution a required field on the page layout.",
+      "Create a Validation Rule that checks if Resolution is empty when Status is Closed.",
+      "Create an Assignment Rule.",
+      "Use a Record-Triggered Flow to check the field."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Resolution 필드를 API를 포함한 모든 저장 방식에서 강제하려면 Validation Rule이 필요하다.",
+      "whyCorrect": "Page Layout 필수 필드는 UI에서만 강제되고 API로 우회 가능하지만, Validation Rule은 모든 저장 방식에 적용되므로 정답은 B다.",
+      "whyIncorrect": "A(Page Layout 필수)는 API 우회가 가능해 완전한 강제가 아니다. C(Assignment Rule)는 라우팅 기능이다. D(Record-Triggered Flow)도 가능하지만 API 우회 가능성이 있어 Validation Rule만큼 확실하지 않다.",
+      "examPoint": "'모든 저장 방식에서 강제'라는 조건은 항상 Validation Rule로 직결.",
+      "practicalExample": "Case Status를 Closed로 바꾸려는데 Resolution이 비어있으면 Validation Rule이 저장을 차단한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-048",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to automatically send a welcome email to new Leads created via Web-to-Lead. Which feature should be used?",
+    "choices": [
+      "Workflow Rule Email Alert",
+      "Auto-Response Rule",
+      "레코드 트리거",
+      "Email Template only"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Web-to-Lead로 생성된 Lead에 자동 환영 이메일을 발송하는 전용 기능은 Auto-Response Rule이다.",
+      "whyCorrect": "Lead/Case 생성 시 자동 이메일 발송이 이 기능의 핵심 목적이므로 정답은 B다.",
+      "whyIncorrect": "A(Workflow Rule Email Alert)는 폐기된 도구다. C(Record-Triggered Flow)로도 가능하지만 Auto-Response Rule이 전용 기능이다. D(Email Template only)만으로는 자동 발송이 되지 않는다.",
+      "examPoint": "Web-to-Lead/Web-to-Case 생성 직후 자동 이메일은 Auto-Response Rule로 직결.",
+      "practicalExample": "웹 폼으로 유입된 신규 Lead에게 Auto-Response Rule이 즉시 환영 이메일을 발송한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-049",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC needs to update a field on a parent Account record whenever a related Opportunity is moved to Closed Won stage. No code should be used. What is the recommended solution?",
+    "choices": [
+      "워크플로우 규칙",
+      "Process Builder",
+      "레코드 트리거",
+      "Apex Trigger"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Opportunity 변경 시 부모 Account 필드를 코드 없이 업데이트하는 표준 방법은 Record-Triggered Flow다.",
+      "whyCorrect": "관련 레코드(부모 Account) 업데이트가 가능한 코드 없는 자동화이므로 정답은 C다.",
+      "whyIncorrect": "A(워크플로우 규칙)는 폐기됐다. B(Process Builder)도 폐기됐다. D(Apex Trigger)는 코드가 필요해 'No code' 조건에 맞지 않는다.",
+      "examPoint": "관련 레코드 업데이트가 필요하면 After-Save Record-Triggered Flow를 고려.",
+      "practicalExample": "Opportunity가 Closed Won이 되면 Flow가 부모 Account의 'Last Won Date' 필드를 자동으로 갱신한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-050",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers built a Flow that creates a follow-up Task when an Opportunity is Closed Won. Users report the Flow is creating multiple duplicate Tasks on a single save. What should the admin investigate?",
+    "choices": [
+      "The Flow is triggered by both Before Save and After Save",
+      "The Flow entry conditions are not filtering correctly",
+      "Multiple users are triggering the Flow simultaneously",
+      "The Task object has duplicate rules enabled"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Record-Triggered Flow가 조건 없이 모든 저장마다 실행되도록 구성되면 같은 저장에서 Task가 중복 생성될 수 있다.",
+      "whyCorrect": "Entry Conditions가 Stage 변경을 정확히 필터링하지 못해 저장할 때마다 반복 생성되는 것이 원인이므로 정답은 B다.",
+      "whyIncorrect": "A(Before/After Save 둘 다 설정)는 이 증상의 직접 원인이 아니다. C(동시 저장)는 중복 생성의 일반적 원인이 아니다. D(Task Duplicate Rules)는 레코드 중복 방지 기능으로 Flow의 반복 생성과는 무관하다.",
+      "examPoint": "'같은 저장에서 여러 번 생성'이라는 증상은 Entry Conditions 설정 오류를 가장 먼저 의심.",
+      "practicalExample": "Stage가 Closed Won으로 '변경될 때만' 실행되도록 Entry Conditions를 정교화하면 중복 Task 생성이 해결된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-051",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to send a re-engagement email to all Contacts who have not been active for 90 days. The email should go out every Monday at 8 AM. Which Flow type should be used?",
+    "choices": [
+      "레코드 트리거",
+      "화면 플로우",
+      "일정 트리거",
+      "자동 실행"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "매주 특정 요일/시간에 반복 실행되는 배치성 이메일 발송은 Schedule-Triggered Flow의 전형적인 용도다.",
+      "whyCorrect": "매주 월요일 오전 8시라는 반복 스케줄 조건이 있으므로 정답은 C다.",
+      "whyIncorrect": "A(Record-Triggered)는 레코드 변경 시 실행된다. B(Screen Flow)는 사용자 상호작용이 필요하다. D(Autolaunched)는 단발성 호출 방식이다.",
+      "examPoint": "'매주/매일 특정 시간'이라는 조건은 항상 Schedule-Triggered Flow.",
+      "practicalExample": "매주 월요일 오전 8시 Schedule-Triggered Flow가 90일간 비활동 Contact를 찾아 재참여 이메일을 발송한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-052",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep submits a discount request for 30% off. The Approval Process sends the request to their manager. The manager approves it. What should happen next according to the Approval Process?",
+    "choices": [
+      "Nothing — approval is the final step",
+      "e.g., field updates, notifications",
+      "The record is locked permanently",
+      "Another approval step is required"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "승인이 완료되면 Final Approval Actions가 실행되어 필드 업데이트, 이메일 알림 등의 후속 작업이 자동 처리된다.",
+      "whyCorrect": "승인 후 정해진 자동화 작업이 실행되는 것이 표준 동작이므로 정답은 B다.",
+      "whyIncorrect": "A(아무 일도 없음)는 사실이 아니며 Final Actions가 실행된다. C(영구 잠금)는 선택사항일 뿐 기본 동작이 아니다. D(추가 승인 단계)는 다단계로 설계된 경우에만 발생하며 이 시나리오와는 다르다.",
+      "examPoint": "승인 완료 → Final Approval Actions 실행이라는 표준 흐름을 기억.",
+      "practicalExample": "관리자가 30% 할인을 승인하면 Final Approval Action이 Opportunity 필드를 업데이트하고 담당자에게 승인 완료 이메일을 보낸다."
+    }
+  },
+  {
+    "id": "q-adx-automation-053",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to validate that the Opportunity Close Date is always in the future when the Stage is set to Prospecting. Which tool enforces this?",
+    "choices": [
+      "플로우",
+      "Assignment Rule",
+      "Validation Rule",
+      "Escalation Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "특정 조건에서 필드 값(날짜)을 검증해 저장을 차단하는 표준 도구는 Validation Rule이다.",
+      "whyCorrect": "필드 조건 기반 저장 차단이 필요하므로 정답은 C다.",
+      "whyIncorrect": "A(Flow)로도 구현 가능하지만 이런 단순 조건 검증에는 Validation Rule이 더 간단하고 표준적이다. B(Assignment Rule)는 배정 기능이다. D(Escalation Rule)는 Case 에스컬레이션 기능이다.",
+      "examPoint": "단순 필드 조건 검증 및 저장 차단은 항상 Validation Rule을 우선 고려.",
+      "practicalExample": "Stage가 Prospecting인데 Close Date가 과거 날짜면 Validation Rule이 저장을 막는다."
+    }
+  },
+  {
+    "id": "q-adx-automation-054",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants new Cases submitted by customers in the Healthcare industry to be automatically assigned to the Healthcare Support Queue. What should be configured?",
+    "choices": [
+      "Case Escalation Rule",
+      "플로우",
+      "Case Assignment Rule",
+      "Auto-Response Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "업종 기준으로 Case를 특정 큐에 자동 배정하는 표준 기능은 Case Assignment Rule이다.",
+      "whyCorrect": "기준 충족 시 특정 큐로 라우팅해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Escalation Rule)는 미해결 Case의 시간 초과 에스컬레이션 기능이다. B(Flow)로도 가능하지만 Assignment Rule이 전용 기능이다. D(Auto-Response Rule)는 확인 이메일 발송 기능이다.",
+      "examPoint": "업종/지역 등 기준별 자동 큐 배정은 Case Assignment Rule로 직결.",
+      "practicalExample": "Industry = Healthcare인 신규 Case는 Assignment Rule에 의해 Healthcare Support Queue로 자동 배정된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-055",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An Approval Process at Universal Containers is configured so that if the approver does not respond within 24 hours, the request is automatically approved. Which feature enables this?",
+    "choices": [
+      "Escalation Rule",
+      "Approval Process Time-Based Action",
+      "Auto-Approval Flow",
+      "Scheduled Path in Flow"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Approval Process의 Time-Based Action은 지정 시간 동안 응답이 없을 때 자동으로 특정 작업(자동 승인 등)을 실행하는 기능이다.",
+      "whyCorrect": "24시간 내 응답 없으면 자동 승인되어야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Escalation Rule)는 Case 전용 기능이다. C(Auto-Approval Flow)는 존재하지 않는 기능명이다. D(Scheduled Path in Flow)는 Record-Triggered Flow의 개념으로 Approval Process와는 별개다.",
+      "examPoint": "승인 프로세스 내 시간 경과 기반 자동 액션은 Time-Based Action으로 직결.",
+      "practicalExample": "24시간 동안 승인자가 응답하지 않으면 Time-Based Action이 자동으로 요청을 승인 처리한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-056",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to guide customer service agents through a 5-step complaint intake process that collects information across multiple screens and creates a Case at the end. Which tool is best?",
+    "choices": [
+      "레코드 트리거",
+      "Approval Process",
+      "화면 플로우",
+      "일정 트리거"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "여러 화면에 걸쳐 정보를 수집한 뒤 마지막에 레코드를 생성하는 시나리오는 Screen Flow의 전형적인 용도다.",
+      "whyCorrect": "5단계 정보 수집 후 Case 생성이 필요하므로 정답은 C다.",
+      "whyIncorrect": "A(Record-Triggered)는 자동 백그라운드 실행이다. B(Approval Process)는 승인 워크플로우다. D(Schedule-Triggered)는 시간 기반이다.",
+      "examPoint": "다단계 안내형 정보 수집 + 레코드 생성은 항상 Screen Flow.",
+      "practicalExample": "상담원이 Screen Flow의 5단계 화면을 따라 불만 접수 정보를 입력하면 마지막에 Case가 자동 생성된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-057",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC has a Validation Rule that prevents Opportunities from being saved if the Amount is blank when Stage is Proposal. A data migration team needs to import historical Opportunities where Amount is empty. What should the admin do?",
+    "choices": [
+      "Delete the Validation Rule permanently",
+      "Temporarily deactivate the Validation Rule during the import",
+      "Use a different import method",
+      "Change the field to optional on the page layout"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Validation Rule은 Data Loader를 포함한 모든 저장 방식에 적용되므로, 임포트가 막힐 때는 일시적으로 비활성화하는 것이 표준 절차다.",
+      "whyCorrect": "이번 임포트에 한해 우회해야 하므로 영구 삭제 없이 일시 비활성화 후 재활성화하는 B가 정답이다.",
+      "whyIncorrect": "A(영구 삭제)는 향후 데이터 품질을 지켜주지 못해 위험하다. C(다른 임포트 방법)도 Validation Rule이 여전히 적용된다. D(Page Layout 변경)는 Validation Rule과 무관해 효과가 없다.",
+      "examPoint": "'이번 한 번만 우회'가 필요하면 일시 비활성화 후 재활성화가 정석.",
+      "practicalExample": "과거 데이터 마이그레이션을 위해 Validation Rule을 잠시 끄고 Data Loader로 임포트한 뒤 즉시 다시 켠다."
+    }
+  },
+  {
+    "id": "q-adx-automation-058",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which of the following automation tools was officially retired by Salesforce on December 31, 2025?",
+    "choices": [
+      "Flow Builder",
+      "Apex Triggers",
+      "Workflow Rules and Process Builder",
+      "Assignment Rules"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "2025년 12월 31일 공식 폐기된 것은 Workflow Rules and Process Builder다.",
+      "whyCorrect": "폐기 대상은 이 두 레거시 도구이므로 정답은 C다.",
+      "whyIncorrect": "A(Flow Builder)는 현재 표준이다. B(Apex Triggers)는 계속 지원된다. D(Assignment Rules)도 계속 지원된다.",
+      "examPoint": "폐기된 것은 Workflow Rules와 Process Builder뿐이라는 점을 정확히 기억.",
+      "practicalExample": "관리자는 남아있는 Workflow Rule을 2025년 12월 31일 이전에 모두 Flow로 마이그레이션해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-059",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to automatically create a related record in a custom object whenever a new Account is created. No code should be required. What should be used?",
+    "choices": [
+      "워크플로우 규칙",
+      "Approval Process",
+      "레코드 트리거",
+      "Validation Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "새 Account 생성 시 코드 없이 관련 커스텀 레코드를 자동 생성하는 표준 방법은 Record-Triggered Flow의 Create Records 요소다.",
+      "whyCorrect": "레코드 생성 시 자동으로 다른 레코드를 만드는 코드 없는 자동화이므로 정답은 C다.",
+      "whyIncorrect": "A(워크플로우 규칙)는 폐기됐다. B(Approval Process)는 승인 워크플로우로 레코드 생성 자동화와 무관하다. D(Validation Rule)는 저장을 차단할 뿐 레코드 생성 기능이 없다.",
+      "examPoint": "레코드 생성 시 관련 레코드 자동 생성은 Record-Triggered Flow + Create Records로 직결.",
+      "practicalExample": "새 Account가 만들어지면 Flow가 관련 커스텀 오브젝트 레코드를 자동으로 생성한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-060",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to send an automated Case confirmation email to customers immediately after they submit a Case through the online portal. What should be configured?",
+    "choices": [
+      "Workflow Email Alert",
+      "Auto-Response Rule for Cases",
+      "Record-Triggered Flow with Email Action",
+      "Assignment Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Case 생성 즉시 자동 확인 이메일을 발송하는 전용 기능은 Auto-Response Rule이다.",
+      "whyCorrect": "Case 생성 트리거에 특화된 자동 이메일 발송이 필요하므로 정답은 B다.",
+      "whyIncorrect": "A(Workflow Email Alert)는 폐기된 도구다. C(Record-Triggered Flow with Email Action)도 가능하지만 Auto-Response Rule이 더 간단한 전용 기능이다. D(Assignment Rule)는 라우팅 기능이다.",
+      "examPoint": "'Case/Lead 생성 즉시 확인 이메일'은 항상 Auto-Response Rule로 직결.",
+      "practicalExample": "고객이 온라인 포털로 Case를 제출하면 즉시 Auto-Response Rule이 확인 이메일을 발송한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-061",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to automatically populate the Close Date on a new Opportunity to be 30 days from today. No user input should be needed. What should be used?",
+    "choices": [
+      "Default Field Value using a formula",
+      "Validation Rule",
+      "Assignment Rule",
+      "워크플로우 규칙"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Default Field Value(수식 포함)는 레코드 생성 시 사용자의 입력 없이 필드에 자동으로 값을 채워주는 Object Manager 설정이다.",
+      "whyCorrect": "오늘로부터 30일 후 날짜를 자동으로 채우고 사용자 입력이 필요 없어야 하므로, TODAY()+30 같은 수식을 사용한 Default Field Value가 정답(A)이다.",
+      "whyIncorrect": "B(Validation Rule)는 값을 채우는 게 아니라 저장을 막는 기능이다. C(Assignment Rule)는 배정 기능으로 필드 자동 채움과 무관하다. D(워크플로우 규칙)는 폐기된 도구이며 애초에 신규 레코드 생성 시 기본값 채움에는 적합하지 않다.",
+      "examPoint": "'신규 레코드 생성 시 자동 채움 + 사용자 입력 불필요'는 Default Field Value(수식)로 직결.",
+      "practicalExample": "Opportunity 생성 시 Close Date 필드에 TODAY() + 30을 기본값으로 설정하면 담당자가 별도로 입력하지 않아도 30일 후 날짜가 자동으로 채워진다."
+    }
+  },
+  {
+    "id": "q-adx-automation-062",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants a Flow to run BEFORE a record is saved to update a field on the same record without a DML operation. Which Flow type and trigger timing should be used?",
+    "choices": [
+      "After-Save Record-Triggered Flow",
+      "Before-Save Record-Triggered Flow",
+      "일정 트리거",
+      "화면 플로우"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Before-Save Record-Triggered Flow는 레코드가 실제 저장되기 전에 실행되어, 같은 레코드의 필드 값을 별도 DML 없이 바로 반영할 수 있다.",
+      "whyCorrect": "저장 전에 같은 레코드 필드를 DML 없이 업데이트해야 하므로 Before-Save Record-Triggered Flow가 정답(B)이다.",
+      "whyIncorrect": "A(After-Save)는 저장 후 실행되어 같은 레코드를 다시 업데이트하려면 별도 DML이 필요하다. C(일정 트리거)는 시간 기반이라 저장 시점과 무관하다. D(화면 플로우)는 사용자 상호작용용으로 이 자동화 시나리오와 다르다.",
+      "examPoint": "'같은 레코드 + DML 없이'라는 키워드는 항상 Before-Save Flow로 직결.",
+      "practicalExample": "Opportunity 저장 전 Before-Save Flow로 Discount % 필드를 자동 계산해 채우면 추가 DML 없이 즉시 저장된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-063",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has an Approval Process for Discounts. When an approver is on vacation, their manager should be able to approve instead. Which feature enables this?",
+    "choices": [
+      "Approval Process Delegation",
+      "Delegated Approver setting on the User record",
+      "Approval Process with multiple approvers",
+      "Manual reassignment"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Delegated Approver는 사용자 레코드에 설정하는 대리 승인자로, 원래 승인자가 부재할 때 대신 승인/거절할 수 있게 한다.",
+      "whyCorrect": "승인자가 휴가 중일 때 관리자가 대신 승인할 수 있어야 하므로 User 레코드의 Delegated Approver 설정이 정답(B)이다.",
+      "whyIncorrect": "A(Approval Process Delegation)는 존재하지 않는 기능명이다. C(여러 승인자 지정)는 대리 승인이 아니라 병렬/순차 승인자 추가를 의미해 목적이 다르다. D(수동 재배정)는 매번 관리자가 직접 처리해야 하는 임시방편일 뿐 자동화된 위임이 아니다.",
+      "examPoint": "부재 시 대리 승인 문제는 항상 User 레코드의 Delegated Approver로 연결.",
+      "practicalExample": "승인자가 휴가 등록 기간에는 User 레코드에 설정된 Delegated Approver가 대신 할인 승인 요청을 처리한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-064",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to send an escalation email to a VP if a high-priority Case is not resolved within 4 hours. What should be configured?",
+    "choices": [
+      "Case Assignment Rule",
+      "Auto-Response Rule",
+      "Case Escalation Rule",
+      "Record-Triggered Flow with time-based path"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Case Escalation Rule은 지정된 시간 내에 해결되지 않은 Case를 자동으로 상위 담당자/관리자에게 에스컬레이션하는 SLA 관리 기능이다.",
+      "whyCorrect": "4시간 내 미해결 High Priority Case를 VP에게 에스컬레이션해야 하므로 시간 기반 SLA 전용 도구인 Case Escalation Rule이 정답(C)이다.",
+      "whyIncorrect": "A(Case Assignment Rule)는 최초 배정 기능이라 시간 경과 조건이 없다. B(Auto-Response Rule)는 생성 시 확인 이메일 발송 기능이다. D(Record-Triggered Flow with time-based path)도 구현 가능하지만 이 요구에는 전용 기능인 Escalation Rule이 더 적합하다.",
+      "examPoint": "'N시간 내 미해결 시 상위 알림/에스컬레이션'은 항상 Escalation Rule.",
+      "practicalExample": "High Priority Case가 4시간 동안 처리되지 않으면 Escalation Rule이 자동으로 VP에게 알림 이메일을 발송한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-065",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A Record-Triggered Flow at Universal Containers updates a field on a related Account when an Opportunity is saved. A user saves an Opportunity and sees their browser freeze for 30 seconds. What is the most likely cause?",
+    "choices": [
+      "The Flow has an infinite loop",
+      "The Account has too many fields",
+      "The users internet connection is slow",
+      "FLS is blocking the field update"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Record-Triggered Flow가 자신이 수정한 레코드를 다시 트리거하도록 조건 없이 구성되면 무한 루프가 발생해 저장이 지연되거나 브라우저가 멈춘 것처럼 보인다.",
+      "whyCorrect": "Opportunity 저장 시 Flow가 Account를 업데이트하고, 그 Account 업데이트가 다시 어떤 Flow를 트리거하는 구조라면 반복 실행으로 지연이 발생하므로 정답은 A다.",
+      "whyIncorrect": "B(Account 필드 수)는 몇십~몇백 개 수준에서는 성능에 큰 영향이 없다. C(인터넷 연결)는 서버 측 처리 지연과는 무관한 클라이언트 측 요인이다. D(FLS 차단)는 업데이트 자체를 막을 뿐 지연을 일으키지 않는다.",
+      "examPoint": "'저장이 비정상적으로 오래 걸린다/브라우저가 멈춘다'는 표현은 Flow 무한 루프 의심의 신호.",
+      "practicalExample": "Opportunity 저장 → Account 업데이트 Flow 실행 → 그 Account 업데이트가 다시 다른 Flow를 트리거하는 구조라면 Entry Conditions로 재트리거를 막아야 한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-066",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to ensure that every time an Account is created, a default Contact is also created with the name Support Contact. No code should be used. What is the best solution?",
+    "choices": [
+      "Page Layout default values",
+      "Record-Triggered Flow with Create Records action",
+      "Validation Rule",
+      "Data Loader template"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Record-Triggered Flow의 Create Records 요소는 코드 없이 관련 레코드(여기서는 Contact)를 자동 생성할 수 있게 한다.",
+      "whyCorrect": "Account 생성 시마다 이름이 'Support Contact'인 기본 Contact를 코드 없이 자동 생성해야 하므로 Create Records 액션을 포함한 Record-Triggered Flow가 정답(B)이다.",
+      "whyIncorrect": "A(Page Layout default values)는 같은 레코드의 필드 기본값만 채울 뿐 별도 레코드를 생성하지 못한다. C(Validation Rule)는 저장을 제어할 뿐 레코드 생성 기능이 없다. D(Data Loader template)는 일회성 대량 작업 도구로 자동화된 트리거 기반 생성과 무관하다.",
+      "examPoint": "'레코드 생성 시 관련 레코드 자동 생성, 코드 없이'는 Record-Triggered Flow + Create Records로 직결.",
+      "practicalExample": "새 Account가 생성되면 Flow가 자동으로 이름 'Support Contact'인 Contact를 만들어 연결한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-067",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to block users from saving a Case if the Subject field is fewer than 10 characters. Which formula should be in the Validation Rule error condition?",
+    "choices": [
+      "LEN(Subject) >= 10",
+      "LEN(Subject) < 10",
+      "Subject",
+      "NOT(ISBLANK(Subject))"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Validation Rule은 오류 조건 수식이 TRUE일 때 저장을 차단하므로, '10자 미만이면 차단'하려면 조건 자체가 '10자 미만일 때 TRUE'가 되어야 한다.",
+      "whyCorrect": "Subject 길이가 10자 미만일 때 저장을 막아야 하므로, LEN(Subject) < 10이 TRUE가 되는 경우에 오류를 발생시키는 B가 정답이다.",
+      "whyIncorrect": "A(LEN(Subject) >= 10)는 정상적으로 10자 이상인 경우에도 TRUE가 되어 저장을 막아버리는 반대 로직이다. C(Subject)는 텍스트 값 자체이며 비교 조건이 아니다. D(NOT(ISBLANK(Subject)))는 비어있지 않을 때 TRUE가 되어 길이 조건과 무관하다.",
+      "examPoint": "Validation Rule 수식은 '저장을 막고 싶은 상황이 TRUE가 되도록' 작성해야 한다는 점을 항상 기억.",
+      "practicalExample": "상담원이 Subject를 '문의'처럼 짧게 입력하면 LEN(Subject) < 10이 TRUE가 되어 저장이 차단되고 더 구체적인 제목을 요구하는 오류 메시지가 표시된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-068",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to give users a button on the Account record that, when clicked, opens a guided form to collect information and create a new related Project__c record. Which tool should be used?",
+    "choices": [
+      "Page Layout button with Validation Rule",
+      "Screen Flow launched from a Quick Action",
+      "레코드 트리거",
+      "Approval Process"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Quick Action으로 레코드 페이지에 버튼을 추가하고, 그 버튼이 Screen Flow를 실행하면 사용자가 안내 화면을 거쳐 정보를 입력하고 새 레코드를 생성할 수 있다.",
+      "whyCorrect": "버튼 클릭 → 안내 폼으로 정보 수집 → 관련 레코드(Project__c) 생성이라는 대화형 흐름이 필요하므로 Quick Action에서 실행되는 Screen Flow가 정답(B)이다.",
+      "whyIncorrect": "A(Page Layout button with Validation Rule)는 저장 차단 기능이라 안내 폼 제공과 무관하다. C(Record-Triggered Flow)는 사용자 클릭이 아닌 레코드 변경으로 자동 실행되는 백그라운드 자동화라 버튼 클릭 시나리오와 다르다. D(Approval Process)는 승인 워크플로우로 정보 수집 폼과 무관하다.",
+      "examPoint": "'버튼 클릭 → 화면 안내 → 레코드 생성'은 Quick Action + Screen Flow 조합의 전형적 패턴.",
+      "practicalExample": "Account 페이지의 'New Project' 버튼을 클릭하면 Screen Flow가 열려 프로젝트명, 기한 등을 입력받은 뒤 Project__c 레코드를 생성한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-069",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC has a Validation Rule that fires for all users when a field is blank. They want to exempt System Administrators from this rule. How can this be done?",
+    "choices": [
+      "System Admins bypass all validation rules by default",
+      "Add $Profile.Name != System Administrator to the Validation Rule formula",
+      "Create a separate profile for admins without the rule",
+      "Use a Permission Set to disable the rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Validation Rule 수식에 $Profile.Name != 'System Administrator'를 조건에 추가하면, 관리자 프로필일 때는 오류 조건이 TRUE가 되지 않아 규칙이 사실상 면제된다.",
+      "whyCorrect": "관리자도 기본적으로 Validation Rule의 적용을 받으므로, 예외 처리를 하려면 수식에 프로필 체크 조건을 명시적으로 추가해야 해서 정답은 B다.",
+      "whyIncorrect": "A(관리자는 기본적으로 우회)는 사실이 아니다 — 관리자도 기본 적용 대상이다. C(별도 프로필 생성)는 관리 복잡도만 늘리는 비효율적 방법이다. D(Permission Set으로 규칙 비활성화)는 Validation Rule을 끄는 표준 방법이 아니다.",
+      "examPoint": "'관리자 예외 처리'는 항상 $Profile.Name != 'System Administrator' 조건 추가로 구현.",
+      "practicalExample": "데이터 정비 작업을 하는 관리자가 임시로 필수 조건을 우회해야 할 때, 이 수식 조건 덕분에 관리자 프로필에서는 Validation Rule이 발동하지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-automation-070",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers wants to create a Flow that sends a survey link to customers 7 days after a Case is closed. Which Flow element handles the time-based delay?",
+    "choices": [
+      "Decision Element",
+      "Loop Element",
+      "Wait Element / Scheduled Path",
+      "Assignment Element"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Record-Triggered Flow 안의 Scheduled Path(Wait 요소)는 트리거 이후 지정된 시간이 지난 뒤 추가 동작을 실행할 수 있게 한다.",
+      "whyCorrect": "Case가 닫힌 지 7일 후에 설문 링크를 보내야 하므로, 시간 지연을 처리하는 Wait Element/Scheduled Path가 정답(C)이다.",
+      "whyIncorrect": "A(Decision Element)는 조건 분기이지 시간 지연이 아니다. B(Loop Element)는 컬렉션 반복 처리용이다. D(Assignment Element)는 변수 값 설정 기능으로 시간 지연과 무관하다.",
+      "examPoint": "'N일 후 자동 실행'이라는 요구는 항상 Scheduled Path(Wait Element)로 연결.",
+      "practicalExample": "Case Status가 Closed로 바뀌면 Flow가 트리거되고, Scheduled Path가 7일을 기다린 뒤 고객에게 설문 이메일을 발송한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-071",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to prevent duplicate Lead records based on matching email address. What should be configured?",
+    "choices": [
+      "Validation Rule on Email field",
+      "Duplicate Rules and Matching Rules in Setup",
+      "Flow to check for duplicates",
+      "Unique field setting on Email"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Matching Rule은 어떤 필드(이메일 등) 기준으로 중복을 판단할지 정의하고, Duplicate Rule은 매칭된 레코드 발견 시 경고/차단 행동을 정의한다.",
+      "whyCorrect": "이메일 일치 기준으로 중복 Lead를 방지하려면 Setup에서 두 규칙을 함께 구성해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Validation Rule on Email field)는 다른 레코드를 조회하는 로직이 복잡해 표준 중복 방지 방법이 아니다. C(Flow to check for duplicates)도 구현 가능하지만 전용 표준 기능이 이미 존재한다. D(Unique field setting on Email)는 완전히 동일한 값만 차단하며 유사 매칭은 못 한다.",
+      "examPoint": "중복 관리 문제는 항상 Matching Rule(판단 기준) + Duplicate Rule(행동) 세트로 기억.",
+      "practicalExample": "같은 이메일로 새 Lead를 만들려 하면 Duplicate Rule이 경고를 띄우고 저장을 막거나 허용 여부를 관리자가 설정한 대로 처리한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-072",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to require that when a Case Status is changed to Closed, the Resolution field must be filled in. The requirement applies to all save methods including API. What is the correct solution?",
+    "choices": [
+      "Mark Resolution as required on the page layout",
+      "Set Resolution as universally required in Object Manager",
+      "Create a Validation Rule: IF(Status = \"Closed\" AND ISBLANK(Resolution__c), TRUE, FALSE)",
+      "Create an Assignment Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Validation Rule은 UI뿐 아니라 API, Data Loader를 통한 저장에도 동일하게 적용되는 유일한 데이터 검증 방법이다.",
+      "whyCorrect": "'모든 저장 방법(API 포함)'에 강제되어야 하므로, API에도 적용되는 Validation Rule을 조건부 수식으로 구성한 C가 정답이다.",
+      "whyIncorrect": "A(Page Layout 필수 필드)는 UI에서만 강제되고 API로는 우회 가능하다. B(Object Manager에서 전체 필수 설정)는 항상 필수로 만들어 Closed가 아닌 상태에서도 강제되어 요구사항(Closed일 때만)과 맞지 않는다. D(Assignment Rule)는 배정 기능으로 값 검증과 무관하다.",
+      "examPoint": "'API를 포함한 모든 저장 방식에 강제'라는 조건이 나오면 항상 Validation Rule.",
+      "practicalExample": "상담원이 API로 Case를 일괄 종료 처리하려 해도 Resolution 필드가 비어있으면 Validation Rule에 의해 저장이 거부된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-073",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to prevent duplicate Case records based on matching Subject and Contact Email. What should be configured?",
+    "choices": [
+      "Validation Rule checking for existing Cases",
+      "Duplicate Rules with a Matching Rule on Subject and Email",
+      "Flow to search for duplicates on save",
+      "Unique field on Subject"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Case에도 Lead/Contact와 마찬가지로 Matching Rule + Duplicate Rule을 구성해 특정 필드 조합(Subject, Contact Email 등) 기준의 중복을 감지할 수 있다.",
+      "whyCorrect": "Subject와 Contact Email의 조합으로 중복 Case를 방지해야 하므로 해당 필드를 기준으로 한 Matching Rule + Duplicate Rule 구성이 정답(B)이다.",
+      "whyIncorrect": "A(Validation Rule checking for existing Cases)는 다른 레코드를 조회하는 로직이 복잡해 표준 방법이 아니다. C(Flow to search for duplicates on save)도 가능하지만 전용 표준 기능이 이미 있다. D(Unique field on Subject)는 완전 동일 값만 차단하며 여러 필드 조합 매칭은 지원하지 않는다.",
+      "examPoint": "중복 방지 대상 오브젝트가 Lead든 Case든 원리는 동일하게 Matching Rule + Duplicate Rule.",
+      "practicalExample": "같은 고객이 같은 제목으로 Case를 중복 제출하면 Duplicate Rule이 경고를 표시해 상담원이 기존 Case를 먼저 확인하도록 유도한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-074",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to automatically assign a 5-star rating badge to any Account where the total Opportunity revenue exceeds $1 million. No code should be required. What should be used?",
+    "choices": [
+      "Validation Rule",
+      "워크플로우 규칙",
+      "레코드 트리거",
+      "Approval Process"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Record-Triggered Flow는 관련 레코드의 합계(Roll-Up Summary 필드 등)를 조건으로 검사해 코드 없이 다른 필드 값을 자동 업데이트할 수 있다.",
+      "whyCorrect": "Opportunity 총매출이 $1M을 초과하는 Account에 자동으로 뱃지를 부여해야 하므로, 코드 없는 자동화인 Record-Triggered Flow가 정답(C)이다.",
+      "whyIncorrect": "A(Validation Rule)는 저장을 차단할 뿐 필드 값을 자동으로 설정하지 못한다. B(워크플로우 규칙)는 폐기된 레거시 도구다. D(Approval Process)는 승인 워크플로우로 자동 뱃지 부여와는 목적이 다르다.",
+      "examPoint": "'조건에 따라 필드를 자동으로 갱신, 코드 없이'는 Record-Triggered Flow의 전형적 사용 사례.",
+      "practicalExample": "Account의 Total Opportunity Revenue(Roll-Up Summary)가 $1M을 넘으면 Flow가 자동으로 5-Star Badge 필드를 체크한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-075",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to send a birthday email to customers on their birthday each year. Which Flow type should handle this use case?",
+    "choices": [
+      "Record-Triggered Flow on Contact update",
+      "Screen Flow triggered by agent",
+      "Schedule-Triggered Flow running daily checking birthdate",
+      "Autolaunched Flow called from Apex"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Schedule-Triggered Flow는 매일 지정된 시간에 실행되어 조건(오늘이 생일인 Contact)에 맞는 레코드 컬렉션을 찾아 반복 처리할 수 있다.",
+      "whyCorrect": "매년 고객 생일에 이메일을 보내려면 매일 생일을 확인하는 반복 배치 작업이 필요하므로 Schedule-Triggered Flow가 정답(C)이다.",
+      "whyIncorrect": "A(Record-Triggered Flow on Contact update)는 Contact가 수정될 때만 실행되어 생일 당일 자동 확인이 불가능하다. B(Screen Flow)는 사용자가 직접 실행해야 하는 대화형 Flow라 자동화에 맞지 않는다. D(Autolaunched Flow called from Apex)는 별도 Apex 코드로 호출해야 해서 'No code' 요구에 부합하지 않는 경우가 많다.",
+      "examPoint": "'매일/매주 등 반복 조건 검사'는 항상 Schedule-Triggered Flow.",
+      "practicalExample": "매일 자정 Schedule-Triggered Flow가 실행되어 오늘이 생일인 Contact를 찾아 자동으로 축하 이메일을 발송한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-076",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to create a Flow that checks if a related Account has a specific field value before creating a new record. Which Flow element evaluates this condition?",
+    "choices": [
+      "Assignment Element",
+      "Get Records Element followed by Decision Element",
+      "Create Records Element",
+      "Loop Element"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Flow에서 다른 레코드(Account)의 필드 값을 확인하려면 먼저 Get Records로 데이터를 조회한 뒤, Decision 요소로 조건을 평가해야 한다.",
+      "whyCorrect": "새 레코드를 생성하기 전에 관련 Account의 특정 필드 값을 확인해야 하므로, 조회(Get Records) 후 조건 분기(Decision)를 수행하는 조합이 정답(B)이다.",
+      "whyIncorrect": "A(Assignment Element)는 변수 값 설정 기능으로 조건 평가가 아니다. C(Create Records Element)는 레코드 생성 자체이지 사전 조건 확인이 아니다. D(Loop Element)는 컬렉션 반복 처리용으로 단일 조건 확인과는 다르다.",
+      "examPoint": "'다른 레코드 값을 확인 후 분기'는 항상 Get Records + Decision 조합.",
+      "practicalExample": "Opportunity Flow가 실행되기 전 관련 Account의 Industry 필드를 Get Records로 조회하고, Decision으로 특정 업종일 때만 후속 레코드를 생성하도록 분기한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-077",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants managers to be notified by email when any Opportunity in their teams pipeline has not been updated in 7 days. Which Flow type is most appropriate?",
+    "choices": [
+      "레코드 트리거",
+      "화면 플로우",
+      "일정 트리거",
+      "Autolaunched Flow called from Apex"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Schedule-Triggered Flow는 매일 실행되어 'N일간 업데이트되지 않은 레코드'처럼 시간 경과 기반 조건을 검사하는 배치성 작업에 적합하다.",
+      "whyCorrect": "7일간 업데이트되지 않은 Opportunity를 매일 확인해 관리자에게 알려야 하므로 Schedule-Triggered Flow가 정답(C)이다.",
+      "whyIncorrect": "A(Record-Triggered Flow)는 레코드가 실제로 변경될 때만 실행되어 '변경되지 않음'을 감지하는 용도로는 맞지 않는다. B(화면 플로우)는 사용자가 직접 실행해야 하는 대화형 도구다. D(Autolaunched Flow called from Apex)는 별도 Apex 호출이 필요해 이 시나리오의 표준 해법이 아니다.",
+      "examPoint": "'일정 기간 변경 없음'을 감지하는 요구는 Schedule-Triggered Flow로 매일 검사하는 패턴.",
+      "practicalExample": "매일 아침 Schedule-Triggered Flow가 실행되어 7일간 LastModifiedDate가 갱신되지 않은 Opportunity를 찾아 담당 관리자에게 이메일로 알린다."
+    }
+  },
+  {
+    "id": "q-adx-automation-078",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants a follow-up email sent to the Opportunity owner 3 days after the Stage is set to Closed Won. What should the admin configure?",
+    "choices": [
+      "A Workflow Rule with a time-based action",
+      "An Approval Process with a final action",
+      "A Record-Triggered Flow with a Scheduled Path 3 days after Stage change",
+      "A Schedule-Triggered Flow running daily"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Record-Triggered Flow의 Scheduled Path는 특정 필드 변경(Stage = Closed Won) 이후 지정된 시일(3일)이 지나면 후속 액션을 실행한다.",
+      "whyCorrect": "Stage가 Closed Won으로 바뀐 지 3일 후에 후속 이메일을 보내야 하므로, Record-Triggered Flow 안의 Scheduled Path가 정답(C)이다.",
+      "whyIncorrect": "A(Workflow Rule with time-based action)는 폐기된 레거시 도구다. B(Approval Process with a final action)는 승인 워크플로우로 이 시나리오와 무관하다. D(Schedule-Triggered Flow running daily)는 매일 조건을 다시 검사해야 해서 특정 변경 시점 기준 지연 실행보다 비효율적이다.",
+      "examPoint": "'특정 변경 이후 N일 뒤 실행'은 Record-Triggered Flow + Scheduled Path의 전형적 사용 사례.",
+      "practicalExample": "Opportunity가 Closed Won으로 바뀌면 Flow가 트리거되고, Scheduled Path가 3일을 기다린 뒤 담당자에게 후속 안내 이메일을 자동 발송한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-079",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin needs to update a field on a related parent Account when an Opportunity is created. Which Flow type is MOST efficient?",
+    "choices": [
+      "Screen Flow launched from a button",
+      "Before-Save Record-Triggered Flow on Opportunity",
+      "After-Save Record-Triggered Flow on Opportunity",
+      "Schedule-Triggered Flow"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Before-Save Flow는 같은 레코드의 필드만 DML 없이 수정할 수 있고, 다른 레코드(부모 Account 등)를 수정하려면 반드시 After-Save Flow에서 별도 DML을 수행해야 한다.",
+      "whyCorrect": "부모 Account라는 다른 레코드를 업데이트해야 하므로 Before-Save로는 불가능하고 After-Save Record-Triggered Flow가 정답(C)이다.",
+      "whyIncorrect": "A(Screen Flow launched from a button)는 사용자 클릭이 필요해 자동화 요구에 맞지 않는다. B(Before-Save Record-Triggered Flow)는 같은 레코드만 수정 가능해 부모 레코드 업데이트에는 사용할 수 없다. D(Schedule-Triggered Flow)는 실시간 반응이 아닌 배치 방식이라 'Opportunity 생성 시 즉시' 요구와 맞지 않는다.",
+      "examPoint": "같은 레코드 수정 = Before-Save, 다른(관련) 레코드 수정 = After-Save로 명확히 구분.",
+      "practicalExample": "Opportunity가 생성되면 After-Save Flow가 실행되어 부모 Account의 'Last Opportunity Date' 필드를 자동으로 갱신한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-080",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers uses an Approval Process for discounts. When submitted, the record should be locked from editing. Where should record locking be configured?",
+    "choices": [
+      "Final Approval Actions",
+      "Final Rejection Actions",
+      "Initial Submission Actions",
+      "Recall Actions"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Approval Process의 Initial Submission Actions는 요청이 제출되는 즉시 실행되는 작업으로, 레코드 잠금이나 Status 변경 등이 여기에 포함된다.",
+      "whyCorrect": "승인 요청 제출 시 레코드를 편집 불가 상태로 잠가야 하므로 Initial Submission Actions가 정답(C)이다.",
+      "whyIncorrect": "A(Final Approval Actions)는 모든 승인 단계가 끝난 뒤 실행된다. B(Final Rejection Actions)는 거절이 최종 확정된 뒤 실행된다. D(Recall Actions)는 요청자가 요청을 취소했을 때 실행된다.",
+      "examPoint": "제출 시점 즉시 발생하는 동작(레코드 잠금 등)은 항상 Initial Submission Actions.",
+      "practicalExample": "할인 승인 요청을 제출하면 Initial Submission Actions에 의해 해당 Opportunity가 즉시 편집 잠금 상태가 된다."
+    }
+  },
+  {
+    "id": "q-adx-automation-081",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A Validation Rule is blocking a legitimate data import through Data Loader. The admin needs to bypass it only for this import. What is the safest approach?",
+    "choices": [
+      "Deactivate the Validation Rule, run the import, then reactivate",
+      "Add a Profile exclusion to the Validation Rule formula permanently",
+      "Use Data Import Wizard instead of Data Loader",
+      "Temporarily change the OWD"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Validation Rule은 Data Loader를 포함한 모든 저장 방식에 적용되므로, 정당한 대량 임포트가 막힐 때는 일시적으로 규칙을 비활성화한 뒤 임포트를 완료하고 다시 활성화하는 것이 표준 절차다.",
+      "whyCorrect": "이 임포트에 한해서만 우회하는 것이 목표이므로, 영구적 변경 없이 일시적으로 비활성화-임포트-재활성화하는 A가 가장 안전한 접근이다.",
+      "whyIncorrect": "B(Profile 예외를 영구 추가)는 이후에도 계속 규칙이 느슨해져 데이터 품질 위험이 남는다. C(Data Import Wizard로 변경)도 Validation Rule이 여전히 적용되어 문제를 해결하지 못한다. D(OWD 임시 변경)는 공유 설정으로 Validation Rule과 무관하다.",
+      "examPoint": "'이번 한 번만 우회'가 필요하면 규칙을 일시 비활성화 후 재활성화하는 방식이 정석.",
+      "practicalExample": "과거 데이터 마이그레이션 시 Amount가 빈 레코드가 많다면 관련 Validation Rule을 잠시 끄고 Data Loader로 임포트한 뒤 즉시 다시 켠다."
+    }
+  },
+  {
+    "id": "q-adx-automation-082",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to automatically create a follow-up Task assigned to the Case owner when a Case is closed. Which automation should be used?",
+    "choices": [
+      "Approval Process",
+      "Before-Save Record-Triggered Flow",
+      "After-Save Record-Triggered Flow with Create Records element",
+      "Duplicate Rule"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Case가 닫힌 뒤 별도의 Task 레코드를 생성하려면, 관련(다른) 레코드를 만드는 Create Records 요소가 포함된 After-Save Record-Triggered Flow가 필요하다.",
+      "whyCorrect": "Case owner에게 배정되는 후속 Task를 자동 생성해야 하므로, Create Records 요소를 가진 After-Save Record-Triggered Flow가 정답(C)이다.",
+      "whyIncorrect": "A(Approval Process)는 승인 워크플로우로 후속 Task 생성과 무관하다. B(Before-Save Record-Triggered Flow)는 같은 레코드만 수정 가능해 새 Task 레코드를 만들 수 없다. D(Duplicate Rule)는 중복 방지 기능으로 Task 생성과 무관하다.",
+      "examPoint": "다른(관련) 레코드를 새로 만들어야 하면 항상 After-Save Flow + Create Records.",
+      "practicalExample": "Case Status가 Closed로 바뀌면 After-Save Flow가 Case Owner에게 배정된 'Follow-up Call' Task를 자동으로 생성한다."
+    }
+  },
+  {
+    "id": "q-adx-automation-083",
+    "category": "세일즈포스",
+    "difficulty": "심화",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin needs to ensure a Record-Triggered Flow does not re-trigger when it updates the same record it fired on. What is the BEST approach?",
+    "choices": [
+      "Delete the Flow after it processes a record",
+      "Set Entry Conditions so the Flow only runs when a specific field changes to a specific value",
+      "Use a Before-Save Flow instead",
+      "Set Flow to run maximum once per org per day"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Entry Conditions는 Record-Triggered Flow가 실행될 조건을 좁혀, Flow 자신이 만든 변경으로 인해 다시 트리거되는 것을 방지하는 표준 방법이다.",
+      "whyCorrect": "Flow가 자신이 업데이트한 레코드에서 다시 실행되지 않도록 하려면, 특정 필드가 특정 값으로 '변경될 때'만 실행되도록 Entry Conditions를 좁히는 것이 가장 정확한 해법(B)이다.",
+      "whyIncorrect": "A(레코드 처리 후 Flow 삭제)는 향후 신규 레코드에는 자동화가 전혀 동작하지 않게 만들어 근본 해법이 아니다. C(Before-Save Flow로 전환)는 같은 레코드만 수정 가능해 다른 레코드 업데이트가 필요한 경우 대안이 될 수 없다. D(조직당 하루 1회 실행 제한)는 존재하지 않는 설정이다.",
+      "examPoint": "재트리거 방지의 정석은 항상 Entry Conditions를 정교하게 좁히는 것.",
+      "practicalExample": "Status 필드가 'New'에서 'In Progress'로 바뀔 때만 실행되도록 Entry Conditions를 설정하면, Flow 자신의 업데이트로 인한 무한 재실행을 막을 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-automation-084",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to notify the Account owner whenever a high-priority Case is created for one of their Accounts. What should be used?",
+    "choices": [
+      "Auto-Response Rule",
+      "After-Save Record-Triggered Flow with a custom notification or email action",
+      "Case Assignment Rule",
+      "Escalation Rule"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "새로 생성된 Case를 기준으로 관련된 다른 레코드(Account)의 소유자에게 알림을 보내려면 After-Save Record-Triggered Flow에서 커스텀 알림이나 이메일 액션을 실행해야 한다.",
+      "whyCorrect": "High Priority Case가 생성되었을 때 해당 Account의 소유자에게 알려야 하므로, 저장 후 알림/이메일 액션을 실행하는 After-Save Record-Triggered Flow가 정답(B)이다.",
+      "whyIncorrect": "A(Auto-Response Rule)는 Case를 제출한 고객에게만 확인 이메일을 보낼 뿐 Account Owner에게 알리는 기능이 아니다. C(Case Assignment Rule)는 Case를 담당자/큐에 배정하는 기능일 뿐 별도 알림 발송이 목적이 아니다. D(Escalation Rule)는 미해결 시간이 지나야 발동하는 시간 기반 기능이라 '생성 즉시'라는 조건과 맞지 않는다.",
+      "examPoint": "'생성 즉시 관련 레코드 소유자에게 알림'은 After-Save Flow + 알림/이메일 액션 조합.",
+      "practicalExample": "High Priority Case가 생성되면 After-Save Flow가 실행되어 관련 Account Owner에게 앱 내 알림을 즉시 보낸다."
+    }
+  }
+]
