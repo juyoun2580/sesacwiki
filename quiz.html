@@ -87,23 +87,43 @@
           <div class="quiz-header">
             <div>
               <a class="back-link quiz-header__back" href="exam.html">‹ 모의고사 목록으로</a>
-              <h1 class="quiz-header__title">SQL 기초 10문제 <span class="tag tag--gray">입문</span></h1>
-              <p class="quiz-header__meta">SQL 기본 문법 확인 · ⏱ 10분 · 📝 10문제 · 👥 256명 응시</p>
+              <h1 class="quiz-header__title"><span id="quiz-title-text">모의고사</span> <span id="quiz-level-tag"
+                  class="tag tag--gray"></span></h1>
+              <p class="quiz-header__meta" id="quiz-meta">문제를 불러오는 중이에요…</p>
             </div>
-            <button type="button" class="btn btn--danger" data-action="toast" data-message="시험을 종료했어요.">시험 종료하기</button>
+            <button type="button" class="btn btn--danger" id="quiz-end-btn">시험 종료하기</button>
           </div>
 
-          <div class="quiz-layout">
+          <!-- 설정 단계: 난이도/문항 수를 고르고 시작하기 -->
+          <div class="quiz-setup" id="quiz-setup">
+            <div class="quiz-info-card">
+              <p class="quiz-info-card__title">⚙️ 응시 설정</p>
+              <div class="quiz-setup__field">
+                <p class="quiz-setup__label">난이도 선택</p>
+                <div class="quiz-setup__checkboxes" id="quiz-setup-difficulty"></div>
+              </div>
+              <div class="quiz-setup__field">
+                <label class="quiz-setup__label" for="quiz-setup-count">문항 수 <span
+                    id="quiz-setup-count-value">-</span>문제</label>
+                <input type="range" id="quiz-setup-count" class="quiz-setup__slider" min="1" max="1" value="1" step="1">
+              </div>
+              <p class="quiz-setup__hint" id="quiz-setup-hint"></p>
+              <button type="button" class="btn btn--primary quiz-setup__start-btn" id="quiz-setup-start-btn">시작하기
+                ›</button>
+            </div>
+          </div>
+
+          <div class="quiz-layout" id="quiz-play" hidden>
             <!-- 좌: 시험 정보 -->
             <aside class="quiz-layout__aside" aria-label="시험 정보">
               <div class="quiz-info-card">
                 <p class="quiz-info-card__title">📋 시험 정보</p>
                 <div class="quiz-info-row"><span class="quiz-info-row__label">출제 유형</span><span
                     class="quiz-info-row__value">객관식</span></div>
-                <div class="quiz-info-row"><span class="quiz-info-row__label">배점</span><span
-                    class="quiz-info-row__value">10점 (문제당 1점)</span></div>
-                <div class="quiz-info-row"><span class="quiz-info-row__label">제한 시간</span><span
-                    class="quiz-info-row__value">10분</span></div>
+                <div class="quiz-info-row"><span class="quiz-info-row__label">배점</span><span id="quiz-info-point"
+                    class="quiz-info-row__value">-</span></div>
+                <div class="quiz-info-row"><span class="quiz-info-row__label">제한 시간</span><span id="quiz-info-time"
+                    class="quiz-info-row__value">-</span></div>
                 <div class="quiz-info-row"><span class="quiz-info-row__label">응시 가능</span><span
                     class="quiz-info-row__value">무제한</span></div>
               </div>
@@ -121,41 +141,30 @@
             <!-- 중: 문제 -->
             <div class="quiz-layout__main">
               <div class="quiz-progress">
-                <div class="quiz-progress__row"><span>3 / 10 문제</span><span>30%</span></div>
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                  <div class="progress-bar__fill progress-bar__fill--green" data-progress="30"></div>
+                <div class="quiz-progress__row"><span id="quiz-progress-text">- / - 문제</span><span
+                    id="quiz-progress-percent">0%</span></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                  <div id="quiz-progress-fill" class="progress-bar__fill progress-bar__fill--green"
+                    data-progress="0"></div>
                 </div>
               </div>
 
               <div class="quiz-question">
                 <div class="quiz-question__head">
-                  <span class="quiz-question__num">Q3.</span>
-                  <span class="tag tag--gray">객관식 (1점)</span>
+                  <span class="quiz-question__num" id="quiz-question-num">Q-.</span>
+                  <span class="tag tag--gray" id="quiz-question-meta-tag">-</span>
                 </div>
-                <p class="quiz-question__text">WHERE 절의 역할로 가장 알맞은 것은?</p>
+                <p class="quiz-question__text" id="quiz-question-text">문제를 불러오는 중이에요…</p>
 
-                <button type="button" class="choice">
-                  <span class="choice__circle" aria-hidden="true"></span><span class="choice__text">데이터를 추가한다</span>
-                </button>
-                <button type="button" class="choice choice--selected">
-                  <span class="choice__circle" aria-hidden="true"></span><span class="choice__text">조건에 맞는 데이터를
-                    조회한다</span>
-                </button>
-                <button type="button" class="choice">
-                  <span class="choice__circle" aria-hidden="true"></span><span class="choice__text">테이블을 삭제한다</span>
-                </button>
-                <button type="button" class="choice">
-                  <span class="choice__circle" aria-hidden="true"></span><span class="choice__text">컬럼 이름을 변경한다</span>
-                </button>
+                <div id="quiz-choices"></div>
 
                 <div class="quiz-question__footer">
                   <label class="quiz-question__later">
                     <input type="checkbox"> 나중에 다시 풀기
                   </label>
                   <div class="quiz-question__actions">
-                    <button type="button" class="btn btn--outline">‹ 이전 문제</button>
-                    <button type="button" class="btn btn--primary" data-action="toast" data-message="다음 문제로 이동해요!">다음 문제
-                      ›</button>
+                    <button type="button" class="btn btn--outline" id="quiz-prev-btn">‹ 이전 문제</button>
+                    <button type="button" class="btn btn--primary" id="quiz-next-btn">다음 문제 ›</button>
                   </div>
                 </div>
               </div>
@@ -172,18 +181,7 @@
                 <li><span class="question-grid-legend__swatch question-grid-legend__swatch--todo"
                     aria-hidden="true"></span>아직 안 풀었어요</li>
               </ul>
-              <div class="question-grid">
-                <button type="button" class="question-grid__num question-grid__num--done">1</button>
-                <button type="button" class="question-grid__num question-grid__num--done">2</button>
-                <button type="button" class="question-grid__num question-grid__num--curr">3</button>
-                <button type="button" class="question-grid__num">4</button>
-                <button type="button" class="question-grid__num">5</button>
-                <button type="button" class="question-grid__num">6</button>
-                <button type="button" class="question-grid__num">7</button>
-                <button type="button" class="question-grid__num">8</button>
-                <button type="button" class="question-grid__num">9</button>
-                <button type="button" class="question-grid__num">10</button>
-              </div>
+              <div class="question-grid" id="quiz-question-grid"></div>
 
               <div class="memo-panel memo-panel--timer">
                 <p class="memo-panel__title">남은 시간</p>
@@ -203,6 +201,37 @@
                 <textarea id="quiz-memo" class="memo-panel__textarea" placeholder="문제와 관련된 내용을 메모해보세요!"></textarea>
               </div>
             </aside>
+          </div>
+
+          <!-- 결과 단계: 채점 완료 후 -->
+          <div class="quiz-result" id="quiz-result" hidden>
+            <div class="quiz-question quiz-result__card">
+              <p class="quiz-result__emoji" aria-hidden="true">🌱</p>
+              <p class="quiz-result__title">수고하셨습니다!</p>
+              <p class="quiz-result__desc" id="quiz-result-desc"></p>
+              <div class="quiz-result__actions">
+                <button type="button" class="btn btn--outline" id="quiz-result-score-btn">📊 점수 보기</button>
+                <a class="btn btn--primary" href="exam.html" id="quiz-result-exit-btn">시험 종료하기</a>
+              </div>
+              <div class="quiz-result__breakdown" id="quiz-result-breakdown" hidden>
+                <div class="exam-status-ring-wrap">
+                  <div class="score-ring">
+                    <svg id="quiz-result-ring-svg" viewBox="0 0 80 80" width="80" height="80" role="img"
+                      aria-label="이번 응시 점수 0%">
+                      <circle class="score-ring__bg" cx="40" cy="40" r="30" stroke-width="7" />
+                      <circle id="quiz-result-ring-fill" class="score-ring__fill" cx="40" cy="40" r="30"
+                        stroke="var(--g700)" stroke-width="7" stroke-dasharray="188" stroke-dashoffset="188"
+                        transform="rotate(-90 40 40)" />
+                    </svg>
+                    <div class="score-ring__text"><span id="quiz-result-score-value"
+                        class="score-ring__value">0%</span><span class="exam-status-ring-wrap__caption">이번 점수</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="section-title section-title--sm">문항별 결과 (틀린 문제는 눌러서 해설을 확인하세요)</p>
+                <div class="wrong-note-list" id="quiz-result-question-list"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

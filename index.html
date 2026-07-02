@@ -18,46 +18,56 @@
   <link rel="stylesheet" href="assets/css/pages/home.css">
 </head>
 
-<body>
+<body data-auth="user">
+  <!-- 로그인 전: guest -->
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
   <!-- ================================================= -->
   <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
-  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 담당 : feature/home (공통 담당자 전용)                -->
   <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
   <!-- ================================================= -->
   <header class="header">
-    <div class="header__logo">
-      <span class="header__logo-mark" aria-hidden="true">🌱</span>
-      <div>
-        <p class="header__logo-name">새싹트리</p>
-        <p class="header__logo-sub">나만의 취업 핸드북</p>
-      </div>
-    </div>
-    <div class="search-box">
-      <span class="search-box__icon" aria-hidden="true">🔍</span>
-      <label class="sr-only" for="global-search">검색</label>
-      <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
-    </div>
+    <a href="index.html" class="header__logo" aria-label="새싹Wiki 홈">
+      <img src="./assets/img/logo.svg" alt="새싹Wiki">
+    </a>
     <div class="header__right">
-      <button type="button" class="notification-btn" aria-label="알림">🔔<span
-          class="notification-btn__dot"></span></button>
-      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>1,240P</p>
-      <button type="button" class="user-chip">
-        <span class="avatar" aria-hidden="true">🌿</span>
-        <span>
-          <span class="user-chip__name">김새싹</span>
-          <span class="user-chip__level">Lv.3 잎새</span>
-        </span>
-        <span class="user-chip__caret" aria-hidden="true">▾</span>
+      <button type="button" class="hamburger-btn" aria-label="메뉴 열기" aria-controls="side-panel" aria-expanded="false">
+        <span class="hamburger-btn__bar"></span>
+        <span class="hamburger-btn__bar"></span>
+        <span class="hamburger-btn__bar"></span>
       </button>
+      <div class="search-box">
+        <span class="search-box__icon" aria-hidden="true">🔍</span>
+        <label class="sr-only" for="global-search">검색</label>
+        <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!">
+      </div>
+      <button type="button" class="notification-btn" aria-label="알림">
+        🔔<span class="notification-btn__dot"></span>
+      </button>
+      <p class="point-badge"><span class="point-badge__icon" aria-hidden="true">🪙</span>0P</p>
+      <button type="button" class="btn btn--outline btn--sm auth-guest-only">로그인</button>
+      <div class="user-menu auth-user-only">
+        <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false"
+          aria-controls="user-menu-dropdown">
+          <span class="avatar" aria-hidden="true">🌱</span>
+          <span>
+            <span class="user-chip__name">김새싹</span>
+            <span class="user-chip__level">Lv.1 잎새</span>
+          </span>
+        </button>
+        <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
+          <a href="my.html" class="user-menu__item" role="menuitem">마이페이지</a>
+          <button type="button" class="user-menu__item" role="menuitem">로그아웃</button>
+        </div>
+      </div>
     </div>
   </header>
   <!-- COMMON HEADER END -->
 
   <!-- ================================================= -->
   <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
-  <!-- 담당 : feature/core (공통 담당자 전용)                -->
+  <!-- 담당 : feature/home (공통 담당자 전용)                -->
   <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
   <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
   <!-- ================================================= -->
@@ -130,8 +140,8 @@
             </article>
             <article class="stat-card">
               <p class="stat-card__label"><span aria-hidden="true">⭐</span>총 포인트</p>
-              <p class="stat-card__number">1,240P</p>
-              <p class="stat-card__pill stat-card__pill--gold">이번 주 +120P</p>
+              <p class="stat-card__number">0P</p>
+              <p class="stat-card__pill stat-card__pill--gold">이번 주 +0P</p>
             </article>
           </div>
 
@@ -200,8 +210,8 @@
                       class="recent-list__title">이력서 작성 가이드</span><span class="tag tag--gold tag--sm">취업핸드북</span><span
                       class="recent-list__time">3시간 전</span></li>
                   <li><a class="recent-list__item recent-list__item--clickable" href="exam.html"><span
-                        class="recent-list__icon" aria-hidden="true">📝</span><span
-                        class="recent-list__title">모의고사 1회</span><span class="tag tag--blue tag--sm">모의고사</span><span
+                        class="recent-list__icon" aria-hidden="true">📝</span><span class="recent-list__title">모의고사
+                        1회</span><span class="tag tag--blue tag--sm">모의고사</span><span
                         class="recent-list__time">어제</span></a></li>
                 </ul>
               </div>
@@ -243,7 +253,7 @@
           </div>
         </div>
 
-        <aside class="side-panel" aria-label="바로가기 및 학습 기록">
+        <aside id="side-panel" class="side-panel" aria-label="바로가기 및 학습 기록">
           <div class="streak-card">
             <p class="streak-card__label">연속 학습 기록</p>
             <div class="streak-card__value-row">
@@ -258,8 +268,7 @@
           </div>
           <h2 class="shortcut-heading">바로가기</h2>
           <ul class="shortcut-grid">
-            <li><a class="shortcut-btn" href="mywords.html"><em
-                  class="shortcut-btn__icon">📓</em>단어장</a></li>
+            <li><a class="shortcut-btn" href="mywords.html"><em class="shortcut-btn__icon">📓</em>단어장</a></li>
             <li><button type="button" class="shortcut-btn"><em class="shortcut-btn__icon">❌</em>오답노트</button></li>
             <li><button type="button" class="shortcut-btn"><em class="shortcut-btn__icon">✏️</em>하이라이트</button></li>
             <li><button type="button" class="shortcut-btn"><em class="shortcut-btn__icon">📈</em>진도 리포트</button></li>

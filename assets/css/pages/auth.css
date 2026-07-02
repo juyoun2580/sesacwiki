@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Auth (로그인 / 회원가입) — MyPage(Job/My) 담당 소유, 마이페이지 진입 전 단계
+   신규 파일: 공식 WORK_ORDER.md 스코프(my/mywords/myfav) 밖의 프로토타입.
+   공통 앱 셸(header/nav/.shell) 없이 독립적으로 렌더링되는 인증 전용 화면.
+   login.html / signup.html 두 파일이 이 CSS를 공유한다.
+   ========================================================================== */
+
+.auth-body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--hero-grad-1), var(--bg) 60%);
+  padding: var(--space-24);
+}
+
+.auth-shell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-lg);
+  padding: var(--space-40) var(--space-32);
+}
+
+.auth-card__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-9);
+  margin-bottom: var(--space-24);
+}
+
+.auth-card__logo-mark {
+  width: var(--space-36);
+  height: var(--space-36);
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--g700), var(--g500));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-18);
+  box-shadow: var(--sh-logo);
+}
+
+.auth-card__logo-name {
+  font-size: var(--fs-17);
+  font-weight: 800;
+  color: var(--g900);
+  letter-spacing: -.3px;
+}
+
+.auth-card__title {
+  font-size: var(--fs-22);
+  font-weight: 800;
+  color: var(--g900);
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.auth-card__subtitle {
+  font-size: var(--fs-13);
+  color: var(--ink3);
+  text-align: center;
+  margin-bottom: var(--space-28);
+  line-height: 1.6;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.auth-label {
+  font-size: var(--fs-13);
+  font-weight: 700;
+  color: var(--ink2);
+}
+
+.auth-input {
+  height: var(--space-44);
+  padding: 0 var(--space-14);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-14);
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: var(--g500);
+  box-shadow: var(--focus-ring);
+}
+
+.auth-checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+  font-size: var(--fs-12);
+  color: var(--ink2);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.auth-checkbox-row input[type="checkbox"] {
+  margin-top: 2px;
+  accent-color: var(--g700);
+  width: var(--space-16);
+  height: var(--space-16);
+  flex-shrink: 0;
+}
+
+.auth-checkbox-row__required {
+  color: var(--coral);
+  font-weight: 700;
+}
+
+.auth-form__submit {
+  margin-top: var(--space-8);
+  width: 100%;
+}
+
+.auth-card__switch {
+  margin-top: var(--space-24);
+  text-align: center;
+  font-size: var(--fs-13);
+  color: var(--ink3);
+}
+
+.auth-card__switch-link {
+  color: var(--g700);
+  font-weight: 700;
+}
+
+.auth-card__switch-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- 이메일 인증 대기 패널 (모킹) ---------- */
+.auth-pending {
+  margin-top: var(--space-24);
+  padding: var(--space-20);
+  border-radius: var(--r-md);
+  background: var(--g20);
+  border: 1px solid var(--g100);
+  text-align: center;
+}
+
+.auth-pending__icon {
+  font-size: var(--fs-32);
+  margin-bottom: var(--space-8);
+}
+
+.auth-pending__title {
+  font-size: var(--fs-15);
+  font-weight: 800;
+  color: var(--g900);
+  margin-bottom: var(--space-6);
+}
+
+.auth-pending__desc {
+  font-size: var(--fs-12);
+  color: var(--ink3);
+  line-height: 1.6;
+  margin-bottom: var(--space-16);
+}
+
+.auth-pending__resend {
+  display: block;
+  margin: var(--space-12) auto 0;
+  font-size: var(--fs-12);
+  color: var(--ink3);
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
