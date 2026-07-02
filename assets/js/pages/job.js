@@ -90,7 +90,10 @@ const DEMO_JOB_FEATURES = {
     graded: {},
     custom: []
   },
-  interests: ['fe-dev', 'fullstack'],
+  interests: [
+    { id: 'int1', jobId: 'fe-dev',    title: '프론트엔드 개발자', memo: 'UI/UX를 코드로 구현하는 웹 개발자' },
+    { id: 'int2', jobId: 'fullstack', title: '풀스택 개발자',     memo: '프론트·백엔드 전반을 담당하는 개발자' }
+  ],
   aptitude: { answers: [] },
   industryNotes: {
     it: 'IT 업계는 프론트엔드 수요가 꾸준히 증가 중. React/TypeScript 기반 포지션이 많고, 신입도 사이드 프로젝트 경험을 중시함.',
@@ -166,8 +169,8 @@ const DEMO_JOB_FEATURES = {
   },
   customIQs: [],
   researchNotes: {
-    co1: '2025년 하반기 채용 공고 확인. 프론트엔드 포지션 TO 3명. React + TypeScript 필수. 복지 패키지 우수. 유연 근무 가능.',
-    co2: '스타트업 특유의 빠른 의사결정 문화. 주 1회 전체 미팅. 스톡옵션 제공. 성장 가능성 높음.'
+    '(주)그린테크솔루션': '2025년 하반기 채용 공고 확인. 프론트엔드 포지션 TO 3명. React + TypeScript 필수. 복지 패키지 우수. 유연 근무 가능.',
+    '스타트업 ABC': '스타트업 특유의 빠른 의사결정 문화. 주 1회 전체 미팅. 스톡옵션 제공. 성장 가능성 높음.'
   },
   companies: [
     { id: 'co1', company: '(주)그린테크솔루션', position: '프론트엔드 개발자', appliedDate: '2025-06-10', status: '1차 면접' },
@@ -178,7 +181,7 @@ const DEMO_JOB_FEATURES = {
     { id: 'iv1', company: '(주)그린테크솔루션', type: '1차 면접', date: '2025-07-05', time: '14:00', location: '서울 강남구 테헤란로 123 그린테크 본사 3층' }
   ],
   feedbackNotes: {
-    iv1: '면접관 3명 예정. 포트폴리오 발표 10분 + QA 20분. React 최적화 및 협업 경험 관련 심화 질문 예상. 복장 비즈니스 캐주얼.'
+    co1: '면접관 3명 예정. 포트폴리오 발표 10분 + QA 20분. React 최적화 및 협업 경험 관련 심화 질문 예상. 복장 비즈니스 캐주얼.'
   }
 };
 
