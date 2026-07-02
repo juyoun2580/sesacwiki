@@ -8,7 +8,8 @@ const WIKI_PAGE_SIZE = 5;
 const WIKI_CATEGORY_ICON = {
   'SQL': '🗄️',
   'Java': '☕',
-  'HTML/CSS': '🌐',
+  'HTML': '🌐',
+  'CSS': '🎨',
   'JavaScript': '⚡',
   'Git': '🔀',
   'Salesforce': '☁️',
@@ -20,7 +21,8 @@ const WIKI_CATEGORY_ICON = {
 const WIKI_CATEGORY_TAG_COLOR = {
   'SQL': 'green',
   'Java': 'orange',
-  'HTML/CSS': 'blue',
+  'HTML': 'blue',
+  'CSS': 'blue',
   'JavaScript': 'gold',
   'Git': 'gray',
   'Salesforce': 'purple',
@@ -30,6 +32,7 @@ const WIKI_CATEGORY_TAG_COLOR = {
 };
 
 const WIKI_LEVEL_ORDER = { '입문': 0, '기초': 1, '중급': 2 };
+const WIKI_RETURN_STATE_KEY = 'wikiReturnState';
 
 let wikiAllItems = [];
 let wikiState = {
@@ -72,9 +75,13 @@ function buildWikiFavoriteStar(item) {
   // ui.js는 defer 스크립트 실행 시점에 존재하는 .favorite-star에만 클릭을 바인딩한다.
   // fetch 이후 동적으로 추가되는 이 별은 토글 로직 재구현 없이 공통 함수 ts()만 연결한다.
   star.addEventListener('click', e => {
+    // 이 별은 <a class="wiki-row"> 안에 있어서 stopPropagation만으로는
+    // 앵커의 기본 이동(href) 동작을 막지 못해 상세 페이지로 이동해버린다.
+    e.preventDefault();
     e.stopPropagation();
     ts(star);
     item.bookmarked = star.classList.contains('favorite-star--on');
+    renderWikiFavoritesPanel();
   });
   return star;
 }
@@ -84,6 +91,17 @@ function buildWikiRow(item) {
   const a = document.createElement('a');
   a.className = 'wiki-row';
   a.href = `detail.html?id=${encodeURIComponent(item.id)}`;
+  // 상세 페이지의 "뒤로가기"가 목록 필터/페이지/스크롤 위치를 그대로 복원할 수 있도록,
+  // 상세로 넘어가기 직전 상태를 저장해둔다.
+  a.addEventListener('click', () => {
+    sessionStorage.setItem(WIKI_RETURN_STATE_KEY, JSON.stringify({
+      category: wikiState.category,
+      search: wikiState.search,
+      sort: wikiState.sort,
+      page: wikiState.page,
+      scrollY: window.scrollY
+    }));
+  });
 
   const icon = document.createElement('span');
   icon.className = 'wiki-row__icon';
@@ -182,25 +200,88 @@ function renderWikiList() {
   renderWikiPagination(sorted.length);
 }
 
-function renderWikiTopList() {
-  const topListEl = document.getElementById('wikiTopList');
-  topListEl.innerHTML = '';
-  const top5 = [...wikiAllItems].sort((a, b) => b.views - a.views).slice(0, 5);
-  top5.forEach((item, index) => {
+const WIKI_FAVORITE_PREVIEW_COUNT = 4;
+let wikiFavoritesExpanded = false;
+
+function truncateWikiTitle(title, length) {
+  return title.length > length ? title.slice(0, length) + '…' : title;
+}
+
+function renderWikiFavoritesPanel() {
+  const listEl = document.getElementById('wikiFavoriteList');
+  const toggleBtn = document.getElementById('wikiFavoriteToggle');
+  if (!listEl || !toggleBtn) return;
+
+  const favorites = wikiAllItems.filter(item => item.bookmarked);
+  const hasOverflow = favorites.length > WIKI_FAVORITE_PREVIEW_COUNT;
+  const visibleItems = (wikiFavoritesExpanded || !hasOverflow)
+    ? favorites
+    : favorites.slice(0, WIKI_FAVORITE_PREVIEW_COUNT);
+
+  listEl.innerHTML = '';
+  if (favorites.length === 0) {
     const li = document.createElement('li');
-    li.className = 'top-list__item';
+    li.className = 'favorite-list__empty';
+    li.textContent = '즐겨찾기한 위키가 없어요.';
+    listEl.appendChild(li);
+  } else {
+    visibleItems.forEach(item => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.className = 'favorite-list__link';
+      a.href = `detail.html?id=${encodeURIComponent(item.id)}`;
 
-    const badge = document.createElement('span');
-    badge.className = 'rank-badge' + (index >= 3 ? ' rank-badge--muted' : '');
-    badge.textContent = String(index + 1);
+      const tag = document.createElement('span');
+      tag.className = `tag favorite-list__tag tag--${WIKI_CATEGORY_TAG_COLOR[item.category] || 'gray'}`;
+      tag.textContent = item.category;
 
-    const title = document.createElement('span');
-    title.className = 'top-list__title';
-    title.textContent = item.title;
+      const title = document.createElement('span');
+      title.className = 'favorite-list__title';
+      title.textContent = truncateWikiTitle(item.title, 4);
 
-    li.append(badge, title);
-    topListEl.appendChild(li);
+      a.append(tag, title);
+      li.appendChild(a);
+      listEl.appendChild(li);
+    });
+  }
+
+  toggleBtn.hidden = !hasOverflow;
+  if (hasOverflow) {
+    toggleBtn.textContent = wikiFavoritesExpanded ? '▲ 접기' : '▼ 펼치기';
+  }
+}
+
+// 상세 페이지 "뒤로가기"로 돌아왔을 때, 떠나기 직전 저장해둔 카테고리/검색/정렬/
+// 페이지/스크롤 위치를 복원한다. 1회성이라 읽자마자 sessionStorage에서 지운다.
+function restoreWikiReturnState() {
+  const raw = sessionStorage.getItem(WIKI_RETURN_STATE_KEY);
+  if (!raw) return;
+  sessionStorage.removeItem(WIKI_RETURN_STATE_KEY);
+
+  let saved;
+  try {
+    saved = JSON.parse(raw);
+  } catch (e) {
+    return;
+  }
+
+  wikiState.category = saved.category;
+  wikiState.search = saved.search;
+  wikiState.sort = saved.sort;
+  wikiState.page = saved.page;
+
+  const searchInput = document.getElementById('wiki-search');
+  if (searchInput) searchInput.value = wikiState.search;
+
+  document.querySelectorAll('.sidebar__item[data-category]').forEach(btn => {
+    btn.classList.toggle('sidebar__item--active', btn.dataset.category === wikiState.category);
   });
+  document.querySelectorAll('.sort-pill[data-sort]').forEach(btn => {
+    btn.classList.toggle('sort-pill--active', btn.dataset.sort === wikiState.sort);
+  });
+
+  renderWikiList();
+  requestAnimationFrame(() => window.scrollTo(0, saved.scrollY));
 }
 
 function wikiBindControls() {
@@ -214,7 +295,14 @@ function wikiBindControls() {
 
   document.querySelectorAll('.sort-pill[data-sort]').forEach(btn => {
     btn.addEventListener('click', () => {
-      wikiState.sort = btn.dataset.sort;
+      // ui.js가 클릭마다 무조건 sort-pill--active를 붙이므로(공통 파일, 수정 금지),
+      // 이미 선택된 정렬을 다시 누른 경우 여기서 직접 꺼서 "해제" 동작을 구현한다.
+      if (wikiState.sort === btn.dataset.sort) {
+        wikiState.sort = 'latest';
+        btn.classList.remove('sort-pill--active');
+      } else {
+        wikiState.sort = btn.dataset.sort;
+      }
       wikiState.page = 1;
       renderWikiList();
     });
@@ -225,6 +313,12 @@ function wikiBindControls() {
     wikiState.search = searchInput.value;
     wikiState.page = 1;
     renderWikiList();
+  });
+
+  const favoriteToggleBtn = document.getElementById('wikiFavoriteToggle');
+  favoriteToggleBtn.addEventListener('click', () => {
+    wikiFavoritesExpanded = !wikiFavoritesExpanded;
+    renderWikiFavoritesPanel();
   });
 }
 
@@ -245,7 +339,8 @@ function initWikiListPage() {
       wikiAllItems = data;
       wikiBindControls();
       renderWikiList();
-      renderWikiTopList();
+      renderWikiFavoritesPanel();
+      restoreWikiReturnState();
     })
     .catch(() => {
       const listEl = document.getElementById('wikiRowList');
