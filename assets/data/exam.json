@@ -263,6 +263,84 @@
       "avgScore": 64,
       "attemptCount": 11,
       "isRecommended": false
+    },
+    {
+      "id": "exam-020",
+      "icon": "🤝",
+      "title": "ADX201-Sales/Service",
+      "description": "Lead 전환, Case 라이프사이클, Assignment/Escalation Rule, Entitlement, Quote, Campaign 귀속 등 Salesforce Admin 자격증(ADX201) Sales & Service Cloud 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 81,
+      "estimatedMinutes": 90,
+      "avgScore": 63,
+      "attemptCount": 9,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-021",
+      "icon": "⚙️",
+      "title": "ADX201-Automation",
+      "description": "Flow 4종류, Before/After-Save, Validation Rule, Approval Process, Assignment/Escalation Rule 등 Salesforce Admin 자격증(ADX201) Workflow & Automation 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 84,
+      "estimatedMinutes": 95,
+      "avgScore": 62,
+      "attemptCount": 8,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-022",
+      "icon": "🧱",
+      "title": "ADX201-Objects",
+      "description": "Custom/External Object, Lookup vs Master-Detail, Record Type, FLS, Roll-Up/Cross-Object Formula 등 Salesforce Admin 자격증(ADX201) Object Manager & Lightning 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 91,
+      "estimatedMinutes": 100,
+      "avgScore": 61,
+      "attemptCount": 7,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-023",
+      "icon": "🛠️",
+      "title": "ADX201-Configuration",
+      "description": "사용자 관리, Sandbox 종류, Data Loader vs Import Wizard, Setup Audit Trail, 보안 정책, Change Set 배포 등 Salesforce Admin 자격증(ADX201) Configuration & Setup 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 95,
+      "estimatedMinutes": 105,
+      "avgScore": 60,
+      "attemptCount": 6,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-024",
+      "icon": "🔐",
+      "title": "ADX201-DataAccess",
+      "description": "OWD, Role Hierarchy, Sharing Rules, Manual/Apex Managed Sharing, FLS, Profile vs Permission Set, View All/Modify All Data 등 Salesforce Admin 자격증(ADX201) Data & Analytics(레코드 보안) 영역 핵심 개념 점검",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 97,
+      "estimatedMinutes": 110,
+      "avgScore": 59,
+      "attemptCount": 5,
+      "isRecommended": false
+    },
+    {
+      "id": "exam-015",
+      "icon": "🎯",
+      "title": "ADX201 종합 모의고사",
+      "description": "Identity & Access, Data & Analytics, Configuration & Setup, Object Manager & Lightning, Workflow & Automation, Sales & Service Cloud, Agentforce AI, Reports & Dashboards, Productivity & Collaboration — 9개 영역을 실제 시험 블루프린트 비중에 맞춰 출제한 Salesforce Admin(ADX201) 종합 모의고사",
+      "category": "세일즈포스",
+      "level": "중급~고급",
+      "questionCount": 121,
+      "estimatedMinutes": 135,
+      "avgScore": 58,
+      "attemptCount": 4,
+      "isRecommended": true
     }
   ],
   "combinedQuestions": {
@@ -294,6 +372,492 @@
       {
         "examId": "exam-007",
         "questionId": "q-etc-001"
+      }
+    ],
+    "exam-015": [
+      {
+        "examId": "exam-016",
+        "questionId": "q-adx-identity-005"
+      },
+      {
+        "examId": "exam-016",
+        "questionId": "q-adx-identity-015"
+      },
+      {
+        "examId": "exam-016",
+        "questionId": "q-adx-identity-025"
+      },
+      {
+        "examId": "exam-016",
+        "questionId": "q-adx-identity-035"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-003"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-008"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-013"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-017"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-022"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-027"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-032"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-037"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-042"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-047"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-051"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-056"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-061"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-066"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-071"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-076"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-081"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-085"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-090"
+      },
+      {
+        "examId": "exam-024",
+        "questionId": "q-adx-dataaccess-095"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-003"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-008"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-014"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-019"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-024"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-030"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-035"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-040"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-045"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-051"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-056"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-061"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-066"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-072"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-077"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-082"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-088"
+      },
+      {
+        "examId": "exam-023",
+        "questionId": "q-adx-configuration-093"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-003"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-008"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-013"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-018"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-023"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-028"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-033"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-038"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-043"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-049"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-054"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-059"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-064"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-069"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-074"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-079"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-084"
+      },
+      {
+        "examId": "exam-022",
+        "questionId": "q-adx-objects-089"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-003"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-008"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-012"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-017"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-022"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-026"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-031"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-036"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-040"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-045"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-050"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-054"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-059"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-064"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-068"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-073"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-078"
+      },
+      {
+        "examId": "exam-021",
+        "questionId": "q-adx-automation-082"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-003"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-009"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-015"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-021"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-027"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-032"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-038"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-044"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-050"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-055"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-061"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-067"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-073"
+      },
+      {
+        "examId": "exam-020",
+        "questionId": "q-adx-salesservice-079"
+      },
+      {
+        "examId": "exam-017",
+        "questionId": "q-adx-agentforce-003"
+      },
+      {
+        "examId": "exam-017",
+        "questionId": "q-adx-agentforce-008"
+      },
+      {
+        "examId": "exam-017",
+        "questionId": "q-adx-agentforce-012"
+      },
+      {
+        "examId": "exam-017",
+        "questionId": "q-adx-agentforce-017"
+      },
+      {
+        "examId": "exam-017",
+        "questionId": "q-adx-agentforce-022"
+      },
+      {
+        "examId": "exam-017",
+        "questionId": "q-adx-agentforce-027"
+      },
+      {
+        "examId": "exam-017",
+        "questionId": "q-adx-agentforce-032"
+      },
+      {
+        "examId": "exam-017",
+        "questionId": "q-adx-agentforce-036"
+      },
+      {
+        "examId": "exam-017",
+        "questionId": "q-adx-agentforce-041"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-003"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-009"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-014"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-020"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-026"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-031"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-037"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-042"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-048"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-054"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-059"
+      },
+      {
+        "examId": "exam-019",
+        "questionId": "q-adx-reports-065"
+      },
+      {
+        "examId": "exam-018",
+        "questionId": "q-adx-productivity-004"
+      },
+      {
+        "examId": "exam-018",
+        "questionId": "q-adx-productivity-012"
+      },
+      {
+        "examId": "exam-018",
+        "questionId": "q-adx-productivity-019"
+      },
+      {
+        "examId": "exam-018",
+        "questionId": "q-adx-productivity-026"
+      },
+      {
+        "examId": "exam-018",
+        "questionId": "q-adx-productivity-034"
+      },
+      {
+        "examId": "exam-018",
+        "questionId": "q-adx-productivity-041"
+      },
+      {
+        "examId": "exam-018",
+        "questionId": "q-adx-productivity-048"
+      },
+      {
+        "examId": "exam-018",
+        "questionId": "q-adx-productivity-056"
       }
     ]
   },

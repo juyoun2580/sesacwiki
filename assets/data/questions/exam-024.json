@@ -1,0 +1,2136 @@
+[
+  {
+    "id": "q-adx-dataaccess-001",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자당 할당 가능한 프로필 수는?",
+    "choices": [
+      "무제한",
+      "최대 5개",
+      "1개",
+      "2개"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Salesforce에서 각 사용자는 정확히 1개의 프로필만 가질 수 있다.",
+      "whyCorrect": "사용자당 프로필은 항상 1개이므로 정답은 C다.",
+      "whyIncorrect": "무제한, 5개, 2개는 실제 규칙과 다르다.",
+      "examPoint": "1 사용자 = 1 Profile + 여러 Permission Set이라는 구조를 기억.",
+      "practicalExample": "추가 권한이 필요하면 Profile을 바꾸지 않고 Permission Set을 부여한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-002",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "OWD를 Private으로 설정하면?",
+    "choices": [
+      "관리자만 볼 수 있다",
+      "모두가 볼 수 있다",
+      "본인 소유 레코드만 볼 수 있다",
+      "읽기만 가능하다"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Private OWD는 레코드 소유자만 기본적으로 접근할 수 있는 가장 제한적인 설정이다.",
+      "whyCorrect": "소유자 본인만 볼 수 있다는 것이 핵심이므로 정답은 C다.",
+      "whyIncorrect": "관리자만 볼 수 있다는 설명은 부정확하며(관리자는 예외적으로 항상 접근 가능하지만 그것이 Private의 정의는 아님), 모두가 보거나 읽기만 가능하다는 것은 다른 OWD 설정에 해당한다.",
+      "examPoint": "Private = 소유자만, 관리자는 OWD와 무관하게 항상 접근 가능하다는 점도 함께 기억.",
+      "practicalExample": "영업담당자는 자신이 소유한 Opportunity만 볼 수 있고 동료의 Opportunity는 보이지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-003",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "공유 규칙에 대한 설명으로 옳은 것은?",
+    "choices": [
+      "OWD보다 엄격하게 설정 가능",
+      "특정 그룹에 추가 접근 권한 부여",
+      "레코드 소유자만 설정 가능",
+      "코드로만 설정 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Sharing Rule은 OWD를 넘어서는 추가 접근 권한을 특정 그룹이나 Role에 자동으로 부여하는 기능이다.",
+      "whyCorrect": "추가 접근 권한 부여가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "OWD보다 더 엄격하게 설정하는 것은 불가능하고(확장만 가능), 관리자가 설정하는 것이지 소유자만 설정 가능한 것도 아니며, UI로도 설정 가능해 코드 전용도 아니다.",
+      "examPoint": "Sharing Rule = OWD 확대 전용, 축소 불가라는 규칙을 항상 기억.",
+      "practicalExample": "West 지역 소유 Opportunity를 Marketing 팀에게 자동 공유하는 Sharing Rule을 만든다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-004",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "프로필 변경 없이 특정 사용자에게 추가 권한 부여 방법은?",
+    "choices": [
+      "Profile",
+      "Permission Set",
+      "Role",
+      "Org-Wide Default"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Permission Set은 기존 Profile을 유지한 채로 특정 사용자에게 추가 권한을 부여하는 도구다.",
+      "whyCorrect": "Profile 변경 없이 추가 권한을 부여해야 하므로 정답은 B다.",
+      "whyIncorrect": "Profile 자체를 바꾸는 것은 요구사항에 어긋나고, Role은 레코드 공유 확장 기능, OWD는 조직 전체 기본 접근 수준 설정으로 각각 다른 목적을 가진다.",
+      "examPoint": "'프로필 유지 + 추가 권한'은 항상 Permission Set으로 직결.",
+      "practicalExample": "특정 담당자에게만 필요한 커스텀 오브젝트 접근 권한을 Permission Set으로 추가한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-005",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "소유자 변경 후에도 공유가 유지되는 도구는?",
+    "choices": [
+      "Manual Sharing",
+      "Sharing Rules",
+      "Apex Managed Sharing",
+      "Role Hierarchy"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Apex Managed Sharing은 코드로 설정하는 공유이며, 레코드 소유자가 바뀌어도 Apex 코드가 명시적으로 제거하지 않는 한 계속 유지된다.",
+      "whyCorrect": "소유자 변경 후에도 유지된다는 특징이 핵심이므로 정답은 C다.",
+      "whyIncorrect": "Manual Sharing은 소유자 변경 시 자동으로 삭제되며, Sharing Rules와 Role Hierarchy는 소유자 개인이 아니라 조건/계층 기반이라 이 질문의 초점과 다르다.",
+      "examPoint": "Manual Sharing = 소유자 변경 시 삭제, Apex Managed Sharing = 유지라는 차이를 명확히 구분.",
+      "practicalExample": "복잡한 승인 로직으로 공유된 레코드는 담당자가 바뀌어도 Apex Managed Sharing 덕분에 공유 상태가 그대로 유지된다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-006",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC가 모든 직원이 Account를 볼 수 있지만 소유자만 수정하도록 하려 합니다. OWD 설정은?",
+    "choices": [
+      "Private",
+      "Public Read Only",
+      "Public Read/Write",
+      "Controlled by Parent"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Public Read Only는 모든 사용자가 레코드를 볼 수 있게 하되 편집은 소유자로 제한하는 OWD 설정이다.",
+      "whyCorrect": "모두 보기 + 소유자만 수정이라는 요구에 정확히 부합하므로 정답은 B다.",
+      "whyIncorrect": "Private은 소유자만 볼 수 있어 '모두 보기' 요구에 어긋나고, Public Read/Write는 모두가 수정 가능해 '소유자만 수정' 요구에 어긋나며, Controlled by Parent는 자식 오브젝트 전용 설정이다.",
+      "examPoint": "'모두 보기 + 소유자만 수정'은 항상 Public Read Only로 직결.",
+      "practicalExample": "전체 영업팀이 모든 Account를 조회할 수 있지만 편집은 담당자만 가능하도록 Public Read Only를 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-007",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "역할 계층(Role Hierarchy)의 주요 기능은?",
+    "choices": [
+      "필드 접근 제어",
+      "상위 역할이 하위 레코드 자동 접근",
+      "OWD 설정",
+      "프로필 관리"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "역할 계층은 상위 역할의 사용자가 하위 역할 사용자가 소유한 레코드에 자동으로 접근할 수 있게 한다.",
+      "whyCorrect": "상위→하위 자동 접근이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "필드 접근 제어는 FLS, OWD 설정과 프로필 관리는 각각 별개의 설정 영역이다.",
+      "examPoint": "Role Hierarchy는 조직도의 상하 관계를 레코드 접근에 반영하는 기능이라는 점을 기억.",
+      "practicalExample": "팀장은 역할 계층에서 팀원보다 위에 있어 팀원의 Opportunity를 자동으로 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-008",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "특정 레코드를 소유하지 않은 특정 1명에게만 임시로 접근 권한을 주는 방법은?",
+    "choices": [
+      "Org-Wide Default",
+      "Sharing Rules",
+      "Manual Sharing",
+      "Profile"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Manual Sharing은 레코드 소유자나 관리자가 레코드 페이지에서 특정 사용자 한 명에게 직접, 건별로 공유하는 방법이다.",
+      "whyCorrect": "특정 1명 + 1개 레코드라는 정밀한 대상 지정이 핵심이므로 정답은 C다.",
+      "whyIncorrect": "OWD는 조직 전체 기본값, Sharing Rules는 조건 기반 그룹 공유, Profile은 오브젝트/필드 권한을 다루는 기능으로 이 세밀한 요구에는 맞지 않는다.",
+      "examPoint": "'특정 1명 + 특정 1건 + 임시'는 항상 Manual Sharing으로 직결.",
+      "practicalExample": "관리자가 특정 Account 레코드에서 Share 버튼을 눌러 한 사람에게만 임시로 접근을 준다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-009",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "FLS(Field-Level Security)와 페이지 레이아웃의 차이는?",
+    "choices": [
+      "차이 없음",
+      "FLS는 API에도 적용, 페이지 레이아웃은 화면만",
+      "페이지 레이아웃이 더 강력",
+      "FLS는 관리자만 설정 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "FLS는 보고서, API, 목록 보기 등 모든 접근 경로에 적용되지만 페이지 레이아웃은 레코드 상세/편집 화면에만 적용된다.",
+      "whyCorrect": "적용 범위의 차이가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "두 기능은 명백히 다르며, 오히려 FLS가 더 강력하고, FLS는 Profile과 Permission Set 모두에서 설정 가능해 관리자 전용도 아니다.",
+      "examPoint": "완전히 숨기려면 항상 FLS Hidden, Page Layout 제거만으로는 리포트·API에 여전히 노출된다는 점을 기억.",
+      "practicalExample": "Page Layout에서 필드를 제거해도 리포트에서는 여전히 보이지만, FLS를 Hidden으로 설정하면 어디서도 보이지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-010",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Permission Set Group의 용도는?",
+    "choices": [
+      "역할을 그룹으로 묶기",
+      "여러 권한 집합을 묶어 한 번에 할당",
+      "OWD를 그룹별로 설정",
+      "공유 규칙을 그룹화"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Permission Set Group은 여러 개의 Permission Set을 하나로 묶어 사용자에게 한 번에 할당할 수 있게 해준다.",
+      "whyCorrect": "여러 권한 집합의 일괄 할당이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "역할을 그룹으로 묶는 기능, OWD 그룹별 설정, 공유 규칙 그룹화는 각각 존재하지 않거나 별개의 개념이다.",
+      "examPoint": "여러 권한을 매번 개별 할당하는 대신 Permission Set Group으로 묶어 관리 효율을 높인다는 점을 기억.",
+      "practicalExample": "신규 영업직원에게 필요한 여러 Permission Set을 하나의 그룹으로 묶어 입사 첫날 한 번에 할당한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-011",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "OWD가 Public Read Only일 때 레코드 소유자가 아닌 사용자가 할 수 있는 것은?",
+    "choices": [
+      "레코드 보기만 가능",
+      "레코드 보기와 수정 가능",
+      "레코드 삭제 가능",
+      "아무것도 할 수 없다"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Public Read Only는 모든 사용자가 레코드를 볼 수 있게 하지만 수정은 소유자(및 상위 계층)로 제한한다.",
+      "whyCorrect": "비소유자는 보기만 가능하므로 정답은 A다.",
+      "whyIncorrect": "수정이나 삭제는 소유자가 아닌 이상 기본적으로 허용되지 않으며, '아무것도 할 수 없다'도 사실이 아니다(적어도 보기는 가능).",
+      "examPoint": "Public Read Only = 모두 보기, 소유자만 수정이라는 정의를 정확히 기억.",
+      "practicalExample": "동료의 Account 레코드를 열람할 수는 있지만 편집 버튼은 비활성화되어 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-012",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "역할 계층(Role Hierarchy)에서 팀장이 팀원의 레코드를 볼 수 있는 이유는?",
+    "choices": [
+      "팀장 프로필에 View All이 있어서",
+      "팀장이 역할 계층에서 팀원보다 위에 있어서",
+      "공유 규칙이 설정되어 있어서",
+      "OWD가 Public이어서"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "역할 계층에서 상위 Role의 사용자는 하위 Role 사용자가 소유한 레코드에 자동으로 접근할 수 있다.",
+      "whyCorrect": "팀장이 계층상 팀원보다 상위에 위치한다는 것이 이유이므로 정답은 B다.",
+      "whyIncorrect": "View All 권한, Sharing Rule, OWD Public은 모두 가능한 다른 접근 경로이지만, 이 시나리오에서 명시된 이유는 역할 계층의 상하 관계다.",
+      "examPoint": "Role Hierarchy 기반 접근은 Grant Access Using Hierarchies가 활성화되어 있어야 실제로 작동한다는 점도 함께 기억.",
+      "practicalExample": "팀장을 팀원들보다 상위 Role에 배치하면 별도 설정 없이도 자동으로 팀원의 레코드에 접근할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-013",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "필드를 보고서와 API에서도 숨기려면 무엇을 사용해야 하나요?",
+    "choices": [
+      "페이지 레이아웃에서 제거",
+      "Field-Level Security(FLS)를 Hidden으로 설정",
+      "Validation Rule 생성",
+      "Org-Wide Default"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "FLS를 Hidden으로 설정하면 페이지 레이아웃, 보고서, API, 검색 결과 등 모든 곳에서 필드가 완전히 숨겨진다.",
+      "whyCorrect": "보고서와 API를 포함한 완전한 숨김이 필요하므로 정답은 B다.",
+      "whyIncorrect": "Page Layout에서 제거하는 것은 레코드 상세 화면에만 적용되고, Validation Rule은 저장 조건 검증, OWD는 레코드 접근을 다루는 기능으로 필드 가시성과는 무관하다.",
+      "examPoint": "'보고서/API 포함 완전 숨김'은 항상 FLS Hidden으로 직결.",
+      "practicalExample": "Salary 필드를 HR 외 모든 프로필에서 FLS Hidden으로 설정하면 리포트에서도 그 필드가 나타나지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-014",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "수동 공유(Manual Sharing)의 특징으로 옳은 것은?",
+    "choices": [
+      "자동으로 실행된다",
+      "레코드 소유자가 직접 특정 사용자에게 공유한다",
+      "OWD보다 엄격하게 설정 가능하다",
+      "역할 계층을 통해 자동 전파된다"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Manual Sharing은 레코드 소유자나 관리자가 특정 사용자에게 개별 레코드를 직접 공유하는 수동 방식이다.",
+      "whyCorrect": "소유자의 직접적인 개별 공유가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "자동 실행이나 역할 계층을 통한 자동 전파는 Manual Sharing의 정의와 반대이며, OWD보다 더 엄격하게 설정하는 기능도 아니다.",
+      "examPoint": "Manual Sharing = 수동, 1:1, 소유자 변경 시 삭제라는 특징을 기억.",
+      "practicalExample": "소유자가 레코드 페이지의 Share 버튼을 눌러 동료 한 명에게 직접 공유를 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-015",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "프로필(Profile)로 제어할 수 없는 것은?",
+    "choices": [
+      "오브젝트 접근 권한",
+      "필드 접근 권한",
+      "레코드 수준 접근 권한",
+      "앱 접근 권한"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Profile은 오브젝트 권한, 필드 수준 권한(FLS), 앱 접근 권한을 제어하지만 레코드 수준 접근은 OWD, 역할 계층, 공유 규칙이 담당한다.",
+      "whyCorrect": "레코드 수준 접근이 Profile의 제어 범위 밖이므로 정답은 C다.",
+      "whyIncorrect": "오브젝트 접근, 필드 접근, 앱 접근은 모두 Profile에서 직접 설정 가능한 항목이다.",
+      "examPoint": "Profile = 오브젝트/필드/앱 수준, 레코드 수준 = OWD/Role Hierarchy/Sharing Rules로 명확히 구분.",
+      "practicalExample": "Profile에서 Opportunity Read 권한을 줘도 실제로 어떤 레코드를 볼 수 있는지는 OWD와 공유 설정이 최종 결정한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-016",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "공유 규칙(Sharing Rules)이 할 수 없는 것은?",
+    "choices": [
+      "특정 그룹에 추가 접근 권한 부여",
+      "OWD보다 더 엄격한 접근 설정",
+      "자동으로 레코드 공유",
+      "역할 기준으로 공유"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Sharing Rule은 OWD를 확장해 추가 접근 권한을 부여할 수 있을 뿐, OWD보다 더 제한적으로 설정할 수는 없다.",
+      "whyCorrect": "OWD보다 더 엄격한 설정이 불가능하다는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "특정 그룹에 추가 접근 부여, 자동 공유, 역할 기준 공유는 모두 Sharing Rule이 실제로 할 수 있는 기능이다.",
+      "examPoint": "Sharing Rule은 항상 OWD를 '확대'만 가능하다는 원칙을 반복해서 기억.",
+      "practicalExample": "OWD가 Public Read/Write인 오브젝트에 Sharing Rule로 특정 그룹의 접근을 더 제한할 수는 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-017",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "OWD의 기본 원칙으로 맞는 것은?",
+    "choices": [
+      "처음부터 모두에게 열어두고 필요시 제한",
+      "가장 엄격하게 설정 후 필요시 풀어줌",
+      "관리자가 모든 레코드를 직접 관리",
+      "프로필별로 다르게 설정"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "OWD 설정의 모범 사례는 가장 제한적인 설정(Private)으로 시작한 뒤 역할 계층, 공유 규칙 등으로 필요에 따라 접근을 넓히는 것이다.",
+      "whyCorrect": "가장 엄격하게 시작 후 확대라는 원칙이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "처음부터 모두에게 열어두는 것은 보안상 권장되지 않으며, 관리자가 직접 모든 레코드를 관리하거나 OWD를 프로필별로 다르게 설정하는 것도 OWD의 원칙과 다르다.",
+      "examPoint": "OWD는 '가장 제한적으로 시작, 필요시 확대'라는 보안 모범 사례를 반드시 기억.",
+      "practicalExample": "새 오브젝트를 만들 때는 우선 Private으로 시작한 뒤 필요한 팀에게만 Sharing Rule로 접근을 열어준다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-018",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Controlled by Parent OWD 설정은 어떤 의미인가요?",
+    "choices": [
+      "부모 오브젝트의 공유 설정을 따른다",
+      "관리자만 접근 가능하다",
+      "부모가 삭제되면 자식도 삭제된다",
+      "부모와 자식이 항상 같은 소유자"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Controlled by Parent는 자식 레코드가 자체 OWD를 갖지 않고 부모 레코드의 공유 설정을 그대로 상속받는 설정이다.",
+      "whyCorrect": "부모의 공유 설정을 따른다는 것이 핵심이므로 정답은 A다.",
+      "whyIncorrect": "관리자만 접근 가능하다는 것은 사실이 아니며, 부모 삭제 시 자식 삭제 여부는 Master-Detail의 삭제 동작(Cascade Delete)에 관한 별개 개념이고, 소유자가 항상 같다는 것도 아니다.",
+      "examPoint": "Controlled by Parent는 주로 Master-Detail 관계의 자식 오브젝트에 사용된다는 점을 기억.",
+      "practicalExample": "Master-Detail로 Account에 연결된 커스텀 오브젝트는 Account의 공유 설정을 그대로 상속받는다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-019",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "View All Data 권한의 설명으로 맞는 것은?",
+    "choices": [
+      "모든 레코드를 보고 수정할 수 있다",
+      "모든 레코드를 볼 수 있지만 수정은 불가",
+      "설정 화면에 접근할 수 있다",
+      "관리자 프로필에만 부여 가능"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "View All Data는 OWD와 공유 설정에 관계없이 모든 레코드를 읽을 수 있게 해주는 시스템 권한이며, 수정 권한은 포함하지 않는다.",
+      "whyCorrect": "읽기 전용이라는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "모든 레코드를 수정까지 할 수 있는 것은 Modify All Data의 역할이며, 설정 화면 접근이나 관리자 프로필 전용도 아니다.",
+      "examPoint": "View All Data(읽기 전용) vs Modify All Data(읽기+쓰기+삭제)를 명확히 구분.",
+      "practicalExample": "감사팀에게 View All Data를 부여하면 모든 레코드를 조회할 수 있지만 수정은 할 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-020",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Modify All Data 권한이 부여된 사용자가 할 수 없는 것은?",
+    "choices": [
+      "모든 레코드 보기",
+      "모든 레코드 수정",
+      "모든 레코드 삭제",
+      "Setup 설정 변경"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Modify All Data는 모든 레코드에 대한 읽기/쓰기/삭제 권한을 부여하지만 Setup의 시스템 설정 변경 권한까지 포함하지는 않는다.",
+      "whyCorrect": "레코드 데이터 권한과 Setup 설정 권한은 별개이므로 정답은 D다.",
+      "whyIncorrect": "모든 레코드 보기, 수정, 삭제는 Modify All Data가 실제로 부여하는 권한 범위다.",
+      "examPoint": "Modify All Data = 레코드 데이터 전권, Setup 변경은 별도 Customize Application 등의 권한이 필요하다는 점을 기억.",
+      "practicalExample": "Modify All Data를 가진 사용자도 새 필드를 만들거나 자동화 규칙을 설정하려면 별도 Setup 권한이 필요하다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-021",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "영업팀 200명 중 10명에게만 특정 커스텀 오브젝트 접근 권한을 주려 합니다. 프로필 변경 없이 가장 효율적인 방법은?",
+    "choices": [
+      "Profile",
+      "권한 집합(Permission Set) 할당",
+      "Org-Wide Default",
+      "Sharing Rules"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Permission Set은 기존 Profile을 유지하면서 특정 소수 사용자에게만 추가 오브젝트 권한을 부여할 수 있다.",
+      "whyCorrect": "10명에게만 프로필 변경 없이 추가 권한을 줘야 하므로 정답은 B다.",
+      "whyIncorrect": "Profile 변경은 200명 전체에 영향을 줄 위험이 있고, OWD 변경은 조직 전체 영향, Sharing Rules는 레코드 접근이지 오브젝트 권한 자체를 부여하지 못한다.",
+      "examPoint": "'소수에게만 추가 권한, 프로필 유지'는 항상 Permission Set으로 직결.",
+      "practicalExample": "10명의 담당자에게만 Permission Set을 할당해 새 커스텀 오브젝트에 접근할 수 있게 한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-022",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "권한 집합 그룹(Permission Set Group)의 주요 장점은?",
+    "choices": [
+      "사용자당 프로필을 여러 개 할당 가능",
+      "여러 권한 집합을 묶어 한 번에 할당 가능",
+      "OWD를 그룹별로 다르게 설정 가능",
+      "역할 계층을 대체할 수 있다"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Permission Set Group은 여러 개의 Permission Set을 하나로 묶어 사용자에게 한 번에 할당할 수 있게 한다.",
+      "whyCorrect": "일괄 할당의 효율성이 핵심 장점이므로 정답은 B다.",
+      "whyIncorrect": "프로필은 여전히 1개만 할당 가능하며, OWD 그룹별 설정이나 역할 계층 대체 기능은 Permission Set Group의 역할이 아니다.",
+      "examPoint": "여러 Permission Set을 매번 개별 할당하는 번거로움을 줄이는 것이 핵심 가치.",
+      "practicalExample": "신규 입사자에게 필요한 5개의 Permission Set을 하나의 그룹으로 묶어 한 번에 할당한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-023",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "오브젝트 권한에서 Read만 있을 때 할 수 있는 것은?",
+    "choices": [
+      "레코드 생성",
+      "레코드 보기만 가능",
+      "레코드 수정",
+      "레코드 삭제"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Read 권한만 있으면 해당 오브젝트의 레코드를 조회만 할 수 있고 생성, 수정, 삭제는 불가능하다.",
+      "whyCorrect": "보기만 가능하다는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "생성, 수정, 삭제는 각각 Create, Edit, Delete라는 별도 오브젝트 권한이 필요하다.",
+      "examPoint": "오브젝트 권한은 Read/Create/Edit/Delete로 세분화되어 각각 별도로 부여된다는 점을 기억.",
+      "practicalExample": "Read 권한만 있는 사용자는 Opportunity 목록을 볼 수는 있지만 새로 만들거나 수정할 수는 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-024",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "OWD가 Private일 때 같은 프로필의 다른 사용자 레코드를 볼 수 없는 이유는?",
+    "choices": [
+      "프로필이 다르기 때문",
+      "OWD Private은 소유자만 볼 수 있기 때문",
+      "관리자 설정 때문",
+      "시스템 오류"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "OWD Private은 레코드 소유자만 접근 가능하게 하는 설정으로, 같은 Profile을 공유하더라도 레코드를 소유하지 않으면 볼 수 없다.",
+      "whyCorrect": "Private OWD의 정의 자체가 이유이므로 정답은 B다.",
+      "whyIncorrect": "Profile이 같은지 다른지는 레코드 수준 접근과는 무관하며, 관리자 설정이나 시스템 오류가 원인인 것도 아니다.",
+      "examPoint": "Profile(오브젝트/필드 권한)과 OWD(레코드 접근)는 서로 다른 계층이라는 점을 기억.",
+      "practicalExample": "같은 영업 프로필을 가진 두 담당자도 OWD가 Private이면 서로의 Opportunity를 볼 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-025",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Modify All 오브젝트 권한이 부여되면?",
+    "choices": [
+      "해당 오브젝트의 모든 레코드를 보고 수정 가능",
+      "Setup 설정을 변경 가능",
+      "다른 사용자 프로필 변경 가능",
+      "새 오브젝트 생성 가능"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Modify All(오브젝트 권한)은 OWD나 공유 설정에 관계없이 해당 오브젝트의 모든 레코드를 읽고 수정하고 삭제할 수 있게 한다.",
+      "whyCorrect": "해당 오브젝트의 모든 레코드에 대한 전권이 핵심이므로 정답은 A다.",
+      "whyIncorrect": "Setup 설정 변경, 다른 사용자의 프로필 변경, 새 오브젝트 생성은 각각 별도의 시스템 권한(Customize Application 등)이 필요하다.",
+      "examPoint": "Modify All(오브젝트 단위) vs Modify All Data(시스템 전체)를 구분해서 기억.",
+      "practicalExample": "특정 오브젝트에만 Modify All을 부여하면 그 오브젝트의 모든 레코드는 자유롭게 다루되 다른 오브젝트나 설정에는 영향을 주지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-026",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "FLS와 OWD의 차이는?",
+    "choices": [
+      "FLS는 오브젝트 수준, OWD는 필드 수준",
+      "FLS는 필드 수준, OWD는 레코드 수준 접근 제어",
+      "둘 다 동일한 기능",
+      "FLS는 자동, OWD는 수동"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "FLS는 특정 필드에 대한 접근(보기/편집)을 제어하고, OWD는 레코드 전체에 대한 기본 접근 수준을 설정한다.",
+      "whyCorrect": "필드 수준 vs 레코드 수준이라는 계층 차이가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "FLS가 오브젝트 수준이고 OWD가 필드 수준이라는 설명은 반대로 서술되어 틀리며, 두 기능은 동일하지 않고, 자동/수동 여부로 구분되는 개념도 아니다.",
+      "examPoint": "3단계 보안 구조(오브젝트 → 필드 FLS → 레코드 OWD)의 순서를 기억.",
+      "practicalExample": "FLS로 급여 필드를 숨기는 것과 OWD로 레코드 전체를 Private으로 만드는 것은 서로 다른 계층의 보안 제어다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-027",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "3단계 보안 구조에서 레코드 수준 접근을 제어하는 것이 아닌 것은?",
+    "choices": [
+      "OWD",
+      "Role Hierarchy",
+      "Sharing Rules",
+      "Profile"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "레코드 수준 접근은 OWD, Role Hierarchy, Sharing Rules(및 Manual/Apex Managed Sharing)가 담당하며, Profile은 오브젝트/필드 수준 권한을 제어한다.",
+      "whyCorrect": "레코드 수준 제어에 속하지 않는 것은 Profile이므로 정답은 D다.",
+      "whyIncorrect": "OWD, Role Hierarchy, Sharing Rules는 모두 레코드 수준 접근을 제어하는 실제 메커니즘이다.",
+      "examPoint": "Profile = 오브젝트/필드 수준, 나머지 세 가지 = 레코드 수준이라는 구분을 명확히.",
+      "practicalExample": "Profile에서 Opportunity에 대한 Read 권한을 줘도, 개별 레코드를 볼 수 있는지는 OWD·Role Hierarchy·Sharing Rules가 최종 결정한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-028",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 레코드를 볼 수 있는지 결정하는 순서로 올바른 것은?",
+    "choices": [
+      "OWD → 역할 계층 → 공유 규칙",
+      "프로필 → OWD → 역할 계층 → 공유 규칙",
+      "공유 규칙 → OWD → 프로필",
+      "역할 계층 → 프로필 → OWD"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Salesforce 보안 모델은 오브젝트(Profile) → 필드(FLS) → 레코드(OWD → Role Hierarchy → Sharing Rules) 순서로 평가된다.",
+      "whyCorrect": "오브젝트 권한(Profile)이 가장 먼저 확인되어야 하므로 정답은 B다.",
+      "whyIncorrect": "OWD부터 시작하거나 공유 규칙, 역할 계층이 먼저 오는 순서는 실제 평가 순서와 다르다.",
+      "examPoint": "Profile을 먼저 통과하지 못하면 이후 단계는 의미가 없다는 원칙을 기억.",
+      "practicalExample": "인턴은 Opportunity 오브젝트 자체에 접근 권한이 없어(1단계 Profile 차단) OWD나 공유 규칙과 무관하게 아예 볼 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-029",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "두 사용자가 같은 역할(Role)에 있을 때 서로의 레코드를 볼 수 있나요?",
+    "choices": [
+      "항상 볼 수 있다",
+      "OWD가 Private이면 볼 수 없다",
+      "항상 볼 수 없다",
+      "공유 규칙 설정에 따라서만 결정된다"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "역할 계층은 상하 관계에서만 자동 접근을 부여하므로, 같은 Role에 있는 동료끼리는 계층상 이점이 없어 OWD가 Private이면 서로의 레코드를 볼 수 없다.",
+      "whyCorrect": "같은 Role은 상하 관계가 아니므로 Private OWD에서는 접근이 불가하다는 것이 정답(B)이다.",
+      "whyIncorrect": "항상 볼 수 있다거나 항상 볼 수 없다는 절대적인 설명은 부정확하며, 공유 규칙이 있으면 그것으로 별도 접근이 가능해 D도 완전한 답은 아니다.",
+      "examPoint": "Role Hierarchy는 오직 상↑하↓ 방향으로만 작동한다는 점을 기억.",
+      "practicalExample": "같은 영업팀 Role에 있는 두 담당자는 OWD가 Private이면 서로의 Opportunity를 볼 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-030",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Grant Access Using Hierarchies 설정을 해제하면?",
+    "choices": [
+      "역할 계층이 삭제됨",
+      "역할 계층을 통한 자동 레코드 접근이 비활성화됨",
+      "모든 레코드가 Public이 됨",
+      "프로필 접근이 제한됨"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Grant Access Using Hierarchies를 해제하면 상위 Role 사용자가 하위 Role 소유 레코드에 자동으로 접근하는 기능이 비활성화된다.",
+      "whyCorrect": "역할 계층 기반 자동 접근이 꺼진다는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "역할 계층 자체가 삭제되는 것은 아니며(단지 자동 접근 기능만 꺼짐), 모든 레코드가 Public이 되거나 프로필 접근이 제한되는 것도 아니다.",
+      "examPoint": "이 옵션은 커스텀 오브젝트의 OWD 설정 화면에서 개별적으로 켜고 끌 수 있다는 점을 기억.",
+      "practicalExample": "이 설정을 끄면 관리자가 부하 위 Role에 있어도 더 이상 자동으로 부하의 레코드를 보지 못한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-031",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "임시직원에게 특정 기간 동안만 접근 권한을 주는 가장 효율적인 방법은?",
+    "choices": [
+      "Profile",
+      "권한 집합 할당 후 기간 종료 시 제거",
+      "OWD 임시 변경",
+      "Manual Sharing"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Permission Set은 손쉽게 할당하고 제거할 수 있어 일정 기간만 필요한 임시 접근 관리에 가장 효율적이다.",
+      "whyCorrect": "할당/제거가 간편하다는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "Profile 자체를 바꾸는 것은 더 큰 변경이고, OWD를 임시로 바꾸면 조직 전체에 영향을 주며, Manual Sharing은 레코드 단위 공유로 오브젝트 권한 자체를 부여하지는 못한다.",
+      "examPoint": "임시 권한 관리는 항상 Permission Set의 할당/제거로 처리.",
+      "practicalExample": "단기 계약직에게 프로젝트 기간 동안만 Permission Set을 할당하고 종료 후 바로 제거한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-032",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Apex Managed Sharing으로 공유된 레코드는 언제 공유가 해제되나요?",
+    "choices": [
+      "레코드 소유자 변경 시",
+      "Apex 코드가 명시적으로 공유를 제거할 때만",
+      "관리자가 수동으로 제거할 때",
+      "30일 후 자동 만료"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Apex Managed Sharing은 소유자 변경과 무관하게 유지되며, Apex 코드가 명시적으로 해당 공유 레코드를 삭제할 때만 해제된다.",
+      "whyCorrect": "코드에 의한 명시적 제거만이 해제 조건이므로 정답은 B다.",
+      "whyIncorrect": "소유자 변경 시 자동 해제되는 것은 Manual Sharing의 특징이고, 관리자의 수동 제거나 30일 자동 만료는 Apex Managed Sharing의 실제 동작이 아니다.",
+      "examPoint": "Manual Sharing(소유자 변경 시 삭제) vs Apex Managed Sharing(코드로만 해제)의 차이를 명확히 구분.",
+      "practicalExample": "복잡한 승인 로직에 따라 Apex로 부여된 공유는 담당자가 바뀌어도 코드가 명시적으로 지우기 전까지 계속 유지된다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-033",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Public Group에 포함할 수 없는 것은?",
+    "choices": [
+      "개별 사용자",
+      "역할",
+      "다른 공용 그룹",
+      "외부 시스템"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Public Group에는 개별 사용자, Role, 다른 Public Group을 포함할 수 있지만 외부 시스템 자체를 구성원으로 넣을 수는 없다.",
+      "whyCorrect": "외부 시스템은 Public Group의 구성원이 될 수 없으므로 정답은 D다.",
+      "whyIncorrect": "개별 사용자, 역할, 다른 공용 그룹은 모두 Public Group에 실제로 포함할 수 있는 항목이다.",
+      "examPoint": "Public Group은 내부 사용자/역할 조합을 위한 것이지 외부 시스템 연동 개념이 아니라는 점을 기억.",
+      "practicalExample": "Marketing 팀 전체와 특정 개별 담당자를 하나의 Public Group으로 묶어 Sharing Rule의 대상으로 지정한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-034",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "OWD를 변경하면 기존 수동 공유에 영향을 미치나요?",
+    "choices": [
+      "영향 없음",
+      "OWD가 더 제한적이 되면 기존 수동 공유 접근도 함께 제한됨",
+      "OWD 변경으로 모든 수동 공유 삭제",
+      "OWD 변경은 역할 계층에만 영향"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Manual Sharing은 OWD와 독립적으로 작동하는 별개의 공유 메커니즘이므로 OWD 변경이 기존 수동 공유 설정에 영향을 주지 않는다.",
+      "whyCorrect": "독립적으로 작동한다는 것이 핵심이므로 정답은 A다.",
+      "whyIncorrect": "OWD가 제한적으로 바뀐다고 기존 수동 공유가 함께 제한되거나 삭제되지 않으며, OWD 변경이 역할 계층에만 영향을 준다는 설명도 부정확하다.",
+      "examPoint": "Manual Sharing은 OWD 변경과 무관하게 독립적으로 유지된다는 점을 기억.",
+      "practicalExample": "OWD를 Public Read Only에서 Private으로 바꿔도 이미 설정된 개별 Manual Sharing은 그대로 남아있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-035",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Territory Management의 주요 용도는?",
+    "choices": [
+      "역할 계층 대체",
+      "지역 기반으로 Account와 레코드 접근 권한 관리",
+      "시간대 기반 로그인 제한",
+      "국가별 데이터 분리"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Territory Management는 지역이나 산업 등 비즈니스 기준으로 Account와 관련 레코드를 할당하고 해당 담당자에게 접근 권한을 부여하는 기능이다.",
+      "whyCorrect": "지역/영역 기준의 Account 접근 관리가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "역할 계층을 완전히 대체하는 것이 아니며, 시간대 기반 로그인 제한은 Login Hours의 역할이고, 국가별 데이터 물리적 분리와도 다른 개념이다.",
+      "examPoint": "Territory Management는 Role Hierarchy와 별개의 축(지역/영역)으로 Account 접근을 관리한다는 점을 기억.",
+      "practicalExample": "동일 담당자가 여러 지역의 Account를 관리할 때 Territory Management로 지역별 접근 권한을 세밀하게 배정한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-036",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Sharing Set의 용도는?",
+    "choices": [
+      "내부 사용자 간 공유",
+      "Experience Cloud 외부 사용자에게 레코드 공유",
+      "보고서 폴더 공유",
+      "Chatter 파일 공유"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Sharing Set은 Experience Cloud(포털)를 통해 접속하는 외부 사용자에게 관련 레코드에 대한 접근 권한을 부여하는 메커니즘이다.",
+      "whyCorrect": "외부 포털 사용자 대상 공유가 핵심이므로 정답은 B다.",
+      "whyIncorrect": "내부 사용자 간 공유는 Role Hierarchy/Sharing Rules 등이 담당하며, 보고서 폴더 공유나 Chatter 파일 공유는 각각 별개의 기능이다.",
+      "examPoint": "Sharing Set은 내부 직원이 아닌 외부 커뮤니티 사용자 전용 공유 메커니즘이라는 점을 기억.",
+      "practicalExample": "고객 포털에 로그인한 외부 사용자가 자신과 관련된 Case만 볼 수 있도록 Sharing Set을 구성한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-037",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "레코드 공유 모델에서 가장 강력한(최우선) 접근 권한은?",
+    "choices": [
+      "OWD",
+      "Role Hierarchy",
+      "Manual Sharing",
+      "Modify All Data 시스템 권한"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Modify All Data 같은 시스템 권한은 OWD, 역할 계층, 공유 규칙 등 다른 모든 공유 메커니즘을 무시하고 모든 레코드에 접근할 수 있는 최상위 권한이다.",
+      "whyCorrect": "다른 모든 설정을 무시하는 최강 권한이 이것이므로 정답은 D다.",
+      "whyIncorrect": "OWD, Role Hierarchy, Manual Sharing은 모두 서로 보완적으로 작동하는 일반적인 공유 메커니즘일 뿐, 시스템 권한처럼 모든 설정을 무시하지는 못한다.",
+      "examPoint": "View All Data/Modify All Data 같은 시스템 권한은 공유 모델 전체를 우회하는 최상위 레벨이라는 점을 기억.",
+      "practicalExample": "OWD가 아무리 Private으로 엄격하게 설정되어 있어도 Modify All Data를 가진 사용자는 모든 레코드에 접근할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-038",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "프로필에서 Object Permissions의 \"View All\" 체크박스를 선택하면?",
+    "choices": [
+      "해당 오브젝트의 모든 레코드를 볼 수 있음",
+      "해당 오브젝트를 삭제할 수 있음",
+      "해당 오브젝트의 설정을 변경할 수 있음",
+      "다른 사용자 프로필을 볼 수 있음"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "\"View All\" 오브젝트 권한은 OWD와 공유 설정에 관계없이 해당 오브젝트의 모든 레코드를 읽을 수 있게 해준다.",
+      "whyCorrect": "해당 오브젝트의 모든 레코드 조회가 핵심이므로 정답은 A다.",
+      "whyIncorrect": "오브젝트 삭제는 별도의 Delete 권한이 필요하고, 오브젝트 설정 변경은 Customize Application 같은 시스템 권한이 필요하며, 다른 사용자 프로필 열람과는 무관하다.",
+      "examPoint": "View All(오브젝트 단위) 권한은 그 오브젝트 하나의 모든 레코드에만 적용된다는 범위를 기억.",
+      "practicalExample": "특정 프로필의 View All을 체크하면 해당 프로필 사용자는 그 오브젝트의 모든 레코드를 소유 여부와 관계없이 조회할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-039",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Field-Level Security를 설정할 수 있는 두 가지 방법은?",
+    "choices": [
+      "OWD와 역할 계층",
+      "프로필과 권한 집합",
+      "공유 규칙과 수동 공유",
+      "Validation Rule과 Flow"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "FLS는 Profile과 Permission Set 양쪽 모두에서 설정할 수 있다.",
+      "whyCorrect": "FLS를 설정하는 두 가지 도구가 Profile과 Permission Set이므로 정답은 B다.",
+      "whyIncorrect": "OWD와 역할 계층, 공유 규칙과 수동 공유는 모두 레코드 수준 접근을 다루는 기능이지 필드 수준 FLS 설정 도구가 아니며, Validation Rule과 Flow는 자동화·검증 도구다.",
+      "examPoint": "FLS = Profile 또는 Permission Set에서 설정, 두 경로 모두 유효하다는 점을 기억.",
+      "practicalExample": "기본 Profile에서 필드를 숨기고, 특정 사용자에게만 Permission Set으로 그 필드를 다시 보이게 할 수도 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-040",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "레코드 소유권(Ownership) 이전 시 기존 수동 공유는 어떻게 되나요?",
+    "choices": [
+      "그대로 유지",
+      "소유권 이전 시 수동 공유가 자동으로 제거됨",
+      "새 소유자에게 이전",
+      "관리자가 수동으로 제거해야 함"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "레코드 소유권이 새 소유자에게 이전되면 기존에 설정된 Manual Sharing은 자동으로 제거된다.",
+      "whyCorrect": "소유권 이전과 함께 자동 삭제되는 것이 Manual Sharing의 특징이므로 정답은 B다.",
+      "whyIncorrect": "그대로 유지되거나 새 소유자에게 자동 이전되는 것은 사실이 아니며, 관리자가 매번 수동으로 제거할 필요도 없다(자동으로 처리됨).",
+      "examPoint": "Manual Sharing(소유자 변경 시 자동 삭제) vs Apex Managed Sharing(유지)의 차이를 다시 한 번 기억.",
+      "practicalExample": "Account 소유자가 바뀌면 이전 소유자가 설정했던 개별 공유는 자동으로 사라지므로 필요하면 새로 공유를 설정해야 한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-041",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "사용자가 자신이 소유하지 않은 레코드를 편집하려면 최소 어떤 접근이 필요한가요?",
+    "choices": [
+      "레코드 소유자여야만 편집 가능",
+      "Read/Write 접근 권한 + 오브젝트 Edit 권한",
+      "View All Data 권한",
+      "관리자 권한"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "레코드를 편집하려면 레코드에 대한 Read/Write 공유 접근(OWD, 공유 규칙 등)과 오브젝트 수준의 Edit 권한(Profile/Permission Set)이 모두 필요하다.",
+      "whyCorrect": "두 조건이 함께 충족되어야 편집이 가능하므로 정답은 B다.",
+      "whyIncorrect": "반드시 소유자여야만 편집 가능한 것은 아니고(공유를 통해서도 가능), View All Data는 읽기 전용 권한이라 편집을 보장하지 않으며, 관리자 권한까지 필요한 것도 아니다.",
+      "examPoint": "레코드 편집 = (레코드 수준) Read/Write 공유 + (오브젝트 수준) Edit 권한의 조합이 필요하다는 점을 기억.",
+      "practicalExample": "Sharing Rule로 Read/Write 접근을 받았어도 Profile에 Opportunity Edit 권한이 없으면 여전히 편집할 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-042",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "보안 모델에서 가장 마지막으로 적용되는 접근 제어는?",
+    "choices": [
+      "프로필 오브젝트 권한",
+      "FLS",
+      "OWD",
+      "Sharing Rules"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Salesforce 보안 모델은 오브젝트(Profile) → 필드(FLS) → 레코드(OWD → Role Hierarchy → Sharing Rules) 순서의 3단계로 평가되며, OWD는 이 중 마지막 단계인 '레코드' 계층의 진입점이다.",
+      "whyCorrect": "3단계 구조에서 오브젝트·필드 다음으로 마지막에 평가되는 큰 범주가 레코드(OWD로 시작)이므로 정답은 C다.",
+      "whyIncorrect": "프로필 오브젝트 권한은 1단계, FLS는 2단계로 각각 OWD보다 먼저 평가되며, Sharing Rules는 OWD 이후 레코드 계층 내에서 추가로 적용되는 세부 단계다.",
+      "examPoint": "오브젝트→필드→레코드라는 3단계 순서에서 레코드 계층(OWD가 대표)이 마지막 범주라는 점을 기억.",
+      "practicalExample": "인턴은 1단계(Profile)에서 이미 차단되어 2·3단계(FLS, OWD)까지 갈 필요조차 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-043",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Account가 없는 Contact를 Private Contact라고 합니다. OWD가 Contact에서 어떻게 작동하나요?",
+    "choices": [
+      "항상 Public",
+      "소유자만 볼 수 있음",
+      "관련 Account의 OWD를 따름",
+      "항상 Private"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Account 없이 존재하는 Contact(Private Contact)는 상속받을 부모가 없으므로 소유자만 볼 수 있는 방식으로 작동한다.",
+      "whyCorrect": "Account가 연결되지 않은 Contact는 소유자 전용 접근이 적용되므로 정답은 B다.",
+      "whyIncorrect": "항상 Public인 것도 아니고, 관련 Account가 없으므로 Account의 OWD를 따를 수도 없으며, 항상 Private이라는 절대적 표현도 정확하지 않다(Account가 있으면 그 설정을 따름).",
+      "examPoint": "Account와 연결된 Contact는 Controlled by Parent로 Account 설정을 따르고, Account가 없으면 소유자 전용 접근이라는 차이를 기억.",
+      "practicalExample": "개인 고객처럼 Account 없이 등록된 Contact는 그 레코드를 만든 담당자만 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-044",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "The OWD for Opportunity is set to Public Read Only. A sales rep can view but not edit an Opportunity they do not own. What is the most likely reason?",
+    "choices": [
+      "The rep does not have the Edit object permission on their profile.",
+      "The OWD setting allows viewing but restricts editing to the record owner.",
+      "Field-Level Security is preventing edits on key fields.",
+      "A Validation Rule is blocking the save action."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Public Read Only OWD는 모두가 레코드를 볼 수 있지만 편집은 소유자(및 상위 계층)로 제한하는 설정이다.",
+      "whyCorrect": "'보기는 되는데 편집은 안 됨'이라는 증상이 정확히 Public Read Only의 동작과 일치하므로 정답은 B다.",
+      "whyIncorrect": "A(Edit 권한 없음)라면 애초에 보이지도 않는 것이 아니라 편집 버튼만 없는 것이므로 가능성은 있지만, OWD 자체의 설계된 동작이 더 직접적인 이유다. C(FLS)는 필드 단위 제어로 레코드 전체 편집과는 다른 문제다. D(Validation Rule)는 저장 조건 검증이지 접근 제한이 아니다.",
+      "examPoint": "'모두 보기 + 소유자만 편집'이라는 증상은 항상 Public Read Only OWD로 직결.",
+      "practicalExample": "동료가 소유한 Opportunity를 조회는 할 수 있지만 편집 버튼이 비활성화되어 있는 것이 Public Read Only의 전형적인 동작이다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-045",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants all employees to see Account records but only the record owner should be able to edit them. What OWD setting should be configured for the Account object?",
+    "choices": [
+      "Private",
+      "Public Read Only",
+      "Public Read/Write",
+      "Controlled by Parent"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Public Read Only는 모두가 레코드를 볼 수 있지만 편집은 소유자만 가능하게 하는 OWD 설정이다.",
+      "whyCorrect": "모두 보기 + 소유자만 편집이라는 요구에 정확히 부합하므로 정답은 B다.",
+      "whyIncorrect": "A(Private)는 소유자만 보기+편집이라 '모두 보기' 요구에 어긋난다. C(Public Read/Write)는 모두가 편집 가능해 요구에 어긋난다. D(Controlled by Parent)는 부모 오브젝트 설정을 상속받는 것으로 독립적인 설정이 아니다.",
+      "examPoint": "'모두 보기 + 소유자만 편집'은 항상 Public Read Only로 직결.",
+      "practicalExample": "Account 오브젝트를 Public Read Only로 설정하면 전 직원이 조회하되 담당자만 정보를 수정할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-046",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A system administrator needs to give a sales rep access to a single Account record they do not own, without changing OWD or creating a sharing rule. What is the best approach?",
+    "choices": [
+      "Change the OWD to Public Read/Write.",
+      "Create a Sharing Rule for the Account object.",
+      "Use Manual Sharing on the specific record.",
+      "Assign a new profile to the rep."
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Manual Sharing은 레코드 소유자나 관리자가 특정 레코드 하나를 특정 사용자 한 명에게 직접 공유하는 방법이다.",
+      "whyCorrect": "OWD나 Sharing Rule 변경 없이 단일 레코드를 특정 1명에게 공유해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(OWD 변경)는 모든 사람에게 영향을 준다. B(Sharing Rule 생성)는 조건 기반 자동 공유로 1건 특정에는 부적합하다. D(새 프로필 배정)는 권한 체계 전체를 바꾸는 과도한 조치다.",
+      "examPoint": "'특정 1건 + 특정 1명 + OWD/규칙 변경 없이'는 항상 Manual Sharing으로 직결.",
+      "practicalExample": "레코드 소유자나 관리자가 '공유' 버튼으로 해당 담당자를 직접 지정해 접근을 부여한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-047",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants users to only see records they personally own by default. Which OWD setting should be used?",
+    "choices": [
+      "Public Read/Write",
+      "Public Read Only",
+      "Private",
+      "Controlled by Parent"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Private OWD는 Salesforce에서 가장 제한적인 설정으로, 사용자가 기본적으로 자신이 소유한 레코드만 볼 수 있게 한다.",
+      "whyCorrect": "본인 소유 레코드만 기본 접근이 필요하므로 정답은 C다.",
+      "whyIncorrect": "A(Public Read/Write)와 B(Public Read Only)는 모두가 볼 수 있어 요구에 어긋나고, D(Controlled by Parent)는 자식 오브젝트 전용 설정이다.",
+      "examPoint": "가장 제한적인 OWD 설정은 항상 Private이라는 점을 기억.",
+      "practicalExample": "새 커스텀 오브젝트를 만들 때 기본적으로 Private으로 시작해 필요한 경우에만 접근을 확장한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-048",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A manager cannot see records owned by their direct reports even though the OWD is set to Private. What should the administrator check?",
+    "choices": [
+      "The managers Field-Level Security settings.",
+      "Whether the manager has a role above their reports in the Role Hierarchy.",
+      "The sharing rules configured for the object.",
+      "The managers profile object permissions."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Private OWD에서 상위 직책이 하위 레코드를 자동으로 보려면 Role Hierarchy에서 관리자가 실제로 부하보다 상위 Role에 배치되어 있어야 하고 Grant Access Using Hierarchies도 켜져 있어야 한다.",
+      "whyCorrect": "관리자가 팀원의 레코드를 못 본다면 Role Hierarchy 배치를 가장 먼저 확인해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(FLS)는 필드 단위 제어라 레코드 접근 문제와 무관하다. C(Sharing Rule)는 별도 설정으로 계층 접근과는 다른 메커니즘이다. D(Profile 오브젝트 권한)는 오브젝트 전체 접근이지 개별 레코드 접근 문제의 직접 원인이 아니다.",
+      "examPoint": "'상위 직책이 하위 레코드를 못 본다'는 항상 Role Hierarchy 배치를 먼저 점검.",
+      "practicalExample": "관리자가 부하 직원들보다 상위 Role에 정확히 배치되어 있는지 확인하는 것이 첫 번째 점검 사항이다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-049",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "How many profiles can be assigned to a single Salesforce user?",
+    "choices": [
+      "Unlimited",
+      "Up to 5",
+      "2",
+      "1"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Salesforce 사용자는 정확히 1개의 프로필만 할당받을 수 있으며, 추가 권한은 Permission Set으로 부여한다.",
+      "whyCorrect": "사용자당 프로필은 항상 1개이므로 정답은 D다.",
+      "whyIncorrect": "무제한, 5개, 2개는 모두 실제 규칙과 다르다.",
+      "examPoint": "Profile은 1개 제한, Permission Set은 무제한이라는 시험 단골 포인트를 기억.",
+      "practicalExample": "영업 프로필을 가진 사용자에게 추가 권한이 필요하면 Permission Set을 여러 개 부여한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-050",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to automatically share all Opportunities owned by the West region team with the Marketing team. What should be configured?",
+    "choices": [
+      "Manual Sharing",
+      "OWD set to Public Read Only",
+      "Sharing Rule",
+      "Role Hierarchy"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Sharing Rule은 특정 조건(예: 소유자 Role = West Region)에 맞는 레코드를 자동으로 특정 그룹에 공유하는 기능이다.",
+      "whyCorrect": "특정 조건의 레코드를 특정 팀에 자동으로 공유해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Manual Sharing)는 자동화가 안 된다. B(OWD 변경)는 조직 전체에 영향을 준다. D(Role Hierarchy)는 상하위 관계만 커버할 뿐 서로 다른 팀 간 공유에는 적합하지 않다.",
+      "examPoint": "'특정 조건 + 특정 그룹 자동 공유'는 항상 Sharing Rule로 직결.",
+      "practicalExample": "소유자 Role이 West Region인 모든 Opportunity를 Marketing 팀에 자동 공유하는 Sharing Rule을 만든다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-051",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A developer needs to share custom object records based on complex business logic that changes dynamically. What should be used?",
+    "choices": [
+      "Sharing Rules",
+      "Manual Sharing",
+      "Apex Managed Sharing",
+      "Role Hierarchy"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Apex Managed Sharing은 코드로 공유 로직을 구현하므로 동적으로 변하는 복잡한 비즈니스 조건에도 유연하게 대응할 수 있다.",
+      "whyCorrect": "복잡하고 동적인 조건 기반 공유가 필요하므로 정답은 C다.",
+      "whyIncorrect": "A(Sharing Rules)는 정적인 기준을 요구해 동적 로직에는 한계가 있다. B(Manual Sharing)는 자동화가 안 된다. D(Role Hierarchy)는 위계 기반으로 로직 기반 공유와는 다르다.",
+      "examPoint": "복잡한/동적인 조건의 공유 로직은 항상 Apex Managed Sharing으로 직결.",
+      "practicalExample": "특정 승인 단계와 여러 조건을 조합한 공유 로직을 Apex 코드로 구현해 소유자 변경 후에도 유지되게 한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-052",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which of the following statements is true about Sharing Rules?",
+    "choices": [
+      "They can make access more restrictive than the OWD setting.",
+      "They can only be used to expand access beyond the OWD setting.",
+      "They replace the OWD setting entirely.",
+      "They only apply to custom objects."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Sharing Rule은 OWD가 정한 기본 접근 수준을 넘어 추가 접근 권한을 부여할 수 있을 뿐, OWD보다 더 제한적으로 만들 수는 없다.",
+      "whyCorrect": "확장만 가능하다는 것이 정확한 설명이므로 정답은 B다.",
+      "whyIncorrect": "A(더 엄격하게 설정 가능)는 사실이 아니다. C(OWD를 완전히 대체)도 아니며 OWD를 보완할 뿐이다. D(커스텀 오브젝트에만 적용)도 틀리다 — 표준과 커스텀 오브젝트 모두에 적용된다.",
+      "examPoint": "Sharing Rule = OWD 확대 전용, 축소 절대 불가라는 원칙을 반복해서 암기.",
+      "practicalExample": "OWD가 Public Read/Write인 오브젝트에 Sharing Rule로 특정 그룹만 접근하도록 더 제한할 수는 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-053",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to give a user temporary access to a custom object without changing their profile. What should the administrator use?",
+    "choices": [
+      "Create a new profile for the user.",
+      "Assign a Permission Set to the user.",
+      "Change the OWD for the object.",
+      "Create a Sharing Rule for the user."
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Permission Set은 기존 프로필을 그대로 유지하면서 특정 사용자에게 임시로 추가 오브젝트 권한을 부여할 수 있다.",
+      "whyCorrect": "프로필 변경 없이 임시 추가 권한이 필요하므로 정답은 B다.",
+      "whyIncorrect": "A(새 프로필 생성)는 전체 재설정이 필요해 비효율적이다. C(OWD 변경)는 모든 사람에게 영향을 준다. D(Sharing Rule)는 레코드 접근 기능이지 오브젝트 권한 자체를 부여하지 못한다.",
+      "examPoint": "'프로필 유지 + 임시 오브젝트 권한'은 항상 Permission Set으로 직결.",
+      "practicalExample": "특정 사용자에게만 커스텀 오브젝트 접근용 Permission Set을 임시로 할당하고 필요 없어지면 제거한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-054",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has the OWD for Opportunity set to Public Read Only. A sales rep tries to delete an Opportunity owned by a colleague but receives an error. What is the most likely cause?",
+    "choices": [
+      "The rep does not have the Delete object permission on their profile.",
+      "Public Read Only only allows the record owner to delete records.",
+      "The OWD prevents all users from deleting records.",
+      "A sharing rule is blocking the delete action."
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "삭제 권한은 OWD와 무관하게 Profile의 Delete 오브젝트 권한이 있어야 하며, 이 권한이 없으면 삭제 시도 시 오류가 발생한다.",
+      "whyCorrect": "Public Read Only에서 삭제가 실패하는 가장 흔한 원인은 Profile에 Delete 권한이 없기 때문이므로 정답은 A다.",
+      "whyIncorrect": "B(Public Read Only가 소유자만 삭제 허용)는 부정확한 설명이다 — OWD는 삭제 권한을 직접 부여하지 않는다. C(OWD가 모든 삭제를 막음)도 사실이 아니다. D(Sharing Rule이 삭제를 막음)도 삭제 권한과 무관하다.",
+      "examPoint": "삭제는 항상 Profile/Permission Set의 Delete 오브젝트 권한이 별도로 필요하다는 점을 기억.",
+      "practicalExample": "관리자가 해당 담당자의 Profile에 Delete 권한을 추가하면 동료의 Opportunity도 삭제할 수 있게 된다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-055",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A system administrator needs to ensure that when records are shared via a Sharing Rule, users receive read-only access and cannot edit the shared records. What access level should be set in the Sharing Rule?",
+    "choices": [
+      "Full Access",
+      "Read/Write",
+      "Read Only",
+      "Private"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Sharing Rule을 만들 때 접근 수준을 Read Only 또는 Read/Write 중 선택할 수 있으며, Read Only를 선택하면 공유받은 사용자는 조회만 가능하다.",
+      "whyCorrect": "편집을 막고 읽기만 허용해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Full Access)는 Sharing Rule에서 선택 가능한 옵션이 아니다. B(Read/Write)는 편집까지 허용해 요구에 어긋난다. D(Private)는 OWD 설정값이지 Sharing Rule의 접근 수준 옵션이 아니다.",
+      "examPoint": "Sharing Rule의 접근 수준은 Read Only 또는 Read/Write 중에서 선택한다는 점을 기억.",
+      "practicalExample": "Marketing 팀에 공유하는 Sharing Rule의 접근 수준을 Read Only로 설정해 조회만 가능하게 한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-056",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers uses a Private OWD for Cases. The support manager needs to run reports on all Cases across the entire team. Which permission should be granted?",
+    "choices": [
+      "View All Data",
+      "Modify All Data",
+      "Manager role in Role Hierarchy",
+      "Create and Customize Reports"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "View All Data는 OWD와 공유 설정을 무시하고 모든 레코드를 읽을 수 있게 해주는 시스템 권한으로, 리포트 작성에 필요한 전체 데이터 조회를 가능하게 한다.",
+      "whyCorrect": "Private OWD 상황에서 팀 전체 Case를 리포트로 봐야 하므로 View All Data가 정답(A)이다.",
+      "whyIncorrect": "B(Modify All Data)는 편집까지 포함해 리포트 조회 목적에는 과도하다. C(Role Hierarchy상 매니저 배치)는 영구적인 구조 변경이라 무겁다. D(리포트 생성/커스터마이즈 권한)는 데이터 접근 권한과는 별개다.",
+      "examPoint": "'모든 레코드를 읽기만 하면 되는' 상황은 항상 View All Data로 직결.",
+      "practicalExample": "지원팀 매니저에게 View All Data를 부여하면 OWD와 무관하게 모든 Case를 리포트에 반영할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-057",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at UC was recently promoted to regional manager. They now need to see all records owned by the 10 reps reporting to them. The OWD is Private. What is the most efficient solution?",
+    "choices": [
+      "Assign a permission set to the manager",
+      "Create a sharing rule for each rep",
+      "Update the managers role in the Role Hierarchy to be above the reps",
+      "Change the OWD to Public Read Only"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Role Hierarchy에서 관리자를 부하 직원들보다 상위 Role에 배치하면, Grant Access Using Hierarchies에 따라 하위 레코드에 자동으로 접근할 수 있게 된다.",
+      "whyCorrect": "승진한 관리자가 10명의 부하 레코드를 봐야 하므로 Role Hierarchy 업데이트가 가장 효율적인 정답(C)이다.",
+      "whyIncorrect": "A(Permission Set)는 오브젝트 권한 추가일 뿐 특정 부하들의 레코드 접근을 자동으로 보장하지 않는다. B(10명 개별 Sharing Rule)는 매우 비효율적이다. D(OWD 변경)는 조직 전체에 영향을 준다.",
+      "examPoint": "'승진/조직 변경으로 인한 하위 레코드 접근'은 항상 Role Hierarchy 업데이트로 직결.",
+      "practicalExample": "새 지역 관리자를 10명의 담당자보다 상위 Role로 이동시키면 자동으로 그들의 레코드에 접근할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-058",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to grant the Marketing team read access to all Opportunities, but the OWD is Private. The Marketing team spans multiple roles. What should be configured?",
+    "choices": [
+      "Change OWD to Public Read Only",
+      "Create a Public Group for Marketing and set up a Sharing Rule",
+      "Assign a Permission Set to each Marketing user",
+      "Add all Marketing users to the sales Role Hierarchy"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Marketing 팀이 여러 Role에 걸쳐 있을 때는 Public Group으로 이들을 하나로 묶은 뒤 그 그룹을 대상으로 Sharing Rule을 설정하는 것이 가장 유연한 방법이다.",
+      "whyCorrect": "여러 Role에 걸친 팀에 일괄 읽기 접근을 부여해야 하므로 Public Group + Sharing Rule이 정답(B)이다.",
+      "whyIncorrect": "A(OWD 변경)는 모든 사용자에게 영향을 준다. C(각 사용자에게 개별 Permission Set)는 오브젝트 권한만 부여할 뿐 레코드 공유 자체는 아니다. D(영업 Role Hierarchy에 Marketing 추가)는 조직 구조를 부적절하게 왜곡한다.",
+      "examPoint": "여러 Role에 걸친 그룹에 레코드를 공유해야 하면 항상 Public Group + Sharing Rule 조합.",
+      "practicalExample": "Marketing 팀 구성원들을 Public Group으로 묶고, 그 그룹에 모든 Opportunity를 읽기 전용으로 공유하는 Sharing Rule을 만든다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-059",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Which of the following is TRUE about Manual Sharing in Salesforce?",
+    "choices": [
+      "It can be set up by any user for any record",
+      "It allows record owners to share individual records with specific users",
+      "It automatically applies when OWD is changed",
+      "It overrides Field-Level Security settings"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Manual Sharing은 레코드 소유자(또는 관리자)가 특정 사용자에게 개별 레코드를 직접 공유하는 비자동화 방식이다.",
+      "whyCorrect": "소유자가 개별 레코드를 특정 사용자에게 공유한다는 설명이 정확하므로 정답은 B다.",
+      "whyIncorrect": "A(아무 사용자나 아무 레코드나 공유 가능)는 사실이 아니다 — 소유자나 관리자만 가능하다. C(OWD 변경 시 자동 적용)도 사실이 아니다. D(FLS를 무시)도 근거 없는 설명이다.",
+      "examPoint": "Manual Sharing = 소유자/관리자가 실행하는 1:1 개별 공유라는 정의를 정확히 기억.",
+      "practicalExample": "레코드 소유자가 Share 버튼을 눌러 동료 한 명을 Edit 권한으로 직접 추가한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-060",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to prevent users from seeing the Margin field on all Opportunity records. The restriction must apply even in reports and list views. What should be configured?",
+    "choices": [
+      "Remove the field from all page layouts",
+      "Set Field-Level Security to Hidden for the relevant profiles",
+      "Create a Validation Rule to hide the field",
+      "Set the OWD for Opportunity to Private"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "FLS를 Hidden으로 설정하면 페이지 레이아웃뿐 아니라 리포트, 리스트 뷰, API, Export 등 모든 곳에서 필드가 완전히 숨겨진다.",
+      "whyCorrect": "리포트와 리스트 뷰를 포함한 완전한 숨김이 필요하므로 정답은 B다.",
+      "whyIncorrect": "A(Page Layout 제거)는 레코드 상세 화면에만 적용되고 리포트에는 여전히 보인다. C(Validation Rule)는 저장 제어 기능일 뿐 필드 가시성과 무관하다. D(OWD 변경)는 레코드 접근 자체를 다루는 기능으로 필드 단위 숨김과는 다르다.",
+      "examPoint": "'보고서/리스트뷰 포함 완전 숨김'은 항상 FLS Hidden으로 직결.",
+      "practicalExample": "Margin 필드에 관련 Profile 전체를 대상으로 FLS Hidden을 설정하면 리포트에서도 해당 필드가 나타나지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-061",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A user at Universal Containers can view Account records but cannot see the Credit Limit field anywhere in the application. The field exists and is on the page layout. What should the admin check?",
+    "choices": [
+      "OWD settings for the Account object",
+      "Field-Level Security for the users profile",
+      "The users Role in the Role Hierarchy",
+      "Sharing Rules for the Account object"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Page Layout에 필드가 있음에도 애플리케이션 전역에서 안 보인다면, Page Layout보다 우선 적용되는 FLS가 해당 Profile에서 Hidden으로 설정되어 있을 가능성이 가장 크다.",
+      "whyCorrect": "레이아웃에 존재하는데도 필드가 전혀 안 보이는 원인은 FLS이므로 정답은 B다.",
+      "whyIncorrect": "A(OWD)는 레코드 전체 접근을 다룰 뿐 특정 필드 숨김과는 무관하다. C(Role Hierarchy)는 레코드 공유 확장 기능이다. D(Sharing Rules)도 레코드 단위 접근 기능이라 필드 가시성 문제와는 다르다.",
+      "examPoint": "'레이아웃에는 있는데 안 보인다'는 항상 FLS 우선순위 문제로 직결.",
+      "practicalExample": "관리자가 해당 Profile의 Credit Limit 필드 FLS 설정을 확인해 Hidden에서 Visible로 바꿔야 한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-062",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has set the OWD for Lead to Private. The inside sales team needs to see all Leads regardless of ownership. The inside sales team members share the same Role. What is the most efficient approach?",
+    "choices": [
+      "Change OWD to Public Read Only",
+      "Create a Sharing Rule based on Role: Inside Sales",
+      "Assign View All Data permission",
+      "Create individual sharing rules for each rep"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "팀 전체가 같은 Role을 공유하고 있다면 그 Role을 기준으로 한 Sharing Rule 하나로 팀 전체에 접근을 일괄 부여할 수 있다.",
+      "whyCorrect": "같은 Role의 팀 전체가 소유 여부와 무관하게 모든 Lead를 봐야 하므로 Role 기반 Sharing Rule이 가장 효율적인 정답(B)이다.",
+      "whyIncorrect": "A(OWD 변경)는 조직 전체 영향을 준다. C(View All Data)는 과도하게 강력한 시스템 권한이다. D(개별 Sharing Rule)는 인원수만큼 반복 설정이 필요해 비효율적이다.",
+      "examPoint": "'같은 Role 팀 전체'에 접근을 부여할 때는 Role 기준 Sharing Rule 하나로 충분하다는 점을 기억.",
+      "practicalExample": "Inside Sales Role을 기준으로 한 Sharing Rule 하나로 팀원 전체가 모든 Lead에 접근할 수 있게 된다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-063",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "What happens when a record owner is deactivated in Salesforce?",
+    "choices": [
+      "All their records are deleted",
+      "Records remain but must be manually reassigned",
+      "Records are automatically transferred to the admin",
+      "The records become publicly accessible"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "사용자가 비활성화되어도 그가 소유했던 레코드는 삭제되지 않고 그대로 남으며, 새 담당자에게 수동으로(또는 Mass Transfer Records로) 재배정해야 한다.",
+      "whyCorrect": "레코드는 유지되고 수동 재배정이 필요하다는 것이 핵심이므로 정답은 B다.",
+      "whyIncorrect": "A(레코드 삭제)는 사실이 아니다. C(관리자에게 자동 이전)도 자동으로 일어나지 않는다. D(레코드가 공개됨)도 비활성화와 무관한 설명이다.",
+      "examPoint": "비활성화 = 로그인 차단, 레코드는 유지되며 소유권은 별도로 이전해야 한다는 점을 기억.",
+      "practicalExample": "퇴사자가 소유했던 Opportunity 200건은 Mass Transfer Records로 후임자에게 일괄 재배정한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-064",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants users to be able to view and edit ALL records across the entire org for the Account object with no restrictions. What OWD setting achieves this?",
+    "choices": [
+      "Private",
+      "Public Read Only",
+      "Public Read/Write",
+      "Controlled by Parent"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Public Read/Write는 OWD 설정 중 가장 개방적인 옵션으로, 모든 사용자가 모든 레코드를 보고 편집할 수 있게 한다.",
+      "whyCorrect": "제약 없이 모두가 보고 편집해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Private)는 소유자만 접근 가능해 정반대다. B(Public Read Only)는 편집이 제한된다. D(Controlled by Parent)는 자식 오브젝트 전용 설정으로 Account 같은 최상위 오브젝트에는 해당하지 않는다.",
+      "examPoint": "가장 개방적인 OWD 설정은 항상 Public Read/Write라는 점을 기억.",
+      "practicalExample": "전사 공유 문서처럼 누구나 자유롭게 열람·수정해야 하는 Account 데이터에는 Public Read/Write를 사용한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-065",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An administrator at Universal Containers creates a Permission Set that grants Edit access to the Contract object. They assign this Permission Set to a user whose profile has Read Only access to Contracts. What is the result?",
+    "choices": [
+      "The user still has Read Only access — profile always wins",
+      "The user now has Edit access — Permission Set adds to profile permissions",
+      "The system shows a conflict error",
+      "The user loses access to Contracts entirely"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Profile과 Permission Set의 권한은 합집합(더 높은 권한이 적용)으로 결합되므로, Profile이 Read Only여도 Permission Set이 Edit을 부여하면 최종적으로 Edit이 가능하다.",
+      "whyCorrect": "Permission Set이 Profile 권한에 추가되어 더 높은 권한이 적용되므로 정답은 B다.",
+      "whyIncorrect": "A(Profile이 항상 이김)는 실제 동작과 반대다. C(충돌 오류 발생)는 존재하지 않는 동작이다. D(접근을 완전히 잃음)도 사실이 아니다.",
+      "examPoint": "Profile + Permission Set = 합집합(최대 권한 적용)이라는 원칙을 반드시 기억.",
+      "practicalExample": "Profile이 Contract에 Read Only만 부여해도, Edit을 포함한 Permission Set을 추가로 할당하면 그 사용자는 Edit이 가능해진다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-066",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to share all Cases owned by the Enterprise Support team with the Escalations team automatically. Both teams have different roles. What should be configured?",
+    "choices": [
+      "Update the Role Hierarchy",
+      "Create a Sharing Rule based on Role: Enterprise Support",
+      "Use Manual Sharing on each Case",
+      "Change the OWD to Public Read Only"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "서로 다른 Role을 가진 두 팀 사이에 특정 조건(소유자 Role = Enterprise Support)의 레코드를 자동 공유하려면 Role 기준 Sharing Rule을 사용한다.",
+      "whyCorrect": "Enterprise Support가 소유한 Case를 Escalations 팀에 자동으로 공유해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(Role Hierarchy 업데이트)는 상하위 관계만 다루며 서로 다른 팀 간 공유에는 적합하지 않다. C(각 Case마다 수동 공유)는 자동화가 아니다. D(OWD 변경)는 조직 전체에 영향을 준다.",
+      "examPoint": "서로 다른 Role 간 조건부 자동 공유는 항상 Role 기준 Sharing Rule로 직결.",
+      "practicalExample": "Enterprise Support Role 소유의 모든 Case를 Escalations 팀에 자동 공유하는 Sharing Rule을 만든다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-067",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has set OWD for Contact to Controlled by Parent. What does this mean?",
+    "choices": [
+      "Contacts follow the same sharing as the Account they belong to",
+      "All Contacts are private by default",
+      "Contacts can only be viewed by their owners",
+      "Admins control all Contact sharing manually"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Controlled by Parent는 Contact가 자체 OWD를 갖지 않고 소속된 Account의 공유 설정을 그대로 따르게 하는 설정이다.",
+      "whyCorrect": "Account의 공유 설정을 따른다는 것이 정확한 설명이므로 정답은 A다.",
+      "whyIncorrect": "기본적으로 Private이라는 설명, 소유자만 볼 수 있다는 설명, 관리자가 수동으로 모두 제어한다는 설명은 모두 Controlled by Parent의 실제 동작과 다르다.",
+      "examPoint": "Contact가 Account와 연결되어 있으면 Account에 접근 가능한 사용자는 그 Contact에도 접근할 수 있다는 점을 기억.",
+      "practicalExample": "Account에 접근 권한이 있는 영업담당자는 그 Account에 연결된 Contact들도 자동으로 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-068",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A user at Universal Containers has the View All permission on the Account object. What does this allow them to do?",
+    "choices": [
+      "View all Account records regardless of sharing settings",
+      "Edit all Account records",
+      "Delete all Account records",
+      "Share Account records with any user"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Account 오브젝트에 대한 View All 권한은 OWD와 공유 설정에 관계없이 해당 오브젝트의 모든 레코드를 읽을 수 있게 해준다.",
+      "whyCorrect": "모든 레코드 읽기가 핵심 권한 범위이므로 정답은 A다.",
+      "whyIncorrect": "편집(B), 삭제(C), 임의 사용자와의 공유(D)는 View All 권한의 범위를 벗어나며 각각 별도의 권한이 필요하다.",
+      "examPoint": "View All(오브젝트 권한)은 읽기 전용이며 편집·삭제·공유 권한과는 별개라는 점을 기억.",
+      "practicalExample": "이 권한을 가진 사용자는 소유하지 않은 Account도 모두 조회할 수 있지만 수정하거나 삭제할 수는 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-069",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to give one specific user the ability to edit ALL records in the org across all objects without making them a full System Administrator. Which permission should be granted?",
+    "choices": [
+      "View All Data",
+      "Modify All Data",
+      "Manage Users",
+      "Customize Application"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Modify All Data는 System Administrator로 만들지 않고도 조직 내 모든 오브젝트의 모든 레코드를 읽고, 생성하고, 편집하고, 삭제할 수 있게 하는 시스템 권한이다.",
+      "whyCorrect": "전 오브젝트에 걸친 편집 권한을 System Admin 없이 부여해야 하므로 정답은 B다.",
+      "whyIncorrect": "A(View All Data)는 읽기 전용이라 편집 요구를 충족하지 못한다. C(Manage Users)는 사용자 관리 권한이다. D(Customize Application)는 설정 변경 권한으로 레코드 데이터 편집과는 다르다.",
+      "examPoint": "System Admin 없이 전체 레코드 편집 권한이 필요하면 항상 Modify All Data.",
+      "practicalExample": "데이터 정비 담당자에게 System Administrator 대신 Modify All Data를 부여해 모든 레코드를 다루되 설정 변경 권한은 주지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-070",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers needs to grant a group of external partners read-only access to specific Account records. The partners are not internal Salesforce users. What should be used?",
+    "choices": [
+      "Create internal Salesforce licenses for partners",
+      "Use Experience Cloud with Partner Community licenses",
+      "Share via Manual Sharing only",
+      "Use Apex Managed Sharing"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Experience Cloud와 Partner Community 라이선스는 내부 직원이 아닌 외부 파트너에게 포털을 통한 접근을 제공하는 표준 방법이다.",
+      "whyCorrect": "내부 사용자가 아닌 외부 파트너에게 접근을 줘야 하므로 정답은 B다.",
+      "whyIncorrect": "A(내부 라이선스 생성)는 비용이 과도하게 든다. C(Manual Sharing만으로)는 애초에 포털 접근 자체가 불가능해 부족하다. D(Apex Managed Sharing)는 내부 보안 모델을 위한 것으로 외부 사용자 접근 경로를 제공하지 않는다.",
+      "examPoint": "외부 파트너/고객 접근이 필요하면 항상 Experience Cloud + 적절한 라이선스로 직결.",
+      "practicalExample": "파트너사 직원들이 Experience Cloud 포털에 로그인해 관련 Account 정보를 읽기 전용으로 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-071",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has set OWD for Opportunity to Private. A new sales rep joins the West region team. Which existing mechanism will automatically give them access to their teammates Opportunity records?",
+    "choices": [
+      "Sharing Rules",
+      "Role Hierarchy",
+      "Manual Sharing",
+      "Permission Set"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "이미 구성된 Role 기준 Sharing Rule이 있다면, 새 담당자가 해당 Role에 배정되는 순간 자동으로 팀 전체와 동일한 공유 접근을 받는다.",
+      "whyCorrect": "새로 합류한 담당자가 별도 추가 작업 없이 팀원들의 레코드에 자동 접근해야 하므로 정답은 A다.",
+      "whyIncorrect": "B(Role Hierarchy)는 상하위 관계 접근이지 같은 팀 동료 간 접근을 자동으로 보장하지는 않는다. C(Manual Sharing)는 매번 수동으로 설정해야 해 자동이 아니다. D(Permission Set)는 오브젝트 권한 부여일 뿐 레코드 공유 자체는 아니다.",
+      "examPoint": "이미 구성된 Role 기준 Sharing Rule에 새 팀원이 합류하면 별도 조치 없이 자동으로 팀 공유 혜택을 받는다는 점을 기억.",
+      "practicalExample": "West Region Role에 배정된 신규 담당자는 기존 Role 기준 Sharing Rule 덕분에 자동으로 팀 Opportunity에 접근한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-072",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to ensure that the Salary field on the Employee object is never visible to any user except HR managers, including in reports, exports, and API calls. What is the correct approach?",
+    "choices": [
+      "Remove it from all page layouts",
+      "Set Field-Level Security to Hidden for all non-HR profiles",
+      "Create a Validation Rule to block access",
+      "Set OWD to Private for the Employee object"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "FLS Hidden은 리포트, Export, API를 포함한 모든 접근 경로에서 필드를 완전히 숨긴다.",
+      "whyCorrect": "리포트/Export/API를 포함한 완전한 숨김이 필요하므로 정답은 B다.",
+      "whyIncorrect": "A(Page Layout 제거)는 상세 화면에만 적용되고 리포트/API에는 여전히 노출된다. C(Validation Rule)는 저장 조건 검증일 뿐 가시성 제어가 아니다. D(OWD를 Private으로)는 레코드 전체 접근을 다룰 뿐 특정 필드만 숨기지 못한다.",
+      "examPoint": "'모든 경로에서 특정 필드만 숨김'은 항상 FLS Hidden으로 직결.",
+      "practicalExample": "HR이 아닌 모든 Profile에서 Salary 필드에 FLS Hidden을 설정하면 리포트나 API로도 그 값을 조회할 수 없다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-073",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A user at Universal Containers has Read Only OWD on Account. They also have a Sharing Rule that grants them Read/Write on Accounts owned by the East team. What is their effective access on East team Accounts?",
+    "choices": [
+      "Read Only — OWD always wins",
+      "Read/Write — Sharing Rule grants higher access",
+      "No access — conflicting rules cancel out",
+      "Read Only — lower access always applies"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "여러 공유 메커니즘이 동시에 적용될 때 Salesforce는 그중 가장 높은(넓은) 권한을 최종 유효 접근으로 적용한다.",
+      "whyCorrect": "OWD는 Read Only지만 Sharing Rule이 Read/Write를 추가로 부여했으므로 최종 접근은 Read/Write가 정답(B)이다.",
+      "whyIncorrect": "A(OWD가 항상 이김)는 실제 동작과 반대다. C(충돌로 접근 없음)는 사실이 아니다 — 충돌이 아니라 합산 규칙이 적용된다. D(낮은 권한 적용)도 실제 규칙과 반대다.",
+      "examPoint": "여러 공유 메커니즘이 겹치면 항상 가장 높은 권한이 최종 적용된다는 원칙을 기억.",
+      "practicalExample": "East 팀 Account에 대해 OWD는 Read Only여도 Sharing Rule이 Read/Write를 부여했다면 그 사용자는 편집까지 가능하다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-074",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to give the legal team access to specific Contract records on a case-by-case basis. No automated rule can predict which records they need. What is the best approach?",
+    "choices": [
+      "Change OWD to Public Read/Write",
+      "Create a Sharing Rule for the Legal role",
+      "Use Manual Sharing on individual records",
+      "Assign Modify All Data permission to legal users"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "예측 불가능한 케이스별 접근 요구에는 자동화된 규칙보다 소유자가 그때그때 직접 지정하는 Manual Sharing이 적합하다.",
+      "whyCorrect": "패턴이 없어 자동화가 불가능한 케이스별 접근이므로 Manual Sharing이 정답(C)이다.",
+      "whyIncorrect": "A(OWD 변경)는 조직 전체에 영향을 준다. B(Sharing Rule)는 예측 가능한 고정된 기준이 필요해 이 시나리오와 맞지 않는다. D(Modify All Data)는 필요 이상으로 강력한 권한이다.",
+      "examPoint": "패턴 없는 케이스별 접근은 항상 Manual Sharing으로 직결.",
+      "practicalExample": "법무팀이 필요할 때마다 특정 Contract 레코드를 하나씩 Manual Sharing으로 담당자에게 공유한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-075",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A system administrator at UC needs to ensure that users can only see records assigned to them in a specific territory. Which feature manages territory-based record access?",
+    "choices": [
+      "Role Hierarchy",
+      "Territory Management",
+      "Sharing Rules",
+      "Permission Sets"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Territory Management는 지리적/논리적 영역(구역)을 기준으로 Account와 관련 레코드에 대한 접근을 관리하는 전용 기능이다.",
+      "whyCorrect": "영역(Territory) 기준 레코드 접근이 필요하므로 정답은 B다.",
+      "whyIncorrect": "A(Role Hierarchy)는 조직 위계 기반이지 지역 구역 기반이 아니다. C(Sharing Rules)는 기준 기반 자동 공유일 뿐 Territory 개념 자체는 아니다. D(Permission Sets)는 오브젝트/필드 권한 추가 기능이다.",
+      "examPoint": "영역/구역 기반 Account 접근은 항상 Territory Management로 직결.",
+      "practicalExample": "여러 지역을 담당하는 영업 조직에서 Territory Management로 지역별 Account 접근 권한을 세밀하게 관리한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-076",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has configured a Permission Set that grants Create and Edit on the Contract object. A user with this Permission Set also has a Profile that grants Read Only on Contracts. What can the user do?",
+    "choices": [
+      "Read Only — Profile always restricts",
+      "Create and Edit — Permission Set grants additional access",
+      "No access — conflict prevents any access",
+      "Only Create — mixed permissions split the access"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Profile과 Permission Set의 권한은 합집합으로 적용되므로 Profile이 Read Only여도 Permission Set이 Create/Edit을 부여하면 두 권한이 모두 유효해진다.",
+      "whyCorrect": "Permission Set이 Profile 권한에 추가되어 Create와 Edit이 모두 가능해지므로 정답은 B다.",
+      "whyIncorrect": "A(Profile이 항상 제한)는 실제 동작과 반대다. C(충돌로 접근 없음)는 사실이 아니다. D(Create만 적용)도 실제 합집합 규칙과 다르다.",
+      "examPoint": "Profile + Permission Set = 합집합(최대 권한 적용) 원칙을 다시 한 번 기억.",
+      "practicalExample": "Profile은 Read Only만 부여해도 Create/Edit이 포함된 Permission Set을 추가하면 그 사용자는 Contract를 생성·편집할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-077",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants managers at any level in the hierarchy to automatically see all records owned by users below them. The OWD is Private. What must be correctly configured?",
+    "choices": [
+      "Sharing Rules for each manager",
+      "The Role Hierarchy with managers placed above their reports",
+      "Manual Sharing for each manager",
+      "View All Data permission for managers"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "모든 계층의 관리자가 부하 레코드에 자동 접근하려면 조직도 전체에 걸쳐 관리자가 부하보다 상위 Role에 정확히 배치된 Role Hierarchy가 구성되어 있어야 한다.",
+      "whyCorrect": "계층의 모든 레벨에서 자동 접근이 필요하므로 올바르게 구성된 Role Hierarchy가 정답(B)이다.",
+      "whyIncorrect": "A(관리자마다 개별 Sharing Rule)는 계층 규모만큼 반복 설정이 필요해 비효율적이다. C(관리자마다 수동 공유)는 자동화가 아니다. D(View All Data)는 모든 관리자에게 과도하게 넓은 권한을 준다.",
+      "examPoint": "'모든 계층의 관리자가 자동으로'라는 요구는 항상 올바르게 배치된 Role Hierarchy로 직결.",
+      "practicalExample": "조직도 전체에서 관리자를 각자의 부하보다 상위 Role에 배치하면 모든 레벨에서 자동으로 하위 레코드에 접근할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-078",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "What is the maximum number of Permission Sets that can be assigned to a single user in Salesforce?",
+    "choices": [
+      "1",
+      "5",
+      "10",
+      "Unlimited"
+    ],
+    "answerIndex": 3,
+    "explanation": {
+      "coreConcept": "Permission Set은 Profile과 달리 사용자당 개수 제한 없이 원하는 만큼 할당할 수 있다.",
+      "whyCorrect": "제한이 없다는 것이 핵심이므로 정답은 D다.",
+      "whyIncorrect": "1개, 5개, 10개는 실제 규칙과 다르며, 이는 Profile(1개 제한)의 규칙과 혼동한 것이다.",
+      "examPoint": "Profile은 1개, Permission Set은 무제한이라는 시험 단골 포인트를 명확히 구분.",
+      "practicalExample": "한 사용자에게 필요한 만큼 여러 개의 Permission Set을 자유롭게 부여할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-079",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to audit which users have access to a specific Account record and why. Which tool provides this visibility?",
+    "choices": [
+      "설정 감사 추적",
+      "Sharing Settings page",
+      "Record Sharing Hierarchy button on the record",
+      "Login History"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Record Sharing Hierarchy 버튼은 레코드 페이지에서 직접 확인할 수 있는 기능으로, 해당 레코드에 어떤 사용자가 어떤 경로(소유, OWD, Role, Sharing Rule 등)로 접근 가능한지 보여준다.",
+      "whyCorrect": "특정 레코드에 누가 왜 접근 가능한지 확인해야 하므로 정답은 C다.",
+      "whyIncorrect": "A(Setup Audit Trail)는 설정 변경 이력이다. B(Sharing Settings page)는 규칙을 설정하는 화면일 뿐 특정 레코드의 접근 경로를 개별적으로 보여주지는 않는다. D(Login History)는 로그인 기록이다.",
+      "examPoint": "특정 레코드의 접근 경로 감사는 항상 그 레코드의 Sharing/Sharing Hierarchy 버튼으로 직결.",
+      "practicalExample": "관리자가 특정 Account 레코드에서 Sharing 버튼을 눌러 어떤 경로로 각 사용자가 접근 가능한지 확인한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-080",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC sets OWD for Case to Public Read/Write. A support agent complains they cannot delete Cases they did not create. What should the admin check?",
+    "choices": [
+      "OWD needs to be changed to Private",
+      "The agents Profile does not have the Delete permission on Cases",
+      "A Validation Rule is blocking deletion",
+      "The Role Hierarchy is restricting access"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "삭제 권한은 OWD 설정과 무관하게 Profile의 Delete 오브젝트 권한으로 결정되므로, Public Read/Write에서도 Delete 권한이 없으면 삭제할 수 없다.",
+      "whyCorrect": "Public Read/Write인데도 삭제가 안 된다면 Profile의 Delete 권한 부재가 가장 유력한 원인이므로 정답은 B다.",
+      "whyIncorrect": "A(OWD를 Private으로 변경)는 불필요하고 오히려 접근을 제한한다. C(Validation Rule)는 저장 조건 검증이지 삭제 권한과 무관하다. D(Role Hierarchy)는 레코드 접근 범위를 다룰 뿐 삭제 권한 자체를 제어하지 않는다.",
+      "examPoint": "삭제 관련 문제는 항상 Profile/Permission Set의 Delete 권한을 먼저 확인.",
+      "practicalExample": "상담원의 Profile에 Case Delete 권한을 추가하면 본인이 만들지 않은 Case도 삭제할 수 있게 된다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-081",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has Apex Managed Sharing on a custom object. A record is transferred to a new owner. What happens to the Apex Managed Sharing?",
+    "choices": [
+      "It is removed when ownership changes",
+      "It persists regardless of ownership changes",
+      "It transfers to the new owner automatically",
+      "It requires manual re-application"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Apex Managed Sharing은 코드로 설정한 공유이며 소유자가 바뀌어도 Apex 코드가 명시적으로 제거하지 않는 한 그대로 유지된다.",
+      "whyCorrect": "소유자 변경과 무관하게 유지된다는 것이 핵심 특징이므로 정답은 B다.",
+      "whyIncorrect": "A(소유자 변경 시 제거)는 Manual Sharing의 특징이다. C(새 소유자에게 자동 이전)는 사실이 아니다. D(재적용 필요)도 사실이 아니다 — 이미 존재하는 공유는 그대로 남는다.",
+      "examPoint": "Manual Sharing(소유자 변경 시 삭제) vs Apex Managed Sharing(유지)의 차이를 다시 확인.",
+      "practicalExample": "복잡한 승인 로직으로 설정된 공유는 담당자가 바뀌어도 코드가 명시적으로 지우기 전까지 계속 유지된다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-082",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to restrict which users can export reports containing sensitive financial data. What should be configured?",
+    "choices": [
+      "Remove the Export Reports permission from the relevant profiles",
+      "Set FLS to Hidden on financial fields",
+      "Change OWD to Private for financial objects",
+      "Create a Validation Rule on report export"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Export Reports는 Profile 또는 Permission Set의 시스템 권한으로 관리되며, 이를 제거하면 리포트 실행/조회는 허용하되 내보내기(Export)만 막을 수 있다.",
+      "whyCorrect": "리포트 조회는 허용하되 내보내기만 막아야 하므로 관련 Profile에서 Export Reports 권한을 제거하는 것이 정답(A)이다.",
+      "whyIncorrect": "B(FLS Hidden)는 필드 가시성 제어일 뿐 Export 권한 자체와는 별개다. C(OWD 변경)는 레코드 접근을 다룰 뿐 리포트 Export 권한과는 무관하다. D(Validation Rule)는 리포트 Export 동작에는 적용되지 않는다.",
+      "examPoint": "리포트 Export 제한은 항상 Profile/Permission Set의 Export Reports 시스템 권한으로 직결.",
+      "practicalExample": "재무 데이터가 포함된 리포트를 조회는 허용하되 외부로 내보내지 못하도록 관련 Profile에서 Export Reports 권한을 제거한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-083",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants to give a consultant temporary read-only access to all Opportunities without changing the OWD or adding them to the Role Hierarchy. What is the best approach?",
+    "choices": [
+      "Change OWD to Public Read Only temporarily",
+      "Assign a Permission Set with View All on Opportunity",
+      "Create a Sharing Rule for the consultant",
+      "Give the consultant the System Administrator profile"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Permission Set으로 특정 오브젝트에 View All(오브젝트 권한)을 부여하면 OWD나 Role Hierarchy를 건드리지 않고도 특정 사용자에게만 전체 레코드 읽기 접근을 줄 수 있다.",
+      "whyCorrect": "컨설턴트에게 임시로 모든 Opportunity에 대한 읽기 전용 접근을 줘야 하고 OWD나 Role Hierarchy 변경은 피해야 하므로 Permission Set + View All이 정답(B)이다.",
+      "whyIncorrect": "A(OWD를 임시로 Public Read Only로 변경)는 조직 전체에 영향을 준다. C(Sharing Rule 생성)는 조건 기반 자동 공유로 임시 단일 사용자 대상 접근에는 과도하다. D(System Administrator 프로필 부여)는 필요 이상으로 광범위한 권한을 준다.",
+      "examPoint": "특정 사용자에게만 오브젝트 전체 읽기 권한을 임시로 줘야 하면 Permission Set + View All(Object Permission)을 우선 고려.",
+      "practicalExample": "프로젝트 기간 동안만 컨설턴트에게 View All이 포함된 Permission Set을 할당하고, 종료되면 간단히 제거한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-084",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to ensure that a partner user who accesses Salesforce through Experience Cloud can only see their own Cases and not other partners Cases. What OWD should be set for Cases in the Community?",
+    "choices": [
+      "Public Read/Write",
+      "Public Read Only",
+      "Private",
+      "Controlled by Parent"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Experience Cloud(파트너 커뮤니티)에서도 표준 오브젝트의 OWD 원칙이 그대로 적용되며, Private OWD는 소유자(제출한 파트너)만 자신의 Case를 볼 수 있게 한다.",
+      "whyCorrect": "파트너가 자신이 제출한 Case만 보고 다른 파트너의 Case는 보지 못하게 해야 하므로 가장 제한적인 Private OWD가 정답(C)이다.",
+      "whyIncorrect": "A(Public Read/Write)와 B(Public Read Only)는 모든 사용자가 서로의 Case를 볼 수 있게 해 요구사항에 위배된다. D(Controlled by Parent)는 Case가 부모(Account 등)의 공유 설정을 따르게 할 뿐, 이 시나리오에서 요구하는 '본인만 보기'를 직접 보장하지 않는다.",
+      "examPoint": "외부 사용자가 서로의 레코드를 보면 안 되는 요구사항은 Private OWD로 직결.",
+      "practicalExample": "Partner Community에서 각 파트너는 Private OWD 덕분에 자신이 제출한 Case만 목록에서 확인할 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-085",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers wants to understand why a specific user can see a record even though they do not own it and there are no explicit sharing rules. What is the most likely explanation?",
+    "choices": [
+      "There is a bug in Salesforce",
+      "The user has a role above the records owner in the Role Hierarchy",
+      "The OWD is set to Private incorrectly",
+      "The user guessed the record URL"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "명시적인 Sharing Rule이 없어도 Role Hierarchy에서 레코드 소유자보다 상위 Role에 있는 사용자는 Grant Access Using Hierarchies 설정에 따라 자동으로 해당 레코드에 접근할 수 있다.",
+      "whyCorrect": "명시적 공유 규칙이 없는데도 레코드가 보인다면 Role Hierarchy를 통한 자동 접근이 가장 유력한 설명이므로 정답은 B다.",
+      "whyIncorrect": "A(버그)는 근거 없는 추측이다. C(OWD가 잘못 Private으로 설정됨)는 오히려 접근을 더 제한하는 방향이라 이 현상(접근 가능)을 설명하지 못한다. D(URL 추측)는 실제 레코드 접근 권한 체계와 무관한 비현실적 설명이다.",
+      "examPoint": "'공유 규칙 없이도 레코드가 보인다'는 현상은 항상 Role Hierarchy 자동 접근을 먼저 의심.",
+      "practicalExample": "지역 관리자가 해당 지역 영업담당자보다 상위 Role에 있어, 별도 Sharing Rule 없이도 담당자의 Opportunity를 자동으로 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-086",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "UC wants a specific user to be able to read and edit ALL records in the org without making them System Administrator. Which two permissions together achieve this?",
+    "choices": [
+      "View All Data + Modify All Data",
+      "Read All + Edit All",
+      "View All + Edit All on each object",
+      "Manage Users + View Setup"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "View All Data는 모든 레코드에 대한 읽기 권한을, Modify All Data는 모든 레코드에 대한 읽기+쓰기+삭제 권한을 각각 부여하는 시스템 권한이며, 두 권한을 함께 부여하는 것도 유효한 구성이다.",
+      "whyCorrect": "시스템 관리자로 만들지 않으면서 모든 오브젝트의 모든 레코드를 읽고 수정할 수 있어야 하므로, 조직 전체 데이터에 대한 읽기+수정 권한을 제공하는 View All Data + Modify All Data 조합이 정답(A)이다.",
+      "whyIncorrect": "B(Read All + Edit All)는 실제 존재하는 시스템 권한명이 아니다. C(오브젝트별 View All + Edit All)는 오브젝트마다 일일이 설정해야 해 비효율적이며 '전체 레코드'라는 요구에는 시스템 권한이 더 적합하다. D(Manage Users + View Setup)는 사용자 관리와 설정 조회 권한일 뿐 레코드 데이터 접근과는 무관하다.",
+      "examPoint": "System Administrator 없이 조직 전체 데이터 읽기+수정 권한을 줘야 하면 View All Data/Modify All Data 같은 시스템 권한을 우선 고려.",
+      "practicalExample": "데이터 마이그레이션 담당자에게 System Administrator 대신 View All Data와 Modify All Data를 부여해 전체 레코드에 접근하되 설정 변경 권한은 주지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-087",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants to grant the Audit team read-only access to all records across all objects for compliance review. Which is the most efficient single permission?",
+    "choices": [
+      "Add them to the top of the Role Hierarchy",
+      "Assign View All Data system permission",
+      "Create Sharing Rules for every object",
+      "Assign Full access OWD on all objects"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "View All Data는 OWD와 공유 설정에 관계없이 모든 오브젝트의 모든 레코드를 읽을 수 있게 해주는 단일 시스템 권한이다.",
+      "whyCorrect": "감사팀에게 모든 오브젝트에 대한 읽기 전용 접근을 하나의 설정으로 효율적으로 부여해야 하므로 View All Data가 정답(B)이다.",
+      "whyIncorrect": "A(Role Hierarchy 최상단 배치)는 조직 구조를 왜곡시키고 편집 권한까지 암묵적으로 얽힐 수 있어 부적절하다. C(모든 오브젝트에 Sharing Rule 생성)는 오브젝트 수만큼 개별 설정이 필요해 비효율적이다. D(모든 오브젝트에 Full Access OWD)는 존재하지 않는 개념이며 편집 권한까지 열어줘 읽기 전용 요구에 맞지 않는다.",
+      "examPoint": "'모든 오브젝트에 대한 읽기 전용, 단일 설정'은 항상 View All Data 시스템 권한으로 직결.",
+      "practicalExample": "컴플라이언스 감사팀에게 View All Data를 부여해 모든 데이터를 조회할 수 있게 하되 수정 권한은 주지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-088",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A sales rep at Universal Containers owns an Account record. They want to share it with a colleague who needs to edit it for a specific project. Which is the quickest approach?",
+    "choices": [
+      "Ask the admin to create a Sharing Rule",
+      "The rep uses Manual Sharing on the Account record",
+      "Ask the admin to change OWD",
+      "The rep adds the colleague to the Role Hierarchy"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Manual Sharing은 레코드 소유자가 레코드 페이지의 Share 버튼을 통해 특정 동료에게 즉시 개별 공유를 설정할 수 있는 가장 빠른 방법이다.",
+      "whyCorrect": "소유자가 특정 동료 한 명에게 특정 프로젝트를 위해 즉시 편집 권한을 공유해야 하므로, 소유자가 직접 실행 가능한 Manual Sharing이 가장 빠른 방법(B)이다.",
+      "whyIncorrect": "A(관리자에게 Sharing Rule 생성 요청)는 관리자 개입과 규칙 설정이 필요해 즉시성이 떨어진다. C(관리자에게 OWD 변경 요청)는 조직 전체에 영향을 주는 과도한 조치다. D(Role Hierarchy에 동료 추가)는 조직 구조 자체를 바꾸는 부적절한 방법이다.",
+      "examPoint": "소유자가 직접, 즉시, 특정 한 명에게 공유해야 하면 항상 Manual Sharing.",
+      "practicalExample": "Account 소유자가 레코드 페이지의 Share 버튼을 눌러 동료를 Edit 권한으로 즉시 추가한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-089",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers uses a Private OWD for Opportunities. A sales rep needs to view an Opportunity owned by a colleague in a different region. The rep does not have a role above the owner. Which feature should the admin use to grant access?",
+    "choices": [
+      "Change OWD to Public Read Only",
+      "Create a Criteria-Based Sharing Rule",
+      "Add the rep to the owner's Role",
+      "Enable Grant Access Using Hierarchies"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Criteria-Based Sharing Rule은 레코드의 특정 필드 값(예: Region)을 기준으로 조건에 맞는 레코드를 자동으로 대상 사용자/그룹에 공개하는 기능으로, Role Hierarchy에 변화를 주지 않고도 조건 기반 접근을 자동화할 수 있다.",
+      "whyCorrect": "소속 Role이 소유자보다 상위가 아니어서 계층 기반 접근이 불가능한 상황에서, 특정 지역(Region) 조건에 맞는 Opportunity에 대한 접근을 자동화하려면 Criteria-Based Sharing Rule이 정답(B)이다.",
+      "whyIncorrect": "A(OWD를 Public Read Only로 변경)는 조직 전체 모든 사용자에게 영향을 줘 과도하다. C(소유자 Role에 추가)는 조직 구조를 왜곡하고 필요 이상으로 넓은 범위의 접근을 부여한다. D(Grant Access Using Hierarchies 활성화)는 이미 있는 계층 관계에서만 작동하는데, 담당자에게는 애초에 상위 Role이 없으므로 효과가 없다.",
+      "examPoint": "계층 관계가 없는 상황에서 특정 조건에 맞는 레코드 접근을 자동화하려면 Criteria-Based Sharing Rule을 고려.",
+      "practicalExample": "'다른 지역 Opportunity 조회가 필요한 담당자' 그룹에 대해 특정 Region 조건의 Criteria-Based Sharing Rule을 만들어 자동으로 접근을 부여한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-090",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants managers to automatically see all records owned by their direct reports without manually creating sharing rules. Which feature enables this?",
+    "choices": [
+      "Manual Sharing",
+      "OWD set to Public Read Only",
+      "Role Hierarchy with Grant Access Using Hierarchies enabled",
+      "Sharing Sets"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Role Hierarchy는 Grant Access Using Hierarchies가 활성화되어 있을 때, 상위 Role의 사용자가 하위 Role 소유 레코드에 별도 규칙 생성 없이 자동으로 접근할 수 있게 한다.",
+      "whyCorrect": "수동으로 Sharing Rule을 만들지 않고도 관리자가 직속 부하의 레코드를 자동으로 봐야 하므로, Grant Access Using Hierarchies가 활성화된 Role Hierarchy가 정답(C)이다.",
+      "whyIncorrect": "A(Manual Sharing)는 건별 수동 작업이라 자동화 요구에 맞지 않는다. B(OWD를 Public Read Only로)는 조직 전체에 영향을 준다. D(Sharing Sets)는 Experience Cloud 외부 사용자용 기능으로 내부 관리자-부하 관계와는 무관하다.",
+      "examPoint": "'관리자가 부하 레코드를 자동으로'라는 요구는 항상 Role Hierarchy(+ Grant Access Using Hierarchies)로 직결.",
+      "practicalExample": "영업 관리자를 담당 영업사원들보다 상위 Role에 배치하면 별도 규칙 없이도 관리자가 팀원들의 Opportunity를 자동으로 볼 수 있다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-091",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin at Universal Containers needs to give a specific user temporary access to a single Account record that they do not own. What is the MOST appropriate method?",
+    "choices": [
+      "Create a Sharing Rule",
+      "Change the OWD",
+      "Use Manual Sharing on the record",
+      "Add the user to the owner's Role"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Manual Sharing은 소유하지 않은 특정 레코드 하나에 대해 특정 사용자 한 명에게만 임시로 접근 권한을 부여하는 가장 정밀한 방법이다.",
+      "whyCorrect": "단일 레코드에 대한 특정 사용자의 임시 접근이 필요하므로 Manual Sharing이 가장 적합한 방법(C)이다.",
+      "whyIncorrect": "A(Sharing Rule 생성)는 조건에 맞는 다수 레코드에 자동 적용되는 기능이라 단일 레코드 대상 임시 조치로는 과도하다. B(OWD 변경)는 조직 전체에 영향을 준다. D(사용자를 소유자 Role에 추가)는 조직 구조를 바꾸고 그 Role의 모든 레코드에 접근하게 해 범위가 지나치게 넓다.",
+      "examPoint": "단일 레코드 + 특정 한 사용자 + 임시성은 항상 Manual Sharing으로 직결.",
+      "practicalExample": "관리자가 특정 Account 레코드에서 Share 버튼을 눌러 해당 사용자에게만 임시로 접근 권한을 부여한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-092",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has OWD set to Private for Cases. The support team needs to view all Cases regardless of ownership. What is the MOST efficient solution?",
+    "choices": [
+      "Grant each user View All Data permission",
+      "Create a Sharing Rule to share all Cases with the Support Team public group",
+      "Change OWD to Public Read Only",
+      "Assign all Cases to one owner"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Sharing Rule은 조건(예: 모든 Case)에 따라 특정 Public Group 전체에 자동으로 레코드 접근을 부여할 수 있어, 여러 사용자에게 반복적으로 접근을 제공해야 할 때 가장 효율적이다.",
+      "whyCorrect": "Private OWD 상황에서 지원팀 전원이 소유 여부와 관계없이 모든 Case를 봐야 하므로, Support Team Public Group을 대상으로 한 Sharing Rule이 가장 효율적인 정답(B)이다.",
+      "whyIncorrect": "A(사용자마다 개별 View All Data 권한 부여)는 한 명씩 설정해야 해 비효율적이고 필요 이상으로 강력한 권한이다. C(OWD를 Public Read Only로 변경)는 조직 전체 모든 사용자에게 영향을 준다. D(모든 Case를 한 명에게 배정)는 실제 담당자 구분을 없애버려 업무에 부적합하다.",
+      "examPoint": "특정 팀 전체에 반복적으로 레코드를 공유해야 하면 Public Group + Sharing Rule 조합이 가장 효율적.",
+      "practicalExample": "Support Team Public Group을 만들고 모든 Case를 이 그룹에 자동 공유하는 Sharing Rule을 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-093",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "An admin needs to prevent users from exporting reports. Where should this permission be configured?",
+    "choices": [
+      "Report Settings in Setup",
+      "Sharing Rules",
+      "Profile or Permission Set",
+      "OWD Settings"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "리포트 내보내기(Export Reports) 권한은 Profile 또는 Permission Set의 시스템 권한(System Permission)으로 관리되며, 이 권한을 제거하면 리포트 조회는 가능해도 내보내기는 차단된다.",
+      "whyCorrect": "사용자가 리포트를 내보내지 못하도록 막아야 하며 이는 Profile 또는 Permission Set의 시스템 권한으로 설정하므로 정답은 C다.",
+      "whyIncorrect": "A(Setup의 Report Settings)는 이 권한이 위치하는 정확한 경로가 아니다. B(Sharing Rules)는 레코드 공유 기능으로 리포트 내보내기와 무관하다. D(OWD Settings)도 레코드 접근 범위를 다룰 뿐 리포트 내보내기 권한과는 관련이 없다.",
+      "examPoint": "리포트 관련 시스템 권한(Export Reports 등)은 항상 Profile/Permission Set에서 관리된다는 점을 기억.",
+      "practicalExample": "민감한 재무 데이터가 포함된 리포트의 무단 유출을 막기 위해 해당 Profile에서 Export Reports 권한을 제거한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-094",
+    "category": "세일즈포스",
+    "difficulty": "기초",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers wants Account records to be visible to all users, but only the owner and users above in the hierarchy should be able to edit them. Which OWD setting achieves this?",
+    "choices": [
+      "Private",
+      "Public Read Only",
+      "Public Read/Write",
+      "Controlled by Parent"
+    ],
+    "answerIndex": 1,
+    "explanation": {
+      "coreConcept": "Public Read Only OWD는 모든 사용자가 레코드를 볼 수 있게 하면서 편집은 소유자(및 Role Hierarchy 상위 사용자)로 제한한다.",
+      "whyCorrect": "Account를 모두가 보되 소유자와 상위 계층만 편집할 수 있어야 하므로 Public Read Only가 정답(B)이다.",
+      "whyIncorrect": "A(Private)는 소유자만 볼 수 있어 '모두 보기' 요구에 위배된다. C(Public Read/Write)는 누구나 편집할 수 있어 '소유자/상위만 편집' 요구에 위배된다. D(Controlled by Parent)는 자식 오브젝트 전용 설정으로 Account 같은 최상위 오브젝트에는 적용되지 않는다.",
+      "examPoint": "'모두 보기 + 소유자만(또는 상위 계층까지) 편집'은 항상 Public Read Only로 직결.",
+      "practicalExample": "전체 영업팀이 모든 Account를 조회할 수 있지만, 편집은 담당자와 그 상위 관리자만 가능하도록 Public Read Only를 설정한다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-095",
+    "category": "세일즈포스",
+    "difficulty": "중급",
+    "type": "객관식",
+    "point": 1,
+    "text": "A user reports they can see an Account but cannot see a specific field on that Account. Which feature is MOST likely restricting this?",
+    "choices": [
+      "OWD Settings",
+      "Role Hierarchy",
+      "Field-Level Security",
+      "Page Layout"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "레코드 자체는 볼 수 있지만 특정 필드만 보이지 않는 현상은 대부분 FLS(Field-Level Security)가 해당 필드를 Hidden으로 설정한 결과다.",
+      "whyCorrect": "Account 레코드는 보이는데 특정 필드만 안 보인다면 레코드 접근이 아닌 필드 접근의 문제이므로 FLS가 정답(C)이다.",
+      "whyIncorrect": "A(OWD Settings)는 레코드 전체 접근을 제어할 뿐 특정 필드만 숨기지 못한다. B(Role Hierarchy)는 레코드 공유 확장 기능으로 필드 가시성과 무관하다. D(Page Layout)는 레이아웃에서 제거해도 리포트나 API에서는 여전히 보이므로 완전한 숨김의 근본 원인이 되기 어렵다.",
+      "examPoint": "'레코드는 보이는데 특정 필드만 안 보인다'는 항상 FLS로 직결.",
+      "practicalExample": "Annual Revenue 필드에 FLS가 Hidden으로 설정되어 있으면 그 Profile의 사용자는 Account를 봐도 해당 필드만 보이지 않는다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-096",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has Custom Object records shared via a Sharing Rule with a Public Group. An admin deletes the Public Group. What happens to the sharing access granted by that rule?",
+    "choices": [
+      "Access remains until the Sharing Rule is manually removed",
+      "The Sharing Rule is automatically deactivated",
+      "Users in the deleted group lose the access granted by that rule",
+      "Access is transferred to the group members individual profiles"
+    ],
+    "answerIndex": 2,
+    "explanation": {
+      "coreConcept": "Sharing Rule이 특정 Public Group을 대상으로 설정된 경우, 그 그룹이 삭제되면 규칙이 가리키는 대상이 사라져 그룹 구성원들이 누리던 접근 권한도 함께 사라진다.",
+      "whyCorrect": "Public Group을 삭제하면 그 그룹을 통해 부여되던 Sharing Rule의 접근 권한도 함께 사라지므로 정답은 C다.",
+      "whyIncorrect": "A(수동으로 규칙을 제거할 때까지 접근 유지)는 사실이 아니다 — 그룹이 사라지면 규칙의 대상 자체가 없어진다. B(Sharing Rule이 자동으로 비활성화됨)는 규칙 자체의 상태 변화를 설명할 뿐 실질적 결과(접근 상실)를 정확히 표현하지 못한다. D(그룹 구성원 개인 프로필로 접근이 이전됨)는 존재하지 않는 자동 이전 기능이다.",
+      "examPoint": "Public Group을 삭제하면 그 그룹 기반의 Sharing Rule 접근도 함께 사라진다는 점을 기억.",
+      "practicalExample": "'Marketing Group' Public Group을 삭제하면, 그 그룹에 부여됐던 Sharing Rule을 통한 Opportunity 접근 권한도 구성원들에게서 사라진다."
+    }
+  },
+  {
+    "id": "q-adx-dataaccess-097",
+    "category": "세일즈포스",
+    "difficulty": "고급",
+    "type": "객관식",
+    "point": 1,
+    "text": "Universal Containers has a large sales organization. The admin wants to ensure that when a manager is above a rep in the Role Hierarchy, the manager can automatically see the reps records. Which setting must be enabled?",
+    "choices": [
+      "Grant Access Using Hierarchies must be enabled on the OWD",
+      "OWD must be set to Public Read/Write",
+      "Sharing Rules must be configured for each manager",
+      "Manual Sharing must be used"
+    ],
+    "answerIndex": 0,
+    "explanation": {
+      "coreConcept": "Grant Access Using Hierarchies는 OWD 설정 화면에서 오브젝트별로 켜고 끌 수 있는 옵션으로, 이것이 활성화되어 있어야 Role Hierarchy의 상하 관계에 따른 자동 레코드 접근이 실제로 작동한다.",
+      "whyCorrect": "관리자가 Role Hierarchy에서 부하보다 상위에 있다는 것만으로는 부족하고, OWD에서 Grant Access Using Hierarchies가 켜져 있어야 자동 접근이 실제로 이루어지므로 정답은 A다.",
+      "whyIncorrect": "B(OWD를 Public Read/Write로 설정)는 전체 조직에 과도한 접근을 주는 원치 않는 결과를 낳는다. C(관리자마다 개별 Sharing Rule 구성)는 비효율적이며 Role Hierarchy의 취지와 맞지 않는다. D(Manual Sharing 사용)는 자동화가 아닌 수작업이라 요구사항에 맞지 않는다.",
+      "examPoint": "Role Hierarchy를 통한 자동 접근은 반드시 Grant Access Using Hierarchies가 활성화되어 있어야 작동한다는 전제 조건을 기억.",
+      "practicalExample": "관리자를 부하 위 Role에 배치했더라도 Grant Access Using Hierarchies가 꺼져 있으면 자동 접근이 이루어지지 않으므로 이 옵션을 반드시 확인해야 한다."
+    }
+  }
+]
