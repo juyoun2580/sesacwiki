@@ -44,8 +44,34 @@ function initNavigation() {
   }
 }
 
+// ── 로그인이 필요한 개인화 페이지 목록(파일명 기준) ──
+const AUTH_REQUIRED_PAGES = ['job.html', 'my.html', 'mywords.html', 'myfav.html'];
+
+// ── 개인화 페이지로 이동하는 링크: 비로그인 시 login.html로 보낸다(이벤트 위임) ──
+function initAuthGuardLinks() {
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    if (!AUTH_REQUIRED_PAGES.includes(link.getAttribute('href'))) return;
+    if (isLoggedIn()) return;
+
+    e.preventDefault();
+    location.href = 'login.html';
+  });
+}
+
+// ── 개인화 페이지 자체에서의 접근 제어: 현재 페이지가 로그인 필수 페이지면 requireAuth() 실행 ──
+function initPageAuthGuard() {
+  const currentPage = location.pathname.split('/').pop();
+  if (!AUTH_REQUIRED_PAGES.includes(currentPage)) return;
+
+  requireAuth();
+}
+
 // ── 공통 초기화 진입점 — auth.js가 먼저 로드되어 initAuth()를 제공해야 한다 ──
 initProgressBars();
 initToastTriggers();
 initNavigation();
 initAuth();
+initAuthGuardLinks();
+initPageAuthGuard();
