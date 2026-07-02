@@ -86,8 +86,8 @@
     <!-- WIKI DETAIL PAGE (하이라이트 + 단어저장) -->
     <!-- 담당 : feature/wiki -->
     <!-- css : wiki.css -->
-    <!-- js : highlight.js (전용), app.js/ui.js/toast.js/modal.js (공통) -->
-    <!-- json : wiki.json -->
+    <!-- js : pages/wiki.js (상세 렌더링/목차 스크롤), highlight.js (전용), app.js/ui.js/toast.js/modal.js (공통) -->
+    <!-- json : wiki-data.json -->
     <!-- ================================================= -->
     <!-- DETAIL START -->
     <section id="detail" class="page page--active" aria-label="위키 상세">
@@ -95,31 +95,26 @@
         <div class="page__content">
           <a class="back-link" href="wiki.html">‹ 새싹위키 목록으로</a>
           <div class="detail-layout">
-            <!-- TOC -->
-            <nav class="toc" aria-label="목차">
+            <!-- TOC : assets/js/pages/wiki.js가 wiki-data.json content 섹션으로 채운다 -->
+            <nav class="toc" id="wikiToc" aria-label="목차">
               <p class="toc__label">목차</p>
-              <button type="button" class="toc__item toc__item--active">1. SELECT 기본 문법</button>
-              <button type="button" class="toc__item">2. WHERE 조건절</button>
-              <button type="button" class="toc__item">3. ORDER BY 정렬</button>
-              <button type="button" class="toc__item">4. GROUP BY 집계</button>
-              <button type="button" class="toc__item">5. HAVING 필터</button>
-              <button type="button" class="toc__item">6. 실습 예제</button>
             </nav>
             <!-- Article -->
             <article class="wiki-detail__main">
               <div class="article-header">
-                <h1 class="article-header__title">SQL SELECT 문법</h1>
-                <span class="tag tag--green">SQL</span><span class="tag tag--gray">입문</span>
+                <h1 class="article-header__title" id="wikiDetailTitle"></h1>
+                <span class="tag" id="wikiDetailCategoryTag"></span><span class="tag tag--gray"
+                  id="wikiDetailLevelTag"></span>
               </div>
               <p class="article-meta">
-                <span>⏱ 예상 학습 시간: 15분</span>
-                <span>👁 완료율 78%</span>
-                <button type="button" class="article-meta__favorite favorite-star favorite-star--on"
-                  aria-pressed="true">★ 즐겨찾기</button>
+                <span id="wikiDetailTime"></span>
+                <span id="wikiDetailPercent"></span>
+                <button type="button" class="article-meta__favorite favorite-star" id="wikiDetailFavorite"
+                  aria-pressed="false">★ 즐겨찾기</button>
               </p>
-              <div class="detail-progress progress-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0"
-                aria-valuemax="100">
-                <div class="progress-bar__fill progress-bar__fill--green" data-progress="78"></div>
+              <div class="detail-progress progress-bar" role="progressbar" id="wikiDetailProgressBar"
+                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar__fill progress-bar__fill--green" id="wikiDetailProgressFill"></div>
               </div>
 
               <p class="highlight-banner">
@@ -127,73 +122,11 @@
                 <span><strong>텍스트를 드래그</strong>하면 하이라이트 저장 또는 단어장 추가를 할 수 있어요!</span>
               </p>
 
-              <div class="article" id="artbody">
-                <h2>1. SELECT 기본 문법</h2>
-                <p><span class="highlight--yellow">SELECT는 데이터베이스에서 데이터를 조회할 때 사용하는 가장 기본적인 SQL 명령어입니다.</span> 테이블에서 원하는
-                  컬럼을 선택해 결과를 가져옵니다. SELECT 뒤에 원하는 컬럼명을 쉼표로 구분하여 나열하고, FROM 뒤에 조회할 테이블명을 지정합니다.</p>
-                <div class="code-box">
-                  <button type="button" class="code-box__copy-btn" data-action="toast"
-                    data-message="코드가 복사되었어요!">복사</button>
-                  <pre><span class="code-box__keyword">SELECT</span> 컬럼명1, 컬럼명2
-<span class="code-box__keyword">FROM</span> 테이블명
-<span class="code-box__keyword">WHERE</span> 조건; <span class="code-box__comment">-- 조건에 맞는 행만 반환</span></pre>
-                </div>
-                <h2>2. WHERE 조건절</h2>
-                <p>WHERE 절은 조회할 데이터의 조건을 지정합니다. <button type="button" class="term" data-action="open-modal"
-                    data-word="WHERE 절">WHERE
-                    절</button>은 조건에 맞는 행(row)만 결과로 반환합니다. 다양한 비교 연산자(=, !=, &gt;, &lt;, BETWEEN, LIKE,
-                  IN)를 사용할 수 있습니다.</p>
-                <div class="code-box">
-                  <button type="button" class="code-box__copy-btn" data-action="toast"
-                    data-message="코드가 복사되었어요!">복사</button>
-                  <pre><span class="code-box__keyword">SELECT</span> name, salary
-<span class="code-box__keyword">FROM</span> employees
-<span class="code-box__keyword">WHERE</span> department = <span class="code-box__string">'IT'</span>
-  <span class="code-box__keyword">AND</span> salary &gt; 3000000;</pre>
-                </div>
-                <h2>3. ORDER BY 정렬</h2>
-                <p>ORDER BY 절은 결과를 특정 컬럼 기준으로 정렬합니다. <button type="button" class="term" data-action="open-modal"
-                    data-word="ASC">ASC</button>는
-                  오름차순, <button type="button" class="term" data-action="open-modal" data-word="DESC">DESC</button>는
-                  내림차순입니다. 기본값은
-                  ASC(오름차순)입니다.</p>
-                <div class="code-box">
-                  <button type="button" class="code-box__copy-btn" data-action="toast"
-                    data-message="코드가 복사되었어요!">복사</button>
-                  <pre><span class="code-box__keyword">SELECT</span> name, salary
-<span class="code-box__keyword">FROM</span> employees
-<span class="code-box__keyword">ORDER BY</span> salary <span class="code-box__keyword">DESC</span>;</pre>
-                </div>
-                <h2>4. GROUP BY 집계</h2>
-                <p><button type="button" class="term" data-action="open-modal" data-word="GROUP BY">GROUP BY</button>는
-                  특정 컬럼을 기준으로 데이터를
-                  그룹화합니다. COUNT, SUM, AVG, MAX, MIN 등의 집계 함수와 함께 사용하여 각 그룹에 대한 집계 결과를 얻습니다.</p>
-                <div class="code-box">
-                  <button type="button" class="code-box__copy-btn" data-action="toast"
-                    data-message="코드가 복사되었어요!">복사</button>
-                  <pre><span class="code-box__keyword">SELECT</span> department, <span class="code-box__keyword">COUNT</span>(*) <span class="code-box__keyword">AS</span> cnt, <span class="code-box__keyword">AVG</span>(salary) <span class="code-box__keyword">AS</span> avg_sal
-<span class="code-box__keyword">FROM</span> employees
-<span class="code-box__keyword">GROUP BY</span> department;</pre>
-                </div>
-              </div>
+              <!-- assets/js/pages/wiki.js가 wiki-data.json content 섹션으로 채운다 -->
+              <div class="article" id="artbody"></div>
 
               <h2 class="related-heading">관련 문서</h2>
-              <button type="button" class="related-item" data-action="toast" data-message="SQL JOIN 문서로 이동해요!">
-                <span class="related-item__icon" aria-hidden="true">🗄️</span>
-                <span>
-                  <span class="related-item__title">SQL JOIN 완벽 정리</span>
-                  <span class="related-item__desc">다양한 JOIN의 종류와 사용법</span>
-                </span>
-                <span class="tag tag--green related-item__tag">SQL</span>
-              </button>
-              <button type="button" class="related-item" data-action="toast" data-message="SQL 집계함수 문서로 이동해요!">
-                <span class="related-item__icon" aria-hidden="true">🗄️</span>
-                <span>
-                  <span class="related-item__title">SQL 집계 함수 (GROUP BY)</span>
-                  <span class="related-item__desc">COUNT, SUM, AVG 활용법</span>
-                </span>
-                <span class="tag tag--green related-item__tag">SQL</span>
-              </button>
+              <div id="wikiRelatedList"></div>
             </article>
 
             <!-- 위키 패널 -->
@@ -201,22 +134,18 @@
               <div class="save-box">
                 <p class="save-box__title">📚 내 핸드북에 저장</p>
                 <button type="button" class="save-box__action" data-action="quick-favorite"><span
-                    class="favorite-star favorite-star--on" aria-hidden="true">★</span> 즐겨찾기</button>
+                    class="favorite-star" id="wikiDetailFavoriteMini" aria-hidden="true">★</span> 즐겨찾기</button>
                 <button type="button" class="save-box__action" data-action="toast"
                   data-message="텍스트를 드래그하면 하이라이트 툴바가 나타나요!">✏️ 하이라이트</button>
                 <button type="button" class="save-box__action" data-action="open-modal" data-word="">📓 단어장 추가</button>
               </div>
-              <button type="button" class="complete-btn" data-action="toast" data-message="🎉 학습 완료! +20P 획득했어요!">✅ 학습
+              <button type="button" class="complete-btn" id="wikiCompleteBtn" data-action="toast"
+                data-message="🎉 학습 완료! +20P 획득했어요!">✅ 학습
                 완료</button>
               <!-- 하이라이트 목록 -->
               <div class="highlight-list-wrap">
-                <p class="highlight-list__label" id="hlcount">✏️ 저장한 하이라이트 (1)</p>
-                <div class="highlight-list">
-                  <div class="highlight-list__item" id="hl-init"><button type="button" class="highlight-list__delete"
-                      data-action="delete-highlight" aria-label="하이라이트 삭제">✕</button>SELECT는 데이터베이스에서 데이터를 조회할 때 사용하는 가장
-                    기본적인 SQL
-                    명령어입니다.</div>
-                </div>
+                <p class="highlight-list__label" id="hlcount">✏️ 저장한 하이라이트 (0)</p>
+                <div class="highlight-list"></div>
               </div>
             </aside>
           </div>
@@ -285,6 +214,8 @@
   <script src="assets/js/ui.js" defer></script>
   <script src="assets/js/modal.js" defer></script>
   <!-- 페이지 전용 JS — Wiki 담당 소유 (docs/PAGES.md 참고) -->
+  <!-- wiki.js 추가는 wiki.html과 동일하게 <script> 목록(공통 블록) 변경이라 PR에서 공통 담당자 확인 필요 -->
+  <script src="assets/js/pages/wiki.js" defer></script>
   <script src="assets/js/pages/highlight.js" defer></script>
 </body>
 

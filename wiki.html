@@ -83,29 +83,59 @@
 
   <main id="main-content">
     <!-- ================================================= -->
-    <!-- WIKI TREE PAGE (과목 -> 목차 -> 항목) -->
+    <!-- WIKI LIST PAGE -->
     <!-- 담당 : feature/wiki -->
     <!-- css : wiki.css -->
-    <!-- js : pages/wiki.js (트리 렌더링/항목 렌더링/즐겨찾기·완료 연동), ui.js, toast.js -->
+    <!-- js : pages/wiki.js (목록 렌더링/검색/정렬/페이지네이션), ui.js (즐겨찾기/사이드바 토글), toast.js -->
     <!-- json : wiki-data.json -->
     <!-- ================================================= -->
     <!-- WIKI START -->
     <section id="wiki" class="page page--active" aria-label="새싹위키">
       <div class="shell">
-        <aside class="sidebar" aria-label="과목 트리">
-          <p class="sidebar__label">과목</p>
-          <nav class="wiki-tree" id="wikiTree" aria-label="과목 목차 트리">
-            <p class="wiki-tree__loading">불러오는 중...</p>
-          </nav>
+        <aside class="sidebar" aria-label="카테고리">
+          <p class="sidebar__label">카테고리</p>
+          <button type="button" class="sidebar__item sidebar__item--active" data-category="전체"><span
+              class="sidebar__item-icon" aria-hidden="true">📋</span>전체</button>
+          <button type="button" class="sidebar__item" data-category="Salesforce"><span class="sidebar__item-icon"
+              aria-hidden="true">☁️</span>Salesforce</button>
+          <button type="button" class="sidebar__item" data-category="Git"><span class="sidebar__item-icon"
+              aria-hidden="true">🔀</span>Git/Vibecoding</button>
+          <button type="button" class="sidebar__item" data-category="SQL"><span class="sidebar__item-icon"
+              aria-hidden="true">🗄️</span>SQL</button>
+          <button type="button" class="sidebar__item" data-category="Java"><span class="sidebar__item-icon"
+              aria-hidden="true">☕</span>Java</button>
+          <button type="button" class="sidebar__item" data-category="HTML/CSS"><span class="sidebar__item-icon"
+              aria-hidden="true">🌐</span>HTML/CSS</button>
+          <button type="button" class="sidebar__item" data-category="JavaScript"><span class="sidebar__item-icon"
+              aria-hidden="true">⚡</span>JavaScript</button>
         </aside>
         <div class="page__content">
           <h1 class="page-title">새싹위키 🌱</h1>
           <p class="page-subtitle">새싹 과정에 필요한 모든 지식을 모아놓은 백과사전</p>
 
-          <article class="article" id="wikiContent">
-            <p class="wiki-empty">왼쪽에서 과목과 목차를 선택해보세요.</p>
-          </article>
+          <div class="wiki-toolbar">
+            <label class="sr-only" for="wiki-search">위키 검색하기</label>
+            <input type="text" id="wiki-search" class="wiki-toolbar__input" placeholder="위키 검색하기...">
+            <div class="sort-pills">
+              <button type="button" class="sort-pill sort-pill--active" data-sort="latest">최신순</button>
+              <button type="button" class="sort-pill" data-sort="popular">인기순</button>
+              <button type="button" class="sort-pill" data-sort="level">난이도순</button>
+            </div>
+          </div>
+
+          <!-- assets/js/pages/wiki.js가 wiki-data.json을 읽어 이 안에 wiki-row를 렌더링한다 -->
+          <ul class="wiki-row-list" id="wikiRowList"></ul>
+
+          <nav class="pagination" id="wikiPagination" aria-label="페이지 네비게이션"></nav>
         </div>
+        <aside class="side-panel" aria-label="많이 보는 위키">
+          <p class="section-title section-title--sm">많이 보는 위키</p>
+          <ol class="top-list" id="wikiTopList"></ol>
+          <div class="tip-box">
+            <p class="tip-box__title">💡 학습 팁</p>모르는 단어는 단어장에, 중요한 내용은 하이라이트로 나만의 핸드북을 만들어보세요!
+            <p class="tip-box__icon" aria-hidden="true">🌿</p>
+          </div>
+        </aside>
       </div>
     </section>
     <!-- WIKI END -->
@@ -128,7 +158,7 @@
   <script src="assets/js/auth.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script src="assets/js/ui.js" defer></script>
-  <!-- 페이지 전용 스크립트 — Wiki 담당 소유. wiki-data.json 트리 렌더링을 위해 추가.
+  <!-- 페이지 전용 스크립트 — Wiki 담당 소유. wiki-data.json 목록 렌더링을 위해 추가.
        WORK_ORDER.md 기준 <script> 태그 목록은 공통 담당자 소유 블록이라 이 한 줄 추가는
        PR에서 공통 담당자 확인이 필요하다. -->
   <script src="assets/js/pages/wiki.js" defer></script>
