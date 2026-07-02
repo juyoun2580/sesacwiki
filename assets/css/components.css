@@ -44,55 +44,13 @@
 
 .notification-btn__dot {
   position: absolute;
-  top: 2px;
-  right: 0;
+  top: 5px;
+  right: 5px;
   width: var(--space-8);
   height: var(--space-8);
-  background: var(--g900);
+  background: var(--coral);
   border-radius: 50%;
-}
-
-/* ---------- Hamburger Button (Mobile side-panel 진입점) ---------- */
-.hamburger-btn {
-  /* display는 breakpoint별로 layout.css에서 제어한다 (index.html: 공통 CSS 로드 순서상
-     layout.css → components.css이므로, 무조건 규칙을 여기 두면 media query를 덮어쓴다) */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  width: var(--space-38);
-  height: var(--space-38);
-  border-radius: 50%;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  flex-shrink: 0;
-  transition: all .18s;
-}
-
-.hamburger-btn:hover {
-  background: var(--g50);
-  border-color: var(--g300);
-}
-
-.hamburger-btn__bar {
-  display: block;
-  width: 16px;
-  height: 2px;
-  border-radius: 1px;
-  background: var(--ink2);
-  transition: transform .2s ease, opacity .2s ease;
-}
-
-.hamburger-btn--active .hamburger-btn__bar:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-
-.hamburger-btn--active .hamburger-btn__bar:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-btn--active .hamburger-btn__bar:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+  border: 2px solid #fff;
 }
 
 /* ---------- Point Badge ---------- */
@@ -104,7 +62,6 @@
   border: 1.5px solid var(--gold-200);
   border-radius: 20px;
   padding: var(--space-6) var(--space-14);
-  height: var(--space-38);
   font-size: var(--fs-13);
   font-weight: 700;
   color: var(--brown-700);
@@ -114,29 +71,15 @@
   font-size: var(--fs-15);
 }
 
-/* ---------- Auth Visibility ----------
-   <body data-auth="guest|user"> 값에 따라 로그인 전/후 UI를 전환한다.
-   실제 로그인 로직은 미구현 — data-auth 값만 바꾸면 화면이 전환되는 구조. */
-body[data-auth="user"] .auth-guest-only {
-  display: none;
-}
-
-body[data-auth="guest"] .auth-user-only {
-  display: none;
-}
-
 /* ---------- User Chip ---------- */
 .user-chip {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: var(--space-8);
   background: var(--g50);
   border: 1.5px solid var(--g100);
   border-radius: 20px;
-  padding: 0 var(--space-12) 0 var(--space-3);
-  height: var(--space-38);
-  gap: var(--space-8);
-  font-size: var(--fs-14);
+  padding: var(--space-5) var(--space-12) var(--space-5) var(--space-6);
   cursor: pointer;
   transition: all .18s;
 }
@@ -162,50 +105,6 @@ body[data-auth="guest"] .auth-user-only {
 .user-chip__caret {
   color: var(--ink3);
   margin-left: var(--space-2);
-}
-
-/* ---------- User Menu (User Chip Dropdown) ---------- */
-.user-menu {
-  position: relative;
-}
-
-.user-menu__dropdown {
-  display: none;
-  position: absolute;
-  top: calc(100% + var(--space-8));
-  right: 0;
-  z-index: 210;
-  min-width: 152px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  box-shadow: var(--sh-lg);
-  padding: var(--space-6);
-}
-
-.user-menu--open .user-menu__dropdown {
-  display: block;
-}
-
-.user-menu__item {
-  display: block;
-  width: 100%;
-  padding: var(--space-9) var(--space-12);
-  border: none;
-  border-radius: var(--r-sm);
-  background: none;
-  font-size: var(--fs-13);
-  font-weight: 600;
-  color: var(--ink2);
-  text-align: left;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background .15s;
-}
-
-.user-menu__item:hover {
-  background: var(--g50);
-  color: var(--g700);
 }
 
 /* ---------- Search Box ---------- */

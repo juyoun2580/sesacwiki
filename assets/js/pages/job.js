@@ -6,55 +6,37 @@
 // ──────────────────────────────────────────────────────────────────────────────
 
 const JOB_KEY      = 'job_data';
-const DATA_VERSION = 4;
+const DATA_VERSION = 13;
 
 // ── 단계 / 태스크 카탈로그 ─────────────────────────────────────────────────────
 const STEP_CATALOG = [
   {
-    id: 1, label: '직무 탐색', icon: '🔍',
-    title: '1. 직무 탐색',
-    description: '나에게 맞는 직무를 탐색하고 목표를 설정해보세요.',
-    tip: '직무 탐색은 취업 준비의 첫 걸음이에요! 관심 있는 직무의 실제 업무 내용과 필요한 역량을 꼼꼼히 조사해보세요.',
-    tasks: [
-      { icon: '🔍', title: '관심 직무 조사',     description: '관심 있는 직무의 역할과 요구 역량을 알아보세요.',         actionLabel: '조사하기 ›', variant: 'primary', feature: 'interests' },
-      { icon: '📊', title: '직무 적성 체크',     description: '나의 강점과 직무 적합도를 확인해보세요.',                actionLabel: '체크하기 ›', variant: 'outline', feature: 'aptitude' },
-      { icon: '🏢', title: '업계 분석',          description: '관심 업계의 트렌드와 주요 기업을 분석해보세요.',          actionLabel: '분석하기 ›', variant: 'outline', feature: 'industry' },
-      { icon: '📋', title: '채용 공고 살펴보기', description: '관심 직무의 채용 공고를 확인하고 요구사항을 파악해보세요.', actionLabel: '살펴보기 ›', variant: 'outline', feature: 'postings' }
-    ]
+    id: 1, label: '자격증', icon: '🏅',
+    title: '1. 자격증',
+    description: '보유한 자격증을 등록하고 나에게 맞는 직업을 추천받아보세요.',
+    tip: '자격증 조합이 취업 방향을 결정해요! 보유한 자격증을 모두 입력하면 나에게 딱 맞는 직업을 추천해드려요.',
+    tasks: []
   },
   {
     id: 2, label: '이력서 작성', icon: '📄',
     title: '2. 이력서 작성',
     description: '나의 경험과 역량을 담은 이력서를 작성해보세요.',
     tip: '채용 담당자가 10초 안에 파악할 수 있도록 핵심 내용을 간결하게 정리하세요. 최신 경력부터 역순으로 작성하는 것이 기본이에요!',
-    tasks: [
-      { icon: '📄', title: '이력서 양식 선택',  description: '지원 직무에 맞는 이력서 템플릿을 선택하세요.',       actionLabel: '선택하기 ›',  variant: 'primary', feature: 'resume-template' },
-      { icon: '🎓', title: '학력 / 경력 입력',  description: '최신 순으로 학력과 경력 사항을 입력하세요.',         actionLabel: '입력하기 ›',  variant: 'outline', feature: 'resume-history' },
-      { icon: '💻', title: '기술 스택 정리',    description: '보유한 기술 스택을 숙련도와 함께 정리하세요.',       actionLabel: '정리하기 ›',  variant: 'outline', feature: 'resume-skills' }
-    ]
+    tasks: []
   },
   {
     id: 3, label: '자기소개서', icon: '✏️',
     title: '3. 자기소개서',
     description: '나만의 스토리를 담은 자기소개서를 완성해보세요.',
     tip: '구체적인 숫자와 사례를 활용하면 설득력이 확 올라가요. "열심히 했다" 보다 "3개월 만에 30% 성과를 냈다"로 써보세요!',
-    tasks: [
-      { icon: '📋', title: '자기소개서 항목 확인', description: '기업이 원하는 자기소개서 항목을 확인하세요.',            actionLabel: '확인하기 ›', variant: 'primary', feature: 'cover-editor' },
-      { icon: '🌱', title: '성장 과정 작성',       description: '나의 성장 스토리를 진솔하게 담아보세요.',               actionLabel: '작성하기 ›', variant: 'outline', feature: 'cover-editor', featureSection: 'growth' },
-      { icon: '🎯', title: '지원 동기 작성',       description: '이 기업에 지원하고 싶은 이유를 구체적으로 써보세요.',    actionLabel: '작성하기 ›', variant: 'outline', feature: 'cover-editor', featureSection: 'motivation' }
-    ]
+    tasks: []
   },
   {
     id: 4, label: '포트폴리오', icon: '🖼',
     title: '4. 포트폴리오',
     description: '나의 역량을 보여주는 포트폴리오를 제작해보세요.',
     tip: '포트폴리오는 "내가 무엇을 할 수 있는가"를 증명하는 가장 강력한 도구예요. 결과물과 기여도를 명확히 표현해보세요.',
-    tasks: [
-      { icon: '📦', title: '프로젝트 목록 정리', description: '참여한 모든 프로젝트를 날짜와 함께 나열하세요.',   actionLabel: '정리하기 ›',  variant: 'primary', feature: 'projects' },
-      { icon: '⭐', title: '대표 프로젝트 선택', description: '가장 임팩트 있는 대표 프로젝트를 골라보세요.',     actionLabel: '선택하기 ›',  variant: 'outline', feature: 'projects' },
-      { icon: '🖼', title: '포트폴리오 구성',    description: '스크린샷, 설명, 기술 스택을 포함해 구성하세요.',  actionLabel: '구성하기 ›',  variant: 'outline', feature: 'portfolio-view' },
-      { icon: '📑', title: 'PDF 내보내기',       description: '완성된 포트폴리오를 PDF 파일로 저장하세요.',       actionLabel: '내보내기 ›', variant: 'outline', feature: 'pdf-export' }
-    ]
+    tasks: []
   },
   {
     id: 5, label: '면접 준비', icon: '🎤',
@@ -62,10 +44,9 @@ const STEP_CATALOG = [
     description: '완벽한 면접을 위해 철저하게 준비해보세요.',
     tip: '면접은 연습이 전부예요! 예상 질문을 소리 내서 답변해보는 것이 가장 효과적이에요. 거울 앞에서 연습하거나 영상으로 촬영해보세요.',
     tasks: [
-      { icon: '❓', title: '예상 질문 확인',      description: '직무별 자주 나오는 면접 질문을 확인하세요.',       actionLabel: '확인하기 ›',   variant: 'primary', feature: 'interview-questions' },
-      { icon: '📝', title: '답변 스크립트 작성',  description: '핵심 질문에 대한 나만의 답변을 준비하세요.',       actionLabel: '작성하기 ›',   variant: 'outline', feature: 'interview-answers' },
-      { icon: '🏢', title: '기업 / 직무 리서치',  description: '지원 기업의 최근 동향과 직무 이해를 높이세요.',    actionLabel: '리서치하기 ›', variant: 'outline', feature: 'research' },
-      { icon: '🎬', title: '모의 면접 진행',      description: '실전처럼 모의 면접을 경험해보세요.',               actionLabel: '시작하기 ›',   variant: 'outline', feature: 'mock-interview' }
+      { icon: '❓', title: '예상 질문 확인',     description: '직무별 자주 나오는 면접 질문을 확인하세요.',  actionLabel: '확인하기 ›', variant: 'primary', feature: 'interview-questions' },
+      { icon: '📝', title: '답변 스크립트 작성', description: '핵심 질문에 대한 나만의 답변을 준비하세요.',  actionLabel: '작성하기 ›', variant: 'outline', feature: 'interview-answers' },
+      { icon: '🎬', title: '모의 면접 진행',     description: '음성으로 답변하고 텍스트로 확인해보세요.',    actionLabel: '시작하기 ›', variant: 'outline', feature: 'mock-interview' }
     ]
   },
   {
@@ -138,9 +119,9 @@ function freshData() {
     activeStepId: 1,
     steps: JSON.parse(JSON.stringify(STEP_CATALOG)),
     tools: [
+      { label: '🏅 자격증 선택',      feature: 'cert-select' },
       { label: '📄 자소서 템플릿',   feature: 'cover-editor' },
       { label: '🏢 기업 분석',       feature: 'research' },
-      { label: '🎯 핵심 역량 찾기',  feature: 'aptitude' },
       { label: '❓ 면접 질문 모음',  feature: 'interview-questions' }
     ]
   };
@@ -187,6 +168,25 @@ function render(data) {
   fillProgressList(getProgressByCategory(data));
   fillResultList(getRecentResults(data));
   fillToolGrid(data.tools);
+
+  const featureEl = document.getElementById('job-feature');
+  const backBtn   = document.getElementById('job-feature-back');
+  if (activeStep.id === 1) {
+    showFeature('cert-select');
+    if (backBtn) backBtn.hidden = true;
+  } else if (activeStep.id === 2) {
+    showFeature('resume-builder');
+    if (backBtn) backBtn.hidden = true;
+  } else if (activeStep.id === 3) {
+    showFeature('cover-editor');
+    if (backBtn) backBtn.hidden = true;
+  } else if (activeStep.id === 4) {
+    showFeature('portfolio-builder');
+    if (backBtn) backBtn.hidden = true;
+  } else {
+    if (backBtn) backBtn.hidden = false;
+    if (featureEl && !featureEl.hidden) hideFeature();
+  }
 }
 
 // ── 채움 함수 ─────────────────────────────────────────────────────────────────
@@ -363,8 +363,6 @@ function fillToolGrid(tools) {
           data.activeStepId = stepId;
           saveData(data);
           render(data);
-          // 기능 패널이 열려있으면 닫기
-          if (!document.getElementById('job-feature').hidden) hideFeature();
         }
         return;
       }

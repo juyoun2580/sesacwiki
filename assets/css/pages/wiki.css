@@ -3,71 +3,140 @@
    old/test.html의 /* WIKI LIST */, /* WIKI DETAIL */ 블록 + 인라인 값 이관
    ========================================================================== */
 
-/* ---------- Wiki tree (과목 -> 목차 -> 항목) ---------- */
-.wiki-tree__loading {
-  font-size: var(--fs-12);
-  color: var(--ink4);
-  padding: 0 var(--space-10);
+/* ---------- Wiki list ---------- */
+.wiki-toolbar {
+  display: flex;
+  gap: var(--space-10);
+  align-items: center;
+  margin-bottom: var(--space-18);
 }
 
-.wiki-tree__categories,
-.wiki-tree__chapters,
-.wiki-tree__items {
+.wiki-toolbar__input {
+  flex: 1;
+  height: var(--space-40);
+  padding: 0 var(--space-14);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-13);
+  outline: none;
+}
+
+.sort-pills {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.wiki-row-list {
   list-style: none;
 }
 
-.wiki-tree__chapters {
-  padding-left: var(--space-12);
-}
-
-.wiki-tree__items {
-  padding-left: var(--space-12);
-}
-
-.wiki-tree__link {
-  display: block;
+.wiki-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-14);
+  padding: var(--space-16) var(--space-18);
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-10);
+  cursor: pointer;
+  box-shadow: var(--sh-sm);
+  transition: all .18s;
   width: 100%;
   text-align: left;
-  padding: var(--space-9) var(--space-12);
-  border-radius: var(--r-sm);
-  font-size: var(--fs-13);
-  color: var(--ink3);
-  cursor: pointer;
-  transition: all .15s;
-  margin-bottom: var(--space-1);
-  background: none;
-  border: none;
-  font: inherit;
 }
 
-.wiki-tree__link:hover {
-  background: var(--g50);
-  color: var(--g700);
+.wiki-row:hover {
+  box-shadow: var(--sh-md);
+  border-color: var(--g300);
+  transform: translateX(2px);
 }
 
-.wiki-tree__link--category {
+.wiki-row__icon {
+  font-size: var(--fs-32);
+  flex-shrink: 0;
+}
+
+.wiki-row__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.wiki-row__title {
+  font-size: var(--fs-14);
   font-weight: 700;
+  margin-bottom: var(--space-2);
 }
 
-.wiki-tree__link--chapter {
+.wiki-row__desc {
   font-size: var(--fs-12);
+  color: var(--ink3);
 }
 
-.wiki-tree__link--item {
-  font-size: var(--fs-12);
+.wiki-row__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  flex-shrink: 0;
+}
+
+.wiki-row__level {
+  font-size: var(--fs-11);
+  color: var(--ink3);
+}
+
+.wiki-row__time {
+  font-size: var(--fs-11);
   color: var(--ink4);
 }
 
-.wiki-tree__link--active {
-  background: var(--g50);
+.wiki-row__percent {
+  font-size: var(--fs-13);
+  font-weight: 800;
   color: var(--g900);
-  font-weight: 700;
 }
 
-.wiki-empty {
-  font-size: var(--fs-13);
-  color: var(--ink3);
-  padding: var(--space-18) 0;
+.top-list {
+  list-style: none;
+}
+
+.top-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-12);
+}
+
+.top-list__item:last-child {
+  border: none;
+}
+
+.top-list__title {
+  flex: 1;
+}
+
+.tip-box {
+  background: linear-gradient(135deg, var(--g50), var(--g100));
+  border-radius: var(--r-md);
+  padding: var(--space-14);
+  margin-top: var(--space-16);
+  border: 1px solid var(--g100);
+  font-size: var(--fs-12);
+  color: var(--g900);
+  line-height: 1.7;
+}
+
+.tip-box__title {
+  font-weight: 800;
+  margin-bottom: var(--space-5);
+}
+
+.tip-box__icon {
+  text-align: center;
+  font-size: var(--fs-44);
+  margin-top: var(--space-10);
 }
 
 /* ---------- Wiki detail ---------- */
