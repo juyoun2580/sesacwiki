@@ -85,216 +85,58 @@
       <div class="shell">
         <aside class="sidebar" aria-label="취업핸드북 메뉴">
           <p class="sidebar__label">취업핸드북</p>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">🔍</span>직무
-            탐색</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📄</span>이력서
-            작성</button>
-          <button type="button" class="sidebar__item sidebar__item--active"><span class="sidebar__item-icon"
-              aria-hidden="true">✏️</span>자기소개서</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon"
-              aria-hidden="true">🖼</span>포트폴리오</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">🎤</span>면접
-            준비</button>
-          <button type="button" class="sidebar__item"><span class="sidebar__item-icon" aria-hidden="true">📊</span>지원
-            관리</button>
-          <div class="job-readiness-card">
-            <p class="job-readiness-card__title">나의 취업 준비 지수</p>
-            <p class="job-readiness-card__value">45%</p>
-            <p class="job-readiness-card__delta">지난주 대비 +8% ↑</p>
-            <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar__fill progress-bar__fill--green" data-progress="45"></div>
-            </div>
-            <button type="button" class="btn btn--outline btn--sm job-readiness-card__btn">상세 분석 보기</button>
-            <p class="job-readiness-card__decor" aria-hidden="true">🌿</p>
-          </div>
+          <div id="job-sidebar-menu"></div>
         </aside>
         <div class="page__content">
           <h1 class="page-title">취업핸드북 🌱</h1>
           <p class="page-subtitle">단계별로 차근차근 준비해서 꿈을 현실로 만들어보세요!</p>
 
-          <nav class="job-stepper" aria-label="취업 준비 단계">
-            <div class="job-stepper__step">
-              <div class="job-stepper__node">
-                <span class="job-stepper__circle job-stepper__circle--done" aria-hidden="true">✓</span>
-                <span class="job-stepper__label">직무 탐색</span>
-              </div>
-              <span class="job-stepper__connector job-stepper__connector--done" aria-hidden="true"></span>
-            </div>
-            <div class="job-stepper__step">
-              <div class="job-stepper__node">
-                <span class="job-stepper__circle job-stepper__circle--done" aria-hidden="true">✓</span>
-                <span class="job-stepper__label">이력서 작성</span>
-              </div>
-              <span class="job-stepper__connector job-stepper__connector--done" aria-hidden="true"></span>
-            </div>
-            <div class="job-stepper__step">
-              <div class="job-stepper__node">
-                <span class="job-stepper__circle job-stepper__circle--active" aria-hidden="true">3</span>
-                <span class="job-stepper__label job-stepper__label--active">자기소개서</span>
-              </div>
-              <span class="job-stepper__connector" aria-hidden="true"></span>
-            </div>
-            <div class="job-stepper__step">
-              <div class="job-stepper__node">
-                <span class="job-stepper__circle" aria-hidden="true">4</span>
-                <span class="job-stepper__label">포트폴리오</span>
-              </div>
-              <span class="job-stepper__connector" aria-hidden="true"></span>
-            </div>
-            <div class="job-stepper__step">
-              <div class="job-stepper__node">
-                <span class="job-stepper__circle" aria-hidden="true">5</span>
-                <span class="job-stepper__label">면접 준비</span>
-              </div>
-              <span class="job-stepper__connector" aria-hidden="true"></span>
-            </div>
-            <div class="job-stepper__step">
-              <div class="job-stepper__node">
-                <span class="job-stepper__circle" aria-hidden="true">6</span>
-                <span class="job-stepper__label">지원 관리</span>
-              </div>
-            </div>
-          </nav>
+          <nav class="job-stepper" id="job-stepper" aria-label="취업 준비 단계"></nav>
 
-          <article class="job-card">
+          <article class="job-card" id="job-card">
             <div class="job-card__head">
-              <span class="job-card__head-icon" aria-hidden="true">✏️</span>
+              <span class="job-card__head-icon" id="job-card-icon" aria-hidden="true"></span>
               <div class="job-card__head-body">
-                <p class="job-card__title">3. 자기소개서</p>
-                <p class="job-card__desc">나만의 경험과 강점을 잘 표현하는 자기소개서를 작성해보세요.</p>
-                <div class="progress-bar job-card__progress" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                <p class="job-card__title" id="job-card-title"></p>
+                <p class="job-card__desc" id="job-card-desc"></p>
+                <div class="progress-bar job-card__progress" id="job-card-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
                   aria-valuemax="100">
-                  <div class="progress-bar__fill progress-bar__fill--blue" data-progress="40"></div>
+                  <div class="progress-bar__fill progress-bar__fill--blue" id="job-card-fill" data-progress="0"></div>
                 </div>
               </div>
-              <p class="job-card__percent">진행률 40%</p>
+              <p class="job-card__percent" id="job-card-percent"></p>
             </div>
 
-            <ul class="job-task-list">
-              <li>
-                <div class="job-task">
-                  <span class="job-task__icon" aria-hidden="true">📄</span>
-                  <div class="job-task__body">
-                    <p class="job-task__title">항목별 작성</p>
-                    <p class="job-task__desc">기업별 자기소개서 항목을 작성하고 관리해보세요.</p>
-                  </div>
-                  <span class="job-task__meta">2 / 5 항목 작성</span>
-                  <button type="button" class="btn btn--primary btn--sm job-task__btn" data-action="toast"
-                    data-message="자기소개서 작성 화면으로 이동해요!">작성하기 ›</button>
-                </div>
-              </li>
-              <li>
-                <div class="job-task">
-                  <span class="job-task__icon" aria-hidden="true">✅</span>
-                  <div class="job-task__body">
-                    <p class="job-task__title">맞춤법/문법 검사</p>
-                    <p class="job-task__desc">작성한 자기소개서의 맞춤법과 문법을 검사해보세요.</p>
-                  </div>
-                  <span class="job-task__meta">마지막 검사 2025.05.19</span>
-                  <button type="button" class="btn btn--outline btn--sm job-task__btn" data-action="toast"
-                    data-message="맞춤법 검사를 실행해요!">검사하기 ›</button>
-                </div>
-              </li>
-              <li>
-                <div class="job-task">
-                  <span class="job-task__icon" aria-hidden="true">⭐</span>
-                  <div class="job-task__body">
-                    <p class="job-task__title">첨삭/피드백</p>
-                    <p class="job-task__desc">AI 피드백으로 자기소개서를 더 완성도 있게 만들어보세요.</p>
-                  </div>
-                  <span class="job-task__meta">피드백 1회 완료</span>
-                  <button type="button" class="btn btn--sm job-task__btn job-task__btn--feedback" data-action="toast"
-                    data-message="피드백 내용을 확인해요!">피드백 보기 ›</button>
-                </div>
-              </li>
-              <li>
-                <div class="job-task">
-                  <span class="job-task__icon" aria-hidden="true">💡</span>
-                  <div class="job-task__body">
-                    <p class="job-task__title">우수 자기소개서 예시</p>
-                    <p class="job-task__desc">직무별/기업별 우수 자기소개서 예시를 확인해보세요.</p>
-                  </div>
-                  <span class="job-task__meta"></span>
-                  <button type="button" class="btn btn--outline btn--sm job-task__btn" data-action="toast"
-                    data-message="우수 예시를 확인해요!">예시 보기 ›</button>
-                </div>
-              </li>
-            </ul>
+            <ul class="job-task-list" id="job-task-list"></ul>
 
             <div class="job-tip">
               <span class="job-tip__icon" aria-hidden="true">💡</span>
-              <p class="job-tip__text"><strong>오늘의 취업 팁</strong><br>자기소개서는 '나'의 이야기를 '기업이 원하는 방식'으로 전달하는 것이 중요해요! STAR
-                기법을 활용해 구체적인 경험을 작성해보세요.</p>
+              <p class="job-tip__text" id="job-tip-text"></p>
               <span class="job-tip__decor" aria-hidden="true">🌿</span>
             </div>
           </article>
+
+          <!-- 기능 상세 패널 — 태스크 버튼 클릭 시 job-card와 교체되어 표시 -->
+          <section class="job-feature" id="job-feature" hidden aria-label="기능 상세 화면">
+            <div class="job-feature__header">
+              <h2 class="job-feature__title" id="job-feature-title"></h2>
+            </div>
+            <div id="job-feature-body"></div>
+          </section>
         </div>
 
         <aside class="side-panel" aria-label="취업 준비 현황 및 도구">
-          <div class="section-title">나의 취업 준비 현황 <button type="button" class="section-title__link">전체보기 ›</button></div>
-          <ul class="job-progress-list">
-            <li class="job-progress-row">
-              <span class="job-progress-row__label">이력서 작성</span>
-              <div class="progress-bar job-progress-row__bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                aria-valuemax="100">
-                <div class="progress-bar__fill progress-bar__fill--green" data-progress="70"></div>
-              </div>
-              <span class="job-progress-row__value job-progress-row__value--green">70%</span>
-            </li>
-            <li class="job-progress-row">
-              <span class="job-progress-row__label">자기소개서</span>
-              <div class="progress-bar job-progress-row__bar" role="progressbar" aria-valuenow="40" aria-valuemin="0"
-                aria-valuemax="100">
-                <div class="progress-bar__fill progress-bar__fill--blue" data-progress="40"></div>
-              </div>
-              <span class="job-progress-row__value job-progress-row__value--blue">40%</span>
-            </li>
-            <li class="job-progress-row">
-              <span class="job-progress-row__label">포트폴리오</span>
-              <div class="progress-bar job-progress-row__bar" role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                aria-valuemax="100">
-                <div class="progress-bar__fill progress-bar__fill--orange" data-progress="20"></div>
-              </div>
-              <span class="job-progress-row__value job-progress-row__value--gold">20%</span>
-            </li>
-            <li class="job-progress-row">
-              <span class="job-progress-row__label">면접 준비</span>
-              <div class="progress-bar job-progress-row__bar" role="progressbar" aria-valuenow="10" aria-valuemin="0"
-                aria-valuemax="100">
-                <div class="progress-bar__fill progress-bar__fill--coral" data-progress="10"></div>
-              </div>
-              <span class="job-progress-row__value job-progress-row__value--coral">10%</span>
-            </li>
-            <li class="job-progress-row">
-              <span class="job-progress-row__label">지원 관리</span>
-              <div class="progress-bar job-progress-row__bar" role="progressbar" aria-valuenow="30" aria-valuemin="0"
-                aria-valuemax="100">
-                <div class="progress-bar__fill progress-bar__fill--purple" data-progress="30"></div>
-              </div>
-              <span class="job-progress-row__value job-progress-row__value--purple">30%</span>
-            </li>
-          </ul>
+          <div class="section-title">나의 취업 준비 현황</div>
+          <ul class="job-progress-list" id="job-progress-list"></ul>
 
-          <div class="section-title">최근 작성한 자기소개서 <button type="button" class="section-title__link">전체보기 ›</button>
+          <div class="section-title">최근 완료한 항목
+            <button type="button" class="section-title__link"
+                    data-action="toggle-all-results">전체보기 ›</button>
           </div>
-          <ul class="job-result-list">
-            <li class="job-result-item">
-              <p class="job-result-item__title">신한은행 IT직무 자기소개서</p>
-              <span class="tag tag--gold">임시저장</span><span class="job-result-item__date">2025.05.20</span>
-            </li>
-            <li class="job-result-item">
-              <p class="job-result-item__title">카카오 백엔드 개발자 자기소개서</p>
-              <span class="tag tag--green">검토 완료</span><span class="job-result-item__date">2025.05.18</span>
-            </li>
-          </ul>
+          <ul class="job-result-list" id="job-result-list"></ul>
 
           <p class="section-title section-title--sm">자주 사용하는 도구</p>
-          <div class="job-tool-grid">
-            <button type="button" class="job-tool-btn">📄 자소서 템플릿</button>
-            <button type="button" class="job-tool-btn">🏢 기업 분석</button>
-            <button type="button" class="job-tool-btn">🎯 핵심 역량 찾기</button>
-            <button type="button" class="job-tool-btn">❓ 면접 질문 모음</button>
-          </div>
+          <div class="job-tool-grid" id="job-tool-grid"></div>
         </aside>
       </div>
     </section>
@@ -315,6 +157,8 @@
   <script src="assets/js/toast.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/pages/job-features.js" defer></script>
+  <script src="assets/js/pages/job.js" defer></script>
 </body>
 
 </html>
