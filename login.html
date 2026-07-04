@@ -25,7 +25,7 @@
     <!-- LOGIN PAGE (로그인) -->
     <!-- 신규 파일 : 공식 WORK_ORDER.md 스코프 밖 프로토타입, MyPage(Job/My) 담당 -->
     <!-- css : pages/auth.css (signup.html과 공유) -->
-    <!-- js : auth.js (localStorage 기반 모킹, 공통 인증 모듈) -->
+    <!-- js : auth.js (Supabase Auth 매직링크, 공통 인증 모듈) -->
     <!-- 로그인 전 화면이라 공통 header/nav 없이 독립적으로 렌더링한다 -->
     <!-- ================================================= -->
     <section id="login" class="auth-card" aria-label="로그인">
@@ -47,14 +47,12 @@
 
       <p class="auth-card__switch">계정이 없으신가요? <a href="signup.html" class="auth-card__switch-link">가입하기</a></p>
 
-      <!-- 이메일 인증 대기 패널 (모킹) -->
+      <!-- 이메일 인증 대기 패널 — 실제 매직링크 메일을 보낸다 -->
       <div class="auth-pending" id="auth-pending" hidden>
         <p class="auth-pending__icon" aria-hidden="true">📩</p>
         <p class="auth-pending__title">인증 메일을 보냈어요</p>
         <p class="auth-pending__desc"><strong id="auth-pending-email"></strong> 주소로 보낸 인증 링크를 클릭하면 로그인이 완료돼요.</p>
-        <button type="button" class="btn btn--outline btn--sm" data-action="mock-verify">✅ (테스트) 이메일 인증
-          완료했다고 가정하기</button>
-        <button type="button" class="auth-pending__resend" data-action="mock-resend">인증 메일 다시 보내기</button>
+        <button type="button" class="auth-pending__resend" data-action="resend-verification">인증 메일 다시 보내기</button>
       </div>
     </section>
   </main>
@@ -62,7 +60,10 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="assets/js/toast.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+  <script src="assets/js/supabase-client.js" defer></script>
   <script src="assets/js/auth.js" defer></script>
+  <script src="assets/js/api.js" defer></script>
 </body>
 
 </html>

@@ -114,8 +114,7 @@
       <!-- MYPAGE DASHBOARD (마이페이지 메인 대시보드) -->
       <!-- 신규 파일 : 공식 WORK_ORDER.md 스코프 밖 프로토타입, MyPage(Job/My) 담당 -->
       <!-- css : pages/mypage.css (mypage-edit.html과 공유) -->
-      <!-- js  : pages/mypage.js (localStorage 기반 프로필 실시간 반영, 공통 담당자 리뷰 필요) -->
-      <!-- json: assets/data/my_handbook.json (더미 데이터, 현재는 하드코딩 값과 동일하게 유지) -->
+      <!-- js  : pages/mypage.js (Supabase profiles/badges/quiz_checkpoints 실시간 반영, 공통 담당자 리뷰 필요) -->
       <!-- ================================================= -->
       <!-- MYPAGE START -->
       <!-- 좌측 사이드바는 제거했다 — 아래 category-card-grid가 인페이지(In-Page) -->
@@ -382,7 +381,10 @@
     <!-- 담당 : feature/core (공통 담당자 전용) -->
     <!-- ================================================= -->
     <script src="assets/js/toast.js" defer></script>
-    <script src="assets/js/auth.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+  <script src="assets/js/supabase-client.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
+  <script src="assets/js/api.js" defer></script>
     <script src="assets/js/app.js" defer></script>
     <script src="assets/js/ui.js" defer></script>
     <!-- 페이지 전용 스크립트 — MyPage 담당 소유. "나의 단어 도감" 수정에 mywords.html과

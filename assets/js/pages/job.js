@@ -6,7 +6,7 @@
 // ──────────────────────────────────────────────────────────────────────────────
 
 const JOB_KEY      = 'job_data';
-const DATA_VERSION = 19;
+const DATA_VERSION = 20;
 let _showAllResults = false;
 
 // ── 단계 / 태스크 카탈로그 ─────────────────────────────────────────────────────
@@ -83,108 +83,6 @@ const STEP_CATALOG = [
   }
 ];
 
-// ── 더미 데이터 (최초 접속 시 현실감 있는 사용자 데이터 시드) ────────────────────────────
-const DEMO_JOB_FEATURES = {
-  certs: {
-    selected: ['c-001', 'c-007', 'c-008'],
-    graded: {},
-    custom: []
-  },
-  interests: [
-    { id: 'int1', jobId: 'fe-dev',    title: '프론트엔드 개발자', memo: 'UI/UX를 코드로 구현하는 웹 개발자' },
-    { id: 'int2', jobId: 'fullstack', title: '풀스택 개발자',     memo: '프론트·백엔드 전반을 담당하는 개발자' }
-  ],
-  aptitude: { answers: [] },
-  industryNotes: {
-    it: 'IT 업계는 프론트엔드 수요가 꾸준히 증가 중. React/TypeScript 기반 포지션이 많고, 신입도 사이드 프로젝트 경험을 중시함.',
-    finance: '', manufacture: '', service: '', other: ''
-  },
-  specGuide: { jobId: 'fe-dev', checked: {} },
-  resume: {
-    template: 'modern',
-    education: [
-      { id: 'edu1', school: '한국대학교', major: '컴퓨터공학과', degree: '학사', period: '2020.03 ~ 2024.02' }
-    ],
-    experience: [
-      { id: 'exp1', company: '(주)그린테크', role: '프론트엔드 개발 인턴', period: '2023.07 ~ 2023.12', desc: 'React 기반 관리자 대시보드 개발 및 UI/UX 개선. 사용자 이탈률 15% 감소에 기여.' }
-    ],
-    skills: [
-      { id: 'sk1', name: 'JavaScript', level: 4, category: '개발' },
-      { id: 'sk2', name: 'React', level: 3, category: '개발' },
-      { id: 'sk3', name: 'HTML / CSS', level: 5, category: '개발' },
-      { id: 'sk4', name: 'TypeScript', level: 2, category: '개발' },
-      { id: 'sk5', name: 'Git', level: 3, category: '도구' }
-    ]
-  },
-  coverLetter: {
-    growth: '저는 어릴 때부터 컴퓨터와 인터넷을 통해 새로운 세계를 경험하며 자랐습니다. 중학교 시절 직접 홈페이지를 만들면서 코딩의 매력을 처음 느꼈고, 이것이 컴퓨터공학과 진학으로 이어졌습니다. 대학에서 다양한 프로젝트를 경험하며 사용자가 불편함 없이 서비스를 이용할 수 있도록 만드는 프론트엔드 개발에 깊이 빠져들었습니다. 졸업 후 인턴을 통해 실무 감각을 키웠고, 지금은 더 큰 규모의 서비스에서 역량을 펼치고 싶다는 목표를 갖고 있습니다.',
-    motivation: '귀사는 사용자 경험을 최우선으로 생각하는 서비스 철학이 저의 개발 방향과 정확히 일치합니다. 특히 최근 출시하신 모바일 앱이 단기간에 10만 다운로드를 달성한 것을 보며 귀사의 기술력과 팀워크에 깊은 인상을 받았습니다. 저의 프론트엔드 역량을 귀사의 성장에 보탬이 되고자 지원하게 되었습니다.',
-    personality: '저는 꼼꼼함과 책임감을 가장 중요한 가치로 여깁니다. 코드 리뷰와 테스트 작성을 습관화하여 팀의 코드 품질을 높이는 데 기여했으며, 인턴 기간 동안 맡은 기능을 한 번의 버그 없이 완료하여 팀장님께 칭찬을 받았습니다. 또한 새로운 기술 습득에 적극적이어서 React를 독학으로 3개월 만에 실무에 적용한 경험도 있습니다.',
-    vision: '입사 후 3년 내에 귀사의 핵심 프론트엔드 개발자로 성장하고 싶습니다. 사용자 인터랙션 성능 최적화와 접근성 개선을 주도하여 서비스 품질을 높이는 데 기여하겠습니다. 장기적으로는 프론트엔드 리드 포지션에서 주니어 개발자를 멘토링하며 팀 전체의 기술 수준을 높이는 역할을 하고 싶습니다.'
-  },
-  projects: [
-    {
-      id: 'pj1',
-      title: '새싹트리 취업 핸드북',
-      period: '2024.03 ~ 2024.06',
-      role: '프론트엔드 개발 (팀 프로젝트 · 4인)',
-      tech: ['HTML', 'CSS', 'JavaScript'],
-      desc: 'HTML/CSS/JS만으로 구현한 취업 준비 통합 플랫폼. 자격증 추천, 이력서 작성, 모의 면접 기능 제공. 4개월 만에 MVP 완성, Vercel 배포.',
-      url: 'https://sesacwiki.vercel.app',
-      isFeatured: true
-    },
-    {
-      id: 'pj2',
-      title: '개인 포트폴리오 웹사이트',
-      period: '2024.01 ~ 2024.02',
-      role: '개인 프로젝트',
-      tech: ['React', 'Tailwind CSS'],
-      desc: 'React로 제작한 개인 포트폴리오. 반응형 디자인 적용, Vercel 배포. Google PageSpeed Insights 94점 달성.',
-      url: '',
-      isFeatured: false
-    }
-  ],
-  interviewAnswers: {
-    q1: '안녕하세요. 저는 사용자 경험을 최우선으로 생각하는 프론트엔드 개발자 지망생 김새싹입니다. 한국대학교 컴퓨터공학과를 졸업하였으며, 그린테크에서 6개월간 프론트엔드 인턴을 하며 실무 경험을 쌓았습니다. React와 JavaScript를 주력으로 사용하며, 성능 최적화와 접근성 개선에 관심이 많습니다.',
-    q2: '귀사의 사용자 중심 철학과 빠른 성장 속도에 매료되어 지원하게 되었습니다. 특히 최근 서비스 개편에서 사용자 이탈률을 30% 줄인 사례를 보며, 제가 배울 수 있는 최적의 환경이라고 확신했습니다.',
-    q3: '가장 큰 장점은 꼼꼼한 코드 작성과 빠른 학습 능력입니다. 인턴 시절 처음 접한 TypeScript를 2주 만에 실무에 적용하여 팀장님께 인정받은 경험이 있습니다. 단점은 완벽주의 성향으로 인해 가끔 일정보다 시간이 더 걸리는 경우가 있습니다. 이를 개선하기 위해 작업 전 타임박스를 설정하는 습관을 들이고 있습니다.',
-    q4: '', q5: '', q6: '', q7: '', q8: ''
-  },
-  mockAnswers: {
-    q1: [
-      {
-        id: 'ma1',
-        text: '안녕하세요. 저는 프론트엔드 개발자를 목표로 하는 김새싹입니다. 컴퓨터공학을 전공하였고, 인턴 경험을 통해 React 기반 서비스 개발 역량을 키웠습니다. 사용자가 더 편리하게 서비스를 이용할 수 있도록 UI/UX 개선에 열정을 갖고 있습니다.',
-        savedAt: '2025-06-25T09:30:00.000Z'
-      }
-    ],
-    q2: [
-      {
-        id: 'ma2',
-        text: '귀사의 사용자 친화적 서비스와 기술적 도전을 즐기는 문화가 저의 성장 방향과 일치하여 지원하게 되었습니다. 특히 오픈소스 기여를 장려하는 문화가 인상적이었습니다.',
-        savedAt: '2025-06-26T14:20:00.000Z'
-      }
-    ],
-    q3: [], q4: [], q5: [], q6: [], q7: [], q8: []
-  },
-  customIQs: [],
-  researchNotes: {
-    '(주)그린테크솔루션': '2025년 하반기 채용 공고 확인. 프론트엔드 포지션 TO 3명. React + TypeScript 필수. 복지 패키지 우수. 유연 근무 가능.',
-    '스타트업 ABC': '스타트업 특유의 빠른 의사결정 문화. 주 1회 전체 미팅. 스톡옵션 제공. 성장 가능성 높음.'
-  },
-  companies: [
-    { id: 'co1', company: '(주)그린테크솔루션', position: '프론트엔드 개발자', appliedDate: '2025-06-10', status: '1차 면접' },
-    { id: 'co2', company: '스타트업 ABC', position: 'UI 개발자', appliedDate: '2025-06-18', status: '서류 검토 중' },
-    { id: 'co3', company: '카카오엔터프라이즈', position: '프론트엔드 개발자', appliedDate: '2025-06-20', status: '지원 완료' }
-  ],
-  interviews: [
-    { id: 'iv1', company: '(주)그린테크솔루션', type: '1차 면접', date: '2025-07-05', time: '14:00', location: '서울 강남구 테헤란로 123 그린테크 본사 3층' }
-  ],
-  feedbackNotes: {
-    co1: '면접관 3명 예정. 포트폴리오 발표 10분 + QA 20분. React 최적화 및 협업 경험 관련 심화 질문 예상. 복장 비즈니스 캐주얼.'
-  }
-};
-
 // ── 계산 헬퍼 ─────────────────────────────────────────────────────────────────
 function getStepPercent(step) {
   if (!step.tasks.length) return 0;
@@ -256,7 +154,7 @@ function loadData() {
 function freshData() {
   const data = {
     version: DATA_VERSION,
-    activeStepId: 4,
+    activeStepId: 1,
     steps: JSON.parse(JSON.stringify(STEP_CATALOG)),
     tools: [
       { label: '🏅 자격증',       stepId: 1 },
@@ -266,37 +164,45 @@ function freshData() {
     ]
   };
 
-  // 더미: 실사용자처럼 보이도록 일부 태스크를 완료 처리
-  const completions = {
-    1: { indices: [0, 1],       dates: ['2025-06-05', '2025-06-06'] },
-    2: { indices: [0, 1, 2, 3], dates: ['2025-06-10', '2025-06-11', '2025-06-12', '2025-06-13'] },
-    3: { indices: [0, 1, 2, 3], dates: ['2025-06-15', '2025-06-16', '2025-06-17', '2025-06-17'] },
-    4: { indices: [0, 1],       dates: ['2025-06-20', '2025-06-21'] },
-    5: { indices: [0, 1],       dates: ['2025-06-24', '2025-06-25'] },
-    6: { indices: [0, 1, 2],    dates: ['2025-06-27', '2025-06-28', '2025-06-29'] }
-  };
-  data.steps.forEach(step => {
-    const c = completions[step.id];
-    if (!c) return;
-    c.indices.forEach((idx, i) => {
-      if (step.tasks[idx]) {
-        step.tasks[idx].completed   = true;
-        step.tasks[idx].completedAt = c.dates[i];
-      }
-    });
-  });
-
   saveData(data);
-
-  try {
-    localStorage.setItem('job_features', JSON.stringify(DEMO_JOB_FEATURES));
-  } catch { /* ignore */ }
-
   return data;
 }
 
 function saveData(data) {
   try { localStorage.setItem(JOB_KEY, JSON.stringify(data)); } catch { /* ignore */ }
+  queueJobProgressSync({ jobData: data });
+}
+
+// ── Supabase 동기화 — localStorage가 진실 소스, Supabase는 그 뒤에서 따라간다 ──
+// (100곳 넘게 흩어진 동기 loadData/loadFeatures 호출부를 전부 async로 바꾸는 대신,
+// 저장 시점마다 디바운스로 백그라운드 upsert만 걸어 기존 호출부는 손대지 않는다.)
+let _jobProgressSyncTimer = null;
+function queueJobProgressSync(patch) {
+  if (typeof isLoggedIn !== 'function' || !isLoggedIn()) return;
+  clearTimeout(_jobProgressSyncTimer);
+  _jobProgressSyncTimer = setTimeout(() => {
+    window.api?.saveJobProgress(patch).catch((e) => console.error(e));
+  }, 800);
+}
+
+// 로그인 상태면 Supabase의 job_progress로 localStorage를 덮어써 기기 간 데이터를 맞춘다.
+// 최초 로그인(원격 데이터 없음)이면 현재 로컬(데모 포함) 데이터를 그대로 시드한다.
+async function hydrateFromSupabase() {
+  if (typeof isLoggedIn !== 'function' || !isLoggedIn()) return;
+
+  try {
+    const remote = await window.api.getJobProgress();
+    if (remote.jobData || remote.jobFeatures) {
+      if (remote.jobData) localStorage.setItem(JOB_KEY, JSON.stringify(remote.jobData));
+      if (remote.jobFeatures) localStorage.setItem('job_features', JSON.stringify(remote.jobFeatures));
+    } else {
+      const localJobData = loadData();
+      const localFeatures = JSON.parse(localStorage.getItem('job_features') || 'null');
+      await window.api.saveJobProgress({ jobData: localJobData, jobFeatures: localFeatures });
+    }
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 // ── 기능 패널 ─────────────────────────────────────────────────────────────────
@@ -470,11 +376,14 @@ function fillToolGrid(tools, activeStepId) {
 }
 
 // ── 초기화 ────────────────────────────────────────────────────────────────────
-(function initJobPage() {
+(async function initJobPage() {
   if (!document.getElementById('job')) return;
 
   let data;
   try {
+    if (window.authReady) await window.authReady;
+    await hydrateFromSupabase();
+
     data = loadData();
     render(data);
 

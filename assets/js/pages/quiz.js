@@ -1,13 +1,8 @@
 // ── QUIZ PAGE 전용 (quiz.html) — 응시 설정 → 문항 탐색 → 결과 3단계 흐름 ──
 // URL의 ?id=examId로 exam.json에서 문제 풀을 불러온 뒤, 난이도/문항 수를 고르는 설정 화면 →
 // 실제 응시 화면 → 채점 결과(오답 확인) 화면 순서로 진행한다.
-// NOTE: assets/js/api.js가 아직 없어(docs/API_GUIDE.md 참고) 이 파일에서 직접 fetch한다.
-// api.js가 생기면 이 fetch 로직은 공통 담당자와 협의해 그쪽으로 이관한다.
+// 응시 기록(exam_attempts)은 assets/js/api.js를 통해 Supabase에 저장한다. exam.js도 같은 함수를 쓴다.
 
-// NOTE: 이 프로젝트엔 storage.js(공통 담당자 소유, 아직 미신설)가 없어 localStorage를 직접 사용한다.
-// storage.js가 생기면 이 저장 로직도 그쪽으로 이관한다. exam.js도 같은 키를 사용한다(파일 간 공유 모듈이 없어 상수를 각자 정의).
-const SESAC_EXAM_ATTEMPTS_KEY = 'sesac-exam-attempts';
-const MAX_STORED_ATTEMPTS = 100; // localStorage 무한 누적 방지 — 최근 100건만 보관
 const DIFFICULTY_ORDER = ['기초', '중급', '고급', '심화'];
 const DIFFICULTY_TAG_CLASS = { '기초': 'tag--green', '중급': 'tag--blue', '고급': 'tag--gold', '심화': 'tag--coral' };
 const MAX_QUIZ_QUESTION_COUNT = 50; // 문항 수 슬라이더 상한 (풀 크기가 더 작으면 풀 크기가 상한이 된다)
@@ -55,10 +50,10 @@ function shuffleArray(arr) {
   return result;
 }
 
-function getLocalExamAttempts() {
+async function getLocalExamAttempts() {
+  if (!isLoggedIn()) return [];
   try {
-    const raw = localStorage.getItem(SESAC_EXAM_ATTEMPTS_KEY);
-    return raw ? JSON.parse(raw) : [];
+    return await api.getExamAttempts();
   } catch (e) {
     console.error(e);
     return [];
@@ -308,9 +303,9 @@ function goToQuizQuestion(index) {
 // ── 3단계: 결과 (채점 · 포인트 적립 · 오답 확인) ──
 // 포인트 공식: 정답 1문제당 10P + 만점 보너스 50P. 같은 시험 재응시는 "이전 최고 포인트 대비 개선분"만 적립되어
 // 파밍을 방지하면서도 자기 갱신(더 높은 점수로 재도전)은 계속 보상한다.
-function computeEarnedPoints(examId, correctCount, total, isPerfect) {
+async function computeEarnedPoints(examId, correctCount, total, isPerfect) {
   const rawPoints = correctCount * 10 + (isPerfect ? 50 : 0);
-  const history = [...(quizPool.seedHistory || []), ...getLocalExamAttempts()].filter(h => h.examId === examId);
+  const history = [...(quizPool.seedHistory || []), ...(await getLocalExamAttempts())].filter(h => h.examId === examId);
   const priorBest = history.length ? Math.max(...history.map(h => h.pointsEarned || 0)) : 0;
   return Math.max(0, rawPoints - priorBest);
 }
@@ -335,7 +330,7 @@ function launchConfetti() {
   }
 }
 
-function finishQuiz() {
+async function finishQuiz() {
   if (!quizState) return;
   const { exam, questions, answers, isWrongRetry } = quizState;
   const total = questions.length;
@@ -370,8 +365,8 @@ function finishQuiz() {
   // "오답만 다시 풀기"는 이미 채점된 시험을 부분 재응시하는 연습이므로, 정식 응시 기록/통계/포인트에는 반영하지 않는다
   // (그렇지 않으면 쉬운 소규모 재시도로 평균·최고 점수가 인위적으로 올라간다).
   if (!isWrongRetry) {
-    const pointsEarned = computeEarnedPoints(exam.id, correctCount, total, isPerfect);
-    saveExamAttempt(exam, score, pointsEarned, lastWrongQuestions.map(q => q.id));
+    const pointsEarned = await computeEarnedPoints(exam.id, correctCount, total, isPerfect);
+    await saveExamAttempt(exam, score, pointsEarned, lastWrongQuestions.map(q => q.id));
   }
 
   showQuizPhase('result');
@@ -447,20 +442,17 @@ function renderQuizResultQuestionList(questions, answers) {
   }).join('');
 }
 
-function saveExamAttempt(exam, score, pointsEarned, wrongQuestionIds) {
+async function saveExamAttempt(exam, score, pointsEarned, wrongQuestionIds) {
+  if (!isLoggedIn()) return;
   try {
-    const list = getLocalExamAttempts();
-    list.push({
+    await api.saveExamAttempt({
       examId: exam.id,
       title: exam.title,
       icon: exam.icon,
       score,
       pointsEarned,
-      date: new Date().toISOString().slice(0, 10),
-      wrongQuestionIds: wrongQuestionIds || [] // exam.js 사이드패널 "오답노트" 개인화에 사용
+      wrongQuestionIds: wrongQuestionIds || [], // exam.js 사이드패널 "오답노트" 개인화에 사용
     });
-    const trimmed = list.length > MAX_STORED_ATTEMPTS ? list.slice(-MAX_STORED_ATTEMPTS) : list;
-    localStorage.setItem(SESAC_EXAM_ATTEMPTS_KEY, JSON.stringify(trimmed));
   } catch (e) {
     console.error(e);
   }
@@ -564,7 +556,8 @@ document.getElementById('quiz-result-retry-wrong-btn')?.addEventListener('click'
   showQuizPhase('play');
 });
 
-initQuizPage();
+// isLoggedIn()이 정확해야 이전 응시 기록(포인트 계산)을 읽어올 수 있으므로 authReady 이후 실행한다.
+window.authReady.then(initQuizPage);
 
 // ── 모의고사 타이머 (남은 시간 0 도달 시 자동 제출 추가) ──
 // MPA 전환: quiz.js는 quiz.html뿐 아니라 mywords.html(단어 퀴즈 선택지 토글)에서도 로드되므로
