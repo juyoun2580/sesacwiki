@@ -5,85 +5,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sesac Wiki</title>
-  <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+  <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
   <!-- ================================================= -->
   <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
   <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
   <!-- ================================================= -->
-  <link rel="stylesheet" href="assets/css/reset.css" />
-  <link rel="stylesheet" href="assets/css/variables.css" />
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/layout.css" />
-  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/reset.css" />
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
   <!-- 페이지 전용 CSS — Home 담당 소유 (docs/PAGES.md 참고) -->
-  <link rel="stylesheet" href="assets/css/pages/home.css" />
+  <link rel="stylesheet" href="/assets/css/pages/home.css" />
 </head>
 
 <body>
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
   <!-- ================================================= -->
-  <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
+  <!-- COMMON HEADER — components/header.html을 header.js가 주입한다 -->
   <!-- 담당 : feature/home (공통 담당자 전용)                -->
   <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
   <!-- ================================================= -->
-  <header class="header">
-    <a href="index.html" class="header__logo" aria-label="새싹Wiki 홈">
-      <img src="./assets/img/logo.svg" alt="새싹Wiki" />
-    </a>
-    <div class="header__right">
-      <button type="button" class="hamburger-btn" aria-label="메뉴 열기" aria-controls="side-panel" aria-expanded="false">
-        <span class="hamburger-btn__bar"></span>
-        <span class="hamburger-btn__bar"></span>
-        <span class="hamburger-btn__bar"></span>
-      </button>
-      <div class="search-box">
-        <span class="search-box__icon" aria-hidden="true">🔍</span>
-        <label class="sr-only" for="global-search">검색</label>
-        <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!" />
-      </div>
-      <button type="button" class="notification-btn" aria-label="알림">
-        🔔<span class="notification-btn__dot"></span>
-      </button>
-      <p class="point-badge">
-        <span class="point-badge__icon" aria-hidden="true">🪙</span>0P
-      </p>
-      <button type="button" class="btn btn--outline btn--sm auth-guest-only">
-        로그인
-      </button>
-      <div class="user-menu auth-user-only">
-        <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false"
-          aria-controls="user-menu-dropdown">
-          <span class="avatar" aria-hidden="true">🌱</span>
-          <span>
-            <span class="user-chip__name">김새싹</span>
-            <span class="user-chip__level">Lv.1 잎새</span>
-          </span>
-        </button>
-        <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
-          <a href="my.html" class="user-menu__item" role="menuitem">마이페이지</a>
-          <button type="button" class="user-menu__item" role="menuitem">
-            로그아웃
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
+  <header class="header" id="header-mount"></header>
   <!-- COMMON HEADER END -->
 
   <!-- ================================================= -->
-  <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
+  <!-- COMMON NAVIGATION — components/nav.html을 nav.js가 주입한다 -->
   <!-- 담당 : feature/home (공통 담당자 전용)                -->
   <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
-  <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
   <!-- ================================================= -->
-  <nav class="nav" aria-label="주 메뉴">
-    <a class="nav__item nav__item--active" href="index.html" aria-current="page">🏠 홈</a>
-    <a class="nav__item" href="wiki.html">📖 새싹위키</a>
-    <a class="nav__item" href="exam.html">📝 모의고사</a>
-    <a class="nav__item" href="job.html">💼 취업핸드북</a>
-    <a class="nav__item" href="my.html">📚 마이핸드북</a>
-  </nav>
+  <nav class="nav" id="nav-mount" aria-label="주 메뉴"></nav>
   <!-- COMMON NAVIGATION END -->
 
   <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
@@ -105,8 +57,8 @@
               <h1 class="hero__title">오늘도 새싹이 자라는 중이에요!</h1>
               <p class="hero__subtitle">나만의 취업 핸드북</p>
               <div class="hero__actions">
-                <a class="btn btn--primary" href="wiki.html">🌱 오늘 학습 시작하기</a>
-                <a class="btn btn--outline" href="my.html">📖 내 핸드북 보기</a>
+                <a class="btn btn--primary" href="/pages/wiki/index.html">🌱 오늘 학습 시작하기</a>
+                <a class="btn btn--outline" href="/pages/my/index.html">📖 내 핸드북 보기</a>
               </div>
             </div>
             <blockquote class="hq">
@@ -175,7 +127,7 @@
           </h2>
           <ul class="rm-scroll">
             <li>
-              <a class="roadmap-card" href="detail.html">
+              <a class="roadmap-card" href="/pages/wiki/detail.html">
                 <span class="roadmap-card__icon" aria-hidden="true">🗄️</span>
                 <p class="roadmap-card__title">SQL 기초 복습</p>
                 <p class="roadmap-card__desc">SELECT, WHERE, JOIN</p>
@@ -186,7 +138,7 @@
               </a>
             </li>
             <li>
-              <a class="roadmap-card" href="detail.html">
+              <a class="roadmap-card" href="/pages/wiki/detail.html">
                 <span class="roadmap-card__icon" aria-hidden="true">☕</span>
                 <p class="roadmap-card__title">Java 객체지향</p>
                 <p class="roadmap-card__desc">클래스와 객체 이해하기</p>
@@ -197,7 +149,7 @@
               </a>
             </li>
             <li>
-              <a class="roadmap-card" href="detail.html">
+              <a class="roadmap-card" href="/pages/wiki/detail.html">
                 <span class="roadmap-card__icon" aria-hidden="true">🔀</span>
                 <p class="roadmap-card__title">Git 기본 개념</p>
                 <p class="roadmap-card__desc">버전 관리와 협업</p>
@@ -208,7 +160,7 @@
               </a>
             </li>
             <li>
-              <a class="roadmap-card" href="job.html">
+              <a class="roadmap-card" href="/pages/handbook/index.html">
                 <span class="roadmap-card__icon" aria-hidden="true">📄</span>
                 <p class="roadmap-card__title">이력서 작성</p>
                 <p class="roadmap-card__desc">핵심역량 정리하기</p>
@@ -219,7 +171,7 @@
               </a>
             </li>
             <li>
-              <a class="roadmap-card" href="job.html">
+              <a class="roadmap-card" href="/pages/handbook/index.html">
                 <span class="roadmap-card__icon" aria-hidden="true">💬</span>
                 <p class="roadmap-card__title">면접 준비</p>
                 <p class="roadmap-card__desc">기출 면접 질문 풀이</p>
@@ -236,7 +188,7 @@
               <div class="card__body">
                 <div class="section-title">
                   최근 본 페이지
-                  <a class="section-title__link" href="wiki.html">전체보기</a>
+                  <a class="section-title__link" href="/pages/wiki/index.html">전체보기</a>
                 </div>
                 <ul class="recent-list">
                   <li class="recent-list__item">
@@ -255,7 +207,7 @@
                       전</span>
                   </li>
                   <li>
-                    <a class="recent-list__item recent-list__item--clickable" href="exam.html"><span
+                    <a class="recent-list__item recent-list__item--clickable" href="/pages/exam/index.html"><span
                         class="recent-list__icon" aria-hidden="true">📝</span><span class="recent-list__title">모의고사
                         1회</span><span class="tag tag--blue tag--sm">모의고사</span><span
                         class="recent-list__time">어제</span></a>
@@ -267,7 +219,7 @@
               <div class="card__body">
                 <div class="section-title">
                   즐겨찾기
-                  <a class="section-title__link" href="myfav.html">전체보기</a>
+                  <a class="section-title__link" href="/pages/my/favorites.html">전체보기</a>
                 </div>
                 <ul class="favorite-list">
                   <li class="favorite-list__item">
@@ -295,7 +247,7 @@
               <div class="card__body">
                 <div class="section-title">
                   최근 저장한 단어
-                  <a class="section-title__link" href="mywords.html">전체보기</a>
+                  <a class="section-title__link" href="/pages/my/words.html">전체보기</a>
                 </div>
                 <ul class="word-chip-list">
                   <li class="word-chip">JOIN</li>
@@ -327,7 +279,7 @@
           <!-- <h2 class="shortcut-heading">바로가기</h2> -->
           <ul class="shortcut-grid">
             <li>
-              <a class="shortcut-btn" href="mywords.html"><em class="shortcut-btn__icon">📓</em>단어장</a>
+              <a class="shortcut-btn" href="/pages/my/words.html"><em class="shortcut-btn__icon">📓</em>단어장</a>
             </li>
             <li>
               <button type="button" class="shortcut-btn">
@@ -356,10 +308,12 @@
   <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
   <!-- 담당 : feature/core (공통 담당자 전용) -->
   <!-- ================================================= -->
-  <script src="assets/js/auth.js" defer></script>
-  <script src="assets/js/app.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/components/header.js" defer></script>
+  <script src="/assets/js/components/nav.js" defer></script>
+  <script src="/assets/js/app.js" defer></script>
   <!-- 페이지 전용 JS — Home 담당. "최근 저장한 단어" 미리보기(sesac.mywords.list) -->
-  <script src="assets/js/pages/home.js" defer></script>
+  <script src="/assets/js/pages/home.js" defer></script>
 </body>
 
 </html>

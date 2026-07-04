@@ -37,7 +37,7 @@ let showAllRecentExams = false;
 const questionFileCache = new Map();
 function fetchQuestionsFile(examId) {
   if (!questionFileCache.has(examId)) {
-    questionFileCache.set(examId, fetch(`assets/data/questions/${examId}.json`).then(res => {
+    questionFileCache.set(examId, fetch(`/assets/data/questions/${examId}.json`).then(res => {
       if (!res.ok) throw new Error(`${examId} 문제 파일을 불러오지 못했습니다.`);
       return res.json();
     }));
@@ -49,7 +49,7 @@ async function loadExamPageData() {
   if (!document.getElementById('exam')) return;
 
   try {
-    const res = await fetch('assets/data/exam.json');
+    const res = await fetch('/assets/data/exam.json');
     if (!res.ok) throw new Error('모의고사 데이터를 불러오지 못했습니다.');
     const data = await res.json();
     // 실제 응시 기록이 하나라도 있으면 시드 더미 데이터는 통계에서 완전히 제외한다.
@@ -84,7 +84,7 @@ function renderExamList(list) {
       exam.isAdvanced ? '<span class="tag tag--orange">🔥 심화</span>' : ''
     ].join(' ');
     return `
-      <li data-category="${escapeHtml(exam.category)}"><a class="exam-row" href="quiz.html?id=${escapeHtml(exam.id)}">
+      <li data-category="${escapeHtml(exam.category)}"><a class="exam-row" href="/pages/exam/quiz.html?id=${escapeHtml(exam.id)}">
           <span class="exam-row__icon" aria-hidden="true">${exam.icon}</span>
           <span class="exam-row__body">
             <span class="exam-row__title">${escapeHtml(exam.title)} ${badges}</span>

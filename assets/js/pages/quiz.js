@@ -71,7 +71,7 @@ function getLocalExamAttempts() {
 const questionFileCache = new Map();
 function fetchQuestionsFile(examId) {
   if (!questionFileCache.has(examId)) {
-    questionFileCache.set(examId, fetch(`assets/data/questions/${examId}.json`).then(res => {
+    questionFileCache.set(examId, fetch(`/assets/data/questions/${examId}.json`).then(res => {
       if (!res.ok) throw new Error(`${examId} 문제 파일을 불러오지 못했습니다.`);
       return res.json();
     }));
@@ -86,7 +86,7 @@ async function initQuizPage() {
   const examId = requestedId || 'exam-001';
 
   try {
-    const res = await fetch('assets/data/exam.json');
+    const res = await fetch('/assets/data/exam.json');
     if (!res.ok) throw new Error('문제 데이터를 불러오지 못했습니다.');
     const data = await res.json();
 
@@ -95,7 +95,7 @@ async function initQuizPage() {
     if (!exam || !allQuestions.length) {
       if (requestedId) {
         toast('요청한 모의고사를 찾을 수 없어 목록으로 돌아가요.');
-        setTimeout(() => { location.href = 'exam.html'; }, 1500);
+        setTimeout(() => { location.href = '/pages/exam/index.html'; }, 1500);
         return;
       }
       throw new Error('해당 모의고사를 찾을 수 없습니다.');

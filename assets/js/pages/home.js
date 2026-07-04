@@ -55,7 +55,7 @@ function renderFavoritePreview() {
   listEl.innerHTML = favorites
     .map(
       (f) => `<li class="favorite-list__item">
-                    <a class="favorite-list__link" href="detail.html?id=${encodeURIComponent(f.wikiId)}">
+                    <a class="favorite-list__link" href="/pages/wiki/detail.html?id=${encodeURIComponent(f.wikiId)}">
                       <span class="favorite-list__star" aria-hidden="true">★</span><span class="favorite-list__title">${f.title}</span><span class="tag tag--${f.categoryColor || "gray"} tag--sm">${f.category}</span>
                     </a>
                   </li>`
@@ -98,7 +98,7 @@ function renderRecentPagesPreview() {
   listEl.innerHTML = recentPages
     .map(
       (p) => `<li class="recent-list__item">
-                    <a class="recent-list__link" href="detail.html?id=${encodeURIComponent(p.wikiId)}">
+                    <a class="recent-list__link" href="/pages/wiki/detail.html?id=${encodeURIComponent(p.wikiId)}">
                       <span class="recent-list__icon" aria-hidden="true">${p.icon}</span><span class="recent-list__title">${p.title}</span><span class="tag tag--${p.categoryColor || "gray"} tag--sm">${p.category}</span><span class="recent-list__time">${formatVisitedAt(p.visitedAt)}</span>
                     </a>
                   </li>`
@@ -110,7 +110,7 @@ function renderRecentPagesPreview() {
 // 동일한 localStorage 데이터(sesac-exam-attempts)를 읽기 전용으로 사용한다.
 // 기록이 없으면 assets/data/home.json의 stats를 fallback으로 사용한다.
 const EXAM_HISTORY_KEY = "sesac-exam-attempts";
-const HOME_DATA_URL = "assets/data/home.json";
+const HOME_DATA_URL = "/assets/data/home.json";
 let homeDataPromise = null;
 
 function readExamHistory() {
@@ -246,7 +246,7 @@ function renderJobReadinessCard() {
 
 // 대시보드(index.html) "학습 진도율" 카드 — assets/data/wiki.json의 list[].percent 평균을 사용한다.
 // loadHomeData()와 동일한 "1회 fetch 후 Promise 캐싱" 패턴을 wiki.json에도 그대로 적용한다.
-const WIKI_DATA_URL = "assets/data/wiki.json";
+const WIKI_DATA_URL = "/assets/data/wiki.json";
 let wikiDataPromise = null;
 
 function loadWikiData() {

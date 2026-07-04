@@ -65,7 +65,7 @@ function getCurrentUser() {
 function requireAuth() {
   if (isLoggedIn()) return true;
 
-  location.href = 'login.html';
+  location.href = '/pages/auth/login.html';
   return false;
 }
 
@@ -73,7 +73,7 @@ function requireAuth() {
 function redirectIfLoggedIn() {
   if (!isLoggedIn()) return;
 
-  location.href = 'mypage.html';
+  location.href = '/pages/my/mypage.html';
 }
 
 // ── Header 인증 상태: data-auth 값만 갱신하면 components.css가 UserChip ↔ 로그인 버튼을 전환한다 ──
@@ -93,7 +93,7 @@ function bindLoginButton() {
   if (!loginBtn) return;
 
   loginBtn.addEventListener("click", () => {
-    location.href = "login.html";
+    location.href = "/pages/auth/login.html";
   });
 }
 
@@ -131,7 +131,7 @@ function bindLogout() {
 
   logoutBtn.addEventListener("click", () => {
     removeSession();
-    location.href = "login.html";
+    location.href = "/pages/auth/login.html";
   });
 }
 
@@ -180,7 +180,7 @@ if (signupForm) {
 
     toast(`🌱 ${name}님, 가입이 완료됐어요! 로그인해주세요.`);
     setTimeout(() => {
-      location.href = "login.html";
+      location.href = "/pages/auth/login.html";
     }, 1200);
   });
 }
@@ -224,7 +224,7 @@ document.querySelectorAll('[data-action="mock-verify"]').forEach((btn) => {
     localStorage.removeItem(AUTH_PENDING_KEY);
     toast(`✅ 인증 완료! ${user.name}님 환영합니다.`);
     setTimeout(() => {
-      location.href = "mypage.html";
+      location.href = "/pages/my/mypage.html";
     }, 1000);
   });
 });

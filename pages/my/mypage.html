@@ -4,107 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>마이페이지 — Sesac Wiki</title>
-    <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
     <!-- ================================================= -->
     <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
     <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
     <!-- ================================================= -->
-    <link rel="stylesheet" href="assets/css/reset.css" />
-    <link rel="stylesheet" href="assets/css/variables.css" />
-    <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/layout.css" />
-    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="/assets/css/reset.css" />
+    <link rel="stylesheet" href="/assets/css/variables.css" />
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/layout.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
     <!-- 페이지 전용 CSS — MyPage(Job/My) 담당 소유. my.css의 word-quiz/word-stats/ -->
     <!-- word-row 등을 "저장한 단어" 카드의 인페이지 패널에서 그대로 재사용한다 -->
-    <link rel="stylesheet" href="assets/css/pages/my.css" />
-    <link rel="stylesheet" href="assets/css/pages/mypage.css" />
+    <link rel="stylesheet" href="/assets/css/pages/my.css" />
+    <link rel="stylesheet" href="/assets/css/pages/mypage.css" />
   </head>
 
   <body>
     <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-    <!-- ================================================= -->
-    <!-- COMMON HEADER — 절대 수정하지 않는다                  -->
-    <!-- 담당 : feature/core (공통 담당자 전용)                -->
-    <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
-    <!-- ================================================= -->
-    <header class="header">
-      <a href="index.html" class="header__logo" aria-label="새싹Wiki 홈">
-        <img src="./assets/img/logo.svg" alt="새싹Wiki" />
-      </a>
-      <div class="header__right">
-        <button
-          type="button"
-          class="hamburger-btn"
-          aria-label="메뉴 열기"
-          aria-controls="side-panel"
-          aria-expanded="false"
-        >
-          <span class="hamburger-btn__bar"></span>
-          <span class="hamburger-btn__bar"></span>
-          <span class="hamburger-btn__bar"></span>
-        </button>
-        <div class="search-box">
-          <span class="search-box__icon" aria-hidden="true">🔍</span>
-          <label class="sr-only" for="global-search">검색</label>
-          <input
-            type="text"
-            id="global-search"
-            class="search-box__input"
-            placeholder="궁금한 내용을 검색해보세요!"
-          />
-        </div>
-        <button type="button" class="notification-btn" aria-label="알림">
-          🔔<span class="notification-btn__dot"></span>
-        </button>
-        <p class="point-badge">
-          <span class="point-badge__icon" aria-hidden="true">🪙</span>0P
-        </p>
-        <button type="button" class="btn btn--outline btn--sm auth-guest-only">
-          로그인
-        </button>
-        <div class="user-menu auth-user-only">
-          <button
-            type="button"
-            class="user-chip"
-            aria-haspopup="true"
-            aria-expanded="false"
-            aria-controls="user-menu-dropdown"
-          >
-            <span class="avatar" aria-hidden="true">🌱</span>
-            <span>
-              <span class="user-chip__name">김새싹</span>
-              <span class="user-chip__level">Lv.1 잎새</span>
-            </span>
-          </button>
-          <div id="user-menu-dropdown" class="user-menu__dropdown" role="menu">
-            <a href="mypage.html" class="user-menu__item" role="menuitem"
-              >마이페이지</a
-            >
-            <button type="button" class="user-menu__item" role="menuitem">
-              로그아웃
-            </button>
-          </div>
-        </div>
-      </div>
-    </header>
+    <!-- COMMON HEADER — components/header.html을 header.js가 주입한다 -->
+    <header class="header" id="header-mount"></header>
     <!-- COMMON HEADER END -->
 
-    <!-- ================================================= -->
-    <!-- COMMON NAVIGATION — 절대 수정하지 않는다              -->
-    <!-- 담당 : feature/core (공통 담당자 전용)                -->
-    <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
-    <!-- MPA 전환: data-goto 기반 SPA 라우팅 대신 일반 <a href> 링크 사용 -->
-    <!-- ================================================= -->
-    <nav class="nav" aria-label="주 메뉴">
-      <a class="nav__item" href="index.html">🏠 홈</a>
-      <a class="nav__item" href="wiki.html">📖 새싹위키</a>
-      <a class="nav__item" href="exam.html">📝 모의고사</a>
-      <a class="nav__item" href="job.html">💼 취업핸드북</a>
-      <a class="nav__item nav__item--active" href="my.html" aria-current="page"
-        >📚 마이핸드북</a
-      >
-    </nav>
+    <!-- COMMON NAVIGATION — components/nav.html을 nav.js가 주입한다 -->
+    <nav class="nav" id="nav-mount" aria-label="주 메뉴"></nav>
     <!-- COMMON NAVIGATION END -->
 
     <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
@@ -147,7 +71,7 @@
                 </p>
               </div>
               <div class="profile-card__actions">
-                <a href="mypage-edit.html" class="btn btn--primary btn--sm"
+                <a href="/pages/my/edit.html" class="btn btn--primary btn--sm"
                   >Edit profile</a
                 >
                 <button
@@ -381,15 +305,17 @@
     <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
     <!-- 담당 : feature/core (공통 담당자 전용) -->
     <!-- ================================================= -->
-    <script src="assets/js/toast.js" defer></script>
-    <script src="assets/js/auth.js" defer></script>
-    <script src="assets/js/app.js" defer></script>
-    <script src="assets/js/ui.js" defer></script>
+    <script src="/assets/js/toast.js" defer></script>
+    <script src="/assets/js/auth.js" defer></script>
+    <script src="/assets/js/components/header.js" defer></script>
+    <script src="/assets/js/components/nav.js" defer></script>
+    <script src="/assets/js/app.js" defer></script>
+    <script src="/assets/js/ui.js" defer></script>
     <!-- 페이지 전용 스크립트 — MyPage 담당 소유. "나의 단어 도감" 수정에 mywords.html과
          동일한 Modal 컴포넌트(modal.js)를 재사용하기 위해 추가. WORK_ORDER.md 기준
          <script> 목록은 공통 담당자 소유 블록이라 이 한 줄 추가는 PR에서 공통 담당자
          확인이 필요하다. -->
-    <script src="assets/js/modal.js" defer></script>
-    <script src="assets/js/pages/mypage.js" defer></script>
+    <script src="/assets/js/modal.js" defer></script>
+    <script src="/assets/js/pages/mypage.js" defer></script>
   </body>
 </html>

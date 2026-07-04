@@ -44,8 +44,8 @@ function initNavigation() {
   }
 }
 
-// ── 로그인이 필요한 개인화 페이지 목록(파일명 기준) ──
-const AUTH_REQUIRED_PAGES = ['job.html', 'my.html', 'mywords.html', 'myfav.html'];
+// ── 로그인이 필요한 개인화 페이지 목록(경로 기준) — 페이지 이동 시 이 배열만 갱신하면 된다 ──
+const AUTH_REQUIRED_PAGES = ['/pages/handbook/index.html', '/pages/my/index.html', '/pages/my/words.html', '/pages/my/favorites.html'];
 
 // ── 개인화 페이지로 이동하는 링크: 비로그인 시 login.html로 보낸다(이벤트 위임) ──
 function initAuthGuardLinks() {
@@ -56,22 +56,27 @@ function initAuthGuardLinks() {
     if (isLoggedIn()) return;
 
     e.preventDefault();
-    location.href = 'login.html';
+    location.href = '/pages/auth/login.html';
   });
 }
 
 // ── 개인화 페이지 자체에서의 접근 제어: 현재 페이지가 로그인 필수 페이지면 requireAuth() 실행 ──
 function initPageAuthGuard() {
-  const currentPage = location.pathname.split('/').pop();
-  if (!AUTH_REQUIRED_PAGES.includes(currentPage)) return;
+  if (!AUTH_REQUIRED_PAGES.includes(location.pathname)) return;
 
   requireAuth();
 }
 
 // ── 공통 초기화 진입점 — auth.js가 먼저 로드되어 initAuth()를 제공해야 한다 ──
+// header/nav는 fetch로 비동기 주입되므로, header에 의존하는 초기화(initNavigation/initAuth)는
+// loadHeader() 완료 후에 실행한다.
 initProgressBars();
 initToastTriggers();
-initNavigation();
-initAuth();
 initAuthGuardLinks();
 initPageAuthGuard();
+
+loadNav();
+loadHeader().then(() => {
+  initNavigation();
+  initAuth();
+});

@@ -90,7 +90,7 @@ function buildWikiRow(item) {
   const li = document.createElement('li');
   const a = document.createElement('a');
   a.className = 'wiki-row';
-  a.href = `detail.html?id=${encodeURIComponent(item.id)}`;
+  a.href = `/pages/wiki/detail.html?id=${encodeURIComponent(item.id)}`;
   // 상세 페이지의 "뒤로가기"가 목록 필터/페이지/스크롤 위치를 그대로 복원할 수 있도록,
   // 상세로 넘어가기 직전 상태를 저장해둔다.
   a.addEventListener('click', () => {
@@ -229,7 +229,7 @@ function renderWikiFavoritesPanel() {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.className = 'favorite-list__link';
-      a.href = `detail.html?id=${encodeURIComponent(item.id)}`;
+      a.href = `/pages/wiki/detail.html?id=${encodeURIComponent(item.id)}`;
 
       const tag = document.createElement('span');
       tag.className = `tag favorite-list__tag tag--${WIKI_CATEGORY_TAG_COLOR[item.category] || 'gray'}`;
@@ -327,7 +327,7 @@ function wikiBindControls() {
 let wikiDataPromise = null;
 function fetchWikiData() {
   if (!wikiDataPromise) {
-    wikiDataPromise = fetch('assets/data/wiki-data.json').then(res => res.json());
+    wikiDataPromise = fetch('/assets/data/wiki-data.json').then(res => res.json());
   }
   return wikiDataPromise;
 }
@@ -442,7 +442,7 @@ function renderWikiRelated(item) {
   related.forEach(other => {
     const a = document.createElement('a');
     a.className = 'related-item';
-    a.href = `detail.html?id=${encodeURIComponent(other.id)}`;
+    a.href = `/pages/wiki/detail.html?id=${encodeURIComponent(other.id)}`;
 
     const icon = document.createElement('span');
     icon.className = 'related-item__icon';

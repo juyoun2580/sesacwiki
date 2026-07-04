@@ -174,7 +174,7 @@ if (deleteConfirmCheckbox && deleteAccountBtn) {
     localStorage.removeItem(PROFILE_KEY);
     toast("계정 데이터가 삭제됐어요. (테스트 환경 — 로컬 저장 데이터만 초기화됩니다)");
     setTimeout(() => {
-      location.href = "login.html";
+      location.href = "/pages/auth/login.html";
     }, 1200);
   });
 }
@@ -798,7 +798,7 @@ const CATEGORY_DETAIL_TEMPLATES = {
   quiz: () => `
     <div class="category-detail__header">
       <h3 class="category-detail__title">🎯 퀴즈 도전</h3>
-      <a href="exam.html" class="btn btn--outline btn--sm">모의고사 풀러가기 ›</a>
+      <a href="/pages/exam/index.html" class="btn btn--outline btn--sm">모의고사 풀러가기 ›</a>
     </div>
     <div class="challenge-list">
       ${QUIZ_CHALLENGES.map((task) => buildChallengeCheckpoints(task, readQuizCheckpoints())).join("")}
