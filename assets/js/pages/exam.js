@@ -1,12 +1,7 @@
 // ── EXAM LIST PAGE 전용 (exam.html) ──
 // exam.json을 불러와 side-panel의 "내 모의고사 현황" 통계와 오답노트 아코디언을 실제 데이터로 렌더링하고,
 // 사이드바/필터탭 클릭 시 카테고리별로 문제 카드를 실제로 필터링한다.
-// NOTE: assets/js/api.js가 아직 없어(docs/API_GUIDE.md 참고) 이 파일에서 직접 fetch한다.
-// api.js가 생기면 이 fetch 로직은 공통 담당자와 협의해 그쪽으로 이관한다.
-
-// NOTE: 이 프로젝트엔 storage.js(공통 담당자 소유, 아직 미신설)가 없어 localStorage를 직접 사용한다.
-// storage.js가 생기면 이 저장 로직도 그쪽으로 이관한다. quiz.js도 같은 키를 사용한다(파일 간 공유 모듈이 없어 상수를 각자 정의).
-const SESAC_EXAM_ATTEMPTS_KEY = 'sesac-exam-attempts';
+// 응시 기록(exam_attempts)은 assets/js/api.js를 통해 Supabase에서 읽는다. quiz.js도 같은 함수를 쓴다.
 
 // 문제/해설 텍스트에는 <div>, <video>, <img alt="..."> 처럼 HTML 태그 예시가 그대로 들어있는 경우가 있다.
 // innerHTML로 렌더링하면 이 텍스트가 실제 태그로 해석되어 보기/해설이 깨지므로, 삽입 전 반드시 이스케이프한다.
@@ -19,10 +14,10 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
-function getLocalExamAttempts() {
+async function getLocalExamAttempts() {
+  if (!isLoggedIn()) return [];
   try {
-    const raw = localStorage.getItem(SESAC_EXAM_ATTEMPTS_KEY);
-    return raw ? JSON.parse(raw) : [];
+    return await api.getExamAttempts();
   } catch (e) {
     console.error(e);
     return [];
@@ -52,9 +47,8 @@ async function loadExamPageData() {
     const res = await fetch('/assets/data/exam.json');
     if (!res.ok) throw new Error('모의고사 데이터를 불러오지 못했습니다.');
     const data = await res.json();
-    // 실제 응시 기록이 하나라도 있으면 시드 더미 데이터는 통계에서 완전히 제외한다.
-    // 그래야 실제로 응시한 만큼만 정직하게 집계된다 (시드는 첫 방문 시 빈 화면을 막기 위한 데모용).
-    const localHistory = getLocalExamAttempts();
+    // 응시 기록이 없으면 exam.json의 attemptHistory(빈 배열)로 폴백한다.
+    const localHistory = await getLocalExamAttempts();
     examAttemptHistory = localHistory.length ? localHistory : (data.attemptHistory || []);
     renderExamList(data.list);
     renderExamStats(examAttemptHistory);
@@ -166,7 +160,7 @@ function buildWrongNoteRefs(data, localHistory) {
 async function renderWrongNoteAccordion(data) {
   const listEl = document.getElementById('exam-wrong-note-list');
   if (!listEl) return;
-  const localHistory = getLocalExamAttempts();
+  const localHistory = await getLocalExamAttempts();
   const samples = localHistory.length ? buildWrongNoteRefs(data, localHistory) : (data.wrongNoteSamples || []);
 
   const neededExamIds = [...new Set(samples.map(ref => ref.examId))];
@@ -233,4 +227,5 @@ document.getElementById('exam-recent-toggle')?.addEventListener('click', () => {
   renderExamStats(examAttemptHistory);
 });
 
-loadExamPageData();
+// isLoggedIn()이 정확해야 실제 응시 기록을 읽어올 수 있으므로 authReady 이후 실행한다.
+window.authReady.then(loadExamPageData);

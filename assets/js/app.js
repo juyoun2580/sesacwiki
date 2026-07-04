@@ -72,11 +72,16 @@ function initPageAuthGuard() {
 // loadHeader() 완료 후에 실행한다.
 initProgressBars();
 initToastTriggers();
-initAuthGuardLinks();
-initPageAuthGuard();
 
 loadNav();
 loadHeader().then(() => {
   initNavigation();
   initAuth();
+});
+
+// isLoggedIn()이 정확한 값을 돌려주려면 auth.js의 최초 세션 조회가 끝나야 하므로,
+// 로그인 여부에 따라 분기하는 가드는 authReady 이후로 미룬다.
+window.authReady.then(() => {
+  initAuthGuardLinks();
+  initPageAuthGuard();
 });

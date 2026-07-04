@@ -72,15 +72,21 @@ function buildWikiFavoriteStar(item) {
   star.setAttribute('aria-pressed', String(item.bookmarked));
   star.setAttribute('aria-label', '즐겨찾기');
   star.textContent = '★';
-  // ui.js는 defer 스크립트 실행 시점에 존재하는 .favorite-star에만 클릭을 바인딩한다.
-  // fetch 이후 동적으로 추가되는 이 별은 토글 로직 재구현 없이 공통 함수 ts()만 연결한다.
-  star.addEventListener('click', e => {
+  // 실제 저장(Supabase wiki_bookmarks)이 필요해 공통 ts() 대신 여기서 직접 토글+영속화한다.
+  star.addEventListener('click', async e => {
     // 이 별은 <a class="wiki-row"> 안에 있어서 stopPropagation만으로는
     // 앵커의 기본 이동(href) 동작을 막지 못해 상세 페이지로 이동해버린다.
     e.preventDefault();
     e.stopPropagation();
-    ts(star);
-    item.bookmarked = star.classList.contains('favorite-star--on');
+    if (!isLoggedIn()) {
+      location.href = 'login.html';
+      return;
+    }
+    const nowBookmarked = await api.toggleWikiBookmark(item.id);
+    item.bookmarked = nowBookmarked;
+    star.classList.toggle('favorite-star--on', nowBookmarked);
+    star.setAttribute('aria-pressed', String(nowBookmarked));
+    toast(nowBookmarked ? '★ 즐겨찾기에 저장했어요!' : '즐겨찾기를 해제했어요.');
     renderWikiFavoritesPanel();
   });
   return star;
@@ -332,9 +338,19 @@ function fetchWikiData() {
   return wikiDataPromise;
 }
 
+// 로그인 상태면 wiki_bookmarks 테이블의 실제 즐겨찾기 상태로 item.bookmarked를 덮어쓴다
+// (wiki-data.json에 박혀있는 bookmarked 시드값은 게스트 미리보기용일 뿐이다).
+async function wikiApplyBookmarks(items) {
+  if (!isLoggedIn()) return items;
+  const bookmarkedIds = new Set(await api.getWikiBookmarks());
+  items.forEach(item => { item.bookmarked = bookmarkedIds.has(item.id); });
+  return items;
+}
+
 function initWikiListPage() {
   if (!document.getElementById('wikiRowList')) return;
   fetchWikiData()
+    .then(data => wikiApplyBookmarks(data))
     .then(data => {
       wikiAllItems = data;
       wikiBindControls();
@@ -480,12 +496,13 @@ function renderWikiDetail(item) {
   document.getElementById('wikiDetailTime').textContent = `🕐 ${item.time}`;
   updateWikiDetailProgress(item);
 
-  // favorite-star는 정적 마크업이라 ui.js가 defer 시점에 이미 클릭을 바인딩했다.
-  // 여기서는 새 이벤트를 걸지 않고 로드된 데이터에 맞춰 초기 on/off 상태만 반영한다.
+  // favorite-star는 정적 마크업이라 ui.js가 defer 시점에 이미 클릭을 바인딩했지만(cosmetic toggle뿐),
+  // 여기서는 로드된 데이터에 맞춰 초기 on/off 상태를 반영하고 실제 저장은 별도로 바인딩한다.
   const favBig = document.getElementById('wikiDetailFavorite');
   favBig.classList.toggle('favorite-star--on', item.bookmarked);
   favBig.setAttribute('aria-pressed', String(item.bookmarked));
   document.getElementById('wikiDetailFavoriteMini').classList.toggle('favorite-star--on', item.bookmarked);
+  bindWikiDetailFavoriteStars(item);
 
   renderWikiToc(item);
   renderWikiArticleBody(item);
@@ -501,14 +518,35 @@ function renderWikiDetail(item) {
   });
 }
 
+// 상단 큰 별/미니 별 — ui.js의 cosmetic ts() 바인딩과 별개로 실제 저장을 담당한다.
+function bindWikiDetailFavoriteStars(item) {
+  const ids = ['wikiDetailFavorite', 'wikiDetailFavoriteMini'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('click', async () => {
+      if (!isLoggedIn()) {
+        location.href = 'login.html';
+        return;
+      }
+      const nowBookmarked = await api.toggleWikiBookmark(item.id);
+      item.bookmarked = nowBookmarked;
+      ids.forEach(otherId => {
+        const otherEl = document.getElementById(otherId);
+        if (!otherEl) return;
+        otherEl.classList.toggle('favorite-star--on', nowBookmarked);
+        otherEl.setAttribute('aria-pressed', String(nowBookmarked));
+      });
+    });
+  });
+}
+
 // ══════════════════════════════════════════════
 //  "내 핸드북에 저장" 박스(aside.wiki-detail__aside) 연동
-//  즐겨찾기 → myfav.html, 단어장 → mywords.html/mypage.html이 읽는
-//  localStorage 저장소에 실제로 반영한다. modal.js/highlight.js의 기존
-//  토스트/토글 로직은 그대로 두고, 여기서는 리스너만 추가한다(충돌 없음).
+//  즐겨찾기/단어장 모두 Supabase(wiki_bookmarks/words)에 실제로 반영한다.
+//  modal.js/highlight.js의 기존 토스트/토글 로직은 그대로 두고, 여기서는
+//  리스너만 추가한다(충돌 없음).
 // ══════════════════════════════════════════════
-
-const WIKI_FAVORITES_KEY = 'sesac.myfavorites.list';
 
 // 위키 카테고리 → 단어장 모달의 카테고리 옵션(SQL/Java/CS·IT/비즈니스/기타) 매핑
 const WIKI_TO_WORD_CATEGORY = {
@@ -523,58 +561,23 @@ const WIKI_TO_WORD_CATEGORY = {
   '취업 가이드': '기타'
 };
 
-function wikiTodayStr() {
-  return new Date().toISOString().slice(0, 10).replace(/-/g, '.');
-}
-
-function saveWikiFavorite(item) {
-  let favorites = [];
-  try {
-    favorites = JSON.parse(localStorage.getItem(WIKI_FAVORITES_KEY)) || [];
-  } catch {
-    favorites = [];
+// 이미 즐겨찾기된 문서면 그대로 두는(add-only) 원래 동작을 유지한다 — 해제는 별(star) 쪽에서만.
+async function saveWikiFavorite(item) {
+  if (!isLoggedIn()) {
+    location.href = 'login.html';
+    return;
   }
-  if (favorites.some(f => f.wikiId === item.id)) return;
-  favorites.unshift({
-    id: `fav-${item.id}`,
-    wikiId: item.id,
-    title: item.title,
-    desc: item.description,
-    category: item.category,
-    categoryColor: WIKI_CATEGORY_TAG_COLOR[item.category] || 'gray',
-    icon: WIKI_CATEGORY_ICON[item.category] || '📄',
-    date: wikiTodayStr()
-  });
-  localStorage.setItem(WIKI_FAVORITES_KEY, JSON.stringify(favorites));
+  if (item.bookmarked) return;
+  item.bookmarked = await api.toggleWikiBookmark(item.id);
 }
 
 // ══════════════════════════════════════════════
 //  "최근 본 페이지" 기록 — Home(index.html)의 recent-list가 읽는
-//  localStorage 저장소. detail.html에서 문서를 열 때마다 갱신한다.
+//  wiki_recent_views 테이블. detail.html에서 문서를 열 때마다 갱신한다.
 // ══════════════════════════════════════════════
 
-const RECENT_PAGES_KEY = 'sesac.recentPages.list';
-const RECENT_PAGES_MAX = 10;
-
-function saveRecentPage(item) {
-  let recentPages = [];
-  try {
-    recentPages = JSON.parse(localStorage.getItem(RECENT_PAGES_KEY)) || [];
-  } catch {
-    recentPages = [];
-  }
-  recentPages = recentPages.filter(p => p.wikiId !== item.id);
-  recentPages.unshift({
-    id: `rp-${item.id}`,
-    wikiId: item.id,
-    title: item.title,
-    category: item.category,
-    categoryColor: WIKI_CATEGORY_TAG_COLOR[item.category] || 'gray',
-    icon: WIKI_CATEGORY_ICON[item.category] || '📄',
-    visitedAt: new Date().toISOString()
-  });
-  recentPages = recentPages.slice(0, RECENT_PAGES_MAX);
-  localStorage.setItem(RECENT_PAGES_KEY, JSON.stringify(recentPages));
+async function saveRecentPage(item) {
+  await api.addRecentWikiView(item.id);
 }
 
 function prefillWordModalCategory(item) {
@@ -599,13 +602,14 @@ function bindWikiHandbookSaveActions(item) {
 function initWikiDetailPage() {
   if (!document.getElementById('artbody') || !document.getElementById('wikiToc')) return;
   fetchWikiData()
+    .then(data => wikiApplyBookmarks(data))
     .then(data => {
       wikiAllItems = data;
       const id = wikiGetIdFromUrl();
       const item = wikiAllItems.find(i => i.id === id) || wikiAllItems[0];
       if (item) {
         renderWikiDetail(item);
-        saveRecentPage(item);
+        if (isLoggedIn()) saveRecentPage(item);
       }
     })
     .catch(() => {
@@ -613,5 +617,8 @@ function initWikiDetailPage() {
     });
 }
 
-initWikiListPage();
-initWikiDetailPage();
+// isLoggedIn()이 정확해야 즐겨찾기/최근열람이 올바르게 반영되므로 authReady 이후 실행한다.
+window.authReady.then(() => {
+  initWikiListPage();
+  initWikiDetailPage();
+});

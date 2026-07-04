@@ -1,21 +1,16 @@
-// ── 마이페이지 대시보드 / 프로필 수정 — MyPage(Job/My) 담당, 신규 파일 ──
-// 신규 파일: 공식 WORK_ORDER.md 스코프 밖 프로토타입. 프로필 수정 내용을
-// 대시보드에 실시간 반영하기 위해 localStorage를 상태 저장소로 쓴다.
-// (JSON_GUIDE.md 규칙상 storage.js 신설은 원래 공통 담당자 판단 영역이라
-// 정식 반영 전 공통 담당자 리뷰가 필요하다. 로그인 상태/Header UI/로그아웃은
-// assets/js/auth.js가 전담한다.)
+// ── 마이페이지 대시보드 / 프로필 수정 — MyPage(Job/My) 담당 ──
+// 프로필/뱃지/단어/퀴즈 체크포인트는 assets/js/api.js를 통해 Supabase에 저장한다.
+// 로그인 상태/Header UI/로그아웃은 assets/js/auth.js가 전담한다.
 
 // 개발/테스트 편의를 위해 로그인 여부와 무관하게 대시보드를 자유롭게 볼 수 있도록
-// 강제 리다이렉트/얼럿 가드는 두지 않는다. (이전 버전에 있던 requireAuth()는 제거됨)
-
-const PROFILE_KEY = "sesac.mypage.profile";
+// 강제 리다이렉트/얼럿 가드는 두지 않는다. 비로그인 상태에서는 GUEST/빈 상태로 보여준다.
 
 // ── 프로필에 표시할 이름 결정: 수정한 이름 > 가입/로그인 사용자 이름 > GUEST ──
-// auth.js 내부(localStorage, AUTH_SESSION_KEY)는 절대 직접 건드리지 않고,
-// auth.js가 제공하는 Public API(getCurrentUser())만 통해서 접근한다.
-function getDisplayName() {
-  const override = readProfileOverride();
-  if (override.name) return override.name;
+async function getDisplayName() {
+  if (isLoggedIn()) {
+    const profile = await api.getProfile();
+    if (profile.name) return profile.name;
+  }
 
   const user = typeof getCurrentUser === "function" ? getCurrentUser() : null;
   if (user && user.name) return user.name;
@@ -23,9 +18,11 @@ function getDisplayName() {
   return "GUEST";
 }
 
-function getDisplayUsername() {
-  const override = readProfileOverride();
-  if (override.username) return override.username;
+async function getDisplayUsername() {
+  if (isLoggedIn()) {
+    const profile = await api.getProfile();
+    if (profile.username) return profile.username;
+  }
 
   const user = typeof getCurrentUser === "function" ? getCurrentUser() : null;
   if (user && user.email) return user.email.split("@")[0];
@@ -33,39 +30,27 @@ function getDisplayUsername() {
   return "guest";
 }
 
-function readProfileOverride() {
-  try {
-    return JSON.parse(localStorage.getItem(PROFILE_KEY)) || {};
-  } catch {
-    return {};
-  }
-}
-
-function saveProfileOverride(patch) {
-  const merged = { ...readProfileOverride(), ...patch };
-  localStorage.setItem(PROFILE_KEY, JSON.stringify(merged));
-  return merged;
-}
-
 // ── 대시보드: 가입/로그인 이름 + 수정한 프로필 내역을 화면에 즉시 반영 ──
-function applyProfileToDashboard() {
+async function applyProfileToDashboard() {
   const nameEl = document.getElementById("profile-name");
   const userEl = document.getElementById("profile-username");
   const avatarEl = document.getElementById("profile-avatar");
 
-  if (nameEl) nameEl.textContent = getDisplayName();
-  if (userEl) userEl.textContent = "@" + getDisplayUsername();
+  if (nameEl) nameEl.textContent = await getDisplayName();
+  if (userEl) userEl.textContent = "@" + (await getDisplayUsername());
 
-  const p = readProfileOverride();
-  if (avatarEl && p.avatarUrl) {
-    avatarEl.innerHTML = `<img src="${p.avatarUrl}" alt="프로필 사진">`;
+  if (isLoggedIn()) {
+    const p = await api.getProfile();
+    if (avatarEl && p.avatarUrl) {
+      avatarEl.innerHTML = `<img src="${p.avatarUrl}" alt="프로필 사진">`;
+    }
   }
 }
-applyProfileToDashboard();
 
 // ── 프로필 수정: 저장된 값이 있으면 폼 기본값 위에 덮어써서 프리필 ──
-function prefillEditForm() {
-  const p = readProfileOverride();
+async function prefillEditForm() {
+  if (!isLoggedIn()) return;
+  const p = await api.getProfile();
 
   const map = {
     "acc-username": p.username,
@@ -75,7 +60,7 @@ function prefillEditForm() {
     "email-input": p.email,
   };
   Object.entries(map).forEach(([id, value]) => {
-    if (value === undefined) return;
+    if (!value) return;
     const el = document.getElementById(id);
     if (el) el.value = value;
   });
@@ -90,14 +75,13 @@ function prefillEditForm() {
     avatarPreview.innerHTML = `<img src="${p.avatarUrl}" alt="프로필 사진 미리보기">`;
   }
 }
-prefillEditForm();
 
 // ── Account Information 저장 ──
 const accountForm = document.getElementById("account-form");
 if (accountForm) {
-  accountForm.addEventListener("submit", (e) => {
+  accountForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    saveProfileOverride({
+    await api.saveProfile({
       username: document.getElementById("acc-username").value.trim(),
       name: document.getElementById("acc-name").value.trim(),
       githubUsername: document.getElementById("acc-github").value.trim(),
@@ -108,22 +92,26 @@ if (accountForm) {
   });
 }
 
-// ── Email 변경 ──
+// ── Email 변경 — 실제 로그인 이메일(Supabase Auth 계정)을 바꾼다. 재확인 메일이 발송된다 ──
 const emailForm = document.getElementById("email-form");
 if (emailForm) {
-  emailForm.addEventListener("submit", (e) => {
+  emailForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = document.getElementById("email-input").value.trim();
     if (!email) {
       toast("이메일을 입력해주세요.");
       return;
     }
-    saveProfileOverride({ email });
-    toast("📧 로그인 이메일이 변경됐어요!");
+    try {
+      await api.updateEmail(email);
+      toast("📧 확인 메일을 보냈어요! 새 이메일의 링크를 클릭하면 변경이 완료돼요.");
+    } catch (err) {
+      toast(err.message);
+    }
   });
 }
 
-// ── Profile 아바타 업로드 (FileReader로 미리보기 + localStorage 저장) ──
+// ── Profile 아바타 업로드 (FileReader로 미리보기 + Supabase 저장) ──
 const avatarInput = document.getElementById("avatar-input");
 const avatarPreview = document.getElementById("avatar-preview");
 let pendingAvatarDataUrl = null;
@@ -145,13 +133,13 @@ if (avatarInput) {
 
 const avatarForm = document.getElementById("avatar-form");
 if (avatarForm) {
-  avatarForm.addEventListener("submit", (e) => {
+  avatarForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!pendingAvatarDataUrl) {
       toast("업로드할 사진을 먼저 선택해주세요.");
       return;
     }
-    saveProfileOverride({ avatarUrl: pendingAvatarDataUrl });
+    await api.saveProfile({ avatarUrl: pendingAvatarDataUrl });
     toast("🖼 프로필 사진이 저장됐어요!");
   });
 }
@@ -165,14 +153,15 @@ if (deleteConfirmCheckbox && deleteAccountBtn) {
     deleteAccountBtn.disabled = !deleteConfirmCheckbox.checked;
   });
 
-  deleteAccountBtn.addEventListener("click", () => {
+  deleteAccountBtn.addEventListener("click", async () => {
     if (deleteAccountBtn.disabled) return;
-    // 이 팀 소유 데이터(마이페이지 프로필)만 정리한다. 로그인 세션 종료는
-    // auth.js 내부(AUTH_SESSION_KEY)를 직접 건드리지 않고, auth.js가 별도로
-    // 제공하는 로그아웃 경로(헤더 드롭다운의 "로그아웃")를 그대로 이용해야 한다 —
-    // 현재 auth.js Public API 목록에는 세션을 지우는 함수가 없어 여기서는 호출하지 않는다.
-    localStorage.removeItem(PROFILE_KEY);
-    toast("계정 데이터가 삭제됐어요. (테스트 환경 — 로컬 저장 데이터만 초기화됩니다)");
+    // 이 팀 소유 데이터(마이페이지 프로필)만 정리한다. 실제 계정 삭제(auth.users)는
+    // service_role 권한이 필요해 클라이언트에서 할 수 없다 — 로그인 세션 종료는
+    // auth.js가 제공하는 로그아웃 경로(헤더 드롭다운의 "로그아웃")를 그대로 이용한다.
+    await api.saveProfile({
+      name: "", username: "", githubUsername: "", language: "", avatarUrl: "", isMarketingAgreed: false,
+    });
+    toast("계정 데이터가 삭제됐어요. (프로필 정보만 초기화됩니다)");
     setTimeout(() => {
       location.href = "/pages/auth/login.html";
     }, 1200);
@@ -205,10 +194,7 @@ document.querySelectorAll(".achievement-tab").forEach((tabBtn) => {
   });
 });
 
-// ── 기술 뱃지(Activities 탭) — localStorage 상태 기반 실시간 렌더링 ──
-// assets/data/my_handbook.json의 badges 배열과 동일한 구성을 시드 데이터로 쓴다.
-const BADGES_KEY = "sesac.mypage.badges";
-
+// ── 기술 뱃지(Activities 탭) — Supabase 상태 기반 실시간 렌더링 ──
 const BADGE_DEFS = [
   { id: "badge-adx201", label: "ADX 201", icon: "☁️" },
   { id: "badge-html", label: "HTML5", icon: "🧱" },
@@ -220,32 +206,15 @@ const BADGE_DEFS = [
   { id: "badge-claudecode", label: "CLAUDE CODE", icon: "🤖" },
 ];
 
-const DEFAULT_BADGE_STATE = {
-  "badge-adx201": false,
-  "badge-html": true,
-  "badge-css": true,
-  "badge-java": false,
-  "badge-sql": true,
-  "badge-javascript": false,
-  "badge-git": true,
-  "badge-claudecode": true,
-};
-
-function readBadgeState() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(BADGES_KEY));
-    if (stored) return stored;
-  } catch {
-    /* fall through to seed */
-  }
-  localStorage.setItem(BADGES_KEY, JSON.stringify(DEFAULT_BADGE_STATE));
-  return { ...DEFAULT_BADGE_STATE };
+async function readBadgeState() {
+  if (!isLoggedIn()) return {};
+  return api.getBadges();
 }
 
-function renderBadges() {
+async function renderBadges() {
   const grid = document.getElementById("badge-grid");
   if (!grid) return;
-  const state = readBadgeState();
+  const state = await readBadgeState();
 
   grid.innerHTML = BADGE_DEFS.map((badge) => {
     const earned = !!state[badge.id];
@@ -257,42 +226,25 @@ function renderBadges() {
       </div>`;
   }).join("");
 }
-renderBadges();
 
 // 실제 퀴즈 채점 로직(다른 페이지)이 완료 시 호출할 공개 API.
 // 이미 획득한 뱃지는 다시 토스트를 띄우지 않는다.
-function unlockSkillBadge(badgeId) {
-  const state = readBadgeState();
-  if (state[badgeId]) return false;
+async function unlockSkillBadge(badgeId) {
+  if (!isLoggedIn()) return false;
+  const unlocked = await api.unlockBadge(badgeId);
+  if (!unlocked) return false;
 
-  state[badgeId] = true;
-  localStorage.setItem(BADGES_KEY, JSON.stringify(state));
-  renderBadges();
-
+  await renderBadges();
   const def = BADGE_DEFS.find((b) => b.id === badgeId);
   if (def) toast(`🎉 "${def.label}" 뱃지를 획득했어요!`);
   return true;
 }
 window.unlockSkillBadge = unlockSkillBadge;
 
-// ── 저장한 단어 목록(mywords.html) — localStorage 상태 기반 카테고리별 렌더링 ──
-const WORDS_KEY = "sesac.mywords.list";
-
-const DEFAULT_WORDS = [];
-
-function readWords() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(WORDS_KEY));
-    if (stored) return stored;
-  } catch {
-    /* fall through to seed */
-  }
-  localStorage.setItem(WORDS_KEY, JSON.stringify(DEFAULT_WORDS));
-  return [...DEFAULT_WORDS];
-}
-
-function writeWords(words) {
-  localStorage.setItem(WORDS_KEY, JSON.stringify(words));
+// ── 저장한 단어 목록(mywords.html) — Supabase 상태 기반 카테고리별 렌더링 ──
+async function readWords() {
+  if (!isLoggedIn()) return [];
+  return api.getWords();
 }
 
 // 카테고리별 "도감" 카드 아이콘 — 정의되지 않은 카테고리는 기본 📘을 쓴다.
@@ -317,8 +269,8 @@ let wordSearchQuery = "";
 let wordSortMode = null; // null(기본 순서) | "term"(영어순) | "definition"(이름순)
 let wordFavoritesOnly = false;
 
-function getFilteredSortedWords() {
-  let list = readWords();
+async function getFilteredSortedWords() {
+  let list = await readWords();
 
   if (wordFavoritesOnly) list = list.filter((w) => w.favorite);
 
@@ -393,9 +345,9 @@ function buildWordCardSection(category, list) {
 
 // style: "rows"(mywords.html 기본 목록) | "cards"(대시보드 단어 도감)
 let currentWordStyle = "rows";
-function renderWordGroups(style = currentWordStyle) {
+async function renderWordGroups(style = currentWordStyle) {
   currentWordStyle = style;
-  const allWords = readWords();
+  const allWords = await readWords();
 
   const countEl = document.getElementById("word-total-count");
   if (countEl) countEl.textContent = allWords.length;
@@ -403,7 +355,7 @@ function renderWordGroups(style = currentWordStyle) {
   const container = document.getElementById("word-row-groups");
   if (!container) return;
 
-  const words = getFilteredSortedWords();
+  const words = await getFilteredSortedWords();
   if (words.length === 0) {
     container.innerHTML = allWords.length === 0
       ? '<p class="page-subtitle">아직 저장한 단어가 없어요. 단어를 추가해보세요!</p>'
@@ -422,13 +374,12 @@ function renderWordGroups(style = currentWordStyle) {
     .map(([category, list]) => buildSection(category, list))
     .join("");
 }
-renderWordGroups();
 
 // ── 단어 삭제 ──
-function deleteWordById(id) {
+async function deleteWordById(id) {
   if (!confirm("이 단어를 삭제할까요?")) return;
-  writeWords(readWords().filter((w) => w.id !== id));
-  renderWordGroups();
+  await api.deleteWord(id);
+  await renderWordGroups();
   toast("🗑 단어를 삭제했어요.");
 }
 
@@ -455,29 +406,29 @@ function openWordEditModal(word) {
   if (saveBtn) saveBtn.textContent = "수정 저장";
 }
 
-function toggleWordFavorite(id) {
-  const words = readWords();
+async function toggleWordFavorite(id) {
+  const words = await readWords();
   const target = words.find((w) => w.id === id);
   if (!target) return;
-  target.favorite = !target.favorite;
-  writeWords(words);
-  renderWordGroups();
+  await api.updateWord(id, { favorite: !target.favorite });
+  await renderWordGroups();
 }
 
 // 도감(카드)/목록(행) 어느 스타일로 렌더링되든 같은 컨테이너 안에서 새로 그려지므로
 // 개별 리스너 대신 위임 방식으로 한 번만 등록한다.
-document.addEventListener("click", (e) => {
+document.addEventListener("click", async (e) => {
   const favBtn = e.target.closest('[data-action="toggle-favorite"]');
   if (favBtn) {
     const id = favBtn.closest("[data-word-id]")?.dataset.wordId;
-    if (id) toggleWordFavorite(id);
+    if (id) await toggleWordFavorite(id);
     return;
   }
 
   const editBtn = e.target.closest('[data-action="edit-word"]');
   if (editBtn) {
     const id = editBtn.closest("[data-word-id]")?.dataset.wordId;
-    const word = readWords().find((w) => w.id === id);
+    const words = await readWords();
+    const word = words.find((w) => w.id === id);
     if (word) openWordEditModal(word);
     return;
   }
@@ -485,7 +436,7 @@ document.addEventListener("click", (e) => {
   const deleteBtn = e.target.closest('[data-action="delete-word"]');
   if (deleteBtn) {
     const id = deleteBtn.closest("[data-word-id]")?.dataset.wordId;
-    if (id) deleteWordById(id);
+    if (id) await deleteWordById(id);
     return;
   }
 
@@ -496,7 +447,7 @@ document.addEventListener("click", (e) => {
     (sortBtn.parentElement || document).querySelectorAll(".sort-pill").forEach((btn) => {
       btn.classList.toggle("sort-pill--active", btn.dataset.sort === wordSortMode);
     });
-    renderWordGroups();
+    await renderWordGroups();
     return;
   }
 
@@ -506,14 +457,14 @@ document.addEventListener("click", (e) => {
     favOnlyBtn.classList.toggle("btn--primary", wordFavoritesOnly);
     favOnlyBtn.classList.toggle("btn--outline", !wordFavoritesOnly);
     favOnlyBtn.setAttribute("aria-pressed", String(wordFavoritesOnly));
-    renderWordGroups();
+    await renderWordGroups();
   }
 });
 
-document.addEventListener("input", (e) => {
+document.addEventListener("input", async (e) => {
   if (e.target.id !== "word-search") return;
   wordSearchQuery = e.target.value;
-  renderWordGroups();
+  await renderWordGroups();
 });
 
 // "+ 단어 추가" 버튼으로 모달을 새로 열거나 취소로 닫을 때는 이전 수정 상태가
@@ -540,7 +491,7 @@ document.querySelectorAll('[data-action="close-modal"]').forEach((btn) => {
 // 대시보드 [저장한 단어] 영역과 실제로 연동되도록 한다(리스너 추가만, 충돌 없음).
 // editingWordId가 있으면 "✎ 수정"으로 열린 상태이므로 새로 추가하지 않고 기존 항목을 갱신한다.
 document.querySelectorAll('[data-action="save-word"]').forEach((btn) => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", async () => {
     const termEl = document.getElementById("mword");
     const meaningEl = document.getElementById("mmeaning");
     const categoryEl = document.getElementById("mcategory");
@@ -550,33 +501,28 @@ document.querySelectorAll('[data-action="save-word"]').forEach((btn) => {
     if (!term) return;
 
     const category = categoryEl.value;
-    const words = readWords();
 
     if (editingWordId) {
-      const target = words.find((w) => w.id === editingWordId);
-      if (target) {
-        target.term = term;
-        target.definition = meaningEl.value.trim() || "(뜻 미입력)";
-        target.category = category;
-        target.categoryColor = CATEGORY_TAG_COLOR[category] || "gray";
-      }
+      await api.updateWord(editingWordId, {
+        term,
+        definition: meaningEl.value.trim() || "(뜻 미입력)",
+        category,
+        categoryColor: CATEGORY_TAG_COLOR[category] || "gray",
+      });
       editingWordId = null;
       resetWordModalChrome();
     } else {
-      words.push({
-        id: `word-${Date.now()}`,
+      await api.addWord({
         term,
         pos: "명사",
         definition: meaningEl.value.trim() || "(뜻 미입력)",
         example: "",
         category,
         categoryColor: CATEGORY_TAG_COLOR[category] || "gray",
-        date: todayStr().replace(/-/g, "."),
         favorite: false,
       });
     }
-    writeWords(words);
-    renderWordGroups();
+    await renderWordGroups();
   });
 });
 
@@ -592,8 +538,8 @@ function downloadBlob(blob, filename) {
   URL.revokeObjectURL(url);
 }
 
-function exportWordsToCSV() {
-  const words = readWords();
+async function exportWordsToCSV() {
+  const words = await readWords();
   const header = ["카테고리", "단어", "뜻", "저장일"];
   const csvEscape = (value) => `"${String(value).replace(/"/g, '""')}"`;
 
@@ -606,8 +552,8 @@ function exportWordsToCSV() {
   toast("📄 CSV 파일로 내보냈어요!");
 }
 
-function exportWordsToDoc() {
-  const words = readWords();
+async function exportWordsToDoc() {
+  const words = await readWords();
   const groups = {};
   words.forEach((w) => {
     if (!groups[w.category]) groups[w.category] = [];
@@ -665,17 +611,17 @@ function bindWordQuizOptions(scope = document) {
   const options = scope.querySelectorAll(".word-quiz__option");
   if (options.length === 0) return;
 
-  const CORRECT_OPTION_INDEX = 0; // "① 알고리즘" — words.json todayQuiz.answerIndex와 동일
+  const CORRECT_OPTION_INDEX = 0; // "① 알고리즘"
   const QUIZ_CATEGORY = "CS/IT"; // 오늘의 단어(Algorithm)가 속한 카테고리
 
   options.forEach((option, index) => {
-    option.addEventListener("click", () => {
+    option.addEventListener("click", async () => {
       if (index !== CORRECT_OPTION_INDEX) {
         toast("아쉬워요! 다시 도전해보세요.");
         return;
       }
       const badgeId = CATEGORY_TO_BADGE_ID[QUIZ_CATEGORY];
-      if (badgeId) unlockSkillBadge(badgeId);
+      if (badgeId) await unlockSkillBadge(badgeId);
     });
   });
 }
@@ -702,23 +648,9 @@ const QUIZ_CHALLENGES = [
   },
 ];
 
-const QUIZ_CHECKPOINTS_KEY = "sesac.mypage.quizCheckpoints";
-// 기존 진행률(66%, 100%)과 맞춘 초기값 — 새싹위키 3개 중 2개, 모의고사는 완료 상태로 시작.
-const DEFAULT_QUIZ_CHECKPOINTS = { "wiki3-1": true, "wiki3-2": true, "wiki3-3": false, "exam1-1": true };
-
-function readQuizCheckpoints() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(QUIZ_CHECKPOINTS_KEY));
-    if (stored) return stored;
-  } catch {
-    /* fall through to seed */
-  }
-  localStorage.setItem(QUIZ_CHECKPOINTS_KEY, JSON.stringify(DEFAULT_QUIZ_CHECKPOINTS));
-  return { ...DEFAULT_QUIZ_CHECKPOINTS };
-}
-
-function writeQuizCheckpoints(state) {
-  localStorage.setItem(QUIZ_CHECKPOINTS_KEY, JSON.stringify(state));
+async function readQuizCheckpoints() {
+  if (!isLoggedIn()) return {};
+  return api.getQuizCheckpoints();
 }
 
 function buildChallengeCheckpoints(task, state) {
@@ -745,18 +677,16 @@ function buildChallengeCheckpoints(task, state) {
     </div>`;
 }
 
-document.addEventListener("click", (e) => {
+document.addEventListener("click", async (e) => {
   const toggleBtn = e.target.closest('[data-action="toggle-checkpoint"]');
   if (!toggleBtn) return;
 
-  const state = readQuizCheckpoints();
   const id = toggleBtn.dataset.checkpointId;
-  state[id] = !state[id];
-  writeQuizCheckpoints(state);
+  await api.toggleQuizCheckpoint(id);
 
   const panel = document.getElementById("category-detail-panel");
   if (panel && panel.querySelector(".checkpoint-list")) {
-    panel.innerHTML = CATEGORY_DETAIL_TEMPLATES.quiz();
+    panel.innerHTML = await CATEGORY_DETAIL_TEMPLATES.quiz();
   }
 });
 
@@ -789,24 +719,27 @@ const CATEGORY_DETAIL_TEMPLATES = {
     </div>
     <div class="word-stats">
       <div class="word-stats__box">
-        <p class="word-stats__value" id="word-total-count">${readWords().length}</p>
+        <p class="word-stats__value" id="word-total-count">0</p>
         <p class="word-stats__label">전체 단어</p>
       </div>
     </div>
     <div class="word-row-groups" id="word-row-groups"></div>`,
 
-  quiz: () => `
+  quiz: async () => {
+    const checkpoints = await readQuizCheckpoints();
+    return `
     <div class="category-detail__header">
       <h3 class="category-detail__title">🎯 퀴즈 도전</h3>
       <a href="/pages/exam/index.html" class="btn btn--outline btn--sm">모의고사 풀러가기 ›</a>
     </div>
     <div class="challenge-list">
-      ${QUIZ_CHALLENGES.map((task) => buildChallengeCheckpoints(task, readQuizCheckpoints())).join("")}
+      ${QUIZ_CHALLENGES.map((task) => buildChallengeCheckpoints(task, checkpoints)).join("")}
     </div>
-    <p class="page-subtitle category-detail__note">퀴즈에서 만점을 받으면 관련 기술 뱃지가 잠금 해제돼요!</p>`,
+    <p class="page-subtitle category-detail__note">퀴즈에서 만점을 받으면 관련 기술 뱃지가 잠금 해제돼요!</p>`;
+  },
 };
 
-function openCategoryDetail(category, cardEl) {
+async function openCategoryDetail(category, cardEl) {
   const panel = document.getElementById("category-detail-panel");
   if (!panel) return;
 
@@ -827,13 +760,13 @@ function openCategoryDetail(category, cardEl) {
     wordFavoritesOnly = false;
   }
   const buildTemplate = CATEGORY_DETAIL_TEMPLATES[category];
-  panel.innerHTML = buildTemplate ? buildTemplate() : "";
+  panel.innerHTML = buildTemplate ? await buildTemplate() : "";
   panel.classList.add("category-detail-panel--open");
 
   // "저장한 단어" 카드는 실제 데이터를 도감(카드) 스타일로 다시 채워 넣어야 한다
   // (innerHTML 교체로 이전에 그려둔 내용과 리스너가 모두 사라졌기 때문).
   if (category === "words") {
-    renderWordGroups("cards");
+    await renderWordGroups("cards");
     bindWordExportTrigger(panel);
   }
 
@@ -880,4 +813,12 @@ document.addEventListener("click", (e) => {
   if (trigger.contains(e.target) || menu.contains(e.target)) return;
   menu.classList.remove("word-export-dropdown__menu--open");
   trigger.setAttribute("aria-expanded", "false");
+});
+
+// ── 초기 렌더링 — isLoggedIn()이 정확해야 하므로 authReady 이후에 실행한다 ──
+window.authReady.then(() => {
+  applyProfileToDashboard();
+  prefillEditForm();
+  renderBadges();
+  renderWordGroups();
 });

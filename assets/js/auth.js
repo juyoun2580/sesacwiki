@@ -1,63 +1,41 @@
-// ── 공통 인증 모듈 — 세션 관리 + Header 인증 상태(UserChip/Dropdown/로그아웃) ──
-// 실제 이메일 발송/서버 인증이 없는 정적 프론트엔드라, 이메일 인증은
-// "인증 대기 패널 + 확인 버튼"으로 모킹한다.
-const AUTH_USERS_KEY = "sesac.auth.users";
-const AUTH_SESSION_KEY = "sesac.auth.session";
-const AUTH_PENDING_KEY = "sesac.auth.pendingEmail";
+// ── 공통 인증 모듈 — Supabase Auth(매직링크) 세션 관리 + Header 인증 상태 ──
+// 비밀번호 없이 이메일로 매직링크를 보내 인증하는 방식(supabase.auth.signInWithOtp)을 쓴다.
+// 세션은 supabase-js가 내부적으로 영속화하지만, 이 파일의 다른 곳(app.js, mypage.js 등)이
+// isLoggedIn()/getCurrentUser()를 동기 함수로 호출하므로 currentSession 캐시를 두고
+// onAuthStateChange로 계속 최신 상태를 반영한다.
 
-function readUsers() {
-  try {
-    return JSON.parse(localStorage.getItem(AUTH_USERS_KEY)) || [];
-  } catch {
-    return [];
+let currentSession = null;
+let resolveAuthReady;
+window.authReady = new Promise((resolve) => { resolveAuthReady = resolve; });
+
+supabaseClient.auth.onAuthStateChange((event, session) => {
+  currentSession = session;
+  updateHeader();
+
+  if (event === "INITIAL_SESSION") {
+    resolveAuthReady();
   }
-}
 
-function writeUsers(users) {
-  localStorage.setItem(AUTH_USERS_KEY, JSON.stringify(users));
-}
-
-function findUserByEmail(email) {
-  return readUsers().find((u) => u.email.toLowerCase() === email.toLowerCase());
-}
-
-function getSession() {
-  try {
-    return JSON.parse(localStorage.getItem(AUTH_SESSION_KEY));
-  } catch {
-    return null;
+  // 매직링크를 클릭하고 돌아온 경우, 로그인/가입 화면에 있다면 마이페이지로 이동한다.
+  if (event === "SIGNED_IN" && /(?:login|signup)\.html$/.test(location.pathname)) {
+    location.href = "/pages/my/mypage.html";
   }
-}
-
-function setSession(user) {
-  localStorage.setItem(
-    AUTH_SESSION_KEY,
-    JSON.stringify({
-      name: user.name,
-      email: user.email,
-      loggedInAt: new Date().toISOString(),
-    }),
-  );
-}
-
-function removeSession() {
-  localStorage.removeItem(AUTH_SESSION_KEY);
-}
+});
 
 // ── 로그인 여부 확인 ──
 function isLoggedIn() {
-  return !!getSession();
+  return !!currentSession;
 }
 
 // ── 현재 로그인한 사용자 정보 반환(비로그인 시 null) ──
 function getCurrentUser() {
-  const session = getSession();
-  if (!session) return null;
+  if (!currentSession) return null;
+  const user = currentSession.user;
 
   return {
-    name: session.name,
-    email: session.email,
-    loggedInAt: session.loggedInAt
+    name: user.user_metadata?.name || user.email.split("@")[0],
+    email: user.email,
+    loggedInAt: user.last_sign_in_at,
   };
 }
 
@@ -78,12 +56,12 @@ function redirectIfLoggedIn() {
 
 // ── Header 인증 상태: data-auth 값만 갱신하면 components.css가 UserChip ↔ 로그인 버튼을 전환한다 ──
 function updateHeader() {
-  const session = getSession();
-  document.body.dataset.auth = session ? "user" : "guest";
+  document.body.dataset.auth = currentSession ? "user" : "guest";
 
-  if (session && session.name) {
+  const user = getCurrentUser();
+  if (user) {
     const nameEl = document.querySelector(".user-chip__name");
-    if (nameEl) nameEl.textContent = session.name;
+    if (nameEl) nameEl.textContent = user.name;
   }
 }
 
@@ -124,13 +102,13 @@ function bindDropdown() {
   });
 }
 
-// ── Dropdown의 로그아웃 버튼: 세션 삭제 후 로그인 페이지로 이동 ──
+// ── Dropdown의 로그아웃 버튼: Supabase 세션 종료 후 로그인 페이지로 이동 ──
 function bindLogout() {
   const logoutBtn = document.querySelector(".user-menu button.user-menu__item");
   if (!logoutBtn) return;
 
-  logoutBtn.addEventListener("click", () => {
-    removeSession();
+  logoutBtn.addEventListener("click", async () => {
+    await supabaseClient.auth.signOut();
     location.href = "/pages/auth/login.html";
   });
 }
@@ -142,19 +120,15 @@ function initAuth() {
   bindLogout();
 }
 
-// ── 회원가입 폼 ──
+// ── 회원가입 폼: 매직링크 메일 발송(계정이 없으면 새로 만든다) ──
 const signupForm = document.getElementById("signup-form");
 if (signupForm) {
-  signupForm.addEventListener("submit", (e) => {
+  signupForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = document.getElementById("signup-name").value.trim();
     const email = document.getElementById("signup-email").value.trim();
-    const agreeRequired = document.getElementById(
-      "signup-agree-required",
-    ).checked;
-    const agreeMarketing = document.getElementById(
-      "signup-agree-marketing",
-    ).checked;
+    const agreeRequired = document.getElementById("signup-agree-required").checked;
+    const agreeMarketing = document.getElementById("signup-agree-marketing").checked;
 
     if (!name || !email) {
       toast("이름과 이메일을 모두 입력해주세요.");
@@ -164,19 +138,20 @@ if (signupForm) {
       toast("개인정보 수집 및 이용약관에 동의해야 가입할 수 있어요.");
       return;
     }
-    if (findUserByEmail(email)) {
-      toast("이미 가입된 이메일이에요. 로그인해주세요.");
+
+    const { error } = await supabaseClient.auth.signInWithOtp({
+      email,
+      options: {
+        shouldCreateUser: true,
+        data: { name, marketing_opt_in: agreeMarketing },
+        emailRedirectTo: `${location.origin}/pages/auth/login.html`,
+      },
+    });
+
+    if (error) {
+      toast(error.message);
       return;
     }
-
-    const users = readUsers();
-    users.push({
-      name,
-      email,
-      marketingOptIn: agreeMarketing,
-      createdAt: new Date().toISOString(),
-    });
-    writeUsers(users);
 
     toast(`🌱 ${name}님, 가입이 완료됐어요! 로그인해주세요.`);
     setTimeout(() => {
@@ -185,12 +160,12 @@ if (signupForm) {
   });
 }
 
-// ── 로그인 폼: 이메일 제출 시 인증 메일 발송을 모킹한다 ──
+// ── 로그인 폼: 이메일 제출 시 실제 매직링크 메일을 발송한다 ──
 const loginForm = document.getElementById("login-form");
 const pendingPanel = document.getElementById("auth-pending");
 
 if (loginForm) {
-  loginForm.addEventListener("submit", (e) => {
+  loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = document.getElementById("login-email").value.trim();
 
@@ -198,42 +173,43 @@ if (loginForm) {
       toast("이메일을 입력해주세요.");
       return;
     }
-    if (!findUserByEmail(email)) {
+
+    const { error } = await supabaseClient.auth.signInWithOtp({
+      email,
+      options: {
+        shouldCreateUser: false,
+        emailRedirectTo: `${location.origin}/pages/auth/login.html`,
+      },
+    });
+
+    if (error) {
       toast("가입되지 않은 이메일이에요. 먼저 가입해주세요.");
       return;
     }
 
-    localStorage.setItem(AUTH_PENDING_KEY, email);
     document.getElementById("auth-pending-email").textContent = email;
     loginForm.hidden = true;
     pendingPanel.hidden = false;
-    toast("📩 인증 메일을 보냈어요! (모킹)");
+    toast("📩 인증 메일을 보냈어요! 메일함을 확인해주세요.");
   });
 }
 
-// data-action="mock-verify": 이메일 속 인증 링크 클릭을 흉내내는 테스트 버튼
-document.querySelectorAll('[data-action="mock-verify"]').forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const email = localStorage.getItem(AUTH_PENDING_KEY);
-    const user = email && findUserByEmail(email);
-    if (!user) {
-      toast("인증할 이메일 정보가 없어요. 다시 로그인해주세요.");
-      return;
-    }
-    setSession(user);
-    localStorage.removeItem(AUTH_PENDING_KEY);
-    toast(`✅ 인증 완료! ${user.name}님 환영합니다.`);
-    setTimeout(() => {
-      location.href = "/pages/my/mypage.html";
-    }, 1000);
-  });
-});
+// data-action="resend-verification": 인증 메일(매직링크) 재발송
+document.querySelectorAll('[data-action="resend-verification"]').forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const email = document.getElementById("auth-pending-email")?.textContent;
+    if (!email) return;
 
-// data-action="mock-resend": 인증 메일 재발송 모킹
-document.querySelectorAll('[data-action="mock-resend"]').forEach((btn) => {
-  btn.addEventListener("click", () =>
-    toast("📩 인증 메일을 다시 보냈어요! (모킹)"),
-  );
+    const { error } = await supabaseClient.auth.signInWithOtp({
+      email,
+      options: {
+        shouldCreateUser: false,
+        emailRedirectTo: `${location.origin}/pages/auth/login.html`,
+      },
+    });
+
+    toast(error ? error.message : "📩 인증 메일을 다시 보냈어요!");
+  });
 });
 
 // ── Public API (다른 페이지 스크립트에서 사용 가능) ──
@@ -242,3 +218,4 @@ document.querySelectorAll('[data-action="mock-resend"]').forEach((btn) => {
 // - getCurrentUser()     : 로그인한 사용자 정보({ name, email, loggedInAt }) 또는 null
 // - requireAuth()        : 비로그인 시 login.html로 이동 후 false, 로그인 상태면 true
 // - redirectIfLoggedIn() : login.html에서 이미 로그인된 경우 mypage.html로 이동
+// - window.authReady     : 최초 세션 조회가 끝나면 resolve되는 Promise(app.js가 가드 실행 전 대기)

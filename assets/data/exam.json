@@ -861,52 +861,6 @@
       }
     ]
   },
-  "attemptHistory": [
-    {
-      "examId": "exam-001",
-      "title": "세일즈포스 Apex 기초 테스트",
-      "icon": "☁️",
-      "score": 90,
-      "pointsEarned": 120,
-      "date": "2025-06-05"
-    },
-    {
-      "examId": "exam-007",
-      "title": "Git & 협업 기본 모의고사",
-      "icon": "🔀",
-      "score": 70,
-      "pointsEarned": 90,
-      "date": "2025-06-10"
-    },
-    {
-      "examId": "exam-002",
-      "title": "Java 객체지향 개념 테스트",
-      "icon": "☕",
-      "score": 65,
-      "pointsEarned": 80,
-      "date": "2025-06-15"
-    },
-    {
-      "examId": "exam-003",
-      "title": "SQL 기초 6문제",
-      "icon": "🗄️",
-      "score": 80,
-      "pointsEarned": 100,
-      "date": "2025-06-20"
-    }
-  ],
-  "wrongNoteSamples": [
-    {
-      "examId": "exam-003",
-      "questionId": "q-sql-002"
-    },
-    {
-      "examId": "exam-002",
-      "questionId": "q-java-003"
-    },
-    {
-      "examId": "exam-006",
-      "questionId": "q-js-004"
-    }
-  ]
+  "attemptHistory": [],
+  "wrongNoteSamples": []
 }

@@ -491,6 +491,17 @@ function loadFeatures() {
 
 function saveFeatures(f) {
   try { localStorage.setItem(FEATURES_KEY, JSON.stringify(f)); } catch {}
+  queueFeaturesSync(f);
+}
+
+// job.js의 queueJobProgressSync와 같은 디바운스-백그라운드 upsert 패턴.
+let _featuresSyncTimer = null;
+function queueFeaturesSync(f) {
+  if (typeof isLoggedIn !== 'function' || !isLoggedIn()) return;
+  clearTimeout(_featuresSyncTimer);
+  _featuresSyncTimer = setTimeout(() => {
+    window.api?.saveJobProgress({ jobFeatures: f }).catch((e) => console.error(e));
+  }, 800);
 }
 
 // ── 유틸 ───────────────────────────────────────────────────────────────────

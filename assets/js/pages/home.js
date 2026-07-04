@@ -1,22 +1,12 @@
-// 대시보드(index.html) "최근 저장한 단어" 미리보기 — mypage.js와 동일한 localStorage 데이터를 읽기 전용으로 사용한다.
-const WORDS_KEY = "sesac.mywords.list";
+// 대시보드(index.html) "최근 저장한 단어" 미리보기 — api.js(Supabase words 테이블)를 읽기 전용으로 사용한다.
 const WORDS_PREVIEW_MAX = 8;
 
-function readWords() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(WORDS_KEY));
-    if (stored) return stored;
-  } catch {
-    /* fall through */
-  }
-  return [];
-}
-
-function renderMyWordsPreview() {
+async function renderMyWordsPreview() {
   const listEl = document.querySelector(".word-chip-list");
   if (!listEl) return;
 
-  const words = readWords().slice(0, WORDS_PREVIEW_MAX);
+  const allWords = isLoggedIn() ? await api.getWords() : [];
+  const words = allWords.slice(0, WORDS_PREVIEW_MAX);
 
   if (words.length === 0) {
     listEl.innerHTML = `<li class="word-chip word-chip--empty">아직 저장한 단어가 없습니다.</li>`;
@@ -26,26 +16,41 @@ function renderMyWordsPreview() {
   listEl.innerHTML = words.map((w) => `<li class="word-chip">${w.term}</li>`).join("");
 }
 
-// 대시보드(index.html) "최근 즐겨찾기" 미리보기 — wiki.js(saveWikiFavorite)가 저장하는
-// 동일한 localStorage 데이터를 읽기 전용으로 사용한다.
-const FAVORITES_KEY = "sesac.myfavorites.list";
-const FAVORITES_PREVIEW_MAX = 5;
+// wiki.js와 같은 카테고리 → 아이콘/태그색 매핑(홈 대시보드는 wiki.js를 로드하지 않아 여기서도 필요).
+const HOME_WIKI_CATEGORY_ICON = {
+  SQL: "🗄️", Java: "☕", HTML: "🌐", CSS: "🎨", JavaScript: "⚡",
+  Git: "🔀", Salesforce: "☁️", "CS 개념": "💡", "면접 개념": "🎤", "취업 가이드": "💼",
+};
+const HOME_WIKI_CATEGORY_TAG_COLOR = {
+  SQL: "green", Java: "orange", HTML: "blue", CSS: "blue", JavaScript: "gold",
+  Git: "gray", Salesforce: "purple", "CS 개념": "coral", "면접 개념": "coral", "취업 가이드": "gold",
+};
 
-function readFavorites() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(FAVORITES_KEY));
-    if (stored) return stored;
-  } catch {
-    /* fall through */
+const WIKI_DATA_FULL_URL = "assets/data/wiki-data.json";
+let wikiDataFullPromise = null;
+function loadWikiDataFull() {
+  if (!wikiDataFullPromise) {
+    wikiDataFullPromise = fetch(WIKI_DATA_FULL_URL).then((res) => res.json());
   }
-  return [];
+  return wikiDataFullPromise;
 }
 
-function renderFavoritePreview() {
+// 대시보드(index.html) "최근 즐겨찾기" 미리보기 — api.js(Supabase wiki_bookmarks)를
+// wiki-data.json과 조인해서 사용한다(제목/카테고리는 DB에 중복 저장하지 않는다).
+const FAVORITES_PREVIEW_MAX = 5;
+
+async function renderFavoritePreview() {
   const listEl = document.querySelector(".favorite-list");
   if (!listEl) return;
 
-  const favorites = readFavorites().slice(0, FAVORITES_PREVIEW_MAX);
+  if (!isLoggedIn()) {
+    listEl.innerHTML = `<li class="favorite-list__item favorite-list__item--empty">아직 저장한 즐겨찾기가 없습니다.</li>`;
+    return;
+  }
+
+  const [bookmarkedIds, wikiItems] = await Promise.all([api.getWikiBookmarks(), loadWikiDataFull()]);
+  const bookmarkedSet = new Set(bookmarkedIds);
+  const favorites = wikiItems.filter((item) => bookmarkedSet.has(item.id)).slice(0, FAVORITES_PREVIEW_MAX);
 
   if (favorites.length === 0) {
     listEl.innerHTML = `<li class="favorite-list__item favorite-list__item--empty">아직 저장한 즐겨찾기가 없습니다.</li>`;
@@ -53,28 +58,15 @@ function renderFavoritePreview() {
   }
 
   listEl.innerHTML = favorites
-    .map(
-      (f) => `<li class="favorite-list__item">
-                    <a class="favorite-list__link" href="/pages/wiki/detail.html?id=${encodeURIComponent(f.wikiId)}">
-                      <span class="favorite-list__star" aria-hidden="true">★</span><span class="favorite-list__title">${f.title}</span><span class="tag tag--${f.categoryColor || "gray"} tag--sm">${f.category}</span>
+    .map((item) => {
+      const categoryColor = HOME_WIKI_CATEGORY_TAG_COLOR[item.category] || "gray";
+      return `<li class="favorite-list__item">
+                    <a class="favorite-list__link" href="/pages/wiki/detail.html?id=${encodeURIComponent(item.id)}">
+                      <span class="favorite-list__star" aria-hidden="true">★</span><span class="favorite-list__title">${item.title}</span><span class="tag tag--${categoryColor} tag--sm">${item.category}</span>
                     </a>
-                  </li>`
-    )
+                  </li>`;
+    })
     .join("");
-}
-
-// 대시보드(index.html) "최근 본 페이지" 미리보기 — wiki.js(saveRecentPage)가 저장하는
-// 동일한 localStorage 데이터를 읽기 전용으로 사용한다. renderFavoritePreview()와 동일한 구조.
-const RECENT_PAGES_KEY = "sesac.recentPages.list";
-
-function readRecentPages() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(RECENT_PAGES_KEY));
-    if (stored) return stored;
-  } catch {
-    /* fall through */
-  }
-  return [];
 }
 
 function formatVisitedAt(iso) {
@@ -84,11 +76,23 @@ function formatVisitedAt(iso) {
   return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
-function renderRecentPagesPreview() {
+async function renderRecentPagesPreview() {
   const listEl = document.querySelector(".recent-list");
   if (!listEl) return;
 
-  const recentPages = readRecentPages();
+  if (!isLoggedIn()) {
+    listEl.innerHTML = `<li class="recent-list__item recent-list__item--empty">최근 본 페이지가 없습니다.</li>`;
+    return;
+  }
+
+  const [recentViews, wikiItems] = await Promise.all([api.getRecentWikiViews(), loadWikiDataFull()]);
+  const wikiById = new Map(wikiItems.map((item) => [item.id, item]));
+  const recentPages = recentViews
+    .map((rv) => {
+      const item = wikiById.get(rv.wikiId);
+      return item ? { item, visitedAt: rv.visitedAt } : null;
+    })
+    .filter(Boolean);
 
   if (recentPages.length === 0) {
     listEl.innerHTML = `<li class="recent-list__item recent-list__item--empty">최근 본 페이지가 없습니다.</li>`;
@@ -96,32 +100,23 @@ function renderRecentPagesPreview() {
   }
 
   listEl.innerHTML = recentPages
-    .map(
-      (p) => `<li class="recent-list__item">
-                    <a class="recent-list__link" href="/pages/wiki/detail.html?id=${encodeURIComponent(p.wikiId)}">
-                      <span class="recent-list__icon" aria-hidden="true">${p.icon}</span><span class="recent-list__title">${p.title}</span><span class="tag tag--${p.categoryColor || "gray"} tag--sm">${p.category}</span><span class="recent-list__time">${formatVisitedAt(p.visitedAt)}</span>
+    .map(({ item, visitedAt }) => {
+      const icon = HOME_WIKI_CATEGORY_ICON[item.category] || "📄";
+      const categoryColor = HOME_WIKI_CATEGORY_TAG_COLOR[item.category] || "gray";
+      return `<li class="recent-list__item">
+                    <a class="recent-list__link" href="/pages/wiki/detail.html?id=${encodeURIComponent(item.id)}">
+                      <span class="recent-list__icon" aria-hidden="true">${icon}</span><span class="recent-list__title">${item.title}</span><span class="tag tag--${categoryColor} tag--sm">${item.category}</span><span class="recent-list__time">${formatVisitedAt(visitedAt)}</span>
                     </a>
-                  </li>`
-    )
+                  </li>`;
+    })
     .join("");
 }
 
 // 대시보드(index.html) "모의고사" 통계 카드 — quiz.js/exam.js가 채점 후 기록하는
-// 동일한 localStorage 데이터(sesac-exam-attempts)를 읽기 전용으로 사용한다.
+// 동일한 api.js(Supabase exam_attempts) 데이터를 읽기 전용으로 사용한다.
 // 기록이 없으면 assets/data/home.json의 stats를 fallback으로 사용한다.
-const EXAM_HISTORY_KEY = "sesac-exam-attempts";
 const HOME_DATA_URL = "/assets/data/home.json";
 let homeDataPromise = null;
-
-function readExamHistory() {
-  try {
-    const stored = JSON.parse(localStorage.getItem(EXAM_HISTORY_KEY));
-    if (stored) return stored;
-  } catch {
-    /* fall through */
-  }
-  return [];
-}
 
 function loadHomeData() {
   if (!homeDataPromise) {
@@ -130,7 +125,7 @@ function loadHomeData() {
   return homeDataPromise;
 }
 
-function renderExamStatCard() {
+async function renderExamStatCard() {
   const examCard = Array.from(document.querySelectorAll(".stat-card")).find((card) =>
     card.querySelector(".stat-card__label")?.textContent.includes("모의고사")
   );
@@ -140,7 +135,7 @@ function renderExamStatCard() {
   const pillEl = examCard.querySelector(".stat-card__pill");
   if (!numberEl || !pillEl) return;
 
-  const history = readExamHistory();
+  const history = isLoggedIn() ? await api.getExamAttempts() : [];
 
   if (history.length > 0) {
     const avgScore = Math.round(history.reduce((sum, e) => sum + e.score, 0) / history.length);
@@ -162,7 +157,7 @@ function renderExamStatCard() {
 // getProgressByCategory()/isStepDone() 판정 로직을 이 파일에서도 동일하게 유지한다.
 // (job.js의 로직이 바뀌면 이 부분도 함께 맞춰줘야 한다.)
 const JOB_DATA_KEY = "job_data";
-const JOB_DATA_VERSION = 19;
+const JOB_DATA_VERSION = 20;
 const JOB_FEATURES_KEY = "job_features";
 
 function loadJobFeatures() {
@@ -298,10 +293,13 @@ function renderStudyProgressCard() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderMyWordsPreview();
-  renderFavoritePreview();
-  renderRecentPagesPreview();
-  renderExamStatCard();
+  // isLoggedIn()이 정확해야 하는 미리보기들은 authReady 이후로 미룬다.
+  window.authReady.then(() => {
+    renderMyWordsPreview();
+    renderFavoritePreview();
+    renderRecentPagesPreview();
+    renderExamStatCard();
+  });
   renderJobReadinessCard();
   renderStudyProgressCard();
 });
