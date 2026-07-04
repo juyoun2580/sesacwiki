@@ -486,9 +486,11 @@ document.querySelectorAll('[data-action="close-modal"]').forEach((btn) => {
 });
 
 // ── "+ 단어 추가" 모달 저장 → 마이핸드북 단어 데이터에 실제로 반영 ──
-// 모달을 열고 닫는 로직 자체는 공통 modal.js 소유라 그대로 두고, 여기서는
-// data-action="save-word" 클릭 시 입력값을 sesac.mywords.list에 추가/수정으로 적재해
-// 대시보드 [저장한 단어] 영역과 실제로 연동되도록 한다(리스너 추가만, 충돌 없음).
+// 모달을 열고 닫는 UI(openModal/closeModal)는 공통 modal.js 소유고, 이 리스너가
+// data-action="save-word" 클릭의 유일한 핸들러로서 닫기/안내 toast/실제 저장을 모두 담당한다
+// (TD-0005 — 과거에는 modal.js가 같은 버튼에 별도 리스너를 더 걸어 닫기+toast만 중복 실행했다).
+// closeModal()/toast()를 실제 저장 이전에 호출해, 기존에 두 리스너가 동시에 걸려있을 때와
+// 같은 타이밍(클릭 즉시 닫힘+안내)을 그대로 유지한다.
 // editingWordId가 있으면 "✎ 수정"으로 열린 상태이므로 새로 추가하지 않고 기존 항목을 갱신한다.
 document.querySelectorAll('[data-action="save-word"]').forEach((btn) => {
   btn.addEventListener("click", async () => {
@@ -499,6 +501,9 @@ document.querySelectorAll('[data-action="save-word"]').forEach((btn) => {
 
     const term = termEl.value.trim();
     if (!term) return;
+
+    closeModal();
+    toast(`📓 "${term}"를 단어장에 저장했어요! +20P`);
 
     const category = categoryEl.value;
 

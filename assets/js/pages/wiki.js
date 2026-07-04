@@ -79,7 +79,7 @@ function buildWikiFavoriteStar(item) {
     e.preventDefault();
     e.stopPropagation();
     if (!isLoggedIn()) {
-      location.href = 'login.html';
+      location.href = '/pages/auth/login.html';
       return;
     }
     const nowBookmarked = await api.toggleWikiBookmark(item.id);
@@ -518,19 +518,36 @@ function renderWikiDetail(item) {
   });
 }
 
-// 상단 큰 별/미니 별 — ui.js의 cosmetic ts() 바인딩과 별개로 실제 저장을 담당한다.
+// 상단 큰 별/미니 별 — 실제 저장(Supabase)을 담당하는 유일한 리스너다.
+// 이 두 요소는 정적 마크업이라 ui.js가 defer 시점에 .favorite-star 전역 셀렉터로 cosmetic
+// 리스너(ts())를 이미 걸어둔다. 그 리스너가 남아있으면 클릭 한 번에 cosmetic 토글과 실제 저장이
+// 함께 실행되어(TD-0004) 네트워크 실패 시 화면 상태가 실제 저장 상태와 어긋날 수 있었다.
+// 노드를 복제해 교체하면 이전에 바인딩된 리스너(ui.js의 ts() 포함)가 모두 제거되므로,
+// 여기서 다는 리스너만 유일하게 남는다 — ui.js 자체나 다른 페이지의 동작은 건드리지 않는다.
 function bindWikiDetailFavoriteStars(item) {
   const ids = ['wikiDetailFavorite', 'wikiDetailFavoriteMini'];
   ids.forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
-    el.addEventListener('click', async () => {
+    el.replaceWith(el.cloneNode(true));
+  });
+
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('click', async (e) => {
+      // wikiDetailFavoriteMini는 [data-action="quick-favorite"] 버튼 안에 중첩되어 있어,
+      // 기존에는 ui.js의 stopPropagation()이 그 버튼의 별도 클릭 동작을 막아주고 있었다.
+      // 리스너를 교체했으므로 같은 효과를 여기서 유지한다.
+      e.stopPropagation();
       if (!isLoggedIn()) {
-        location.href = 'login.html';
+        location.href = '/pages/auth/login.html';
         return;
       }
       const nowBookmarked = await api.toggleWikiBookmark(item.id);
       item.bookmarked = nowBookmarked;
+      // ui.js의 ts()가 담당하던 안내 토스트를 동일한 문구로 유지한다.
+      toast(nowBookmarked ? '★ 즐겨찾기에 저장했어요!' : '즐겨찾기를 해제했어요.');
       ids.forEach(otherId => {
         const otherEl = document.getElementById(otherId);
         if (!otherEl) return;
@@ -564,7 +581,7 @@ const WIKI_TO_WORD_CATEGORY = {
 // 이미 즐겨찾기된 문서면 그대로 두는(add-only) 원래 동작을 유지한다 — 해제는 별(star) 쪽에서만.
 async function saveWikiFavorite(item) {
   if (!isLoggedIn()) {
-    location.href = 'login.html';
+    location.href = '/pages/auth/login.html';
     return;
   }
   if (item.bookmarked) return;

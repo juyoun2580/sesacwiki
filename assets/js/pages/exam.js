@@ -157,18 +157,29 @@ function buildWrongNoteRefs(data, localHistory) {
   return refs.slice(0, 5);
 }
 
+// exam-000/exam-015처럼 combinedQuestions로 구성된 통합 시험은 questions/{examId}.json 파일이
+// 따로 없다 — 실제 문제는 combinedQuestions가 가리키는 다른 시험 파일 안에 있다. 오답노트는
+// 응시 기록의 examId(통합 시험 id)를 그대로 fetch에 쓰면 404가 나므로, 실제 파일 위치로 치환한다.
+function resolveRealExamId(data, ref) {
+  const combined = data.combinedQuestions && data.combinedQuestions[ref.examId];
+  if (!combined) return ref.examId;
+  const match = combined.find(c => c.questionId === ref.questionId);
+  return match ? match.examId : ref.examId;
+}
+
 async function renderWrongNoteAccordion(data) {
   const listEl = document.getElementById('exam-wrong-note-list');
   if (!listEl) return;
   const localHistory = await getLocalExamAttempts();
   const samples = localHistory.length ? buildWrongNoteRefs(data, localHistory) : (data.wrongNoteSamples || []);
+  const resolvedSamples = samples.map(ref => ({ ...ref, realExamId: resolveRealExamId(data, ref) }));
 
-  const neededExamIds = [...new Set(samples.map(ref => ref.examId))];
+  const neededExamIds = [...new Set(resolvedSamples.map(ref => ref.realExamId))];
   const files = await Promise.all(neededExamIds.map(fetchQuestionsFile));
   const byExamId = Object.fromEntries(neededExamIds.map((id, i) => [id, files[i]]));
 
-  const items = samples.map(ref => {
-    const q = (byExamId[ref.examId] || []).find(item => item.id === ref.questionId);
+  const items = resolvedSamples.map(ref => {
+    const q = (byExamId[ref.realExamId] || []).find(item => item.id === ref.questionId);
     if (!q || !q.explanation) return '';
     return `
       <details class="wrong-note-item">
