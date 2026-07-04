@@ -89,7 +89,7 @@
     <!-- js : ui.js(즐겨찾기/사이드바 토글), quiz.js(단어 퀴즈 선택지, exam 담당 소유), -->
     <!--      app.js/toast.js/auth.js(공통), modal.js(단어 추가 모달, 공통), -->
     <!--      pages/mypage.js(카테고리별 그룹 렌더링/즉시 삭제/CSV·Word 내보내기/뱃지 연동) -->
-    <!-- json : words.json -->
+    <!-- json : 없음 (Supabase words 테이블, api.js 경유) -->
     <!-- ================================================= -->
     <!-- MYWORDS START -->
     <section id="mywords" class="page page--active" aria-label="저장한 단어">
@@ -235,7 +235,10 @@
   <!-- 담당 : feature/core (공통 담당자 전용) -->
   <!-- ================================================= -->
   <script src="assets/js/toast.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+  <script src="assets/js/supabase-client.js" defer></script>
   <script src="assets/js/auth.js" defer></script>
+  <script src="assets/js/api.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script src="assets/js/ui.js" defer></script>
   <script src="assets/js/modal.js" defer></script>

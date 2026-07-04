@@ -29,7 +29,7 @@ document.addEventListener('mousedown', e => {
   if (hlbar && !hlbar.contains(e.target)) hlbar.classList.remove('highlight-toolbar--visible');
 });
 
-function applyHL(color) {
+async function applyHL(color) {
   if (!savedRange) return;
   const span = document.createElement('span');
   span.className = color === 'y' ? 'highlight--yellow' : 'highlight--green';
@@ -38,7 +38,7 @@ function applyHL(color) {
     const fullText = span.textContent;
     const text = fullText.slice(0, 55) + (fullText.length > 55 ? '…' : '');
     const id = addHlPanel(text);
-    saveHighlightEntry({ id, text: fullText, color, date: new Date().toISOString().slice(0, 10).replace(/-/g, '.') });
+    await saveHighlightEntry({ id, text: fullText, color, date: new Date().toISOString().slice(0, 10).replace(/-/g, '.') });
     toast('✏️ 하이라이트로 저장했어요!');
   } catch (e) {
     toast('텍스트를 다시 드래그해보세요.');
@@ -70,47 +70,31 @@ function addHlPanel(text, id) {
   return hlId;
 }
 
-function delHl(id) {
+async function delHl(id) {
   document.getElementById(id)?.remove();
   updateHlCount();
-  removeHighlightEntry(id);
+  await removeHighlightEntry(id);
   toast('하이라이트를 삭제했어요.');
 }
 
 // ══════════════════════════════════════════════
-//  하이라이트 저장소 — 위키 글(id)별로 저장해 다시 방문해도 유지되게 한다.
+//  하이라이트 저장소 — 위키 글(id)별로 Supabase wiki_highlights 테이블에 저장한다.
 //  wiki.js의 wikiGetIdFromUrl()과 같은 페이지에서만 로드되므로 그대로 사용한다.
 // ══════════════════════════════════════════════
-const HIGHLIGHT_STORE_KEY = 'sesac.wiki.highlights';
 
-function readHighlightStore() {
-  try {
-    return JSON.parse(localStorage.getItem(HIGHLIGHT_STORE_KEY)) || {};
-  } catch {
-    return {};
-  }
-}
-
-function writeHighlightStore(store) {
-  localStorage.setItem(HIGHLIGHT_STORE_KEY, JSON.stringify(store));
-}
-
-function saveHighlightEntry(entry) {
+async function saveHighlightEntry(entry) {
   const wikiId = typeof wikiGetIdFromUrl === 'function' ? wikiGetIdFromUrl() : null;
-  if (!wikiId) return;
-  const store = readHighlightStore();
-  if (!store[wikiId]) store[wikiId] = [];
-  store[wikiId].push(entry);
-  writeHighlightStore(store);
+  if (!wikiId || !isLoggedIn()) return;
+  const highlights = await api.getWikiHighlights(wikiId);
+  highlights.push(entry);
+  await api.saveWikiHighlights(wikiId, highlights);
 }
 
-function removeHighlightEntry(entryId) {
+async function removeHighlightEntry(entryId) {
   const wikiId = typeof wikiGetIdFromUrl === 'function' ? wikiGetIdFromUrl() : null;
-  if (!wikiId) return;
-  const store = readHighlightStore();
-  if (!store[wikiId]) return;
-  store[wikiId] = store[wikiId].filter(h => h.id !== entryId);
-  writeHighlightStore(store);
+  if (!wikiId || !isLoggedIn()) return;
+  const highlights = await api.getWikiHighlights(wikiId);
+  await api.saveWikiHighlights(wikiId, highlights.filter(h => h.id !== entryId));
 }
 
 // 저장된 텍스트를 본문(#artbody)의 텍스트 노드에서 찾아 다시 하이라이트 span으로 감싼다.
@@ -135,10 +119,9 @@ function applyStoredHighlightToBody(root, entry) {
 }
 
 // wiki.js의 renderWikiDetail(item)이 본문을 다 그린 뒤 호출한다.
-function restoreWikiHighlights(wikiId) {
-  if (!wikiId) return;
-  const store = readHighlightStore();
-  const entries = store[wikiId] || [];
+async function restoreWikiHighlights(wikiId) {
+  if (!wikiId || !isLoggedIn()) return;
+  const entries = await api.getWikiHighlights(wikiId);
   const body = document.getElementById('artbody');
   entries.forEach(entry => {
     if (body) applyStoredHighlightToBody(body, entry);

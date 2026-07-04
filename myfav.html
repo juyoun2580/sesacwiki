@@ -87,7 +87,7 @@
     <!-- 담당 : feature/job -->
     <!-- css : my.css -->
     <!-- js : ui.js (즐겨찾기/필터탭/사이드바 토글), app.js/toast.js (공통) -->
-    <!-- json : 없음 (wiki.json / my_docs.json / words.json의 isFavorite 항목 취합) -->
+    <!-- json : 없음 (wiki.json의 isFavorite 항목 + Supabase words 테이블 취합) -->
     <!-- ================================================= -->
     <!-- MYFAV START -->
     <section id="myfav" class="page page--active" aria-label="즐겨찾기">
@@ -217,7 +217,10 @@
   <!-- 담당 : feature/core (공통 담당자 전용) -->
   <!-- ================================================= -->
   <script src="assets/js/toast.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+  <script src="assets/js/supabase-client.js" defer></script>
   <script src="assets/js/auth.js" defer></script>
+  <script src="assets/js/api.js" defer></script>
   <script src="assets/js/app.js" defer></script>
   <script src="assets/js/ui.js" defer></script>
 </body>

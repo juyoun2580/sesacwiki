@@ -18,7 +18,10 @@
       "Read(//c/Users/Administrator/Desktop/docs/reference/**)",
       "Read(//c/Users/Administrator/Desktop/docs/data_final/**)",
       "Bash(cd \"/c/Users/Administrator/Desktop/docs/reference\" && ls -la)",
-      "Bash(node -e \"const d=JSON.parse\\(require\\('fs'\\).readFileSync\\('assets/data/wiki-data.json','utf8'\\)\\); console.log\\('items:', d.length\\); console.log\\('categories:', [...new Set\\(d.map\\(x=>x.category\\)\\)]\\);\")"
+      "Bash(node -e \"const d=JSON.parse\\(require\\('fs'\\).readFileSync\\('assets/data/wiki-data.json','utf8'\\)\\); console.log\\('items:', d.length\\); console.log\\('categories:', [...new Set\\(d.map\\(x=>x.category\\)\\)]\\);\")",
+      "Skill(run)",
+      "mcp__plugin_vercel_vercel__list_deployments",
+      "mcp__plugin_vercel_vercel__get_project"
     ]
   }
 }

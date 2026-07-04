@@ -10,7 +10,6 @@
       "categoryColor": "green",
       "level": "입문",
       "percent": 78,
-      "isFavorite": true,
       "updatedAt": "5분 전"
     },
     {
@@ -22,7 +21,6 @@
       "categoryColor": "green",
       "level": "중급",
       "percent": 65,
-      "isFavorite": false,
       "updatedAt": "10분 전"
     },
     {
@@ -34,7 +32,6 @@
       "categoryColor": "orange",
       "level": "기초",
       "percent": 42,
-      "isFavorite": true,
       "updatedAt": "8분 전"
     },
     {
@@ -46,7 +43,6 @@
       "categoryColor": "gray",
       "level": "입문",
       "percent": 55,
-      "isFavorite": true,
       "updatedAt": "6분 전"
     },
     {
@@ -58,7 +54,6 @@
       "categoryColor": "blue",
       "level": "중급",
       "percent": 30,
-      "isFavorite": false,
       "updatedAt": "15분 전"
     }
   ],
@@ -112,9 +107,6 @@
       "related": [
         { "id": "wiki-002", "title": "SQL JOIN 완벽 정리", "description": "다양한 JOIN의 종류와 사용법" },
         { "id": "wiki-008", "title": "SQL 집계 함수 (GROUP BY)", "description": "COUNT, SUM, AVG 활용법" }
-      ],
-      "savedHighlights": [
-        { "id": "hl-init", "text": "SELECT는 데이터베이스에서 데이터를 조회할 때 사용하는 가장 기본적인 SQL 명령어입니다." }
       ]
     }
   }
