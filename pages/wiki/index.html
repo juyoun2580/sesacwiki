@@ -6,41 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>새싹위키 — Sesac Wiki</title>
   <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
-  <!-- ================================================= -->
-  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
-  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
-  <!-- ================================================= -->
   <link rel="stylesheet" href="/assets/css/reset.css">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
-  <!-- 페이지 전용 CSS — Wiki 담당 소유 (docs/PAGES.md 참고) -->
   <link rel="stylesheet" href="/assets/css/pages/wiki.css">
 </head>
 
 <body>
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-  <!-- COMMON HEADER — components/header.html을 header.js가 주입한다 -->
   <header class="header" id="header-mount"></header>
-  <!-- COMMON HEADER END -->
 
-  <!-- COMMON NAVIGATION — components/nav.html을 nav.js가 주입한다 -->
   <nav class="nav" id="nav-mount" aria-label="주 메뉴"></nav>
-  <!-- COMMON NAVIGATION END -->
 
-  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
 
   <main id="main-content">
-    <!-- ================================================= -->
-    <!-- WIKI LIST PAGE -->
-    <!-- 담당 : feature/wiki -->
-    <!-- css : wiki.css -->
-    <!-- js : pages/wiki.js (목록 렌더링/검색/정렬/페이지네이션), ui.js (즐겨찾기/사이드바 토글), toast.js -->
-    <!-- json : wiki-data.json -->
-    <!-- ================================================= -->
-    <!-- WIKI START -->
     <section id="wiki" class="page page--active" aria-label="새싹위키">
       <div class="shell">
         <aside class="sidebar" aria-label="카테고리">
@@ -74,7 +56,6 @@
             </div>
           </div>
 
-          <!-- assets/js/pages/wiki.js가 wiki-data.json을 읽어 이 안에 wiki-row를 렌더링한다 -->
           <ul class="wiki-row-list" id="wikiRowList"></ul>
 
           <nav class="pagination" id="wikiPagination" aria-label="페이지 네비게이션"></nav>
@@ -85,28 +66,15 @@
               <p class="section-title section-title--sm">⭐ 즐겨찾기</p>
               <button type="button" class="favorite-box__toggle" id="wikiFavoriteToggle" hidden>▼ 펼치기</button>
             </div>
-            <!-- assets/js/pages/wiki.js가 즐겨찾기(bookmarked)한 항목으로 채운다 -->
             <ul class="favorite-list" id="wikiFavoriteList"></ul>
           </div>
         </aside>
       </div>
     </section>
-    <!-- WIKI END -->
   </main>
 
-  <!-- ================================================= -->
-  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- 이 페이지는 즐겨찾기 별 토글(ts())이 toast()를 호출하므로 -->
-  <!-- 공용 Toast 인스턴스가 필요하다 -->
-  <!-- ================================================= -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <!-- COMMON SHARED MARKUP END -->
 
-  <!-- ================================================= -->
-  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
   <script src="/assets/js/toast.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
   <script src="/assets/js/supabase-client.js" defer></script>
@@ -116,9 +84,6 @@
   <script src="/assets/js/components/nav.js" defer></script>
   <script src="/assets/js/app.js" defer></script>
   <script src="/assets/js/ui.js" defer></script>
-  <!-- 페이지 전용 스크립트 — Wiki 담당 소유. wiki-data.json 목록 렌더링을 위해 추가.
-       WORK_ORDER.md 기준 <script> 태그 목록은 공통 담당자 소유 블록이라 이 한 줄 추가는
-       PR에서 공통 담당자 확인이 필요하다. -->
   <script src="/assets/js/pages/wiki.js" defer></script>
 </body>
 

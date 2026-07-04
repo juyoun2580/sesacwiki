@@ -5,17 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>마이페이지 — Sesac Wiki</title>
     <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
-    <!-- ================================================= -->
-    <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
-    <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
-    <!-- ================================================= -->
     <link rel="stylesheet" href="/assets/css/reset.css" />
     <link rel="stylesheet" href="/assets/css/variables.css" />
     <link rel="stylesheet" href="/assets/css/base.css" />
     <link rel="stylesheet" href="/assets/css/layout.css" />
     <link rel="stylesheet" href="/assets/css/components.css" />
-    <!-- 페이지 전용 CSS — MyPage(Job/My) 담당 소유. my.css의 word-quiz/word-stats/ -->
-    <!-- word-row 등을 "저장한 단어" 카드의 인페이지 패널에서 그대로 재사용한다 -->
     <link rel="stylesheet" href="/assets/css/pages/my.css" />
     <link rel="stylesheet" href="/assets/css/pages/mypage.css" />
   </head>
@@ -23,26 +17,12 @@
   <body>
     <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-    <!-- COMMON HEADER — components/header.html을 header.js가 주입한다 -->
     <header class="header" id="header-mount"></header>
-    <!-- COMMON HEADER END -->
 
-    <!-- COMMON NAVIGATION — components/nav.html을 nav.js가 주입한다 -->
     <nav class="nav" id="nav-mount" aria-label="주 메뉴"></nav>
-    <!-- COMMON NAVIGATION END -->
 
-    <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
 
     <main id="main-content">
-      <!-- ================================================= -->
-      <!-- MYPAGE DASHBOARD (마이페이지 메인 대시보드) -->
-      <!-- 신규 파일 : 공식 WORK_ORDER.md 스코프 밖 프로토타입, MyPage(Job/My) 담당 -->
-      <!-- css : pages/mypage.css (mypage-edit.html과 공유) -->
-      <!-- js  : pages/mypage.js (Supabase profiles/badges/quiz_checkpoints 실시간 반영, 공통 담당자 리뷰 필요) -->
-      <!-- ================================================= -->
-      <!-- MYPAGE START -->
-      <!-- 좌측 사이드바는 제거했다 — 아래 category-card-grid가 인페이지(In-Page) -->
-      <!-- 방식으로 같은 기능(내 문서/즐겨찾기/저장한 단어 등)을 대체한다. -->
       <section
         id="mypage"
         class="page page--active"
@@ -55,7 +35,6 @@
               나의 성장 현황과 활동을 한눈에 확인하세요.
             </p>
 
-            <!-- 프로필 영역 -->
             <div class="profile-card" id="profile-card">
               <span
                 class="profile-card__avatar"
@@ -84,7 +63,6 @@
               </div>
             </div>
 
-            <!-- 현재 레벨 시스템 (무한 확장형: 8개 테마 스테이지를 계속 순환하며 Lv.N으로 누적 표시) -->
             <div class="level-card">
               <div class="level-card__header">
                 <div class="section-title section-title--sm">
@@ -148,8 +126,6 @@
               </p>
             </div>
 
-            <!-- 카테고리 카드 그리드 — 좌측 사이드바를 대체한다 -->
-            <!-- 카드를 클릭하면 페이지 이동 없이 바로 아래 category-detail-panel이 펼쳐진다 -->
             <div class="category-card-grid">
               <button type="button" class="category-card" data-category="words">
                 <span class="category-card__icon" aria-hidden="true">📓</span>
@@ -163,7 +139,6 @@
               </button>
             </div>
 
-            <!-- assets/js/pages/mypage.js의 openCategoryDetail()이 카드 클릭에 맞춰 이 안을 채운다 -->
             <div class="category-detail-panel" id="category-detail-panel"></div>
           </div>
 
@@ -194,7 +169,6 @@
                 </button>
               </div>
 
-              <!-- Challenges 탭: 진행 중인 활동 챌린지 -->
               <div
                 class="achievement-tab-content achievement-tab-content--active"
                 data-tab-panel="challenges"
@@ -250,9 +224,6 @@
                 </div>
               </div>
 
-              <!-- Activities 탭: 획득한 기술 뱃지 (게임 업적 스타일 원형 그리드) -->
-              <!-- assets/js/pages/mypage.js의 renderBadges()가 localStorage(sesac.mypage.badges) -->
-              <!-- 상태를 읽어 이 컨테이너를 실시간으로 채운다 -->
               <div class="achievement-tab-content" data-tab-panel="activities">
                 <div class="badge-grid--compact" id="badge-grid"></div>
               </div>
@@ -260,11 +231,8 @@
           </aside>
         </div>
       </section>
-      <!-- MYPAGE END -->
     </main>
 
-    <!-- 페이지 전용 마크업 — MyPage(Job/My) 담당. mywords.html의 단어 저장 모달과 -->
-    <!-- 동일한 Modal 컴포넌트를 그대로 재사용해 "나의 단어 도감" 카드를 수정한다. -->
     <div class="modal-overlay" id="wmodal">
       <div class="modal" role="dialog" aria-modal="true" aria-labelledby="wmodal-title">
         <p class="modal__title" id="wmodal-title">📓 단어장에 추가</p>
@@ -293,17 +261,8 @@
       </div>
     </div>
 
-    <!-- ================================================= -->
-    <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
-    <!-- 담당 : feature/core (공통 담당자 전용) -->
-    <!-- ================================================= -->
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <!-- COMMON SHARED MARKUP END -->
 
-    <!-- ================================================= -->
-    <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
-    <!-- 담당 : feature/core (공통 담당자 전용) -->
-    <!-- ================================================= -->
     <script src="/assets/js/toast.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
     <script src="/assets/js/supabase-client.js" defer></script>
@@ -313,10 +272,6 @@
     <script src="/assets/js/components/nav.js" defer></script>
     <script src="/assets/js/app.js" defer></script>
     <script src="/assets/js/ui.js" defer></script>
-    <!-- 페이지 전용 스크립트 — MyPage 담당 소유. "나의 단어 도감" 수정에 mywords.html과
-         동일한 Modal 컴포넌트(modal.js)를 재사용하기 위해 추가. WORK_ORDER.md 기준
-         <script> 목록은 공통 담당자 소유 블록이라 이 한 줄 추가는 PR에서 공통 담당자
-         확인이 필요하다. -->
     <script src="/assets/js/modal.js" defer></script>
     <script src="/assets/js/pages/mypage.js" defer></script>
   </body>

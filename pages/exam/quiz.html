@@ -6,41 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>모의고사 응시 — Sesac Wiki</title>
   <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
-  <!-- ================================================= -->
-  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
-  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
-  <!-- ================================================= -->
   <link rel="stylesheet" href="/assets/css/reset.css">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
-  <!-- 페이지 전용 CSS — Exam 담당 소유 (exam 목록과 공유, docs/PAGES.md 참고) -->
   <link rel="stylesheet" href="/assets/css/pages/exam.css">
 </head>
 
 <body>
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-  <!-- COMMON HEADER — components/header.html을 header.js가 주입한다 -->
   <header class="header" id="header-mount"></header>
-  <!-- COMMON HEADER END -->
 
-  <!-- COMMON NAVIGATION — components/nav.html을 nav.js가 주입한다 -->
   <nav class="nav" id="nav-mount" aria-label="주 메뉴"></nav>
-  <!-- COMMON NAVIGATION END -->
 
-  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
 
   <main id="main-content">
-    <!-- ================================================= -->
-    <!-- QUIZ PAGE (모의고사 응시) -->
-    <!-- 담당 : feature/exam -->
-    <!-- css : exam.css -->
-    <!-- js : quiz.js (전용), app.js/toast.js (공통) -->
-    <!-- json : exam.json -->
-    <!-- ================================================= -->
-    <!-- QUIZ START -->
     <section id="quiz" class="page page--active" aria-label="모의고사 응시">
       <div class="shell">
         <div class="page__content">
@@ -54,7 +36,6 @@
             <button type="button" class="btn btn--danger" id="quiz-end-btn">응시 중단하기</button>
           </div>
 
-          <!-- 설정 단계: 난이도/문항 수를 고르고 시작하기 -->
           <div class="quiz-setup" id="quiz-setup">
             <div class="quiz-info-card">
               <p class="quiz-info-card__title">⚙️ 응시 설정</p>
@@ -74,7 +55,6 @@
           </div>
 
           <div class="quiz-layout" id="quiz-play" hidden>
-            <!-- 좌: 시험 정보 -->
             <aside class="quiz-layout__aside" aria-label="시험 정보">
               <div class="quiz-info-card">
                 <p class="quiz-info-card__title">📋 시험 정보</p>
@@ -98,7 +78,6 @@
               </div>
             </aside>
 
-            <!-- 중: 문제 -->
             <div class="quiz-layout__main">
               <div class="quiz-progress">
                 <div class="quiz-progress__row"><span id="quiz-progress-text">- / - 문제</span><span
@@ -134,7 +113,6 @@
               </div>
             </div>
 
-            <!-- 우: 문제 목록 / 타이머 / 메모 -->
             <aside class="quiz-layout__aside" aria-label="문제 목록 및 메모">
               <p class="section-title section-title--sm">문제 목록</p>
               <ul class="question-grid-legend">
@@ -169,7 +147,6 @@
             </aside>
           </div>
 
-          <!-- 결과 단계: 채점 완료 후 -->
           <div class="quiz-result" id="quiz-result" hidden>
             <div class="quiz-question quiz-result__card">
               <p class="quiz-result__emoji" id="quiz-result-emoji" aria-hidden="true">🌱</p>
@@ -212,20 +189,10 @@
         </div>
       </div>
     </section>
-    <!-- QUIZ END -->
   </main>
 
-  <!-- ================================================= -->
-  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <!-- COMMON SHARED MARKUP END -->
 
-  <!-- ================================================= -->
-  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
   <script src="/assets/js/toast.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
   <script src="/assets/js/supabase-client.js" defer></script>
@@ -234,7 +201,6 @@
   <script src="/assets/js/components/header.js" defer></script>
   <script src="/assets/js/components/nav.js" defer></script>
   <script src="/assets/js/app.js" defer></script>
-  <!-- 페이지 전용 JS — Exam 담당 소유 (docs/PAGES.md 참고) -->
   <script src="/assets/js/pages/quiz.js" defer></script>
 </body>
 

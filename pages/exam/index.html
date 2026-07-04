@@ -6,41 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>모의고사 — Sesac Wiki</title>
   <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
-  <!-- ================================================= -->
-  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
-  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
-  <!-- ================================================= -->
   <link rel="stylesheet" href="/assets/css/reset.css">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
-  <!-- 페이지 전용 CSS — Exam 담당 소유 (docs/PAGES.md 참고) -->
   <link rel="stylesheet" href="/assets/css/pages/exam.css">
 </head>
 
 <body>
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-  <!-- COMMON HEADER — components/header.html을 header.js가 주입한다 -->
   <header class="header" id="header-mount"></header>
-  <!-- COMMON HEADER END -->
 
-  <!-- COMMON NAVIGATION — components/nav.html을 nav.js가 주입한다 -->
   <nav class="nav" id="nav-mount" aria-label="주 메뉴"></nav>
-  <!-- COMMON NAVIGATION END -->
 
-  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
 
   <main id="main-content">
-    <!-- ================================================= -->
-    <!-- EXAM LIST PAGE -->
-    <!-- 담당 : feature/exam -->
-    <!-- css : exam.css -->
-    <!-- js : ui.js (필터탭 토글), app.js/toast.js (공통), pages/exam.js (side-panel 통계·오답노트, 전용) -->
-    <!-- json : exam.json -->
-    <!-- ================================================= -->
-    <!-- EXAM START -->
     <section id="exam" class="page page--active" aria-label="모의고사">
       <div class="shell">
         <aside class="sidebar" aria-label="모의고사 카테고리">
@@ -119,33 +101,21 @@
           <div class="section-title section-title--spaced">최근 응시한 시험 <button type="button" id="exam-recent-toggle"
               class="section-title__link">전체보기 ›</button></div>
           <div id="exam-recent-list">
-            <!-- assets/js/pages/exam.js가 attemptHistory 기준으로 채운다 -->
           </div>
 
           <div class="wrong-note-box">
             <p class="wrong-note-box__title">📝 오답노트</p>
             <p class="wrong-note-box__desc">틀린 문제를 다시 풀고 약점을 보완해보세요! 문항을 눌러 5단 해설을 확인하세요.</p>
             <div class="wrong-note-list" id="exam-wrong-note-list">
-              <!-- assets/js/pages/exam.js가 wrongNoteSamples 기준으로 아코디언을 채운다 -->
             </div>
           </div>
         </aside>
       </div>
     </section>
-    <!-- EXAM END -->
   </main>
 
-  <!-- ================================================= -->
-  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <!-- COMMON SHARED MARKUP END -->
 
-  <!-- ================================================= -->
-  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
   <script src="/assets/js/toast.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
   <script src="/assets/js/supabase-client.js" defer></script>
@@ -155,8 +125,6 @@
   <script src="/assets/js/components/nav.js" defer></script>
   <script src="/assets/js/app.js" defer></script>
   <script src="/assets/js/ui.js" defer></script>
-  <!-- 예외: 원래 공통 담당자 승인이 필요한 script 목록이지만, 이번 세션은 공통 담당자 역할을 겸하는
-       사용자가 직접 승인하여 Exam 담당 소유 파일을 추가함 (99-EXAM_PLAN.md 9장 7번 항목) -->
   <script src="/assets/js/pages/exam.js" defer></script>
 </body>
 

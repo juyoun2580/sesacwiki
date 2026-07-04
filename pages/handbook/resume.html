@@ -18,19 +18,14 @@
 <body>
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-  <!-- COMMON HEADER — components/header.html을 header.js가 주입한다 -->
   <header class="header" id="header-mount"></header>
-  <!-- COMMON HEADER END -->
 
-  <!-- COMMON NAVIGATION — components/nav.html을 nav.js가 주입한다 -->
   <nav class="nav" id="nav-mount" aria-label="주 메뉴"></nav>
-  <!-- COMMON NAVIGATION END -->
 
   <main id="main-content">
     <section id="resume-page" class="page page--active" aria-label="나의 이력서">
       <div class="shell">
 
-        <!-- ===== 사이드바 ===== -->
         <aside class="sidebar" aria-label="마이핸드북 메뉴">
           <p class="sidebar__label">마이핸드북</p>
           <a class="sidebar__item" href="/pages/my/index.html">
@@ -64,10 +59,8 @@
           </div>
         </aside>
 
-        <!-- ===== 본문 ===== -->
         <div class="page__content">
 
-          <!-- 페이지 헤더 -->
           <div class="page-header-row">
             <div>
               <h1 class="page-title">나의 이력서 📝</h1>
@@ -85,7 +78,6 @@
             </div>
           </div>
 
-          <!-- AI 배너 -->
           <div class="resume-ai-banner">
             <span class="resume-ai-banner__icon" aria-hidden="true">🤖</span>
             <div class="resume-ai-banner__body">
@@ -99,7 +91,6 @@
             </button>
           </div>
 
-          <!-- 통계 바 -->
           <div class="resume-stat-bar" aria-label="이력서 현황">
             <div class="resume-stat-bar__item">
               <p class="resume-stat-bar__value">5</p>
@@ -119,7 +110,6 @@
             </div>
           </div>
 
-          <!-- 필터 탭 -->
           <div class="resume-filter-row">
             <div class="filter-tabs" role="tablist" aria-label="이력서 상태 필터">
               <button type="button" class="filter-tab filter-tab--active"
@@ -139,10 +129,8 @@
             </select>
           </div>
 
-          <!-- 이력서 목록 -->
           <ul class="resume-list" id="resume-list" aria-label="이력서 목록">
 
-            <!-- 신한은행 — 완성 -->
             <li data-status="done">
               <button type="button" class="resume-row"
                 data-action="toast" data-message="신한은행 이력서를 열어요!">
@@ -167,7 +155,6 @@
               </button>
             </li>
 
-            <!-- 카카오 — 작성 중 -->
             <li data-status="in-progress">
               <button type="button" class="resume-row"
                 data-action="toast" data-message="카카오 이력서를 이어서 작성해요!">
@@ -191,7 +178,6 @@
               </button>
             </li>
 
-            <!-- 삼성SDS — 작성 중 -->
             <li data-status="in-progress">
               <button type="button" class="resume-row"
                 data-action="toast" data-message="삼성SDS 이력서를 이어서 작성해요!">
@@ -215,7 +201,6 @@
               </button>
             </li>
 
-            <!-- 하나은행 — 지원 완료 -->
             <li data-status="applied">
               <button type="button" class="resume-row resume-row--applied"
                 data-action="toast" data-message="하나은행 이력서를 열어요!">
@@ -240,7 +225,6 @@
               </button>
             </li>
 
-            <!-- 네이버 — 작성 중 -->
             <li data-status="in-progress">
               <button type="button" class="resume-row"
                 data-action="toast" data-message="네이버 이력서를 이어서 작성해요!">
@@ -264,7 +248,6 @@
               </button>
             </li>
 
-            <!-- 우리은행 — 지원 완료 -->
             <li data-status="applied">
               <button type="button" class="resume-row resume-row--applied"
                 data-action="toast" data-message="우리은행 이력서를 열어요!">
@@ -289,7 +272,6 @@
               </button>
             </li>
 
-            <!-- 새 이력서 작성 CTA 행 -->
             <li>
               <button type="button" class="resume-row-new" data-open="resume-create-modal">
                 <span class="resume-row-new__icon" aria-hidden="true">+</span>
@@ -303,12 +285,9 @@
           </ul>
 
         </div>
-        <!-- page__content END -->
 
-        <!-- ===== 우측 사이드 패널 ===== -->
         <aside class="side-panel" aria-label="이력서 작성 가이드">
 
-          <!-- 이력서 작성 가이드 -->
           <div class="section-title section-title--sm">이력서 작성 가이드</div>
           <div class="resume-guide-steps">
             <div class="resume-guide-step">
@@ -350,7 +329,6 @@
 
           <div class="divider"></div>
 
-          <!-- 지원 현황 -->
           <div class="section-title section-title--sm">
             지원 현황
             <button type="button" class="section-title__link"
@@ -373,7 +351,6 @@
 
           <div class="divider"></div>
 
-          <!-- 빠른 작성 CTA -->
           <button type="button" class="btn btn--primary" data-open="resume-create-modal"
             style="width:100%">
             ✏️ 새 이력서 작성하기
@@ -385,7 +362,6 @@
     </section>
   </main>
 
-  <!-- ===== 새 이력서 만들기 모달 ===== -->
   <div class="modal-overlay" id="resume-create-modal" role="dialog" aria-modal="true"
     aria-labelledby="modal-title">
     <div class="modal modal--resume">
@@ -432,16 +408,9 @@
       </div>
     </div>
   </div>
-  <!-- 모달 END -->
 
-  <!-- ================================================= -->
-  <!-- COMMON SHARED MARKUP                              -->
-  <!-- ================================================= -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- ================================================= -->
-  <!-- COMMON SCRIPTS                                    -->
-  <!-- ================================================= -->
   <script src="/assets/js/toast.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
   <script src="/assets/js/supabase-client.js" defer></script>

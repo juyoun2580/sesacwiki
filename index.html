@@ -6,49 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sesac Wiki</title>
   <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
-  <!-- ================================================= -->
-  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
-  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
-  <!-- ================================================= -->
   <link rel="stylesheet" href="/assets/css/reset.css" />
   <link rel="stylesheet" href="/assets/css/variables.css" />
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
-  <!-- 페이지 전용 CSS — Home 담당 소유 (docs/PAGES.md 참고) -->
   <link rel="stylesheet" href="/assets/css/pages/home.css" />
 </head>
 
 <body>
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-  <!-- ================================================= -->
-  <!-- COMMON HEADER — components/header.html을 header.js가 주입한다 -->
-  <!-- 담당 : feature/home (공통 담당자 전용)                -->
-  <!-- 변경이 필요하면 공통 담당자에게 요청한다                -->
-  <!-- ================================================= -->
   <header class="header" id="header-mount"></header>
-  <!-- COMMON HEADER END -->
-
-  <!-- ================================================= -->
-  <!-- COMMON NAVIGATION — components/nav.html을 nav.js가 주입한다 -->
-  <!-- 담당 : feature/home (공통 담당자 전용)                -->
-  <!-- 새 메뉴 추가는 공통 담당자에게 요청 (docs/DECISION_TREE.md 2번) -->
-  <!-- ================================================= -->
   <nav class="nav" id="nav-mount" aria-label="주 메뉴"></nav>
-  <!-- COMMON NAVIGATION END -->
-
-  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
 
   <main id="main-content">
-    <!-- ================================================= -->
-    <!-- HOME PAGE -->
-    <!-- 담당 : feature/home -->
-    <!-- css : home.css -->
-    <!-- js : app.js (data-progress 폭 적용) -->
-    <!-- json : home.json -->
-    <!-- ================================================= -->
-    <!-- HOME START -->
     <section id="home" class="page page--active" aria-label="홈">
       <div class="shell">
         <div class="page__content">
@@ -123,7 +95,6 @@
 
           <h2 class="home-section-heading">
             🌱 추천 학습 로드맵
-            <!-- <span class="home-section-heading__desc">지금 나에게 딱 맞는 학습을 추천해드려요!</span> -->
           </h2>
           <ul class="rm-scroll">
             <li>
@@ -276,7 +247,6 @@
               </p>
             </div>
           </div>
-          <!-- <h2 class="shortcut-heading">바로가기</h2> -->
           <ul class="shortcut-grid">
             <li>
               <a class="shortcut-btn" href="/pages/my/words.html"><em class="shortcut-btn__icon">📓</em>단어장</a>
@@ -297,17 +267,12 @@
               </button>
             </li>
           </ul>
-          <!-- <span class="side-panel__decor" aria-hidden="true">🌳</span> -->
         </aside>
       </div>
     </section>
-    <!-- HOME END -->
   </main>
 
-  <!-- ================================================= -->
-  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
+  
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
   <script src="/assets/js/supabase-client.js" defer></script>
   <script src="/assets/js/auth.js" defer></script>
@@ -315,7 +280,6 @@
   <script src="/assets/js/components/header.js" defer></script>
   <script src="/assets/js/components/nav.js" defer></script>
   <script src="/assets/js/app.js" defer></script>
-  <!-- 페이지 전용 JS — Home 담당. "최근 저장한 단어" 미리보기(sesac.mywords.list) -->
   <script src="/assets/js/pages/home.js" defer></script>
 </body>
 

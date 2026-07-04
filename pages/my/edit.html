@@ -6,40 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>프로필 수정 — Sesac Wiki</title>
   <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
-  <!-- ================================================= -->
-  <!-- COMMON STYLESHEETS — 공통 담당자 전용 (feature/core)   -->
-  <!-- 새 CSS 파일 추가/순서 변경은 공통 담당자에게 요청       -->
-  <!-- ================================================= -->
   <link rel="stylesheet" href="/assets/css/reset.css">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
-  <!-- 페이지 전용 CSS — MyPage(Job/My) 담당, 신규 파일 (mypage.html과 공유) -->
   <link rel="stylesheet" href="/assets/css/pages/mypage.css">
 </head>
 
 <body>
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
-  <!-- COMMON HEADER — components/header.html을 header.js가 주입한다 -->
   <header class="header" id="header-mount"></header>
-  <!-- COMMON HEADER END -->
 
-  <!-- COMMON NAVIGATION — components/nav.html을 nav.js가 주입한다 -->
   <nav class="nav" id="nav-mount" aria-label="주 메뉴"></nav>
-  <!-- COMMON NAVIGATION END -->
 
-  <!-- FOOTER: 현재 프로젝트에 footer 요소가 없다. 필요해지면 공통 담당자가 추가한다. -->
 
   <main id="main-content">
-    <!-- ================================================= -->
-    <!-- MYPAGE EDIT PROFILE (프로필 수정 세팅) -->
-    <!-- 신규 파일 : 공식 WORK_ORDER.md 스코프 밖 프로토타입, MyPage(Job/My) 담당 -->
-    <!-- css : pages/mypage.css (mypage.html과 공유) -->
-    <!-- js  : pages/mypage.js (localStorage 기반, 공통 담당자 리뷰 필요) -->
-    <!-- ================================================= -->
-    <!-- MYPAGE-EDIT START -->
     <section id="mypage-edit" class="page page--active" aria-label="프로필 수정">
       <div class="shell">
         <div class="page__content settings-content">
@@ -47,7 +30,6 @@
           <h1 class="page-title settings-content__title">프로필 수정 ⚙️</h1>
           <p class="page-subtitle">계정 정보와 알림 설정을 관리하세요.</p>
 
-          <!-- 1. Account Information -->
           <div class="settings-section">
             <div class="settings-section__title">
               <p class="settings-section__title-main">Account Information</p>
@@ -89,7 +71,6 @@
             </div>
           </div>
 
-          <!-- 2. Email -->
           <div class="settings-section">
             <div class="settings-section__title">
               <p class="settings-section__title-main">Email</p>
@@ -109,7 +90,6 @@
             </div>
           </div>
 
-          <!-- 3. Profile (아바타) -->
           <div class="settings-section">
             <div class="settings-section__title">
               <p class="settings-section__title-main">Profile</p>
@@ -130,7 +110,6 @@
             </div>
           </div>
 
-          <!-- 4. Delete Account -->
           <div class="settings-section settings-danger">
             <div class="settings-section__title">
               <p class="settings-section__title-main">Delete Account</p>
@@ -152,20 +131,10 @@
         </div>
       </div>
     </section>
-    <!-- MYPAGE-EDIT END -->
   </main>
 
-  <!-- ================================================= -->
-  <!-- COMMON SHARED MARKUP — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <!-- COMMON SHARED MARKUP END -->
 
-  <!-- ================================================= -->
-  <!-- COMMON SCRIPTS — 절대 수정하지 않는다 -->
-  <!-- 담당 : feature/core (공통 담당자 전용) -->
-  <!-- ================================================= -->
   <script src="/assets/js/toast.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
   <script src="/assets/js/supabase-client.js" defer></script>
@@ -175,7 +144,6 @@
   <script src="/assets/js/components/nav.js" defer></script>
   <script src="/assets/js/app.js" defer></script>
   <script src="/assets/js/ui.js" defer></script>
-  <!-- 페이지 전용 JS — MyPage(Job/My) 담당, 신규 파일 -->
   <script src="/assets/js/pages/mypage.js" defer></script>
 </body>
 
