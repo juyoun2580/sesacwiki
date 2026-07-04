@@ -1,14 +1,21 @@
 # TD-NNNN: {기술 부채 제목}
 
-- **상태**: Open | Planned | In Progress | Resolved | Won't Fix | Accepted Risk
-- **우선순위**: High | Medium | Low
+- **상태**: 🔴 Open | 🟡 Planned | 🔵 In Progress | ✅ Resolved | ❌ False Positive | 📅 Post Release
+- **우선순위**: High | Medium | Low | N/A(Resolved/False Positive/Post Release인 경우)
 - **등록일**: YYYY-MM-DD
+- **검증일**: YYYY-MM-DD (실제 코드를 마지막으로 대조 확인한 날짜)
 - **등록자**:
 - **관련 파일**:
+
+> **작성 전 필수 확인**: 아래 "현황"은 실제 코드/JSON/호출 흐름을 직접 읽고 확인한 뒤에만 작성한다. 다른 문서나 이전 기록을 근거로 옮겨 적지 않는다 — 코드로 검증하지 못한 내용은 애초에 이 문서에 올리지 않는다(검증되면 그때 등록).
 
 ## 현황 (무엇이 문제인가)
 
 지금 코드가 어떻게 되어 있는지, 왜 문제로 판단했는지 서술한다. 재현 가능한 버그가 아니라 "구조적으로 이렇게 되어 있다"는 사실 서술 위주.
+
+## 검증 근거 (실제로 무엇을 확인했는가)
+
+어떤 파일의 몇 번째 줄, 어떤 함수, 어떤 JSON 필드를 직접 읽었는지, 어떤 호출 흐름을 따라갔는지 구체적으로 남긴다. "~일 것이다", "~로 보인다"는 추정 표현은 이 절에는 쓰지 않는다 — 확인된 사실만 적는다.
 
 ## 영향도 (Impact)
 
@@ -29,7 +36,7 @@
 
 ## 해결하지 않을 경우
 
-당장 해결하지 않기로 했다면(`Won't Fix`/`Accepted Risk`), 감수하는 이유와 재검토 조건을 남긴다.
+`📅 Post Release`로 미뤘다면 그 이유(리스크가 사용자 가치보다 큰 근거)와 재검토 시점을 남긴다. `❌ False Positive`라면 왜 그렇게 잘못 판단했었는지 원인도 함께 남긴다.
 
 ---
 
@@ -37,15 +44,20 @@
 
 # TD-0001: job_features localStorage 키를 3개 파일이 각자 직접 접근
 
-- **상태**: Open
+- **상태**: 🔴 Open
 - **우선순위**: Medium
 - **등록일**: 2025-06-10
+- **검증일**: 2025-06-10
 - **등록자**: 공통 담당
 - **관련 파일**: `assets/js/pages/job-features.js`, `assets/js/pages/job.js`, `assets/js/pages/home.js`
 
 ### 현황 (무엇이 문제인가)
 
 `localStorage`의 `job_features` 키를 소유 파일인 `job-features.js` 외에 `job.js`(로그인 동기화 시), `home.js`(홈 대시보드 "취업 준비율" 카드)가 각각 `localStorage.getItem('job_features')`로 직접 읽는다. 접근을 감싸는 공용 함수가 없다.
+
+### 검증 근거 (실제로 무엇을 확인했는가)
+
+`job-features.js`의 `FEATURES_KEY` 상수 선언부, `job.js`의 `'job_features'` 문자열 리터럴 사용처(몇 번째 줄인지), `home.js`의 `JOB_FEATURES_KEY` 상수 선언부를 각각 직접 읽고 세 곳 모두 독립적으로 키에 접근함을 확인 — 이런 식으로 파일명·줄 번호·실제로 읽은 코드를 구체적으로 남긴다.
 
 ### 영향도 (Impact)
 

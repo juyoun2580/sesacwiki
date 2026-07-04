@@ -61,7 +61,7 @@
 
 | Component | 상태 | 비고 |
 |---|---|---|
-| **Rank Badge** (`.rank-badge`) | **Unused** | `components.css`에 정의만 있고 HTML/JS 어디에서도 인스턴스화되지 않는다(과거 위키 목록 side-panel "많이 보는 위키" 순위용이었으나 현재 위키 목록에는 해당 UI 없음). 삭제 또는 재사용 검토 대상 |
+| **Rank Badge** (`.rank-badge`) | **Unused — 삭제 확정** | `components.css`에 정의만 있고 HTML/JS 어디에서도 인스턴스화되지 않는다(과거 위키 목록 side-panel "많이 보는 위키" 순위용이었으나 현재 위키 목록에는 해당 UI 없음). 재사용 계획 없음을 확인(2026-07-04, [TD-0003](technical-debt/2026-07-04-doc-review-findings.md#td-0003-rank-badge-컴포넌트-미사용)) — 다음 코드 변경 시 `components.css`에서 규칙 삭제 예정 |
 | **TOC Item** (`.toc__item`) | 사용 중 (Deprecated 아님) | 정적 HTML에는 없지만 `wiki.js`의 `renderWikiToc()`가 동적으로 생성한다. 카탈로그에는 유지 |
 
 새 컴포넌트를 만들 때는 위 Deprecated 목록에 다시 추가하지 말고, `.rank-badge`처럼 쓰이지 않게 될 경우 이 문서에서 상태를 갱신한다.

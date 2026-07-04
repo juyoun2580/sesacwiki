@@ -170,6 +170,7 @@ function loadJobFeatures() {
   return null;
 }
 
+// 이 함수는 assets/js/pages/job.js의 isStepDone()과 반드시 동일해야 합니다. 수정 시 두 파일을 함께 수정하세요.
 function isJobStepDone(stepId, f) {
   if (!f) return false;
   switch (stepId) {

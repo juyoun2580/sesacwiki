@@ -104,6 +104,7 @@ function loadFeaturesData() {
   return null;
 }
 
+// 이 함수는 assets/js/pages/home.js의 isJobStepDone()과 반드시 동일해야 합니다. 수정 시 두 파일을 함께 수정하세요.
 function isStepDone(stepId, f) {
   if (!f) return false;
   switch (stepId) {
