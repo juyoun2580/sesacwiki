@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 138 34" role="img" aria-label="새싹wiki">
+  <rect width="34" height="34" rx="10" fill="#2f7a4d"></rect>
+  <g transform="translate(5 5)" fill="none" stroke="#ffffff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 20V10"></path>
+    <path d="M12 12c0-3 2.5-5 6-5 0 3.5-2.5 5-6 5Z"></path>
+    <path d="M12 14c0-2.5-2-4.5-5-4.5 0 3 2 4.5 5 4.5Z"></path>
+  </g>
+  <text x="43" y="24.5" font-family="Pretendard, -apple-system, &#39;Apple SD Gothic Neo&#39;, sans-serif" font-size="20" font-weight="800" letter-spacing="-0.4">
+    <tspan fill="#2c2c28">새싹</tspan><tspan fill="#2f7a4d">wiki</tspan>
+  </text>
+</svg>

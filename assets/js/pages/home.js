@@ -1,3 +1,14 @@
+// 대시보드(index.html) "최근 본 페이지"/"즐겨찾기"/"최근 저장한 단어" 3개 미리보기가 공유하는
+// Empty State 컴포넌트 — 구조는 .empty-state > .empty-state__icon/__title/__desc로 통일한다
+// (스타일은 assets/css/pages/home.css 참고). modifier(recent/favorite/word)는 아이콘·문구만 다르다.
+function emptyStateHTML(modifier, iconClass, title, desc) {
+  return `<div class="empty-state empty-state--${modifier}">
+    <span class="empty-state__icon" aria-hidden="true"><span class="icon ${iconClass}"></span></span>
+    <p class="empty-state__title">${title}</p>
+    <p class="empty-state__desc">${desc}</p>
+  </div>`;
+}
+
 // 대시보드(index.html) "최근 저장한 단어" 미리보기 — api.js(Supabase words 테이블)를 읽기 전용으로 사용한다.
 const WORDS_PREVIEW_MAX = 8;
 
@@ -9,18 +20,14 @@ async function renderMyWordsPreview() {
   const words = allWords.slice(0, WORDS_PREVIEW_MAX);
 
   if (words.length === 0) {
-    listEl.innerHTML = `<li class="word-chip word-chip--empty">아직 저장한 단어가 없습니다.</li>`;
+    listEl.innerHTML = `<li class="word-chip word-chip--empty">${emptyStateHTML('word', 'icon--flag', '저장한 단어가 없어요', '단어장에 새 단어를 저장해보세요')}</li>`;
     return;
   }
 
   listEl.innerHTML = words.map((w) => `<li class="word-chip">${w.term}</li>`).join("");
 }
 
-// wiki.js와 같은 카테고리 → 아이콘/태그색 매핑(홈 대시보드는 wiki.js를 로드하지 않아 여기서도 필요).
-const HOME_WIKI_CATEGORY_ICON = {
-  SQL: "🗄️", Java: "☕", HTML: "🌐", CSS: "🎨", JavaScript: "⚡",
-  Git: "🔀", Salesforce: "☁️", "CS 개념": "💡", "면접 개념": "🎤", "취업 가이드": "💼",
-};
+// wiki.js와 같은 카테고리 → 태그색 매핑(홈 대시보드는 wiki.js를 로드하지 않아 여기서도 필요).
 const HOME_WIKI_CATEGORY_TAG_COLOR = {
   SQL: "green", Java: "orange", HTML: "blue", CSS: "blue", JavaScript: "gold",
   Git: "gray", Salesforce: "purple", "CS 개념": "coral", "면접 개념": "coral", "취업 가이드": "gold",
@@ -44,7 +51,7 @@ async function renderFavoritePreview() {
   if (!listEl) return;
 
   if (!isLoggedIn()) {
-    listEl.innerHTML = `<li class="favorite-list__item favorite-list__item--empty">아직 저장한 즐겨찾기가 없습니다.</li>`;
+    listEl.innerHTML = `<li class="favorite-list__item favorite-list__item--empty">${emptyStateHTML('favorite', 'icon--star', '즐겨찾기가 없어요', '위키 문서를 즐겨찾기에 추가해보세요')}</li>`;
     return;
   }
 
@@ -53,7 +60,7 @@ async function renderFavoritePreview() {
   const favorites = wikiItems.filter((item) => bookmarkedSet.has(item.id)).slice(0, FAVORITES_PREVIEW_MAX);
 
   if (favorites.length === 0) {
-    listEl.innerHTML = `<li class="favorite-list__item favorite-list__item--empty">아직 저장한 즐겨찾기가 없습니다.</li>`;
+    listEl.innerHTML = `<li class="favorite-list__item favorite-list__item--empty">${emptyStateHTML('favorite', 'icon--star', '즐겨찾기가 없어요', '위키 문서를 즐겨찾기에 추가해보세요')}</li>`;
     return;
   }
 
@@ -81,7 +88,7 @@ async function renderRecentPagesPreview() {
   if (!listEl) return;
 
   if (!isLoggedIn()) {
-    listEl.innerHTML = `<li class="recent-list__item recent-list__item--empty">최근 본 페이지가 없습니다.</li>`;
+    listEl.innerHTML = `<li class="recent-list__item recent-list__item--empty">${emptyStateHTML('recent', 'icon--file', '최근 본 페이지가 없어요', '위키 문서를 둘러보면 여기에 기록돼요')}</li>`;
     return;
   }
 
@@ -95,17 +102,15 @@ async function renderRecentPagesPreview() {
     .filter(Boolean);
 
   if (recentPages.length === 0) {
-    listEl.innerHTML = `<li class="recent-list__item recent-list__item--empty">최근 본 페이지가 없습니다.</li>`;
+    listEl.innerHTML = `<li class="recent-list__item recent-list__item--empty">${emptyStateHTML('recent', 'icon--file', '최근 본 페이지가 없어요', '위키 문서를 둘러보면 여기에 기록돼요')}</li>`;
     return;
   }
 
   listEl.innerHTML = recentPages
     .map(({ item, visitedAt }) => {
-      const icon = HOME_WIKI_CATEGORY_ICON[item.category] || "📄";
-      const categoryColor = HOME_WIKI_CATEGORY_TAG_COLOR[item.category] || "gray";
-      return `<li class="recent-list__item">
+      return `<li class="recent-list__item recent-list__item--success">
                     <a class="recent-list__link" href="/pages/wiki/detail.html?id=${encodeURIComponent(item.id)}">
-                      <span class="recent-list__icon" aria-hidden="true">${icon}</span><span class="recent-list__title">${item.title}</span><span class="tag tag--${categoryColor} tag--sm">${item.category}</span><span class="recent-list__time">${formatVisitedAt(visitedAt)}</span>
+                      <span class="recent-list__icon" aria-hidden="true"></span><span class="recent-list__title">${item.title}</span><span class="recent-list__time">${formatVisitedAt(visitedAt)}</span>
                     </a>
                   </li>`;
     })
@@ -269,17 +274,17 @@ function renderStudyProgressCard() {
   );
   if (!progressCard) return;
 
-  const valueEl = progressCard.querySelector(".score-ring__value");
-  const fillEl = progressCard.querySelector(".score-ring__fill");
-  const svgEl = progressCard.querySelector("svg");
-  if (!valueEl || !fillEl) return;
+  const numberEl = progressCard.querySelector(".stat-card__number");
+  const progressBarEl = progressCard.querySelector(".progress-bar");
+  const fillEl = progressCard.querySelector(".progress-bar__fill");
+  if (!numberEl || !progressBarEl || !fillEl) return;
 
   const applyPercent = (percent) => {
-    valueEl.textContent = `${percent}%`;
-    // dashoffset은 SVG에 이미 있는 stroke-dasharray(원 둘레)를 그대로 읽어서 계산한다 — 반지름을 새로 하드코딩하지 않는다.
-    const circumference = parseFloat(fillEl.getAttribute("stroke-dasharray")) || 0;
-    fillEl.setAttribute("stroke-dashoffset", String(Math.round(circumference * (1 - percent / 100))));
-    if (svgEl) svgEl.setAttribute("aria-label", `학습 진도율 ${percent}%`);
+    numberEl.textContent = `${percent}%`;
+    progressBarEl.setAttribute("aria-valuenow", String(percent));
+    fillEl.dataset.progress = String(percent);
+    // data-progress → width 반영은 app.js의 initProgressBars()가 이미 담당하므로 재사용한다.
+    if (typeof initProgressBars === "function") initProgressBars();
   };
 
   const useFallback = () => loadHomeData().then((data) => applyPercent((data.stats && data.stats.progressPercent) ?? 0));

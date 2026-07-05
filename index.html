@@ -18,7 +18,6 @@
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
   <header class="header" id="header-mount"></header>
-  <nav class="nav" id="nav-mount" aria-label="주 메뉴"></nav>
 
   <main id="main-content">
     <section id="home" class="page page--active" aria-label="홈">
@@ -26,50 +25,115 @@
         <div class="page__content">
           <section class="hero">
             <div class="hero__content">
-              <h1 class="hero__title">오늘도 새싹이 자라는 중이에요!</h1>
-              <p class="hero__subtitle">나만의 취업 핸드북</p>
+              <span class="hey">🔥 7일 연속 학습 중 · 최고 12일</span>
+              <h1 class="hero__title">오늘도 새싹이 자라는 중이에요</h1>
+              <p class="hero__subtitle">작은 새싹이 나무가 되듯, 오늘의 공부가 내일의 내가 됩니다.</p>
               <div class="hero__actions">
-                <a class="btn btn--primary" href="/pages/wiki/index.html">🌱 오늘 학습 시작하기</a>
-                <a class="btn btn--outline" href="/pages/my/index.html">📖 내 핸드북 보기</a>
+                <a class="btn btn--primary" href="/pages/wiki/index.html">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                  </svg>오늘 학습 시작하기
+                </a>
+                <a class="btn btn--outline" href="/pages/my/index.html">내 핸드북 보기</a>
               </div>
             </div>
-            <blockquote class="hq">
-              작은 새싹이 나무가 되듯,<br />오늘의 공부가 내일의 내가 됩니다.
-            </blockquote>
+            <div class="hero__side">
+              <div class="streak-card">
+                <p class="streak-card__label">연속 학습</p>
+                <div class="streak-card__value-row">
+                  <span class="streak-card__number">7</span><span class="streak-card__unit">일</span>
+                </div>
+                <div class="streak-card__bars" aria-hidden="true">
+                  <span class="streak-card__bar"></span>
+                  <span class="streak-card__bar"></span>
+                  <span class="streak-card__bar"></span>
+                  <span class="streak-card__bar"></span>
+                  <span class="streak-card__bar"></span>
+                  <span class="streak-card__bar"></span>
+                  <span class="streak-card__bar"></span>
+                </div>
+              </div>
+              <svg class="hero__sprout" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="새싹 캐릭터">
+                <path d="M42 74 h36 l-5 26 a4 4 0 0 1 -4 3 h-18 a4 4 0 0 1 -4 -3 z" fill="#e8c9a2"></path>
+                <rect x="40" y="70" width="40" height="8" rx="4" fill="#f0dcc0"></rect>
+                <circle cx="60" cy="52" r="22" fill="#d3ecd8"></circle>
+                <circle cx="53" cy="50" r="2.4" fill="#3f5b45"></circle>
+                <circle cx="67" cy="50" r="2.4" fill="#3f5b45"></circle>
+                <path d="M55 57 q5 5 10 0" stroke="#3f5b45" stroke-width="2.2" fill="none" stroke-linecap="round"></path>
+                <path d="M60 30 V16" stroke="#fff" stroke-width="3" stroke-linecap="round"></path>
+                <ellipse cx="49" cy="20" rx="10" ry="6" fill="#eaf6ec" transform="rotate(-30 49 20)"></ellipse>
+                <ellipse cx="71" cy="20" rx="10" ry="6" fill="#eaf6ec" transform="rotate(30 71 20)"></ellipse>
+              </svg>
+            </div>
           </section>
 
-          <h2 class="home-section-heading">🌱 나의 성장 현황</h2>
+          <ul class="shortcut-grid shortcut-grid--toolbar">
+            <li>
+              <a class="shortcut-btn" href="/pages/my/words.html">
+                <span class="shortcut-btn__icon">
+                  <span class="icon icon--flag" aria-hidden="true"></span>
+                </span>
+                단어장
+              </a>
+            </li>
+            <li>
+              <button type="button" class="shortcut-btn">
+                <span class="shortcut-btn__icon">
+                  <span class="icon icon--close" aria-hidden="true"></span>
+                </span>
+                오답노트
+              </button>
+            </li>
+            <li>
+              <button type="button" class="shortcut-btn">
+                <span class="shortcut-btn__icon">
+                  <span class="icon icon--edit" aria-hidden="true"></span>
+                </span>
+                하이라이트
+              </button>
+            </li>
+            <li>
+              <button type="button" class="shortcut-btn">
+                <span class="shortcut-btn__icon">
+                  <span class="icon icon--chart-line" aria-hidden="true"></span>
+                </span>
+                진도 리포트
+              </button>
+            </li>
+          </ul>
+
           <div class="ggrid">
             <article class="stat-card">
               <p class="stat-card__label">
-                <span aria-hidden="true">📊</span>학습 진도율
+                <span aria-hidden="true"><span class="icon icon--bar-chart"></span></span>
+                학습 진도율
               </p>
               <div class="right">
-                <div class="score-ring">
-                  <svg viewBox="0 0 68 68" role="img" aria-label="학습 진도율 62%">
-                    <circle class="score-ring__bg" cx="34" cy="34" r="28" stroke-width="6" />
-                    <circle class="score-ring__fill" cx="34" cy="34" r="28" stroke="var(--g700)" stroke-width="6"
-                      stroke-dasharray="176" stroke-dashoffset="67" transform="rotate(-90 34 34)" />
-                  </svg>
-                  <div class="score-ring__text">
-                    <span class="score-ring__value">62%</span>
-                  </div>
+                <p class="stat-card__number">62%</p>
+              </div>
+              <div class="stat-card__progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar__fill progress-bar__fill--green" data-progress="62"></div>
                 </div>
               </div>
+              <p class="stat-card__meta">전체 코스 절반 이상 완료</p>
             </article>
             <article class="stat-card">
               <p class="stat-card__label">
-                <span aria-hidden="true">📥</span>모의고사
+                <span aria-hidden="true"><span class="icon icon--check-square"></span></span>모의고사
               </p>
               <div class="right">
                 <p class="stat-card__number">3회</p>
-                <p class="stat-card__meta">총 완료 횟수</p>
-                <p class="stat-card__pill">평균 점수 72점</p>
               </div>
+              <div class="stat-card__progress">
+                <div class="progress-bar"></div>
+              </div>
+              <p class="stat-card__pill">평균 점수 72점</p>
             </article>
             <article class="stat-card">
               <p class="stat-card__label">
-                <span aria-hidden="true">💼</span>취업 준비율
+                <span aria-hidden="true"><span class="icon icon--target"></span></span>
+                취업 준비율
               </p>
               <div class="right">
                 <p class="stat-card__number">45%</p>
@@ -79,77 +143,82 @@
                   <div class="progress-bar__fill progress-bar__fill--orange" data-progress="45"></div>
                 </div>
               </div>
+              <p class="stat-card__meta">서류·면접 준비도</p>
             </article>
             <article class="stat-card">
               <p class="stat-card__label">
-                <span aria-hidden="true">⭐</span>총 포인트
+                <span aria-hidden="true"><span class="icon icon--star"></span></span>
+                총 포인트
               </p>
               <div class="right">
                 <p class="stat-card__number">0P</p>
-                <p class="stat-card__pill stat-card__pill--gold">
-                  이번 주 +0P
-                </p>
               </div>
+              <div class="stat-card__progress">
+                <div class="progress-bar"></div>
+              </div>
+              <p class="stat-card__pill stat-card__pill--gold">이번 주 +0P</p>
             </article>
           </div>
 
-          <h2 class="home-section-heading">
-            🌱 추천 학습 로드맵
-          </h2>
           <ul class="rm-scroll">
             <li>
               <a class="roadmap-card" href="/pages/wiki/detail.html">
-                <span class="roadmap-card__icon" aria-hidden="true">🗄️</span>
+                <div class="roadmap-card__head">
+                  <span class="roadmap-card__icon" aria-hidden="true"><span class="icon icon--database"></span></span>
+                  <span class="roadmap-card__percent">70%</span>
+                </div>
                 <p class="roadmap-card__title">SQL 기초 복습</p>
-                <p class="roadmap-card__desc">SELECT, WHERE, JOIN</p>
                 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar__fill progress-bar__fill--green" data-progress="70"></div>
                 </div>
-                <p class="roadmap-card__percent">70%</p>
               </a>
             </li>
             <li>
               <a class="roadmap-card" href="/pages/wiki/detail.html">
-                <span class="roadmap-card__icon" aria-hidden="true">☕</span>
+                <div class="roadmap-card__head">
+                  <span class="roadmap-card__icon" aria-hidden="true"><span class="icon icon--monitor"></span></span>
+                  <span class="roadmap-card__percent">40%</span>
+                </div>
                 <p class="roadmap-card__title">Java 객체지향</p>
-                <p class="roadmap-card__desc">클래스와 객체 이해하기</p>
                 <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar__fill progress-bar__fill--blue" data-progress="40"></div>
                 </div>
-                <p class="roadmap-card__percent">40%</p>
               </a>
             </li>
             <li>
               <a class="roadmap-card" href="/pages/wiki/detail.html">
-                <span class="roadmap-card__icon" aria-hidden="true">🔀</span>
+                <div class="roadmap-card__head">
+                  <span class="roadmap-card__icon" aria-hidden="true"><span class="icon icon--git-branch"></span></span>
+                  <span class="roadmap-card__percent">30%</span>
+                </div>
                 <p class="roadmap-card__title">Git 기본 개념</p>
-                <p class="roadmap-card__desc">버전 관리와 협업</p>
                 <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar__fill progress-bar__fill--blue" data-progress="30"></div>
                 </div>
-                <p class="roadmap-card__percent">30%</p>
               </a>
             </li>
             <li>
               <a class="roadmap-card" href="/pages/handbook/index.html">
-                <span class="roadmap-card__icon" aria-hidden="true">📄</span>
+                <div class="roadmap-card__head">
+                  <span class="roadmap-card__icon" aria-hidden="true"><span class="icon icon--file-text"></span></span>
+                  <span class="roadmap-card__percent">50%</span>
+                </div>
                 <p class="roadmap-card__title">이력서 작성</p>
-                <p class="roadmap-card__desc">핵심역량 정리하기</p>
                 <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar__fill progress-bar__fill--orange" data-progress="50"></div>
                 </div>
-                <p class="roadmap-card__percent">50%</p>
               </a>
             </li>
             <li>
               <a class="roadmap-card" href="/pages/handbook/index.html">
-                <span class="roadmap-card__icon" aria-hidden="true">💬</span>
+                <div class="roadmap-card__head">
+                  <span class="roadmap-card__icon" aria-hidden="true"><span class="icon icon--message"></span></span>
+                  <span class="roadmap-card__percent">30%</span>
+                </div>
                 <p class="roadmap-card__title">면접 준비</p>
-                <p class="roadmap-card__desc">기출 면접 질문 풀이</p>
                 <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
                   <div class="progress-bar__fill progress-bar__fill--orange" data-progress="30"></div>
                 </div>
-                <p class="roadmap-card__percent">30%</p>
               </a>
             </li>
           </ul>
@@ -157,117 +226,84 @@
           <div class="h3g">
             <div class="card">
               <div class="card__body">
-                <div class="section-title">
-                  최근 본 페이지
-                  <a class="section-title__link" href="/pages/wiki/index.html">전체보기</a>
-                </div>
+                <div class="section-title">최근 본 페이지</div>
                 <ul class="recent-list">
-                  <li class="recent-list__item">
-                    <span class="recent-list__icon" aria-hidden="true">🗄️</span><span class="recent-list__title">SQL
-                      SELECT 문법</span><span class="tag tag--green tag--sm">새싹위키</span><span class="recent-list__time">5분
-                      전</span>
+                  <li class="recent-list__item recent-list__item--success">
+                    <span class="recent-list__icon" aria-hidden="true"></span>
+                    <span class="recent-list__title">SQL SELECT 문법</span>
+                    <span class="recent-list__time">5분 전</span>
                   </li>
-                  <li class="recent-list__item">
-                    <span class="recent-list__icon" aria-hidden="true">☕</span><span class="recent-list__title">Java 상속과
-                      다형성</span><span class="tag tag--green tag--sm">새싹위키</span><span class="recent-list__time">1시간
-                      전</span>
+                  <li class="recent-list__item recent-list__item--success">
+                    <span class="recent-list__icon" aria-hidden="true"></span>
+                    <span class="recent-list__title">Java 상속과 다형성</span>
+                    <span class="recent-list__time">1시간 전</span>
                   </li>
-                  <li class="recent-list__item">
-                    <span class="recent-list__icon" aria-hidden="true">📄</span><span class="recent-list__title">이력서 작성
-                      가이드</span><span class="tag tag--gold tag--sm">취업핸드북</span><span class="recent-list__time">3시간
-                      전</span>
+                  <li class="recent-list__item recent-list__item--warning">
+                    <span class="recent-list__icon" aria-hidden="true"></span>
+                    <span class="recent-list__title">이력서 작성 가이드</span>
+                    <span class="recent-list__time">3시간 전</span>
                   </li>
                   <li>
-                    <a class="recent-list__item recent-list__item--clickable" href="/pages/exam/index.html"><span
-                        class="recent-list__icon" aria-hidden="true">📝</span><span class="recent-list__title">모의고사
-                        1회</span><span class="tag tag--blue tag--sm">모의고사</span><span
-                        class="recent-list__time">어제</span></a>
+                    <a class="recent-list__item recent-list__item--clickable recent-list__item--info" href="/pages/exam/index.html">
+                      <span class="recent-list__icon" aria-hidden="true"></span>
+                      <span class="recent-list__title">모의고사 1회</span>
+                      <span class="recent-list__time">어제</span>
+                    </a>
                   </li>
                 </ul>
+                <div class="card__more">
+                  <a class="card__more-link" href="/pages/wiki/index.html">위키 둘러보기</a>
+                </div>
               </div>
             </div>
             <div class="card">
               <div class="card__body">
-                <div class="section-title">
-                  즐겨찾기
-                  <a class="section-title__link" href="/pages/my/favorites.html">전체보기</a>
-                </div>
+                <div class="section-title">즐겨찾기</div>
                 <ul class="favorite-list">
                   <li class="favorite-list__item">
-                    <span class="favorite-list__star" aria-hidden="true">★</span><span class="favorite-list__title">SQL
-                      JOIN 완벽 정리</span><span class="tag tag--green tag--sm">새싹위키</span>
+                    <span class="icon icon--star-filled favorite-list__star" aria-hidden="true"></span>
+                    <span class="favorite-list__title">SQL JOIN 완벽 정리</span>
+                    <span class="tag tag--green tag--sm">새싹위키</span>
                   </li>
                   <li class="favorite-list__item">
-                    <span class="favorite-list__star" aria-hidden="true">★</span><span class="favorite-list__title">Java
-                      예외 처리</span><span class="tag tag--green tag--sm">새싹위키</span>
+                    <span class="icon icon--star-filled favorite-list__star" aria-hidden="true"></span>
+                    <span class="favorite-list__title">Java 예외 처리</span>
+                    <span class="tag tag--green tag--sm">새싹위키</span>
                   </li>
                   <li class="favorite-list__item">
-                    <span class="favorite-list__star" aria-hidden="true">★</span><span class="favorite-list__title">면접
-                      질문 모음 정리</span><span class="tag tag--gold tag--sm">취업핸드북</span>
+                    <span class="icon icon--star-filled favorite-list__star" aria-hidden="true"></span>
+                    <span class="favorite-list__title">면접 질문 모음 정리</span>
+                    <span class="tag tag--gold tag--sm">취업핸드북</span>
                   </li>
                   <li class="favorite-list__item">
-                    <span class="favorite-list__star" aria-hidden="true">★</span><span
-                      class="favorite-list__title">Salesforce Flow 기초</span><span
-                      class="tag tag--green tag--sm">새싹위키</span>
+                    <span class="icon icon--star-filled favorite-list__star" aria-hidden="true"></span>
+                    <span class="favorite-list__title">Salesforce Flow 기초</span>
+                    <span class="tag tag--green tag--sm">새싹위키</span>
                   </li>
-                  
+
                 </ul>
+                <div class="card__more">
+                  <a class="card__more-link" href="/pages/my/favorites.html">전체보기</a>
+                </div>
               </div>
             </div>
-            <div class="card">
+            <div class="card word-chip-card">
               <div class="card__body">
-                <div class="section-title">
-                  최근 저장한 단어
-                  <a class="section-title__link" href="/pages/my/words.html">전체보기</a>
-                </div>
+                <div class="section-title">최근 저장한 단어</div>
                 <ul class="word-chip-list">
                   <li class="word-chip">JOIN</li>
                   <li class="word-chip">Primary Key</li>
                   <li class="word-chip">Apex</li>
                   <li class="word-chip">Flow</li>
                   <li class="word-chip">Callback</li>
-                  <li class="word-chip word-chip--muted">+ 더보기</li>
                 </ul>
+                <div class="card__more">
+                  <a class="card__more-link" href="/pages/my/words.html">단어장 가기</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <aside id="side-panel" class="side-panel" aria-label="바로가기 및 학습 기록">
-          <div class="streak-card">
-            <p class="streak-card__label">연속 학습 기록</p>
-            <div class="streak-card__value-row">
-              <span class="streak-card__number">7</span><span class="streak-card__unit">일</span>
-              <span class="streak-card__note">최고 기록 12일</span>
-            </div>
-            <div class="quote-box">
-              <p class="quote-box__label">🌱 오늘의 한마디</p>
-              <p class="quote-box__text">
-                꾸준함이 실력이고,<br />실력이 자신감이 됩니다!
-              </p>
-            </div>
-          </div>
-          <ul class="shortcut-grid">
-            <li>
-              <a class="shortcut-btn" href="/pages/my/words.html"><em class="shortcut-btn__icon">📓</em>단어장</a>
-            </li>
-            <li>
-              <button type="button" class="shortcut-btn">
-                <em class="shortcut-btn__icon">❌</em>오답노트
-              </button>
-            </li>
-            <li>
-              <button type="button" class="shortcut-btn">
-                <em class="shortcut-btn__icon">✏️</em>하이라이트
-              </button>
-            </li>
-            <li>
-              <button type="button" class="shortcut-btn">
-                <em class="shortcut-btn__icon">📈</em>진도 리포트
-              </button>
-            </li>
-          </ul>
-        </aside>
       </div>
     </section>
   </main>

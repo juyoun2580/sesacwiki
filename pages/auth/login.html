@@ -19,8 +19,7 @@
   <main id="main-content" class="auth-shell">
     <section id="login" class="auth-card" aria-label="로그인">
       <div class="auth-card__logo">
-        <span class="auth-card__logo-mark" aria-hidden="true">🌱</span>
-        <p class="auth-card__logo-name">새싹트리</p>
+        <img src="/assets/img/logo-lockup.svg" alt="새싹Wiki" />
       </div>
       <h1 class="auth-card__title">로그인</h1>
       <p class="auth-card__subtitle">이메일로 로그인하고 나만의 취업 핸드북을 이어가세요.</p>
@@ -37,7 +36,7 @@
       <p class="auth-card__switch">계정이 없으신가요? <a href="/pages/auth/signup.html" class="auth-card__switch-link">가입하기</a></p>
 
       <div class="auth-pending" id="auth-pending" hidden>
-        <p class="auth-pending__icon" aria-hidden="true">📩</p>
+        <p class="empty-state__icon" aria-hidden="true"><span class="icon icon--email"></span></p>
         <p class="auth-pending__title">인증 메일을 보냈어요</p>
         <p class="auth-pending__desc"><strong id="auth-pending-email"></strong> 주소로 보낸 인증 링크를 클릭하면 로그인이 완료돼요.</p>
         <button type="button" class="auth-pending__resend" data-action="resend-verification">인증 메일 다시 보내기</button>

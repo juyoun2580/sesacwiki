@@ -68,16 +68,18 @@ function initPageAuthGuard() {
 }
 
 // ── 공통 초기화 진입점 — auth.js가 먼저 로드되어 initAuth()를 제공해야 한다 ──
-// header/nav는 fetch로 비동기 주입되므로, header에 의존하는 초기화(initNavigation/initAuth)는
-// loadHeader() 완료 후에 실행한다.
+// nav-mount는 이제 header.html 내부에 포함되므로, loadHeader()로 header 마크업이 주입된
+// 뒤에 loadNav()를 실행해야 한다. header/nav에 의존하는 초기화(initNavigation/initAuth)도
+// 마찬가지로 그 이후에 실행한다.
 initProgressBars();
 initToastTriggers();
 
-loadNav();
-loadHeader().then(() => {
-  initNavigation();
-  initAuth();
-});
+loadHeader()
+  .then(() => loadNav())
+  .then(() => {
+    initNavigation();
+    initAuth();
+  });
 
 // isLoggedIn()이 정확한 값을 돌려주려면 auth.js의 최초 세션 조회가 끝나야 하므로,
 // 로그인 여부에 따라 분기하는 가드는 authReady 이후로 미룬다.

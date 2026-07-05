@@ -131,11 +131,11 @@ if (signupForm) {
     const agreeMarketing = document.getElementById("signup-agree-marketing").checked;
 
     if (!name || !email) {
-      toast("이름과 이메일을 모두 입력해주세요.");
+      toast("이름과 이메일을 모두 입력해주세요");
       return;
     }
     if (!agreeRequired) {
-      toast("개인정보 수집 및 이용약관에 동의해야 가입할 수 있어요.");
+      toast("개인정보 수집 및 이용약관에 동의해야 가입할 수 있어요");
       return;
     }
 
@@ -153,7 +153,7 @@ if (signupForm) {
       return;
     }
 
-    toast(`🌱 ${name}님, 가입이 완료됐어요! 로그인해주세요.`);
+    toast(`🌱 ${name}님, 가입이 완료됐어요! 로그인해주세요`);
     setTimeout(() => {
       location.href = "/pages/auth/login.html";
     }, 1200);
@@ -183,14 +183,14 @@ if (loginForm) {
     });
 
     if (error) {
-      toast("가입되지 않은 이메일이에요. 먼저 가입해주세요.");
+      toast("가입되지 않은 이메일이에요. 먼저 가입해주세요");
       return;
     }
 
     document.getElementById("auth-pending-email").textContent = email;
     loginForm.hidden = true;
     pendingPanel.hidden = false;
-    toast("📩 인증 메일을 보냈어요! 메일함을 확인해주세요.");
+    toast("📩 인증 메일을 보냈어요! 메일함을 확인해주세요");
   });
 }
 
