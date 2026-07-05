@@ -93,19 +93,19 @@
 
           <div class="resume-stat-bar" aria-label="이력서 현황">
             <div class="resume-stat-bar__item">
-              <p class="resume-stat-bar__value">5</p>
+              <p class="resume-stat-bar__value">0</p>
               <p class="resume-stat-bar__label">전체 이력서</p>
             </div>
             <div class="resume-stat-bar__item">
-              <p class="resume-stat-bar__value">3</p>
+              <p class="resume-stat-bar__value">0</p>
               <p class="resume-stat-bar__label">작성 중</p>
             </div>
             <div class="resume-stat-bar__item">
-              <p class="resume-stat-bar__value resume-stat-bar__value--accent">2</p>
+              <p class="resume-stat-bar__value resume-stat-bar__value--accent">0</p>
               <p class="resume-stat-bar__label">완성</p>
             </div>
             <div class="resume-stat-bar__item">
-              <p class="resume-stat-bar__value">78%</p>
+              <p class="resume-stat-bar__value">0%</p>
               <p class="resume-stat-bar__label">평균 완성도</p>
             </div>
           </div>
@@ -113,13 +113,13 @@
           <div class="resume-filter-row">
             <div class="filter-tabs" role="tablist" aria-label="이력서 상태 필터">
               <button type="button" class="filter-tab filter-tab--active"
-                data-filter="all" role="tab" aria-selected="true">전체 (5)</button>
+                data-filter="all" role="tab" aria-selected="true">전체 (0)</button>
               <button type="button" class="filter-tab"
-                data-filter="in-progress" role="tab" aria-selected="false">작성 중 (3)</button>
+                data-filter="in-progress" role="tab" aria-selected="false">작성 중 (0)</button>
               <button type="button" class="filter-tab"
-                data-filter="done" role="tab" aria-selected="false">완성 (2)</button>
+                data-filter="done" role="tab" aria-selected="false">완성 (0)</button>
               <button type="button" class="filter-tab"
-                data-filter="applied" role="tab" aria-selected="false">지원 완료 (3)</button>
+                data-filter="applied" role="tab" aria-selected="false">지원 완료 (0)</button>
             </div>
             <label class="sr-only" for="resume-sort">정렬 기준</label>
             <select id="resume-sort" class="my-toolbar__select">
@@ -130,147 +130,6 @@
           </div>
 
           <ul class="resume-list" id="resume-list" aria-label="이력서 목록">
-
-            <li data-status="done">
-              <button type="button" class="resume-row"
-                data-action="toast" data-message="신한은행 이력서를 열어요!">
-                <span class="resume-row__status">
-                  <span class="tag tag--blue">완성</span>
-                </span>
-                <span class="resume-row__info">
-                  <span class="resume-row__title">신한은행 IT본부 지원 이력서</span>
-                  <span class="resume-row__meta">💼 신한은행 · IT/개발 직군</span>
-                </span>
-                <span class="resume-row__progress">
-                  <span class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                    <span class="progress-bar__fill progress-bar__fill--blue" data-progress="100"></span>
-                  </span>
-                  <span class="resume-row__pct">100%</span>
-                </span>
-                <span class="resume-row__date">2025.05.20</span>
-                <span class="resume-row__actions">
-                  <span class="btn btn--outline btn--sm">편집</span>
-                  <span class="btn btn--primary btn--sm">📥 PDF</span>
-                </span>
-              </button>
-            </li>
-
-            <li data-status="in-progress">
-              <button type="button" class="resume-row"
-                data-action="toast" data-message="카카오 이력서를 이어서 작성해요!">
-                <span class="resume-row__status">
-                  <span class="tag tag--gold">작성 중</span>
-                </span>
-                <span class="resume-row__info">
-                  <span class="resume-row__title">카카오 신입 공채 이력서</span>
-                  <span class="resume-row__meta">💼 카카오 · 백엔드 개발자</span>
-                </span>
-                <span class="resume-row__progress">
-                  <span class="progress-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
-                    <span class="progress-bar__fill progress-bar__fill--green" data-progress="72"></span>
-                  </span>
-                  <span class="resume-row__pct">72%</span>
-                </span>
-                <span class="resume-row__date">2025.05.18</span>
-                <span class="resume-row__actions">
-                  <span class="btn btn--primary btn--sm">계속 작성</span>
-                </span>
-              </button>
-            </li>
-
-            <li data-status="in-progress">
-              <button type="button" class="resume-row"
-                data-action="toast" data-message="삼성SDS 이력서를 이어서 작성해요!">
-                <span class="resume-row__status">
-                  <span class="tag tag--gold">작성 중</span>
-                </span>
-                <span class="resume-row__info">
-                  <span class="resume-row__title">삼성SDS 공채 자기소개서</span>
-                  <span class="resume-row__meta">💼 삼성SDS · IT서비스</span>
-                </span>
-                <span class="resume-row__progress">
-                  <span class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                    <span class="progress-bar__fill progress-bar__fill--purple" data-progress="55"></span>
-                  </span>
-                  <span class="resume-row__pct">55%</span>
-                </span>
-                <span class="resume-row__date">2025.05.15</span>
-                <span class="resume-row__actions">
-                  <span class="btn btn--primary btn--sm">계속 작성</span>
-                </span>
-              </button>
-            </li>
-
-            <li data-status="applied">
-              <button type="button" class="resume-row resume-row--applied"
-                data-action="toast" data-message="하나은행 이력서를 열어요!">
-                <span class="resume-row__status">
-                  <span class="tag tag--coral">지원 완료</span>
-                </span>
-                <span class="resume-row__info">
-                  <span class="resume-row__title">하나은행 디지털 직군 이력서</span>
-                  <span class="resume-row__meta">💼 하나은행 · 디지털/IT</span>
-                </span>
-                <span class="resume-row__progress">
-                  <span class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                    <span class="progress-bar__fill progress-bar__fill--coral" data-progress="100"></span>
-                  </span>
-                  <span class="resume-row__pct">100%</span>
-                </span>
-                <span class="resume-row__date">2025.05.10</span>
-                <span class="resume-row__actions">
-                  <span class="btn btn--outline btn--sm">복사</span>
-                  <span class="btn btn--outline btn--sm">📥 PDF</span>
-                </span>
-              </button>
-            </li>
-
-            <li data-status="in-progress">
-              <button type="button" class="resume-row"
-                data-action="toast" data-message="네이버 이력서를 이어서 작성해요!">
-                <span class="resume-row__status">
-                  <span class="tag tag--gold">작성 중</span>
-                </span>
-                <span class="resume-row__info">
-                  <span class="resume-row__title">네이버 클라우드 인턴 지원서</span>
-                  <span class="resume-row__meta">💼 네이버 · 클라우드 인프라</span>
-                </span>
-                <span class="resume-row__progress">
-                  <span class="progress-bar" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100">
-                    <span class="progress-bar__fill progress-bar__fill--orange" data-progress="38"></span>
-                  </span>
-                  <span class="resume-row__pct">38%</span>
-                </span>
-                <span class="resume-row__date">2025.05.08</span>
-                <span class="resume-row__actions">
-                  <span class="btn btn--primary btn--sm">계속 작성</span>
-                </span>
-              </button>
-            </li>
-
-            <li data-status="applied">
-              <button type="button" class="resume-row resume-row--applied"
-                data-action="toast" data-message="우리은행 이력서를 열어요!">
-                <span class="resume-row__status">
-                  <span class="tag tag--coral">지원 완료</span>
-                </span>
-                <span class="resume-row__info">
-                  <span class="resume-row__title">우리은행 ICT 신입 이력서</span>
-                  <span class="resume-row__meta">💼 우리은행 · ICT/디지털</span>
-                </span>
-                <span class="resume-row__progress">
-                  <span class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                    <span class="progress-bar__fill progress-bar__fill--coral" data-progress="100"></span>
-                  </span>
-                  <span class="resume-row__pct">100%</span>
-                </span>
-                <span class="resume-row__date">2025.04.30</span>
-                <span class="resume-row__actions">
-                  <span class="btn btn--outline btn--sm">복사</span>
-                  <span class="btn btn--outline btn--sm">📥 PDF</span>
-                </span>
-              </button>
-            </li>
 
             <li>
               <button type="button" class="resume-row-new" data-open="resume-create-modal">
@@ -291,14 +150,14 @@
           <div class="section-title section-title--sm">이력서 작성 가이드</div>
           <div class="resume-guide-steps">
             <div class="resume-guide-step">
-              <span class="resume-guide-step__num resume-guide-step__num--done" aria-label="완료">✓</span>
+              <span class="resume-guide-step__num" aria-label="미완료">1</span>
               <div class="resume-guide-step__body">
                 <p class="resume-guide-step__title">기본 정보 입력</p>
                 <p class="resume-guide-step__desc">이름, 연락처, 희망 직종</p>
               </div>
             </div>
             <div class="resume-guide-step">
-              <span class="resume-guide-step__num resume-guide-step__num--done" aria-label="완료">✓</span>
+              <span class="resume-guide-step__num" aria-label="미완료">2</span>
               <div class="resume-guide-step__body">
                 <p class="resume-guide-step__title">학력 사항</p>
                 <p class="resume-guide-step__desc">최종 학교 및 전공</p>
@@ -335,18 +194,7 @@
               data-action="toast" data-message="지원 현황 전체보기로 이동해요!">전체보기 ›</button>
           </div>
           <div class="apply-status-list" aria-label="지원 현황">
-            <div class="apply-status-row">
-              <span class="apply-status-row__company">신한은행 IT</span>
-              <span class="tag tag--green">서류심사중</span>
-            </div>
-            <div class="apply-status-row">
-              <span class="apply-status-row__company">하나은행 디지털</span>
-              <span class="tag tag--blue">면접 예정</span>
-            </div>
-            <div class="apply-status-row">
-              <span class="apply-status-row__company">우리은행 ICT</span>
-              <span class="tag tag--gray">결과 대기</span>
-            </div>
+            <p class="apply-status-list__empty">아직 지원한 곳이 없습니다.</p>
           </div>
 
           <div class="divider"></div>
