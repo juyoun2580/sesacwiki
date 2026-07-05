@@ -1221,57 +1221,52 @@ function renderCoverEditor(c, opts) {
   }
 }
 
-// ── 10. 프로젝트 목록 ─────────────────────────────────────────────────────
 // ── 10. 포트폴리오 (통합) ──────────────────────────────────────────────────
+// "프로젝트" 탭은 이미지 첨부/수정까지 지원하는 renderProjects()에 그대로 위임한다.
+// (과거엔 이 탭에 추가/대표/삭제만 되는 더 단순한 마크업이 따로 중복 구현돼 있었고,
+// 이미지 업로드·수정 기능은 STEP_CATALOG 어떤 작업에서도 열리지 않는 renderProjects()
+// 안에만 있었다 — "포트폴리오 구성" 작업이 스크린샷 첨부를 안내하는데 실제로는 첨부할
+// 방법이 없던 버그. 두 구현을 합쳐서 하나만 남긴다.)
 function renderPortfolioBuilder(c) {
-  const f = loadFeatures();
-
   const tabs = [
     { key: 'projects', label: '🗂 프로젝트' },
     { key: 'preview',  label: '🖼 미리보기' },
   ];
 
-  let bodyHTML = '';
+  c.innerHTML = `
+    <div class="ff-tabs ff-tabs--sm">
+      ${tabs.map(t => `
+        <button type="button" class="ff-tab${_portfolioTab === t.key ? ' ff-tab--active' : ''}" data-ptab="${t.key}">${t.label}</button>`).join('')}
+    </div>
+    <div class="ff-portfolio-tab-body" style="padding-top:var(--space-20)"></div>`;
+
+  c.querySelectorAll('.ff-tab[data-ptab]').forEach(btn => {
+    btn.onclick = () => { _portfolioTab = btn.dataset.ptab; renderPortfolioBuilder(c); };
+  });
+
+  const bodyEl = c.querySelector('.ff-portfolio-tab-body');
+
   if (_portfolioTab === 'projects') {
-    bodyHTML = `
-      <div class="ff-form ff-form--col" style="margin-bottom:var(--space-20)">
-        <div class="ff-form ff-form--row">
-          <input id="pj-title"  class="ff-input" placeholder="프로젝트명">
-          <input id="pj-period" class="ff-input ff-input--sm" placeholder="기간 (예: 2024.03 ~ 2024.06)">
-          <input id="pj-role"   class="ff-input ff-input--sm" placeholder="역할 (예: 프론트엔드 개발)">
-        </div>
-        <div class="ff-form ff-form--row">
-          <input id="pj-tech" class="ff-input" placeholder="기술 스택 (쉼표로 구분: React, Node.js)">
-          <input id="pj-url"  class="ff-input ff-input--sm" placeholder="GitHub / 배포 URL">
-        </div>
-        <textarea id="pj-desc" class="ff-textarea" rows="3" placeholder="프로젝트 설명 및 주요 성과를 입력하세요"></textarea>
-        <button type="button" class="btn btn--primary btn--sm" id="pj-add">+ 프로젝트 추가</button>
-      </div>
-      <div class="ff-project-grid">
-        ${f.projects.length ? f.projects.map(x => `
-          <div class="ff-project-card${x.isFeatured ? ' ff-project-card--featured' : ''}">
-            ${x.isFeatured ? '<span class="tag tag--green">⭐ 대표</span>' : ''}
-            <p class="ff-project-card__title">${esc(x.title)}</p>
-            ${x.period ? `<p class="ff-project-card__meta">${esc(x.period)}${x.role ? ` · ${esc(x.role)}` : ''}</p>` : ''}
-            ${x.tech.length ? `<p class="ff-project-card__tech">${x.tech.map(t => `<span class="tag tag--blue">${esc(t)}</span>`).join('')}</p>` : ''}
-            ${x.desc ? `<p class="ff-project-card__desc">${esc(x.desc)}</p>` : ''}
-            ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener" class="ff-link">링크 →</a>` : ''}
-            <div class="ff-project-card__actions">
-              <button type="button" class="btn btn--outline btn--sm ff-pj-feature" data-id="${x.id}">${x.isFeatured ? '대표 해제' : '⭐ 대표로 설정'}</button>
-              <button type="button" class="btn btn--ghost btn--sm ff-pj-del" data-id="${x.id}">삭제</button>
-            </div>
-          </div>`).join('') : '<p class="ff-empty">프로젝트를 추가해보세요!</p>'}
-      </div>`;
+    renderProjects(bodyEl);
+    return;
+  }
+
+  renderPortfolioPreview(bodyEl);
+}
+
+// 포트폴리오 "미리보기" 탭 — 대표로 설정한 프로젝트를 요약 카드로 보여준다.
+function renderPortfolioPreview(c) {
+  const f = loadFeatures();
+  let bodyHTML = '';
+  const featured = f.projects.find(x => x.isFeatured);
+  if (!featured) {
+    bodyHTML = `<div class="ff-ai-stub">
+      <p class="ff-ai-stub__icon">🖼</p>
+      <p class="ff-ai-stub__title">대표 프로젝트를 먼저 선택해주세요</p>
+      <p class="ff-ai-stub__desc">프로젝트 탭에서 대표로 설정한 프로젝트가 여기에 표시돼요.</p>
+    </div>`;
   } else {
-    const featured = f.projects.find(x => x.isFeatured);
-    if (!featured) {
-      bodyHTML = `<div class="ff-ai-stub">
-        <p class="ff-ai-stub__icon">🖼</p>
-        <p class="ff-ai-stub__title">대표 프로젝트를 먼저 선택해주세요</p>
-        <p class="ff-ai-stub__desc">프로젝트 탭에서 대표로 설정한 프로젝트가 여기에 표시돼요.</p>
-      </div>`;
-    } else {
-      bodyHTML = `
+    bodyHTML = `
         <div class="ff-portfolio">
           <div class="ff-portfolio__hero">
             <span class="ff-portfolio__icon" aria-hidden="true">🖼</span>
@@ -1297,40 +1292,9 @@ function renderPortfolioBuilder(c) {
                 </div>`).join('')}
             </div>` : ''}
         </div>`;
-    }
   }
 
-  c.innerHTML = `
-    <div class="ff-tabs ff-tabs--sm">
-      ${tabs.map(t => `
-        <button type="button" class="ff-tab${_portfolioTab === t.key ? ' ff-tab--active' : ''}" data-ptab="${t.key}">${t.label}</button>`).join('')}
-    </div>
-    <div style="padding-top:var(--space-20)">${bodyHTML}</div>`;
-
-  c.querySelectorAll('.ff-tab[data-ptab]').forEach(btn => {
-    btn.onclick = () => { _portfolioTab = btn.dataset.ptab; renderPortfolioBuilder(c); };
-  });
-
-  if (_portfolioTab === 'projects') {
-    c.querySelector('#pj-add').onclick = () => {
-      const title = c.querySelector('#pj-title').value.trim();
-      if (!title) return T('프로젝트명을 입력하세요.');
-      const tech = c.querySelector('#pj-tech').value.split(',').map(t => t.trim()).filter(Boolean);
-      const f2 = loadFeatures();
-      f2.projects.push({ id: genId(), title, period: c.querySelector('#pj-period').value.trim(), role: c.querySelector('#pj-role').value.trim(), tech, desc: c.querySelector('#pj-desc').value.trim(), url: c.querySelector('#pj-url').value.trim(), isFeatured: false });
-      saveFeatures(f2); renderPortfolioBuilder(c);
-    };
-    c.querySelectorAll('.ff-pj-feature').forEach(b => b.onclick = () => {
-      const f2 = loadFeatures();
-      f2.projects.forEach(x => { x.isFeatured = (x.id === b.dataset.id) ? !x.isFeatured : false; });
-      saveFeatures(f2); renderPortfolioBuilder(c);
-    });
-    c.querySelectorAll('.ff-pj-del').forEach(b => b.onclick = () => {
-      const f2 = loadFeatures();
-      f2.projects = f2.projects.filter(x => x.id !== b.dataset.id);
-      saveFeatures(f2); renderPortfolioBuilder(c);
-    });
-  }
+  c.innerHTML = bodyHTML;
 }
 
 function renderProjects(c, opts) {
