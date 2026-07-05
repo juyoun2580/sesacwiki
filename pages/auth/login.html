@@ -31,17 +31,15 @@
           <input type="email" id="login-email" class="auth-input" placeholder="example@sesac.com"
             autocomplete="email" required>
         </div>
+        <div class="auth-field">
+          <label class="auth-label" for="login-password">비밀번호</label>
+          <input type="password" id="login-password" class="auth-input" placeholder="비밀번호를 입력하세요"
+            autocomplete="current-password" required>
+        </div>
         <button type="submit" class="btn btn--primary auth-form__submit">로그인</button>
       </form>
 
       <p class="auth-card__switch">계정이 없으신가요? <a href="/pages/auth/signup.html" class="auth-card__switch-link">가입하기</a></p>
-
-      <div class="auth-pending" id="auth-pending" hidden>
-        <p class="auth-pending__icon" aria-hidden="true">📩</p>
-        <p class="auth-pending__title">인증 메일을 보냈어요</p>
-        <p class="auth-pending__desc"><strong id="auth-pending-email"></strong> 주소로 보낸 인증 링크를 클릭하면 로그인이 완료돼요.</p>
-        <button type="button" class="auth-pending__resend" data-action="resend-verification">인증 메일 다시 보내기</button>
-      </div>
     </section>
   </main>
 
