@@ -35,6 +35,13 @@ const WIKI_LEVEL_ORDER = { '입문': 0, '기초': 1, '중급': 2 };
 const WIKI_LEVEL_TAG_COLOR = { '입문': 'green', '기초': 'gray', '중급': 'gold' };
 const WIKI_RETURN_STATE_KEY = 'wikiReturnState';
 
+// ── 공용 Toolbar 컴포넌트(SearchBox + SortPill)가 넘겨주는 정렬 라벨 ↔ 내부 상태값 매핑 ──
+// Toolbar는 "인기순"/"popular" 같은 의미를 모르므로, 라벨 문자열을 실제 정렬 기준으로
+// 바꾸는 건 여기(wiki.js)의 책임이다.
+const WIKI_SORT_OPTIONS = ['최신순', '인기순', '난이도순'];
+const WIKI_SORT_LABEL_TO_KEY = { '최신순': 'latest', '인기순': 'popular', '난이도순': 'level' };
+const WIKI_SORT_KEY_TO_LABEL = { latest: '최신순', popular: '인기순', level: '난이도순' };
+
 let wikiAllItems = [];
 let wikiState = {
   category: '전체',
@@ -165,35 +172,6 @@ function renderWikiEmptyState(listEl) {
   listEl.appendChild(li);
 }
 
-function renderWikiPagination(totalItems) {
-  const paginationEl = document.getElementById('wikiPagination');
-  paginationEl.innerHTML = '';
-  const totalPages = Math.max(1, Math.ceil(totalItems / WIKI_PAGE_SIZE));
-  if (wikiState.page > totalPages) wikiState.page = totalPages;
-  if (totalItems === 0) return;
-
-  const makeBtn = (label, page, opts = {}) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'pagination__btn' + (opts.active ? ' pagination__btn--active' : '');
-    if (opts.ariaLabel) btn.setAttribute('aria-label', opts.ariaLabel);
-    if (opts.active) btn.setAttribute('aria-current', 'page');
-    btn.disabled = !!opts.disabled;
-    btn.textContent = label;
-    btn.addEventListener('click', () => {
-      wikiState.page = page;
-      renderWikiList();
-    });
-    return btn;
-  };
-
-  paginationEl.appendChild(makeBtn('‹', wikiState.page - 1, { ariaLabel: '이전 페이지', disabled: wikiState.page <= 1 }));
-  for (let p = 1; p <= totalPages; p++) {
-    paginationEl.appendChild(makeBtn(String(p), p, { active: p === wikiState.page }));
-  }
-  paginationEl.appendChild(makeBtn('›', wikiState.page + 1, { ariaLabel: '다음 페이지', disabled: wikiState.page >= totalPages }));
-}
-
 function renderWikiList() {
   const filtered = wikiFilterItems();
   const sorted = wikiSortItems(filtered);
@@ -208,7 +186,23 @@ function renderWikiList() {
     pageItems.forEach(item => listEl.appendChild(buildWikiRow(item)));
   }
 
-  renderWikiPagination(sorted.length);
+  // 필터링으로 총 페이지 수가 줄었을 수 있으니 다음 렌더를 위해 보정한다
+  // (이번 렌더 자체는 보정 전 페이지 기준으로 이미 그려진다 — 기존 동작과 동일).
+  const totalPages = Math.max(1, Math.ceil(sorted.length / WIKI_PAGE_SIZE));
+  if (wikiState.page > totalPages) wikiState.page = totalPages;
+
+  // 버튼 생성/이전·다음/클릭 이벤트는 공용 컴포넌트(assets/js/components/pagination.js)가 담당한다.
+  // wiki.js는 "지금 몇 페이지인지", "페이지가 바뀌면 무엇을 다시 그릴지"만 넘겨준다.
+  renderPagination({
+    container: '#wikiPagination',
+    totalCount: sorted.length,
+    currentPage: wikiState.page,
+    pageSize: WIKI_PAGE_SIZE,
+    onChange(page) {
+      wikiState.page = page;
+      renderWikiList();
+    }
+  });
 }
 
 const WIKI_FAVORITE_PREVIEW_COUNT = 4;
@@ -281,19 +275,22 @@ function restoreWikiReturnState() {
   wikiState.sort = saved.sort;
   wikiState.page = saved.page;
 
-  const searchInput = document.getElementById('wiki-search');
-  if (searchInput) searchInput.value = wikiState.search;
+  if (wikiToolbar) {
+    wikiToolbar.setSearchValue(wikiState.search);
+    wikiToolbar.setActiveSort(WIKI_SORT_KEY_TO_LABEL[wikiState.sort] || WIKI_SORT_OPTIONS[0]);
+  }
 
   document.querySelectorAll('.sidebar__item[data-category]').forEach(btn => {
     btn.classList.toggle('sidebar__item--active', btn.dataset.category === wikiState.category);
-  });
-  document.querySelectorAll('.sort-pill[data-sort]').forEach(btn => {
-    btn.classList.toggle('sort-pill--active', btn.dataset.sort === wikiState.sort);
   });
 
   renderWikiList();
   requestAnimationFrame(() => window.scrollTo(0, saved.scrollY));
 }
+
+// createToolbar()가 돌려주는 컨트롤(setSearchValue/setActiveSort)을 restoreWikiReturnState()에서도
+// 써야 해서 모듈 스코프에 보관한다.
+let wikiToolbar = null;
 
 function wikiBindControls() {
   document.querySelectorAll('.sidebar__item[data-category]').forEach(btn => {
@@ -304,19 +301,20 @@ function wikiBindControls() {
     });
   });
 
-  document.querySelectorAll('.sort-pill[data-sort]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      wikiState.sort = btn.dataset.sort;
+  wikiToolbar = createToolbar({
+    container: '#wikiToolbar',
+    searchPlaceholder: '위키 검색하기',
+    sorts: WIKI_SORT_OPTIONS,
+    onSearch(keyword) {
+      wikiState.search = keyword;
       wikiState.page = 1;
       renderWikiList();
-    });
-  });
-
-  const searchInput = document.getElementById('wiki-search');
-  searchInput.addEventListener('input', () => {
-    wikiState.search = searchInput.value;
-    wikiState.page = 1;
-    renderWikiList();
+    },
+    onSort(label) {
+      wikiState.sort = WIKI_SORT_LABEL_TO_KEY[label] || 'latest';
+      wikiState.page = 1;
+      renderWikiList();
+    }
   });
 
   const favoriteToggleBtn = document.getElementById('wikiFavoriteToggle');
@@ -582,6 +580,10 @@ const WIKI_TO_WORD_CATEGORY = {
   '취업 가이드': '기타'
 };
 
+// 단어장 모달의 카테고리 선택값 → 태그 색상 (mypage.js의 CATEGORY_TAG_COLOR와 값은
+// 같지만, 페이지 JS는 서로 직접 참조하지 않는 원칙에 따라 wiki.js에도 그대로 둔다.
+const WORD_CATEGORY_COLOR = { SQL: 'green', Java: 'orange', 'CS/IT': 'blue', 비즈니스: 'gray', 기타: 'gray' };
+
 // 이미 즐겨찾기된 문서면 그대로 두는(add-only) 원래 동작을 유지한다 — 해제는 별(star) 쪽에서만.
 async function saveWikiFavorite(item) {
   if (!isLoggedIn()) {
@@ -601,23 +603,47 @@ async function saveRecentPage(item) {
   await api.addRecentWikiView(item.id);
 }
 
-function prefillWordModalCategory(item) {
-  const categoryEl = document.getElementById('mcategory');
-  const mapped = WIKI_TO_WORD_CATEGORY[item.category];
-  if (categoryEl && mapped) categoryEl.value = mapped;
+// 현재 상세 화면의 위키 아이템 — renderWikiDetail()이 매번 갱신해두면,
+// highlight.js가 "단어장" 버튼을 눌렀을 때 item 없이도 openWikiWordModal()을 바로 호출할 수 있다.
+let currentWikiDetailItem = null;
+
+// 위키 상세 화면에서 단어장 모달을 열 때 공용 진입점 — highlight.js의
+// "단어장" 버튼(하이라이트한 텍스트를 term으로 프리필)도 이 함수를 그대로 쓴다.
+// 실제 Supabase 저장(api.addWord)은 여기 onSave 콜백이 전담하고, 모달 자신은 모른다.
+function openWikiWordModal(prefillTerm) {
+  if (!currentWikiDetailItem) return;
+  const item = currentWikiDetailItem;
+  openWordModal({
+    mode: 'create',
+    word: { term: prefillTerm || '', category: WIKI_TO_WORD_CATEGORY[item.category] || '' },
+    onSave(values) {
+      const category = values.category;
+      api.addWord({
+        term: values.term,
+        pos: '명사',
+        definition: values.definition || '(뜻 미입력)',
+        example: '',
+        category,
+        categoryColor: WORD_CATEGORY_COLOR[category] || 'gray',
+        favorite: false,
+      }).then(() => toast(`📓 "${values.term}"를 단어장에 저장했어요! +20P`));
+    },
+  });
 }
 
 function bindWikiHandbookSaveActions(item) {
+  currentWikiDetailItem = item;
+
   document.querySelectorAll('.save-box [data-action="quick-favorite"]').forEach(btn => {
     btn.addEventListener('click', () => saveWikiFavorite(item));
   });
 
   document.querySelectorAll('.save-box [data-action="open-modal"]').forEach(btn => {
-    btn.addEventListener('click', () => prefillWordModalCategory(item));
+    btn.addEventListener('click', () => openWikiWordModal(''));
   });
-  document.querySelectorAll('[data-action="highlight-to-word"]').forEach(btn => {
-    btn.addEventListener('click', () => prefillWordModalCategory(item));
-  });
+  // [data-action="highlight-to-word"] 버튼은 highlight.js의 hlToWord()가 선택 텍스트를
+  // 캡처한 뒤 openWikiWordModal(text)를 직접 호출한다(여기서 별도로 바인딩하지 않는다 —
+  // 두 리스너가 같이 걸리면 highlight.js가 선택 영역을 지운 뒤에 실행되어 텍스트를 잃는다).
 }
 
 function initWikiDetailPage() {

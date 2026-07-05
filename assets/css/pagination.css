@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Pagination — 공용 UI 컴포넌트 (assets/js/components/pagination.js가 그리는 마크업 스타일)
+   기존 assets/css/components.css에 있던 .pagination/.pagination__btn 규칙을 그대로
+   옮겨왔다(기존 값 변경 없음, .icon 크기 규칙만 이번에 새로 추가). 위키 목록/내 문서/
+   저장한 단어 3개 화면에서만 쓰이는 것이 확인되어(components.css는 더 넓게 공유되는
+   파일이라) 전용 파일로 분리했다.
+   ========================================================================== */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  margin-top: var(--space-24);
+}
+
+.pagination__btn {
+  width: var(--space-34);
+  height: var(--space-34);
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--neutral-40);
+  background: var(--neutral-surface);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--neutral-600);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.pagination__btn .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.pagination__btn--active {
+  background: var(--green-700);
+  border-color: var(--green-700);
+  color: var(--neutral-surface);
+}
+
+.pagination__btn:hover:not(.pagination__btn--active) {
+  border-color: var(--green-700);
+  color: var(--green-700);
+}

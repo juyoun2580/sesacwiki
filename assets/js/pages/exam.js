@@ -65,17 +65,60 @@ let showAllRecentExams = false;
 // exam-row와 같은 카테고리 아이콘으로 보이도록 exam.json의 list에서 examId→category를 미리 만들어둔다.
 let examCategoryById = {};
 
-// 문제 데이터는 시험별로 assets/data/questions/{examId}.json에 분리 저장돼 있다 (exam.json은 목차만 가벼운 상태로 유지).
-// 오답노트에 필요한 시험 파일만 그때그때 가져온다 — quiz.js와 동일한 헬퍼지만 파일 간 공유 모듈이 없어 각자 정의한다.
-const questionFileCache = new Map();
-function fetchQuestionsFile(examId) {
-  if (!questionFileCache.has(examId)) {
-    questionFileCache.set(examId, fetch(`/assets/data/questions/${examId}.json`).then(res => {
-      if (!res.ok) throw new Error(`${examId} 문제 파일을 불러오지 못했습니다.`);
-      return res.json();
-    }));
+// ── 목록 검색/정렬(공용 Toolbar 컴포넌트가 UI만 담당, 실제 계산은 여기서) ──
+// wiki.js의 wikiState/wikiFilterItems/wikiSortItems와 동일한 패턴.
+let examAllList = [];
+let examState = { search: '', sort: 'latest' };
+
+const EXAM_SORT_OPTIONS = ['최신순', '응시순', '난이도순'];
+const EXAM_SORT_LABEL_TO_KEY = { '최신순': 'latest', '응시순': 'attempts', '난이도순': 'level' };
+const EXAM_SORT_KEY_TO_LABEL = { latest: '최신순', attempts: '응시순', level: '난이도순' };
+// exam.json의 level 값이 위키(입문/기초/중급 3단계)보다 다양해서(기초~중급, 중급~고급, 종합 포함)
+// 별도 순서표를 둔다. 알 수 없는 값은 목록 맨 뒤로 보낸다.
+const EXAM_LEVEL_ORDER = { '입문': 0, '기초': 1, '기초~중급': 2, '중급': 3, '중급~고급': 4, '종합': 5 };
+
+function examFilterList() {
+  const query = examState.search.trim().toLowerCase();
+  if (!query) return examAllList;
+  return examAllList.filter(exam =>
+    exam.title.toLowerCase().includes(query) || exam.description.toLowerCase().includes(query)
+  );
+}
+
+function examSortList(list) {
+  const sorted = [...list];
+  if (examState.sort === 'attempts') {
+    sorted.sort((a, b) => b.attemptCount - a.attemptCount);
+  } else if (examState.sort === 'level') {
+    sorted.sort((a, b) => (EXAM_LEVEL_ORDER[a.level] ?? 99) - (EXAM_LEVEL_ORDER[b.level] ?? 99));
   }
-  return questionFileCache.get(examId);
+  // 'latest'는 exam.json에 등록된 순서를 그대로 사용한다.
+  return sorted;
+}
+
+// 검색/정렬로 목록을 다시 그린 뒤에는 initExamFilters()가 붙여둔 카테고리 필터(클래스 토글)도
+// 새로 그려진 <li>들에 다시 적용해야 한다 — 그렇지 않으면 검색 한 번에 카테고리 필터가 풀린다.
+function renderExamListWithState() {
+  renderExamList(examSortList(examFilterList()));
+  applyExamCategoryFilter();
+}
+
+// exam.js는 wiki.js의 restoreWikiReturnState() 같은 뒤로가기 복원 기능이 없어서,
+// createToolbar()가 돌려주는 컨트롤(setSearchValue/setActiveSort)은 필요하지 않다.
+function initExamToolbar() {
+  createToolbar({
+    container: '#examToolbar',
+    searchPlaceholder: '시험 검색하기',
+    sorts: EXAM_SORT_OPTIONS,
+    onSearch(keyword) {
+      examState.search = keyword;
+      renderExamListWithState();
+    },
+    onSort(label) {
+      examState.sort = EXAM_SORT_LABEL_TO_KEY[label] || 'latest';
+      renderExamListWithState();
+    }
+  });
 }
 
 async function loadExamPageData() {
@@ -89,9 +132,10 @@ async function loadExamPageData() {
     // 응시 기록이 없으면 exam.json의 attemptHistory(빈 배열)로 폴백한다.
     const localHistory = await getLocalExamAttempts();
     examAttemptHistory = localHistory.length ? localHistory : (data.attemptHistory || []);
-    renderExamList(data.list);
+    examAllList = data.list;
+    initExamToolbar();
+    renderExamListWithState();
     renderExamStats(examAttemptHistory);
-    await renderWrongNoteAccordion(data);
     initExamFilters(); // 카드가 렌더링된 뒤에 실행해야 필터가 실제 <li>를 찾을 수 있다
   } catch (e) {
     console.error(e);
@@ -99,8 +143,6 @@ async function loadExamPageData() {
     const retryHtml = '<p class="wrong-note-empty">⚠️ 불러오지 못했어요. <button type="button" class="section-title__link exam-data-retry-btn">다시 시도 ›</button></p>';
     const recentListEl = document.getElementById('exam-recent-list');
     if (recentListEl) recentListEl.innerHTML = retryHtml;
-    const wrongNoteListEl = document.getElementById('exam-wrong-note-list');
-    if (wrongNoteListEl) wrongNoteListEl.innerHTML = retryHtml;
     document.querySelectorAll('.exam-data-retry-btn').forEach(btn => {
       btn.addEventListener('click', loadExamPageData);
     });
@@ -196,69 +238,22 @@ function scoreTierIcon(score) {
   return 'leaf';
 }
 
-// 실제로 응시한 적이 있으면(1건이라도) 그 사람이 진짜 틀린 문제로 완전히 대체한다.
-// 응시 기록 자체가 없는 첫 방문자에게만 데모용 wrongNoteSamples를 보여준다.
-function buildWrongNoteRefs(data, localHistory) {
-  const refs = [];
-  const seen = new Set();
-  [...localHistory].reverse().forEach(attempt => {
-    (attempt.wrongQuestionIds || []).forEach(questionId => {
-      const key = `${attempt.examId}::${questionId}`;
-      if (seen.has(key)) return;
-      seen.add(key);
-      refs.push({ examId: attempt.examId, questionId });
-    });
-  });
-  return refs.slice(0, 5);
-}
-
-// exam-000/exam-015처럼 combinedQuestions로 구성된 통합 시험은 questions/{examId}.json 파일이
-// 따로 없다 — 실제 문제는 combinedQuestions가 가리키는 다른 시험 파일 안에 있다. 오답노트는
-// 응시 기록의 examId(통합 시험 id)를 그대로 fetch에 쓰면 404가 나므로, 실제 파일 위치로 치환한다.
-function resolveRealExamId(data, ref) {
-  const combined = data.combinedQuestions && data.combinedQuestions[ref.examId];
-  if (!combined) return ref.examId;
-  const match = combined.find(c => c.questionId === ref.questionId);
-  return match ? match.examId : ref.examId;
-}
-
-async function renderWrongNoteAccordion(data) {
-  const listEl = document.getElementById('exam-wrong-note-list');
-  if (!listEl) return;
-  const localHistory = await getLocalExamAttempts();
-  const samples = localHistory.length ? buildWrongNoteRefs(data, localHistory) : (data.wrongNoteSamples || []);
-  const resolvedSamples = samples.map(ref => ({ ...ref, realExamId: resolveRealExamId(data, ref) }));
-
-  const neededExamIds = [...new Set(resolvedSamples.map(ref => ref.realExamId))];
-  const files = await Promise.all(neededExamIds.map(fetchQuestionsFile));
-  const byExamId = Object.fromEntries(neededExamIds.map((id, i) => [id, files[i]]));
-
-  const items = resolvedSamples.map(ref => {
-    const q = (byExamId[ref.realExamId] || []).find(item => item.id === ref.questionId);
-    if (!q || !q.explanation) return '';
-    return `
-      <details class="wrong-note-item">
-        <summary class="wrong-note-item__summary">
-          <span class="tag tag--gray">${escapeHtml(q.category)}</span>
-          <span class="wrong-note-item__question">${escapeHtml(q.text)}</span>
-        </summary>
-        <dl class="wrong-note-item__body">
-          <dt>🎯 핵심 개념</dt><dd>${escapeHtml(q.explanation.coreConcept)}</dd>
-          <dt>✅ 정답 원리</dt><dd>${escapeHtml(q.explanation.whyCorrect)}</dd>
-          <dt>❌ 오답 분석</dt><dd>${escapeHtml(q.explanation.whyIncorrect)}</dd>
-          <dt>⚠️ 출제 유의사항</dt><dd>${escapeHtml(q.explanation.examPoint)}</dd>
-          <dt>💼 실무 비유</dt><dd>${escapeHtml(q.explanation.practicalExample)}</dd>
-        </dl>
-      </details>
-    `;
-  }).join('');
-
-  listEl.innerHTML = items || emptyStateHTML('check', '아직 틀린 문제가 없어요', '문제를 풀면 오답노트가 여기에 쌓여요');
-}
-
 // ── 사이드바 / 필터탭 카테고리 필터링 ──
 // ui.js가 각 그룹(.sidebar, .filter-tabs) 안에서 active 클래스 토글은 이미 처리하지만,
 // 실제 카드 표시/숨김과 두 그룹(사이드바 ↔ 필터탭) 간 선택 동기화는 담당하지 않으므로 여기서 처리한다.
+// rows를 initExamFilters() 호출 시점에 한 번만 캐싱하지 않고 매번 다시 querySelectorAll하는 이유:
+// 검색/정렬(renderExamListWithState)이 목록을 통째로 다시 그리면 옛 <li> 참조가 끊기기 때문.
+let examCurrentCategory = '전과목';
+
+function applyExamCategoryFilter() {
+  const examEl = document.getElementById('exam');
+  if (!examEl) return;
+  const rows = examEl.querySelectorAll('.exam-row-list > li[data-category]');
+  rows.forEach(li => {
+    li.classList.toggle('exam-row--hidden', !(examCurrentCategory === '전과목' || li.dataset.category === examCurrentCategory));
+  });
+}
+
 function initExamFilters() {
   const examEl = document.getElementById('exam');
   if (!examEl) return;
@@ -266,21 +261,19 @@ function initExamFilters() {
   const sidebarBtns = examEl.querySelectorAll('.sidebar__item[data-category]');
   const tabBtns = examEl.querySelectorAll('.filter-tab[data-category]');
   const allBtns = [...sidebarBtns, ...tabBtns];
-  const rows = examEl.querySelectorAll('.exam-row-list > li[data-category]');
 
   // 활성 클래스(sidebar__item--active/filter-tab--active) 토글은 ui.js가 이미 공통으로 처리하므로
   // 여기서는 필터링과 접근성 상태(aria-pressed)만 담당한다 (중복 바인딩 방지).
-  function applyExamFilter(category) {
-    rows.forEach(li => {
-      li.classList.toggle('exam-row--hidden', !(category === '전과목' || li.dataset.category === category));
-    });
-    allBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.category === category)));
-  }
-
   allBtns.forEach(btn => {
     btn.setAttribute('aria-pressed', String(btn.classList.contains('sidebar__item--active') || btn.classList.contains('filter-tab--active')));
-    btn.addEventListener('click', () => applyExamFilter(btn.dataset.category));
+    btn.addEventListener('click', () => {
+      examCurrentCategory = btn.dataset.category;
+      allBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.category === examCurrentCategory)));
+      applyExamCategoryFilter();
+    });
   });
+
+  applyExamCategoryFilter();
 }
 
 function setText(id, text) {

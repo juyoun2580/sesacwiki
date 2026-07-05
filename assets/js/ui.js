@@ -15,6 +15,17 @@ document.querySelectorAll('.favorite-star').forEach(btn => {
   });
 });
 
+// ── 위키 상세의 "즐겨찾기" 퀵 버튼 (원본 modal.js 로직 그대로 이관) ──
+// 내부 .favorite-star 별을 토글하고 안내 토스트를 띄우는 시각적 동작만 담당한다.
+// 실제 Supabase 저장은 wiki.js의 saveWikiFavorite()가 별도로 처리한다.
+document.querySelectorAll('[data-action="quick-favorite"]').forEach(el => {
+  el.addEventListener('click', () => {
+    const star = el.querySelector('.favorite-star');
+    if (star) ts(star);
+    toast('★ 즐겨찾기에 저장했어요!');
+  });
+});
+
 // ── 필터 탭 (원본 로직 그대로) ──
 document.querySelectorAll('.filter-tabs').forEach(g => {
   g.querySelectorAll('.filter-tab').forEach(b => b.addEventListener('click', () => {

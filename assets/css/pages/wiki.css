@@ -4,26 +4,10 @@
    ========================================================================== */
 
 /* ---------- Wiki list ---------- */
-.wiki-toolbar {
-  display: flex;
-  gap: var(--space-10);
-  align-items: center;
-  margin-bottom: var(--space-18);
-}
-
-.wiki-toolbar__search {
-  max-width: none;
-  margin: 0;
-}
-
-.wiki-toolbar__search .search-box__input {
-  background: var(--neutral-surface);
-}
-
-.sort-pills {
-  display: flex;
-  gap: var(--space-6);
-}
+/* 검색창 + 정렬 Pill 툴바는 공용 Toolbar 컴포넌트로 옮겼다
+   (assets/css/toolbar.css, assets/js/components/toolbar.js) — 여기 있던
+   .wiki-toolbar/.sort-pills는 exam 페이지가 그대로 빌려 쓰면서(정작 exam.css에는
+   .sort-pills 레이아웃이 없어 실제로는 깨져 있었다) 생긴 중복이라 제거했다. */
 
 .wiki-row-list {
   list-style: none;

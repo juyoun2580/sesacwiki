@@ -269,6 +269,12 @@ let wordSearchQuery = "";
 let wordSortMode = null; // null(기본 순서) | "term"(영어순) | "definition"(이름순)
 let wordFavoritesOnly = false;
 
+// mywords.html(style: "rows")에서만 페이지네이션을 적용한다 — 대시보드 인페이지
+// "단어 도감" 패널(style: "cards")은 페이지 컨테이너(#wordsPagination) 자체가
+// 없어서 원래대로 전체 목록을 그대로 보여준다(기존 동작 유지).
+const WORD_PAGE_SIZE = 10;
+let wordPage = 1;
+
 async function getFilteredSortedWords() {
   let list = await readWords();
 
@@ -305,8 +311,8 @@ function buildWordRowSection(category, list) {
             <div class="word-row__actions">
               <button type="button" class="favorite-star${w.favorite ? " favorite-star--on" : ""}"
                 data-action="toggle-favorite" aria-pressed="${!!w.favorite}" aria-label="즐겨찾기 토글">★</button>
-              <button type="button" class="btn btn--outline btn--sm" data-action="edit-word" aria-label="단어 수정">✎</button>
-              <button type="button" class="btn btn--danger btn--sm" data-action="delete-word" aria-label="단어 삭제">🗑</button>
+              <button type="button" class="btn btn--outline btn--sm" data-action="edit-word" aria-label="단어 수정"><span class="icon icon--edit" aria-hidden="true"></span></button>
+              <button type="button" class="btn btn--danger btn--sm" data-action="delete-word" aria-label="단어 삭제"><span class="icon icon--close" aria-hidden="true"></span></button>
             </div>
           </li>`).join("")}
       </ul>
@@ -343,6 +349,16 @@ function buildWordCardSection(category, list) {
     </div>`;
 }
 
+// home.js/exam.js의 emptyStateHTML()과 동일한 구조(.empty-state > __icon/__title/__desc) —
+// 페이지 CSS가 서로 공유되지 않는 구조라 my.css에도 동일하게 다시 선언해뒀다.
+function emptyStateHTML(iconClass, title, desc) {
+  return `<div class="empty-state">
+    <span class="empty-state__icon" aria-hidden="true"><span class="icon icon--${iconClass}"></span></span>
+    <p class="empty-state__title">${title}</p>
+    <p class="empty-state__desc">${desc}</p>
+  </div>`;
+}
+
 // style: "rows"(mywords.html 기본 목록) | "cards"(대시보드 단어 도감)
 let currentWordStyle = "rows";
 async function renderWordGroups(style = currentWordStyle) {
@@ -358,13 +374,26 @@ async function renderWordGroups(style = currentWordStyle) {
   const words = await getFilteredSortedWords();
   if (words.length === 0) {
     container.innerHTML = allWords.length === 0
-      ? '<p class="page-subtitle">아직 저장한 단어가 없어요. 단어를 추가해보세요!</p>'
-      : '<p class="page-subtitle">조건에 맞는 단어가 없어요.</p>';
+      ? emptyStateHTML('book', '아직 저장한 단어가 없습니다', '위키에서 모르는 단어를 드래그해 저장해보세요')
+      : emptyStateHTML('search', '조건에 맞는 단어가 없어요', '다른 검색어나 필터를 사용해보세요');
+    if (style === "rows") {
+      renderPagination({ container: '#wordsPagination', totalCount: 0, currentPage: 1, pageSize: WORD_PAGE_SIZE, onChange() {} });
+    }
     return;
   }
 
+  // "rows"(mywords.html)만 실제로 페이지를 나눠 보여준다. "cards"(대시보드 패널)는
+  // 컨테이너(#wordsPagination)가 없어 renderPagination이 그냥 아무 일도 하지 않는다.
+  let pageWords = words;
+  if (style === "rows") {
+    const totalPages = Math.max(1, Math.ceil(words.length / WORD_PAGE_SIZE));
+    if (wordPage > totalPages) wordPage = totalPages;
+    const start = (wordPage - 1) * WORD_PAGE_SIZE;
+    pageWords = words.slice(start, start + WORD_PAGE_SIZE);
+  }
+
   const groups = {};
-  words.forEach((w) => {
+  pageWords.forEach((w) => {
     if (!groups[w.category]) groups[w.category] = [];
     groups[w.category].push(w);
   });
@@ -373,37 +402,37 @@ async function renderWordGroups(style = currentWordStyle) {
   container.innerHTML = Object.entries(groups)
     .map(([category, list]) => buildSection(category, list))
     .join("");
+
+  if (style === "rows") {
+    renderPagination({
+      container: '#wordsPagination',
+      totalCount: words.length,
+      currentPage: wordPage,
+      pageSize: WORD_PAGE_SIZE,
+      onChange(page) {
+        wordPage = page;
+        renderWordGroups();
+      }
+    });
+  }
 }
 
-// ── 단어 삭제 ──
-async function deleteWordById(id) {
-  if (!confirm("이 단어를 삭제할까요?")) return;
-  await api.deleteWord(id);
-  await renderWordGroups();
-  toast("🗑 단어를 삭제했어요.");
-}
-
-// ── 단어 수정: "+ 단어 추가" 모달을 그대로 재사용해 선택한 단어 값을 채워 연다 ──
-let editingWordId = null;
-
-function resetWordModalChrome() {
-  const titleEl = document.getElementById("wmodal-title");
-  if (titleEl) titleEl.textContent = "📓 단어장에 추가";
-  const saveBtn = document.querySelector('[data-action="save-word"]');
-  if (saveBtn) saveBtn.textContent = "단어장에 저장";
-}
-
-function openWordEditModal(word) {
-  editingWordId = word.id;
-  if (typeof openModal === "function") openModal(word.term);
-  const meaningEl = document.getElementById("mmeaning");
-  if (meaningEl) meaningEl.value = word.definition;
-  const categoryEl = document.getElementById("mcategory");
-  if (categoryEl) categoryEl.value = word.category;
-  const titleEl = document.getElementById("wmodal-title");
-  if (titleEl) titleEl.textContent = "✏️ 단어 수정";
-  const saveBtn = document.querySelector('[data-action="save-word"]');
-  if (saveBtn) saveBtn.textContent = "수정 저장";
+// ── 단어 수정/삭제: 공통 WordModal(components/word-modal.html)의
+// openWordModal({mode, word, onSave/onDelete})을 통해 열고, 실제 Supabase
+// 반영은 여기(콜백) 안에서만 한다 — 모달 자신은 API를 모른다.
+function saveWordFromModal(word, values) {
+  const category = values.category;
+  toast(`📓 "${values.term}"를 단어장에 저장했어요! +20P`);
+  const payload = {
+    term: values.term,
+    definition: values.definition || "(뜻 미입력)",
+    category,
+    categoryColor: CATEGORY_TAG_COLOR[category] || "gray",
+  };
+  const request = word
+    ? api.updateWord(word.id, payload)
+    : api.addWord({ ...payload, pos: "명사", example: "", favorite: false });
+  request.then(() => renderWordGroups());
 }
 
 async function toggleWordFavorite(id) {
@@ -429,14 +458,34 @@ document.addEventListener("click", async (e) => {
     const id = editBtn.closest("[data-word-id]")?.dataset.wordId;
     const words = await readWords();
     const word = words.find((w) => w.id === id);
-    if (word) openWordEditModal(word);
+    if (word) {
+      openWordModal({
+        mode: "edit",
+        word,
+        onSave(values) {
+          saveWordFromModal(word, values);
+        },
+      });
+    }
     return;
   }
 
   const deleteBtn = e.target.closest('[data-action="delete-word"]');
   if (deleteBtn) {
     const id = deleteBtn.closest("[data-word-id]")?.dataset.wordId;
-    if (id) await deleteWordById(id);
+    const words = await readWords();
+    const word = words.find((w) => w.id === id);
+    if (word) {
+      openWordModal({
+        mode: "delete",
+        word,
+        async onDelete(w) {
+          await api.deleteWord(w.id);
+          await renderWordGroups();
+          toast("🗑 단어를 삭제했어요.");
+        },
+      });
+    }
     return;
   }
 
@@ -467,67 +516,18 @@ document.addEventListener("input", async (e) => {
   await renderWordGroups();
 });
 
-// "+ 단어 추가" 버튼으로 모달을 새로 열거나 취소로 닫을 때는 이전 수정 상태가
-// 남아있지 않도록 초기화한다(모달 자체는 static 마크업이라 매번 다시 그려지지 않음).
-document.querySelectorAll('[data-action="open-modal"]').forEach((btn) => {
+// ── "+ 단어 추가" (mywords.html 툴바 전용) → WordModal을 create 모드로 연다 ──
+// wiki/detail.html의 "단어장 추가" 버튼도 같은 data-action="open-modal"을 쓰지만
+// .save-box 안에 있고(wiki.js가 그쪽만 별도로 바인딩), 여기는 .my-toolbar로
+// 범위를 좁혀서 두 페이지의 리스너가 같은 버튼에 겹쳐 걸리지 않게 한다.
+document.querySelectorAll('.my-toolbar [data-action="open-modal"]').forEach((btn) => {
   btn.addEventListener("click", () => {
-    editingWordId = null;
-    resetWordModalChrome();
-    const meaningEl = document.getElementById("mmeaning");
-    if (meaningEl) meaningEl.value = "";
-  });
-});
-
-document.querySelectorAll('[data-action="close-modal"]').forEach((btn) => {
-  btn.addEventListener("click", () => {
-    editingWordId = null;
-    resetWordModalChrome();
-  });
-});
-
-// ── "+ 단어 추가" 모달 저장 → 마이핸드북 단어 데이터에 실제로 반영 ──
-// 모달을 열고 닫는 UI(openModal/closeModal)는 공통 modal.js 소유고, 이 리스너가
-// data-action="save-word" 클릭의 유일한 핸들러로서 닫기/안내 toast/실제 저장을 모두 담당한다
-// (TD-0005 — 과거에는 modal.js가 같은 버튼에 별도 리스너를 더 걸어 닫기+toast만 중복 실행했다).
-// closeModal()/toast()를 실제 저장 이전에 호출해, 기존에 두 리스너가 동시에 걸려있을 때와
-// 같은 타이밍(클릭 즉시 닫힘+안내)을 그대로 유지한다.
-// editingWordId가 있으면 "✎ 수정"으로 열린 상태이므로 새로 추가하지 않고 기존 항목을 갱신한다.
-document.querySelectorAll('[data-action="save-word"]').forEach((btn) => {
-  btn.addEventListener("click", async () => {
-    const termEl = document.getElementById("mword");
-    const meaningEl = document.getElementById("mmeaning");
-    const categoryEl = document.getElementById("mcategory");
-    if (!termEl || !meaningEl || !categoryEl) return;
-
-    const term = termEl.value.trim();
-    if (!term) return;
-
-    closeModal();
-    toast(`📓 "${term}"를 단어장에 저장했어요! +20P`);
-
-    const category = categoryEl.value;
-
-    if (editingWordId) {
-      await api.updateWord(editingWordId, {
-        term,
-        definition: meaningEl.value.trim() || "(뜻 미입력)",
-        category,
-        categoryColor: CATEGORY_TAG_COLOR[category] || "gray",
-      });
-      editingWordId = null;
-      resetWordModalChrome();
-    } else {
-      await api.addWord({
-        term,
-        pos: "명사",
-        definition: meaningEl.value.trim() || "(뜻 미입력)",
-        example: "",
-        category,
-        categoryColor: CATEGORY_TAG_COLOR[category] || "gray",
-        favorite: false,
-      });
-    }
-    await renderWordGroups();
+    openWordModal({
+      mode: "create",
+      onSave(values) {
+        saveWordFromModal(null, values);
+      },
+    });
   });
 });
 

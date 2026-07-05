@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Word Modal 전용 스타일 (components/word-modal.html)
+   모달의 공용 뼈대(.modal-overlay/.modal/.modal__title/.modal__field/
+   .modal__label/.modal__input/.modal__actions)는 assets/css/components.css의
+   기존 규칙을 그대로 재사용한다 — 여기에는 create/edit/delete 모드 전환과
+   시안(legacy/newWordModal.html) 반영에 필요한, word-modal만의 요소만 정의한다.
+   .modal--resume(resume.css)과 같은 패턴으로 .modal 자체는 건드리지 않고
+   modal--word 한정 modifier로만 크기/타이포를 조정해 다른 모달(#resume-create-modal)에
+   영향이 없도록 한다.
+   ========================================================================== */
+.modal--word {
+  width: 480px;
+  padding: var(--space-32);
+}
+
+.modal--word .modal__title {
+  font-size: var(--fs-19);
+}
+
+.modal--word .modal__label {
+  font-size: var(--fs-13);
+  color: var(--neutral-800);
+}
+
+.modal--word .modal__input {
+  padding: var(--space-13) var(--space-16);
+  font-size: var(--fs-15);
+}
+
+.word-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.word-modal__icon-box {
+  width: var(--space-36);
+  height: var(--space-36);
+  border-radius: var(--radius-xs);
+  background: var(--bg-green-tint);
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.word-modal__close {
+  width: var(--space-32);
+  height: var(--space-32);
+  border-radius: var(--radius-xxs);
+  border: none;
+  background: var(--neutral-5);
+  color: var(--neutral-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.word-modal__close .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.word-modal__close:hover {
+  background: var(--neutral-20);
+  color: var(--neutral-600);
+}
+
+.word-modal__confirm {
+  font-size: var(--fs-14);
+  color: var(--neutral-800);
+  line-height: 1.6;
+  padding: var(--space-8) 0 var(--space-4);
+}

@@ -1,0 +1,30 @@
+<!--
+  Toolbar — 컨테이너 마크업 참고용 템플릿
+
+  주의: header.html/nav.html/word-modal.html과 달리 이 파일은 fetch로 마운트되지
+  않는다. components/pagination.html과 동일하게, 각 페이지가 아래와 동일한 뼈대를
+  자신의 HTML에 직접 두고, assets/js/components/toolbar.js의 createToolbar()가
+  .toolbar__search / .toolbar__actions 안을 채운다.
+
+  <link rel="stylesheet" href="/assets/css/toolbar.css">
+  <script src="/assets/js/components/toolbar.js" defer></script>
+
+  사용 예 (wiki.js):
+  createToolbar({
+    container: '#wikiToolbar',
+    searchPlaceholder: '위키 검색하기',
+    sorts: ['최신순', '인기순', '난이도순'],
+    onSearch(keyword) {
+      wikiState.search = keyword;
+      renderWikiList();
+    },
+    onSort(sort) {
+      wikiState.sort = WIKI_SORT_LABEL_TO_KEY[sort];
+      renderWikiList();
+    }
+  });
+-->
+<div class="toolbar" id="wikiToolbar">
+  <div class="toolbar__search"></div>
+  <div class="toolbar__actions"></div>
+</div>

@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="/assets/css/layout.css">
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/pages/wiki.css">
+  <link rel="stylesheet" href="/assets/css/pagination.css">
+  <link rel="stylesheet" href="/assets/css/toolbar.css">
 </head>
 
 <body>
@@ -41,17 +43,9 @@
           <h1 class="page-title">새싹위키<span class="icon icon--leaf" aria-hidden="true"></span></h1>
           <p class="page-subtitle">새싹 과정에 필요한 모든 지식을 모아놓은 백과사전</p>
 
-          <div class="wiki-toolbar">
-            <div class="search-box wiki-toolbar__search">
-              <span class="icon icon--search search-box__icon" aria-hidden="true"></span>
-              <label class="sr-only" for="wiki-search">위키 검색하기</label>
-              <input type="text" id="wiki-search" class="search-box__input" placeholder="위키 검색하기...">
-            </div>
-            <div class="sort-pills">
-              <button type="button" class="sort-pill sort-pill--active" data-sort="latest">최신순</button>
-              <button type="button" class="sort-pill" data-sort="popular">인기순</button>
-              <button type="button" class="sort-pill" data-sort="level">난이도순</button>
-            </div>
+          <div class="toolbar" id="wikiToolbar">
+            <div class="toolbar__search"></div>
+            <div class="toolbar__actions"></div>
           </div>
 
           <ul class="wiki-row-list" id="wikiRowList"></ul>
@@ -85,6 +79,8 @@
   <script src="/assets/js/components/nav.js" defer></script>
   <script src="/assets/js/app.js" defer></script>
   <script src="/assets/js/ui.js" defer></script>
+  <script src="/assets/js/components/pagination.js" defer></script>
+  <script src="/assets/js/components/toolbar.js" defer></script>
   <script src="/assets/js/pages/wiki.js" defer></script>
 </body>
 

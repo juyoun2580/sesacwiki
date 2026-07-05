@@ -136,6 +136,16 @@
   -webkit-mask-image: url("../img/icon/ico-chevron-down.svg");
 }
 
+.icon--chevron-left {
+  mask-image: url("../img/icon/ico-chevron-left.svg");
+  -webkit-mask-image: url("../img/icon/ico-chevron-left.svg");
+}
+
+.icon--chevron-right {
+  mask-image: url("../img/icon/ico-chevron-right.svg");
+  -webkit-mask-image: url("../img/icon/ico-chevron-right.svg");
+}
+
 .icon--leaf {
   mask-image: url("../img/icon/ico-sprout.svg");
   -webkit-mask-image: url("../img/icon/ico-sprout.svg");
@@ -927,6 +937,11 @@ body[data-auth="guest"] .auth-user-only {
   background: var(--green-50);
 }
 
+.sort-pills {
+  display: flex;
+  gap: var(--space-6);
+}
+
 .sort-pill {
   padding: var(--space-11) var(--space-14);
   border-radius: var(--radius-round);
@@ -948,41 +963,9 @@ body[data-auth="guest"] .auth-user-only {
   font-weight: var(--fw-bold);
 }
 
-/* ---------- Pagination ---------- */
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-5);
-  margin-top: var(--space-24);
-}
-
-.pagination__btn {
-  width: var(--space-34);
-  height: var(--space-34);
-  border-radius: var(--radius-sm);
-  border: 1.5px solid var(--neutral-40);
-  background: var(--neutral-surface);
-  font-size: var(--fs-13);
-  font-weight: var(--fw-semibold);
-  color: var(--neutral-600);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-fast);
-}
-
-.pagination__btn--active {
-  background: var(--green-700);
-  border-color: var(--green-700);
-  color: var(--neutral-surface);
-}
-
-.pagination__btn:hover:not(.pagination__btn--active) {
-  border-color: var(--green-700);
-  color: var(--green-700);
-}
+/* ---------- Pagination ----------
+   assets/css/pagination.css로 이전했다(공용 컴포넌트 리팩토링) — 위키 목록/내 문서/
+   저장한 단어 3개 화면만 이 페이지네이션 로더(assets/js/components/pagination.js)를 로드해서 쓴다. */
 
 /* ---------- Back Link ---------- */
 .back-link {
@@ -1266,6 +1249,17 @@ body[data-auth="guest"] .auth-user-only {
   gap: var(--space-8);
   justify-content: flex-end;
   margin-top: var(--space-20);
+}
+
+/* ---------- Mascot Graphic ----------
+   assets/img/graphic-mascot-book.svg 같은 마스코트 일러스트를 카드 안에 넣을 때
+   쓰는 기본 틀(가운데 정렬 + 블록 배치)만 담당한다. 크기처럼 화면마다 다른 값은
+   pages/*.css에서 함께 붙는 클래스(예: .exam-sidebar-card__graphic)로 override한다.
+   quiz.html의 .quiz-tip__mascot img/.quiz-result__emoji도 같은 자산을 쓰므로,
+   다음 정리 때 이 클래스로 옮겨올 수 있다. */
+.mascot-graphic {
+  display: block;
+  margin: 0 auto;
 }
 
 /* ---------- Rank Badge ---------- */

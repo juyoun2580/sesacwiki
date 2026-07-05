@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="padding:32px;">
+      <!-- back + title -->
+      <div style="display:flex; align-items:center; gap:6px; font-size:13px; color:#8a8a80; font-weight:600; margin-bottom:14px; cursor:pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+        마이페이지로 돌아가기
+      </div>
+      <div style="display:flex; align-items:center; gap:9px; margin-bottom:6px;">
+        <h1 style="margin:0; font-size:26px; font-weight:800; letter-spacing:-0.03em;">저장한 단어</h1>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f7a4d" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"></path><path d="M12 12c0-3 2.5-5 6-5 0 3.5-2.5 5-6 5Z"></path><path d="M12 14c0-2.5-2-4.5-5-4.5 0 3 2 4.5 5 4.5Z"></path></svg>
+      </div>
+      <p style="margin:0 0 24px; font-size:14px; color:#8a8a80;">모르는 단어를 저장하고 복습하여 어휘력을 키워보세요.</p>
+
+      <!-- toolbar -->
+      <div style="display:flex; gap:10px; margin-bottom:20px; align-items:center;">
+        <div style="flex:1; display:flex; align-items:center; gap:10px; padding:11px 16px; background:#fff; border:1px solid #ececE8; border-radius:12px; color:#9a9a90;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path></svg>
+          <span style="font-size:14px;">단어를 검색하세요</span>
+        </div>
+        <span style="display:inline-flex; align-items:center; gap:7px; padding:11px 16px; background:#fff; border:1px solid #ececE8; border-radius:12px; font-size:13px; font-weight:600; color:#5a5a50; cursor:pointer;">전체 카테고리 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span>
+        <span style="padding:11px 16px; background:#fff; border:1px solid #ececE8; border-radius:12px; font-size:13px; font-weight:600; color:#5a5a50; cursor:pointer;">영어순</span>
+        <span style="padding:11px 16px; background:#fff; border:1px solid #ececE8; border-radius:12px; font-size:13px; font-weight:600; color:#5a5a50; cursor:pointer;">이름순</span>
+        <span style="display:inline-flex; align-items:center; gap:6px; padding:11px 16px; background:#fff; border:1px solid #2f7a4d; border-radius:12px; font-size:13px; font-weight:700; color:#2f7a4d; cursor:pointer;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.8 6.2 21.9l1.1-6.5L2.6 9.8l6.5-.9z"></path></svg>즐겨찾기만</span>
+        <span style="display:inline-flex; align-items:center; gap:6px; padding:11px 18px; background:#2f7a4d; color:#fff; border-radius:12px; font-size:13px; font-weight:700; cursor:pointer;">+ 단어 추가</span>
+      </div>
+
+      <!-- count card (empty state) -->
+      <div style="background:#fff; border:1px solid #ececE8; border-radius:16px; padding:36px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:34px; font-weight:800; color:#2f7a4d; letter-spacing:-0.02em;">0</div>
+        <div style="font-size:13px; color:#9a9a90; margin-top:4px;">전체 단어</div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:10px; margin-top:22px; padding-top:22px; border-top:1px solid #f3f3ef;">
+          <span style="width:44px; height:44px; border-radius:50%; background:#f4f4f1; color:#b8b8ae; display:inline-flex; align-items:center; justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"></path></svg></span>
+          <span style="font-size:13px; color:#9a9a90; font-weight:600;">아직 저장한 단어가 없습니다</span>
+          <span style="font-size:12px; color:#b8b8ae;">위키에서 모르는 단어를 드래그해 저장해보세요</span>
+        </div>
+      </div>
+
+      <!-- export -->
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-bottom:24px;">
+        <span style="display:inline-flex; align-items:center; gap:8px; padding:10px 18px; background:#fff; border:1px solid #ececE8; border-radius:12px; font-size:13px; font-weight:700; color:#5a5a50; cursor:pointer;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2f7a4d" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"></path><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M8 13h8M8 17h8"></path></svg>
+          CSV로 내보내기
+        </span>
+        <span style="display:inline-flex; align-items:center; gap:8px; padding:10px 18px; background:#fff; border:1px solid #ececE8; border-radius:12px; font-size:13px; font-weight:700; color:#5a5a50; cursor:pointer;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3a6ea5" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"></path><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M8 13h8M8 17h5"></path></svg>
+          Word로 내보내기
+        </span>
+      </div>
+
+      <!-- pagination -->
+      <div style="display:flex; gap:8px; justify-content:center; padding-bottom:8px;">
+        <span style="width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; background:#fff; border:1px solid #ececE8; color:#8a8a80; border-radius:10px; cursor:pointer;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg></span>
+        <span style="width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; background:#2f7a4d; color:#fff; border-radius:10px; font-weight:800; font-size:14px; cursor:pointer;">1</span>
+        <span style="width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; background:#fff; border:1px solid #ececE8; color:#8a8a80; border-radius:10px; font-weight:700; font-size:14px; cursor:pointer;">2</span>
+        <span style="width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; background:#fff; border:1px solid #ececE8; color:#8a8a80; border-radius:10px; font-weight:700; font-size:14px; cursor:pointer;">3</span>
+        <span style="width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; background:#fff; border:1px solid #ececE8; color:#8a8a80; border-radius:10px; cursor:pointer;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></span>
+      </div>
+    </div>
+</body>
+</html>

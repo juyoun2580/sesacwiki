@@ -1,0 +1,23 @@
+<!--
+  Pagination — 컨테이너 마크업 참고용 템플릿
+
+  주의: header.html/nav.html과 달리 이 파일은 fetch로 마운트되지 않는다.
+  각 페이지는 아래와 동일한 빈 <nav>를 자신의 HTML에 직접 두고,
+  assets/js/components/pagination.js의 renderPagination()이 그 안을 채운다.
+
+  <link rel="stylesheet" href="/assets/css/pagination.css">
+  <script src="/assets/js/components/pagination.js" defer></script>
+
+  사용 예 (wiki.js):
+  renderPagination({
+    container: '#wikiPagination',
+    totalCount: sorted.length,
+    currentPage: wikiState.page,
+    pageSize: WIKI_PAGE_SIZE,
+    onChange(page) {
+      wikiState.page = page;
+      renderWikiList();
+    }
+  });
+-->
+<nav class="pagination" id="wikiPagination" aria-label="페이지 네비게이션"></nav>

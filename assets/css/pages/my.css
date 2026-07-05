@@ -31,6 +31,28 @@
   outline: none;
 }
 
+/* 검색창에 아이콘이 필요한 화면(저장한 단어)만 이 래퍼로 감싼다 — .my-toolbar__input
+   자체는 문서함(my/index.html)과 공유하므로 여기서 패딩을 직접 바꾸지 않는다. */
+.my-toolbar__search {
+  position: relative;
+  flex: 1;
+  min-width: 160px;
+}
+
+.my-toolbar__search .my-toolbar__input {
+  width: 100%;
+  padding-left: var(--space-38);
+}
+
+.my-toolbar__search .icon {
+  position: absolute;
+  left: var(--space-14);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--neutral-300);
+  pointer-events: none;
+}
+
 .my-toolbar__select {
   padding: var(--space-8) var(--space-12);
   border: 1.5px solid var(--neutral-50);
@@ -467,11 +489,14 @@
 }
 
 .word-export-bar__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
   padding: var(--space-8) var(--space-16);
   border-radius: 999px;
-  border: 1.5px solid var(--green-300);
+  border: 1.5px solid var(--neutral-40);
   background: var(--neutral-surface);
-  color: var(--green-900);
+  color: var(--neutral-600);
   font-size: var(--fs-12);
   font-weight: var(--fw-bold);
   cursor: pointer;
@@ -479,8 +504,17 @@
 }
 
 .word-export-bar__btn:hover {
-  background: var(--green-50);
-  border-color: var(--green-800);
+  background: var(--neutral-5);
+  border-color: var(--neutral-50);
+}
+
+/* CSV/Word 두 버튼은 아이콘 색으로만 구분한다(시안과 동일) */
+.word-export-bar__btn--csv .icon {
+  color: var(--success);
+}
+
+.word-export-bar__btn--word .icon {
+  color: var(--blue-600);
 }
 
 /* ---------- 단어 내보내기 드롭다운 (대시보드 "나의 단어 도감" 패널 전용) ---------- */
@@ -552,6 +586,47 @@
   font-size: var(--fs-11);
   color: var(--neutral-200);
   font-weight: var(--fw-medium);
+}
+
+/* ---------- Empty State (저장한 단어가 없을 때) ----------
+   assets/css/pages/home.css / exam.css의 .empty-state와 동일한 구조/토큰이다.
+   페이지 CSS는 서로 공유하지 않는 구조라(ARCHITECTURE.md 참고) 여기 다시 선언한다. */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  width: 100%;
+  padding: var(--space-24) var(--space-18);
+  text-align: center;
+}
+
+.empty-state__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-40);
+  height: var(--space-40);
+  border-radius: 50%;
+  background: var(--neutral-20);
+  color: var(--neutral-400);
+}
+
+.empty-state__icon .icon {
+  width: var(--space-20);
+  height: var(--space-20);
+}
+
+.empty-state__title {
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--neutral-700);
+}
+
+.empty-state__desc {
+  font-size: var(--fs-11);
+  color: var(--neutral-300);
 }
 
 /* ---------- 카테고리별 단어 수 (얇은 인라인 마스터율 바) ---------- */

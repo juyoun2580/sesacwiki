@@ -1,0 +1,48 @@
+<!-- Word Modal — header.html/nav.html과 동일하게 fetch로 #word-modal-mount에 주입된다.
+     mode(create/edit/delete)에 따라 .word-modal__form 또는 .word-modal__confirm 중 하나만
+     보인다. 실제 열기/닫기/모드 전환/저장·삭제 버튼 동작은
+     assets/js/components/modal.js의 openWordModal()이 담당한다.
+     legacy/newWordModal.html 시안 반영(create/edit 모드 기준) — 삭제(delete) 모드는
+     현재 미사용이라 .wmodal-delete-btn은 주석 처리된 상태로 유지한다. -->
+<div class="modal-overlay" id="wmodal">
+  <div class="modal modal--word" role="dialog" aria-modal="true" aria-labelledby="wmodal-title">
+    <div class="word-modal__header">
+      <p class="modal__title" id="wmodal-title">
+        <span class="word-modal__icon-box" aria-hidden="true"><span class="icon icon--book"></span></span>
+        <span id="wmodal-title-text">단어장에 추가</span>
+      </p>
+      <button type="button" class="word-modal__close" data-action="close-modal" aria-label="닫기">
+        <span class="icon icon--close" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="word-modal__form" id="wmodal-form">
+      <div class="modal__field">
+        <label class="modal__label" for="mword">단어</label>
+        <input class="modal__input" id="mword" placeholder="단어를 입력하세요">
+      </div>
+      <div class="modal__field">
+        <label class="modal__label" for="mmeaning">뜻 (한국어)</label>
+        <input class="modal__input" id="mmeaning" placeholder="뜻을 입력하세요">
+      </div>
+      <div class="modal__field">
+        <label class="modal__label" for="mcategory">카테고리</label>
+        <select class="modal__input" id="mcategory">
+          <option>SQL</option>
+          <option>Java</option>
+          <option>CS/IT</option>
+          <option>비즈니스</option>
+          <option>기타</option>
+        </select>
+      </div>
+    </div>
+
+    <p class="word-modal__confirm" id="wmodal-confirm" hidden></p>
+
+    <div class="modal__actions">
+      <button type="button" class="btn btn--outline btn--sm" data-action="close-modal">취소</button>
+      <button type="button" class="btn btn--primary btn--sm" id="wmodal-save-btn" data-action="save-word">단어장에 저장</button>
+      <!-- <button type="button" class="btn btn--danger btn--sm" id="wmodal-delete-btn" data-action="delete-word-confirm" hidden>삭제</button> -->
+    </div>
+  </div>
+</div>

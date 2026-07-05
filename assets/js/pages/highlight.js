@@ -142,7 +142,7 @@ function hlToWord() {
   hlbar.classList.remove('highlight-toolbar--visible');
   window.getSelection()?.removeAllRanges();
   savedRange = null;
-  openModal(text);
+  openWikiWordModal(text);
 }
 
 document.querySelectorAll('[data-action="apply-highlight"]').forEach(el => {
