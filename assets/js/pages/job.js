@@ -54,7 +54,7 @@ const STEP_CATALOG = [
       { icon: '📦', title: '프로젝트 목록 정리', description: '참여한 모든 프로젝트를 날짜와 함께 나열하세요.', actionLabel: '정리하기 ›', variant: 'primary', feature: 'portfolio-builder' },
       { icon: '⭐', title: '대표 프로젝트 선택', description: '가장 임팩트 있는 대표 프로젝트를 골라보세요.', actionLabel: '선택하기 ›', variant: 'outline', feature: 'portfolio-builder' },
       { icon: '🖼', title: '포트폴리오 구성', description: '스크린샷, 설명, 기술 스택을 포함해 구성하세요.', actionLabel: '구성하기 ›', variant: 'outline', feature: 'portfolio-builder' },
-      { icon: '📑', title: 'PDF 내보내기', description: '완성된 포트폴리오를 PDF 파일로 저장하세요.', actionLabel: '내보내기 ›', variant: 'outline', feature: 'portfolio-builder' }
+      { icon: '📑', title: 'PDF 내보내기', description: '완성된 포트폴리오를 PDF 파일로 저장하세요.', actionLabel: '내보내기 ›', variant: 'outline', feature: 'pdf-export' }
     ]
   },
   {
@@ -105,25 +105,13 @@ function loadFeaturesData() {
 }
 
 // 이 함수는 assets/js/pages/home.js의 isJobStepDone()과 반드시 동일해야 합니다. 수정 시 두 파일을 함께 수정하세요.
-function isStepDone(stepId, f) {
-  if (!f) return false;
-  switch (stepId) {
-    case 2: return f.resume && (f.resume.education?.length > 0 || f.resume.experience?.length > 0 || f.resume.skills?.length > 0);
-    case 3: return f.coverLetter && Object.values(f.coverLetter).every(v => typeof v === 'string' && v.trim());
-    case 4: return f.projects && f.projects.length > 0;
-    case 5: return (f.interviewAnswers && Object.values(f.interviewAnswers).some(v => typeof v === 'string' && v.trim())) ||
-                   (f.mockAnswers && Object.values(f.mockAnswers).some(v => Array.isArray(v) && v.length > 0));
-    case 6: return (f.companies && f.companies.length > 0) || (f.interviews && f.interviews.length > 0);
-    default: return false;
-  }
-}
-
+// isJobStepDone()은 app.js가 정의하는 공용 함수를 재사용한다(home.js와 동일한 기준 보장).
 function getProgressByCategory(data) {
   const features = loadFeaturesData();
   return data.steps.slice(1).map(step => ({
     label: step.label,
     stepId: step.id,
-    done: isStepDone(step.id, features)
+    done: isJobStepDone(step.id, features)
   }));
 }
 
@@ -178,29 +166,49 @@ function saveData(data) {
 // (100곳 넘게 흩어진 동기 loadData/loadFeatures 호출부를 전부 async로 바꾸는 대신,
 // 저장 시점마다 디바운스로 백그라운드 upsert만 걸어 기존 호출부는 손대지 않는다.)
 let _jobProgressSyncTimer = null;
+// 이전 요청이 아직 네트워크에서 응답을 기다리는 동안 다음 800ms 디바운스가 끝나버리면
+// 두 upsert가 동시에 날아가 늦게 도착하는 쪽이 먼저 도착한 최신 데이터를 덮어쓸 수 있다.
+// 프로미스를 체이닝해 항상 이전 저장이 끝난 뒤에만 다음 저장이 나가도록 순서를 보장한다.
+let _jobProgressSyncChain = Promise.resolve();
 function queueJobProgressSync(patch) {
   if (typeof isLoggedIn !== 'function' || !isLoggedIn()) return;
   clearTimeout(_jobProgressSyncTimer);
   _jobProgressSyncTimer = setTimeout(() => {
-    window.api?.saveJobProgress(patch).catch((e) => console.error(e));
+    _jobProgressSyncChain = _jobProgressSyncChain
+      .then(() => window.api?.saveJobProgress(patch))
+      .catch((e) => console.error(e));
   }, 800);
 }
 
 // 로그인 상태면 Supabase의 job_progress로 localStorage를 덮어써 기기 간 데이터를 맞춘다.
-// 최초 로그인(원격 데이터 없음)이면 현재 로컬(데모 포함) 데이터를 그대로 시드한다.
+// 최초 로그인(원격 데이터 자체가 없음)이면 현재 로컬 데이터를 그대로 시드한다.
+//
+// remote.jobData.version이 지금 DATA_VERSION과 다르면 여기서 그냥 localStorage에 써버리지
+// 않는다 — 예전엔 여기서 무조건 덮어쓴 뒤, 곧이어 loadData()가 버전 불일치를 이유로 그 값을
+// 버리고 freshData()로 완전히 빈 진행상황을 만들었고, freshData()의 saveData()가 그 빈 데이터를
+// 다시 800ms 후 Supabase로 밀어올려 실제 사용자의 원격 진행상황을 조용히 지워버렸다.
+// 버전이 다른 원격 데이터에 대한 실제 마이그레이션은 별도로 다뤄야 하므로, 여기서는 최소한
+// "버전이 안 맞는다고 원격 진행상황을 지우지는 않는다"만 보장한다.
 async function hydrateFromSupabase() {
   if (typeof isLoggedIn !== 'function' || !isLoggedIn()) return;
 
   try {
     const remote = await window.api.getJobProgress();
-    if (remote.jobData || remote.jobFeatures) {
-      if (remote.jobData) localStorage.setItem(JOB_KEY, JSON.stringify(remote.jobData));
-      if (remote.jobFeatures) localStorage.setItem('job_features', JSON.stringify(remote.jobFeatures));
-    } else {
+    if (!remote.jobData && !remote.jobFeatures) {
       const localJobData = loadData();
       const localFeatures = JSON.parse(localStorage.getItem('job_features') || 'null');
       await window.api.saveJobProgress({ jobData: localJobData, jobFeatures: localFeatures });
+      return;
     }
+
+    if (remote.jobData) {
+      if (remote.jobData.version === DATA_VERSION) {
+        localStorage.setItem(JOB_KEY, JSON.stringify(remote.jobData));
+      } else {
+        console.error(`job_progress 버전 불일치(원격 ${remote.jobData.version} / 로컬 ${DATA_VERSION}) — 데이터 유실을 막기 위해 동기화를 건너뜁니다.`);
+      }
+    }
+    if (remote.jobFeatures) localStorage.setItem('job_features', JSON.stringify(remote.jobFeatures));
   } catch (e) {
     console.error(e);
   }

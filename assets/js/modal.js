@@ -22,14 +22,10 @@ document.querySelectorAll('[data-action="open-modal"]').forEach(el => {
   el.addEventListener('click', () => openModal(el.dataset.word || ''));
 });
 
-// data-action="quick-favorite" 요소는 내부 즐겨찾기 별을 토글하고 안내 토스트를 띄운다.
-document.querySelectorAll('[data-action="quick-favorite"]').forEach(el => {
-  el.addEventListener('click', () => {
-    const star = el.querySelector('.favorite-star');
-    if (star) ts(star);
-    toast('★ 즐겨찾기에 저장했어요!');
-  });
-});
+// data-action="quick-favorite" 버튼의 실제 저장/토스트는 wiki.js가 전담한다(TD-0004).
+// 과거 이 파일에도 cosmetic ts() 토글 + 고정 토스트가 별도로 바인딩되어 있었는데,
+// wiki.js의 진짜 저장 리스너와 같은 버튼에서 동시에 실행되며 화면 상태가 실제 저장
+// 상태와 어긋나는 문제가 있어(별이 아닌 버튼 텍스트 클릭 시 특히) 제거했다.
 
 document.querySelectorAll('[data-action="close-modal"]').forEach(el => {
   el.addEventListener('click', () => closeModal());

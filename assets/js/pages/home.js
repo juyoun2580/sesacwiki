@@ -13,7 +13,13 @@ async function renderMyWordsPreview() {
     return;
   }
 
-  listEl.innerHTML = words.map((w) => `<li class="word-chip">${w.term}</li>`).join("");
+  listEl.innerHTML = "";
+  words.forEach((w) => {
+    const li = document.createElement("li");
+    li.className = "word-chip";
+    li.textContent = w.term;
+    listEl.appendChild(li);
+  });
 }
 
 // wiki.js와 같은 카테고리 → 아이콘/태그색 매핑(홈 대시보드는 wiki.js를 로드하지 않아 여기서도 필요).
@@ -153,9 +159,8 @@ async function renderExamStatCard() {
 
 // 대시보드(index.html) "취업 준비율" 카드 — job.js가 localStorage(job_data, job_features)로
 // 계산하는 progressByCategory와 같은 원본 데이터를 같은 방식으로 다시 계산한다.
-// job.js는 job.html에서만 로드되어 함수를 직접 호출할 수 없으므로, job.js의
-// getProgressByCategory()/isStepDone() 판정 로직을 이 파일에서도 동일하게 유지한다.
-// (job.js의 로직이 바뀌면 이 부분도 함께 맞춰줘야 한다.)
+// job.js는 job.html에서만 로드되어 함수를 직접 호출할 수 없으므로, 판정 기준 자체는
+// app.js의 공용 isJobStepDone()을 재사용해 job.js와 항상 같은 결과를 보장한다.
 const JOB_DATA_KEY = "job_data";
 const JOB_DATA_VERSION = 20;
 const JOB_FEATURES_KEY = "job_features";
@@ -168,28 +173,6 @@ function loadJobFeatures() {
     /* fall through */
   }
   return null;
-}
-
-// 이 함수는 assets/js/pages/job.js의 isStepDone()과 반드시 동일해야 합니다. 수정 시 두 파일을 함께 수정하세요.
-function isJobStepDone(stepId, f) {
-  if (!f) return false;
-  switch (stepId) {
-    case 2:
-      return f.resume && (f.resume.education?.length > 0 || f.resume.experience?.length > 0 || f.resume.skills?.length > 0);
-    case 3:
-      return f.coverLetter && Object.values(f.coverLetter).every((v) => typeof v === "string" && v.trim());
-    case 4:
-      return f.projects && f.projects.length > 0;
-    case 5:
-      return (
-        (f.interviewAnswers && Object.values(f.interviewAnswers).some((v) => typeof v === "string" && v.trim())) ||
-        (f.mockAnswers && Object.values(f.mockAnswers).some((v) => Array.isArray(v) && v.length > 0))
-      );
-    case 6:
-      return (f.companies && f.companies.length > 0) || (f.interviews && f.interviews.length > 0);
-    default:
-      return false;
-  }
 }
 
 function getJobProgressByCategory() {

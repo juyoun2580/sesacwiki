@@ -494,13 +494,18 @@ function saveFeatures(f) {
   queueFeaturesSync(f);
 }
 
-// job.js의 queueJobProgressSync와 같은 디바운스-백그라운드 upsert 패턴.
+// job.js의 queueJobProgressSync와 같은 디바운스-백그라운드 upsert 패턴이며,
+// 같은 이유로(느린 네트워크에서 이전 저장이 끝나기 전에 다음 저장이 나가 순서가
+// 뒤바뀌는 것을 막기 위해) 프로미스 체이닝으로 저장 순서를 보장한다.
 let _featuresSyncTimer = null;
+let _featuresSyncChain = Promise.resolve();
 function queueFeaturesSync(f) {
   if (typeof isLoggedIn !== 'function' || !isLoggedIn()) return;
   clearTimeout(_featuresSyncTimer);
   _featuresSyncTimer = setTimeout(() => {
-    window.api?.saveJobProgress({ jobFeatures: f }).catch((e) => console.error(e));
+    _featuresSyncChain = _featuresSyncChain
+      .then(() => window.api?.saveJobProgress({ jobFeatures: f }))
+      .catch((e) => console.error(e));
   }, 800);
 }
 
@@ -1278,11 +1283,11 @@ function renderPortfolioBuilder(c) {
           ${featured.tech.length ? `<div class="ff-portfolio__tech">${featured.tech.map(t => `<span class="tag tag--blue">${esc(t)}</span>`).join('')}</div>` : ''}
           ${featured.desc ? `<p class="ff-portfolio__desc">${esc(featured.desc)}</p>` : ''}
           ${featured.url ? `<a href="${esc(featured.url)}" target="_blank" rel="noopener" class="btn btn--outline btn--sm">🔗 링크 열기</a>` : ''}
-          ${f.resume.skills.filter(s => featured.tech.some(t => t.toLowerCase().includes(s.name.toLowerCase()))).length ? `
+          ${f.resume.skills.filter(s => featured.tech.some(t => t.toLowerCase() === s.name.toLowerCase())).length ? `
             <hr class="ff-divider">
             <p class="ff-section__title">기술 스택 역량</p>
             <div class="ff-portfolio__skills">
-              ${f.resume.skills.filter(s => featured.tech.some(t => t.toLowerCase().includes(s.name.toLowerCase()))).map(s => `
+              ${f.resume.skills.filter(s => featured.tech.some(t => t.toLowerCase() === s.name.toLowerCase())).map(s => `
                 <div class="ff-portfolio__skill-row">
                   <span class="ff-portfolio__skill-name">${esc(s.name)}</span>
                   <div class="progress-bar ff-portfolio__skill-bar" role="progressbar" aria-valuenow="${s.level * 20}" aria-valuemin="0" aria-valuemax="100">
@@ -1479,7 +1484,7 @@ function renderPortfolioView(c) {
       <hr class="ff-divider">
       <p class="ff-section__title">기술 스택 역량</p>
       <div class="ff-portfolio__skills">
-        ${f.resume.skills.filter(s => featured.tech.some(t => t.toLowerCase().includes(s.name.toLowerCase()))).map(s => `
+        ${f.resume.skills.filter(s => featured.tech.some(t => t.toLowerCase() === s.name.toLowerCase())).map(s => `
           <div class="ff-portfolio__skill-row">
             <span class="ff-portfolio__skill-name">${esc(s.name)}</span>
             <div class="progress-bar ff-portfolio__skill-bar" role="progressbar" aria-valuenow="${s.level * 20}" aria-valuemin="0" aria-valuemax="100">

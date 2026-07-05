@@ -1,3 +1,31 @@
+// 사용자 입력값을 innerHTML 템플릿에 그대로 꽂아 넣지 않도록 이스케이프한다.
+// exam.js/quiz.js/mypage.js 등 여러 페이지 스크립트가 공통으로 재사용한다.
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// 취업핸드북 단계별 완료 여부 판정 — job.js(핸드북 페이지 진행률)와 home.js(대시보드
+// 취업 준비율 카드)가 동일한 기준으로 계산해야 해서 여기 한 곳에만 정의하고 공유한다.
+// (예전엔 두 파일에 완전히 같은 함수가 각각 있었고, 한쪽만 고치면 어긋난다는 주석으로만
+// 동기화를 유지했다.)
+function isJobStepDone(stepId, f) {
+  if (!f) return false;
+  switch (stepId) {
+    case 2: return f.resume && (f.resume.education?.length > 0 || f.resume.experience?.length > 0 || f.resume.skills?.length > 0);
+    case 3: return f.coverLetter && Object.values(f.coverLetter).every(v => typeof v === 'string' && v.trim());
+    case 4: return f.projects && f.projects.length > 0;
+    case 5: return (f.interviewAnswers && Object.values(f.interviewAnswers).some(v => typeof v === 'string' && v.trim())) ||
+                   (f.mockAnswers && Object.values(f.mockAnswers).some(v => Array.isArray(v) && v.length > 0));
+    case 6: return (f.companies && f.companies.length > 0) || (f.interviews && f.interviews.length > 0);
+    default: return false;
+  }
+}
+
 // ── 진행률(%) 값은 HTML에 style= 로 하드코딩하지 않고 data-progress 로만 표기,
 // 실제 width 값은 여기서 한 번에 적용한다. ──
 function initProgressBars() {
@@ -73,11 +101,13 @@ function initPageAuthGuard() {
 initProgressBars();
 initToastTriggers();
 
-loadNav();
-loadHeader().then(() => {
-  initNavigation();
-  initAuth();
-});
+loadNav().catch((err) => console.error("nav 로드 실패:", err));
+loadHeader()
+  .then(() => {
+    initNavigation();
+    initAuth();
+  })
+  .catch((err) => console.error("header 로드 실패:", err));
 
 // isLoggedIn()이 정확한 값을 돌려주려면 auth.js의 최초 세션 조회가 끝나야 하므로,
 // 로그인 여부에 따라 분기하는 가드는 authReady 이후로 미룬다.

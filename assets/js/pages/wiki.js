@@ -163,8 +163,8 @@ function renderWikiEmptyState(listEl) {
 function renderWikiPagination(totalItems) {
   const paginationEl = document.getElementById('wikiPagination');
   paginationEl.innerHTML = '';
+  // wikiState.page 클램프는 renderWikiList()가 목록을 자르기 전에 이미 처리한다.
   const totalPages = Math.max(1, Math.ceil(totalItems / WIKI_PAGE_SIZE));
-  if (wikiState.page > totalPages) wikiState.page = totalPages;
   if (totalItems === 0) return;
 
   const makeBtn = (label, page, opts = {}) => {
@@ -192,6 +192,11 @@ function renderWikiPagination(totalItems) {
 function renderWikiList() {
   const filtered = wikiFilterItems();
   const sorted = wikiSortItems(filtered);
+  // 필터/정렬 결과가 바뀌어 wikiState.page가 범위를 벗어난 경우, 목록을 자르기 전에
+  // 먼저 클램프한다(이전에는 renderWikiPagination이 렌더 이후에 클램프해서, 페이지가
+  // 갱신되기 전 상태로 목록이 그려져 결과가 있는데도 빈 상태가 보이는 문제가 있었다).
+  const totalPages = Math.max(1, Math.ceil(sorted.length / WIKI_PAGE_SIZE));
+  if (wikiState.page > totalPages) wikiState.page = totalPages;
   const start = (wikiState.page - 1) * WIKI_PAGE_SIZE;
   const pageItems = sorted.slice(start, start + WIKI_PAGE_SIZE);
 

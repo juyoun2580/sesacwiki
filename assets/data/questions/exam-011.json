@@ -177,7 +177,7 @@
       "whyCorrect": "HTML 요소(DOM)가 메모리에 전부 적재되고 렌더링이 완료된 시점(문서 최하단)에 JS를 실행해야 객체를 정상적으로 찾아 이벤트를 걸 수 있다.",
       "whyIncorrect": "용량, 검색 엔진 감점, 보안(해킹) 이슈는 스크립트의 하단 배치와 직접적인 연관성이 없는 오답들이다.",
       "examPoint": "DOM(문서 객체 모델) 로딩 순서와 브라우저의 파싱(Parsing) 원리에 따른 스크립트 배치의 당위성을 묻는 단골 면접 질문이다.",
-      "practical 초Example": "<head>에 스크립트를 넣을 경우 'document.getElementById()'로 버튼을 찾았을 때 결과가 null로 나와 클릭 이벤트가 걸리지 않는 에러를 겪게 된다."
+      "practicalExample": "<head>에 스크립트를 넣을 경우 'document.getElementById()'로 버튼을 찾았을 때 결과가 null로 나와 클릭 이벤트가 걸리지 않는 에러를 겪게 된다."
     }
   },
   {

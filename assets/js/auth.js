@@ -14,6 +14,10 @@ supabaseClient.auth.onAuthStateChange((event, session) => {
 
   if (event === "INITIAL_SESSION") {
     resolveAuthReady();
+    // 이미 로그인된 세션이 남아있는 상태로 login/signup 페이지에 직접 들어온 경우
+    // (뒤로가기, 즐겨찾기 등) 마이페이지로 보낸다. SIGNED_IN 이벤트는 신규 로그인
+    // 순간에만 발생하므로 이 분기가 없으면 이 경우를 놓친다.
+    if (/(?:login|signup)\.html$/.test(location.pathname)) redirectIfLoggedIn();
   }
 
   // 매직링크를 클릭하고 돌아온 경우, 로그인/가입 화면에 있다면 마이페이지로 이동한다.
