@@ -93,11 +93,6 @@
   color: var(--ink3);
 }
 
-.wiki-row__time {
-  font-size: var(--fs-11);
-  color: var(--ink4);
-}
-
 .wiki-row__percent {
   font-size: var(--fs-13);
   font-weight: 800;

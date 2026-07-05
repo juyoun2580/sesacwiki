@@ -134,17 +134,13 @@ function buildWikiRow(item) {
   level.className = 'wiki-row__level';
   level.textContent = item.level;
 
-  const time = document.createElement('span');
-  time.className = 'wiki-row__time';
-  time.textContent = item.time;
-
   const percent = document.createElement('span');
   percent.className = 'wiki-row__percent';
   percent.textContent = `${item.progress}%`;
 
   const meta = document.createElement('span');
   meta.className = 'wiki-row__meta';
-  meta.append(tag, level, time, percent, buildWikiFavoriteStar(item));
+  meta.append(tag, level, percent, buildWikiFavoriteStar(item));
 
   a.append(icon, body, meta);
   li.appendChild(a);
@@ -501,7 +497,6 @@ function renderWikiDetail(item) {
   categoryTag.textContent = item.category;
   document.getElementById('wikiDetailLevelTag').textContent = item.level;
 
-  document.getElementById('wikiDetailTime').textContent = `🕐 ${item.time}`;
   updateWikiDetailProgress(item);
 
   // favorite-star는 정적 마크업이라 ui.js가 defer 시점에 이미 클릭을 바인딩했지만(cosmetic toggle뿐),
