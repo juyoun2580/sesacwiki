@@ -6,16 +6,16 @@
 const WIKI_PAGE_SIZE = 5;
 
 const WIKI_CATEGORY_ICON = {
-  'SQL': '🗄️',
-  'Java': '☕',
-  'HTML': '🌐',
-  'CSS': '🎨',
-  'JavaScript': '⚡',
-  'Git': '🔀',
-  'Salesforce': '☁️',
-  'CS 개념': '💡',
-  '면접 개념': '🎤',
-  '취업 가이드': '💼'
+  'SQL': 'database',
+  'Java': 'code',
+  'HTML': 'monitor',
+  'CSS': 'edit',
+  'JavaScript': 'play',
+  'Git': 'git-branch',
+  'Salesforce': 'cloud',
+  'CS 개념': 'lightbulb',
+  '면접 개념': 'message',
+  '취업 가이드': 'bar-chart'
 };
 
 const WIKI_CATEGORY_TAG_COLOR = {
@@ -32,6 +32,7 @@ const WIKI_CATEGORY_TAG_COLOR = {
 };
 
 const WIKI_LEVEL_ORDER = { '입문': 0, '기초': 1, '중급': 2 };
+const WIKI_LEVEL_TAG_COLOR = { '입문': 'green', '기초': 'gray', '중급': 'gold' };
 const WIKI_RETURN_STATE_KEY = 'wikiReturnState';
 
 let wikiAllItems = [];
@@ -109,10 +110,15 @@ function buildWikiRow(item) {
     }));
   });
 
+  const categoryColor = WIKI_CATEGORY_TAG_COLOR[item.category] || 'gray';
+
   const icon = document.createElement('span');
-  icon.className = 'wiki-row__icon';
-  icon.setAttribute('aria-hidden', 'true');
-  icon.textContent = WIKI_CATEGORY_ICON[item.category] || '📄';
+  icon.className = `icon icon--${WIKI_CATEGORY_ICON[item.category] || 'file'}`;
+
+  const iconBox = document.createElement('span');
+  iconBox.className = `wiki-row__icon-box wiki-row__icon-box--${categoryColor}`;
+  iconBox.setAttribute('aria-hidden', 'true');
+  iconBox.appendChild(icon);
 
   const title = document.createElement('span');
   title.className = 'wiki-row__title';
@@ -127,11 +133,11 @@ function buildWikiRow(item) {
   body.append(title, desc);
 
   const tag = document.createElement('span');
-  tag.className = `tag tag--${WIKI_CATEGORY_TAG_COLOR[item.category] || 'gray'}`;
+  tag.className = `tag tag--${categoryColor}`;
   tag.textContent = item.category;
 
   const level = document.createElement('span');
-  level.className = 'wiki-row__level';
+  level.className = `tag tag--${WIKI_LEVEL_TAG_COLOR[item.level] || 'gray'}`;
   level.textContent = item.level;
 
   const time = document.createElement('span');
@@ -146,7 +152,7 @@ function buildWikiRow(item) {
   meta.className = 'wiki-row__meta';
   meta.append(tag, level, time, percent, buildWikiFavoriteStar(item));
 
-  a.append(icon, body, meta);
+  a.append(iconBox, body, meta);
   li.appendChild(a);
   return li;
 }
@@ -209,10 +215,6 @@ function renderWikiList() {
 const WIKI_FAVORITE_PREVIEW_COUNT = 4;
 let wikiFavoritesExpanded = false;
 
-function truncateWikiTitle(title, length) {
-  return title.length > length ? title.slice(0, length) + '…' : title;
-}
-
 function renderWikiFavoritesPanel() {
   const listEl = document.getElementById('wikiFavoriteList');
   const toggleBtn = document.getElementById('wikiFavoriteToggle');
@@ -231,21 +233,22 @@ function renderWikiFavoritesPanel() {
     li.textContent = '즐겨찾기한 위키가 없어요.';
     listEl.appendChild(li);
   } else {
-    visibleItems.forEach(item => {
+    visibleItems.forEach((item, index) => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.className = 'favorite-list__link';
       a.href = `/pages/wiki/detail.html?id=${encodeURIComponent(item.id)}`;
 
-      const tag = document.createElement('span');
-      tag.className = `tag favorite-list__tag tag--${WIKI_CATEGORY_TAG_COLOR[item.category] || 'gray'}`;
-      tag.textContent = item.category;
+      const badge = document.createElement('span');
+      badge.className = 'favorite-list__index';
+      badge.setAttribute('aria-hidden', 'true');
+      badge.textContent = String(index + 1);
 
       const title = document.createElement('span');
       title.className = 'favorite-list__title';
-      title.textContent = truncateWikiTitle(item.title, 4);
+      title.textContent = item.title;
 
-      a.append(tag, title);
+      a.append(badge, title);
       li.appendChild(a);
       listEl.appendChild(li);
     });
@@ -301,14 +304,7 @@ function wikiBindControls() {
 
   document.querySelectorAll('.sort-pill[data-sort]').forEach(btn => {
     btn.addEventListener('click', () => {
-      // ui.js가 클릭마다 무조건 sort-pill--active를 붙이므로(공통 파일, 수정 금지),
-      // 이미 선택된 정렬을 다시 누른 경우 여기서 직접 꺼서 "해제" 동작을 구현한다.
-      if (wikiState.sort === btn.dataset.sort) {
-        wikiState.sort = 'latest';
-        btn.classList.remove('sort-pill--active');
-      } else {
-        wikiState.sort = btn.dataset.sort;
-      }
+      wikiState.sort = btn.dataset.sort;
       wikiState.page = 1;
       renderWikiList();
     });
@@ -461,9 +457,8 @@ function renderWikiRelated(item) {
     a.href = `/pages/wiki/detail.html?id=${encodeURIComponent(other.id)}`;
 
     const icon = document.createElement('span');
-    icon.className = 'related-item__icon';
+    icon.className = `related-item__icon icon icon--${WIKI_CATEGORY_ICON[other.category] || 'file'}`;
     icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = WIKI_CATEGORY_ICON[other.category] || '📄';
 
     const title = document.createElement('span');
     title.className = 'related-item__title';

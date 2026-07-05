@@ -8,18 +8,12 @@
   display: flex;
   gap: var(--space-10);
   align-items: center;
-  justify-content: flex-end;
   margin-bottom: var(--space-18);
 }
 
-.wiki-toolbar__input {
-  flex: 0 1 260px;
-  height: var(--space-40);
-  padding: 0 var(--space-14);
-  border: 1.5px solid var(--border);
-  border-radius: var(--r-sm);
-  font-size: var(--fs-13);
-  outline: none;
+.wiki-toolbar__search {
+  max-width: none;
+  margin: 0;
 }
 
 .sort-pills {
@@ -60,9 +54,49 @@
   transform: translateX(2px);
 }
 
-.wiki-row__icon {
-  font-size: var(--fs-32);
+.wiki-row__icon-box {
+  width: var(--space-44);
+  height: var(--space-44);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+}
+
+.wiki-row__icon-box .icon {
+  width: 21px;
+  height: 21px;
+}
+
+.wiki-row__icon-box--green {
+  background: var(--bg-green-tint, var(--g50));
+  color: var(--green-600, var(--g700));
+}
+
+.wiki-row__icon-box--blue {
+  background: var(--bg-blue-tint);
+  color: var(--blue-600);
+}
+
+.wiki-row__icon-box--gold {
+  background: var(--bg-gold-tint);
+  color: var(--gold-600);
+}
+
+.wiki-row__icon-box--coral {
+  background: var(--bg-coral-tint);
+  color: var(--coral-600);
+}
+
+.wiki-row__icon-box--gray {
+  background: var(--neutral-20);
+  color: var(--neutral-600);
+}
+
+.wiki-row__icon-box--purple {
+  background: var(--purple-bg);
+  color: var(--purple);
 }
 
 .wiki-row__body {
@@ -88,11 +122,6 @@
   flex-shrink: 0;
 }
 
-.wiki-row__level {
-  font-size: var(--fs-11);
-  color: var(--ink3);
-}
-
 .wiki-row__time {
   font-size: var(--fs-11);
   color: var(--ink4);
@@ -105,12 +134,10 @@
 }
 
 .favorite-box {
-  background: linear-gradient(135deg, var(--g50), var(--g100));
-  border-radius: var(--r-md);
-  padding: var(--space-14);
-  border: 1px solid var(--g100);
-  font-size: var(--fs-12);
-  color: var(--g900);
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: var(--space-20);
+  border: 1px solid var(--border);
 }
 
 .favorite-box__header {
@@ -131,28 +158,41 @@
 
 .favorite-list {
   list-style: none;
-  margin-top: var(--space-8);
+  margin-top: var(--space-14);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
 }
 
 .favorite-list__link {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
-  padding: var(--space-8) 0;
-  border-bottom: 1px solid var(--g100);
+  gap: var(--space-10);
 }
 
-.favorite-list__item:last-child .favorite-list__link {
-  border-bottom: none;
-}
-
-.favorite-list__tag {
+.favorite-list__index {
+  width: var(--space-22);
+  height: var(--space-22);
+  border-radius: 50%;
+  background: var(--g700);
+  color: var(--surface);
+  font-size: var(--fs-11);
+  font-weight: var(--fw-extrabold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
 .favorite-list__title {
-  font-size: var(--fs-12);
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-14);
+  font-weight: 600;
   color: var(--g900);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .favorite-list__empty {
@@ -327,7 +367,10 @@
 }
 
 .related-item__icon {
-  font-size: var(--fs-20);
+  width: var(--fs-20);
+  height: var(--fs-20);
+  color: var(--g700);
+  flex-shrink: 0;
 }
 
 .related-item__title {

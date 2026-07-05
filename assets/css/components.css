@@ -161,6 +161,26 @@
   -webkit-mask-image: url("../img/icon/ico-mail.svg");
 }
 
+.icon--cloud {
+  mask-image: url("../img/icon/ico-cloud.svg");
+  -webkit-mask-image: url("../img/icon/ico-cloud.svg");
+}
+
+.icon--code {
+  mask-image: url("../img/icon/ico-code.svg");
+  -webkit-mask-image: url("../img/icon/ico-code.svg");
+}
+
+.icon--play {
+  mask-image: url("../img/icon/ico-play.svg");
+  -webkit-mask-image: url("../img/icon/ico-play.svg");
+}
+
+.icon--lightbulb {
+  mask-image: url("../img/icon/ico-lightbulb.svg");
+  -webkit-mask-image: url("../img/icon/ico-lightbulb.svg");
+}
+
 /* ---------- Notification Button ---------- */
 .notification-btn {
   width: var(--space-38);
