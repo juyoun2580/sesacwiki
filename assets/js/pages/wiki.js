@@ -338,10 +338,13 @@ function fetchWikiData() {
   return wikiDataPromise;
 }
 
-// 로그인 상태면 wiki_bookmarks 테이블의 실제 즐겨찾기 상태로 item.bookmarked를 덮어쓴다
-// (wiki-data.json에 박혀있는 bookmarked 시드값은 게스트 미리보기용일 뿐이다).
+// 로그인 상태면 wiki_bookmarks 테이블의 실제 즐겨찾기 상태로 item.bookmarked를 덮어쓴다.
+// 비로그인(게스트)은 wiki-data.json에 남아있는 bookmarked 시드값과 무관하게 전부 false로 초기화한다.
 async function wikiApplyBookmarks(items) {
-  if (!isLoggedIn()) return items;
+  if (!isLoggedIn()) {
+    items.forEach(item => { item.bookmarked = false; });
+    return items;
+  }
   const bookmarkedIds = new Set(await api.getWikiBookmarks());
   items.forEach(item => { item.bookmarked = bookmarkedIds.has(item.id); });
   return items;
