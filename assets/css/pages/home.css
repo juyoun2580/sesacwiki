@@ -31,14 +31,14 @@
   padding: var(--space-3) var(--space-12);
   border-radius: var(--radius-round);
   font-size: var(--fs-12);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   letter-spacing: .03em;
   margin-bottom: var(--space-10);
 }
 
 .hero__title {
   font-size: var(--fs-30);
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   color: var(--neutral-surface);
   line-height: var(--lh-tight);
   margin-bottom: var(--space-8);
@@ -114,14 +114,14 @@
 
 .hero .streak-card__number {
   font-size: var(--fs-38);
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   color: var(--neutral-surface);
   line-height: 1;
 }
 
 .hero .streak-card__unit {
   font-size: var(--fs-14);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: var(--neutral-surface);
 }
 
@@ -147,7 +147,7 @@
 /* ---------- Section headings ---------- */
 .home-section-heading {
   font-size: var(--fs-20);
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   color: var(--neutral-900);
   display: flex;
   align-items: center;
@@ -157,7 +157,7 @@
 
 .home-section-heading__desc {
   font-size: var(--fs-12);
-  font-weight: 400;
+  font-weight: var(--fw-regular);
   color: var(--neutral-400);
 }
 
@@ -188,7 +188,7 @@
   text-decoration: none;
   text-align: center;
   font-size: var(--fs-11);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -223,7 +223,7 @@
   padding: var(--space-16) var(--space-18);
   border-radius: var(--radius-md);
   font-size: var(--fs-15);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: var(--neutral-900);
 }
 
@@ -289,7 +289,7 @@
   gap: var(--space-10);
 
   font-size: var(--fs-14);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: var(--neutral-600);
 }
 
@@ -330,7 +330,7 @@
 
 .stat-card__number {
   font-size: var(--fs-36);
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   color: var(--neutral-900);
   letter-spacing: var(--ls-tight);
   line-height: 1;
@@ -349,7 +349,7 @@
   padding: var(--space-2) var(--space-8);
   border-radius: var(--radius-round);
   font-size: var(--fs-11);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   background: var(--green-50);
   color: var(--green-700);
   border: 1px solid var(--green-100);
@@ -410,7 +410,7 @@
 
 .roadmap-card__percent {
   font-size: var(--fs-14);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 .rm-scroll li:nth-child(1) .roadmap-card__icon {
@@ -446,7 +446,7 @@
 
 .roadmap-card__title {
   font-size: var(--fs-14);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: var(--neutral-900);
   margin-bottom: var(--space-10);
 }
@@ -549,7 +549,7 @@
 .favorite-list__title {
   flex: 1;
   font-size: var(--fs-14);
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
 }
 
 .recent-list__time {
@@ -616,7 +616,7 @@
   background: var(--bg-green-tint);
   color: var(--green-700);
   font-size: var(--fs-12);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   cursor: pointer;
   border: 1.5px solid var(--green-100);
   transition: all var(--transition-fast);
@@ -715,7 +715,7 @@
 
 .quote-box__label {
   font-size: var(--fs-12);
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   color: var(--green-700);
   margin-bottom: var(--space-6);
 }

@@ -67,12 +67,11 @@ function wikiSortItems(items) {
 
 function buildWikiFavoriteStar(item) {
   const star = document.createElement('span');
-  star.className = 'favorite-star' + (item.bookmarked ? ' favorite-star--on' : '');
+  star.className = 'favorite-star icon icon--star-filled' + (item.bookmarked ? ' favorite-star--on' : '');
   star.setAttribute('role', 'button');
   star.setAttribute('tabindex', '0');
   star.setAttribute('aria-pressed', String(item.bookmarked));
   star.setAttribute('aria-label', '즐겨찾기');
-  star.textContent = '★';
   // 실제 저장(Supabase wiki_bookmarks)이 필요해 공통 ts() 대신 여기서 직접 토글+영속화한다.
   star.addEventListener('click', async e => {
     // 이 별은 <a class="wiki-row"> 안에 있어서 stopPropagation만으로는
@@ -256,7 +255,10 @@ function renderWikiFavoritesPanel() {
 
   toggleBtn.hidden = !hasOverflow;
   if (hasOverflow) {
-    toggleBtn.textContent = wikiFavoritesExpanded ? '▲ 접기' : '▼ 펼치기';
+    toggleBtn.innerHTML = `
+    <span class="icon ${wikiFavoritesExpanded ? 'icon--chevron-up' : 'icon--chevron-down'}" aria-hidden="true"></span>
+    ${wikiFavoritesExpanded ? '접기' : '펼치기'}
+  `;
   }
 }
 
@@ -372,7 +374,8 @@ function wikiGetIdFromUrl() {
 }
 
 function updateWikiDetailProgress(item) {
-  document.getElementById('wikiDetailPercent').textContent = `👁 학습 진도 ${item.progress}%`;
+  document.getElementById('wikiDetailPercent').innerHTML =
+    `<span class="icon icon--bar-chart" aria-hidden="true"></span> 학습 진도 ${item.progress}%`;
   const bar = document.getElementById('wikiDetailProgressBar');
   bar.setAttribute('aria-valuenow', String(item.progress));
   const fill = document.getElementById('wikiDetailProgressFill');
@@ -456,9 +459,14 @@ function renderWikiRelated(item) {
     a.className = 'related-item';
     a.href = `/pages/wiki/detail.html?id=${encodeURIComponent(other.id)}`;
 
+    const categoryColor = WIKI_CATEGORY_TAG_COLOR[other.category] || 'gray';
     const icon = document.createElement('span');
-    icon.className = `related-item__icon icon icon--${WIKI_CATEGORY_ICON[other.category] || 'file'}`;
-    icon.setAttribute('aria-hidden', 'true');
+    icon.className = `icon icon--${WIKI_CATEGORY_ICON[other.category] || 'file'}`;
+
+    const iconBox = document.createElement('span');
+    iconBox.className = `wiki-row__icon-box wiki-row__icon-box--${categoryColor}`;
+    iconBox.setAttribute('aria-hidden', 'true');
+    iconBox.appendChild(icon);
 
     const title = document.createElement('span');
     title.className = 'related-item__title';
@@ -472,10 +480,10 @@ function renderWikiRelated(item) {
     textWrap.append(title, desc);
 
     const tag = document.createElement('span');
-    tag.className = `tag related-item__tag tag--${WIKI_CATEGORY_TAG_COLOR[other.category] || 'gray'}`;
+    tag.className = `tag related-item__tag tag--${categoryColor}`;
     tag.textContent = other.category;
 
-    a.append(icon, textWrap, tag);
+    a.append(iconBox, textWrap, tag);
     relatedEl.appendChild(a);
   });
 }
@@ -488,7 +496,8 @@ function renderWikiDetail(item) {
   categoryTag.textContent = item.category;
   document.getElementById('wikiDetailLevelTag').textContent = item.level;
 
-  document.getElementById('wikiDetailTime').textContent = `🕐 ${item.time}`;
+  document.getElementById('wikiDetailTime').innerHTML =
+    `<span class="icon icon--clock" aria-hidden="true"></span> ${item.time}`;
   updateWikiDetailProgress(item);
 
   // favorite-star는 정적 마크업이라 ui.js가 defer 시점에 이미 클릭을 바인딩했지만(cosmetic toggle뿐),

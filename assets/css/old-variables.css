@@ -1,0 +1,64 @@
+/* --- 예전 버전 --- */
+:root {
+--g900: #23461F;
+--g700: #315C2C;
+--g500: #407538;
+--g300: #71A56B;
+--g100: #C7E0C4;
+--g50: #EDF7EC;
+--g20: #F7FCF6;
+--g-tint: #E1F0DE;
+--gold: #F9A825;
+--gold-bg: #FFF8E1;
+--gold-200: #FFE082;
+--coral: #EF5350;
+--coral-bg: #FFEBEE;
+--coral-200: #FFCDD2;
+--blue: #1565C0;
+--blue-bg: #E3F2FD;
+--blue-200: #BBDEFB;
+--purple: #7B1FA2;
+--purple-bg: #EDE7F6;
+--purple-200: #D1C4E9;
+--orange: #E65100;
+--orange-bg: #FFF3E0;
+--orange-200: #FFCC80;
+--brown-700: #795548;
+--ink: #1C1C1E;
+--ink2: #3C3C43;
+--ink3: #6C6C70;
+--ink4: #AEAEB2;
+--border: #E5E5EA;
+--bg: #F4FAF5;
+--surface: #FFFFFF;
+--gray-100: #F2F2F7;
+--gray-300: #D0D0D0;
+--hero-grad-1: #D7EED9;
+--hero-grad-2: #C5E8C7;
+--hero-grad-3: #B8E0BB;
+--abox-grad: #D9EFD9;
+--odbox-grad: #FFE4E4;
+/* --- color: code block --- */
+--code-bg: #1C1C2E;
+--code-text: #CDD9E5;
+--code-keyword: #F97583;
+--code-string: #9ECBFF;
+--code-comment: #6A737D;
+/* --- color: highlight (텍스트 형광펜) --- */
+--highlight-yellow: #FFF59D;
+--highlight-yellow-bg: #FFF9C4;
+--highlight-green: #C8E6C9;
+/* --- radius --- */
+--r-lg: 16px;
+--r-md: 12px;
+--r-sm: 8px;
+--r-xs: 6px;
+/* --- shadow --- */
+--sh-sm: 0 1px 4px rgba(0, 0, 0, .06), 0 2px 8px rgba(0, 0, 0, .04);
+--sh-md: 0 4px 16px rgba(0, 0, 0, .08), 0 1px 4px rgba(0, 0, 0, .04);
+--sh-lg: 0 8px 32px rgba(0, 0, 0, .10), 0 2px 8px rgba(0, 0, 0, .06);
+--sh-g: 0 4px 20px rgba(45, 122, 58, .18);
+--sh-g-hover: 0 6px 24px rgba(45, 122, 58, .3);
+--sh-logo: 0 2px 8px rgba(45, 122, 58, .35);
+
+}

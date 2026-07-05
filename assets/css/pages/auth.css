@@ -93,7 +93,7 @@
 
 .auth-input:focus {
   outline: none;
-  border-color: var(--g500);
+  border-color: var(--green-600);
   box-shadow: var(--focus-ring);
 }
 
@@ -109,7 +109,7 @@
 
 .auth-checkbox-row input[type="checkbox"] {
   margin-top: 0;
-  accent-color: var(--g700);
+  accent-color: var(--green-800);
   width: var(--space-16);
   height: var(--space-16);
   flex-shrink: 0;

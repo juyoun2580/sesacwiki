@@ -123,32 +123,42 @@
 .sidebar {
   width: 210px;
   flex-shrink: 0;
-  background: var(--neutral-surface);
-  border-right: 1px solid var(--neutral-40);
-  padding: var(--space-20) var(--space-12);
+  padding: var(--space-20) 0 var(--space-20) var(--space-28);
   position: sticky;
   top: var(--space-68);
   height: calc(100vh - var(--space-68));
   overflow-y: auto;
 }
 
+.sidebar-wrap{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--space-5);
+  background-color: var(--neutral-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  border: 1px solid var(--neutral-40);
+}
+
 .sidebar__label {
-  font-size: var(--fs-10);
+  font-size: var(--fs-14);
   font-weight: var(--fw-extrabold);
-  color: var(--neutral-200);
+  color: var(--neutral-300);
   text-transform: uppercase;
   letter-spacing: .07em;
   padding: 0 var(--space-10);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-9);
 }
 
 .sidebar__item {
   display: flex;
-  align-items: center;
-  gap: var(--space-9);
+  align-items: center;/* 필요 없으면 제거 */
+  width: 100%;
+  text-align: left;
   padding: var(--space-9) var(--space-12);
-  border-radius: var(--radius-sm);
-  font-size: var(--fs-13);
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-14);
   color: var(--neutral-600);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -169,7 +179,7 @@
 
 .sidebar__item--active {
   background: var(--green-50);
-  color: var(--neutral-900);
+  color: var(--success);
   font-weight: var(--fw-bold);
 }
 
@@ -195,8 +205,6 @@
 .side-panel {
   width: 268px;
   flex-shrink: 0;
-  background: var(--neutral-surface);
-  border-left: 1px solid var(--neutral-40);
   padding: var(--space-20) var(--space-18);
   position: sticky;
   top: var(--space-68);
@@ -204,9 +212,13 @@
   overflow-y: auto;
 }
 
+.side-panel .section-title{
+  margin-bottom: 0;
+}
+
 /* ---------- 페이지 제목 (목록형 페이지 공통) ---------- */
 .page-title {
-  font-size: var(--fs-22);
+  font-size: var(--fs-26);
   font-weight: var(--fw-extrabold);
   color: var(--neutral-900);
   display: flex;
@@ -216,9 +228,9 @@
 }
 
 .page-subtitle {
-  font-size: var(--fs-13);
-  color: var(--neutral-600);
-  margin-bottom: var(--space-22);
+  font-size: var(--fs-14);
+  color: var(--neutral-400);
+  margin-bottom: var(--space-20);
 }
 
 /* ==========================================================================

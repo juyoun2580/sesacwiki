@@ -47,7 +47,7 @@
               </div>
 
               <p class="highlight-banner">
-                <span aria-hidden="true">✏️</span>
+                <span class="icon icon--edit" aria-hidden="true"></span>
                 <span><strong>텍스트를 드래그</strong>하면 하이라이트 저장 또는 단어장 추가를 할 수 있어요!</span>
               </p>
 
@@ -59,18 +59,21 @@
 
             <aside class="wiki-detail__aside" aria-label="핸드북 저장 도구">
               <div class="save-box">
-                <p class="save-box__title">📚 내 핸드북에 저장</p>
+                <p class="save-box__title"><span class="icon icon--book" aria-hidden="true"></span> 내 핸드북에 저장</p>
                 <button type="button" class="save-box__action" data-action="quick-favorite"><span
                     class="favorite-star" id="wikiDetailFavoriteMini" aria-hidden="true">★</span> 즐겨찾기</button>
                 <button type="button" class="save-box__action" data-action="toast"
-                  data-message="텍스트를 드래그하면 하이라이트 툴바가 나타나요!">✏️ 하이라이트</button>
-                <button type="button" class="save-box__action" data-action="open-modal" data-word="">📓 단어장 추가</button>
+                  data-message="텍스트를 드래그하면 하이라이트 툴바가 나타나요!"><span class="icon icon--edit"
+                    aria-hidden="true"></span> 하이라이트</button>
+                <button type="button" class="save-box__action" data-action="open-modal" data-word=""><span
+                    class="icon icon--book" aria-hidden="true"></span> 단어장 추가</button>
               </div>
               <button type="button" class="complete-btn" id="wikiCompleteBtn" data-action="toast"
-                data-message="🎉 학습 완료! +20P 획득했어요!">✅ 학습
+                data-message="🎉 학습 완료! +20P 획득했어요!"><span class="icon icon--check" aria-hidden="true"></span> 학습
                 완료</button>
               <div class="highlight-list-wrap">
-                <p class="highlight-list__label" id="hlcount">✏️ 저장한 하이라이트 (0)</p>
+                <p class="highlight-list__label"><span class="icon icon--edit" aria-hidden="true"></span> <span
+                    id="hlcount">저장한 하이라이트 (0)</span></p>
                 <div class="highlight-list"></div>
               </div>
             </aside>

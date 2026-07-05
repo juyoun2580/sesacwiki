@@ -33,6 +33,6 @@ select {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--g300);
+  background: var(--green-300);
   border-radius: 3px;
 }

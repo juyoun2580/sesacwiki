@@ -25,19 +25,19 @@
   flex: 1;
   min-width: 160px;
   padding: var(--space-8) var(--space-14);
-  border: 1.5px solid var(--border);
-  border-radius: var(--r-sm);
+  border: 1.5px solid var(--neutral-50);
+  border-radius: var(--radius-xs);
   font-size: var(--fs-13);
   outline: none;
 }
 
 .my-toolbar__select {
   padding: var(--space-8) var(--space-12);
-  border: 1.5px solid var(--border);
-  border-radius: var(--r-sm);
+  border: 1.5px solid var(--neutral-50);
+  border-radius: var(--radius-xs);
   font-size: var(--fs-12);
   outline: none;
-  background: var(--surface);
+  background: var(--neutral-surface);
 }
 
 .sort-pills {
@@ -52,9 +52,9 @@
   align-items: center;
   gap: var(--space-10);
   padding: var(--space-13) var(--space-16);
-  background: var(--surface);
-  border-radius: var(--r-md);
-  border: 1px solid var(--border);
+  background: var(--neutral-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--neutral-50);
   margin-bottom: var(--space-8);
   cursor: pointer;
   box-shadow: var(--sh-sm);
@@ -65,7 +65,7 @@
 
 .doc-row:hover {
   box-shadow: var(--sh-md);
-  border-color: var(--g300);
+  border-color: var(--green-300);
 }
 
 .doc-row__icon {
@@ -76,18 +76,18 @@
 .doc-row__title {
   flex: 1;
   font-size: var(--fs-13);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 .doc-row__date {
   font-size: var(--fs-11);
-  color: var(--ink4);
+  color: var(--neutral-200);
   margin-left: var(--space-8);
 }
 
 .doc-row__more {
   font-size: var(--fs-16);
-  color: var(--ink4);
+  color: var(--neutral-200);
 }
 
 /* ---------- 통계 그리드 (문서 통계 사이드 패널) ---------- */
@@ -99,17 +99,17 @@
 }
 
 .stat-box {
-  background: var(--bg);
-  border-radius: var(--r-sm);
+  background: var(--neutral-bg);
+  border-radius: var(--radius-xs);
   padding: var(--space-12);
   text-align: center;
-  border: 1px solid var(--border);
+  border: 1px solid var(--neutral-50);
 }
 
 .stat-box__value {
   font-size: var(--fs-22);
-  font-weight: 800;
-  color: var(--g900);
+  font-weight: var(--fw-extrabold);
+  color: var(--green-900);
 }
 
 .stat-box__value--sm {
@@ -117,12 +117,12 @@
 }
 
 .stat-box__value--gold {
-  color: var(--gold);
+  color: var(--star-gold);
 }
 
 .stat-box__label {
   font-size: var(--fs-10);
-  color: var(--ink4);
+  color: var(--neutral-200);
   margin-top: 1px;
 }
 
@@ -149,15 +149,15 @@
 }
 
 .legend-row__dot--green {
-  background: var(--g700);
+  background: var(--green-800);
 }
 
 .legend-row__dot--gold {
-  background: var(--gold);
+  background: var(--star-gold);
 }
 
 .legend-row__dot--blue {
-  background: var(--blue);
+  background: var(--blue-600);
 }
 
 .legend-row__dot--purple {
@@ -165,12 +165,12 @@
 }
 
 .legend-row__count {
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
 }
 
 /* ---------- 사이드바 안내 카드 (핸드북 활용 팁) ---------- */
 .sidebar__card-title {
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   margin-bottom: var(--space-5);
 }
 
@@ -181,11 +181,11 @@
 }
 
 .sidebar__card--green {
-  background: linear-gradient(135deg, var(--g50), var(--g100));
+  background: linear-gradient(135deg, var(--green-50), var(--green-100));
 }
 
 .sidebar__card--gold {
-  background: linear-gradient(135deg, var(--gold-bg), var(--gold-200));
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-200));
   border-color: var(--gold-200);
 }
 
@@ -198,9 +198,9 @@
 
 .word-stats__box {
   flex: 1;
-  background: var(--surface);
-  border-radius: var(--r-md);
-  border: 1px solid var(--border);
+  background: var(--neutral-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--neutral-50);
   padding: var(--space-14);
   text-align: center;
   box-shadow: var(--sh-sm);
@@ -208,13 +208,13 @@
 
 .word-stats__value {
   font-size: 24px;
-  font-weight: 800;
-  color: var(--g900);
+  font-weight: var(--fw-extrabold);
+  color: var(--green-900);
 }
 
 .word-stats__label {
   font-size: var(--fs-10);
-  color: var(--ink4);
+  color: var(--neutral-200);
 }
 
 .word-stats__ring {
@@ -223,8 +223,8 @@
 
 .word-stats__ring-value {
   font-size: var(--fs-11);
-  font-weight: 800;
-  color: var(--g900);
+  font-weight: var(--fw-extrabold);
+  color: var(--green-900);
 }
 
 /* ---------- 단어 행 (Word Row) ---------- */
@@ -233,9 +233,9 @@
   align-items: center;
   gap: var(--space-10);
   padding: var(--space-14) var(--space-16);
-  background: var(--surface);
-  border-radius: var(--r-md);
-  border: 1px solid var(--border);
+  background: var(--neutral-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--neutral-50);
   margin-bottom: var(--space-8);
   box-shadow: var(--sh-sm);
   transition: all .15s;
@@ -243,7 +243,7 @@
 
 .word-row:hover {
   box-shadow: var(--sh-md);
-  border-color: var(--g300);
+  border-color: var(--green-300);
 }
 
 .word-row__checkbox {
@@ -256,32 +256,32 @@
 
 .word-row__term {
   font-size: var(--fs-15);
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
 }
 
 .word-row__pos {
   font-size: var(--fs-10);
-  color: var(--ink4);
-  background: var(--bg);
+  color: var(--neutral-200);
+  background: var(--neutral-bg);
   padding: 1px var(--space-6);
-  border-radius: var(--r-xs);
+  border-radius: var(--radius-xxs);
   margin-left: var(--space-5);
 }
 
 .word-row__def {
   font-size: var(--fs-12);
-  color: var(--ink3);
+  color: var(--neutral-500);
 }
 
 .word-row__example {
   font-size: var(--fs-11);
-  color: var(--ink4);
+  color: var(--neutral-200);
   font-style: italic;
 }
 
 .word-row__date {
   font-size: var(--fs-10);
-  color: var(--ink4);
+  color: var(--neutral-200);
 }
 
 .word-row__actions {
@@ -302,16 +302,16 @@
   display: flex;
   flex-direction: column;
   padding: var(--space-16);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
+  background: var(--neutral-surface);
+  border: 1px solid var(--neutral-50);
+  border-radius: var(--radius-sm);
   box-shadow: var(--sh-sm);
   transition: all .15s;
 }
 
 .word-card:hover {
   box-shadow: var(--sh-md);
-  border-color: var(--g300);
+  border-color: var(--green-300);
 }
 
 .word-card__favorite {
@@ -322,8 +322,8 @@
 
 .word-card__no {
   font-size: var(--fs-10);
-  font-weight: 700;
-  color: var(--g500);
+  font-weight: var(--fw-bold);
+  color: var(--green-600);
   letter-spacing: .04em;
 }
 
@@ -335,15 +335,15 @@
 
 .word-card__term {
   font-size: var(--fs-16);
-  font-weight: 800;
-  color: var(--ink);
+  font-weight: var(--fw-extrabold);
+  color: var(--neutral-900);
   text-align: center;
 }
 
 .word-card__pos {
   display: block;
   font-size: var(--fs-10);
-  color: var(--ink4);
+  color: var(--neutral-200);
   text-align: center;
   margin-bottom: var(--space-8);
 }
@@ -356,7 +356,7 @@
 .word-card__definition {
   flex: 1;
   font-size: var(--fs-12);
-  color: var(--ink3);
+  color: var(--neutral-500);
   text-align: center;
 }
 
@@ -367,12 +367,12 @@
   gap: var(--space-6);
   margin-top: var(--space-10);
   padding-top: var(--space-8);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--neutral-50);
 }
 
 .word-card__example {
   font-size: var(--fs-11);
-  color: var(--ink4);
+  color: var(--neutral-200);
   font-style: italic;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -382,7 +382,7 @@
 .word-card__date {
   flex-shrink: 0;
   font-size: var(--fs-10);
-  color: var(--ink4);
+  color: var(--neutral-200);
 }
 
 .word-card__actions {
@@ -393,38 +393,38 @@
 
 /* ---------- 오늘의 단어 퀴즈 위젯 (Word Quiz widget) ---------- */
 .word-quiz {
-  background: linear-gradient(135deg, var(--g50), var(--g100));
-  border-radius: var(--r-md);
+  background: linear-gradient(135deg, var(--green-50), var(--green-100));
+  border-radius: var(--radius-sm);
   padding: var(--space-16);
   margin-bottom: var(--space-16);
-  border: 1px solid var(--g100);
+  border: 1px solid var(--green-100);
 }
 
 .word-quiz__title {
   font-size: var(--fs-12);
-  font-weight: 800;
-  color: var(--g900);
+  font-weight: var(--fw-extrabold);
+  color: var(--green-900);
   margin-bottom: var(--space-8);
 }
 
 .word-quiz__hint {
   font-size: var(--fs-11);
-  color: var(--g700);
+  color: var(--green-800);
   margin-bottom: var(--space-8);
 }
 
 .word-quiz__question {
   font-size: var(--fs-13);
-  font-weight: 700;
-  color: var(--ink);
+  font-weight: var(--fw-bold);
+  color: var(--neutral-900);
   margin-bottom: var(--space-10);
   line-height: 1.4;
 }
 
 .word-quiz__option {
   padding: var(--space-7) var(--space-11);
-  background: var(--surface);
-  border-radius: var(--r-sm);
+  background: var(--neutral-surface);
+  border-radius: var(--radius-xs);
   font-size: var(--fs-12);
   cursor: pointer;
   border: 1.5px solid transparent;
@@ -435,25 +435,25 @@
 }
 
 .word-quiz__option:hover {
-  border-color: var(--g500);
-  background: var(--g50);
+  border-color: var(--green-600);
+  background: var(--green-50);
 }
 
 .word-quiz__option--selected {
-  border-color: var(--g700);
-  background: var(--g50);
+  border-color: var(--green-800);
+  background: var(--green-50);
 }
 
 .word-quiz__submit {
   width: 100%;
   margin-top: var(--space-10);
   padding: var(--space-9);
-  border-radius: var(--r-sm);
+  border-radius: var(--radius-xs);
   border: none;
-  background: var(--g700);
+  background: var(--green-800);
   color: #fff;
   font-size: var(--fs-12);
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   cursor: pointer;
   box-shadow: var(--sh-g);
 }
@@ -469,18 +469,18 @@
 .word-export-bar__btn {
   padding: var(--space-8) var(--space-16);
   border-radius: 999px;
-  border: 1.5px solid var(--g300);
-  background: var(--surface);
-  color: var(--g900);
+  border: 1.5px solid var(--green-300);
+  background: var(--neutral-surface);
+  color: var(--green-900);
   font-size: var(--fs-12);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   cursor: pointer;
   transition: all .15s;
 }
 
 .word-export-bar__btn:hover {
-  background: var(--g50);
-  border-color: var(--g700);
+  background: var(--green-50);
+  border-color: var(--green-800);
 }
 
 /* ---------- 단어 내보내기 드롭다운 (대시보드 "나의 단어 도감" 패널 전용) ---------- */
@@ -490,19 +490,19 @@
 
 .word-export-dropdown__trigger {
   padding: var(--space-8) var(--space-14);
-  border-radius: var(--r-sm);
-  border: 1.5px solid var(--g300);
-  background: var(--surface);
-  color: var(--g900);
+  border-radius: var(--radius-xs);
+  border: 1.5px solid var(--green-300);
+  background: var(--neutral-surface);
+  color: var(--green-900);
   font-size: var(--fs-12);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   cursor: pointer;
   transition: all .15s;
 }
 
 .word-export-dropdown__trigger:hover {
-  background: var(--g50);
-  border-color: var(--g700);
+  background: var(--green-50);
+  border-color: var(--green-800);
 }
 
 .word-export-dropdown__menu {
@@ -512,9 +512,9 @@
   right: 0;
   z-index: 5;
   min-width: 160px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
+  background: var(--neutral-surface);
+  border: 1px solid var(--neutral-50);
+  border-radius: var(--radius-sm);
   box-shadow: var(--sh-lg);
   padding: var(--space-6);
 }
@@ -528,19 +528,19 @@
   width: 100%;
   padding: var(--space-9) var(--space-12);
   border: none;
-  border-radius: var(--r-sm);
+  border-radius: var(--radius-xs);
   background: none;
   font-size: var(--fs-12);
-  font-weight: 600;
-  color: var(--ink2);
+  font-weight: var(--fw-semibold);
+  color: var(--neutral-800);
   text-align: left;
   cursor: pointer;
   transition: background .15s;
 }
 
 .word-export-dropdown__item:hover {
-  background: var(--g50);
-  color: var(--g900);
+  background: var(--green-50);
+  color: var(--green-900);
 }
 
 /* ---------- 저장한 단어 카테고리 그룹 (JS 동적 렌더링) ---------- */
@@ -550,8 +550,8 @@
 
 .word-row-group__count {
   font-size: var(--fs-11);
-  color: var(--ink4);
-  font-weight: 500;
+  color: var(--neutral-200);
+  font-weight: var(--fw-medium);
 }
 
 /* ---------- 카테고리별 단어 수 (얇은 인라인 마스터율 바) ---------- */
@@ -565,13 +565,13 @@
 
 .category-stat-row__label {
   flex: 1;
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
 }
 
 .category-stat-row__count {
   width: var(--space-28);
   text-align: right;
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
   font-size: var(--fs-11);
 }
 
@@ -587,9 +587,9 @@
   align-items: center;
   gap: var(--space-10);
   padding: var(--space-14) var(--space-16);
-  background: var(--surface);
-  border-radius: var(--r-md);
-  border: 1px solid var(--border);
+  background: var(--neutral-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--neutral-50);
   margin-bottom: var(--space-8);
   cursor: pointer;
   box-shadow: var(--sh-sm);
@@ -600,7 +600,7 @@
 
 .fav-row:hover {
   box-shadow: var(--sh-md);
-  border-color: var(--gold);
+  border-color: var(--star-gold);
 }
 
 .fav-row__icon {
@@ -614,23 +614,23 @@
 
 .fav-row__title {
   font-size: var(--fs-13);
-  font-weight: 700;
+  font-weight: var(--fw-bold);
 }
 
 .fav-row__desc {
   font-size: var(--fs-11);
-  color: var(--ink3);
+  color: var(--neutral-500);
 }
 
 .fav-row__date {
   font-size: var(--fs-11);
-  color: var(--ink4);
+  color: var(--neutral-200);
   margin: 0 var(--space-8);
 }
 
 .fav-row__more {
   font-size: var(--fs-16);
-  color: var(--ink4);
+  color: var(--neutral-200);
 }
 
 /* ---------- 즐겨찾기 완료 안내 (하단 CTA) ---------- */
@@ -646,12 +646,12 @@
 
 .fav-complete__message {
   font-size: var(--fs-12);
-  color: var(--g900);
-  background: var(--g50);
+  color: var(--green-900);
+  background: var(--green-50);
   border-radius: 20px;
   padding: var(--space-8) var(--space-16);
   display: inline-block;
-  border: 1px solid var(--g100);
+  border: 1px solid var(--green-100);
 }
 
 .fav-complete__action {
@@ -670,13 +670,13 @@
 
 .fav-summary__value {
   font-size: var(--fs-30);
-  font-weight: 800;
-  color: var(--gold);
+  font-weight: var(--fw-extrabold);
+  color: var(--star-gold);
 }
 
 .fav-summary__label {
   font-size: var(--fs-11);
-  color: var(--ink4);
+  color: var(--neutral-200);
 }
 
 .fav-summary-list {
@@ -688,7 +688,7 @@
   display: flex;
   justify-content: space-between;
   padding: var(--space-5) 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--neutral-50);
   font-size: var(--fs-12);
 }
 
@@ -697,15 +697,15 @@
 }
 
 .fav-summary-list__count {
-  font-weight: 800;
+  font-weight: var(--fw-extrabold);
 }
 
 /* ---------- 최근 추가한 즐겨찾기 (사이드 패널 리스트) ---------- */
 .fav-recent-list__row {
   font-size: var(--fs-12);
-  color: var(--ink2);
+  color: var(--neutral-800);
   padding: var(--space-6) 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--neutral-50);
 }
 
 .fav-recent-list__row:last-child {
@@ -714,7 +714,7 @@
 
 .fav-recent-list__date {
   font-size: var(--fs-10);
-  color: var(--ink4);
+  color: var(--neutral-200);
 }
 
 .fav-summary__submit {

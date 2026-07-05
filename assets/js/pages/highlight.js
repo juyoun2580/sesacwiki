@@ -134,7 +134,7 @@ function updateHlCount() {
   const panel = document.querySelector('.highlight-list');
   const ct = document.getElementById('hlcount');
   if (!panel || !ct) return;
-  ct.textContent = '✏️ 저장한 하이라이트 (' + panel.querySelectorAll('.highlight-list__item').length + ')';
+  ct.textContent = '저장한 하이라이트 (' + panel.querySelectorAll('.highlight-list__item').length + ')';
 }
 
 function hlToWord() {

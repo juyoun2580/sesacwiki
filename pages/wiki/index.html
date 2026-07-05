@@ -24,16 +24,19 @@
     <section id="wiki" class="page page--active" aria-label="새싹위키">
       <div class="shell">
         <aside class="sidebar" aria-label="카테고리">
-          <p class="sidebar__label">카테고리</p>
-          <button type="button" class="sidebar__item sidebar__item--active" data-category="전체">전과목</button>
-          <button type="button" class="sidebar__item" data-category="Salesforce">세일즈포스</button>
-          <button type="button" class="sidebar__item" data-category="Java">Java</button>
-          <button type="button" class="sidebar__item" data-category="SQL">SQL</button>
-          <button type="button" class="sidebar__item" data-category="HTML">HTML</button>
-          <button type="button" class="sidebar__item" data-category="CSS">CSS</button>
-          <button type="button" class="sidebar__item" data-category="JavaScript">JavaScript</button>
-          <button type="button" class="sidebar__item" data-category="Git">기타</button>
+          <div class="sidebar-wrap">
+            <p class="sidebar__label">카테고리</p>
+            <button type="button" class="sidebar__item sidebar__item--active" data-category="전체">전과목</button>
+            <button type="button" class="sidebar__item" data-category="Salesforce">세일즈포스</button>
+            <button type="button" class="sidebar__item" data-category="Java">Java</button>
+            <button type="button" class="sidebar__item" data-category="SQL">SQL</button>
+            <button type="button" class="sidebar__item" data-category="HTML">HTML</button>
+            <button type="button" class="sidebar__item" data-category="CSS">CSS</button>
+            <button type="button" class="sidebar__item" data-category="JavaScript">JavaScript</button>
+            <button type="button" class="sidebar__item" data-category="Git">기타</button>
+          </div>
         </aside>
+
         <div class="page__content">
           <h1 class="page-title">새싹위키<span class="icon icon--leaf" aria-hidden="true"></span></h1>
           <p class="page-subtitle">새싹 과정에 필요한 모든 지식을 모아놓은 백과사전</p>
@@ -55,11 +58,14 @@
 
           <nav class="pagination" id="wikiPagination" aria-label="페이지 네비게이션"></nav>
         </div>
+        
         <aside class="side-panel" aria-label="즐겨찾기">
           <div class="favorite-box">
             <div class="favorite-box__header">
               <p class="section-title">즐겨찾기</p>
-              <button type="button" class="favorite-box__toggle" id="wikiFavoriteToggle" hidden>▼ 펼치기</button>
+              <button type="button" class="favorite-box__toggle" id="wikiFavoriteToggle" hidden>
+                <span class="icon icon--chevron-down" aria-hidden="true"></span>펼치기
+              </button>
             </div>
             <ul class="favorite-list" id="wikiFavoriteList"></ul>
           </div>

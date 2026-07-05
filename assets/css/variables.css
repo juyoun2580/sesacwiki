@@ -1,239 +1,201 @@
 :root {
-  /* --- Primary Color Palette: Green --- */
-  --green-900: #1F4620;
-  --green-800: #24552A;
-  --green-700: #276541;
-  --green-600: #2f7a4d;
-  --green-500: #3d8f57;
-  --green-400: #5aa873;
-  --green-300: #71a56b;
-  --green-200: #a8c9a5;
-  --green-100: #c7e0c4;
-  --green-50: #edf7ec;
-  --green-tint: #e1f0de;
+/* --- Primary Color Palette: Green --- */
+--green-900: #1F4620;
+--green-800: #24552A;
+--green-700: #276541;
+--green-600: #2f7a4d;
+--green-500: #3d8f57;
+--green-400: #5aa873;
+--green-300: #71a56b;
+--green-200: #a8c9a5;
+--green-100: #c7e0c4;
+--green-50: #edf7ec;
+--green-tint: #e1f0de;
 
-  /* --- Secondary Accent Colors --- */
-  --blue-600: #3a6ea5;
-  --blue-400: #5a8fc9;
-  --blue-100: #eaeff6;
-  --blue-tint: #dfe6ef;
+/* --- Secondary Accent Colors --- */
+--blue-600: #3a6ea5;
+--blue-400: #5a8fc9;
+--blue-100: #eaeff6;
+--blue-tint: #dfe6ef;
+--gold-600: #c9903f;
+--gold-400: #dba968;
+--gold-100: #f7efe0;
+--gold-tint: #f8f2e6;
+--gold-light: #fbf7ea;
+--coral-600: #c9663f;
+--coral-100: #f6e9e4;
+--star-gold: #e0b23f;
 
-  --gold-600: #c9903f;
-  --gold-400: #dba968;
-  --gold-100: #f7efe0;
-  --gold-tint: #f8f2e6;
-  --gold-light: #fbf7ea;
+/* --- Neutral / Ink Scale --- */
+--neutral-900: #2c2c28;
+--neutral-800: #3a3a34;
+--neutral-700: #4a4a44;
+--neutral-600: #57574f;
+--neutral-500: #6a6a62;
+--neutral-400: #8a8a80;
+--neutral-300: #9a9a90;
+--neutral-200: #a8a89e;
+--neutral-100: #c8c8c0;
+--neutral-50: #e4e4df;
+--neutral-40: #ececE8;
+--neutral-30: #efefeb;
+--neutral-20: #f0f0ec;
+--neutral-10: #f3f3ef;
+--neutral-5: #f4f4f1;
+--neutral-bg: #f7f7f4;
+--neutral-surface: #ffffff;
 
-  --coral-600: #c9663f;
-  --coral-100: #f6e9e4;
+/* --- Semantic Status Colors --- */
+--success: #2f7a4d;
+--warning: #c9903f;
+--error: #c9663f;
+--info: #3a6ea5;
 
-  --star-gold: #e0b23f;
+/* --- Hero & Interactive Gradients --- */
+--hero-primary-gradient: linear-gradient(135deg, #2f7a4d, #276541);
+--hero-light-gradient: linear-gradient(135deg, #d7eed9, #c5e8c7);
 
-  /* --- Neutral / Ink Scale --- */
-  --neutral-900: #2c2c28;
-  --neutral-800: #3a3a34;
-  --neutral-700: #4a4a44;
-  --neutral-600: #57574f;
-  --neutral-500: #6a6a62;
-  --neutral-400: #8a8a80;
-  --neutral-300: #9a9a90;
-  --neutral-200: #a8a89e;
-  --neutral-100: #c8c8c0;
-  --neutral-50: #e4e4df;
-  --neutral-40: #ececE8;
-  --neutral-30: #efefeb;
-  --neutral-20: #f0f0ec;
-  --neutral-10: #f3f3ef;
-  --neutral-5: #f4f4f1;
-  --neutral-bg: #f7f7f4;
-  --neutral-surface: #ffffff;
+/* --- Component-Specific Backgrounds --- */
+--bg-green-tint: #eaf4ec;
+--bg-blue-tint: #eaeff6;
+--bg-gold-tint: #f7efe0;
+--bg-coral-tint: #f6e9e4;
 
-  /* --- Semantic Status Colors --- */
-  --success: #2f7a4d;
-  --warning: #c9903f;
-  --error: #c9663f;
-  --info: #3a6ea5;
+/* --- Border Radius --- */
+--radius-xl: 24px;
+--radius-lg: 16px;
+--radius-md: 14px;
+--radius-sm: 11px;
+--radius-xs: 10px;
+--radius-xxs: 7px;
+--radius-round: 999px;
 
-  /* --- Hero & Interactive Gradients --- */
-  --hero-primary-gradient: linear-gradient(135deg, #2f7a4d, #276541);
-  --hero-light-gradient: linear-gradient(135deg, #d7eed9, #c5e8c7);
+/* --- Shadow System --- */
+--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+--shadow-md: 0 4px 8px rgba(0, 0, 0, 0.06);
+--shadow-lg: 0 24px 60px -30px rgba(30, 40, 25, 0.28);
+--shadow-hero: 0 24px 60px -30px rgba(30, 40, 25, 0.28);
 
-  /* --- Component-Specific Backgrounds --- */
-  --bg-green-tint: #eaf4ec;
-  --bg-blue-tint: #eaeff6;
-  --bg-gold-tint: #f7efe0;
-  --bg-coral-tint: #f6e9e4;
+/* --- Focus & Interaction Rings --- */
+--focus-ring: 0 0 0 3px rgba(47, 122, 77, 0.15);
+--focus-ring-sm: 0 0 0 2px rgba(47, 122, 77, 0.1);
 
-  /* --- Border Radius --- */
-  --radius-xl: 24px;
-  --radius-lg: 16px;
-  --radius-md: 14px;
-  --radius-sm: 11px;
-  --radius-xs: 10px;
-  --radius-xxs: 7px;
-  --radius-round: 999px;
+/* --- Typography: Font Sizes --- */
+--fs-10: 10px;
+--fs-11: 11px;
+--fs-12: 12px;
+--fs-13: 13px;
+--fs-14: 14px;
+--fs-15: 15px;
+--fs-16: 16px;
+--fs-17: 17px;
+--fs-18: 18px;
+--fs-19: 19px;
+--fs-20: 20px;
+--fs-22: 22px;
+--fs-24: 24px;
+--fs-26: 26px;
+--fs-28: 28px;
+--fs-30: 30px;
+--fs-32: 32px;
+--fs-34: 34px;
+--fs-36: 36px;
+--fs-38: 38px;
+--fs-40: 40px;
+--fs-44: 44px;
+--fs-52: 52px;
+--fs-80: 80px;
 
-  /* --- Shadow System --- */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 24px 60px -30px rgba(30, 40, 25, 0.28);
-  --shadow-hero: 0 24px 60px -30px rgba(30, 40, 25, 0.28);
+/* --- Typography: Font Weight --- */
+--fw-regular: 400;
+--fw-medium: 500;
+--fw-semibold: 600;
+--fw-bold: 700;
+--fw-extrabold: 800;
 
-  /* --- Focus & Interaction Rings --- */
-  --focus-ring: 0 0 0 3px rgba(47, 122, 77, 0.15);
-  --focus-ring-sm: 0 0 0 2px rgba(47, 122, 77, 0.1);
+/* --- Typography: Line Height --- */
+--lh-tight: 1.2;
+--lh-normal: 1.5;
+--lh-relaxed: 1.75;
 
-  /* --- Typography: Font Sizes --- */
-  --fs-10: 10px;
-  --fs-11: 11px;
-  --fs-12: 12px;
-  --fs-13: 13px;
-  --fs-14: 14px;
-  --fs-15: 15px;
-  --fs-16: 16px;
-  --fs-17: 17px;
-  --fs-18: 18px;
-  --fs-19: 19px;
-  --fs-20: 20px;
-  --fs-22: 22px;
-  --fs-24: 24px;
-  --fs-26: 26px;
-  --fs-28: 28px;
-  --fs-30: 30px;
-  --fs-32: 32px;
-  --fs-34: 34px;
-  --fs-36: 36px;
-  --fs-38: 38px;
-  --fs-40: 40px;
-  --fs-44: 44px;
-  --fs-52: 52px;
-  --fs-80: 80px;
+/* --- Letter Spacing --- */
+--ls-normal: 0;
+--ls-tight: -0.02em;
+--ls-tighter: -0.03em;
 
-  /* --- Typography: Font Weight --- */
-  --fw-regular: 400;
-  --fw-medium: 500;
-  --fw-semibold: 600;
-  --fw-bold: 700;
-  --fw-extrabold: 800;
+/* --- Spacing Scale --- */
+--space-1: 1px;
+--space-2: 2px;
+--space-3: 3px;
+--space-4: 4px;
+--space-5: 5px;
+--space-6: 6px;
+--space-7: 7px;
+--space-8: 8px;
+--space-9: 9px;
+--space-10: 10px;
+--space-11: 11px;
+--space-12: 12px;
+--space-13: 13px;
+--space-14: 14px;
+--space-16: 16px;
+--space-18: 18px;
+--space-20: 20px;
+--space-21: 21px;
+--space-22: 22px;
+--space-24: 24px;
+--space-26: 26px;
+--space-28: 28px;
+--space-32: 32px;
+--space-34: 34px;
+--space-36: 36px;
+--space-38: 38px;
+--space-40: 40px;
+--space-42: 42px;
+--space-44: 44px;
+--space-48: 48px;
+--space-52: 52px;
+--space-62: 62px;
+--space-68: 68px;
+--space-80: 80px;
 
-  /* --- Typography: Line Height --- */
-  --lh-tight: 1.2;
-  --lh-normal: 1.5;
-  --lh-relaxed: 1.75;
+/* --- Transition & Animation --- */
+--transition-fast: 150ms ease-in-out;
+--transition-normal: 200ms ease-in-out;
+--transition-slow: 300ms ease-in-out;
 
-  /* --- Letter Spacing --- */
-  --ls-normal: 0;
-  --ls-tight: -0.02em;
-  --ls-tighter: -0.03em;
+--sel-ring: 0 0 0 3px rgba(76, 175, 80, .12);
+--curr-ring: 0 0 0 3px rgba(76, 175, 80, .15);
+--act-ring: 0 0 0 5px var(--green-50);
 
-  /* --- Spacing Scale --- */
-  --space-1: 1px;
-  --space-2: 2px;
-  --space-3: 3px;
-  --space-4: 4px;
-  --space-5: 5px;
-  --space-6: 6px;
-  --space-7: 7px;
-  --space-8: 8px;
-  --space-9: 9px;
-  --space-10: 10px;
-  --space-11: 11px;
-  --space-12: 12px;
-  --space-13: 13px;
-  --space-14: 14px;
-  --space-16: 16px;
-  --space-18: 18px;
-  --space-20: 20px;
-  --space-21: 21px;
-  --space-22: 22px;
-  --space-24: 24px;
-  --space-26: 26px;
-  --space-28: 28px;
-  --space-32: 32px;
-  --space-34: 34px;
-  --space-36: 36px;
-  --space-38: 38px;
-  --space-40: 40px;
-  --space-42: 42px;
-  --space-44: 44px;
-  --space-48: 48px;
-  --space-52: 52px;
-  --space-62: 62px;
-  --space-68: 68px;
-  --space-80: 80px;
+/* --- 예전 버전 (새 Design Token과 1:1 대응이 없어 유지 중 — old-variables.css 참고, docs 보고 참조) --- */
+--g20: #F7FCF6;
+--gold-200: #FFE082;
+--coral-200: #FFCDD2;
+--blue-200: #BBDEFB;
+--purple: #7B1FA2;
+--purple-bg: #EDE7F6;
+--orange: #E65100;
+--orange-bg: #FFF3E0;
+--orange-200: #FFCC80;
+--hero-grad-1: #D7EED9;
+--abox-grad: #D9EFD9;
+--odbox-grad: #FFE4E4;
+/* --- color: code block --- */
+--code-bg: #1C1C2E;
+--code-text: #CDD9E5;
+--code-keyword: #F97583;
+--code-string: #9ECBFF;
+--code-comment: #6A737D;
+/* --- color: highlight (텍스트 형광펜) --- */
+--highlight-yellow: #FFF59D;
+--highlight-yellow-bg: #FFF9C4;
+/* --- shadow --- */
+--sh-sm: 0 1px 4px rgba(0, 0, 0, .06), 0 2px 8px rgba(0, 0, 0, .04);
+--sh-md: 0 4px 16px rgba(0, 0, 0, .08), 0 1px 4px rgba(0, 0, 0, .04);
+--sh-lg: 0 8px 32px rgba(0, 0, 0, .10), 0 2px 8px rgba(0, 0, 0, .06);
+--sh-g: 0 4px 20px rgba(45, 122, 58, .18);
+--sh-g-hover: 0 6px 24px rgba(45, 122, 58, .3);
+--sh-logo: 0 2px 8px rgba(45, 122, 58, .35);
 
-  /* --- Transition & Animation --- */
-  --transition-fast: 150ms ease-in-out;
-  --transition-normal: 200ms ease-in-out;
-  --transition-slow: 300ms ease-in-out;
-
-
-
-
-  /* --- 예전 버전 --- */
-  --g900: #23461F;
-  --g700: #315C2C;
-  --g500: #407538;
-  --g300: #71A56B;
-  --g100: #C7E0C4;
-  --g50: #EDF7EC;
-  --g20: #F7FCF6;
-  --g-tint: #E1F0DE;
-  --gold: #F9A825;
-  --gold-bg: #FFF8E1;
-  --gold-200: #FFE082;
-  --coral: #EF5350;
-  --coral-bg: #FFEBEE;
-  --coral-200: #FFCDD2;
-  --blue: #1565C0;
-  --blue-bg: #E3F2FD;
-  --blue-200: #BBDEFB;
-  --purple: #7B1FA2;
-  --purple-bg: #EDE7F6;
-  --purple-200: #D1C4E9;
-  --orange: #E65100;
-  --orange-bg: #FFF3E0;
-  --orange-200: #FFCC80;
-  --brown-700: #795548;
-  --ink: #1C1C1E;
-  --ink2: #3C3C43;
-  --ink3: #6C6C70;
-  --ink4: #AEAEB2;
-  --border: #E5E5EA;
-  --bg: #F4FAF5;
-  --surface: #FFFFFF;
-  --gray-100: #F2F2F7;
-  --gray-300: #D0D0D0;
-  --hero-grad-1: #D7EED9;
-  --hero-grad-2: #C5E8C7;
-  --hero-grad-3: #B8E0BB;
-  --abox-grad: #D9EFD9;
-  --odbox-grad: #FFE4E4;
-  /* --- color: code block --- */
-  --code-bg: #1C1C2E;
-  --code-text: #CDD9E5;
-  --code-keyword: #F97583;
-  --code-string: #9ECBFF;
-  --code-comment: #6A737D;
-  /* --- color: highlight (텍스트 형광펜) --- */
-  --highlight-yellow: #FFF59D;
-  --highlight-yellow-bg: #FFF9C4;
-  --highlight-green: #C8E6C9;
-  /* --- radius --- */
-  --r-lg: 16px;
-  --r-md: 12px;
-  --r-sm: 8px;
-  --r-xs: 6px;
-  /* --- shadow --- */
-  --sh-sm: 0 1px 4px rgba(0, 0, 0, .06), 0 2px 8px rgba(0, 0, 0, .04);
-  --sh-md: 0 4px 16px rgba(0, 0, 0, .08), 0 1px 4px rgba(0, 0, 0, .04);
-  --sh-lg: 0 8px 32px rgba(0, 0, 0, .10), 0 2px 8px rgba(0, 0, 0, .06);
-  --sh-g: 0 4px 20px rgba(45, 122, 58, .18);
-  --sh-g-hover: 0 6px 24px rgba(45, 122, 58, .3);
-  --sh-logo: 0 2px 8px rgba(45, 122, 58, .35);
-  --focus-ring: 0 0 0 3px rgba(76, 175, 80, .15);
-  --focus-ring-sm: 0 0 0 3px rgba(76, 175, 80, .12);
-  --sel-ring: 0 0 0 3px rgba(76, 175, 80, .12);
-  --curr-ring: 0 0 0 3px rgba(76, 175, 80, .15);
-  --act-ring: 0 0 0 5px var(--g50);
 }

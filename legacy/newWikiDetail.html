@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="padding:32px; display:grid; grid-template-columns:200px 1fr 280px; gap:24px; align-items:start;">
+
+      <!-- left: TOC -->
+      <aside style="display:flex; flex-direction:column; gap:16px; position:sticky; top:20px;">
+        <span style="display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#8a8a80; font-weight:600; cursor:pointer;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>뒤로가기</span>
+        <div style="background:#fff; border:1px solid #ececE8; border-radius:16px; padding:20px;">
+          <div style="font-size:13px; font-weight:700; color:#9a9a90; letter-spacing:.04em; margin-bottom:14px;">목차</div>
+          <div style="display:flex; flex-direction:column; gap:4px; font-size:14px;">
+            <div style="padding:9px 12px; background:#eaf4ec; color:#2f7a4d; border-radius:9px; font-weight:700;">1. Git이란</div>
+            <div style="padding:9px 12px; color:#5a5a50; font-weight:500;">2. 기본 명령어</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- center: article -->
+      <section style="background:#fff; border:1px solid #ececE8; border-radius:16px; padding:28px; min-width:0;">
+        <!-- title -->
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+          <h1 style="margin:0; font-size:26px; font-weight:800; letter-spacing:-0.03em;">Git 기본 개념</h1>
+          <span style="padding:4px 12px; background:#eaeff6; color:#3a6ea5; border-radius:999px; font-size:12px; font-weight:700;">Git</span>
+          <span style="padding:4px 12px; background:#f0f0ec; color:#7a7a70; border-radius:999px; font-size:12px; font-weight:700;">입문</span>
+        </div>
+        <div style="display:flex; gap:14px; margin:10px 0 16px; font-size:13px; color:#9a9a90; align-items:center;">
+          <span style="display:inline-flex; align-items:center; gap:5px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4l2.5 2.5"></path></svg>6분 전</span>
+          <span style="display:inline-flex; align-items:center; gap:5px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"></path><circle cx="12" cy="12" r="2.5"></circle></svg>학습 진도 55%</span>
+          <span style="display:inline-flex; align-items:center; gap:5px; color:#c9903f;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.8 6.2 21.9l1.1-6.5L2.6 9.8l6.5-.9z"></path></svg>즐겨찾기</span>
+        </div>
+        <!-- progress -->
+        <div style="height:7px; border-radius:99px; background:#eceae4; margin-bottom:20px;">
+          <div style="width:55%; height:100%; border-radius:99px; background:#2f7a4d;"></div>
+        </div>
+
+        <!-- drag hint -->
+        <div style="display:flex; align-items:center; gap:10px; background:#eaf4ec; border:1px solid #d7e8db; border-radius:12px; padding:12px 16px; margin-bottom:26px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f7a4d" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+          <span style="font-size:13px; color:#2f6a45;"><b>텍스트를 드래그</b>하면 하이라이트 저장 또는 단어장 추가를 할 수 있어요!</span>
+        </div>
+
+        <!-- section 1 -->
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <span style="width:4px; height:20px; border-radius:99px; background:#2f7a4d;"></span>
+          <h2 style="margin:0; font-size:19px; font-weight:800; letter-spacing:-0.02em;">1. Git이란</h2>
+        </div>
+        <p style="margin:0 0 28px; font-size:15px; line-height:1.7; color:#3a3a34;">Git은 파일 변경 이력을 추적하는 분산 버전 관리 시스템입니다. 여러 명이 동시에 작업해도 변경 내용을 안전하게 합칠 수 있습니다.</p>
+
+        <!-- section 2 -->
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <span style="width:4px; height:20px; border-radius:99px; background:#2f7a4d;"></span>
+          <h2 style="margin:0; font-size:19px; font-weight:800; letter-spacing:-0.02em;">2. 기본 명령어</h2>
+        </div>
+        <p style="margin:0 0 16px; font-size:15px; line-height:1.7; color:#3a3a34;">가장 자주 쓰는 명령어는 변경사항을 기록에 올리는 add/commit, 원격 저장소와 주고받는 push/pull입니다.</p>
+
+        <!-- code block -->
+        <div style="position:relative; background:#26302a; border-radius:14px; padding:20px 24px; margin-bottom:28px;">
+          <span style="position:absolute; top:14px; right:14px; padding:6px 14px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); color:#cfe0d4; border-radius:8px; font-size:12px; font-weight:700; cursor:pointer;">복사</span>
+          <pre style="margin:0; font-family:'SF Mono',Consolas,monospace; font-size:14px; line-height:1.8; color:#d8e6dc;">git add .
+git commit -m "작업 내용"
+git push origin main</pre>
+        </div>
+
+        <!-- related -->
+        <div style="font-size:15px; font-weight:800; margin-bottom:12px;">관련 문서</div>
+        <div style="display:flex; align-items:center; gap:14px; background:#fbfbf9; border:1px solid #ececE8; border-radius:14px; padding:16px 18px; cursor:pointer;">
+          <span style="width:38px; height:38px; border-radius:10px; background:#eaeff6; color:#3a6ea5; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="8" r="3"></circle><path d="M18 11c0 4-6 3-9 7"></path><path d="M6 9v6"></path></svg></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-weight:700; font-size:14px;">Git 브랜치 전략</div>
+            <div style="font-size:13px; color:#9a9a90; margin-top:2px;">Git Flow와 협업을 위한 브랜치 전략을 알아봅니다.</div>
+          </div>
+          <span style="padding:4px 12px; background:#eaeff6; color:#3a6ea5; border-radius:999px; font-size:12px; font-weight:700; flex-shrink:0;">Git</span>
+        </div>
+      </section>
+
+      <!-- right: save panel -->
+      <aside style="display:flex; flex-direction:column; gap:16px; position:sticky; top:20px;">
+        <div style="background:#eaf4ec; border:1px solid #d7e8db; border-radius:16px; padding:20px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f6a45" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"></path></svg>
+            <b style="font-size:15px; color:#2f6a45;">내 핸드북에 저장</b>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:9px;">
+            <div style="display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #ececE8; border-radius:11px; padding:12px 14px; font-size:14px; font-weight:700; color:#3a3a34; cursor:pointer;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#e0b23f" stroke="#e0b23f" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 18.8 6.2 21.9l1.1-6.5L2.6 9.8l6.5-.9z"></path></svg>
+              즐겨찾기
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #ececE8; border-radius:11px; padding:12px 14px; font-size:14px; font-weight:700; color:#3a3a34; cursor:pointer;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9903f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+              하이라이트
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #ececE8; border-radius:11px; padding:12px 14px; font-size:14px; font-weight:700; color:#3a3a34; cursor:pointer;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3a6ea5" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"></path></svg>
+              단어장 추가
+            </div>
+          </div>
+        </div>
+
+        <span style="display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px; background:#2f7a4d; color:#fff; border-radius:12px; font-size:15px; font-weight:800; cursor:pointer;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+          학습 완료
+        </span>
+
+        <span style="display:inline-flex; align-items:center; gap:7px; font-size:13px; color:#7a7a70; font-weight:600; padding:0 4px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9903f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+          저장한 하이라이트 (0)
+        </span>
+      </aside>
+    </div>
+</body>
+</html>

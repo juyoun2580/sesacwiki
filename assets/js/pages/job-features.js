@@ -1345,7 +1345,7 @@ function renderProjects(c, opts) {
 
   c.innerHTML = `
     <div class="ff-form ff-form--col">
-      ${editing ? `<p class="ff-section__title" style="color:var(--g700)">✏️ "${esc(editing.title)}" 수정 중</p>` : ''}
+      ${editing ? `<p class="ff-section__title" style="color:var(--green-800)">✏️ "${esc(editing.title)}" 수정 중</p>` : ''}
       <div class="ff-form ff-form--row">
         <input id="pj-title"  class="ff-input" placeholder="프로젝트명" value="${editing ? esc(editing.title) : ''}">
         <input id="pj-period" class="ff-input ff-input--sm" placeholder="기간 (예: 2024.03 ~ 2024.06)" value="${editing ? esc(editing.period || '') : ''}">
@@ -2143,7 +2143,7 @@ function renderCertSelect(c, activeCat) {
     leftHTML = `
       <button type="button" class="btn btn--ghost btn--sm" id="cert-grade-back">← 목록으로</button>
       <p class="ff-section__title" style="margin:var(--space-14) 0 var(--space-8)">${esc(cert.name)}</p>
-      <p style="font-size:var(--fs-12);color:var(--ink3);margin-bottom:var(--space-14)">보유한 등급 또는 점수를 선택하세요</p>
+      <p style="font-size:var(--fs-12);color:var(--neutral-500);margin-bottom:var(--space-14)">보유한 등급 또는 점수를 선택하세요</p>
       <div class="ff-cert-grade-list">
         ${(cert.grades || []).map(g => `
           <button type="button" class="ff-cert-grade-btn${cur === g.value ? ' ff-cert-grade-btn--sel' : ''}" data-grade-val="${g.value}">
