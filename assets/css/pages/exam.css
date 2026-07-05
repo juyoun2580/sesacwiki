@@ -38,20 +38,28 @@
   margin-bottom: var(--space-5);
 }
 
-.exam-sidebar-card__emoji {
+.exam-sidebar-card__icon {
   position: relative;
-  text-align: center;
-  font-size: var(--fs-36);
+  display: flex;
+  justify-content: center;
   margin-top: var(--space-8);
+}
+
+.exam-sidebar-card__icon .icon {
+  width: 36px;
+  height: 36px;
+  color: var(--green-600);
   transform: rotate(-8deg);
 }
 
-/* ---------- Exam row (시험 카드) ---------- */
+/* ---------- Exam row (시험 카드) — wiki-row(assets/css/pages/wiki.css)와 동일한
+   아이콘박스(icon-box) 패턴을 재사용한다. 카테고리별 배경색은 이제 exam.js가
+   .exam-row__icon-box--{color} modifier로 직접 부여한다(과거 li[data-category] 선택자 제거). */
 .exam-row {
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-14);
-  padding: var(--space-18);
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-18) var(--space-20);
   background: var(--neutral-surface);
   border-radius: var(--radius-lg);
   border: 1px solid var(--neutral-50);
@@ -69,52 +77,79 @@
   transform: translateY(-2px);
 }
 
-.exam-row__icon {
-  font-size: var(--fs-32);
-  flex-shrink: 0;
-  width: var(--space-52);
-  height: var(--space-52);
+.exam-row__icon-box {
+  width: var(--space-44);
+  height: var(--space-44);
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: var(--neutral-10);
+  flex-shrink: 0;
 }
 
-/* 카테고리별 아이콘 배지 색상 — 목록을 스크롤할 때 카테고리 구분이 한눈에 되도록 */
-li[data-category="전과목"] .exam-row__icon { background: var(--green-50); }
-li[data-category="세일즈포스"] .exam-row__icon,
-li[data-category="CSS"] .exam-row__icon { background: var(--bg-blue-tint); }
-li[data-category="Java"] .exam-row__icon { background: var(--orange-bg); }
-li[data-category="SQL"] .exam-row__icon { background: var(--purple-bg); }
-li[data-category="HTML"] .exam-row__icon { background: var(--bg-coral-tint); }
-li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); }
+.exam-row__icon-box .icon {
+  width: 21px;
+  height: 21px;
+}
+
+.exam-row__icon-box--green {
+  background: var(--bg-green-tint);
+  color: var(--success);
+}
+
+.exam-row__icon-box--blue {
+  background: var(--bg-blue-tint);
+  color: var(--blue-600);
+}
+
+.exam-row__icon-box--gold {
+  background: var(--bg-gold-tint);
+  color: var(--gold-600);
+}
+
+.exam-row__icon-box--coral {
+  background: var(--bg-coral-tint);
+  color: var(--coral-600);
+}
+
+.exam-row__icon-box--gray {
+  background: var(--neutral-20);
+  color: var(--neutral-600);
+}
+
+.exam-row__icon-box--purple {
+  background: var(--purple-bg);
+  color: var(--purple);
+}
 
 .exam-row__body {
   flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
 .exam-row__title {
-  font-size: var(--fs-15);
-  font-weight: var(--fw-bold);
-  margin-bottom: var(--space-3);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-extrabold);
+  color: var(--neutral-900);
   display: flex;
   align-items: center;
   gap: var(--space-8);
 }
 
 .exam-row__desc {
-  font-size: var(--fs-12);
-  color: var(--neutral-500);
-  margin-bottom: var(--space-8);
+  font-size: var(--fs-13);
+  color: var(--neutral-300);
 }
 
 .exam-row__meta {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
-  font-size: var(--fs-11);
-  color: var(--neutral-500);
+  gap: var(--space-10);
+  font-size: var(--fs-12);
+  color: var(--neutral-200);
 }
 
 .exam-row__aside {
@@ -126,11 +161,28 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
 }
 
 .exam-row__count {
-  font-size: var(--fs-11);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--fs-12);
   color: var(--neutral-200);
 }
 
-/* ---------- Exam status summary (내 모의고사 현황) ---------- */
+.exam-row__count .icon {
+  width: 13px;
+  height: 13px;
+}
+
+/* ---------- Exam side panel (내 모의고사 현황 / 최근 응시한 시험 / 오답노트) ----------
+   시안처럼 3개 섹션을 각각 흰 카드(.card)로 분리한다. .side-panel 자체의 display는
+   layout.css가 반응형(태블릿 이하 숨김)까지 관리하므로 건드리지 않고, 그 안의 래퍼에만
+   세로 카드 목록 레이아웃을 적용해 다른 페이지의 .side-panel에 영향이 없도록 한다. */
+.exam-side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
 .exam-status-ring-wrap {
   text-align: center;
   margin: var(--space-8) 0 var(--space-12);
@@ -147,6 +199,7 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
 
 .exam-stat {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: var(--space-7) 0;
   border-bottom: 1px solid var(--neutral-50);
@@ -158,7 +211,35 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
 }
 
 .exam-stat__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
   color: var(--neutral-500);
+}
+
+.exam-stat__icon-box {
+  width: var(--space-28);
+  height: var(--space-28);
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.exam-stat__icon-box .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.exam-stat__icon-box--green {
+  background: var(--bg-green-tint);
+  color: var(--success);
+}
+
+.exam-stat__icon-box--gold {
+  background: var(--bg-gold-tint);
+  color: var(--gold-600);
 }
 
 .exam-stat__value {
@@ -179,46 +260,87 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
   border: none;
 }
 
-.recent-exam__icon {
-  font-size: var(--fs-15);
+.recent-exam__icon-box {
+  width: var(--space-32);
+  height: var(--space-32);
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.recent-exam__icon-box .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.recent-exam__icon-box--green { background: var(--bg-green-tint); color: var(--success); }
+.recent-exam__icon-box--blue { background: var(--bg-blue-tint); color: var(--blue-600); }
+.recent-exam__icon-box--gold { background: var(--bg-gold-tint); color: var(--gold-600); }
+.recent-exam__icon-box--coral { background: var(--bg-coral-tint); color: var(--coral-600); }
+.recent-exam__icon-box--gray { background: var(--neutral-20); color: var(--neutral-600); }
+.recent-exam__icon-box--purple { background: var(--purple-bg); color: var(--purple); }
+
+.recent-exam__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .recent-exam__title {
-  flex: 1;
   font-weight: var(--fw-semibold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recent-exam__date {
+  font-size: var(--fs-11);
+  color: var(--neutral-200);
 }
 
 .recent-exam__score {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
   font-weight: var(--fw-extrabold);
   color: var(--green-900);
+}
+
+.recent-exam__score .icon {
+  width: 13px;
+  height: 13px;
 }
 
 .recent-exam__score--low {
   color: var(--coral-600);
 }
 
-/* ---------- Wrong-answer note box (오답노트 바로가기) ---------- */
-.wrong-note-box {
+/* ---------- Wrong-answer note box (오답노트 바로가기) ----------
+   바깥 카드(.card)는 공용 컴포넌트를 그대로 쓰고, 오답노트만 다른 두 카드(흰 배경)와
+   구분되도록 코랄 톤 배경만 modifier로 얹는다(오답=coral 색상 규칙은 사이트 전반과 통일). */
+.exam-wrong-note-card {
   background: linear-gradient(135deg, var(--bg-coral-tint), var(--odbox-grad));
-  border-radius: var(--radius-sm);
-  padding: var(--space-14);
-  margin-top: var(--space-14);
-  border: 1px solid var(--coral-200);
-  cursor: pointer;
-  transition: box-shadow .15s;
-  width: 100%;
-  text-align: left;
-}
-
-.wrong-note-box:hover {
-  box-shadow: var(--sh-md);
+  border-color: var(--coral-200);
 }
 
 .wrong-note-box__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
   font-size: var(--fs-13);
   font-weight: var(--fw-extrabold);
   color: var(--coral-600);
   margin-bottom: var(--space-4);
+}
+
+.wrong-note-box__title .icon {
+  width: 16px;
+  height: 16px;
 }
 
 .wrong-note-box__desc {
@@ -247,6 +369,48 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
   color: var(--neutral-500);
   text-align: center;
   padding: var(--space-8) 0;
+}
+
+/* ---------- Empty State (최근 응시한 시험 / 오답노트 데이터가 없을 때) ----------
+   assets/css/pages/home.css의 .empty-state와 동일한 구조/토큰이다. 페이지 CSS는
+   서로 공유하지 않는 프로젝트 구조라(ARCHITECTURE.md 참고) exam 페이지 전용으로
+   다시 선언한다. 구조: .empty-state > .empty-state__icon(.icon 내장) / __title / __desc */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  width: 100%;
+  padding: var(--space-24) var(--space-10);
+  text-align: center;
+}
+
+.empty-state__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-40);
+  height: var(--space-40);
+  border-radius: 50%;
+  background: var(--neutral-20);
+  color: var(--neutral-400);
+}
+
+.empty-state__icon .icon {
+  width: var(--space-20);
+  height: var(--space-20);
+}
+
+.empty-state__title {
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--neutral-700);
+}
+
+.empty-state__desc {
+  font-size: var(--fs-11);
+  color: var(--neutral-300);
 }
 
 .wrong-note-item {
@@ -328,10 +492,38 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
   gap: var(--space-8);
 }
 
+.quiz-header__desc {
+  font-size: var(--fs-13);
+  color: var(--neutral-300);
+  margin-top: var(--space-6);
+}
+
 .quiz-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+  margin-top: var(--space-10);
   font-size: var(--fs-12);
   color: var(--neutral-500);
-  margin-top: var(--space-3);
+}
+
+.quiz-header__meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-12);
+  background: var(--neutral-surface);
+  border: 1px solid var(--neutral-40);
+  border-radius: var(--radius-round);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-semibold);
+  color: var(--neutral-600);
+}
+
+.quiz-header__meta-pill .icon {
+  width: 13px;
+  height: 13px;
 }
 
 /* ---------- Quiz layout ---------- */
@@ -360,38 +552,55 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
 /* ---------- Quiz info card ---------- */
 .quiz-info-card {
   background: var(--neutral-surface);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--neutral-50);
-  padding: var(--space-16);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-40);
+  padding: var(--space-20);
   margin-bottom: var(--space-12);
-  box-shadow: var(--sh-sm);
 }
 
 .quiz-info-card__title {
-  font-size: var(--fs-12);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--fs-16);
   font-weight: var(--fw-extrabold);
-  color: var(--green-900);
-  margin-bottom: var(--space-10);
+  color: var(--neutral-900);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--space-16);
 }
 
+.quiz-info-card__title .icon {
+  width: 17px;
+  height: 17px;
+  color: var(--green-700);
+}
+
+/* 시안처럼 구분선 없이, 각 행 앞에 작은 초록 tick bar를 둬서 항목을 구분한다 */
 .quiz-info-row {
   display: flex;
-  justify-content: space-between;
-  padding: var(--space-5) 0;
-  border-bottom: 1px solid var(--neutral-50);
-  font-size: var(--fs-12);
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-6) 0;
+  font-size: var(--fs-14);
 }
 
-.quiz-info-row:last-child {
-  border: none;
+.quiz-info-row__tick {
+  width: 4px;
+  height: 14px;
+  border-radius: var(--radius-round);
+  background: var(--green-700);
+  flex-shrink: 0;
 }
 
 .quiz-info-row__label {
-  color: var(--neutral-500);
+  flex: 1;
+  color: var(--neutral-600);
+  font-weight: var(--fw-semibold);
 }
 
 .quiz-info-row__value {
   font-weight: var(--fw-bold);
+  color: var(--neutral-900);
 }
 
 /* ---------- Quiz tip card ---------- */
@@ -418,10 +627,18 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
 }
 
 .quiz-tip__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
   font-size: var(--fs-12);
   font-weight: var(--fw-extrabold);
   color: var(--green-900);
   margin-bottom: var(--space-8);
+}
+
+.quiz-tip__title .icon {
+  width: 14px;
+  height: 14px;
 }
 
 .quiz-tip__list {
@@ -431,11 +648,29 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
   line-height: 1.7;
 }
 
-.quiz-tip__emoji {
+.quiz-tip__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.quiz-tip__list .icon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: var(--green-700);
+}
+
+.quiz-tip__mascot {
   position: relative;
-  text-align: center;
-  font-size: var(--fs-36);
+  display: flex;
+  justify-content: center;
   margin-top: var(--space-10);
+}
+
+.quiz-tip__mascot img {
+  width: 72px;
+  height: 72px;
   transform: rotate(8deg);
 }
 
@@ -581,20 +816,26 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
 /* ---------- Question grid (문제 목록) ---------- */
 .question-grid-legend {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-12);
   font-size: var(--fs-11);
   color: var(--neutral-500);
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-14);
   list-style: none;
+}
+
+.question-grid-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-5);
 }
 
 .question-grid-legend__swatch {
   display: inline-block;
-  width: var(--space-10);
-  height: var(--space-10);
-  border-radius: 2px;
-  margin-right: var(--space-5);
+  width: var(--space-8);
+  height: var(--space-8);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .question-grid-legend__swatch--done {
@@ -620,20 +861,20 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
 .question-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: var(--space-6);
+  gap: var(--space-8);
   margin-bottom: var(--space-12);
 }
 
 .question-grid__num {
-  width: var(--space-36);
-  height: var(--space-36);
-  border-radius: var(--radius-xs);
-  font-size: var(--fs-12);
+  width: var(--space-40);
+  height: var(--space-40);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-14);
   font-weight: var(--fw-bold);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid var(--neutral-50);
+  border: 1px solid var(--neutral-40);
   transition: all .15s;
   background: var(--neutral-surface);
   color: var(--neutral-900);
@@ -676,6 +917,10 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
 }
 
 .memo-panel__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
   font-size: var(--fs-12);
   font-weight: var(--fw-extrabold);
   color: var(--neutral-800);
@@ -683,7 +928,13 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
   text-align: center;
 }
 
+.memo-panel__title .icon {
+  width: 14px;
+  height: 14px;
+}
+
 .memo-panel__title--left {
+  justify-content: flex-start;
   text-align: left;
   margin-bottom: var(--space-6);
 }
@@ -691,6 +942,12 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
 .memo-panel__extend-btn {
   width: 100%;
   margin-top: var(--space-8);
+  gap: var(--space-6);
+}
+
+.memo-panel__extend-btn .icon {
+  width: 14px;
+  height: 14px;
 }
 
 .memo-panel__textarea {
@@ -859,7 +1116,9 @@ li[data-category="JavaScript"] .exam-row__icon { background: var(--gold-light); 
 }
 
 .quiz-result__emoji {
-  font-size: var(--fs-52);
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
 }
 
 .quiz-result__title {

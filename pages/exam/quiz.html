@@ -29,14 +29,15 @@
               <a class="back-link quiz-header__back" href="/pages/exam/index.html">‹ 모의고사 목록으로</a>
               <h1 class="quiz-header__title"><span id="quiz-title-text">모의고사</span> <span id="quiz-level-tag"
                   class="tag tag--gray">-</span></h1>
-              <p class="quiz-header__meta" id="quiz-meta">문제를 불러오는 중이에요…</p>
+              <p class="quiz-header__desc" id="quiz-desc">문제를 불러오는 중이에요…</p>
+              <div class="quiz-header__meta" id="quiz-meta"></div>
             </div>
             <button type="button" class="btn btn--danger" id="quiz-end-btn">응시 중단하기</button>
           </div>
 
           <div class="quiz-setup" id="quiz-setup">
             <div class="quiz-info-card">
-              <p class="quiz-info-card__title">⚙️ 응시 설정</p>
+              <p class="quiz-info-card__title"><span class="icon icon--edit" aria-hidden="true"></span>응시 설정</p>
               <div class="quiz-setup__field">
                 <p class="quiz-setup__label">난이도 선택</p>
                 <div class="quiz-setup__checkboxes" id="quiz-setup-difficulty"></div>
@@ -55,24 +56,24 @@
           <div class="quiz-layout" id="quiz-play" hidden>
             <aside class="quiz-layout__aside" aria-label="시험 정보">
               <div class="quiz-info-card">
-                <p class="quiz-info-card__title">📋 시험 정보</p>
-                <div class="quiz-info-row"><span class="quiz-info-row__label">출제 유형</span><span id="quiz-info-type"
+                <p class="quiz-info-card__title"><span class="icon icon--file-text" aria-hidden="true"></span>시험 정보</p>
+                <div class="quiz-info-row"><span class="quiz-info-row__tick" aria-hidden="true"></span><span class="quiz-info-row__label">출제 유형</span><span id="quiz-info-type"
                     class="quiz-info-row__value">-</span></div>
-                <div class="quiz-info-row"><span class="quiz-info-row__label">배점</span><span id="quiz-info-point"
+                <div class="quiz-info-row"><span class="quiz-info-row__tick" aria-hidden="true"></span><span class="quiz-info-row__label">배점</span><span id="quiz-info-point"
                     class="quiz-info-row__value">-</span></div>
-                <div class="quiz-info-row"><span class="quiz-info-row__label">제한 시간</span><span id="quiz-info-time"
+                <div class="quiz-info-row"><span class="quiz-info-row__tick" aria-hidden="true"></span><span class="quiz-info-row__label">제한 시간</span><span id="quiz-info-time"
                     class="quiz-info-row__value">-</span></div>
-                <div class="quiz-info-row"><span class="quiz-info-row__label">응시 가능</span><span
+                <div class="quiz-info-row"><span class="quiz-info-row__tick" aria-hidden="true"></span><span class="quiz-info-row__label">응시 가능</span><span
                     class="quiz-info-row__value">무제한</span></div>
               </div>
               <div class="quiz-tip">
-                <p class="quiz-tip__title">💡 시험 팁</p>
+                <p class="quiz-tip__title"><span class="icon icon--lightbulb" aria-hidden="true"></span>시험 팁</p>
                 <ul class="quiz-tip__list">
-                  <li>✓ 문제를 꼼꼼히 읽고 함정 보기에 주의하세요.</li>
-                  <li>✓ 모르는 문제는 체크해두고 넘어가세요.</li>
-                  <li>✓ 시간을 잘 분배해서 끝까지 풀어보세요!</li>
+                  <li><span class="icon icon--check" aria-hidden="true"></span>문제를 꼼꼼히 읽고 함정 보기에 주의하세요.</li>
+                  <li><span class="icon icon--check" aria-hidden="true"></span>모르는 문제는 체크해두고 넘어가세요.</li>
+                  <li><span class="icon icon--check" aria-hidden="true"></span>시간을 잘 분배해서 끝까지 풀어보세요!</li>
                 </ul>
-                <p class="quiz-tip__emoji" aria-hidden="true">🌱</p>
+                <p class="quiz-tip__mascot" aria-hidden="true"><img src="/assets/img/graphic-mascot-book.svg" alt=""></p>
               </div>
             </aside>
 
@@ -112,7 +113,7 @@
             </div>
 
             <aside class="quiz-layout__aside" aria-label="문제 목록 및 메모">
-              <p class="section-title section-title--sm">문제 목록</p>
+              <p class="section-title">문제 목록</p>
               <ul class="question-grid-legend">
                 <li><span class="question-grid-legend__swatch question-grid-legend__swatch--done"
                     aria-hidden="true"></span>풀었어요</li>
@@ -134,12 +135,13 @@
                   </svg>
                   <div class="time-ring__value" id="timer">07:24</div>
                 </div>
-                <button type="button" class="btn btn--outline btn--sm memo-panel__extend-btn" id="quiz-extend-btn">⟳
-                  시간 연장하기</button>
+                <button type="button" class="btn btn--outline btn--sm memo-panel__extend-btn" id="quiz-extend-btn">
+                  <span class="icon icon--retry" aria-hidden="true"></span><span id="quiz-extend-btn-text">시간 연장하기</span>
+                </button>
               </div>
 
               <div class="memo-panel">
-                <label class="memo-panel__title memo-panel__title--left" for="quiz-memo">나의 메모장 ✏️</label>
+                <label class="memo-panel__title memo-panel__title--left" for="quiz-memo"><span class="icon icon--edit" aria-hidden="true"></span>나의 메모장</label>
                 <textarea id="quiz-memo" class="memo-panel__textarea" placeholder="문제와 관련된 내용을 메모해보세요!"></textarea>
               </div>
             </aside>
@@ -147,14 +149,13 @@
 
           <div class="quiz-result" id="quiz-result" hidden>
             <div class="quiz-question quiz-result__card">
-              <p class="quiz-result__emoji" id="quiz-result-emoji" aria-hidden="true">🌱</p>
+              <img class="quiz-result__emoji" src="/assets/img/graphic-mascot-book.svg" alt="" aria-hidden="true">
               <p class="quiz-result__title" id="quiz-result-title">수고하셨습니다!</p>
               <p class="quiz-result__desc" id="quiz-result-desc"></p>
               <div class="quiz-result__actions">
-                <button type="button" class="btn btn--outline" id="quiz-result-score-btn">📊 점수 보기</button>
-                <button type="button" class="btn btn--outline" id="quiz-result-retry-btn">🔁 다시 풀기</button>
-                <button type="button" class="btn btn--outline" id="quiz-result-retry-wrong-btn" hidden>📝 오답만 다시
-                  풀기</button>
+                <button type="button" class="btn btn--outline" id="quiz-result-score-btn"><span class="icon icon--bar-chart" aria-hidden="true"></span>점수 보기</button>
+                <button type="button" class="btn btn--outline" id="quiz-result-retry-btn"><span class="icon icon--retry" aria-hidden="true"></span>다시 풀기</button>
+                <button type="button" class="btn btn--outline" id="quiz-result-retry-wrong-btn" hidden><span class="icon icon--edit" aria-hidden="true"></span>오답만 다시 풀기</button>
                 <a class="btn btn--primary" href="/pages/exam/index.html" id="quiz-result-exit-btn">시험 종료하기</a>
               </div>
               <div class="quiz-result__breakdown" id="quiz-result-breakdown" hidden>

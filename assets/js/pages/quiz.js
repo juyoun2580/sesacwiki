@@ -32,12 +32,14 @@ function resetTimerRingVisual() {
   document.querySelector('.time-ring')?.classList.remove('time-ring--warning', 'time-ring--critical');
 }
 
+// 버튼 안의 아이콘(icon--retry)이 사라지지 않도록, 버튼 전체 textContent가 아니라
+// 문구를 담당하는 #quiz-extend-btn-text만 갱신한다.
 function resetTimerExtend() {
   timerExtendsUsed = 0;
   const btn = document.getElementById('quiz-extend-btn');
   if (btn) {
     btn.disabled = false;
-    btn.textContent = `⟳ 시간 연장하기 (${MAX_TIMER_EXTENDS}회 남음)`;
+    setText('quiz-extend-btn-text', `시간 연장하기 (${MAX_TIMER_EXTENDS}회 남음)`);
   }
 }
 
@@ -74,6 +76,20 @@ function fetchQuestionsFile(examId) {
   return questionFileCache.get(examId);
 }
 
+// 시험 시간/문항 수/응시자 수 3종을 시안처럼 아이콘이 붙은 pill 배지로 그린다.
+// 과거에는 "⏱ 10분 · 📝 7문제 · 👥 320명 응시"처럼 이모지+가운뎃점 텍스트 한 줄이었다.
+function renderQuizMeta(exam, questionCount) {
+  const metaEl = document.getElementById('quiz-meta');
+  if (!metaEl) return;
+  metaEl.innerHTML = [
+    ['clock', `${exam.estimatedMinutes}분`],
+    ['file-text', `${questionCount}문제`],
+    ['users', `${exam.attemptCount}명 응시`],
+  ].map(([icon, label]) => `
+    <span class="quiz-header__meta-pill"><span class="icon icon--${icon}" aria-hidden="true"></span>${escapeHtml(label)}</span>
+  `).join('');
+}
+
 async function initQuizPage() {
   if (!document.getElementById('quiz')) return; // mywords.html 등 quiz.js를 공유하는 다른 페이지에서는 종료
 
@@ -102,14 +118,15 @@ async function initQuizPage() {
     document.title = `${exam.title} 응시 — 새싹트리`;
     setText('quiz-title-text', exam.title);
     setText('quiz-level-tag', exam.level);
-    setText('quiz-meta', `${exam.description} · ⏱ ${exam.estimatedMinutes}분 · 📝 ${allQuestions.length}문제 · 👥 ${exam.attemptCount}명 응시`);
+    setText('quiz-desc', exam.description);
+    renderQuizMeta(exam, allQuestions.length);
 
     renderQuizSetup();
     showQuizPhase('setup');
   } catch (e) {
     console.error(e);
     toast('문제를 불러오지 못했어요. 목록으로 돌아가 다시 시도해주세요.');
-    setText('quiz-meta', '⚠️ 문제를 불러오지 못했어요. 새로고침하거나 목록으로 돌아가 다시 시도해주세요.');
+    setText('quiz-desc', '문제를 불러오지 못했어요. 새로고침하거나 목록으로 돌아가 다시 시도해주세요.');
     const startBtn = document.getElementById('quiz-setup-start-btn');
     if (startBtn) startBtn.disabled = true;
   }
@@ -310,10 +327,12 @@ async function computeEarnedPoints(examId, correctCount, total, isPerfect) {
   return Math.max(0, rawPoints - priorBest);
 }
 
+// 결과 화면의 마스코트 이미지(quiz-result__emoji)는 점수와 무관하게 고정된 그래픽이라
+// tier별로 바꿀 아이콘/이모지가 더 이상 필요 없다 — title과 카드 색상(quiz-result__card--*)으로만 구분한다.
 function getScoreTier(score) {
-  if (score >= 90) return { emoji: '🎉', title: '완벽해요!', confetti: true };
-  if (score >= 70) return { emoji: '👍', title: '잘했어요!', confetti: false };
-  return { emoji: '🌱', title: '다음엔 더 잘할 수 있어요!', confetti: false };
+  if (score >= 90) return { title: '완벽해요!', confetti: true };
+  if (score >= 70) return { title: '잘했어요!', confetti: false };
+  return { title: '다음엔 더 잘할 수 있어요!', confetti: false };
 }
 
 function launchConfetti() {
@@ -341,7 +360,6 @@ async function finishQuiz() {
   lastWrongQuestions = questions.filter((q, i) => answers.get(i) !== q.answerIndex);
 
   const tier = getScoreTier(score);
-  setText('quiz-result-emoji', tier.emoji);
   setText('quiz-result-title', tier.title);
   setText('quiz-result-desc', `${exam.title} · ${correctCount} / ${total}문제를 맞혔어요.`);
 
@@ -517,11 +535,11 @@ document.getElementById('quiz-extend-btn')?.addEventListener('click', e => {
   const btn = e.currentTarget;
   if (remaining <= 0) {
     btn.disabled = true;
-    btn.textContent = '⟳ 시간 연장 다 썼어요';
+    setText('quiz-extend-btn-text', '시간 연장 다 썼어요');
   } else {
-    btn.textContent = `⟳ 시간 연장하기 (${remaining}회 남음)`;
+    setText('quiz-extend-btn-text', `시간 연장하기 (${remaining}회 남음)`);
   }
-  toast('⟳ 시간을 2분 연장했어요!');
+  toast('시간을 2분 연장했어요!');
 });
 
 document.getElementById('quiz-result-score-btn')?.addEventListener('click', () => {

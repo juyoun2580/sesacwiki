@@ -166,6 +166,57 @@
   -webkit-mask-image: url("../img/icon/ico-mail.svg");
 }
 
+.icon--users {
+  mask-image: url("../img/icon/ico-users.svg");
+  -webkit-mask-image: url("../img/icon/ico-users.svg");
+}
+
+.icon--retry {
+  mask-image: url("../img/icon/ico-retry.svg");
+  -webkit-mask-image: url("../img/icon/ico-retry.svg");
+}
+
+/* ---------- Level Track icons (마이페이지 8단계) ---------- */
+.icon--lv1-sprout {
+  mask-image: url("../img/icon/ico-lv1-sprout.svg");
+  -webkit-mask-image: url("../img/icon/ico-lv1-sprout.svg");
+}
+
+.icon--lv2-stem {
+  mask-image: url("../img/icon/ico-lv2-stem.svg");
+  -webkit-mask-image: url("../img/icon/ico-lv2-stem.svg");
+}
+
+.icon--lv3-leaf {
+  mask-image: url("../img/icon/ico-lv3-leaf.svg");
+  -webkit-mask-image: url("../img/icon/ico-lv3-leaf.svg");
+}
+
+.icon--lv4-tree {
+  mask-image: url("../img/icon/ico-lv4-tree.svg");
+  -webkit-mask-image: url("../img/icon/ico-lv4-tree.svg");
+}
+
+.icon--lv5-flower {
+  mask-image: url("../img/icon/ico-lv5-flower.svg");
+  -webkit-mask-image: url("../img/icon/ico-lv5-flower.svg");
+}
+
+.icon--lv6-fruit {
+  mask-image: url("../img/icon/ico-lv6-fruit.svg");
+  -webkit-mask-image: url("../img/icon/ico-lv6-fruit.svg");
+}
+
+.icon--lv7-water {
+  mask-image: url("../img/icon/ico-lv7-water.svg");
+  -webkit-mask-image: url("../img/icon/ico-lv7-water.svg");
+}
+
+.icon--lv8-cosmos {
+  mask-image: url("../img/icon/ico-lv8-cosmos.svg");
+  -webkit-mask-image: url("../img/icon/ico-lv8-cosmos.svg");
+}
+
 .icon--cloud {
   mask-image: url("../img/icon/ico-cloud.svg");
   -webkit-mask-image: url("../img/icon/ico-cloud.svg");

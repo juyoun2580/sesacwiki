@@ -3,6 +3,41 @@
 // 사이드바/필터탭 클릭 시 카테고리별로 문제 카드를 실제로 필터링한다.
 // 응시 기록(exam_attempts)은 assets/js/api.js를 통해 Supabase에서 읽는다. quiz.js도 같은 함수를 쓴다.
 
+// wiki.js의 WIKI_CATEGORY_ICON/WIKI_CATEGORY_TAG_COLOR와 동일한 패턴 — exam.json의 list[].icon(이모지)은
+// 더 이상 화면에 쓰지 않고, 카테고리를 기준으로 공용 icon 시스템(components.css의 .icon--*)에서 매핑해 그린다.
+// exam.json 자체의 icon 필드는 스키마 변경 없이 그대로 둔다(다른 소비자가 있을 수 있어 보존).
+const EXAM_CATEGORY_ICON = {
+  '전과목': 'book',
+  '세일즈포스': 'cloud',
+  'Java': 'code',
+  'SQL': 'database',
+  'HTML': 'monitor',
+  'CSS': 'edit',
+  'JavaScript': 'play',
+  '기타': 'flag'
+};
+
+const EXAM_CATEGORY_COLOR = {
+  '전과목': 'green',
+  '세일즈포스': 'purple',
+  'Java': 'gold',
+  'SQL': 'green',
+  'HTML': 'blue',
+  'CSS': 'blue',
+  'JavaScript': 'gold',
+  '기타': 'gray'
+};
+
+// home.js의 emptyStateHTML()과 동일한 구조(.empty-state > __icon/__title/__desc) —
+// 페이지 CSS가 서로 공유되지 않는 구조라 exam.css에도 동일하게 다시 선언해뒀다.
+function emptyStateHTML(iconClass, title, desc) {
+  return `<div class="empty-state">
+    <span class="empty-state__icon" aria-hidden="true"><span class="icon icon--${iconClass}"></span></span>
+    <p class="empty-state__title">${title}</p>
+    <p class="empty-state__desc">${desc}</p>
+  </div>`;
+}
+
 // 문제/해설 텍스트에는 <div>, <video>, <img alt="..."> 처럼 HTML 태그 예시가 그대로 들어있는 경우가 있다.
 // innerHTML로 렌더링하면 이 텍스트가 실제 태그로 해석되어 보기/해설이 깨지므로, 삽입 전 반드시 이스케이프한다.
 function escapeHtml(str) {
@@ -26,6 +61,9 @@ async function getLocalExamAttempts() {
 
 let examAttemptHistory = []; // "최근 응시한 시험" 전체보기 토글이 재렌더링할 때 다시 fetch하지 않도록 모듈 스코프에 보관
 let showAllRecentExams = false;
+// exam_attempts에는 category가 저장되지 않으므로(examId만 기록), "최근 응시한 시험" 아이콘도
+// exam-row와 같은 카테고리 아이콘으로 보이도록 exam.json의 list에서 examId→category를 미리 만들어둔다.
+let examCategoryById = {};
 
 // 문제 데이터는 시험별로 assets/data/questions/{examId}.json에 분리 저장돼 있다 (exam.json은 목차만 가벼운 상태로 유지).
 // 오답노트에 필요한 시험 파일만 그때그때 가져온다 — quiz.js와 동일한 헬퍼지만 파일 간 공유 모듈이 없어 각자 정의한다.
@@ -47,6 +85,7 @@ async function loadExamPageData() {
     const res = await fetch('/assets/data/exam.json');
     if (!res.ok) throw new Error('모의고사 데이터를 불러오지 못했습니다.');
     const data = await res.json();
+    examCategoryById = Object.fromEntries(data.list.map(exam => [exam.id, exam.category]));
     // 응시 기록이 없으면 exam.json의 attemptHistory(빈 배열)로 폴백한다.
     const localHistory = await getLocalExamAttempts();
     examAttemptHistory = localHistory.length ? localHistory : (data.attemptHistory || []);
@@ -75,18 +114,20 @@ function renderExamList(list) {
   listEl.innerHTML = list.map(exam => {
     const badges = [
       exam.isRecommended ? '<span class="tag tag--recommended">추천</span>' : '',
-      exam.isAdvanced ? '<span class="tag tag--orange">🔥 심화</span>' : ''
+      exam.isAdvanced ? '<span class="tag tag--orange">심화</span>' : ''
     ].join(' ');
+    const categoryColor = EXAM_CATEGORY_COLOR[exam.category] || 'gray';
+    const categoryIcon = EXAM_CATEGORY_ICON[exam.category] || 'file';
     return `
       <li data-category="${escapeHtml(exam.category)}"><a class="exam-row" href="/pages/exam/quiz.html?id=${escapeHtml(exam.id)}">
-          <span class="exam-row__icon" aria-hidden="true">${exam.icon}</span>
+          <span class="exam-row__icon-box exam-row__icon-box--${categoryColor}" aria-hidden="true"><span class="icon icon--${categoryIcon}"></span></span>
           <span class="exam-row__body">
             <span class="exam-row__title">${escapeHtml(exam.title)} ${badges}</span>
             <span class="exam-row__desc">${escapeHtml(exam.description)}</span>
             <span class="exam-row__meta"><span>${escapeHtml(exam.level)}</span><span>·</span><span>${exam.questionCount}문제</span><span>·</span><span>예상 ${exam.estimatedMinutes}분</span><span>·</span><span>평균 ${exam.avgScore}점</span></span>
           </span>
           <span class="exam-row__aside">
-            <span class="exam-row__count">👥 ${exam.attemptCount}명 응시</span>
+            <span class="exam-row__count"><span class="icon icon--users" aria-hidden="true"></span>${exam.attemptCount}명 응시</span>
             <span class="btn btn--primary btn--sm">시작하기</span>
           </span>
         </a></li>
@@ -122,9 +163,22 @@ function renderExamStats(history) {
   if (listEl) {
     const reversed = [...history].reverse();
     const recent = showAllRecentExams ? reversed : reversed.slice(0, 3);
-    listEl.innerHTML = recent.length ? recent.map(h => `
-      <div class="recent-exam"><span class="recent-exam__icon" aria-hidden="true">${h.icon}</span><span class="recent-exam__title">${escapeHtml(h.title)}</span><span class="recent-exam__score${h.score < 70 ? ' recent-exam__score--low' : ''}">${scoreTierEmoji(h.score)} ${h.score}점</span></div>
-    `).join('') : '<p class="wrong-note-empty">아직 응시한 시험이 없어요!</p>';
+    listEl.innerHTML = recent.length ? recent.map(h => {
+      const category = examCategoryById[h.examId];
+      const categoryColor = EXAM_CATEGORY_COLOR[category] || 'gray';
+      const categoryIcon = EXAM_CATEGORY_ICON[category] || 'file';
+      const tier = scoreTierIcon(h.score);
+      return `
+      <div class="recent-exam">
+        <span class="recent-exam__icon-box recent-exam__icon-box--${categoryColor}" aria-hidden="true"><span class="icon icon--${categoryIcon}"></span></span>
+        <span class="recent-exam__body">
+          <span class="recent-exam__title">${escapeHtml(h.title)}</span>
+          <span class="recent-exam__date">${escapeHtml(h.date || '')}</span>
+        </span>
+        <span class="recent-exam__score${h.score < 70 ? ' recent-exam__score--low' : ''}"><span class="icon icon--${tier}" aria-hidden="true"></span>${h.score}점</span>
+      </div>
+    `;
+    }).join('') : emptyStateHTML('file-text', '아직 응시한 시험이 없어요', '모의고사를 응시하면 여기에 기록돼요');
   }
 
   const toggleBtn = document.getElementById('exam-recent-toggle');
@@ -134,11 +188,12 @@ function renderExamStats(history) {
   }
 }
 
-// 결과 화면(quiz.js의 getScoreTier)과 동일한 점수 구간 기준으로 톤을 맞춘다
-function scoreTierEmoji(score) {
-  if (score >= 90) return '🎉';
-  if (score >= 70) return '👍';
-  return '🌱';
+// 결과 화면(quiz.js의 getScoreTier)과 동일한 점수 구간 기준으로 톤을 맞춘다.
+// 과거에는 🎉/👍/🌱 이모지로 표시했으나, 기존 icon 시스템의 아이콘으로 대체한다.
+function scoreTierIcon(score) {
+  if (score >= 90) return 'star-filled';
+  if (score >= 70) return 'check';
+  return 'leaf';
 }
 
 // 실제로 응시한 적이 있으면(1건이라도) 그 사람이 진짜 틀린 문제로 완전히 대체한다.
@@ -198,7 +253,7 @@ async function renderWrongNoteAccordion(data) {
     `;
   }).join('');
 
-  listEl.innerHTML = items || '<p class="wrong-note-empty">아직 틀린 문제가 없어요!</p>';
+  listEl.innerHTML = items || emptyStateHTML('check', '아직 틀린 문제가 없어요', '문제를 풀면 오답노트가 여기에 쌓여요');
 }
 
 // ── 사이드바 / 필터탭 카테고리 필터링 ──

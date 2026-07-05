@@ -32,12 +32,17 @@
   flex-shrink: 0;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--green-800), var(--green-600));
+  color: var(--neutral-surface);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fs-28);
   box-shadow: var(--sh-logo);
   overflow: hidden;
+}
+
+.profile-card__avatar .icon {
+  width: 28px;
+  height: 28px;
 }
 
 .profile-card__avatar img {
@@ -51,10 +56,25 @@
   min-width: 0;
 }
 
+.profile-card__name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+}
+
 .profile-card__name {
   font-size: var(--fs-18);
   font-weight: var(--fw-extrabold);
   color: var(--green-900);
+}
+
+.profile-card__level-tag {
+  font-size: var(--fs-12);
+  font-weight: var(--fw-bold);
+  color: var(--green-900);
+  background: var(--green-50);
+  border-radius: var(--radius-round);
+  padding: var(--space-3) var(--space-11);
 }
 
 .profile-card__username {
@@ -117,19 +137,26 @@
 }
 
 .level-track__icon {
-  width: var(--space-40);
-  height: var(--space-40);
+  width: var(--space-52);
+  height: var(--space-52);
   border-radius: 50%;
-  background: var(--green-50);
+  background: var(--neutral-10);
+  color: var(--neutral-200);
+  border: 2px solid transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fs-18);
+}
+
+.level-track__icon .icon {
+  width: 24px;
+  height: 24px;
 }
 
 .level-track__stage--active .level-track__icon {
-  background: var(--green-100);
-  box-shadow: var(--curr-ring);
+  background: var(--bg-green-tint);
+  border-color: var(--green-700);
+  color: var(--green-700);
 }
 
 .level-track__label {
@@ -184,8 +211,28 @@
   box-shadow: var(--curr-ring);
 }
 
-.category-card__icon {
-  font-size: var(--fs-26);
+.category-card__icon-box {
+  width: var(--space-52);
+  height: var(--space-52);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-card__icon-box .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.category-card__icon-box--green {
+  background: var(--bg-green-tint);
+  color: var(--success);
+}
+
+.category-card__icon-box--gold {
+  background: var(--bg-gold-tint);
+  color: var(--gold-600);
 }
 
 .category-card__label {
@@ -603,10 +650,18 @@
 }
 
 .settings-warning {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
   font-size: var(--fs-12);
   color: var(--coral-600);
   margin-top: var(--space-4);
   line-height: 1.6;
+}
+
+.settings-warning .icon {
+  width: 13px;
+  height: 13px;
 }
 
 .settings-avatar-row {
@@ -623,11 +678,16 @@
   border-radius: 50%;
   background: var(--green-50);
   border: 1px solid var(--green-100);
+  color: var(--green-700);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fs-32);
   overflow: hidden;
+}
+
+.settings-avatar-preview .icon {
+  width: 28px;
+  height: 28px;
 }
 
 .settings-avatar-preview img {
@@ -649,17 +709,8 @@
   margin-bottom: var(--space-16);
 }
 
-/* 공통 .btn을 확장하는 페이지 전용 modifier — Save/Change email/Upload 버튼용 파랑
-   (components.css의 .btn--primary는 그린 브랜드 컬러라 별도 modifier가 필요) */
-.btn--info {
-  background: var(--blue-600);
-  color: #fff;
-  border: none;
-}
-
-.btn--info:hover {
-  filter: brightness(1.08);
-}
+/* .btn--info(페이지 전용 파란 버튼)는 시안에 맞춰 공용 .btn--primary/.btn--outline로
+   교체되며 더 이상 쓰이지 않아 제거했다(pages/my/edit.html 참고). */
 
 .btn--danger:disabled {
   opacity: .4;
