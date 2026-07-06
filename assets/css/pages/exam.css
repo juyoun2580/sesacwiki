@@ -53,7 +53,7 @@
 }
 
 .exam-row:hover {
-  box-shadow: var(--sh-md);
+  /* box-shadow: var(--sh-md); */
   border-color: var(--green-300);
   transform: translateY(-2px);
 }
@@ -161,17 +161,29 @@
 .exam-side-panel {
   display: flex;
   flex-direction: column;
-  gap: var(--space-16);
+  gap: var(--space-20);
 }
 
+/* legacy/newExam.html 시안: 링(percent)과 "전체 평균 점수" 캡션이 겹쳐 쌓이지 않고
+   가로로 나란히 배치된다. 링 자체(.score-ring/.score-ring__text/__value)는
+   components.css의 공용 컴포넌트를 그대로 쓰고(quiz.html 결과 화면과 공유),
+   여기서는 캡션을 링 옆에 두는 배치만 정의한다. */
 .exam-status-ring-wrap {
-  text-align: center;
-  margin: var(--space-8) 0 var(--space-12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-16);
+  margin: var(--space-8) 0 var(--space-16);
 }
 
 .exam-status-ring-wrap__caption {
-  font-size: var(--fs-10);
+  font-size: var(--fs-13);
   color: var(--neutral-500);
+  font-weight: var(--fw-semibold);
+}
+
+#exam-score-ring-value {
+  font-size: var(--fs-20);
 }
 
 .section-title--spaced {
@@ -182,26 +194,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-7) 0;
-  border-bottom: 1px solid var(--neutral-50);
-  font-size: var(--fs-12);
+  margin-bottom: var(--space-10);
+  font-size: var(--fs-14);
 }
 
 .exam-stat:last-of-type {
-  border: none;
+  margin-bottom: 0;
 }
 
 .exam-stat__label {
   display: inline-flex;
   align-items: center;
   gap: var(--space-8);
-  color: var(--neutral-500);
+  color: var(--green-700);
+  font-weight: var(--fw-semibold);
 }
 
 .exam-stat__icon-box {
   width: var(--space-28);
   height: var(--space-28);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-xxs);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -227,18 +239,23 @@
   font-weight: var(--fw-bold);
 }
 
-/* ---------- Recent exam row (최근 응시한 시험) ---------- */
-.recent-exam {
+/* ---------- Recent exam row (최근 응시한 시험) ----------
+   legacy/newExam.html 시안 반영. exam.js(renderExamStats)가 이 구조(.recent-exam >
+   __icon-box/__body(__title/__date)/__score)를 항목마다 그대로 반복 생성하는
+   리스트 아이템 컴포넌트라, HTML/JS는 건드리지 않고 스타일만 시안에 맞춘다 —
+   구분선 대신 #exam-recent-list에 세로 gap을 주는 방식으로 변경. */
+#exam-recent-list {
   display: flex;
-  align-items: center;
-  gap: var(--space-8);
-  padding: var(--space-7) 0;
-  border-bottom: 1px solid var(--neutral-50);
-  font-size: var(--fs-12);
+  flex-direction: column;
+  gap: var(--space-13);
+  margin-top: var(--space-16);
 }
 
-.recent-exam:last-child {
-  border: none;
+.recent-exam {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+  font-size: var(--fs-12);
 }
 
 .recent-exam__icon-box {
@@ -256,23 +273,47 @@
   height: 15px;
 }
 
-.recent-exam__icon-box--green { background: var(--bg-green-tint); color: var(--success); }
-.recent-exam__icon-box--blue { background: var(--bg-blue-tint); color: var(--blue-600); }
-.recent-exam__icon-box--gold { background: var(--bg-gold-tint); color: var(--gold-600); }
-.recent-exam__icon-box--coral { background: var(--bg-coral-tint); color: var(--coral-600); }
-.recent-exam__icon-box--gray { background: var(--neutral-20); color: var(--neutral-600); }
-.recent-exam__icon-box--purple { background: var(--purple-bg); color: var(--purple); }
+.recent-exam__icon-box--green {
+  background: var(--bg-green-tint);
+  color: var(--success);
+}
+
+.recent-exam__icon-box--blue {
+  background: var(--bg-blue-tint);
+  color: var(--blue-600);
+}
+
+.recent-exam__icon-box--gold {
+  background: var(--bg-gold-tint);
+  color: var(--gold-600);
+}
+
+.recent-exam__icon-box--coral {
+  background: var(--bg-coral-tint);
+  color: var(--coral-600);
+}
+
+.recent-exam__icon-box--gray {
+  background: var(--neutral-20);
+  color: var(--neutral-600);
+}
+
+.recent-exam__icon-box--purple {
+  background: var(--purple-bg);
+  color: var(--purple);
+}
 
 .recent-exam__body {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 0;
 }
 
 .recent-exam__title {
-  font-weight: var(--fw-semibold);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-bold);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -288,8 +329,9 @@
   align-items: center;
   gap: var(--space-4);
   flex-shrink: 0;
+  font-size: var(--fs-14);
   font-weight: var(--fw-extrabold);
-  color: var(--green-900);
+  color: var(--green-600);
 }
 
 .recent-exam__score .icon {
@@ -463,21 +505,21 @@
 }
 
 .quiz-header__back {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-10);
 }
 
 .quiz-header__title {
-  font-size: var(--fs-20);
+  font-size: var(--fs-26);
   font-weight: var(--fw-extrabold);
   display: flex;
   align-items: center;
-  gap: var(--space-8);
+  gap: var(--space-10);
 }
 
 .quiz-header__desc {
-  font-size: var(--fs-13);
-  color: var(--neutral-300);
-  margin-top: var(--space-6);
+  font-size: var(--fs-14);
+  color: var(--neutral-400);
+  margin-top: var(--space-8);
 }
 
 .quiz-header__meta {
@@ -487,7 +529,7 @@
   gap: var(--space-8);
   margin-top: var(--space-10);
   font-size: var(--fs-12);
-  color: var(--neutral-500);
+  color: var(--neutral-600);
 }
 
 .quiz-header__meta-pill {
@@ -511,7 +553,8 @@
 /* ---------- Quiz layout ---------- */
 .quiz-layout {
   display: flex;
-  gap: var(--space-20);
+  gap: var(--space-24);
+  margin-top: var(--space-20);
 }
 
 /* [hidden] 속성은 명시적 display 선언이 없을 때만 브라우저 기본값(display:none)이 적용된다.
@@ -522,8 +565,12 @@
 }
 
 .quiz-layout__aside {
-  width: 220px;
+  width: 260px;
   flex-shrink: 0;
+}
+
+.quiz-layout__aside-right {
+  width: 300px;
 }
 
 .quiz-layout__main {
@@ -537,24 +584,25 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--neutral-40);
   padding: var(--space-20);
-  margin-bottom: var(--space-12);
 }
 
 .quiz-info-card__title {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
   font-size: var(--fs-16);
   font-weight: var(--fw-extrabold);
   color: var(--neutral-900);
-  letter-spacing: var(--ls-tight);
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-10);
 }
 
 .quiz-info-card__title .icon {
   width: 17px;
   height: 17px;
-  color: var(--green-700);
+  color: var(--green-600);
+}
+
+.quiz-info-card__title .quiz-tip__icon-box {
+  margin-right: var(--space-10);
 }
 
 /* 시안처럼 구분선 없이, 각 행 앞에 작은 초록 tick bar를 둬서 항목을 구분한다 */
@@ -562,7 +610,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-10);
-  padding: var(--space-6) 0;
+  padding: var(--space-5) 0;
   font-size: var(--fs-14);
 }
 
@@ -585,109 +633,134 @@
   color: var(--neutral-900);
 }
 
-/* ---------- Quiz tip card ---------- */
+/* ---------- Quiz tip card ----------
+   legacy/newQuiz.html 시안 반영. 그라디언트+장식 블롭을 제거하고 일반 카드
+   스타일(공용 .card와 같은 톤)로 바꿨다 — 새 컴포넌트를 만들지 않고 exam.css
+   안에서 값만 직접 지정했다(이 카드는 .card 클래스 자체를 쓰지 않는 기존 구조를
+   그대로 유지하기 위해). */
 .quiz-tip {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--green-50), var(--green-100));
-  border-radius: var(--radius-sm);
-  padding: var(--space-14);
-  border: 1px solid var(--green-100);
-}
-
-.quiz-tip::before {
-  content: '';
-  position: absolute;
-  bottom: -22px;
-  left: -22px;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--green-300);
-  opacity: .3;
-  pointer-events: none;
+  background: var(--neutral-surface);
+  border: 1px solid var(--neutral-40);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  margin-top: var(--space-14);
 }
 
 .quiz-tip__title {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
-  font-size: var(--fs-12);
+  gap: var(--space-8);
+  font-size: var(--fs-16);
   font-weight: var(--fw-extrabold);
-  color: var(--green-900);
-  margin-bottom: var(--space-8);
+  color: var(--neutral-900);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-14);
 }
 
-.quiz-tip__title .icon {
-  width: 14px;
-  height: 14px;
+.quiz-tip__icon-box {
+  width: var(--space-28);
+  height: var(--space-28);
+  border-radius: var(--radius-xs);
+  background: var(--bg-gold-tint);
+  color: var(--gold-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quiz-tip__icon-box .icon {
+  width: 15px;
+  height: 15px;
 }
 
 .quiz-tip__list {
   list-style: none;
-  font-size: var(--fs-11);
-  color: var(--green-900);
-  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-11);
+  font-size: var(--fs-13);
+  color: var(--neutral-700);
+  line-height: 1.5;
+  padding-top: var(--space-5);
 }
 
 .quiz-tip__list li {
   display: flex;
-  align-items: center;
-  gap: var(--space-6);
+  align-items: flex-start;
+  gap: var(--space-8);
 }
 
 .quiz-tip__list .icon {
-  width: 13px;
-  height: 13px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
-  color: var(--green-700);
+  margin-top: 1px;
+  color: var(--success);
 }
 
 .quiz-tip__mascot {
-  position: relative;
   display: flex;
   justify-content: center;
-  margin-top: var(--space-10);
+  margin-top: var(--space-16);
 }
 
 .quiz-tip__mascot img {
-  width: 72px;
-  height: 72px;
-  transform: rotate(8deg);
+  width: 90px;
+  height: 90px;
 }
 
 /* ---------- Quiz progress ---------- */
-.quiz-progress {
-  margin-bottom: var(--space-14);
+/* legacy/newQuiz.html 시안: "N / 전체 문제" · Progress Bar · "퍼센트"가 한 줄에
+   나란히 배치된다 — 세로 2단(.quiz-progress__row)을 없애고 가로 flex 한 줄로 바꿨다. */
+.quiz-main-card {
+  background: var(--neutral-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-40);
+  padding: var(--space-28);
 }
 
-.quiz-progress__row {
+.quiz-progress {
   display: flex;
-  justify-content: space-between;
-  font-size: var(--fs-12);
-  color: var(--neutral-500);
-  font-weight: var(--fw-semibold);
-  margin-bottom: var(--space-5);
+  align-items: center;
+  gap: var(--space-16);
+  margin-bottom: var(--space-26);
+}
+
+#quiz-progress-text {
+  font-size: var(--fs-15);
+  font-weight: var(--fw-extrabold);
+  white-space: nowrap;
+}
+
+.quiz-progress__current {
+  color: var(--green-600);
 }
 
 .quiz-progress .progress-bar {
+  flex: 1;
   height: 9px;
+}
+
+#quiz-progress-percent {
+  font-size: var(--fs-15);
+  font-weight: var(--fw-bold);
+  color: var(--green-600);
 }
 
 /* ---------- Quiz question card ---------- */
 .quiz-question {
-  background: var(--neutral-surface);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--neutral-50);
-  padding: var(--space-26);
-  box-shadow: var(--sh-sm);
+  padding: 0;
 }
 
+/* legacy/newQuiz.html 시안: 문제 번호가 배지가 아니라 제목 문장의 일부로 들어가고,
+   난이도/카테고리 배지는 없어지고 "객관식 (1점)" 메타 배지만 우측에 남는다. */
 .quiz-question__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-10);
+  gap: var(--space-12);
+  margin-bottom: var(--space-20);
 }
 
 .quiz-question__badges {
@@ -698,28 +771,32 @@
 }
 
 .quiz-question__num {
-  font-size: var(--fs-12);
-  font-weight: var(--fw-bold);
-  color: var(--green-800);
+  color: var(--green-600);
+  margin-right: var(--space-4);
 }
 
 .quiz-question__text {
-  font-size: var(--fs-16);
+  margin: 0;
+  font-size: var(--fs-19);
   font-weight: var(--fw-extrabold);
+  letter-spacing: var(--ls-tight);
   color: var(--neutral-900);
-  margin-bottom: var(--space-22);
   line-height: 1.55;
+}
+
+#quiz-question-meta-tag {
+  white-space: nowrap;
 }
 
 /* ---------- Choice ---------- */
 .choice {
   display: flex;
   align-items: center;
-  gap: var(--space-12);
-  padding: var(--space-13) var(--space-16);
-  border-radius: var(--radius-xs);
-  border: 1.5px solid var(--neutral-50);
-  margin-bottom: var(--space-9);
+  gap: var(--space-14);
+  padding: var(--space-16) var(--space-16);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--neutral-40);
+  margin-bottom: var(--space-10);
   cursor: pointer;
   transition: all .15s;
   width: 100%;
@@ -735,14 +812,13 @@
 .choice--selected {
   border-color: var(--green-800);
   background: var(--green-50);
-  box-shadow: var(--sel-ring);
 }
 
 .choice__circle {
   width: var(--space-20);
   height: var(--space-20);
   border-radius: 50%;
-  border: 2px solid var(--neutral-50);
+  border: 2px solid var(--green-100);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -770,7 +846,13 @@
 }
 
 .choice__text {
-  font-size: var(--fs-14);
+  font-size: var(--fs-15);
+  color: var(--neutral-800);
+}
+
+.choice--selected .choice__text{
+  color: var(--neutral-900);
+  font-weight: var(--fw-bold);
 }
 
 /* ---------- Quiz question footer ---------- */
@@ -781,14 +863,7 @@
   margin-top: var(--space-22);
 }
 
-.quiz-question__later {
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-  font-size: var(--fs-12);
-  color: var(--neutral-500);
-  cursor: pointer;
-}
+/* "나중에 다시 풀기" 토글 스타일은 범용 .check-chip(assets/css/components.css)로 옮겼다. */
 
 .quiz-question__actions {
   display: flex;
@@ -821,12 +896,12 @@
 }
 
 .question-grid-legend__swatch--done {
-  background: var(--green-800);
+  background: var(--green-100);
 }
 
 .question-grid-legend__swatch--curr {
-  background: var(--green-50);
-  border: 1.5px solid var(--green-800);
+  background: var(--green-600);
+  border: 1.5px solid var(--green-600);
 }
 
 .question-grid-legend__swatch--todo {
@@ -837,7 +912,6 @@
 .question-grid-legend__swatch--flagged {
   background: #fff;
   border: 1.5px solid var(--star-gold);
-  box-shadow: 0 0 0 1.5px var(--star-gold) inset;
 }
 
 .question-grid {
@@ -850,16 +924,16 @@
 .question-grid__num {
   width: var(--space-40);
   height: var(--space-40);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   font-size: var(--fs-14);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-extrabold);
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--neutral-40);
   transition: all .15s;
   background: var(--neutral-surface);
-  color: var(--neutral-900);
+  color: var(--neutral-400);
 }
 
 .question-grid__num:hover {
@@ -867,35 +941,35 @@
   border-color: var(--green-600);
 }
 
+/* 완료 — 옅은 그린 배경 + 그린 텍스트 */
 .question-grid__num--done {
-  background: var(--green-800);
-  border-color: var(--green-800);
+  background: var(--green-100);
+  border-color: var(--green-100);
+  color: var(--green-800);
+}
+
+/* 현재 문제 — 그린 배경 + 흰 텍스트 */
+.question-grid__num--curr {
+  background: var(--green-600);
+  border-color: var(--green-600);
   color: #fff;
 }
 
-.question-grid__num--curr {
-  background: var(--green-50);
-  border-color: var(--green-800);
-  color: var(--green-900);
-  box-shadow: var(--curr-ring);
-}
-
-/* 나중에 다시 풀기로 표시한 문항 — done/curr 배경 위에 겹쳐지는 테두리 강조 */
+/* 보류(나중에 다시 풀기) — done/curr/todo 배경 위에 겹쳐지는 테두리 강조로 유지 */
 .question-grid__num--flagged {
-  box-shadow: 0 0 0 2px var(--star-gold) inset;
+  border: 2px solid var(--star-gold);
 }
 
 /* ---------- Memo / timer panel ---------- */
 .memo-panel {
   background: var(--neutral-surface);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--green-100);
-  padding: var(--space-14);
-  box-shadow: var(--sh-sm);
+  border: 1px solid var(--neutral-40);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
 }
 
 .memo-panel--timer {
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-14);
 }
 
 .memo-panel__title {
@@ -934,43 +1008,50 @@
 
 .memo-panel__textarea {
   width: 100%;
-  border: 1.5px solid var(--neutral-50);
-  border-radius: var(--radius-xs);
-  padding: var(--space-9);
-  font-size: var(--fs-12);
+  border: 1px solid var(--neutral-40);
+  border-radius: var(--radius-sm);
+  padding: var(--space-12) var(--space-14);
+  font-size: var(--fs-13);
   resize: none;
   outline: none;
-  height: 80px;
+  height: 120px;
   line-height: 1.5;
   font-family: inherit;
+  background: var(--neutral-bg);
 }
 
 .memo-panel__textarea:focus {
   border-color: var(--green-600);
 }
 
+.memo-panel__textarea::placeholder {
+  color: var(--neutral-300);
+}
+
 /* ---------- Time ring (남은 시간, .score-ring과 크기가 달라 별도 컴포넌트로 유지) ---------- */
 .time-ring {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 130px;
+  height: 130px;
   margin: 0 auto var(--space-8);
 }
 
 .time-ring svg {
+  width: 100%;
+  height: 100%;
   display: block;
   transform: rotate(-90deg);
 }
 
 .time-ring__bg {
   fill: none;
-  stroke: #EFEFEF;
+  stroke: var(--bg-green-tint);
   stroke-width: 6;
 }
 
 .time-ring__fill {
   fill: none;
-  stroke: var(--green-800);
+  stroke: var(--green-600);
   stroke-width: 6;
   stroke-linecap: round;
   stroke-dasharray: 220;
@@ -983,9 +1064,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fs-18);
+  font-size: var(--fs-22);
   font-weight: var(--fw-extrabold);
-  color: var(--green-900);
+  color: var(--neutral-900);
 }
 
 /* 남은 시간이 얼마 없을 때 경고색으로 전환 (quiz.js가 TIMER_WARNING_SEC/TIMER_CRITICAL_SEC 기준으로 토글) */
@@ -1002,33 +1083,40 @@
 }
 
 @keyframes time-ring-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: .55; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .55;
+  }
 }
 
 .exam-row-list {
   list-style: none;
 }
 
-.exam-row-list > li.exam-row--hidden {
+.exam-row-list>li.exam-row--hidden {
   display: none;
 }
 
 /* ---------- Quiz setup (응시 설정: 난이도 · 문항 수) ---------- */
 .quiz-setup {
-  max-width: 480px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 .quiz-setup__field {
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-20);
 }
 
 .quiz-setup__label {
-  font-size: var(--fs-12);
+  font-size: var(--fs-14);
   font-weight: var(--fw-extrabold);
   color: var(--neutral-800);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-10);
   display: block;
 }
 
@@ -1041,28 +1129,32 @@
 .quiz-setup__checkbox {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
-  font-size: var(--fs-13);
-  padding: var(--space-7) var(--space-12);
-  border: 1.5px solid var(--neutral-50);
-  border-radius: var(--radius-xs);
+  gap: var(--space-9);
+  font-size: var(--fs-14);
+  padding: var(--space-8) var(--space-16);
+  border: 1.5px solid var(--green-600);
+  background: var(--bg-green-tint);
+  border-radius: var(--radius-sm);
   cursor: pointer;
+  color: var(--neutral-900);
+  font-weight: var(--fw-bold);
 }
 
 .quiz-setup__label #quiz-setup-count-value {
-  color: var(--green-800);
+  color: var(--green-600);
   font-weight: var(--fw-extrabold);
+  font-size: var(--fs-15);
 }
 
 .quiz-setup__diff-count {
-  font-size: var(--fs-11);
-  color: var(--neutral-200);
-  font-weight: var(--fw-regular);
+  font-size: var(--fs-12);
+  color: var(--green-300);
+  font-weight: var(--fw-semibold);
 }
 
 .quiz-setup__slider {
   width: 100%;
-  accent-color: var(--green-800);
+  accent-color: var(--green-600);
 }
 
 .quiz-setup__slider:disabled {
@@ -1070,9 +1162,9 @@
 }
 
 .quiz-setup__hint {
-  font-size: var(--fs-11);
-  color: var(--neutral-500);
-  margin-bottom: var(--space-16);
+  font-size: var(--fs-13);
+  color: var(--neutral-300);
+  margin-bottom: var(--space-20);
 }
 
 .quiz-setup__start-btn {
@@ -1081,7 +1173,7 @@
 
 /* ---------- Quiz result (수고하셨습니다! 결과 · 오답 확인) ---------- */
 .quiz-result__card {
-  max-width: 560px;
+  max-width: 640px;
   margin: 0 auto;
   text-align: center;
 }
@@ -1092,9 +1184,11 @@
   border-color: var(--green-100);
 }
 
-.quiz-result__card--low {
-  background: linear-gradient(135deg, var(--bg-coral-tint), var(--neutral-surface));
-  border-color: var(--coral-200);
+.quiz-result__card--low {  
+    background: var(--neutral-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--neutral-40);
+    padding: var(--space-40) var(--space-36);
 }
 
 .quiz-result__emoji {
@@ -1104,15 +1198,15 @@
 }
 
 .quiz-result__title {
-  font-size: var(--fs-20);
+  font-size: var(--fs-24);
   font-weight: var(--fw-extrabold);
   margin-bottom: var(--space-8);
 }
 
 .quiz-result__desc {
-  font-size: var(--fs-13);
+  font-size: var(--fs-14);
   color: var(--neutral-500);
-  margin-bottom: var(--space-18);
+  margin-bottom: var(--space-20);
 }
 
 .quiz-result__actions {

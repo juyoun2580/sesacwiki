@@ -75,7 +75,7 @@ async function renderFavoritePreview() {
       const categoryColor = HOME_WIKI_CATEGORY_TAG_COLOR[item.category] || "gray";
       return `<li class="favorite-list__item">
                     <a class="favorite-list__link" href="/pages/wiki/detail.html?id=${encodeURIComponent(item.id)}">
-                      <span class="favorite-list__star" aria-hidden="true">★</span><span class="favorite-list__title">${item.title}</span><span class="tag tag--${categoryColor} tag--sm">${item.category}</span>
+                      <span class="favorite-star icon icon--star-filled favorite-star--on" aria-hidden="true"></span><span class="favorite-list__title">${item.title}</span><span class="tag tag--${categoryColor} tag--sm">${item.category}</span>
                     </a>
                   </li>`;
     })
@@ -88,6 +88,8 @@ function formatVisitedAt(iso) {
   const pad = (n) => String(n).padStart(2, "0");
   return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
+
+const RECENT_PAGES_PREVIEW_MAX = 5;
 
 async function renderRecentPagesPreview() {
   const listEl = document.querySelector(".recent-list");
@@ -105,7 +107,8 @@ async function renderRecentPagesPreview() {
       const item = wikiById.get(rv.wikiId);
       return item ? { item, visitedAt: rv.visitedAt } : null;
     })
-    .filter(Boolean);
+    .filter(Boolean)
+    .slice(0, RECENT_PAGES_PREVIEW_MAX);
 
   if (recentPages.length === 0) {
     listEl.innerHTML = `<li class="recent-list__item recent-list__item--empty">${emptyStateHTML('recent', 'icon--file', '최근 본 페이지가 없어요', '위키 문서를 둘러보면 여기에 기록돼요')}</li>`;

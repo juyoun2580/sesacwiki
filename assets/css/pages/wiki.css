@@ -14,10 +14,13 @@
 }
 
 .wiki-empty {
-  padding: var(--space-24) 0;
+  padding: var(--space-14) 0;
   text-align: center;
-  font-size: var(--fs-13);
+  font-size: var(--fs-14);
   color: var(--neutral-500);
+  background: var(--neutral-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-40);
 }
 
 .wiki-row {
@@ -249,7 +252,16 @@
   margin-bottom: var(--space-14);
 }
 
+.article-meta__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
 .article-meta__favorite {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
   background: none;
   border: none;
   cursor: pointer;
@@ -262,11 +274,11 @@
 }
 
 .highlight-banner {
-  background: linear-gradient(135deg, var(--green-50), var(--hero-grad-1));
+  background: var(--bg-green-tint);
   border: 1px solid var(--green-100);
   border-radius: var(--radius-xs);
   padding: var(--space-11) var(--space-14);
-  font-size: var(--fs-12);
+  font-size: var(--fs-13);
   color: var(--green-900);
   margin-bottom: var(--space-18);
   display: flex;
@@ -280,19 +292,29 @@
 }
 
 .article h2 {
-  font-size: var(--fs-16);
+  font-size: var(--fs-19);
+  color: var(--neutral-900);
   font-weight: var(--fw-extrabold);
   color: var(--green-900);
-  border-left: 3px solid var(--green-800);
-  padding-left: var(--space-10);
   margin: var(--space-22) 0 var(--space-10);
 }
 
+.article h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  border-radius: var(--radius-round);
+  background: var(--green-700);
+  margin-right: var(--space-10);
+  vertical-align: text-bottom;
+}
+
 .article p {
-  font-size: var(--fs-13);
-  line-height: 1.85;
+  font-size: var(--fs-15);
+  line-height: var(--lh-normal);
   color: var(--neutral-800);
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-20);
 }
 
 .highlight--yellow {
@@ -337,9 +359,9 @@
 }
 
 .related-heading {
-  font-size: var(--fs-13);
+  font-size: var(--fs-15);
   font-weight: var(--fw-extrabold);
-  color: var(--neutral-800);
+  color: var(--neutral-900);
   margin: var(--space-24) 0 var(--space-10);
 }
 
@@ -354,7 +376,7 @@
   margin-bottom: var(--space-8);
   cursor: pointer;
   transition: all .15s;
-  box-shadow: var(--sh-sm);
+  /* box-shadow: var(--sh-sm); */
   width: 100%;
   text-align: left;
 }
@@ -381,20 +403,20 @@
 /* ---------- Save box (아티클 우측 패널, aside.side-panel 안에 위치) ---------- */
 
 .save-box {
-  background: linear-gradient(135deg, var(--green-50), var(--abox-grad));
-  border-radius: var(--radius-sm);
-  padding: var(--space-16);
-  margin-bottom: var(--space-12);
+  background: var(--bg-green-tint);
   border: 1px solid var(--green-100);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  margin-bottom: var(--space-12);
 }
 
 .save-box__title {
   display: flex;
   align-items: center;
   gap: var(--space-8);
-  font-size: var(--fs-12);
+  font-size: var(--fs-15);
   font-weight: var(--fw-extrabold);
-  color: var(--green-900);
+  color: var(--green-600);
   margin-bottom: var(--space-10);
 }
 
@@ -403,16 +425,15 @@
   align-items: center;
   gap: var(--space-8);
   width: 100%;
-  padding: var(--space-9) var(--space-11);
+  padding: var(--space-12) var(--space-14);
   background: var(--neutral-surface);
-  border-radius: var(--radius-xs);
-  font-size: var(--fs-12);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-14);
   font-weight: var(--fw-bold);
   color: var(--green-900);
   cursor: pointer;
-  border: 1px solid var(--green-100);
+  border: 1px solid var(--neutral-40);
   transition: all .15s;
-  box-shadow: var(--sh-sm);
   margin-bottom: var(--space-7);
   text-align: left;
 }
@@ -422,6 +443,13 @@
   color: #fff;
   border-color: var(--green-800);
 }
+.save-box__action .icon--edit{
+    color: var(--gold-600);
+}
+
+.save-box__action .icon--book{
+    color: var(--blue-600);
+}
 
 .complete-btn {
   display: flex;
@@ -429,16 +457,7 @@
   justify-content: center;
   gap: var(--space-8);
   width: 100%;
-  padding: var(--space-13);
-  border-radius: var(--radius-xs);
-  border: none;
-  background: linear-gradient(135deg, var(--green-800), var(--green-600));
-  color: #fff;
-  font-size: var(--fs-13);
-  font-weight: var(--fw-extrabold);
   cursor: pointer;
-  box-shadow: var(--sh-g);
-  transition: all .18s;
   margin-top: var(--space-6);
 }
 
@@ -448,42 +467,191 @@
 
 .highlight-list-wrap {
   margin-top: var(--space-16);
+  background: var(--neutral-surface);
+  border: 1px solid var(--neutral-40);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
 }
 
 .highlight-list__label {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
-  font-size: var(--fs-11);
+  justify-content: space-between;  
+}
+
+.highlight-list__label-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-7);
+  font-size: var(--fs-14);
   font-weight: var(--fw-extrabold);
-  color: var(--neutral-500);
-  margin-bottom: var(--space-8);
+  color: var(--neutral-800);
+}
+
+.highlight-list__label-text .icon {
+  color: var(--gold-600);
+}
+
+.highlight-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  margin-top: var(--space-10);
+}
+
+/* display:flex를 이미 선언한 요소라 [hidden] 기본 동작(display:none)이 묻힌다 —
+   quiz-layout[hidden](exam.css)과 동일한 이유로 명시적으로 덮어써야 실제로 숨겨진다. */
+.highlight-list[hidden] {
+  display: none;
 }
 
 .highlight-list__item {
-  background: var(--highlight-yellow-bg);
-  border-radius: var(--radius-xxs);
-  padding: var(--space-8) var(--space-10);
-  font-size: var(--fs-11);
-  color: var(--neutral-800);
-  margin-bottom: var(--space-6);
-  line-height: 1.5;
-  border-left: 3px solid var(--star-gold);
-  position: relative;
+  display: flex;
+  align-items: flex-start;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.highlight-list__bar {
+  width: 4px;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.highlight-list__body {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-12) var(--space-12) var(--space-12) var(--space-14);
+}
+
+.highlight-list__text {
+  margin: 0;
+  font-size: var(--fs-13);
+  line-height: var(--lh-normal);
 }
 
 .highlight-list__delete {
-  position: absolute;
-  top: var(--space-6);
-  right: var(--space-8);
-  color: var(--neutral-200);
-  font-size: var(--fs-12);
+  width: 30px;
+  height: 30px;
+  margin: var(--space-8) var(--space-8) 0 0;
+  border-radius: var(--radius-xxs);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   cursor: pointer;
-  font-weight: var(--fw-bold);
   background: none;
   border: none;
+  color: var(--neutral-400);
+  transition: all var(--transition-fast);
+}
+
+.highlight-list__delete .icon {
+  width: 14px;
+  height: 14px;
 }
 
 .highlight-list__delete:hover {
+  background: var(--bg-coral-tint);
   color: var(--coral-600);
+}
+
+/* ---------- Highlight item color variants (하이라이트 저장 시 선택한 색상) ----------
+   새 색상을 추가할 때는 이 modifier 블록만 추가하면 되고, JS는 색상 코드→클래스 매핑
+   한 줄(HIGHLIGHT_COLOR_CLASS, highlight.js)만 늘리면 된다. */
+.highlight-list__item--yellow {
+  background: var(--highlight-yellow-bg);
+}
+
+.highlight-list__item--yellow .highlight-list__bar {
+  background: var(--gold-600);
+}
+
+.highlight-list__item--yellow .highlight-list__text {
+  color: var(--gold-600);
+}
+
+.highlight-list__item--yellow .highlight-list__delete {
+  color: var(--gold-600);
+}
+
+.highlight-list__item--green {
+  background: var(--bg-green-tint);
+}
+
+.highlight-list__item--green .highlight-list__bar {
+  background: var(--green-600);
+}
+
+.highlight-list__item--green .highlight-list__text {
+  color: var(--green-600);
+}
+
+.highlight-list__item--green .highlight-list__delete {
+  color: var(--green-600);
+}
+
+/* ---------- Highlight Toolbar (텍스트 드래그 시 뜨는 플로팅 툴바, wiki/detail 전용) ---------- */
+.highlight-toolbar {
+  position: fixed;
+  z-index: 600;
+  display: none;
+  align-items: center;
+  gap: var(--space-6);
+  background: var(--neutral-900);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-6) var(--space-8);
+}
+
+.highlight-toolbar--visible {
+  display: flex;
+}
+
+.highlight-toolbar__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-10);
+  border-radius: var(--radius-xs);
+  font-size: var(--fs-11);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--neutral-surface);
+  border: 1px solid transparent;
+  background: none;
+}
+
+.highlight-toolbar__dot {
+  display: inline-block;
+  width: var(--space-8);
+  height: var(--space-8);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .55);
+}
+
+.highlight-toolbar__btn--yellow:hover {
+  background: rgba(255, 255, 255, .12);
+}
+
+.highlight-toolbar__btn--yellow .highlight-toolbar__dot {
+  background: var(--star-gold);
+}
+
+.highlight-toolbar__btn--green:hover {
+  background: rgba(255, 255, 255, .12);
+}
+
+.highlight-toolbar__btn--green .highlight-toolbar__dot {
+  background: var(--green-500);
+}
+
+.highlight-toolbar__btn--word {
+  background: var(--neutral-800);
+  border-color: var(--neutral-700);
+}
+
+.highlight-toolbar__btn--word:hover {
+  background: var(--neutral-700);
 }

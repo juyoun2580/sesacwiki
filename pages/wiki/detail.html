@@ -20,12 +20,11 @@
 
   <header class="header" id="header-mount"></header>
 
-
   <main id="main-content">
     <section id="detail" class="page page--active" aria-label="위키 상세">
       <div class="shell">
         <aside class="sidebar" aria-label="목차">
-          <a class="back-link" href="/pages/wiki/index.html">‹ 뒤로가기</a>
+          <a class="back-link quiz-header__back" href="/pages/wiki/index.html"><span class="icon icon--chevron-left"></span> 뒤로가기</a>
           <nav class="toc sidebar-wrap" id="wikiToc" aria-label="목차">
             <p class="sidebar__label">목차</p>
           </nav>
@@ -40,9 +39,9 @@
                   id="wikiDetailLevelTag"></span>
               </div>
               <p class="article-meta">
-                <span id="wikiDetailPercent"></span>
-                <button type="button" class="article-meta__favorite favorite-star" id="wikiDetailFavorite"
-                  aria-pressed="false">★ 즐겨찾기</button>
+                <span class="article-meta__label" id="wikiDetailPercent"></span>
+                <button type="button" class="article-meta__favorite" id="wikiDetailFavorite"
+                  aria-pressed="false"><span class="favorite-star icon icon--star" aria-hidden="true"></span> 즐겨찾기</button>
               </p>
               <div class="detail-progress progress-bar" role="progressbar" id="wikiDetailProgressBar"
                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
@@ -65,20 +64,24 @@
         <aside class="side-panel" aria-label="핸드북 저장 도구">
           <div class="save-box">
             <p class="save-box__title"><span class="icon icon--book" aria-hidden="true"></span> 내 핸드북에 저장</p>
-            <button type="button" class="save-box__action" data-action="quick-favorite"><span
-                class="favorite-star" id="wikiDetailFavoriteMini" aria-hidden="true">★</span> 즐겨찾기</button>
+            <button type="button" class="save-box__action" data-action="quick-favorite" id="wikiDetailFavoriteMiniBtn"
+              aria-pressed="false"><span class="favorite-star icon icon--star" id="wikiDetailFavoriteMini"
+                aria-hidden="true"></span> 즐겨찾기</button>
             <button type="button" class="save-box__action" data-action="toast"
               data-message="텍스트를 드래그하면 하이라이트 툴바가 나타나요!"><span class="icon icon--edit"
                 aria-hidden="true"></span> 하이라이트</button>
             <button type="button" class="save-box__action" data-action="open-modal" data-word=""><span
                 class="icon icon--book" aria-hidden="true"></span> 단어장 추가</button>
           </div>
-          <button type="button" class="complete-btn" id="wikiCompleteBtn" data-action="toast"
-            data-message="🎉 학습 완료! +20P 획득했어요!"><span class="icon icon--check" aria-hidden="true"></span> 학습
+          <button type="button" class="btn btn--lg btn--primary complete-btn" id="wikiCompleteBtn" data-action="toast"
+            data-message="학습 완료! +20P 획득했어요!"><span class="icon icon--check" aria-hidden="true"></span> 학습
             완료</button>
           <div class="highlight-list-wrap">
-            <p class="highlight-list__label"><span class="icon icon--edit" aria-hidden="true"></span> <span
-                id="hlcount">저장한 하이라이트 (0)</span></p>
+            <div class="highlight-list__label">
+              <span class="highlight-list__label-text"><span class="icon icon--edit" aria-hidden="true"></span>저장한
+                하이라이트</span>
+              <span class="tag tag--gold" id="hlcount">0</span>
+            </div>
             <div class="highlight-list"></div>
           </div>
         </aside>
@@ -90,11 +93,11 @@
 
   <div class="highlight-toolbar" id="hlbar" role="toolbar" aria-label="하이라이트 도구">
     <button type="button" class="highlight-toolbar__btn highlight-toolbar__btn--yellow" data-action="apply-highlight"
-      data-color="y">🟡 노란색</button>
+      data-color="y"><span class="highlight-toolbar__dot" aria-hidden="true"></span>노란색</button>
     <button type="button" class="highlight-toolbar__btn highlight-toolbar__btn--green" data-action="apply-highlight"
-      data-color="g">🟢 초록색</button>
-    <button type="button" class="highlight-toolbar__btn highlight-toolbar__btn--word" data-action="highlight-to-word">📓
-      단어장</button>
+      data-color="g"><span class="highlight-toolbar__dot" aria-hidden="true"></span>초록색</button>
+    <button type="button" class="highlight-toolbar__btn highlight-toolbar__btn--word" data-action="highlight-to-word">
+      <span class="icon icon--book" aria-hidden="true"></span>단어장</button>
   </div>
 
   <div id="word-modal-mount"></div>

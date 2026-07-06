@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/pages/my.css">
   <link rel="stylesheet" href="/assets/css/pagination.css">
+  <link rel="stylesheet" href="/assets/css/toolbar.css">
   <link rel="stylesheet" href="/assets/css/modal.css">
 </head>
 
@@ -26,31 +27,44 @@
     <section id="mywords" class="page page--active" aria-label="저장한 단어">
       <div class="shell">
         <div class="page__content">
-          <a class="back-link" href="/pages/my/index.html">‹ 마이페이지로 돌아가기</a>
-          <h1 class="page-title">저장한 단어<span class="icon icon--leaf" aria-hidden="true"></span></h1>
+          <a class="back-link quiz-header__back" href="/pages/my/index.html"><span class="icon icon--chevron-left"></span> 뒤로가기</a>
+          <h1 class="page-title">저장한 단어</h1>
           <p class="page-subtitle">모르는 단어를 저장하고 복습하여 어휘력을 키워보세요.</p>
 
-          <div class="my-toolbar">
-            <div class="my-toolbar__search">
-              <label class="sr-only" for="word-search">단어 검색</label>
-              <span class="icon icon--search" aria-hidden="true"></span>
-              <input type="text" id="word-search" class="my-toolbar__input" placeholder="단어를 검색하세요">
+          <div class="toolbar" id="wordToolbar">
+            <div class="toolbar__search">
+              <div class="search-box">
+                <span class="icon icon--search search-box__icon" aria-hidden="true"></span>
+                <label class="sr-only" for="word-search">단어 검색</label>
+                <input type="text" id="word-search" class="search-box__input" placeholder="단어를 검색하세요">
+              </div>
             </div>
-            <label class="sr-only" for="word-category">카테고리 선택</label>
-            <select id="word-category" class="my-toolbar__select">
-              <option>전체 카테고리</option>
-              <option>CS/IT</option>
-              <option>Java</option>
-              <option>SQL</option>
-            </select>
-            <div class="sort-pills">
-              <button type="button" class="sort-pill" data-sort="term">영어순</button>
-              <button type="button" class="sort-pill" data-sort="definition">이름순</button>
+
+            <div class="toolbar__actions">
+              <div class="toolbar__filters">
+                <label class="sr-only" for="word-category">카테고리 선택</label>
+                <div class="select">
+                  <select id="word-category" class="select__field">
+                    <option>전체 카테고리</option>
+                    <option>CS/IT</option>
+                    <option>Java</option>
+                    <option>SQL</option>
+                  </select>
+                  <span class="icon icon--chevron-down select__icon" aria-hidden="true"></span>
+                </div>
+                <div class="sort-pills">
+                  <button type="button" class="sort-pill" data-sort="term">영어순</button>
+                  <button type="button" class="sort-pill" data-sort="definition">이름순</button>
+                </div>
+              </div>
+
+              <div class="toolbar__buttons">
+                <button type="button" class="btn btn--outline btn--sm" data-action="toggle-favorites-only"
+                  aria-pressed="false"><span class="icon icon--star" aria-hidden="true"></span>즐겨찾기만</button>
+                <button type="button" class="btn btn--primary btn--sm" data-action="open-modal" data-word="">+ 단어
+                  추가</button>
+              </div>
             </div>
-            <button type="button" class="btn btn--outline btn--sm" data-action="toggle-favorites-only"
-              aria-pressed="false"><span class="icon icon--star" aria-hidden="true"></span>즐겨찾기만</button>
-            <button type="button" class="btn btn--primary btn--sm" data-action="open-modal" data-word="">+ 단어
-              추가</button>
           </div>
 
           <div class="word-stats">
@@ -59,16 +73,15 @@
               <p class="word-stats__label">전체 단어</p>
             </div>
           </div>
+          
+          <div class="word-row-groups" id="word-row-groups"></div>
 
           <div class="word-export-bar">
             <button type="button" class="word-export-bar__btn word-export-bar__btn--csv"
-              data-action="export-words-csv"><span class="icon icon--file-text" aria-hidden="true"></span>Export to
-              CSV</button>
+              data-action="export-words-csv"><span class="icon icon--file-text" aria-hidden="true"></span>CSV로 내보내기</button>
             <button type="button" class="word-export-bar__btn word-export-bar__btn--word"
-              data-action="export-words-doc"><span class="icon icon--file-text" aria-hidden="true"></span>Export to
-              Word</button>
+              data-action="export-words-doc"><span class="icon icon--file-text" aria-hidden="true"></span>Word로 내보내기</button>
           </div>
-          <div class="word-row-groups" id="word-row-groups"></div>
 
           <nav class="pagination" id="wordsPagination" aria-label="페이지 네비게이션"></nav>
         </div>
@@ -132,7 +145,7 @@
   <script src="/assets/js/toast.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
   <script src="/assets/js/supabase-client.js" defer></script>
-  <!-- <script src="/assets/js/auth.js" defer></script> -->
+  <script src="/assets/js/auth.js" defer></script>
   <script src="/assets/js/api.js" defer></script>
   <script src="/assets/js/components/header.js" defer></script>
   <script src="/assets/js/components/nav.js" defer></script>

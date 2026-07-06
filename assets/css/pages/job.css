@@ -846,7 +846,7 @@
   padding: var(--space-32);
   text-align: center;
   margin-bottom: var(--space-20);
-  box-shadow: var(--sh-md);
+  /* box-shadow: var(--sh-md); */
 }
 
 .ff-mock__question {

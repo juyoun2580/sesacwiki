@@ -4,7 +4,6 @@
 // 응시 기록(exam_attempts)은 assets/js/api.js를 통해 Supabase에 저장한다. exam.js도 같은 함수를 쓴다.
 
 const DIFFICULTY_ORDER = ['기초', '중급', '고급', '심화'];
-const DIFFICULTY_TAG_CLASS = { '기초': 'tag--green', '중급': 'tag--blue', '고급': 'tag--gold', '심화': 'tag--coral' };
 const MAX_QUIZ_QUESTION_COUNT = 50; // 문항 수 슬라이더 상한 (풀 크기가 더 작으면 풀 크기가 상한이 된다)
 const TIMER_WARNING_SEC = 60; // 이 초 이하로 남으면 타이머 링이 경고색으로 바뀐다
 const TIMER_CRITICAL_SEC = 10; // 이 초 이하로 남으면 경고색 + 깜빡임
@@ -98,7 +97,7 @@ async function initQuizPage() {
     const allQuestions = await resolveQuizQuestions(data, examId);
     if (!exam || !allQuestions.length) {
       if (requestedId) {
-        toast('요청한 모의고사를 찾을 수 없어 목록으로 돌아가요.');
+        toast('요청한 모의고사를 찾을 수 없어 목록으로 돌아가요');
         setTimeout(() => { location.href = '/pages/exam/index.html'; }, 1500);
         return;
       }
@@ -118,7 +117,7 @@ async function initQuizPage() {
     showQuizPhase('setup');
   } catch (e) {
     console.error(e);
-    toast('문제를 불러오지 못했어요. 목록으로 돌아가 다시 시도해주세요.');
+    toast('문제를 불러오지 못했어요. 목록으로 돌아가 다시 시도해주세요');
     setText('quiz-desc', '문제를 불러오지 못했어요. 새로고침하거나 목록으로 돌아가 다시 시도해주세요.');
     const startBtn = document.getElementById('quiz-setup-start-btn');
     if (startBtn) startBtn.disabled = true;
@@ -203,7 +202,7 @@ function updateQuizSetupCountOptions() {
     countSlider.value = String(max); // 기본값: 선택 가능한 최대 문항 수(=전체, 최대 50)
   }
   setText('quiz-setup-count-value', String(max));
-  if (hintEl) hintEl.textContent = `선택한 난이도에서 총 ${filtered.length}문제 중 원하는 문항 수를 슬라이더로 골라주세요 (최대 ${max}문제).`;
+  if (hintEl) hintEl.textContent = `선택한 난이도에서 총 ${filtered.length}문제 중 원하는 문항 수를 슬라이더로 골라주세요 (최대 ${max}문제)`;
   if (startBtn) startBtn.disabled = false;
 }
 
@@ -244,15 +243,14 @@ function renderQuizQuestion() {
   const total = questions.length;
   const q = questions[currentIndex];
 
-  setText('quiz-question-num', `Q${currentIndex + 1}.`);
-  const diffTagEl = document.getElementById('quiz-question-difficulty-tag');
-  if (diffTagEl) {
-    diffTagEl.textContent = q.difficulty;
-    diffTagEl.className = `tag ${DIFFICULTY_TAG_CLASS[q.difficulty] || 'tag--gray'}`;
+  // 문제 번호(Q1.)가 이제 제목 문장 안의 span이라 textContent만 다루는 setText()로는
+  // 못 넣는다 — innerHTML로 번호 span과 본문을 함께 그린다. 난이도/카테고리 배지는
+  // 시안에서 빠지고 "객관식 (1점)" 메타 배지만 남았다.
+  const questionTextEl = document.getElementById('quiz-question-text');
+  if (questionTextEl) {
+    questionTextEl.innerHTML = `<span class="quiz-question__num" id="quiz-question-num">Q${currentIndex + 1}.</span> ${escapeHtml(q.text)}`;
   }
-  setText('quiz-question-category-tag', q.category);
   setText('quiz-question-meta-tag', `${q.type} (${q.point}점)`);
-  setText('quiz-question-text', q.text);
 
   const choicesEl = document.getElementById('quiz-choices');
   if (choicesEl) {
@@ -270,7 +268,12 @@ function renderQuizQuestion() {
   if (flagEl) flagEl.checked = flagged.has(currentIndex);
 
   const percent = Math.round(((currentIndex + 1) / total) * 100);
-  setText('quiz-progress-text', `${currentIndex + 1} / ${total} 문제`);
+  // 현재 문제 번호만 초록색으로 강조해야 해서, 다른 곳과 공유하는 setText()(textContent만
+  // 다룸) 대신 여기서만 innerHTML로 번호를 감싼 span을 직접 넣는다.
+  const progressTextEl = document.getElementById('quiz-progress-text');
+  if (progressTextEl) {
+    progressTextEl.innerHTML = `<span class="quiz-progress__current">${currentIndex + 1}</span> / ${total} 문제`;
+  }
   setText('quiz-progress-percent', `${percent}%`);
   const fillEl = document.getElementById('quiz-progress-fill');
   if (fillEl) {
@@ -283,7 +286,7 @@ function renderQuizQuestion() {
   const prevBtn = document.getElementById('quiz-prev-btn');
   const nextBtn = document.getElementById('quiz-next-btn');
   if (prevBtn) prevBtn.disabled = currentIndex === 0;
-  if (nextBtn) nextBtn.textContent = currentIndex === total - 1 ? '제출하기' : '다음 문제 ›';
+  if (nextBtn) nextBtn.textContent = currentIndex === total - 1 ? '제출하기' : '다음 문제';
 
   renderQuizQuestionGrid();
 }
@@ -590,7 +593,7 @@ setInterval(() => {
     ringEl.classList.toggle('time-ring--critical', timerSec <= TIMER_CRITICAL_SEC);
   }
   if (timerSec === 0) {
-    toast('⏰ 시간이 종료되어 자동 제출되었어요.');
+    toast('시간이 종료되어 자동 제출되었어요');
     finishQuiz();
   }
 }, 1000);

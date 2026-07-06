@@ -121,13 +121,20 @@
 
 /* ---------- Sidebar (좌측 필터 메뉴) ---------- */
 .sidebar {
-  width: 210px;
+  width: 228px;
   flex-shrink: 0;
   padding: var(--space-20) 0 var(--space-20) var(--space-28);
   position: sticky;
   top: var(--space-68);
-  height: calc(100vh - var(--space-68));
+  max-height: calc(100vh - var(--space-40));
   overflow-y: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sidebar::-webkit-scrollbar{
+  display: none;
 }
 
 .sidebar-wrap{
@@ -203,14 +210,21 @@
 
 /* ---------- Side panel (우측 보조 패널) ---------- */
 .side-panel {
-  width: 268px;
+  width: 320px;
   flex-shrink: 0;
-  padding: var(--space-20) var(--space-18);
+  padding: var(--space-20) var(--space-20) var(--space-20) 0;
   position: sticky;
   top: var(--space-68);
-  height: calc(100vh - var(--space-68));
+  max-height: calc(100vh - var(--space-40));
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
 
 .side-panel .section-title{
   margin-bottom: 0;
@@ -230,7 +244,7 @@
 .page-subtitle {
   font-size: var(--fs-14);
   color: var(--neutral-400);
-  margin-bottom: var(--space-20);
+  margin-bottom: var(--space-28);
 }
 
 /* ==========================================================================

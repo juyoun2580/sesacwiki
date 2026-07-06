@@ -506,6 +506,7 @@
   width: 100%;
   text-align: left;
   background: none;
+  min-height: 39px;
 }
 
 .recent-list__item:first-child,
@@ -566,11 +567,17 @@
 .recent-list__link,
 .favorite-list__link {
   display: flex;
-  align-items: center;
-  gap: var(--space-8);
-  width: 100%;
-  color: inherit;
-  text-decoration: none;
+    align-items: center;
+    gap: var(--space-8);
+    width: 100%; 
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+.favorite-list__link .tag--sm{
+  padding: var(--space-1) var(--space-8);
+  font-size: 11px;
 }
 
 .card__more {

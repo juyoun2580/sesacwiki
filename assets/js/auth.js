@@ -136,15 +136,15 @@ if (signupForm) {
     const agreeMarketing = document.getElementById("signup-agree-marketing").checked;
 
     if (!name || !email || !password || !passwordConfirm) {
-      toast("이름, 이메일, 비밀번호를 모두 입력해주세요.");
+      toast("이름, 이메일, 비밀번호를 모두 입력해주세요");
       return;
     }
     if (password.length < 6) {
-      toast("비밀번호는 6자 이상이어야 해요.");
+      toast("비밀번호는 6자 이상이어야 해요");
       return;
     }
     if (password !== passwordConfirm) {
-      toast("비밀번호가 일치하지 않아요.");
+      toast("비밀번호가 일치하지 않아요");
       return;
     }
     if (!agreeRequired) {
@@ -172,7 +172,7 @@ if (signupForm) {
     if (data.session) {
       toast(`🌱 ${name}님, 가입이 완료됐어요!`);
     } else {
-      toast(`🌱 ${name}님, 가입이 완료됐어요! 이메일 인증 후 로그인해주세요.`);
+      toast(`🌱 ${name}님, 가입이 완료됐어요! 이메일 인증 후 로그인해주세요`);
       setTimeout(() => {
         location.href = "/pages/auth/login.html";
       }, 1200);
@@ -190,14 +190,14 @@ if (loginForm) {
     const password = document.getElementById("login-password").value;
 
     if (!email || !password) {
-      toast("이메일과 비밀번호를 모두 입력해주세요.");
+      toast("이메일과 비밀번호를 모두 입력해주세요");
       return;
     }
 
     const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
 
     if (error) {
-      toast(error.message === "Invalid login credentials" ? "이메일 또는 비밀번호가 올바르지 않아요." : error.message);
+      toast(error.message === "Invalid login credentials" ? "이메일 또는 비밀번호가 올바르지 않아요" : error.message);
       return;
     }
   });

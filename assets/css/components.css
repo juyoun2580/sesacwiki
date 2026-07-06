@@ -191,6 +191,11 @@
   -webkit-mask-image: url("../img/icon/ico-alert-triangle.svg");
 }
 
+.icon--eye {
+  mask-image: url("../img/icon/ico-eye.svg");
+  -webkit-mask-image: url("../img/icon/ico-eye.svg");
+}
+
 /* ---------- Level Track icons (마이페이지 8단계) ---------- */
 .icon--lv1-sprout {
   mask-image: url("../img/icon/ico-lv1-sprout.svg");
@@ -397,7 +402,7 @@ body[data-auth="guest"] .auth-user-only {
   background: var(--neutral-surface);
   border: 1.5px solid var(--green-100);
   border-radius: var(--radius-round);
-  padding: 0 var(--space-12) 0 var(--space-3);
+  padding: 0 var(--space-5) 0 var(--space-3);
   height: var(--space-38);
   gap: var(--space-8);
   font-size: var(--fs-14);
@@ -513,13 +518,17 @@ body[data-auth="guest"] .auth-user-only {
   width: 100%;
   height: var(--space-38);
   padding: 0 var(--space-14) 0 var(--space-38);
-  background: var(--neutral-5);
+  background: var(--neutral-surface);
   border: 1.5px solid var(--neutral-40);
   border-radius: var(--radius-round);
   font-size: var(--fs-13);
   color: var(--neutral-800);
   outline: none;
   transition: all var(--transition-fast);
+}
+
+.header__right .search-box__input{
+  background: var(--neutral-5);
 }
 
 .search-box__input::placeholder {
@@ -541,6 +550,98 @@ body[data-auth="guest"] .auth-user-only {
   pointer-events: none;
 }
 
+/* ---------- Select ----------
+   네이티브 select는 자식 요소를 가질 수 없어, 우측 화살표를 공용 icon(chevron-down)으로
+   표시하려면 래퍼(.select)가 필요하다. .select__field는 appearance:none으로 브라우저
+   기본 화살표(background-image)를 없애고, 그 자리에 래퍼 안 아이콘을 절대 위치로 겹친다. */
+.select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.select__field {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-11) var(--space-32) var(--space-11) var(--space-16);
+  background: var(--neutral-surface);
+  border: 1px solid var(--neutral-40);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--neutral-600);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.select__field:hover {
+  background: var(--neutral-5);
+}
+
+.select__field:focus {
+  outline: none;
+  border-color: var(--green-500);
+  box-shadow: var(--focus-ring);
+}
+
+.select__icon {
+  position: absolute;
+  right: var(--space-11);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 13px;
+  height: 13px;
+  color: var(--neutral-400);
+  pointer-events: none;
+}
+
+/* ---------- input ---------- */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 19px;
+  height: 19px;
+
+  border: 1px solid var(--neutral-100);
+  border-radius: var(--radius-xxs);
+
+  background: var(--neutral-surface);
+
+  display: inline-grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  transition: var(--transition-fast);
+}
+
+input[type="checkbox"]:checked {
+  background: var(--green-600);
+  border-color: var(--green-600);
+}
+
+input[type="checkbox"]::after {
+  content: "";
+
+  width: 10px;
+  height: 6px;
+
+  border: solid #fff;
+  border-width: 0 0 1px 1px;
+
+  transform: rotate(-45deg) scale(0);
+  transition: transform var(--transition-fast);
+  position: relative;
+  top: -1px;
+}
+
+input[type="checkbox"]:checked::after {
+  transform: rotate(-45deg) scale(1);
+}
+
 /* ---------- Button ---------- */
 /* --- Button System (Design Tokens Based) --- */
 
@@ -549,9 +650,9 @@ body[data-auth="guest"] .auth-user-only {
   align-items: center;
   justify-content: center;
   gap: var(--space-8);
-  padding: var(--space-14) var(--space-14);
+  padding: var(--space-10) var(--space-20);
   border-radius: var(--radius-sm);
-  font-size: var(--fs-15);
+  font-size: var(--fs-14);
   font-weight: var(--fw-bold);
   border: none;
   cursor: pointer;
@@ -562,14 +663,12 @@ body[data-auth="guest"] .auth-user-only {
 
 /* --- Primary Button (Green Gradient) --- */
 .btn--primary {
-  background: var(--hero-primary-gradient);
+  background: var(--green-600);
   color: var(--neutral-surface);
-  box-shadow: var(--shadow-lg);
 }
 
 .btn--primary:hover {
   filter: brightness(1.08);
-  box-shadow: 0 6px 24px rgba(45, 122, 77, 0.3);
 }
 
 .btn--primary:active {
@@ -624,6 +723,23 @@ body[data-auth="guest"] .auth-user-only {
   cursor: not-allowed;
 }
 
+.btn--outline--secondary {
+  background: var(--neutral-surface);
+  color: var(--neutral-800);
+  border: 1px solid var(--neutral-40);
+}
+
+.btn--outline--secondary:hover {
+  background: var(--neutral-5);
+  border-color: var(--neutral-50);
+}
+
+.btn--outline-danger {
+  background: var(--neutral-surface);
+  color: var(--coral-600);
+  border: 1.5px solid var(--coral-600);
+}
+
 /* --- Ghost Button (Text Only) --- */
 .btn--ghost {
   background: transparent;
@@ -642,6 +758,16 @@ body[data-auth="guest"] .auth-user-only {
 }
 
 .btn--ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--danger{
+  background: var(--coral-600);
+  color: var(--neutral-surface);
+}
+
+.btn--danger:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -755,9 +881,9 @@ body[data-auth="guest"] .auth-user-only {
   transition: box-shadow var(--transition-normal);
 }
 
-.card:hover {
+/* .card:hover {
   box-shadow: var(--shadow-md);
-}
+} */
 
 .card__body {
   padding: var(--space-18);
@@ -767,15 +893,20 @@ body[data-auth="guest"] .auth-user-only {
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: var(--space-5) var(--space-12);
+  padding: var(--space-2) var(--space-12);
   border-radius: var(--radius-round);
   font-size: var(--fs-12);
   font-weight: var(--fw-bold);
 }
 
+.tag--green600 {
+  background: var(--green-600);
+  color: var(--neutral-surface);
+}
+
 .tag--green {
   background: var(--bg-green-tint);
-  color: var(--success);
+  color: var(--green-600);
 }
 
 .tag--blue {
@@ -809,10 +940,8 @@ body[data-auth="guest"] .auth-user-only {
 }
 
 .tag--recommended {
-  background: var(--green-50);
-  color: var(--green-700);
-  border: 1.5px solid var(--green-300);
-  font-size: var(--fs-10);
+  background: var(--bg-green-tint);
+  color: var(--green-600);
 }
 
 /* ---------- Progress Bar ---------- */
@@ -903,6 +1032,30 @@ body[data-auth="guest"] .auth-user-only {
   transform: scale(1.2);
 }
 
+/* 다른 아이콘 버튼(.btn--icon)과 나란히 34x34 박스형으로 놓일 때(word-row 등) 쓰는 modifier —
+   글자 크기로 커지는 hover 대신 박스 배경으로 강조한다. */
+.favorite-star--btn {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  background: none;
+  border: none;
+  font-size: inherit;
+  color: var(--neutral-300);
+}
+
+.favorite-star--btn.favorite-star--on {
+  color: var(--star-gold);
+}
+
+.favorite-star--btn:hover {
+  background: var(--bg-gold-tint);
+  transform: none;
+}
+
 /* ---------- Divider ---------- */
 .divider {
   height: 1px;
@@ -977,8 +1130,9 @@ body[data-auth="guest"] .auth-user-only {
   display: inline-flex;
   align-items: center;
   gap: var(--space-4);
-  font-size: var(--fs-12);
-  color: var(--neutral-600);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--neutral-400);
   cursor: pointer;
   margin-bottom: var(--space-16);
   background: none;
@@ -1012,6 +1166,38 @@ body[data-auth="guest"] .auth-user-only {
   transform: translateX(-50%) translateY(0);
 }
 
+/* ---------- Check Chip (아이콘 + 텍스트 토글 칩) ----------
+   legacy/newQuiz.html 시안 반영. 원래 exam/quiz.html의 "나중에 다시 풀기"
+   전용이었던 .quiz-question__later를 범용 이름으로 옮겨왔다 — 실제 <input
+   type="checkbox">는 .sr-only로 시각적으로만 숨기고(키보드/스크린리더 접근성은
+   그대로 유지), :has(:checked)로 켜짐 상태의 칩 스타일을 JS 없이 전환한다.
+   마이페이지/위키 등 다른 화면에서 같은 형태의 토글이 필요하면 그대로 재사용한다. */
+.check-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-11) var(--space-18);
+  background: var(--neutral-surface);
+  border: 1px solid var(--neutral-40);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-bold);
+  color: var(--neutral-600);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.check-chip:has(:checked) {
+  border-color: var(--green-600);
+  background: var(--bg-green-tint);
+  color: var(--green-600);
+}
+
+.check-chip .icon {
+  width: 15px;
+  height: 15px;
+}
+
 /* ---------- Section Title ---------- */
 .section-title {
   font-size: var(--fs-16);
@@ -1028,7 +1214,7 @@ body[data-auth="guest"] .auth-user-only {
 }
 
 .section-title__link {
-  font-size: var(--fs-11);
+  font-size: var(--fs-12);
   color: var(--green-600);
   font-weight: var(--fw-semibold);
   cursor: pointer;
@@ -1071,75 +1257,21 @@ body[data-auth="guest"] .auth-user-only {
   font-weight: var(--fw-bold);
 }
 
-/* ---------- Highlight Toolbar (텍스트 드래그 시 뜨는 플로팅 툴바) ---------- */
-.highlight-toolbar {
-  position: fixed;
-  z-index: 600;
-  display: none;
-  background: rgba(26, 26, 30, .95);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-lg);
-  padding: var(--space-5) var(--space-6);
-  align-items: center;
-  gap: 3px;
-}
-
-.highlight-toolbar--visible {
-  display: flex;
-}
-
-.highlight-toolbar__btn {
-  padding: var(--space-5) var(--space-10);
-  border-radius: var(--radius-xs);
-  font-size: var(--fs-11);
-  font-weight: var(--fw-bold);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  color: var(--neutral-surface);
-  border: none;
-  background: none;
-}
-
-.highlight-toolbar__btn--yellow {
-  background: rgba(219, 169, 104, .8);
-}
-
-.highlight-toolbar__btn--yellow:hover {
-  background: var(--gold-400);
-}
-
-.highlight-toolbar__btn--green {
-  background: rgba(76, 175, 80, .8);
-}
-
-.highlight-toolbar__btn--green:hover {
-  background: var(--green-500);
-}
-
-.highlight-toolbar__btn--word {
-  background: rgba(255, 255, 255, .15);
-  border: 1px solid rgba(255, 255, 255, .3);
-}
-
-.highlight-toolbar__btn--word:hover {
-  background: rgba(255, 255, 255, .25);
-}
-
 /* ---------- Code Box ---------- */
 .code-box {
   background: var(--code-bg);
   border-radius: var(--radius-md);
-  padding: var(--space-18) var(--space-20);
+  padding: var(--space-20) var(--space-24);
   margin: var(--space-14) 0;
   position: relative;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
+  /* box-shadow: 0 4px 16px rgba(0, 0, 0, .15); */
 }
 
 .code-box pre {
   color: var(--code-text);
-  font-size: var(--fs-13);
-  font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
-  line-height: 1.7;
+  font-size: var(--fs-14);
+  font-family: 'D2Coding', 'Fira Code', Consolas, monospace;
+  line-height: var(--lh-relaxed);
   overflow-x: auto;
 }
 

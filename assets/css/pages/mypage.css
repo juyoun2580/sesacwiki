@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--sh-logo);
+  /* box-shadow: var(--sh-logo); */
   overflow: hidden;
 }
 
@@ -518,7 +518,7 @@
    ========================================================================== */
 
 .settings-content {
-  max-width: 780px;
+  max-width: 900px;
 }
 
 .settings-content__title {
@@ -542,26 +542,25 @@
 }
 
 .settings-section__title-main {
-  font-size: var(--fs-16);
+  font-size: var(--fs-17);
   font-weight: var(--fw-extrabold);
-  color: var(--green-900);
+  color: var(--green-600);
 }
 
 .settings-section__title-sub {
-  font-size: var(--fs-12);
-  color: var(--neutral-500);
-  margin-top: var(--space-4);
-  line-height: 1.6;
+  font-size: var(--fs-13);
+  color: var(--neutral-400);
+  margin-top: var(--space-5);
+  line-height: var(--lh-normal);
 }
 
 .settings-section__card {
   flex: 1;
   min-width: 0;
-  background: var(--neutral-surface);
-  border: 1px solid var(--neutral-50);
+  background-color: var(--neutral-surface);
   border-radius: var(--radius-lg);
-  /* box-shadow: var(--sh-sm); */
   padding: var(--space-24);
+  border: 1px solid var(--neutral-40);
 }
 
 .settings-form {
@@ -604,19 +603,19 @@
   display: flex;
   align-items: flex-start;
   gap: var(--space-8);
-  font-size: var(--fs-12);
+  font-size: var(--fs-13);
   color: var(--neutral-800);
-  line-height: 1.5;
+  line-height: var(--lh-normal);
   cursor: pointer;
 }
 
-.settings-checkbox-row input[type="checkbox"] {
+/* .settings-checkbox-row input[type="checkbox"] {
   margin-top: 2px;
   accent-color: var(--green-800);
   width: var(--space-16);
   height: var(--space-16);
   flex-shrink: 0;
-}
+} */
 
 .settings-form__footer {
   display: flex;
@@ -628,10 +627,11 @@
   display: flex;
   align-items: center;
   gap: var(--space-6);
-  font-size: var(--fs-12);
+  font-size: var(--fs-13);
   color: var(--coral-600);
   margin-top: var(--space-4);
-  line-height: 1.6;
+  line-height: var(--lh-normal);
+  font-weight: var(--fw-semibold);
 }
 
 .settings-warning .icon {
@@ -673,15 +673,15 @@
 
 /* Delete Account 섹션 (위험 강조) */
 .settings-danger .settings-section__card {
-  background: var(--bg-coral-tint);
+  background: var(--bg-coral-tint2);
   border-color: var(--coral-200);
 }
 
 .settings-danger__warning {
-  font-size: var(--fs-13);
+  font-size: var(--fs-14);
   color: var(--neutral-800);
-  line-height: 1.7;
-  margin-bottom: var(--space-16);
+  line-height: var(--lh-normal);
+  margin-bottom: var(--space-10);
 }
 
 /* .btn--info(페이지 전용 파란 버튼)는 시안에 맞춰 공용 .btn--primary/.btn--outline로

@@ -132,8 +132,8 @@ async function loadExamPageData() {
     initExamFilters(); // 카드가 렌더링된 뒤에 실행해야 필터가 실제 <li>를 찾을 수 있다
   } catch (e) {
     console.error(e);
-    toast('데이터를 불러오지 못했어요. 다시 시도해주세요.');
-    const retryHtml = '<p class="wrong-note-empty">⚠️ 불러오지 못했어요. <button type="button" class="section-title__link exam-data-retry-btn">다시 시도 ›</button></p>';
+    toast('데이터를 불러오지 못했어요. 다시 시도해주세요');
+    const retryHtml = '<p class="wrong-note-empty">불러오지 못했어요. <button type="button" class="section-title__link exam-data-retry-btn">다시 시도</button></p>';
     const recentListEl = document.getElementById('exam-recent-list');
     if (recentListEl) recentListEl.innerHTML = retryHtml;
     document.querySelectorAll('.exam-data-retry-btn').forEach(btn => {
@@ -210,7 +210,7 @@ function renderExamStats(history) {
           <span class="recent-exam__title">${escapeHtml(h.title)}</span>
           <span class="recent-exam__date">${escapeHtml(h.date || '')}</span>
         </span>
-        <span class="recent-exam__score${h.score < 70 ? ' recent-exam__score--low' : ''}"><span class="icon icon--${tier}" aria-hidden="true"></span>${h.score}점</span>
+        <span class="recent-exam__score${h.score < 70 ? ' recent-exam__score--low' : ''}">${h.score}점</span>
       </div>
     `;
     }).join('') : emptyStateHTML('file-text', '아직 응시한 시험이 없어요', '모의고사를 응시하면 여기에 기록돼요');
@@ -219,7 +219,7 @@ function renderExamStats(history) {
   const toggleBtn = document.getElementById('exam-recent-toggle');
   if (toggleBtn) {
     toggleBtn.hidden = history.length <= 3;
-    toggleBtn.textContent = showAllRecentExams ? '접기 ‹' : '전체보기 ›';
+    toggleBtn.textContent = showAllRecentExams ? '접기' : '전체보기';
   }
 }
 

@@ -72,28 +72,64 @@ function wikiSortItems(items) {
   return sorted;
 }
 
+// ── 즐겨찾기 공통 로직 ──
+// wiki/index.html(목록 별), wiki/detail.html(상세 큰 버튼·미니 버튼) 세 곳이 모두
+// 이 두 함수로 아이콘 표시와 실제 저장을 공유한다.
+
+// 아이콘 모양(icon--star ↔ icon--star-filled)과 aria-pressed를 갱신한다.
+// controlEl(aria-pressed를 갖는 요소)과 iconEl(모양이 바뀌는 요소)은 같은 요소일 수도 있다.
+function updateFavoriteButton(controlEl, iconEl, isOn) {
+  iconEl.classList.toggle('icon--star', !isOn);
+  iconEl.classList.toggle('icon--star-filled', isOn);
+  iconEl.classList.toggle('favorite-star--on', isOn);
+  controlEl.setAttribute('aria-pressed', String(isOn));
+}
+
+// 위키 문서 하나의 즐겨찾기 상태를 Supabase(wiki_bookmarks)에 실제로 토글한다.
+// 비로그인 상태면 로그인 페이지로 보내고 null을 반환한다 — 호출부는 이 경우 화면을 갱신하지 않는다.
+async function toggleWikiFavorite(item) {
+  if (!isLoggedIn()) {
+    location.href = '/pages/auth/login.html';
+    return null;
+  }
+  const nowBookmarked = await api.toggleWikiBookmark(item.id);
+  item.bookmarked = nowBookmarked;
+  toast(nowBookmarked ? '즐겨찾기에 저장했어요!' : '즐겨찾기를 해제했어요');
+  return nowBookmarked;
+}
+
+// ── 진도율 공통 로직 ──
+// wiki-data.json의 item.progress 하나만 source of truth로 두고, 목록의 퍼센트 배지·
+// 상세 상단 라벨·상세 하단 progress bar를 전부 이 함수 하나로만 갱신한다.
+function applyWikiProgress(item, { percentEl, labelEl, barEl, fillEl } = {}) {
+  const percent = item.progress;
+  if (percentEl) percentEl.textContent = `${percent}%`;
+  if (labelEl) {
+    labelEl.innerHTML = `<span class="icon icon--eye" aria-hidden="true"></span> 학습 진도 ${percent}%`;
+  }
+  if (barEl) barEl.setAttribute('aria-valuenow', String(percent));
+  if (fillEl) {
+    fillEl.dataset.progress = String(percent);
+    // data-progress → width 반영은 app.js의 initProgressBars()가 이미 담당하므로 재사용한다.
+    if (typeof initProgressBars === 'function') initProgressBars();
+  }
+}
+
 function buildWikiFavoriteStar(item) {
   const star = document.createElement('span');
-  star.className = 'favorite-star icon icon--star-filled' + (item.bookmarked ? ' favorite-star--on' : '');
+  star.className = 'favorite-star icon';
   star.setAttribute('role', 'button');
   star.setAttribute('tabindex', '0');
-  star.setAttribute('aria-pressed', String(item.bookmarked));
   star.setAttribute('aria-label', '즐겨찾기');
-  // 실제 저장(Supabase wiki_bookmarks)이 필요해 공통 ts() 대신 여기서 직접 토글+영속화한다.
+  updateFavoriteButton(star, star, item.bookmarked);
   star.addEventListener('click', async e => {
     // 이 별은 <a class="wiki-row"> 안에 있어서 stopPropagation만으로는
     // 앵커의 기본 이동(href) 동작을 막지 못해 상세 페이지로 이동해버린다.
     e.preventDefault();
     e.stopPropagation();
-    if (!isLoggedIn()) {
-      location.href = '/pages/auth/login.html';
-      return;
-    }
-    const nowBookmarked = await api.toggleWikiBookmark(item.id);
-    item.bookmarked = nowBookmarked;
-    star.classList.toggle('favorite-star--on', nowBookmarked);
-    star.setAttribute('aria-pressed', String(nowBookmarked));
-    toast(nowBookmarked ? '★ 즐겨찾기에 저장했어요!' : '즐겨찾기를 해제했어요.');
+    const nowBookmarked = await toggleWikiFavorite(item);
+    if (nowBookmarked === null) return;
+    updateFavoriteButton(star, star, nowBookmarked);
     renderWikiFavoritesPanel();
   });
   return star;
@@ -148,7 +184,7 @@ function buildWikiRow(item) {
 
   const percent = document.createElement('span');
   percent.className = 'wiki-row__percent';
-  percent.textContent = `${item.progress}%`;
+  applyWikiProgress(item, { percentEl: percent });
 
   const meta = document.createElement('span');
   meta.className = 'wiki-row__meta';
@@ -371,13 +407,11 @@ function wikiGetIdFromUrl() {
 }
 
 function updateWikiDetailProgress(item) {
-  document.getElementById('wikiDetailPercent').innerHTML =
-    `<span class="icon icon--bar-chart" aria-hidden="true"></span> 학습 진도 ${item.progress}%`;
-  const bar = document.getElementById('wikiDetailProgressBar');
-  bar.setAttribute('aria-valuenow', String(item.progress));
-  const fill = document.getElementById('wikiDetailProgressFill');
-  fill.dataset.progress = String(item.progress);
-  fill.style.width = `${item.progress}%`;
+  applyWikiProgress(item, {
+    labelEl: document.getElementById('wikiDetailPercent'),
+    barEl: document.getElementById('wikiDetailProgressBar'),
+    fillEl: document.getElementById('wikiDetailProgressFill')
+  });
 }
 
 function renderWikiToc(item) {
@@ -474,6 +508,7 @@ function renderWikiRelated(item) {
     desc.textContent = other.description;
 
     const textWrap = document.createElement('span');
+    textWrap.className = 'wiki-row__body';
     textWrap.append(title, desc);
 
     const tag = document.createElement('span');
@@ -483,6 +518,53 @@ function renderWikiRelated(item) {
     a.append(iconBox, textWrap, tag);
     relatedEl.appendChild(a);
   });
+}
+
+// 문서를 학습 완료(progress 100%) 처리하는 단일 진입점 — "학습 완료" 버튼과 스크롤 자동
+// 완료 감지가 모두 이 함수 하나만 호출한다. 지금은 메모리(item.progress)만 바꾸지만,
+// 나중에 Supabase 저장이 필요해지면 이 함수 안에만 추가하면 되고 호출부(버튼/스크롤 감지)는
+// 건드릴 필요가 없다.
+async function markWikiAsCompleted(item) {
+  if (item.progress >= 100) return;
+  item.progress = 100;
+  updateWikiDetailProgress(item);
+  // TODO: Supabase 저장
+  // await saveWikiProgress(item.id, 100);
+}
+
+// 문서 하단까지 스크롤하면 자동으로 markWikiAsCompleted()를 호출한다.
+// 끝까지 정확히 맞출 필요는 없어서 하단에서 WIKI_SCROLL_COMPLETE_THRESHOLD(px) 이내로
+// 들어오면 완료로 본다. scroll 이벤트는 매우 자주 발생하므로 requestAnimationFrame으로
+// 프레임당 최대 1번만 검사하도록 스로틀한다.
+const WIKI_SCROLL_COMPLETE_THRESHOLD = 50;
+
+function bindWikiScrollComplete(item) {
+  if (item.progress >= 100) return; // 이미 완료된 문서는 감지할 필요가 없다.
+
+  let ticking = false;
+
+  function checkScrollProgress() {
+    ticking = false;
+    if (item.progress >= 100) {
+      window.removeEventListener('scroll', onScroll);
+      return;
+    }
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+    const scrollHeight = document.documentElement.scrollHeight;
+    if (scrollHeight - (scrollTop + clientHeight) <= WIKI_SCROLL_COMPLETE_THRESHOLD) {
+      markWikiAsCompleted(item);
+      window.removeEventListener('scroll', onScroll);
+    }
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(checkScrollProgress);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
 }
 
 function renderWikiDetail(item) {
@@ -497,10 +579,10 @@ function renderWikiDetail(item) {
 
   // favorite-star는 정적 마크업이라 ui.js가 defer 시점에 이미 클릭을 바인딩했지만(cosmetic toggle뿐),
   // 여기서는 로드된 데이터에 맞춰 초기 on/off 상태를 반영하고 실제 저장은 별도로 바인딩한다.
-  const favBig = document.getElementById('wikiDetailFavorite');
-  favBig.classList.toggle('favorite-star--on', item.bookmarked);
-  favBig.setAttribute('aria-pressed', String(item.bookmarked));
-  document.getElementById('wikiDetailFavoriteMini').classList.toggle('favorite-star--on', item.bookmarked);
+  const favBtn = document.getElementById('wikiDetailFavorite');
+  updateFavoriteButton(favBtn, favBtn.querySelector('.icon'), item.bookmarked);
+  const favMiniBtn = document.getElementById('wikiDetailFavoriteMiniBtn');
+  updateFavoriteButton(favMiniBtn, document.getElementById('wikiDetailFavoriteMini'), item.bookmarked);
   bindWikiDetailFavoriteStars(item);
 
   renderWikiToc(item);
@@ -508,50 +590,41 @@ function renderWikiDetail(item) {
   renderWikiRelated(item);
   bindWikiHandbookSaveActions(item);
   if (typeof restoreWikiHighlights === 'function') restoreWikiHighlights(item.id);
+  bindWikiScrollComplete(item);
 
   // 학습 완료 버튼은 정적 마크업이라 app.js의 data-action="toast" 토스트는
   // 이미 동작한다. 여기서는 progress 갱신만 추가로 연결한다.
   document.getElementById('wikiCompleteBtn').addEventListener('click', () => {
-    item.progress = 100;
-    updateWikiDetailProgress(item);
+    markWikiAsCompleted(item);
   });
 }
 
-// 상단 큰 별/미니 별 — 실제 저장(Supabase)을 담당하는 유일한 리스너다.
-// 이 두 요소는 정적 마크업이라 ui.js가 defer 시점에 .favorite-star 전역 셀렉터로 cosmetic
-// 리스너(ts())를 이미 걸어둔다. 그 리스너가 남아있으면 클릭 한 번에 cosmetic 토글과 실제 저장이
-// 함께 실행되어(TD-0004) 네트워크 실패 시 화면 상태가 실제 저장 상태와 어긋날 수 있었다.
-// 노드를 복제해 교체하면 이전에 바인딩된 리스너(ui.js의 ts() 포함)가 모두 제거되므로,
+// 상단 큰 버튼/미니 버튼 — 실제 저장(Supabase)을 담당하는 유일한 리스너다.
+// 이 두 버튼은 정적 마크업이라 ui.js가 defer 시점에 .favorite-star / [data-action="quick-favorite"]
+// 전역 셀렉터로 cosmetic 리스너(ts())를 이미 걸어둔다. 그 리스너가 남아있으면 클릭 한 번에
+// cosmetic 토글과 실제 저장이 함께 실행되어(TD-0004) 네트워크 실패 시 화면 상태가 실제 저장
+// 상태와 어긋날 수 있었다. 노드를 복제해 교체하면 이전에 바인딩된 리스너가 모두 제거되므로,
 // 여기서 다는 리스너만 유일하게 남는다 — ui.js 자체나 다른 페이지의 동작은 건드리지 않는다.
+// (리스너를 버튼 자신에 달기 때문에, 안의 아이콘을 클릭해도 버튼 클릭으로 자연히 버블링되어
+// 더 이상 stopPropagation으로 중첩 리스너를 막는 우회가 필요 없다.)
 function bindWikiDetailFavoriteStars(item) {
-  const ids = ['wikiDetailFavorite', 'wikiDetailFavoriteMini'];
-  ids.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.replaceWith(el.cloneNode(true));
+  const buttonIds = ['wikiDetailFavorite', 'wikiDetailFavoriteMiniBtn'];
+  buttonIds.forEach(id => {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    btn.replaceWith(btn.cloneNode(true));
   });
 
-  ids.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener('click', async (e) => {
-      // wikiDetailFavoriteMini는 [data-action="quick-favorite"] 버튼 안에 중첩되어 있어,
-      // 기존에는 ui.js의 stopPropagation()이 그 버튼의 별도 클릭 동작을 막아주고 있었다.
-      // 리스너를 교체했으므로 같은 효과를 여기서 유지한다.
-      e.stopPropagation();
-      if (!isLoggedIn()) {
-        location.href = '/pages/auth/login.html';
-        return;
-      }
-      const nowBookmarked = await api.toggleWikiBookmark(item.id);
-      item.bookmarked = nowBookmarked;
-      // ui.js의 ts()가 담당하던 안내 토스트를 동일한 문구로 유지한다.
-      toast(nowBookmarked ? '★ 즐겨찾기에 저장했어요!' : '즐겨찾기를 해제했어요.');
-      ids.forEach(otherId => {
-        const otherEl = document.getElementById(otherId);
-        if (!otherEl) return;
-        otherEl.classList.toggle('favorite-star--on', nowBookmarked);
-        otherEl.setAttribute('aria-pressed', String(nowBookmarked));
+  buttonIds.forEach(id => {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    btn.addEventListener('click', async () => {
+      const nowBookmarked = await toggleWikiFavorite(item);
+      if (nowBookmarked === null) return;
+      buttonIds.forEach(otherId => {
+        const otherBtn = document.getElementById(otherId);
+        if (!otherBtn) return;
+        updateFavoriteButton(otherBtn, otherBtn.querySelector('.icon'), nowBookmarked);
       });
     });
   });
@@ -581,16 +654,6 @@ const WIKI_TO_WORD_CATEGORY = {
 // 같지만, 페이지 JS는 서로 직접 참조하지 않는 원칙에 따라 wiki.js에도 그대로 둔다.
 const WORD_CATEGORY_COLOR = { SQL: 'green', Java: 'orange', 'CS/IT': 'blue', 비즈니스: 'gray', 기타: 'gray' };
 
-// 이미 즐겨찾기된 문서면 그대로 두는(add-only) 원래 동작을 유지한다 — 해제는 별(star) 쪽에서만.
-async function saveWikiFavorite(item) {
-  if (!isLoggedIn()) {
-    location.href = '/pages/auth/login.html';
-    return;
-  }
-  if (item.bookmarked) return;
-  item.bookmarked = await api.toggleWikiBookmark(item.id);
-}
-
 // ══════════════════════════════════════════════
 //  "최근 본 페이지" 기록 — Home(index.html)의 recent-list가 읽는
 //  wiki_recent_views 테이블. detail.html에서 문서를 열 때마다 갱신한다.
@@ -613,17 +676,27 @@ function openWikiWordModal(prefillTerm) {
   openWordModal({
     mode: 'create',
     word: { term: prefillTerm || '', category: WIKI_TO_WORD_CATEGORY[item.category] || '' },
-    onSave(values) {
+    async onSave(values) {
       const category = values.category;
-      api.addWord({
-        term: values.term,
-        pos: '명사',
-        definition: values.definition || '(뜻 미입력)',
-        example: '',
-        category,
-        categoryColor: WORD_CATEGORY_COLOR[category] || 'gray',
-        favorite: false,
-      }).then(() => toast(`📓 "${values.term}"를 단어장에 저장했어요! +20P`));
+      try {
+        await api.addWord({
+          term: values.term,
+          pos: '명사',
+          definition: values.definition || '(뜻 미입력)',
+          example: '',
+          category,
+          categoryColor: WORD_CATEGORY_COLOR[category] || 'gray',
+          favorite: false,
+        });
+        toast(`"${values.term}"를 단어장에 저장했어요! +20P`);
+      } catch (err) {
+        // mypage.js의 saveWordFromModal()과 동일한 이유로 catch가 반드시 필요하다 —
+        // 로그인 세션이 없으면 api.addWord가 "로그인이 필요해요" 에러를 던지는데, 이 catch가
+        // 없으면 unhandled rejection으로 조용히 사라져서 사용자는 저장된 줄 알지만 실제로는
+        // words.html에 아무것도 나타나지 않는다.
+        console.error(err);
+        toast(err.message || '단어 저장에 실패했어요. 다시 시도해주세요');
+      }
     },
   });
 }
@@ -631,9 +704,7 @@ function openWikiWordModal(prefillTerm) {
 function bindWikiHandbookSaveActions(item) {
   currentWikiDetailItem = item;
 
-  document.querySelectorAll('.save-box [data-action="quick-favorite"]').forEach(btn => {
-    btn.addEventListener('click', () => saveWikiFavorite(item));
-  });
+  // 즐겨찾기(quick-favorite) 버튼은 bindWikiDetailFavoriteStars()가 이미 저장까지 담당한다.
 
   document.querySelectorAll('.save-box [data-action="open-modal"]').forEach(btn => {
     btn.addEventListener('click', () => openWikiWordModal(''));

@@ -23,6 +23,12 @@ function loadWordModal() {
     .then((html) => {
       mount.innerHTML = html;
       bindWordModalEvents();
+    })
+    .catch((err) => {
+      // 이 fetch가 실패하면 #wmodal 자체가 DOM에 없어 openWordModal()이 계속 조용히
+      // no-op 처리된다("단어장 추가" 버튼을 눌러도 아무 반응 없음) — 콘솔에라도 원인이
+      // 남도록 최소한의 로깅만 추가한다.
+      console.error('word-modal.html 로드 실패:', err);
     });
 }
 

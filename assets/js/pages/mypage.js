@@ -5,9 +5,18 @@
 // 개발/테스트 편의를 위해 로그인 여부와 무관하게 대시보드를 자유롭게 볼 수 있도록
 // 강제 리다이렉트/얼럿 가드는 두지 않는다. 비로그인 상태에서는 GUEST/빈 상태로 보여준다.
 
+// words.html/mypage.html은 로컬 UI 테스트를 위해 auth.js의 <script> 태그 자체를 주석
+// 처리해두는 경우가 있다(이 파일들의 HTML 참고) — 그 상태에서는 isLoggedIn()/window.authReady가
+// 아예 정의되지 않아 이 파일 전체가 예외로 멈추고 아무것도 렌더링되지 않았다(#word-row-groups가
+// 항상 비어 보이는 원인). auth.js가 실제로 로드된 화면에서는 원래 isLoggedIn()과 완전히
+// 동일하게 동작하고, 없는 화면에서만 "비로그인"으로 안전하게 처리한다.
+function safeIsLoggedIn() {
+  return typeof isLoggedIn === "function" && isLoggedIn();
+}
+
 // ── 프로필에 표시할 이름 결정: 수정한 이름 > 가입/로그인 사용자 이름 > GUEST ──
 async function getDisplayName() {
-  if (isLoggedIn()) {
+  if (safeIsLoggedIn()) {
     const profile = await api.getProfile();
     if (profile.name) return profile.name;
   }
@@ -19,7 +28,7 @@ async function getDisplayName() {
 }
 
 async function getDisplayUsername() {
-  if (isLoggedIn()) {
+  if (safeIsLoggedIn()) {
     const profile = await api.getProfile();
     if (profile.username) return profile.username;
   }
@@ -39,7 +48,7 @@ async function applyProfileToDashboard() {
   if (nameEl) nameEl.textContent = await getDisplayName();
   if (userEl) userEl.textContent = "@" + (await getDisplayUsername());
 
-  if (isLoggedIn()) {
+  if (safeIsLoggedIn()) {
     const p = await api.getProfile();
     if (avatarEl && p.avatarUrl) {
       avatarEl.innerHTML = `<img src="${p.avatarUrl}" alt="프로필 사진">`;
@@ -49,7 +58,7 @@ async function applyProfileToDashboard() {
 
 // ── 프로필 수정: 저장된 값이 있으면 폼 기본값 위에 덮어써서 프리필 ──
 async function prefillEditForm() {
-  if (!isLoggedIn()) return;
+  if (!safeIsLoggedIn()) return;
   const p = await api.getProfile();
 
   const map = {
@@ -81,11 +90,11 @@ if (accountForm) {
     const password = passwordEl.value;
 
     if (!email) {
-      toast("이메일을 입력해주세요.");
+      toast("이메일을 입력해주세요");
       return;
     }
     if (password && password.length < 6) {
-      toast("비밀번호는 6자 이상이어야 해요.");
+      toast("비밀번호는 6자 이상이어야 해요");
       return;
     }
 
@@ -105,10 +114,10 @@ if (accountForm) {
       }
 
       toast(emailChanged
-        ? "📧 확인 메일을 보냈어요! 새 이메일의 링크를 클릭하면 변경이 완료돼요."
-        : "✅ 계정 정보가 저장됐어요!");
+        ? "확인 메일을 보냈어요! 새 이메일의 링크를 클릭하면 변경이 완료돼요"
+        : "계정 정보가 저장됐어요!");
     } catch (err) {
-      toast(err.message || "저장에 실패했어요. 다시 시도해주세요.");
+      toast(err.message || "저장에 실패했어요. 다시 시도해주세요");
     }
   });
 }
@@ -138,14 +147,14 @@ if (avatarForm) {
   avatarForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!pendingAvatarDataUrl) {
-      toast("업로드할 사진을 먼저 선택해주세요.");
+      toast("업로드할 사진을 먼저 선택해주세요");
       return;
     }
     try {
       await api.saveProfile({ avatarUrl: pendingAvatarDataUrl });
-      toast("🖼 프로필 사진이 저장됐어요!");
+      toast("프로필 사진이 저장됐어요!");
     } catch (err) {
-      toast(err.message || "저장에 실패했어요. 다시 시도해주세요.");
+      toast(err.message || "저장에 실패했어요. 다시 시도해주세요");
     }
   });
 }
@@ -173,7 +182,7 @@ if (deleteConfirmCheckbox && deleteAccountBtn) {
         location.href = "/pages/auth/login.html";
       }, 1200);
     } catch (err) {
-      toast(err.message || "삭제에 실패했어요. 다시 시도해주세요.");
+      toast(err.message || "삭제에 실패했어요. 다시 시도해주세요");
     }
   });
 }
@@ -217,7 +226,7 @@ const BADGE_DEFS = [
 ];
 
 async function readBadgeState() {
-  if (!isLoggedIn()) return {};
+  if (!safeIsLoggedIn()) return {};
   return api.getBadges();
 }
 
@@ -240,20 +249,20 @@ async function renderBadges() {
 // 실제 퀴즈 채점 로직(다른 페이지)이 완료 시 호출할 공개 API.
 // 이미 획득한 뱃지는 다시 토스트를 띄우지 않는다.
 async function unlockSkillBadge(badgeId) {
-  if (!isLoggedIn()) return false;
+  if (!safeIsLoggedIn()) return false;
   const unlocked = await api.unlockBadge(badgeId);
   if (!unlocked) return false;
 
   await renderBadges();
   const def = BADGE_DEFS.find((b) => b.id === badgeId);
-  if (def) toast(`🎉 "${def.label}" 뱃지를 획득했어요!`);
+  if (def) toast(`"${def.label}" 뱃지를 획득했어요!`);
   return true;
 }
 window.unlockSkillBadge = unlockSkillBadge;
 
 // ── 저장한 단어 목록(mywords.html) — Supabase 상태 기반 카테고리별 렌더링 ──
 async function readWords() {
-  if (!isLoggedIn()) return [];
+  if (!safeIsLoggedIn()) return [];
   return api.getWords();
 }
 
@@ -307,22 +316,28 @@ async function getFilteredSortedWords() {
 function buildWordRowSection(category, list) {
   return `
     <div class="word-row-group">
-      <p class="section-title section-title--sm">${category} <span class="word-row-group__count">${list.length}개</span></p>
+      <div class="word-row-group__header">
+        <div class="word-row-group__title-wrap">
+          <span class="word-row-group__dot" aria-hidden="true"></span>
+          <span class="word-row-group__title">${category}</span>
+        </div>
+        <span class="word-row-group__count">${list.length}개</span>
+      </div>
       <ul class="word-row-list">
         ${list.map((w) => `
           <li class="word-row" data-word-id="${w.id}">
             <div class="word-row__body">
-              <div><span class="word-row__term">${escapeHtml(w.term)}</span><span class="word-row__pos">${escapeHtml(w.pos)}</span></div>
+              <span class="word-row__term">${escapeHtml(w.term)}</span>
               <div class="word-row__def">${escapeHtml(w.definition)}</div>
-              <div class="word-row__example">${escapeHtml(w.example || "")}</div>
+              ${w.example ? `<div class="word-row__example">${escapeHtml(w.example)}</div>` : ""}
             </div>
             <span class="tag tag--${w.categoryColor}">${w.category}</span>
             <span class="word-row__date">${w.date}</span>
             <div class="word-row__actions">
-              <button type="button" class="favorite-star${w.favorite ? " favorite-star--on" : ""}"
-                data-action="toggle-favorite" aria-pressed="${!!w.favorite}" aria-label="즐겨찾기 토글">★</button>
-              <button type="button" class="btn btn--outline btn--sm" data-action="edit-word" aria-label="단어 수정"><span class="icon icon--edit" aria-hidden="true"></span></button>
-              <button type="button" class="btn btn--danger btn--sm" data-action="delete-word" aria-label="단어 삭제"><span class="icon icon--close" aria-hidden="true"></span></button>
+              <button type="button" class="favorite-star favorite-star--btn${w.favorite ? " favorite-star--on" : ""}"
+                data-action="toggle-favorite" aria-pressed="${!!w.favorite}" aria-label="즐겨찾기 토글"><span class="icon ${w.favorite ? "icon--star-filled" : "icon--star"}" aria-hidden="true"></span></button>
+              <button type="button" class="btn--icon word-row__action--edit" data-action="edit-word" aria-label="단어 수정"><span class="icon icon--edit" aria-hidden="true"></span></button>
+              <button type="button" class="btn--icon word-row__action--delete" data-action="delete-word" aria-label="단어 삭제"><span class="icon icon--close" aria-hidden="true"></span></button>
             </div>
           </li>`).join("")}
       </ul>
@@ -432,7 +447,7 @@ async function renderWordGroups(style = currentWordStyle) {
 // 반영은 여기(콜백) 안에서만 한다 — 모달 자신은 API를 모른다.
 async function saveWordFromModal(word, values) {
   const category = values.category;
-  toast(`📓 "${values.term}"를 단어장에 저장했어요! +20P`);
+  toast(`"${values.term}"를 단어장에 저장했어요! +20P`);
   const payload = {
     term: values.term,
     definition: values.definition || "(뜻 미입력)",
@@ -451,7 +466,7 @@ async function saveWordFromModal(word, values) {
     // 실제 저장이 실패하면 반드시 정정 안내를 띄워야 한다 — 안 그러면 사용자는
     // 저장된 줄 알지만 실제로는 유실된다.
     console.error(err);
-    toast("⚠ 단어 저장에 실패했어요. 다시 시도해주세요.");
+    toast("단어 저장에 실패했어요. 다시 시도해주세요");
     return;
   }
   await renderWordGroups();
@@ -504,7 +519,7 @@ document.addEventListener("click", async (e) => {
         async onDelete(w) {
           await api.deleteWord(w.id);
           await renderWordGroups();
-          toast("🗑 단어를 삭제했어요.");
+          toast("단어를 삭제했어요");
         },
       });
     }
@@ -540,9 +555,9 @@ document.addEventListener("input", async (e) => {
 
 // ── "+ 단어 추가" (mywords.html 툴바 전용) → WordModal을 create 모드로 연다 ──
 // wiki/detail.html의 "단어장 추가" 버튼도 같은 data-action="open-modal"을 쓰지만
-// .save-box 안에 있고(wiki.js가 그쪽만 별도로 바인딩), 여기는 .my-toolbar로
+// .save-box 안에 있고(wiki.js가 그쪽만 별도로 바인딩), 여기는 #wordToolbar로
 // 범위를 좁혀서 두 페이지의 리스너가 같은 버튼에 겹쳐 걸리지 않게 한다.
-document.querySelectorAll('.my-toolbar [data-action="open-modal"]').forEach((btn) => {
+document.querySelectorAll('#wordToolbar [data-action="open-modal"]').forEach((btn) => {
   btn.addEventListener("click", () => {
     openWordModal({
       mode: "create",
@@ -676,7 +691,7 @@ const QUIZ_CHALLENGES = [
 ];
 
 async function readQuizCheckpoints() {
-  if (!isLoggedIn()) return {};
+  if (!safeIsLoggedIn()) return {};
   return api.getQuizCheckpoints();
 }
 
@@ -711,7 +726,7 @@ document.addEventListener("click", async (e) => {
   // 마이페이지(index.html)는 로그인 없이도 볼 수 있는 페이지라, 게스트가 체크포인트를 누르면
   // api.toggleQuizCheckpoint()가 "로그인이 필요해요" 에러를 던지고 아무 반응도 없이
   // 조용히 실패했다.
-  if (!isLoggedIn()) {
+  if (!safeIsLoggedIn()) {
     toast("로그인 후 이용할 수 있어요.");
     return;
   }
@@ -856,8 +871,11 @@ document.addEventListener("click", (e) => {
   trigger.setAttribute("aria-expanded", "false");
 });
 
-// ── 초기 렌더링 — isLoggedIn()이 정확해야 하므로 authReady 이후에 실행한다 ──
-window.authReady.then(() => {
+// ── 초기 렌더링 — isLoggedIn()이 정확해야 하므로 authReady 이후에 실행한다.
+// auth.js가 로드되지 않은 화면(로컬 테스트용으로 주석 처리된 경우)에서는 window.authReady
+// 자체가 없어 여기서 즉시 멈추고 아래 4개 함수(단어 목록 렌더링 포함)가 전혀 실행되지
+// 않았다 — Promise.resolve()로 폴백해 그런 화면에서도 "비로그인 상태"로 정상 렌더링한다. ──
+(window.authReady || Promise.resolve()).then(() => {
   applyProfileToDashboard();
   prefillEditForm();
   renderBadges();

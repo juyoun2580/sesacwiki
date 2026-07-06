@@ -23,6 +23,7 @@
 --gold-tint: #f8f2e6;
 --gold-light: #fbf7ea;
 --coral-600: #c9663f;
+--coral-200: #F0D5CC;
 --coral-100: #f6e9e4;
 --star-gold: #e0b23f;
 
@@ -60,6 +61,7 @@
 --bg-blue-tint: #eaeff6;
 --bg-gold-tint: #f7efe0;
 --bg-coral-tint: #f6e9e4;
+--bg-coral-tint2: #FDF3F0;
 
 /* --- Border Radius --- */
 --radius-xl: 24px;
@@ -171,7 +173,6 @@
 /* --- 예전 버전 (새 Design Token과 1:1 대응이 없어 유지 중 — old-variables.css 참고, docs 보고 참조) --- */
 --g20: #F7FCF6;
 --gold-200: #FFE082;
---coral-200: #FFCDD2;
 --blue-200: #BBDEFB;
 --purple: #7B1FA2;
 --purple-bg: #EDE7F6;
@@ -182,8 +183,8 @@
 --abox-grad: #D9EFD9;
 --odbox-grad: #FFE4E4;
 /* --- color: code block --- */
---code-bg: #1C1C2E;
---code-text: #CDD9E5;
+--code-bg: #26302A;
+--code-text: #D8E6DC;
 --code-keyword: #F97583;
 --code-string: #9ECBFF;
 --code-comment: #6A737D;
