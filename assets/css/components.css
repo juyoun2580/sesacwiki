@@ -186,6 +186,11 @@
   -webkit-mask-image: url("../img/icon/ico-retry.svg");
 }
 
+.icon--alert {
+  mask-image: url("../img/icon/ico-alert-triangle.svg");
+  -webkit-mask-image: url("../img/icon/ico-alert-triangle.svg");
+}
+
 /* ---------- Level Track icons (마이페이지 8단계) ---------- */
 .icon--lv1-sprout {
   mask-image: url("../img/icon/ico-lv1-sprout.svg");

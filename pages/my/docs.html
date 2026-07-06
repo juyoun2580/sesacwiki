@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 문서 — 마이핸드북 — Sesac Wiki</title>
+  <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/reset.css">
+  <link rel="stylesheet" href="/assets/css/variables.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages/my.css">
+  <link rel="stylesheet" href="/assets/css/pagination.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
+
+  <header class="header" id="header-mount"></header>
+
+
+  <main id="main-content">
+    <section id="my" class="page page--active" aria-label="마이핸드북">
+      <div class="shell">
+        <div class="page__content">
+          <div class="page-header-row">
+            <h1 class="page-title">내 문서 🌱</h1>
+            <button type="button" class="btn btn--primary btn--sm" data-action="toast"
+              data-message="새 문서 작성 화면으로 이동해요!">+ 새 문서 작성</button>
+          </div>
+          <p class="page-subtitle">저장하고 작성한 모든 문서를 한눈에 확인하세요.</p>
+
+          <div class="filter-tabs">
+            <button type="button" class="filter-tab filter-tab--active">전체</button>
+            <button type="button" class="filter-tab">문서</button>
+            <button type="button" class="filter-tab">노트</button>
+            <button type="button" class="filter-tab">이력서</button>
+            <button type="button" class="filter-tab">포트폴리오</button>
+            <button type="button" class="filter-tab">기타</button>
+          </div>
+
+          <div class="my-toolbar">
+            <label class="sr-only" for="doc-search">문서 제목 또는 내용 검색</label>
+            <input type="text" id="doc-search" class="my-toolbar__input" placeholder="문서 제목 또는 내용을 검색하세요">
+            <label class="sr-only" for="doc-category">카테고리 선택</label>
+            <select id="doc-category" class="my-toolbar__select">
+              <option>전체 카테고리</option>
+            </select>
+            <label class="sr-only" for="doc-sort">정렬 기준 선택</label>
+            <select id="doc-sort" class="my-toolbar__select">
+              <option>최신순</option>
+            </select>
+          </div>
+
+          <ul class="doc-row-list">
+            <li class="doc-row-list__empty">아직 저장한 문서가 없습니다.</li>
+          </ul>
+
+          <nav class="pagination" aria-label="페이지 네비게이션">
+            <button type="button" class="pagination__btn" aria-label="이전 페이지"><span class="icon icon--chevron-left" aria-hidden="true"></span></button>
+            <button type="button" class="pagination__btn pagination__btn--active" aria-current="page">1</button>
+            <button type="button" class="pagination__btn">2</button>
+            <button type="button" class="pagination__btn">3</button>
+            <button type="button" class="pagination__btn" aria-label="다음 페이지"><span class="icon icon--chevron-right" aria-hidden="true"></span></button>
+          </nav>
+        </div>
+        <aside class="side-panel" aria-label="문서 통계">
+          <div class="section-title section-title--sm">문서 통계 <button type="button" class="section-title__link">전체보기
+              ›</button></div>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <p class="stat-box__value">0</p>
+              <p class="stat-box__label">전체 문서</p>
+            </div>
+            <div class="stat-box">
+              <p class="stat-box__value stat-box__value--gold">0</p>
+              <p class="stat-box__label">즐겨찾기</p>
+            </div>
+            <div class="stat-box">
+              <p class="stat-box__value">0</p>
+              <p class="stat-box__label">최근 작성</p>
+            </div>
+            <div class="stat-box">
+              <p class="stat-box__value stat-box__value--sm">0MB</p>
+              <p class="stat-box__label">저장 용량</p>
+            </div>
+          </div>
+          <p class="section-title section-title--sm">카테고리별 문서 수</p>
+          <div class="legend-row">
+            <span class="legend-row__label"><span class="legend-row__dot legend-row__dot--green"
+                aria-hidden="true"></span>이력서</span>
+            <span class="legend-row__count">0개</span>
+          </div>
+          <div class="legend-row">
+            <span class="legend-row__label"><span class="legend-row__dot legend-row__dot--gold"
+                aria-hidden="true"></span>노트</span>
+            <span class="legend-row__count">0개</span>
+          </div>
+          <div class="legend-row">
+            <span class="legend-row__label"><span class="legend-row__dot legend-row__dot--blue"
+                aria-hidden="true"></span>문서</span>
+            <span class="legend-row__count">0개</span>
+          </div>
+          <div class="legend-row">
+            <span class="legend-row__label"><span class="legend-row__dot legend-row__dot--purple"
+                aria-hidden="true"></span>포트폴리오</span>
+            <span class="legend-row__count">0개</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/assets/js/toast.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js" defer></script>
+  <script src="/assets/js/supabase-client.js" defer></script>
+  <script src="/assets/js/auth.js" defer></script>
+  <script src="/assets/js/api.js" defer></script>
+  <script src="/assets/js/components/header.js" defer></script>
+  <script src="/assets/js/components/nav.js" defer></script>
+  <script src="/assets/js/app.js" defer></script>
+  <script src="/assets/js/ui.js" defer></script>
+</body>
+
+</html>

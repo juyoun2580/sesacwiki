@@ -73,7 +73,7 @@ function initNavigation() {
 }
 
 // ── 로그인이 필요한 개인화 페이지 목록(경로 기준) — 페이지 이동 시 이 배열만 갱신하면 된다 ──
-const AUTH_REQUIRED_PAGES = ['/pages/handbook/index.html', '/pages/my/index.html', '/pages/my/words.html', '/pages/my/favorites.html'];
+const AUTH_REQUIRED_PAGES = ['/pages/handbook/index.html', '/pages/my/docs.html', '/pages/my/words.html', '/pages/my/favorites.html'];
 
 // ── 개인화 페이지로 이동하는 링크: 비로그인 시 login.html로 보낸다(이벤트 위임) ──
 function initAuthGuardLinks() {

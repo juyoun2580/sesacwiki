@@ -1,8 +1,4 @@
-/* ==========================================================================
-   Page: my / mywords / myfav (마이핸드북 / 저장한 단어 / 즐겨찾기)
-   old/test.html의 /* MY */ 블록(.drow/.stgrid/.stbox/.wsbar/.wsb/.wrow/.qwid/
-   .qwopt/.cbar/.frow2)을 BEM으로 재명명. 시각적 값은 전부 동일하게 유지.
-   ========================================================================== */
+
 
 /* ---------- 페이지 헤더 보조 (제목 + 액션 버튼 한 줄 배치) ---------- */
 .page-header-row {
@@ -225,7 +221,7 @@
   border: 1px solid var(--neutral-50);
   padding: var(--space-14);
   text-align: center;
-  box-shadow: var(--sh-sm);
+  /* box-shadow: var(--sh-sm); */
 }
 
 .word-stats__value {
@@ -816,4 +812,29 @@
   font-size: var(--fs-12);
   color: var(--ink3);
   padding: var(--space-6) 0;
+}
+
+/* ---------- 프로필 수정 (pages/my/edit.html) ----------
+   legacy/newMyEdit.html 시안 반영. 섹션 좌우 배치(.settings-section)와 카드/폼
+   기본기(.settings-section__card/.settings-form/.settings-input 등)는
+   assets/css/pages/mypage.css의 기존 규칙을 그대로 재사용하고, 여기서는
+   시안에만 있는 제목 아이콘 배지와 "계정 삭제" 섹션 제목 색상만 추가한다. */
+.settings-content__title-icon {
+  width: var(--space-28);
+  height: var(--space-28);
+  border-radius: var(--radius-xs);
+  background: var(--bg-green-tint);
+  color: var(--success);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-content__title-icon .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.settings-danger .settings-section__title-main {
+  color: var(--coral-600);
 }

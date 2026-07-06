@@ -24,13 +24,16 @@
   <main id="main-content">
     <section id="detail" class="page page--active" aria-label="위키 상세">
       <div class="shell">
+        <aside class="sidebar" aria-label="목차">
+          <a class="back-link" href="/pages/wiki/index.html">‹ 뒤로가기</a>
+          <nav class="toc sidebar-wrap" id="wikiToc" aria-label="목차">
+            <p class="sidebar__label">목차</p>
+          </nav>
+        </aside>
+
         <div class="page__content">
-          <a class="back-link btn btn--outline btn--sm" href="/pages/wiki/index.html">‹ 뒤로가기</a>
-          <div class="detail-layout">
-            <nav class="toc" id="wikiToc" aria-label="목차">
-              <p class="toc__label">목차</p>
-            </nav>
-            <article class="wiki-detail__main">
+          <article class="card wiki-detail-card">
+            <div class="card__body">
               <div class="article-header">
                 <h1 class="article-header__title" id="wikiDetailTitle"></h1>
                 <span class="tag" id="wikiDetailCategoryTag"></span><span class="tag tag--gray"
@@ -55,30 +58,30 @@
 
               <h2 class="related-heading">관련 문서</h2>
               <div id="wikiRelatedList"></div>
-            </article>
-
-            <aside class="wiki-detail__aside" aria-label="핸드북 저장 도구">
-              <div class="save-box">
-                <p class="save-box__title"><span class="icon icon--book" aria-hidden="true"></span> 내 핸드북에 저장</p>
-                <button type="button" class="save-box__action" data-action="quick-favorite"><span
-                    class="favorite-star" id="wikiDetailFavoriteMini" aria-hidden="true">★</span> 즐겨찾기</button>
-                <button type="button" class="save-box__action" data-action="toast"
-                  data-message="텍스트를 드래그하면 하이라이트 툴바가 나타나요!"><span class="icon icon--edit"
-                    aria-hidden="true"></span> 하이라이트</button>
-                <button type="button" class="save-box__action" data-action="open-modal" data-word=""><span
-                    class="icon icon--book" aria-hidden="true"></span> 단어장 추가</button>
-              </div>
-              <button type="button" class="complete-btn" id="wikiCompleteBtn" data-action="toast"
-                data-message="🎉 학습 완료! +20P 획득했어요!"><span class="icon icon--check" aria-hidden="true"></span> 학습
-                완료</button>
-              <div class="highlight-list-wrap">
-                <p class="highlight-list__label"><span class="icon icon--edit" aria-hidden="true"></span> <span
-                    id="hlcount">저장한 하이라이트 (0)</span></p>
-                <div class="highlight-list"></div>
-              </div>
-            </aside>
-          </div>
+            </div>
+          </article>
         </div>
+
+        <aside class="side-panel" aria-label="핸드북 저장 도구">
+          <div class="save-box">
+            <p class="save-box__title"><span class="icon icon--book" aria-hidden="true"></span> 내 핸드북에 저장</p>
+            <button type="button" class="save-box__action" data-action="quick-favorite"><span
+                class="favorite-star" id="wikiDetailFavoriteMini" aria-hidden="true">★</span> 즐겨찾기</button>
+            <button type="button" class="save-box__action" data-action="toast"
+              data-message="텍스트를 드래그하면 하이라이트 툴바가 나타나요!"><span class="icon icon--edit"
+                aria-hidden="true"></span> 하이라이트</button>
+            <button type="button" class="save-box__action" data-action="open-modal" data-word=""><span
+                class="icon icon--book" aria-hidden="true"></span> 단어장 추가</button>
+          </div>
+          <button type="button" class="complete-btn" id="wikiCompleteBtn" data-action="toast"
+            data-message="🎉 학습 완료! +20P 획득했어요!"><span class="icon icon--check" aria-hidden="true"></span> 학습
+            완료</button>
+          <div class="highlight-list-wrap">
+            <p class="highlight-list__label"><span class="icon icon--edit" aria-hidden="true"></span> <span
+                id="hlcount">저장한 하이라이트 (0)</span></p>
+            <div class="highlight-list"></div>
+          </div>
+        </aside>
       </div>
     </section>
   </main>

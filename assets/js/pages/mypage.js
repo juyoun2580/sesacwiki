@@ -53,10 +53,7 @@ async function prefillEditForm() {
   const p = await api.getProfile();
 
   const map = {
-    "acc-username": p.username,
     "acc-name": p.name,
-    "acc-github": p.githubUsername,
-    "acc-language": p.language,
     "email-input": p.email,
   };
   Object.entries(map).forEach(([id, value]) => {
@@ -65,52 +62,53 @@ async function prefillEditForm() {
     if (el) el.value = value;
   });
 
-  const marketingEl = document.getElementById("acc-marketing");
-  if (marketingEl && typeof p.isMarketingAgreed === "boolean") {
-    marketingEl.checked = p.isMarketingAgreed;
-  }
-
   const avatarPreview = document.getElementById("avatar-preview");
   if (avatarPreview && p.avatarUrl) {
     avatarPreview.innerHTML = `<img src="${p.avatarUrl}" alt="프로필 사진 미리보기">`;
   }
 }
 
-// ── Account Information 저장 ──
+// ── 계정 정보 저장 — 닉네임(profiles), 이메일·비밀번호(Supabase Auth 계정)를 한 폼에서 함께 처리한다 ──
+// 이메일 변경은 실제 로그인 이메일 자체를 바꾸는 것이라 재확인 메일이 발송되고,
+// 비밀번호는 입력했을 때만(선택 입력) 변경한다.
 const accountForm = document.getElementById("account-form");
 if (accountForm) {
   accountForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    try {
-      await api.saveProfile({
-        username: document.getElementById("acc-username").value.trim(),
-        name: document.getElementById("acc-name").value.trim(),
-        githubUsername: document.getElementById("acc-github").value.trim(),
-        language: document.getElementById("acc-language").value,
-        isMarketingAgreed: document.getElementById("acc-marketing").checked,
-      });
-      toast("✅ 계정 정보가 저장됐어요!");
-    } catch (err) {
-      toast(err.message || "저장에 실패했어요. 다시 시도해주세요.");
-    }
-  });
-}
-
-// ── Email 변경 — 실제 로그인 이메일(Supabase Auth 계정)을 바꾼다. 재확인 메일이 발송된다 ──
-const emailForm = document.getElementById("email-form");
-if (emailForm) {
-  emailForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    const name = document.getElementById("acc-name").value.trim();
     const email = document.getElementById("email-input").value.trim();
+    const passwordEl = document.getElementById("password-input");
+    const password = passwordEl.value;
+
     if (!email) {
       toast("이메일을 입력해주세요.");
       return;
     }
+    if (password && password.length < 6) {
+      toast("비밀번호는 6자 이상이어야 해요.");
+      return;
+    }
+
     try {
-      await api.updateEmail(email);
-      toast("📧 확인 메일을 보냈어요! 새 이메일의 링크를 클릭하면 변경이 완료돼요.");
+      const before = await api.getProfile();
+      await api.saveProfile({ name });
+
+      let emailChanged = false;
+      if (email !== before.email) {
+        await api.updateEmail(email);
+        emailChanged = true;
+      }
+
+      if (password) {
+        await api.updatePassword(password);
+        passwordEl.value = "";
+      }
+
+      toast(emailChanged
+        ? "📧 확인 메일을 보냈어요! 새 이메일의 링크를 클릭하면 변경이 완료돼요."
+        : "✅ 계정 정보가 저장됐어요!");
     } catch (err) {
-      toast(err.message);
+      toast(err.message || "저장에 실패했어요. 다시 시도해주세요.");
     }
   });
 }
@@ -710,7 +708,7 @@ document.addEventListener("click", async (e) => {
   const toggleBtn = e.target.closest('[data-action="toggle-checkpoint"]');
   if (!toggleBtn) return;
 
-  // mypage.html은 로그인 없이도 볼 수 있는 페이지라, 게스트가 체크포인트를 누르면
+  // 마이페이지(index.html)는 로그인 없이도 볼 수 있는 페이지라, 게스트가 체크포인트를 누르면
   // api.toggleQuizCheckpoint()가 "로그인이 필요해요" 에러를 던지고 아무 반응도 없이
   // 조용히 실패했다.
   if (!isLoggedIn()) {

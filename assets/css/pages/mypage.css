@@ -1,12 +1,12 @@
 /* ==========================================================================
    MyPage Dashboard / Edit Profile — MyPage(Job/My) 담당, 신규 파일
-   mypage.html(대시보드) / mypage-edit.html(프로필 수정)이 이 CSS를 공유한다.
+   pages/my/index.html(대시보드) / pages/my/edit.html(프로필 수정)이 이 CSS를 공유한다.
    공통 레이아웃(.shell/.page__content/.side-panel)과 공통 컴포넌트
    (.btn/.tag/.progress-bar/.section-title)는 그대로 재사용하고,
    이 파일에는 두 화면 전용 요소만 정의한다. (좌측 사이드바는 삭제됨)
    ========================================================================== */
 
-/* mypage.html/mypage-edit.html에서 공통 GNB의 "마이핸드북/취업핸드북" 항목을
+/* index.html/edit.html에서 공통 GNB의 "마이핸드북/취업핸드북" 항목을
    JS로 감출 때 쓰는 유틸리티. .nav__item은 layout.css에 display:flex가 명시돼
    있어 hidden 속성만으로는 가려지지 않는다 — 이 프로젝트 관례대로 클래스 토글로 처리한다. */
 .is-hidden {
@@ -21,7 +21,7 @@
   background: var(--neutral-surface);
   border: 1px solid var(--neutral-50);
   border-radius: var(--radius-lg);
-  box-shadow: var(--sh-md);
+  /* box-shadow: var(--sh-md); */
   padding: var(--space-24);
   margin-bottom: var(--space-20);
 }
@@ -94,7 +94,7 @@
   background: var(--neutral-surface);
   border: 1px solid var(--neutral-50);
   border-radius: var(--radius-lg);
-  box-shadow: var(--sh-sm);
+  /* box-shadow: var(--sh-sm); */
   padding: var(--space-24);
   margin-bottom: var(--space-20);
 }
@@ -193,7 +193,7 @@
   background: var(--neutral-surface);
   border: 1px solid var(--neutral-50);
   border-radius: var(--radius-lg);
-  box-shadow: var(--sh-sm);
+  /* box-shadow: var(--sh-sm); */
   cursor: pointer;
   text-align: center;
   transition: all .15s;
@@ -560,7 +560,7 @@
   background: var(--neutral-surface);
   border: 1px solid var(--neutral-50);
   border-radius: var(--radius-lg);
-  box-shadow: var(--sh-sm);
+  /* box-shadow: var(--sh-sm); */
   padding: var(--space-24);
 }
 
@@ -598,31 +598,6 @@
   outline: none;
   border-color: var(--green-600);
   box-shadow: var(--focus-ring);
-}
-
-.settings-input-group {
-  display: flex;
-  align-items: center;
-  border: 1px solid var(--neutral-50);
-  border-radius: var(--radius-xs);
-  overflow: hidden;
-}
-
-.settings-input-group__prefix {
-  padding: 0 var(--space-12);
-  font-size: var(--fs-13);
-  color: var(--neutral-500);
-  background: var(--neutral-10);
-  height: var(--space-40);
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.settings-input-group .settings-input {
-  border: none;
-  border-radius: 0;
-  flex: 1;
 }
 
 .settings-checkbox-row {

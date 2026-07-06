@@ -208,23 +208,14 @@
   color: var(--neutral-600);
 }
 
-/* ---------- Wiki detail ---------- */
-.detail-layout {
-  display: flex;
-  gap: var(--space-24);
-}
-
-.wiki-detail__main {
-  flex: 1;
-  min-width: 0;
-}
-
-.toc {
-  width: 170px;
-  flex-shrink: 0;
-  position: sticky;
-  top: 124px;
-  align-self: flex-start;
+/* ---------- Wiki detail ----------
+   legacy/newWikiDetail.html 시안 반영. wiki/index.html과 동일한 3단
+   레이아웃(aside.sidebar / div.page__content / aside.side-panel, 전부
+   layout.css의 공용 .shell 시스템)을 그대로 재사용한다 — 목차(.toc)는
+   위키 목록의 카테고리 사이드바처럼 .sidebar-wrap 카드 안에 놓이고,
+   너비/sticky는 이제 .sidebar가 담당하므로 여기서 따로 지정하지 않는다. */
+.wiki-detail-card .card__body {
+  padding: var(--space-28);
 }
 
 .toc__label {
@@ -387,11 +378,7 @@
   margin-left: auto;
 }
 
-/* ---------- Save box (아티클 우측 패널) ---------- */
-.wiki-detail__aside {
-  width: 210px;
-  flex-shrink: 0;
-}
+/* ---------- Save box (아티클 우측 패널, aside.side-panel 안에 위치) ---------- */
 
 .save-box {
   background: linear-gradient(135deg, var(--green-50), var(--abox-grad));

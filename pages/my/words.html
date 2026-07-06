@@ -26,7 +26,7 @@
     <section id="mywords" class="page page--active" aria-label="저장한 단어">
       <div class="shell">
         <div class="page__content">
-          <a class="back-link" href="/pages/my/mypage.html">‹ 마이페이지로 돌아가기</a>
+          <a class="back-link" href="/pages/my/index.html">‹ 마이페이지로 돌아가기</a>
           <h1 class="page-title">저장한 단어<span class="icon icon--leaf" aria-hidden="true"></span></h1>
           <p class="page-subtitle">모르는 단어를 저장하고 복습하여 어휘력을 키워보세요.</p>
 
@@ -47,7 +47,8 @@
               <button type="button" class="sort-pill" data-sort="term">영어순</button>
               <button type="button" class="sort-pill" data-sort="definition">이름순</button>
             </div>
-            <button type="button" class="btn btn--outline btn--sm" data-action="toggle-favorites-only" aria-pressed="false"><span class="icon icon--star" aria-hidden="true"></span>즐겨찾기만</button>
+            <button type="button" class="btn btn--outline btn--sm" data-action="toggle-favorites-only"
+              aria-pressed="false"><span class="icon icon--star" aria-hidden="true"></span>즐겨찾기만</button>
             <button type="button" class="btn btn--primary btn--sm" data-action="open-modal" data-word="">+ 단어
               추가</button>
           </div>
@@ -60,14 +61,18 @@
           </div>
 
           <div class="word-export-bar">
-            <button type="button" class="word-export-bar__btn word-export-bar__btn--csv" data-action="export-words-csv"><span class="icon icon--file-text" aria-hidden="true"></span>Export to CSV</button>
-            <button type="button" class="word-export-bar__btn word-export-bar__btn--word" data-action="export-words-doc"><span class="icon icon--file-text" aria-hidden="true"></span>Export to Word</button>
+            <button type="button" class="word-export-bar__btn word-export-bar__btn--csv"
+              data-action="export-words-csv"><span class="icon icon--file-text" aria-hidden="true"></span>Export to
+              CSV</button>
+            <button type="button" class="word-export-bar__btn word-export-bar__btn--word"
+              data-action="export-words-doc"><span class="icon icon--file-text" aria-hidden="true"></span>Export to
+              Word</button>
           </div>
           <div class="word-row-groups" id="word-row-groups"></div>
 
           <nav class="pagination" id="wordsPagination" aria-label="페이지 네비게이션"></nav>
         </div>
-        <aside class="side-panel" aria-label="단어 퀴즈 및 카테고리별 단어 수">
+        <!-- <aside class="side-panel" aria-label="단어 퀴즈 및 카테고리별 단어 수">
           <div class="word-quiz">
             <p class="word-quiz__title"><span class="icon icon--message" aria-hidden="true"></span>오늘의 단어 퀴즈</p>
             <p class="word-quiz__hint">저장한 단어로 퀴즈를 풀어보세요!</p>
@@ -115,7 +120,7 @@
             </div>
             <span class="category-stat-row__count">0개</span>
           </div>
-        </aside>
+        </aside> -->
       </div>
     </section>
   </main>

@@ -54,6 +54,12 @@ async function updateEmail(email) {
   if (error) throw error;
 }
 
+// 비밀번호 변경도 updateEmail과 동일하게 Supabase Auth 계정 자체를 바꾼다(profiles 테이블과 무관).
+async function updatePassword(password) {
+  const { error } = await supabaseClient.auth.updateUser({ password });
+  if (error) throw error;
+}
+
 // ── badges ──
 async function getBadges() {
   const userId = await getCurrentUserId();
@@ -327,6 +333,7 @@ window.api = {
   getProfile,
   saveProfile,
   updateEmail,
+  updatePassword,
   getBadges,
   unlockBadge,
   getQuizCheckpoints,

@@ -382,15 +382,15 @@ function updateWikiDetailProgress(item) {
 
 function renderWikiToc(item) {
   const tocEl = document.getElementById('wikiToc');
-  tocEl.innerHTML = '<p class="toc__label">목차</p>';
+  tocEl.innerHTML = '<p class="sidebar__label">목차</p>';
   item.content.forEach((section, index) => {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'toc__item' + (index === 0 ? ' toc__item--active' : '');
+    btn.className = 'sidebar__item' + (index === 0 ? ' sidebar__item--active' : '');
     btn.textContent = section.title;
     btn.addEventListener('click', () => {
-      tocEl.querySelectorAll('.toc__item').forEach(el => el.classList.remove('toc__item--active'));
-      btn.classList.add('toc__item--active');
+      tocEl.querySelectorAll('.sidebar__item').forEach(el => el.classList.remove('sidebar__item--active'));
+      btn.classList.add('sidebar__item--active');
       const target = document.getElementById(`wikiSection-${index}`);
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
@@ -558,7 +558,7 @@ function bindWikiDetailFavoriteStars(item) {
 }
 
 // ══════════════════════════════════════════════
-//  "내 핸드북에 저장" 박스(aside.wiki-detail__aside) 연동
+//  "내 핸드북에 저장" 박스(aside.side-panel 안의 .save-box) 연동
 //  즐겨찾기/단어장 모두 Supabase(wiki_bookmarks/words)에 실제로 반영한다.
 //  modal.js/highlight.js의 기존 토스트/토글 로직은 그대로 두고, 여기서는
 //  리스너만 추가한다(충돌 없음).

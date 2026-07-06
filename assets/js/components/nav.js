@@ -5,7 +5,7 @@ const NAV_ACTIVE_GROUPS = {
   wiki: ['/pages/wiki/index.html', '/pages/wiki/detail.html'],
   exam: ['/pages/exam/index.html', '/pages/exam/quiz.html'],
   handbook: ['/pages/handbook/index.html', '/pages/handbook/resume.html'],
-  my: ['/pages/my/index.html', '/pages/my/favorites.html', '/pages/my/words.html', '/pages/my/mypage.html', '/pages/my/edit.html'],
+  my: ['/pages/my/index.html', '/pages/my/docs.html', '/pages/my/favorites.html', '/pages/my/words.html', '/pages/my/edit.html'],
 };
 
 function getActiveNavKey() {

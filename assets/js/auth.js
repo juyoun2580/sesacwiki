@@ -21,7 +21,7 @@ supabaseClient.auth.onAuthStateChange((event, session) => {
 
   // 로그인/가입 화면에서 세션이 생성되면(비밀번호 로그인, 이메일 확인 불필요한 가입 등) 마이페이지로 이동한다.
   if (event === "SIGNED_IN" && /(?:login|signup)\.html$/.test(location.pathname)) {
-    location.href = "/pages/my/mypage.html";
+    location.href = "/pages/my/index.html";
   }
 });
 
@@ -50,11 +50,11 @@ function requireAuth() {
   return false;
 }
 
-// ── login.html 전용: 이미 로그인된 경우 mypage.html로 이동 ──
+// ── login.html 전용: 이미 로그인된 경우 마이페이지(index.html)로 이동 ──
 function redirectIfLoggedIn() {
   if (!isLoggedIn()) return;
 
-  location.href = '/pages/my/mypage.html';
+  location.href = '/pages/my/index.html';
 }
 
 // ── Header 인증 상태: data-auth 값만 갱신하면 components.css가 UserChip ↔ 로그인 버튼을 전환한다 ──
@@ -208,5 +208,5 @@ if (loginForm) {
 // - isLoggedIn()         : 현재 로그인 여부(boolean)
 // - getCurrentUser()     : 로그인한 사용자 정보({ name, email, loggedInAt }) 또는 null
 // - requireAuth()        : 비로그인 시 login.html로 이동 후 false, 로그인 상태면 true
-// - redirectIfLoggedIn() : login.html에서 이미 로그인된 경우 mypage.html로 이동
+// - redirectIfLoggedIn() : login.html에서 이미 로그인된 경우 마이페이지(index.html)로 이동
 // - window.authReady     : 최초 세션 조회가 끝나면 resolve되는 Promise(app.js가 가드 실행 전 대기)
