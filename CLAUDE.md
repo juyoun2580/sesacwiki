@@ -35,15 +35,16 @@
 │   ├── wiki/         index.html, detail.html
 │   ├── exam/         index.html, quiz.html
 │   ├── handbook/     index.html, resume.html
-│   └── my/           index.html, favorites.html, words.html, mypage.html, edit.html
+│   └── my/           index.html(마이페이지), docs.html(내 문서), favorites.html, words.html, edit.html
 ├── assets
 │   ├── css
 │   │   ├── reset.css / variables.css / base.css / layout.css / components.css
+│   │   ├── toolbar.css / pagination.css / modal.css  # 공용 JS 컴포넌트 스타일
 │   │   └── pages/           # 화면 전용 CSS (auth.css, wiki.css, exam.css, job.css, my.css …)
 │   ├── js
 │   │   ├── supabase-client.js / auth.js / api.js   # 데이터·인증 공용 레이어
-│   │   ├── app.js / ui.js / modal.js / toast.js     # 공통 UI 동작
-│   │   ├── components/       # header.js, nav.js (마운트 로더)
+│   │   ├── app.js / ui.js / toast.js                # 공통 UI 동작
+│   │   ├── components/       # header.js, nav.js (마운트 로더) + modal.js, pagination.js, toolbar.js (공용 JS 컴포넌트)
 │   │   └── pages/            # 화면 전용 JS (wiki.js, exam.js, quiz.js, job.js, mypage.js …)
 │   └── data
 │       └── *.json / questions/*.json
@@ -99,8 +100,8 @@ CSS는 역할별로 분리한다.
 - `auth.js` — 로그인 상태, 헤더 auth UI 전환
 - `api.js` — Supabase 접근 전담 (`window.api.*`). 페이지 JS가 `supabaseClient`를 직접 호출하지 않는다.
 - `app.js` — 공통 부트스트랩 (컴포넌트 로딩 순서, 네비게이션, 인증 가드)
-- `ui.js` / `modal.js` / `toast.js` — 공통 UI 동작
-- `components/*.js` — 헤더/네비 마운트 로더
+- `ui.js` / `toast.js` — 공통 UI 동작
+- `components/*.js` — 헤더/네비 마운트 로더(`header.js`, `nav.js`) + Word Modal/Pagination/Toolbar 공용 JS 컴포넌트(`modal.js`, `pagination.js`, `toolbar.js`)
 - `pages/*.js` — 화면 전용 로직
 
 DOM 조작과 비즈니스 로직을 분리한다.
@@ -123,7 +124,7 @@ UI는 반드시 재사용 가능한 형태로 만든다.
 - Progress Bar
 - Modal
 - Toast
-- Pagination / Filter Tab / Sort Pill / Section Title / Back Link
+- Toolbar / Pagination / Select / Check Chip / Filter Tab / Sort Pill / Section Title / Back Link
 
 동일한 UI를 두 번 구현하지 않는다.
 

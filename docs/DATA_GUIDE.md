@@ -113,6 +113,7 @@ try {
 
 - Supabase 테이블 컬럼은 snake_case(`github_username`, `category_color`)이고, `api.js`가 이를 camelCase(`githubUsername`, `categoryColor`)로 매핑해 반환한다(`mapWordRow()` 등). 페이지 JS는 항상 camelCase만 다룬다.
 - 새 테이블이 필요하면 `supabase/schema.sql`에 DDL을 추가하고, `api.js`에 그 테이블 전용 `get/save/add/update/delete` 함수를 추가한다. 페이지 JS가 `supabaseClient.from(...)`을 직접 호출하지 않는다.
+- `wiki_highlights.highlights`처럼 컬럼 자체가 `jsonb` 배열인 테이블은 행 전체가 아니라 **배열 통째로 upsert**하는 방식이다(`getWikiHighlights(wikiId)`로 배열을 읽고, JS에서 push/filter한 뒤 `saveWikiHighlights(wikiId, highlights)`로 전체를 다시 저장). 배열 항목 하나의 모양은 `{ id, text, color, date }`이며 `color`는 `"y"`/`"g"`(yellow/green 축약 코드) 같은 애플리케이션 레벨 값이다 — 이 축약 코드는 DDL에는 드러나지 않으므로, 하이라이트 관련 코드를 다룰 때는 실제 저장되는 값을 코드로 재확인한다.
 
 ---
 
@@ -157,7 +158,7 @@ assets/js/pages/*.js  ←──────────────→  assets/j
 
 | 화면 | 현재 상태 | 향후 계획 |
 |---|---|---|
-| `pages/my/index.html` (내 문서) | 정적 마크업, 어떤 JSON/Supabase 테이블도 연결되어 있지 않음 | `documents` 테이블(가칭) 설계 필요 — 문서 제목/카테고리/날짜/즐겨찾기 여부 등 |
+| `pages/my/docs.html` (내 문서) | 정적 마크업, 어떤 JSON/Supabase 테이블도 연결되어 있지 않음 | `documents` 테이블(가칭) 설계 필요 — 문서 제목/카테고리/날짜/즐겨찾기 여부 등 |
 | `pages/my/favorites.html` (즐겨찾기) | 정적 마크업 | 위 `documents` 테이블 + 기존 `wiki_bookmarks`/`words.favorite`를 합쳐 보여주는 뷰로 설계 (과거 `myfav` 뷰 방식과 동일한 원칙 — 별도 테이블에 중복 저장하지 않음) |
 | `home.json` 실제 통계 반영 | 파일 자체는 fallback(0)만 있고, 실제 값은 클라이언트에서 여러 소스를 조합해 계산 | 계산 로직을 서버 함수(Supabase Edge Function/RPC)로 옮길지 여부는 미정 |
 

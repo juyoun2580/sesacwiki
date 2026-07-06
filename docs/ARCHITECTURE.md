@@ -19,15 +19,16 @@
 │   ├── wiki/         index.html, detail.html
 │   ├── exam/         index.html, quiz.html
 │   ├── handbook/     index.html, resume.html
-│   └── my/           index.html, favorites.html, words.html, mypage.html, edit.html
+│   └── my/           index.html, docs.html, favorites.html, words.html, edit.html
 ├── assets/
 │   ├── css/
 │   │   ├── reset.css / variables.css / base.css / layout.css / components.css   # 공통 5종
+│   │   ├── toolbar.css / pagination.css / modal.css                            # 공용 JS 컴포넌트 스타일
 │   │   └── pages/    auth.css, wiki.css, exam.css, job.css, my.css, mypage.css, resume.css, home.css
 │   ├── js/
 │   │   ├── supabase-client.js / auth.js / api.js       # 데이터·인증 공용 레이어
-│   │   ├── app.js / ui.js / modal.js / toast.js         # 공통 UI 동작
-│   │   ├── components/  header.js, nav.js               # 컴포넌트 로더
+│   │   ├── app.js / ui.js / toast.js                    # 공통 UI 동작
+│   │   ├── components/  header.js, nav.js, modal.js, pagination.js, toolbar.js  # 컴포넌트 로더/공용 JS 컴포넌트
 │   │   └── pages/        wiki.js, highlight.js, exam.js, quiz.js, job.js,
 │   │                      job-features.js, resume.js, mypage.js, home.js
 │   ├── data/          home.json, wiki.json, wiki-data.json, exam.json, questions/*.json
@@ -45,11 +46,13 @@
 |---|---|
 | `pages/handbook/index.html` | 취업핸드북 |
 | `pages/handbook/resume.html` | 자기소개서/이력서 관리 |
-| `pages/my/index.html` | 내 문서 |
+| `pages/my/index.html` | 마이페이지(뱃지/현황 대시보드) |
+| `pages/my/docs.html` | 내 문서 |
 | `pages/my/favorites.html` | 즐겨찾기 |
 | `pages/my/words.html` | 저장한 단어 |
-| `pages/my/mypage.html` | 마이페이지(뱃지/현황 대시보드) |
 | `pages/my/edit.html` | 프로필 수정 |
+
+`pages/my/index.html`과 `pages/my/docs.html`은 과거 파일명이 지금과 반대였다(이전에는 `index.html`이 "내 문서", `mypage.html`이 마이페이지였다) — 다른 문서나 커밋 이력을 참고할 때 혼동하지 않는다.
 
 ---
 
@@ -131,13 +134,21 @@ loadHeader().then(() => {
 | 모의고사 응시 | `pages/exam/quiz.html` | `exam.css` | `quiz.js` | `exam.json` + `questions/{examId}.json` + Supabase(`exam_attempts`) |
 | 취업핸드북 | `pages/handbook/index.html` | `job.css` | `job.js`, `job-features.js` | localStorage(`job_data`, `job_features`) + Supabase(`job_progress`, 로그인 시 동기화) |
 | 자소서 관리 | `pages/handbook/resume.html` | `my.css` + `resume.css` | `resume.js` | 정적 마크업 (연동 데이터 없음) |
-| 내 문서 | `pages/my/index.html` | `my.css` | (전용 JS 없음) | 정적 마크업 (연동 데이터 없음 — 6장 참고) |
+| 내 문서 | `pages/my/docs.html` | `my.css` | (전용 JS 없음) | 정적 마크업 (연동 데이터 없음 — 6장 참고) |
 | 즐겨찾기 | `pages/my/favorites.html` | `my.css` | (전용 JS 없음) | 정적 마크업 (연동 데이터 없음 — 6장 참고) |
 | 저장한 단어 | `pages/my/words.html` | `my.css` | `quiz.js`, `mypage.js` | Supabase(`words`) |
-| 마이페이지 | `pages/my/mypage.html` | `my.css` + `mypage.css` | `mypage.js` | Supabase(`profiles`, `words`, `badges`, `quiz_checkpoints`) |
+| 마이페이지 | `pages/my/index.html` | `my.css` + `mypage.css` | `mypage.js` | Supabase(`profiles`, `words`, `badges`, `quiz_checkpoints`) |
 | 프로필 수정 | `pages/my/edit.html` | `mypage.css` | `mypage.js` | Supabase(`profiles`) |
 
-모든 페이지(로그인/회원가입 제외)는 다음 공용 JS를 공통으로 로드한다: `supabase-client.js` → `auth.js` → `api.js` → `components/header.js` → `components/nav.js` → `app.js` (+ 필요 시 `ui.js`, `modal.js`, `toast.js`).
+모든 페이지(로그인/회원가입 제외)는 다음 공용 JS를 공통으로 로드한다: `supabase-client.js` → `auth.js` → `api.js` → `components/header.js` → `components/nav.js` → `app.js` (+ 필요 시 `ui.js`, `components/modal.js`, `toast.js`).
+
+위 표의 "전용 CSS"는 페이지가 소유하는 CSS만 나타낸다. 여기에 더해 [COMPONENT_GUIDE.md](COMPONENT_GUIDE.md) 11~13장의 공용 JS 컴포넌트를 쓰는 화면은 그 컴포넌트의 CSS도 함께 로드한다:
+
+| 공용 컴포넌트 CSS | 로드하는 화면 |
+|---|---|
+| `toolbar.css` | 위키 목록, 모의고사 목록, 저장한 단어(CSS 구조만 재사용, JS 미호출) |
+| `pagination.css` | 위키 목록, 저장한 단어, 내 문서(컨테이너만 정적) |
+| `modal.css` | 위키 상세, 저장한 단어, 마이페이지(Word Modal) |
 
 ---
 
@@ -146,8 +157,8 @@ loadHeader().then(() => {
 | 파일/데이터 | 소유 페이지 | 함께 쓰는 페이지 | 내용 |
 |---|---|---|---|
 | `assets/js/pages/quiz.js` | `pages/exam/quiz.html` | `pages/my/words.html` | 객관식 선택지 토글 로직을 단어 퀴즈에도 그대로 재사용. 이 파일을 고치면 두 화면 모두 영향받는다 |
-| `assets/js/pages/mypage.js` | `pages/my/mypage.html`, `pages/my/edit.html` | `pages/my/words.html`, `pages/wiki/detail.html` | 프로필 표시, 뱃지 렌더링 외에 "저장한 단어" 목록 렌더링·모달 저장 로직(`data-action="save-word"` 리스너)을 담당해 위키 상세와 단어장 화면에 걸쳐 있음 |
-| `assets/js/modal.js` (`#wmodal`) | 공통 | `pages/wiki/detail.html`, `pages/my/words.html`, `pages/my/mypage.html` | 모달 열기/닫기 자체는 공통 로직이고, 실제 저장(`api.addWord`)은 `mypage.js`가 같은 버튼에 별도로 리스너를 추가해 처리한다(6장의 문제 목록 참고) |
+| `assets/js/pages/mypage.js` | `pages/my/index.html`(마이페이지), `pages/my/edit.html` | `pages/my/words.html`, `pages/wiki/detail.html` | 프로필 표시, 뱃지 렌더링 외에 "저장한 단어" 목록 렌더링·모달 저장 로직(`data-action="save-word"` 리스너)을 담당해 위키 상세와 단어장 화면에 걸쳐 있음 |
+| `assets/js/components/modal.js` (Word Modal, `#word-modal-mount`) | 공통 | `pages/wiki/detail.html`, `pages/my/words.html`, `pages/my/index.html` | 모달 열기/닫기·`mode`별 UI 전환은 이 파일이 전담하고, 실제 저장/삭제(`api.addWord` 등)는 `mypage.js`의 `onSave`/`onDelete` 콜백이 담당한다 — 과거에는 두 파일이 같은 버튼에 각각 리스너를 붙여 저장 책임이 분산되어 있었으나 정리됨 |
 | `assets/css/pages/my.css` | `pages/my/*` | `pages/handbook/resume.html` | `resume.html`이 `job.css`가 아니라 `my.css`를 불러온다 — 취업핸드북 그룹 안에 있지만 마이핸드북 CSS에 의존 |
 | localStorage 키 `job_features` | `job-features.js` | `job.js`, `home.js` | 세 파일이 같은 키를 직접 읽고 쓴다. `job.js`는 로그인 시 Supabase `job_progress.job_features`로 이 키를 덮어쓰기도 한다 |
 | Supabase `job_progress` 테이블 | — | `job.js`(`job_data` 컬럼), `job-features.js`(`job_features` 컬럼, `job.js` 경유 동기화) | 두 로컬스토리지 키를 한 행에 합쳐 저장 |
@@ -156,4 +167,4 @@ loadHeader().then(() => {
 
 ## 7. 아직 실제 데이터에 연동되지 않은 화면
 
-`pages/my/index.html`(내 문서), `pages/my/favorites.html`(즐겨찾기)은 전용 JS도 없고 어떤 JSON/Supabase 테이블도 연결되어 있지 않다 — 화면의 문서 목록/즐겨찾기 목록은 정적 마크업이다. 자세한 내용과 향후 계획은 [DATA_GUIDE.md](DATA_GUIDE.md) 6장 참고.
+`pages/my/docs.html`(내 문서), `pages/my/favorites.html`(즐겨찾기)은 전용 JS도 없고 어떤 JSON/Supabase 테이블도 연결되어 있지 않다 — 화면의 문서 목록/즐겨찾기 목록은 정적 마크업이다. 자세한 내용과 향후 계획은 [DATA_GUIDE.md](DATA_GUIDE.md) 6장 참고.

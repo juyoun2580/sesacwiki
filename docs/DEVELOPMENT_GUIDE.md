@@ -48,7 +48,7 @@ main
 | `feature/wiki` | `pages/wiki/` (index, detail) | `wiki.css` | `wiki.js`, `highlight.js` | `wiki-data.json`, Supabase(`wiki_bookmarks`, `wiki_recent_views`, `wiki_highlights`) |
 | `feature/exam` | `pages/exam/` (index, quiz) | `exam.css` | `exam.js`, `quiz.js` | `exam.json`, `questions/*.json`, Supabase(`exam_attempts`) |
 | `feature/handbook` | `pages/handbook/` (index, resume) | `job.css`, `resume.css` | `job.js`, `job-features.js`, `resume.js` | localStorage(`job_data`, `job_features`), Supabase(`job_progress`) |
-| `feature/my` | `pages/my/` (index, favorites, words, mypage, edit) | `my.css`, `mypage.css` | `mypage.js` | Supabase(`profiles`, `words`, `badges`, `quiz_checkpoints`) |
+| `feature/my` | `pages/my/` (index=마이페이지, docs=내 문서, favorites, words, edit) | `my.css`, `mypage.css` | `mypage.js` | Supabase(`profiles`, `words`, `badges`, `quiz_checkpoints`) |
 
 각 브랜치는 **자신의 페이지 폴더 안 화면과, 위 표에 명시된 CSS/JS/데이터만** 수정한다. 다른 팀의 폴더나 파일은 수정하지 않는다.
 
@@ -68,9 +68,10 @@ main
 다음 파일은 모든 화면에 영향을 주므로 특정 `feature/*` 브랜치가 단독으로 소유하지 않는다. 수정이 필요하면 **별도의 작은 PR로 분리하고, 영향받는 팀에게 리뷰를 요청한 뒤 develop에 먼저 merge**한다.
 
 - `components/header.html`, `components/nav.html`
-- `assets/js/components/header.js`, `nav.js`
-- `assets/js/app.js`, `ui.js`, `modal.js`, `toast.js`, `api.js`, `auth.js`, `supabase-client.js`
+- `assets/js/components/header.js`, `nav.js`, `modal.js`(Word Modal), `pagination.js`, `toolbar.js`
+- `assets/js/app.js`, `ui.js`, `toast.js`, `api.js`, `auth.js`, `supabase-client.js`
 - `assets/css/reset.css`, `variables.css`, `base.css`, `layout.css`, `components.css`
+- `assets/css/toolbar.css`, `pagination.css`, `modal.css` (2개 이상 페이지 그룹이 함께 쓰는 공용 JS 컴포넌트의 스타일)
 - `supabase/schema.sql` (테이블을 추가/변경하면 관련된 모든 브랜치의 `api.js` 사용부에 영향)
 
 새 공용 컴포넌트/토큰이 필요하면 직접 만들기 전에 [COMPONENT_GUIDE.md](COMPONENT_GUIDE.md)의 "새 컴포넌트 추가 조건"을 먼저 확인한다.

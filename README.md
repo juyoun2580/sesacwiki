@@ -80,24 +80,25 @@ Core principles include:
 ```text
 sesac-wiki/
 │
-├── components/          # Shared UI components
-│   ├── header/
-│   ├── navigation/
-│   └── ...
+├── index.html           # Home (the only screen outside pages/)
+├── components/          # Shared HTML fragments, injected at runtime via fetch()
+│   ├── header.html
+│   └── nav.html
 │
-├── pages/               # Individual pages
-│   ├── home/
+├── pages/               # Every other screen, one folder per feature group
+│   ├── auth/
 │   ├── wiki/
 │   ├── exam/
-│   ├── job/
+│   ├── handbook/
 │   └── my/
 │
 ├── assets/
 │   ├── css/
 │   ├── js/
 │   ├── data/
-│   └── images/
+│   └── img/
 │
+├── supabase/            # Supabase schema (DDL)
 ├── docs/                # Project documentation
 ├── README.md
 └── CLAUDE.md
