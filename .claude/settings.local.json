@@ -21,7 +21,9 @@
       "Bash(node -e \"const d=JSON.parse\\(require\\('fs'\\).readFileSync\\('assets/data/wiki-data.json','utf8'\\)\\); console.log\\('items:', d.length\\); console.log\\('categories:', [...new Set\\(d.map\\(x=>x.category\\)\\)]\\);\")",
       "Skill(run)",
       "mcp__plugin_vercel_vercel__list_deployments",
-      "mcp__plugin_vercel_vercel__get_project"
+      "mcp__plugin_vercel_vercel__get_project",
+      "PowerShell(Get-Command *)",
+      "mcp__plugin_vercel_vercel__get_deployment"
     ]
   }
 }

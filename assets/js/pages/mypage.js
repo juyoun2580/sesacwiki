@@ -81,14 +81,18 @@ const accountForm = document.getElementById("account-form");
 if (accountForm) {
   accountForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    await api.saveProfile({
-      username: document.getElementById("acc-username").value.trim(),
-      name: document.getElementById("acc-name").value.trim(),
-      githubUsername: document.getElementById("acc-github").value.trim(),
-      language: document.getElementById("acc-language").value,
-      isMarketingAgreed: document.getElementById("acc-marketing").checked,
-    });
-    toast("✅ 계정 정보가 저장됐어요!");
+    try {
+      await api.saveProfile({
+        username: document.getElementById("acc-username").value.trim(),
+        name: document.getElementById("acc-name").value.trim(),
+        githubUsername: document.getElementById("acc-github").value.trim(),
+        language: document.getElementById("acc-language").value,
+        isMarketingAgreed: document.getElementById("acc-marketing").checked,
+      });
+      toast("✅ 계정 정보가 저장됐어요!");
+    } catch (err) {
+      toast(err.message || "저장에 실패했어요. 다시 시도해주세요.");
+    }
   });
 }
 
@@ -139,8 +143,12 @@ if (avatarForm) {
       toast("업로드할 사진을 먼저 선택해주세요.");
       return;
     }
-    await api.saveProfile({ avatarUrl: pendingAvatarDataUrl });
-    toast("🖼 프로필 사진이 저장됐어요!");
+    try {
+      await api.saveProfile({ avatarUrl: pendingAvatarDataUrl });
+      toast("🖼 프로필 사진이 저장됐어요!");
+    } catch (err) {
+      toast(err.message || "저장에 실패했어요. 다시 시도해주세요.");
+    }
   });
 }
 
@@ -158,13 +166,17 @@ if (deleteConfirmCheckbox && deleteAccountBtn) {
     // 이 팀 소유 데이터(마이페이지 프로필)만 정리한다. 실제 계정 삭제(auth.users)는
     // service_role 권한이 필요해 클라이언트에서 할 수 없다 — 로그인 세션 종료는
     // auth.js가 제공하는 로그아웃 경로(헤더 드롭다운의 "로그아웃")를 그대로 이용한다.
-    await api.saveProfile({
-      name: "", username: "", githubUsername: "", language: "", avatarUrl: "", isMarketingAgreed: false,
-    });
-    toast("계정 데이터가 삭제됐어요. (프로필 정보만 초기화됩니다)");
-    setTimeout(() => {
-      location.href = "/pages/auth/login.html";
-    }, 1200);
+    try {
+      await api.saveProfile({
+        name: "", username: "", githubUsername: "", language: "", avatarUrl: "", isMarketingAgreed: false,
+      });
+      toast("계정 데이터가 삭제됐어요. (프로필 정보만 초기화됩니다)");
+      setTimeout(() => {
+        location.href = "/pages/auth/login.html";
+      }, 1200);
+    } catch (err) {
+      toast(err.message || "삭제에 실패했어요. 다시 시도해주세요.");
+    }
   });
 }
 
@@ -302,9 +314,9 @@ function buildWordRowSection(category, list) {
         ${list.map((w) => `
           <li class="word-row" data-word-id="${w.id}">
             <div class="word-row__body">
-              <div><span class="word-row__term">${w.term}</span><span class="word-row__pos">${w.pos}</span></div>
-              <div class="word-row__def">${w.definition}</div>
-              <div class="word-row__example">${w.example}</div>
+              <div><span class="word-row__term">${escapeHtml(w.term)}</span><span class="word-row__pos">${escapeHtml(w.pos)}</span></div>
+              <div class="word-row__def">${escapeHtml(w.definition)}</div>
+              <div class="word-row__example">${escapeHtml(w.example || "")}</div>
             </div>
             <span class="tag tag--${w.categoryColor}">${w.category}</span>
             <span class="word-row__date">${w.date}</span>
@@ -332,12 +344,12 @@ function buildWordCardSection(category, list) {
               data-action="toggle-favorite" aria-pressed="${!!w.favorite}" aria-label="즐겨찾기 토글">★</button>
             <span class="word-card__no">No. ${String(i + 1).padStart(3, "0")}</span>
             <span class="word-card__icon" aria-hidden="true">${icon}</span>
-            <p class="word-card__term">${w.term}</p>
-            <span class="word-card__pos">${w.pos}</span>
-            <span class="tag tag--${w.categoryColor} word-card__category">${w.category}</span>
-            <p class="word-card__definition">${w.definition}</p>
+            <p class="word-card__term">${escapeHtml(w.term)}</p>
+            <span class="word-card__pos">${escapeHtml(w.pos)}</span>
+            <span class="tag tag--${w.categoryColor} word-card__category">${escapeHtml(w.category)}</span>
+            <p class="word-card__definition">${escapeHtml(w.definition)}</p>
             <div class="word-card__footer">
-              <span class="word-card__example">${w.example || "&nbsp;"}</span>
+              <span class="word-card__example">${w.example ? escapeHtml(w.example) : "&nbsp;"}</span>
               <span class="word-card__date">${w.date}</span>
             </div>
             <div class="word-card__actions">
@@ -420,7 +432,7 @@ async function renderWordGroups(style = currentWordStyle) {
 // ── 단어 수정/삭제: 공통 WordModal(components/word-modal.html)의
 // openWordModal({mode, word, onSave/onDelete})을 통해 열고, 실제 Supabase
 // 반영은 여기(콜백) 안에서만 한다 — 모달 자신은 API를 모른다.
-function saveWordFromModal(word, values) {
+async function saveWordFromModal(word, values) {
   const category = values.category;
   toast(`📓 "${values.term}"를 단어장에 저장했어요! +20P`);
   const payload = {
@@ -429,10 +441,22 @@ function saveWordFromModal(word, values) {
     category,
     categoryColor: CATEGORY_TAG_COLOR[category] || "gray",
   };
-  const request = word
-    ? api.updateWord(word.id, payload)
-    : api.addWord({ ...payload, pos: "명사", example: "", favorite: false });
-  request.then(() => renderWordGroups());
+
+  try {
+    if (word) {
+      await api.updateWord(word.id, payload);
+    } else {
+      await api.addWord({ ...payload, pos: "명사", example: "", favorite: false });
+    }
+  } catch (err) {
+    // 위에서 이미 "저장했어요" 토스트를 낙관적으로 띄웠으므로(TD-0005 타이밍 유지),
+    // 실제 저장이 실패하면 반드시 정정 안내를 띄워야 한다 — 안 그러면 사용자는
+    // 저장된 줄 알지만 실제로는 유실된다.
+    console.error(err);
+    toast("⚠ 단어 저장에 실패했어요. 다시 시도해주세요.");
+    return;
+  }
+  await renderWordGroups();
 }
 
 async function toggleWordFavorite(id) {
@@ -686,8 +710,22 @@ document.addEventListener("click", async (e) => {
   const toggleBtn = e.target.closest('[data-action="toggle-checkpoint"]');
   if (!toggleBtn) return;
 
+  // mypage.html은 로그인 없이도 볼 수 있는 페이지라, 게스트가 체크포인트를 누르면
+  // api.toggleQuizCheckpoint()가 "로그인이 필요해요" 에러를 던지고 아무 반응도 없이
+  // 조용히 실패했다.
+  if (!isLoggedIn()) {
+    toast("로그인 후 이용할 수 있어요.");
+    return;
+  }
+
   const id = toggleBtn.dataset.checkpointId;
-  await api.toggleQuizCheckpoint(id);
+  try {
+    await api.toggleQuizCheckpoint(id);
+  } catch (err) {
+    console.error(err);
+    toast("저장에 실패했어요. 다시 시도해주세요.");
+    return;
+  }
 
   const panel = document.getElementById("category-detail-panel");
   if (panel && panel.querySelector(".checkpoint-list")) {

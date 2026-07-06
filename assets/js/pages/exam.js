@@ -40,14 +40,7 @@ function emptyStateHTML(iconClass, title, desc) {
 
 // 문제/해설 텍스트에는 <div>, <video>, <img alt="..."> 처럼 HTML 태그 예시가 그대로 들어있는 경우가 있다.
 // innerHTML로 렌더링하면 이 텍스트가 실제 태그로 해석되어 보기/해설이 깨지므로, 삽입 전 반드시 이스케이프한다.
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
+// escapeHtml()은 app.js가 정의하는 공용 함수를 재사용한다(quiz.js/mypage.js와 동일).
 
 async function getLocalExamAttempts() {
   if (!isLoggedIn()) return [];
@@ -203,8 +196,8 @@ function renderExamStats(history) {
 
   const listEl = document.getElementById('exam-recent-list');
   if (listEl) {
-    const reversed = [...history].reverse();
-    const recent = showAllRecentExams ? reversed : reversed.slice(0, 3);
+    // history는 api.getExamAttempts()가 이미 created_at 내림차순(최신 먼저)으로 정렬해서 준다.
+    const recent = showAllRecentExams ? history : history.slice(0, 3);
     listEl.innerHTML = recent.length ? recent.map(h => {
       const category = examCategoryById[h.examId];
       const categoryColor = EXAM_CATEGORY_COLOR[category] || 'gray';

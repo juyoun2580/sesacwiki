@@ -19,14 +19,7 @@ let timerSec = 444;
 
 // 문제/보기/해설 텍스트에는 <div>, <video>, <img alt="..."> 처럼 HTML 태그 예시가 그대로 들어있는 경우가 있다.
 // innerHTML로 렌더링하면 이 텍스트가 실제 태그로 해석되어 보기가 빈 칸으로 보이는 등 깨지므로, 삽입 전 반드시 이스케이프한다.
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
+// escapeHtml()은 app.js가 정의하는 공용 함수를 재사용한다(exam.js/mypage.js와 동일).
 
 function resetTimerRingVisual() {
   document.querySelector('.time-ring')?.classList.remove('time-ring--warning', 'time-ring--critical');
@@ -350,7 +343,10 @@ function launchConfetti() {
 }
 
 async function finishQuiz() {
-  if (!quizState) return;
+  if (!quizState || quizState.submitting) return;
+  // 제출 버튼 더블클릭/타이머 자동제출과 "응시 중단" 클릭이 겹치는 경우 등
+  // finishQuiz()가 중복 호출되면 exam_attempts에 같은 응시가 두 번 저장될 수 있어 막는다.
+  quizState.submitting = true;
   const { exam, questions, answers, isWrongRetry } = quizState;
   const total = questions.length;
   const correctCount = questions.filter((q, i) => answers.get(i) === q.answerIndex).length;

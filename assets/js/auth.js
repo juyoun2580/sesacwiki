@@ -1,5 +1,4 @@
-// ── 공통 인증 모듈 — Supabase Auth(매직링크) 세션 관리 + Header 인증 상태 ──
-// 비밀번호 없이 이메일로 매직링크를 보내 인증하는 방식(supabase.auth.signInWithOtp)을 쓴다.
+// ── 공통 인증 모듈 — Supabase Auth(이메일+비밀번호) 세션 관리 + Header 인증 상태 ──
 // 세션은 supabase-js가 내부적으로 영속화하지만, 이 파일의 다른 곳(app.js, mypage.js 등)이
 // isLoggedIn()/getCurrentUser()를 동기 함수로 호출하므로 currentSession 캐시를 두고
 // onAuthStateChange로 계속 최신 상태를 반영한다.
@@ -14,9 +13,13 @@ supabaseClient.auth.onAuthStateChange((event, session) => {
 
   if (event === "INITIAL_SESSION") {
     resolveAuthReady();
+    // 이미 로그인된 세션이 남아있는 상태로 login/signup 페이지에 직접 들어온 경우
+    // (뒤로가기, 즐겨찾기 등) 마이페이지로 보낸다. SIGNED_IN 이벤트는 신규 로그인
+    // 순간에만 발생하므로 이 분기가 없으면 이 경우를 놓친다.
+    if (/(?:login|signup)\.html$/.test(location.pathname)) redirectIfLoggedIn();
   }
 
-  // 매직링크를 클릭하고 돌아온 경우, 로그인/가입 화면에 있다면 마이페이지로 이동한다.
+  // 로그인/가입 화면에서 세션이 생성되면(비밀번호 로그인, 이메일 확인 불필요한 가입 등) 마이페이지로 이동한다.
   if (event === "SIGNED_IN" && /(?:login|signup)\.html$/.test(location.pathname)) {
     location.href = "/pages/my/mypage.html";
   }
@@ -120,18 +123,28 @@ function initAuth() {
   bindLogout();
 }
 
-// ── 회원가입 폼: 매직링크 메일 발송(계정이 없으면 새로 만든다) ──
+// ── 회원가입 폼: 이메일+비밀번호로 계정을 생성한다 ──
 const signupForm = document.getElementById("signup-form");
 if (signupForm) {
   signupForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = document.getElementById("signup-name").value.trim();
     const email = document.getElementById("signup-email").value.trim();
+    const password = document.getElementById("signup-password").value;
+    const passwordConfirm = document.getElementById("signup-password-confirm").value;
     const agreeRequired = document.getElementById("signup-agree-required").checked;
     const agreeMarketing = document.getElementById("signup-agree-marketing").checked;
 
-    if (!name || !email) {
-      toast("이름과 이메일을 모두 입력해주세요");
+    if (!name || !email || !password || !passwordConfirm) {
+      toast("이름, 이메일, 비밀번호를 모두 입력해주세요.");
+      return;
+    }
+    if (password.length < 6) {
+      toast("비밀번호는 6자 이상이어야 해요.");
+      return;
+    }
+    if (password !== passwordConfirm) {
+      toast("비밀번호가 일치하지 않아요.");
       return;
     }
     if (!agreeRequired) {
@@ -139,10 +152,10 @@ if (signupForm) {
       return;
     }
 
-    const { error } = await supabaseClient.auth.signInWithOtp({
+    const { data, error } = await supabaseClient.auth.signUp({
       email,
+      password,
       options: {
-        shouldCreateUser: true,
         data: { name, marketing_opt_in: agreeMarketing },
         emailRedirectTo: `${location.origin}/pages/auth/login.html`,
       },
@@ -153,64 +166,42 @@ if (signupForm) {
       return;
     }
 
-    toast(`🌱 ${name}님, 가입이 완료됐어요! 로그인해주세요`);
-    setTimeout(() => {
-      location.href = "/pages/auth/login.html";
-    }, 1200);
+    // 프로젝트에서 이메일 확인(Confirm email)이 꺼져 있으면 signUp만으로 세션이 바로 생기고,
+    // onAuthStateChange의 SIGNED_IN 분기가 마이페이지로 이동시킨다. 켜져 있으면 세션이 없으므로
+    // 이메일 인증부터 안내한다.
+    if (data.session) {
+      toast(`🌱 ${name}님, 가입이 완료됐어요!`);
+    } else {
+      toast(`🌱 ${name}님, 가입이 완료됐어요! 이메일 인증 후 로그인해주세요.`);
+      setTimeout(() => {
+        location.href = "/pages/auth/login.html";
+      }, 1200);
+    }
   });
 }
 
-// ── 로그인 폼: 이메일 제출 시 실제 매직링크 메일을 발송한다 ──
+// ── 로그인 폼: 이메일+비밀번호로 로그인한다 ──
 const loginForm = document.getElementById("login-form");
-const pendingPanel = document.getElementById("auth-pending");
 
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value;
 
-    if (!email) {
-      toast("이메일을 입력해주세요.");
+    if (!email || !password) {
+      toast("이메일과 비밀번호를 모두 입력해주세요.");
       return;
     }
 
-    const { error } = await supabaseClient.auth.signInWithOtp({
-      email,
-      options: {
-        shouldCreateUser: false,
-        emailRedirectTo: `${location.origin}/pages/auth/login.html`,
-      },
-    });
+    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
 
     if (error) {
-      toast("가입되지 않은 이메일이에요. 먼저 가입해주세요");
+      toast(error.message === "Invalid login credentials" ? "이메일 또는 비밀번호가 올바르지 않아요." : error.message);
       return;
     }
-
-    document.getElementById("auth-pending-email").textContent = email;
-    loginForm.hidden = true;
-    pendingPanel.hidden = false;
-    toast("📩 인증 메일을 보냈어요! 메일함을 확인해주세요");
   });
 }
-
-// data-action="resend-verification": 인증 메일(매직링크) 재발송
-document.querySelectorAll('[data-action="resend-verification"]').forEach((btn) => {
-  btn.addEventListener("click", async () => {
-    const email = document.getElementById("auth-pending-email")?.textContent;
-    if (!email) return;
-
-    const { error } = await supabaseClient.auth.signInWithOtp({
-      email,
-      options: {
-        shouldCreateUser: false,
-        emailRedirectTo: `${location.origin}/pages/auth/login.html`,
-      },
-    });
-
-    toast(error ? error.message : "📩 인증 메일을 다시 보냈어요!");
-  });
-});
 
 // ── Public API (다른 페이지 스크립트에서 사용 가능) ──
 // - initAuth()          : Header 인증 상태 초기화(UserChip/Dropdown/로그아웃 바인딩)

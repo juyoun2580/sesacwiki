@@ -146,17 +146,13 @@ function buildWikiRow(item) {
   level.className = `tag tag--${WIKI_LEVEL_TAG_COLOR[item.level] || 'gray'}`;
   level.textContent = item.level;
 
-  const time = document.createElement('span');
-  time.className = 'wiki-row__time';
-  time.textContent = item.time;
-
   const percent = document.createElement('span');
   percent.className = 'wiki-row__percent';
   percent.textContent = `${item.progress}%`;
 
   const meta = document.createElement('span');
   meta.className = 'wiki-row__meta';
-  meta.append(tag, level, time, percent, buildWikiFavoriteStar(item));
+  meta.append(tag, level, percent, buildWikiFavoriteStar(item));
 
   a.append(iconBox, body, meta);
   li.appendChild(a);
@@ -175,6 +171,11 @@ function renderWikiEmptyState(listEl) {
 function renderWikiList() {
   const filtered = wikiFilterItems();
   const sorted = wikiSortItems(filtered);
+  // 필터/정렬 결과가 바뀌어 wikiState.page가 범위를 벗어난 경우, 목록을 자르기 전에
+  // 먼저 클램프한다(이전에는 renderWikiPagination이 렌더 이후에 클램프해서, 페이지가
+  // 갱신되기 전 상태로 목록이 그려져 결과가 있는데도 빈 상태가 보이는 문제가 있었다).
+  const totalPages = Math.max(1, Math.ceil(sorted.length / WIKI_PAGE_SIZE));
+  if (wikiState.page > totalPages) wikiState.page = totalPages;
   const start = (wikiState.page - 1) * WIKI_PAGE_SIZE;
   const pageItems = sorted.slice(start, start + WIKI_PAGE_SIZE);
 
@@ -185,11 +186,6 @@ function renderWikiList() {
   } else {
     pageItems.forEach(item => listEl.appendChild(buildWikiRow(item)));
   }
-
-  // 필터링으로 총 페이지 수가 줄었을 수 있으니 다음 렌더를 위해 보정한다
-  // (이번 렌더 자체는 보정 전 페이지 기준으로 이미 그려진다 — 기존 동작과 동일).
-  const totalPages = Math.max(1, Math.ceil(sorted.length / WIKI_PAGE_SIZE));
-  if (wikiState.page > totalPages) wikiState.page = totalPages;
 
   // 버튼 생성/이전·다음/클릭 이벤트는 공용 컴포넌트(assets/js/components/pagination.js)가 담당한다.
   // wiki.js는 "지금 몇 페이지인지", "페이지가 바뀌면 무엇을 다시 그릴지"만 넘겨준다.
@@ -334,10 +330,13 @@ function fetchWikiData() {
   return wikiDataPromise;
 }
 
-// 로그인 상태면 wiki_bookmarks 테이블의 실제 즐겨찾기 상태로 item.bookmarked를 덮어쓴다
-// (wiki-data.json에 박혀있는 bookmarked 시드값은 게스트 미리보기용일 뿐이다).
+// 로그인 상태면 wiki_bookmarks 테이블의 실제 즐겨찾기 상태로 item.bookmarked를 덮어쓴다.
+// 비로그인(게스트)은 wiki-data.json에 남아있는 bookmarked 시드값과 무관하게 전부 false로 초기화한다.
 async function wikiApplyBookmarks(items) {
-  if (!isLoggedIn()) return items;
+  if (!isLoggedIn()) {
+    items.forEach(item => { item.bookmarked = false; });
+    return items;
+  }
   const bookmarkedIds = new Set(await api.getWikiBookmarks());
   items.forEach(item => { item.bookmarked = bookmarkedIds.has(item.id); });
   return items;
@@ -494,8 +493,6 @@ function renderWikiDetail(item) {
   categoryTag.textContent = item.category;
   document.getElementById('wikiDetailLevelTag').textContent = item.level;
 
-  document.getElementById('wikiDetailTime').innerHTML =
-    `<span class="icon icon--clock" aria-hidden="true"></span> ${item.time}`;
   updateWikiDetailProgress(item);
 
   // favorite-star는 정적 마크업이라 ui.js가 defer 시점에 이미 클릭을 바인딩했지만(cosmetic toggle뿐),
