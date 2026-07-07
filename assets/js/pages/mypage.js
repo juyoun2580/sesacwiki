@@ -273,10 +273,14 @@ const WORD_CATEGORY_ICONS = {
 // 단어 추가/수정 모달의 카테고리 선택값 → 태그 색상 매핑(두 흐름에서 공유).
 const CATEGORY_TAG_COLOR = { SQL: "green", Java: "orange", "CS/IT": "blue", 비즈니스: "gray", 기타: "gray" };
 
-// ── 검색 / 정렬 / 즐겨찾기만 보기 ──
+// ── 검색 / 정렬 / 즐겨찾기만 보기 / 카테고리 필터 ──
 let wordSearchQuery = "";
 let wordSortMode = null; // null(기본 순서) | "term"(영어순) | "definition"(이름순)
 let wordFavoritesOnly = false;
+// 카테고리 필터(#word-category)는 검색/정렬/즐겨찾기와 달리 데이터를 다시 불러오지
+// 않는다 — 이미 renderWordGroups()가 그려둔 .word-row-group을 category 값으로
+// show/hide만 한다(applyCategoryFilter 참고). "전체 카테고리"는 select의 기본 옵션 텍스트다.
+let wordCategoryFilter = "전체 카테고리";
 
 // mywords.html(style: "rows")에서만 페이지네이션을 적용한다 — 대시보드 인페이지
 // "단어 도감" 패널(style: "cards")은 페이지 컨테이너(#wordsPagination) 자체가
@@ -376,6 +380,49 @@ function emptyStateHTML(iconClass, title, desc) {
   </div>`;
 }
 
+// ── 카테고리 필터(#word-category, mywords.html 전용) ──
+// 검색/정렬/즐겨찾기는 data 단계에서 필터링되어 renderWordGroups()가 매번 DOM을 다시
+// 그리지만, 카테고리 선택은 그럴 필요가 없다 — 이미 그려진 .word-row-group을
+// .word-row-group__title 텍스트와 비교해 보이기/숨기기만 하면 된다. renderWordGroups()가
+// 새로 그릴 때마다(검색/정렬/즐겨찾기/페이지 변경) 이 함수를 다시 호출해 필터 상태를 유지한다.
+function applyCategoryFilter() {
+  const container = document.getElementById("word-row-groups");
+  if (!container) return;
+
+  const groups = container.querySelectorAll(".word-row-group");
+  // 그룹이 하나도 없다면 renderWordGroups()가 이미 Empty State를 그려둔 상태이므로 손대지 않는다.
+  if (groups.length === 0) return;
+
+  let visibleCount = 0;
+  groups.forEach((group) => {
+    const titleEl = group.querySelector(".word-row-group__title");
+    const title = titleEl ? titleEl.textContent.trim() : "";
+    const matches = wordCategoryFilter === "전체 카테고리" || title === wordCategoryFilter;
+    group.hidden = !matches;
+    if (matches) visibleCount += 1;
+  });
+
+  // 선택한 카테고리에 해당하는 그룹이 하나도 없을 때만 기존 Empty State를 재사용해 덧붙인다.
+  let emptyEl = container.querySelector(".empty-state--category-filter");
+  if (visibleCount === 0) {
+    if (!emptyEl) {
+      const html = emptyStateHTML("search", "조건에 맞는 단어가 없어요", "다른 검색어나 필터를 사용해보세요")
+        .replace('class="empty-state"', 'class="empty-state empty-state--category-filter"');
+      container.insertAdjacentHTML("beforeend", html);
+    }
+  } else if (emptyEl) {
+    emptyEl.remove();
+  }
+}
+
+const wordCategorySelect = document.getElementById("word-category");
+if (wordCategorySelect) {
+  wordCategorySelect.addEventListener("change", () => {
+    wordCategoryFilter = wordCategorySelect.value;
+    applyCategoryFilter();
+  });
+}
+
 // style: "rows"(mywords.html 기본 목록) | "cards"(대시보드 단어 도감)
 let currentWordStyle = "rows";
 async function renderWordGroups(style = currentWordStyle) {
@@ -419,6 +466,11 @@ async function renderWordGroups(style = currentWordStyle) {
   container.innerHTML = Object.entries(groups)
     .map(([category, list]) => buildSection(category, list))
     .join("");
+
+  // 검색/정렬/즐겨찾기/페이지 변경으로 그룹이 새로 그려질 때마다 카테고리 필터
+  // (show/hide 상태)를 다시 적용해준다 — "cards" 스타일은 #word-category 자체가
+  // 없는 화면이라 wordCategoryFilter가 기본값("전체 카테고리")이면 아무 영향도 없다.
+  applyCategoryFilter();
 
   if (style === "rows") {
     renderPagination({
@@ -806,6 +858,7 @@ async function openCategoryDetail(category, cardEl) {
     wordSearchQuery = "";
     wordSortMode = null;
     wordFavoritesOnly = false;
+    wordCategoryFilter = "전체 카테고리";
   }
   const buildTemplate = CATEGORY_DETAIL_TEMPLATES[category];
   panel.innerHTML = buildTemplate ? await buildTemplate() : "";
