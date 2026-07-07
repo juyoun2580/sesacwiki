@@ -108,3 +108,27 @@ body {
 .skip-link:focus {
   top: 8px;
 }
+
+@media (max-width: 767px) {
+
+  html,
+  body {
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;   /* IE, Edge Legacy */
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;              /* Chrome, Safari */
+  }
+
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+}
