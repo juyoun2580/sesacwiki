@@ -263,6 +263,15 @@ document.addEventListener("DOMContentLoaded", () => {
     renderFavoritePreview();
     renderRecentPagesPreview();
     renderExamStatCard();
+
+    // "내 핸드북 보기"는 비로그인 상태면 마이페이지 대신 로그인 페이지로 보낸다.
+    // app.js의 initAuthGuardLinks()(AUTH_REQUIRED_PAGES)는 /pages/my/index.html 전체를
+    // 로그인 필수로 만들어버려 게스트 열람까지 막으므로, 이 버튼 하나만 별도로 가드한다.
+    document.getElementById("home-handbook-link")?.addEventListener("click", (e) => {
+      if (isLoggedIn()) return;
+      e.preventDefault();
+      location.href = "/pages/auth/login.html";
+    });
   });
   renderJobReadinessCard();
   renderStudyProgressCard();

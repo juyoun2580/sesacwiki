@@ -1190,6 +1190,7 @@
   padding: var(--space-40) var(--space-36);
   border: 1px solid var(--neutral-40);
   border-radius: var(--radius-lg);
+  background: var(--neutral-surface);
 }
 
 /* 점수 구간(quiz.js의 getScoreTier)에 맞춰 결과 카드 톤을 다르게 해 감정적 피드백을 강화한다 */

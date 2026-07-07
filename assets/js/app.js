@@ -43,14 +43,24 @@ function initToastTriggers() {
 
 // ── Mobile Hamburger Menu — 공통 Header의 .hamburger-btn이 .side-panel을 드로어로 토글 ──
 // side-panel이 없는 페이지(detail, quiz 등)에서는 버튼을 숨긴다.
+// 열림/닫힘은 이 파일 안의 closeSidePanel() 하나로만 처리한다 — 닫기(X) 버튼/ESC/Overlay(바깥
+// 클릭) 전부 같은 함수를 호출하므로 닫히는 방식이 항상 동일하게 유지된다.
 function initNavigation() {
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const sidePanel = document.querySelector('.side-panel');
 
   if (hamburgerBtn && sidePanel) {
+    // 페이지마다 다른 .side-panel 마크업(즐겨찾기/문서함/핸드북 등) 앞에 닫기(X) 버튼을
+    // 한 번만 주입한다 — 9개 페이지 HTML에 각각 추가하지 않고 기존 Icon System(icon--close)을
+    // 재사용해 여기 한 곳에서만 만든다. Desktop에서는 CSS(layout.css)가 숨긴다.
+    if (!sidePanel.querySelector('.side-panel__close')) {
+      sidePanel.insertAdjacentHTML('afterbegin', `<button type="button" class="side-panel__close" aria-label="메뉴 닫기"><span class="icon icon--close" aria-hidden="true"></span></button>`);
+    }
+
     const closeSidePanel = () => {
       sidePanel.classList.remove('side-panel--open');
       document.body.classList.remove('side-panel-open');
+      document.documentElement.classList.remove('side-panel-open');
       hamburgerBtn.classList.remove('hamburger-btn--active');
       hamburgerBtn.setAttribute('aria-expanded', 'false');
     };
@@ -58,10 +68,21 @@ function initNavigation() {
     hamburgerBtn.addEventListener('click', () => {
       const isOpen = sidePanel.classList.toggle('side-panel--open');
       document.body.classList.toggle('side-panel-open', isOpen);
+      document.documentElement.classList.toggle('side-panel-open', isOpen);
       hamburgerBtn.classList.toggle('hamburger-btn--active', isOpen);
       hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
     });
 
+    sidePanel.querySelector('.side-panel__close').addEventListener('click', closeSidePanel);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      if (!sidePanel.classList.contains('side-panel--open')) return;
+      closeSidePanel();
+    });
+
+    // Overlay(body.side-panel-open::after)는 실제 클릭 리스너를 가질 수 없는 pseudo-element라,
+    // 패널 바깥(오버레이 영역 포함) 클릭을 여기서 감지해 같은 closeSidePanel()을 호출한다.
     document.addEventListener('click', (e) => {
       if (!sidePanel.classList.contains('side-panel--open')) return;
       if (sidePanel.contains(e.target) || hamburgerBtn.contains(e.target)) return;

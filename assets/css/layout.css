@@ -226,7 +226,6 @@
   display: none;
 }
 
-
 .side-panel .section-title {
   margin-bottom: 0;
 }
@@ -253,12 +252,16 @@
    Tablet: 768px ~ 1199px / Mobile: ~767px
    ========================================================================== */
 
-/* Desktop 기본값: hamburger-btn/bottom-nav는 Mobile 미디어쿼리에서만 노출한다 */
+/* Desktop 기본값: hamburger-btn/bottom-nav/side-panel__close는 Mobile 미디어쿼리에서만 노출한다 */
 .hamburger-btn {
   display: none;
 }
 
 .bottom-nav {
+  display: none;
+}
+
+.side-panel__close {
   display: none;
 }
 
@@ -428,24 +431,53 @@
     padding: var(--space-20) var(--space-16) var(--space-32);
   }
 
-  /* side-panel: 기본 숨김 → hamburger로 열면 우측 드로어로 표시 */
+  /* side-panel: 기본 숨김 → hamburger로 열면 우측 드로어로 표시.
+     상단 padding을 늘려 아래 .side-panel__close(우측 상단 고정)와 페이지별 컨텐츠(즐겨찾기
+     제목 등)가 겹치지 않게 여유 공간을 둔다. */
   .side-panel {
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     max-height: none;
-    width: min(280px, 80vw);
+    width: 80vw;
     z-index: 300;
     transform: translateX(100%);
     transition: transform .25s ease;
     background: var(--neutral-surface);
-    padding: var(--space-20) var(--space-16);
+    padding: var(--space-68c) var(--space-16) var(--space-20);
   }
 
   .side-panel.side-panel--open {
     display: block;
     transform: translateX(0);
+  }
+
+  /* 닫기(X) 버튼 — app.js(initNavigation)가 .side-panel 진입 시 한 번만 주입한다 */
+  .side-panel__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: var(--space-16);
+    right: var(--space-16);
+    width: var(--space-38);
+  height: var(--space-38);
+    border: none;
+    border: 1.5px solid var(--neutral-40);
+    border-radius: var(--radius-round);
+    background: var(--neutral-5);
+    color: var(--neutral-700);
+    cursor: pointer;
+  }
+
+  .side-panel__close:hover {
+    background: var(--neutral-5);
+  }
+
+  .side-panel__close .icon {
+    width: var(--space-16);
+    height: var(--space-16);
   }
 
   body.side-panel-open::after {
@@ -454,5 +486,11 @@
     inset: 0;
     z-index: 250;
     background: rgb(0 0 0 / 40%);
+  }
+
+  /* Side Panel이 열려 있는 동안 배경(뒤 페이지) 스크롤을 막는다 — 닫히면 원래대로 복구 */
+  html.side-panel-open,
+  body.side-panel-open {
+    overflow: hidden;
   }
 }
