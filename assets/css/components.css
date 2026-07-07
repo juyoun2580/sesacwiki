@@ -320,6 +320,10 @@
   transition: all var(--transition-fast);
 }
 
+.page-home .hamburger-btn {
+    display: none !important;
+}
+
 .hamburger-btn:hover {
   background: var(--green-50);
   border-color: var(--green-300);
@@ -364,8 +368,13 @@
 .point-badge__icon {
   width: var(--space-24);
   height: var(--space-24);
-  border-radius: 50%;
+  border-radius: var(--radius-round);
   background: var(--neutral-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--warning);
 }
 
 /* 헤더 로그인 버튼: 어두운 필 스타일로 강조 */
@@ -421,9 +430,14 @@ body[data-auth="guest"] .auth-user-only {
   width: var(--space-32);
   height: var(--space-32);
   border-radius: 50%;
-  background: var(--hero-primary-gradient);
-  color: var(--neutral-surface);
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.user-chip__avatar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .user-chip__name {
@@ -1141,6 +1155,43 @@ input[type="checkbox"]:checked::after {
 
 .back-link:hover {
   color: var(--green-700);
+}
+
+/* ---------- Related Item (작은 링크형 Row) ----------
+   원래 위키 상세 "관련 문서"(wiki.css) 전용이었으나, Header 공용 검색 드롭다운도
+   같은 모양의 결과 행이 필요해 2개 화면 재사용 기준을 충족해 이곳으로 옮겼다. */
+.related-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  padding: var(--space-11) var(--space-14);
+  background: var(--neutral-surface);
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--neutral-50);
+  margin-bottom: var(--space-8);
+  cursor: pointer;
+  transition: all .15s;
+  width: 100%;
+  text-align: left;
+}
+
+.related-item:hover {
+  border-color: var(--green-600);
+  box-shadow: var(--sh-md);
+}
+
+.related-item__title {
+  font-size: var(--fs-13);
+  font-weight: var(--fw-bold);
+}
+
+.related-item__desc {
+  font-size: var(--fs-11);
+  color: var(--neutral-500);
+}
+
+.related-item__tag {
+  margin-left: auto;
 }
 
 /* ---------- Toast ---------- */

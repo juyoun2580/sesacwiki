@@ -36,6 +36,11 @@
   margin-bottom: var(--space-10);
 }
 
+.hey .streak-card__number,
+.hey .span{
+  font-size: var(--fs-12) !important;
+}
+
 .hero__title {
   font-size: var(--fs-30);
   font-weight: var(--fw-extrabold);
@@ -480,7 +485,7 @@
 }
 
 .h3g .card__body .section-title {
-  padding: var(--space-18) var(--space-18) var(--space-8);  
+  padding: var(--space-18) var(--space-18) var(--space-8);
   margin-bottom: 0;
 }
 
@@ -493,7 +498,7 @@
      empty 상태일 때 Empty State가 항상 위쪽에 붙어 보였다. */
   display: flex;
   flex-direction: column;
-  flex: 1;  
+  flex: 1;
 }
 
 .recent-list__item,
@@ -567,15 +572,15 @@
 .recent-list__link,
 .favorite-list__link {
   display: flex;
-    align-items: center;
-    gap: var(--space-8);
-    width: 100%; 
-    text-decoration: none;
-    color: inherit;
-    box-sizing: border-box;
+  align-items: center;
+  gap: var(--space-8);
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
 }
 
-.favorite-list__link .tag--sm{
+.favorite-list__link .tag--sm {
   padding: var(--space-1) var(--space-8);
   font-size: 11px;
 }
@@ -744,12 +749,26 @@
     gap: var(--space-16);
   }
 
+  .hero__title{
+    font-size: var(--fs-24);
+    word-break: keep-all;
+  }
+
+  .hero__subtitle{
+    font-size: var(--fs-13);
+  }
+
   .hero__actions {
     flex-wrap: wrap;
   }
 
+  .hero__actions .btn {
+    flex: 2;
+  }
+
   .hero__side {
     justify-content: center;
+    display: none;
   }
 
   .home-section-heading {
@@ -766,7 +785,23 @@
   }
 
   .rm-scroll {
-    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-columns: repeat(2, 1fr); */
+    display: flex;
+    gap: var(--space-16);
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .rm-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rm-scroll>* {
+    flex: 0 0 130px;
+    /* 카드 너비 */
   }
 
   .h3g {

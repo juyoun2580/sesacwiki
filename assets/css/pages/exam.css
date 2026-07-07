@@ -1275,3 +1275,9 @@
     opacity: 0;
   }
 }
+
+@media (max-width: 767px) {
+  .exam-sidebar-card{
+    display: none;
+  }
+}

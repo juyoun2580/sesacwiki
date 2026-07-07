@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/search-dropdown.css" />
   <link rel="stylesheet" href="/assets/css/pages/my.css" />
   <link rel="stylesheet" href="/assets/css/pages/mypage.css" />
   <link rel="stylesheet" href="/assets/css/modal.css" />
@@ -32,7 +33,9 @@
           </p>
 
           <div class="profile-card" id="profile-card">
-            <span class="profile-card__avatar" id="profile-avatar" aria-hidden="true"><span class="icon icon--leaf"></span></span>
+            <span class="profile-card__avatar" id="profile-avatar" aria-hidden="true">
+              <img src="/assets/img/profile-sample.png" alt="">
+            </span>
             <div class="profile-card__body">
               <div class="profile-card__name-row">
                 <p class="profile-card__name" id="profile-name">User Name</p>
@@ -125,6 +128,8 @@
   <script src="/assets/js/supabase-client.js" defer></script>
   <script src="/assets/js/auth.js" defer></script>
   <script src="/assets/js/api.js" defer></script>
+  <script src="/assets/js/components/profile.js" defer></script>
+  <script src="/assets/js/components/search-dropdown.js" defer></script>
   <script src="/assets/js/components/header.js" defer></script>
   <script src="/assets/js/components/nav.js" defer></script>
   <script src="/assets/js/app.js" defer></script>

@@ -102,11 +102,14 @@ function initPageAuthGuard() {
 initProgressBars();
 initToastTriggers();
 
-loadHeader()
+const headerReady = loadHeader()
   .then(() => loadNav())
   .then(() => {
     initNavigation();
     initAuth();
+    // Header 검색창(#global-search) + 드롭다운(assets/js/components/search-dropdown.js) 바인딩.
+    // Word 결과는 검색 시점마다 isLoggedIn()을 직접 확인하므로 authReady를 기다릴 필요는 없다.
+    if (typeof initGlobalSearch === 'function') initGlobalSearch();
   })
   .catch((err) => console.error("header/nav 로드 실패:", err));
 
@@ -115,4 +118,13 @@ loadHeader()
 window.authReady.then(() => {
   initAuthGuardLinks();
   initPageAuthGuard();
+});
+
+// Header 아바타(.user-chip__avatar)를 포함해, 현재 페이지에 있는 프로필 이미지 요소를
+// 전부 Supabase profiles.avatar_url 기준으로 맞춘다(assets/js/components/profile.js).
+// header DOM 주입(headerReady)과 로그인 상태 확정(authReady)이 서로 다른 타이밍에
+// 끝날 수 있어 둘 다 기다린 뒤에 실행해야 .user-chip__avatar를 놓치지 않는다.
+// 로그아웃 상태면 refreshProfileUI() 내부에서 기본 이미지로 떨어진다.
+Promise.all([headerReady, window.authReady]).then(() => {
+  if (typeof refreshProfileUI === 'function') refreshProfileUI();
 });

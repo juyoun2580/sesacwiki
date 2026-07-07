@@ -37,7 +37,7 @@
   width: auto;
 }
 
-.header .search-box{
+.header .search-box {
   flex: 1;
   width: 100%;
   min-width: 280px;
@@ -46,7 +46,7 @@
 }
 
 .header__right {
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: var(--space-12);
@@ -133,11 +133,11 @@
   -ms-overflow-style: none;
 }
 
-.sidebar::-webkit-scrollbar{
+.sidebar::-webkit-scrollbar {
   display: none;
 }
 
-.sidebar-wrap{
+.sidebar-wrap {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -160,7 +160,8 @@
 
 .sidebar__item {
   display: flex;
-  align-items: center;/* 필요 없으면 제거 */
+  align-items: center;
+  /* 필요 없으면 제거 */
   width: 100%;
   text-align: left;
   padding: var(--space-9) var(--space-12);
@@ -226,7 +227,7 @@
 }
 
 
-.side-panel .section-title{
+.side-panel .section-title {
   margin-bottom: 0;
 }
 
@@ -252,8 +253,12 @@
    Tablet: 768px ~ 1199px / Mobile: ~767px
    ========================================================================== */
 
-/* Desktop 기본값: hamburger-btn은 Mobile 미디어쿼리에서만 노출한다 */
+/* Desktop 기본값: hamburger-btn/bottom-nav는 Mobile 미디어쿼리에서만 노출한다 */
 .hamburger-btn {
+  display: none;
+}
+
+.bottom-nav {
   display: none;
 }
 
@@ -276,6 +281,7 @@
 
 /* ---------- Mobile: ~767px ---------- */
 @media (max-width: 767px) {
+
   /* header는 nav를 내부에 포함하므로, mobile에서는 2행으로 감싸(wrap) 1행에 로고/아이콘,
      2행에 nav를 배치한다. height를 auto로 풀어주는 만큼 shell/sidebar도 함께 보정한다. */
   .header {
@@ -303,26 +309,50 @@
     display: flex;
   }
 
+  /* 상단 Navigation은 Mobile에서 화면 하단 Bottom Navigation(.bottom-nav)이 대신한다 */
   .nav {
-    /* order + flex-basis:100%로 로고/아이콘 행 다음 줄로 강제 개행한다 */
-    order: 3;
-    flex-basis: 100%;
-    height: var(--space-40);
-    margin-top: var(--space-6);
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--neutral-40);
-    /* overflow-x만 지정하면 overflow-y가 초기값 visible 대신 auto로 강제 연산되어
-       (CSS Overflow 스펙) 세로 스크롤이 함께 생긴다. overflow-y를 명시적으로 hidden
-       처리해 가로 스크롤만 남기고, 세로 스크롤/스크롤바로 인한 높이 변화를 막는다. */
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
+    display: none;
   }
 
   .shell {
-    margin-top: calc(var(--space-68) + var(--space-48));
-    min-height: calc(100vh - var(--space-68) - var(--space-48));
+    margin-top: var(--space-68);
+    min-height: calc(100vh - var(--space-68));
     flex-direction: column;
+    /* 하단에 fixed로 고정되는 .bottom-nav 높이만큼 콘텐츠가 가려지지 않도록 여백을 둔다 */
+    padding-bottom: var(--space-68);
+  }
+
+  .bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 220;
+    background: var(--neutral-surface);
+    border-top: 1px solid var(--neutral-40);
+  }
+
+  .bottom-nav__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-11) 0;
+    font-size: var(--fs-10);
+    font-weight: var(--fw-semibold);
+    color: var(--neutral-300);
+  }
+
+  .bottom-nav__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .bottom-nav__item--active {
+    color: var(--green-600);
+    font-weight: var(--fw-bold);
   }
 
   .sidebar {
@@ -332,6 +362,45 @@
     top: auto;
     border-right: none;
     border-bottom: 1px solid var(--neutral-40);
+    padding: var(--space-16);
+  }
+
+  .sidebar .sidebar-wrap {
+    border: none;
+    padding: 0;
+    background: none;
+    flex-direction: row;
+    display: flex;
+    gap: var(--space-8);
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: var(--space-4);
+
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .sidebar .sidebar-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar .sidebar-wrap .sidebar__label {
+    display: none;
+  }
+
+  .sidebar .sidebar-wrap .sidebar__item {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
+    margin-bottom: 0;
+    background: var(--neutral-surface);
+    border-radius: var(--radius-round);
+  }
+
+  .sidebar .sidebar-wrap .sidebar__item--active {
+    background: var(--green-50);
   }
 
   .page__content {
@@ -342,13 +411,15 @@
   .side-panel {
     position: fixed;
     top: 0;
+    bottom: 0;
     right: 0;
-    height: 100vh;
+    max-height: none;
     width: min(280px, 80vw);
     z-index: 300;
     transform: translateX(100%);
     transition: transform .25s ease;
-    box-shadow: var(--shadow-lg);
+    background: var(--neutral-surface);
+    padding: var(--space-20) var(--space-16);
   }
 
   .side-panel.side-panel--open {

@@ -365,40 +365,8 @@
   margin: var(--space-24) 0 var(--space-10);
 }
 
-.related-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-10);
-  padding: var(--space-11) var(--space-14);
-  background: var(--neutral-surface);
-  border-radius: var(--radius-xs);
-  border: 1px solid var(--neutral-50);
-  margin-bottom: var(--space-8);
-  cursor: pointer;
-  transition: all .15s;
-  /* box-shadow: var(--sh-sm); */
-  width: 100%;
-  text-align: left;
-}
-
-.related-item:hover {
-  border-color: var(--green-600);
-  box-shadow: var(--sh-md);
-}
-
-.related-item__title {
-  font-size: var(--fs-13);
-  font-weight: var(--fw-bold);
-}
-
-.related-item__desc {
-  font-size: var(--fs-11);
-  color: var(--neutral-500);
-}
-
-.related-item__tag {
-  margin-left: auto;
-}
+/* .related-item(+ __title/__desc/__tag)은 2개 이상 화면(위키 관련 문서, Header 공용 검색
+   드롭다운)에서 재사용되어 components.css로 옮겼다 — 값 변경 없음, 정의는 그쪽 참고. */
 
 /* ---------- Save box (아티클 우측 패널, aside.side-panel 안에 위치) ---------- */
 
@@ -654,4 +622,61 @@
 
 .highlight-toolbar__btn--word:hover {
   background: var(--neutral-700);
+}
+
+/* ==========================================================================
+   Responsive — Mobile (~767px), layout.css의 Desktop First 관례를 그대로 따른다.
+   ========================================================================== */
+
+/* ---------- Wiki Row (Mobile: Row → Card) ----------
+   legacy 참고 시안 반영. .wiki-row/.wiki-row__icon-box/.wiki-row__body/.wiki-row__meta는
+   검색 결과·최근 본 문서·즐겨찾기·관련 문서 등 앞으로도 여러 곳에서 재사용될 컴포넌트라
+   .wiki-row--mobile 같은 별도 클래스를 새로 만들지 않고, 같은 .wiki-row를 미디어쿼리로만
+   반응형 처리한다 — 컴포넌트는 하나로 유지하고 breakpoint별 모양만 CSS가 바꾼다.
+   HTML/JS 구조(icon-box → body → meta 3형제, meta 안의 tag/tag/percent/favorite-star)는
+   전혀 바꾸지 않았다 — favorite-star만 position:absolute로 카드 우상단에 올려
+   1행(아이콘+제목+설명+즐겨찾기)처럼 보이게 하고, meta의 나머지(태그 2개 + 진행률)는
+   그대로 2행으로 내려온다. */
+@media (max-width: 767px) {
+  .wiki-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-12);
+    row-gap: var(--space-12);
+    align-items: start;
+    padding: var(--space-16);
+  }
+
+  .wiki-row__icon-box {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .wiki-row__body {
+    grid-column: 2;
+    grid-row: 1;
+    /* 절대 위치인 즐겨찾기 별과 겹치지 않도록 제목/설명에 오른쪽 여백을 준다 */
+    padding-right: var(--space-28);
+  }
+
+  .wiki-row__meta {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    padding-top: var(--space-12);
+    border-top: 1px solid var(--neutral-30);
+  }
+
+  /* meta 안에서 즐겨찾기 별만 꺼내 카드 우상단(1행)에 배치한다 — DOM은 그대로 meta의
+     자식이라 클릭 이벤트(wiki.js의 buildWikiFavoriteStar)는 손댈 필요가 없다. */
+  .wiki-row__meta .favorite-star {
+    position: absolute;
+    top: var(--space-16);
+    right: var(--space-16);
+  }
+
+  /* 진행률만 margin-left:auto로 오른쪽 끝에 붙인다(태그 2개는 기존처럼 왼쪽에 붙어 있는다) */
+  .wiki-row__percent {
+    margin-left: auto;
+  }
 }

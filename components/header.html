@@ -14,14 +14,19 @@
   <div class="search-box">
     <span class="icon icon--search search-box__icon" aria-hidden="true"></span>
     <label class="sr-only" for="global-search">검색</label>
-    <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!" />
+    <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!" autocomplete="off" />
+    <div class="search-dropdown" id="global-search-dropdown" hidden>
+      <div id="global-search-results">
+        <p class="search-dropdown__hint">검색어를 입력하세요</p>
+      </div>
+    </div>
   </div>
   <button type="button" class="notification-btn" aria-label="알림">
     <span class="icon icon--bell notification-btn__icon" aria-hidden="true"></span>
     <span class="notification-btn__dot"></span>
   </button>
   <p class="point-badge">
-    <span class="point-badge__icon" aria-hidden="true"></span>0P
+    <span class="point-badge__icon" aria-hidden="true"><span class="icon icon--star" aria-hidden="true"></span></span>0P
   </p>
   <button type="button" class="btn auth-guest-only">
     로그인
@@ -30,7 +35,7 @@
     <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false"
       aria-controls="user-menu-dropdown">
       <span class="user-chip__avatar" aria-hidden="true">
-        <span class="icon icon--leaf"></span>
+        <img src="/assets/img/profile-sample.png" alt="">
       </span>
       <span class="user-chip__name">김새싹</span>
       <span class="user-chip__level">Lv.1 새싹</span>

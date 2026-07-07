@@ -11,10 +11,11 @@
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/search-dropdown.css" />
   <link rel="stylesheet" href="/assets/css/pages/home.css" />
 </head>
 
-<body>
+<body class="page-home">
   <a class="skip-link" href="#main-content">본문 바로가기</a>
 
   <header class="header" id="header-mount"></header>
@@ -25,7 +26,7 @@
         <div class="page__content">
           <section class="hero">
             <div class="hero__content">
-              <span class="hey">🔥 7일 연속 학습 중 · 최고 12일</span>
+              <span class="hey">🔥 <span class="streak-card__number">7</span>일 연속 학습 중 · 최고 <span>12</span>일</span>
               <h1 class="hero__title">오늘도 새싹이 자라는 중이에요</h1>
               <p class="hero__subtitle">작은 새싹이 나무가 되듯, 오늘의 공부가 내일의 내가 됩니다.</p>
               <div class="hero__actions">
@@ -312,6 +313,8 @@
   <script src="/assets/js/supabase-client.js" defer></script>
   <script src="/assets/js/auth.js" defer></script>
   <script src="/assets/js/api.js" defer></script>
+  <script src="/assets/js/components/profile.js" defer></script>
+  <script src="/assets/js/components/search-dropdown.js" defer></script>
   <script src="/assets/js/components/header.js" defer></script>
   <script src="/assets/js/components/nav.js" defer></script>
   <script src="/assets/js/app.js" defer></script>

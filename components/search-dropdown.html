@@ -1,0 +1,29 @@
+<!--
+  Search Dropdown — 마크업 참고용 템플릿
+
+  주의: 이 파일 자체는 header.html/nav.html/word-modal.html과 달리 fetch로 마운트되지
+  않는다. toolbar.html/pagination.html과 같은 성격의 "문서 전용 템플릿"이다 — 다만
+  저 둘은 페이지마다 컨테이너를 하나씩 새로 두는 반면, Search Dropdown은 Header 안에
+  단 하나만 존재하고 이미 components/header.html 안에 아래와 동일한 마크업이 실제로
+  들어있다(즉 이 파일을 따로 fetch할 필요가 없다 — header.html이 곧 이 컴포넌트의 마운트 지점).
+
+  <link rel="stylesheet" href="/assets/css/search-dropdown.css">
+  <script src="/assets/js/components/search-dropdown.js" defer></script>
+
+  결과 행(.related-item)과 "전체 결과 보기" 링크(.section-title__link), 구분선(.divider)은
+  components.css의 기존 컴포넌트를 그대로 재사용한다 — 이 컴포넌트 전용 클래스는
+  .search-dropdown 뼈대뿐이다.
+
+  사용 예 (app.js, loadHeader() 완료 후 1회):
+  initGlobalSearch();
+-->
+<div class="search-box">
+  <span class="icon icon--search search-box__icon" aria-hidden="true"></span>
+  <label class="sr-only" for="global-search">검색</label>
+  <input type="text" id="global-search" class="search-box__input" placeholder="궁금한 내용을 검색해보세요!" autocomplete="off">
+  <div class="search-dropdown" id="global-search-dropdown" hidden>
+    <div id="global-search-results">
+      <p class="search-dropdown__hint">검색어를 입력하세요</p>
+    </div>
+  </div>
+</div>

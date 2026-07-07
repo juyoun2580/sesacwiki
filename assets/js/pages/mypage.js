@@ -15,11 +15,11 @@ function safeIsLoggedIn() {
 }
 
 // ── 프로필에 표시할 이름 결정: 수정한 이름 > 가입/로그인 사용자 이름 > GUEST ──
+// loadProfile()(assets/js/components/profile.js)로 가져오면 같은 페이지 안에서
+// 여러 번 호출해도 api.getProfile()을 중복 요청하지 않는다.
 async function getDisplayName() {
-  if (safeIsLoggedIn()) {
-    const profile = await api.getProfile();
-    if (profile.name) return profile.name;
-  }
+  const profile = await loadProfile();
+  if (profile && profile.name) return profile.name;
 
   const user = typeof getCurrentUser === "function" ? getCurrentUser() : null;
   if (user && user.name) return user.name;
@@ -28,10 +28,8 @@ async function getDisplayName() {
 }
 
 async function getDisplayUsername() {
-  if (safeIsLoggedIn()) {
-    const profile = await api.getProfile();
-    if (profile.username) return profile.username;
-  }
+  const profile = await loadProfile();
+  if (profile && profile.username) return profile.username;
 
   const user = typeof getCurrentUser === "function" ? getCurrentUser() : null;
   if (user && user.email) return user.email.split("@")[0];
@@ -40,26 +38,22 @@ async function getDisplayUsername() {
 }
 
 // ── 대시보드: 가입/로그인 이름 + 수정한 프로필 내역을 화면에 즉시 반영 ──
+// 아바타(#profile-avatar)는 app.js의 authReady 부트스트랩이 refreshProfileUI()로
+// 이미 처리한다(Header/MyPage/Edit 공용) — 여기서 따로 다루지 않는다.
 async function applyProfileToDashboard() {
   const nameEl = document.getElementById("profile-name");
   const userEl = document.getElementById("profile-username");
-  const avatarEl = document.getElementById("profile-avatar");
 
   if (nameEl) nameEl.textContent = await getDisplayName();
   if (userEl) userEl.textContent = "@" + (await getDisplayUsername());
-
-  if (safeIsLoggedIn()) {
-    const p = await api.getProfile();
-    if (avatarEl && p.avatarUrl) {
-      avatarEl.innerHTML = `<img src="${p.avatarUrl}" alt="프로필 사진">`;
-    }
-  }
 }
 
 // ── 프로필 수정: 저장된 값이 있으면 폼 기본값 위에 덮어써서 프리필 ──
+// 아바타 미리보기(#avatar-preview)는 refreshProfileUI()가 처리하므로 여기서는
+// 이름/이메일 같은 텍스트 필드만 채운다.
 async function prefillEditForm() {
-  if (!safeIsLoggedIn()) return;
-  const p = await api.getProfile();
+  const p = await loadProfile();
+  if (!p) return;
 
   const map = {
     "acc-name": p.name,
@@ -70,11 +64,6 @@ async function prefillEditForm() {
     const el = document.getElementById(id);
     if (el) el.value = value;
   });
-
-  const avatarPreview = document.getElementById("avatar-preview");
-  if (avatarPreview && p.avatarUrl) {
-    avatarPreview.innerHTML = `<img src="${p.avatarUrl}" alt="프로필 사진 미리보기">`;
-  }
 }
 
 // ── 계정 정보 저장 — 닉네임(profiles), 이메일·비밀번호(Supabase Auth 계정)를 한 폼에서 함께 처리한다 ──
@@ -122,21 +111,20 @@ if (accountForm) {
   });
 }
 
-// ── Profile 아바타 업로드 (FileReader로 미리보기 + Supabase 저장) ──
+// ── Profile 아바타 업로드 ──
+// 파일 선택 시에는 아직 저장 전이라 setProfileAvatar()로 #avatar-preview만 미리 보여주고,
+// 실제 저장(FileReader → Supabase → Header/MyPage/Edit 전체 갱신)은 updateProfileAvatar()
+// (assets/js/components/profile.js)가 폼 제출 시점에 한 번에 처리한다.
 const avatarInput = document.getElementById("avatar-input");
 const avatarPreview = document.getElementById("avatar-preview");
-let pendingAvatarDataUrl = null;
 
 if (avatarInput) {
   avatarInput.addEventListener("change", () => {
     const file = avatarInput.files && avatarInput.files[0];
-    if (!file) return;
+    if (!file || !avatarPreview) return;
     const reader = new FileReader();
     reader.onload = () => {
-      pendingAvatarDataUrl = reader.result;
-      if (avatarPreview) {
-        avatarPreview.innerHTML = `<img src="${pendingAvatarDataUrl}" alt="프로필 사진 미리보기">`;
-      }
+      setProfileAvatar(avatarPreview, { avatarUrl: reader.result });
     };
     reader.readAsDataURL(file);
   });
@@ -146,12 +134,13 @@ const avatarForm = document.getElementById("avatar-form");
 if (avatarForm) {
   avatarForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (!pendingAvatarDataUrl) {
+    const file = avatarInput?.files?.[0];
+    if (!file) {
       toast("업로드할 사진을 먼저 선택해주세요");
       return;
     }
     try {
-      await api.saveProfile({ avatarUrl: pendingAvatarDataUrl });
+      await updateProfileAvatar(file);
       toast("프로필 사진이 저장됐어요!");
     } catch (err) {
       toast(err.message || "저장에 실패했어요. 다시 시도해주세요");
@@ -177,6 +166,7 @@ if (deleteConfirmCheckbox && deleteAccountBtn) {
       await api.saveProfile({
         name: "", username: "", githubUsername: "", language: "", avatarUrl: "", isMarketingAgreed: false,
       });
+      await refreshProfileUI({ force: true });
       toast("계정 데이터가 삭제됐어요. (프로필 정보만 초기화됩니다)");
       setTimeout(() => {
         location.href = "/pages/auth/login.html";

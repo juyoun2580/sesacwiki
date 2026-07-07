@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Global Search Dropdown — Header의 #global-search 아래에 뜨는 공용 컴포넌트.
+   결과 행 자체(.related-item)와 "전체 결과 보기" 링크(.section-title__link),
+   구분선(.divider)은 components.css의 기존 컴포넌트를 그대로 재사용하고,
+   여기서는 드롭다운 패널 레이아웃만 정의한다 — .user-menu__dropdown(헤더 유저 메뉴)과
+   같은 계열의 뼈대(테두리/radius/shadow)를 그대로 따른다.
+   ========================================================================== */
+
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-8));
+  left: 0;
+  right: 0;
+  z-index: 210;
+  background: var(--neutral-surface);
+  border: 1px solid var(--neutral-40);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-12);
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.search-dropdown[hidden] {
+  display: none;
+}
+
+.search-dropdown__section + .search-dropdown__section {
+  margin-top: var(--space-10);
+}
+
+.search-dropdown__section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-extrabold);
+  color: var(--neutral-500);
+  margin-bottom: var(--space-8);
+}
+
+.search-dropdown__section-title .icon {
+  width: 14px;
+  height: 14px;
+  color: var(--green-600);
+}
+
+.search-dropdown__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.search-dropdown__list .related-item {
+  margin-bottom: 0;
+}
+
+.search-dropdown__hint,
+.search-dropdown__empty {
+  padding: var(--space-16) var(--space-8);
+  text-align: center;
+  font-size: var(--fs-13);
+  color: var(--neutral-300);
+}
+
+.search-dropdown__footer {
+  margin-top: var(--space-10);
+  padding-top: var(--space-10);
+  border-top: 1px solid var(--neutral-40);
+  text-align: center;
+}
