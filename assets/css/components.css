@@ -324,6 +324,10 @@
     display: none !important;
 }
 
+.page-my .hamburger-btn {
+    display: none !important;
+}
+
 .hamburger-btn:hover {
   background: var(--green-50);
   border-color: var(--green-300);

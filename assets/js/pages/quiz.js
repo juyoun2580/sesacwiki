@@ -146,6 +146,7 @@ function showQuizPhase(phase) {
   if (playEl) playEl.hidden = phase !== 'play';
   if (resultEl) resultEl.hidden = phase !== 'result';
   if (endBtn) endBtn.hidden = phase !== 'play'; // 설정/결과 화면에서는 헤더의 중단 버튼을 숨긴다 (결과 화면 버튼과 중복 방지)
+  document.querySelector('.quiz-header')?.classList.toggle('quiz-header--playing', phase === 'play');
 }
 
 // ── 1단계: 응시 설정 (난이도 · 문항 수) ──

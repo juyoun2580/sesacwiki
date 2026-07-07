@@ -111,13 +111,16 @@
   gap: var(--space-3);
 }
 
+.exam-row__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
 .exam-row__title {
   font-size: var(--fs-16);
   font-weight: var(--fw-extrabold);
   color: var(--neutral-900);
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
 }
 
 .exam-row__desc {
@@ -499,13 +502,20 @@
 /* ---------- Quiz header ---------- */
 .quiz-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-14);
+  flex-direction: column;
+  gap: var(--space-10);
+  margin-bottom: var(--space-20);
 }
 
-.quiz-header__back {
-  margin-bottom: var(--space-10);
+.quiz-header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quiz-header__back{
+  margin-bottom: 0;
 }
 
 .quiz-header__title {
@@ -592,7 +602,8 @@
   font-size: var(--fs-16);
   font-weight: var(--fw-extrabold);
   color: var(--neutral-900);
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-20);
+  gap: var(--space-5);
 }
 
 .quiz-info-card__title .icon {
@@ -850,7 +861,7 @@
   color: var(--neutral-800);
 }
 
-.choice--selected .choice__text{
+.choice--selected .choice__text {
   color: var(--neutral-900);
   font-weight: var(--fw-bold);
 }
@@ -1186,8 +1197,8 @@
   background: var(--neutral-surface);
 }
 
-.quiz-result__card--low {  
-    background: var(--neutral-surface);
+.quiz-result__card--low {
+  background: var(--neutral-surface);
 }
 
 .quiz-result__emoji {
@@ -1277,7 +1288,285 @@
 }
 
 @media (max-width: 767px) {
-  .exam-sidebar-card{
+  .exam-sidebar-card {
     display: none;
+  }
+
+  /* ---------- Exam row → Card 형태 (모바일) ----------
+     Desktop 레이아웃(icon-box/body/aside 가로 배치)은 그대로 두고, 모바일에서만
+     .exam-row__body・.exam-row__aside를 display:contents로 풀어 그 자식들을
+     .exam-row의 flex item으로 승격시킨 뒤 order/flex-basis로 재배치한다.
+     → HTML/JS는 그대로, 시안(아이콘+제목/설명 → meta+응시자 수 → Full Width 버튼)만 구현. */
+  .exam-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-12);
+    flex-wrap: wrap;
+  }
+
+  .exam-row__icon-box {
+    flex-shrink: 0;
+  }
+
+  .exam-row__body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .exam-row__aside {
+    width: 100%;
+    margin-top: var(--space-12);
+  }
+
+  .exam-row__title-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .exam-row__title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .exam-row__title-wrap .tag {
+    flex-shrink: 0;
+  }
+
+  .exam-row__desc {
+    order: 2;
+    flex: 0 0 calc(100% - var(--space-44) - var(--space-12));
+    margin-left: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .exam-row__meta {
+    width: 100%;
+    margin-top: var(--space-8);
+    order: 3;
+
+    width: calc(100% + 52px);
+    margin-left: -52px;
+  }
+
+  .exam-row__count {
+    order: 4;
+    display: none;
+  }
+
+  .exam-row__count::before {
+    content: '·';
+  }
+
+  .exam-row__count .icon {
+    display: none;
+  }
+
+  .exam-row__aside .btn {
+    width: 100%;
+  }
+
+  .quiz-header__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .quiz-header__top .btn--outline-danger {
+    padding: var(--space-4) var(--space-10);
+    border-radius: var(--radius-round);
+  }
+
+  .quiz-header__title .tag {
+    flex-shrink: 0;
+  }
+
+  .quiz-header__desc {
+    word-break: keep-all;
+  }
+
+
+  /* ---------- Quiz Header — 응시 중(#quiz-play) 간소화 ----------
+     quiz.js의 showQuizPhase()가 phase==='play'일 때 .quiz-header에
+     quiz-header--playing modifier를 토글한다(quiz-setup 상태의 기존 Header는 그대로).
+     .quiz-header__top(뒤로가기·종료 버튼)과 .quiz-header__content(제목·설명·메타)를
+     display:contents로 풀어 그 자식들을 .quiz-header의 flex item으로 승격시킨 뒤
+     order로 [뒤로가기 아이콘 / 제목(#quiz-title-text, 말줄임) / 종료 버튼] 한 줄로
+     재배치한다. #quiz-title-text는 이동/복제 없이 원래 자리(h1.quiz-header__title 안)에
+     그대로 있고, JS(quiz.js의 setText('quiz-title-text', ...))도 변경하지 않는다. */
+  .quiz-header--playing {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .quiz-header--playing .quiz-header__top,
+  .quiz-header--playing .quiz-header__content {
+    display: contents;
+  }
+
+  .quiz-header--playing .quiz-header__back {
+    order: 1;
+  }
+
+  .quiz-header--playing .quiz-header__title {
+    order: 2;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .quiz-header--playing #quiz-title-text {
+    flex: 1;
+    min-width: 0;
+    font-size: var(--fs-15);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .quiz-header--playing #quiz-end-btn {
+    order: 3;
+    flex-shrink: 0;
+  }
+
+  .quiz-header--playing .quiz-header__back-text,
+  .quiz-header--playing .quiz-header__title .tag,
+  .quiz-header--playing .quiz-header__desc,
+  .quiz-header--playing .quiz-header__meta {
+    display: none;
+  }
+
+
+
+  /* ---------- Quiz 응시 화면(quiz.html) → 모바일 전용 UX ----------
+     Desktop의 3컬럼(.quiz-layout__aside/.quiz-layout__main/.quiz-layout__aside-right)은
+     그대로 두고, 모바일에서만 .quiz-layout을 세로 flex로 바꿔 재구성한다.
+     - 왼쪽 aside(시험 정보/시험 팁)는 완전히 숨긴다.
+     - 오른쪽 aside는 display:contents로 풀어 그 안의 문제 목록/시험 진행 정보/메모장
+       패널을 .quiz-layout의 flex item으로 승격시킨 뒤, 문제 목록(question-grid)만
+       order:1로 맨 위에 두고 나머지 두 패널은 숨긴다(quiz.html에 구분용 class만 추가:
+       quiz-question-grid-panel / quiz-timer-panel — 기존 memo-panel/memo-panel--timer는 유지).
+     - quiz-main-card를 담은 .quiz-layout__main은 order:2. */
+  .quiz-layout {
+    flex-direction: column;
+    gap: var(--space-14);
+  }
+
+  .quiz-layout__aside:not(.quiz-layout__aside-right) {
+    display: none;
+  }
+
+  .quiz-layout__aside-right {
+    display: contents;
+  }
+
+  .quiz-layout__main {
+    order: 2;
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  /* 문제 목록 카드는 숨기고 question-grid(번호)만 가로 스크롤 형태로 최상단에 남긴다 */
+  .quiz-question-grid-panel {
+    order: 1;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .quiz-question-grid-panel .quiz-info-card__title,
+  .quiz-question-grid-panel .question-grid-legend {
+    display: none;
+  }
+
+  .question-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: var(--space-8);
+    margin-bottom: 0;
+    padding-bottom: var(--space-2);
+  }
+
+  .question-grid__num {
+    flex: 0 0 auto;
+    width: var(--space-36);
+    height: var(--space-36);
+  }
+
+  /* 시험 진행 정보(Timer 패널)·메모장은 숨긴다 — Timer 자체 로직(quiz.js)은 화면에
+     보이지 않아도 그대로 동작한다(#timer 텍스트 갱신은 계속 일어남). */
+  .quiz-timer-panel,
+  .memo-panel:not(.memo-panel--timer) {
+    display: none;
+  }
+
+  /* ---------- Question Card(quiz-main-card) ---------- */
+  .quiz-main-card {
+    padding: var(--space-20);
+  }
+
+  .quiz-progress {
+    gap: var(--space-8);
+    margin-bottom: var(--space-14);
+  }
+
+  #quiz-progress-text,
+  #quiz-progress-percent {
+    font-size: var(--fs-12);
+  }
+
+  .quiz-progress .progress-bar {
+    height: 6px;
+  }
+
+  /* Question Header: 상단에 태그만, 그 아래 줄에 Q번호+문제 */
+  .quiz-question__head {
+    flex-wrap: wrap;
+    margin-bottom: var(--space-14);
+  }
+
+  .quiz-question__badges {
+    order: 1;
+    flex: 0 0 100%;
+  }
+
+  .quiz-question__text {
+    order: 2;
+    flex: 0 0 100%;
+  }
+
+  /* Choice: 기존 컴포넌트 그대로, 간격/padding/radius만 조정 */
+  .choice {
+    gap: var(--space-12);
+    padding: var(--space-14) var(--space-16);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-8);
+  }
+
+  /* "나중에 다시 풀기"는 Question Card 하단에 전체 폭 버튼으로, 이전/다음 버튼은
+     그 아래 줄에 그대로 유지한다(기능/이벤트 변경 없음, 위치만 세로 스택으로 조정). */
+  .quiz-question__footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-10);
+    margin-top: var(--space-16);
+  }
+
+  .quiz-question__footer .check-chip {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .quiz-question__actions {
+    justify-content: flex-end;
   }
 }

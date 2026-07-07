@@ -322,12 +322,14 @@ function buildWordRowSection(category, list) {
               ${w.example ? `<div class="word-row__example">${escapeHtml(w.example)}</div>` : ""}
             </div>
             <span class="tag tag--${w.categoryColor}">${w.category}</span>
-            <span class="word-row__date">${w.date}</span>
-            <div class="word-row__actions">
-              <button type="button" class="favorite-star favorite-star--btn${w.favorite ? " favorite-star--on" : ""}"
-                data-action="toggle-favorite" aria-pressed="${!!w.favorite}" aria-label="즐겨찾기 토글"><span class="icon ${w.favorite ? "icon--star-filled" : "icon--star"}" aria-hidden="true"></span></button>
-              <button type="button" class="btn--icon word-row__action--edit" data-action="edit-word" aria-label="단어 수정"><span class="icon icon--edit" aria-hidden="true"></span></button>
-              <button type="button" class="btn--icon word-row__action--delete" data-action="delete-word" aria-label="단어 삭제"><span class="icon icon--close" aria-hidden="true"></span></button>
+            <div class="word-row__footer">
+              <span class="word-row__date">${w.date}</span>
+              <div class="word-row__actions">
+                <button type="button" class="favorite-star favorite-star--btn${w.favorite ? " favorite-star--on" : ""}"
+                  data-action="toggle-favorite" aria-pressed="${!!w.favorite}" aria-label="즐겨찾기 토글"><span class="icon ${w.favorite ? "icon--star-filled" : "icon--star"}" aria-hidden="true"></span></button>
+                <button type="button" class="btn--icon word-row__action--edit" data-action="edit-word" aria-label="단어 수정"><span class="icon icon--edit" aria-hidden="true"></span></button>
+                <button type="button" class="btn--icon word-row__action--delete" data-action="delete-word" aria-label="단어 삭제"><span class="icon icon--close" aria-hidden="true"></span></button>
+              </div>
             </div>
           </li>`).join("")}
       </ul>

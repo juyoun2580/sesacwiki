@@ -26,9 +26,14 @@
       <div class="shell">
         <div class="page__content">
           <div class="quiz-header">
-            <div class="quiz-header__content">
-              <a class="back-link quiz-header__back" href="/pages/exam/index.html"><span
-                  class="icon icon--chevron-left"></span> 모의고사 목록으로</a>
+            <div class="quiz-header__top">
+              <a class="back-link quiz-header__back" href="/pages/exam/index.html">
+                <span class="icon icon--chevron-left"></span>
+                <span class="quiz-header__back-text"> 모의고사 목록으로</span>
+              </a>
+              <button type="button" class="btn btn--outline-danger" id="quiz-end-btn">응시 중단하기</button>
+            </div>
+            <div class="quiz-header__content">              
               <h1 class="quiz-header__title">
                 <span id="quiz-title-text">모의고사</span>
                 <span id="quiz-level-tag" class="tag tag--green600"></span>
@@ -36,7 +41,7 @@
               <p class="quiz-header__desc" id="quiz-desc">문제를 불러오는 중이에요…</p>
               <div class="quiz-header__meta" id="quiz-meta"></div>
             </div>
-            <button type="button" class="btn btn--outline-danger" id="quiz-end-btn">응시 중단하기</button>
+            
           </div>
 
           <div class="quiz-setup" id="quiz-setup">
@@ -128,7 +133,7 @@
             </div>
 
             <aside class="quiz-layout__aside quiz-layout__aside-right" aria-label="문제 목록 및 메모">
-              <div class="memo-panel memo-panel--timer">
+              <div class="memo-panel memo-panel--timer quiz-question-grid-panel">
                 <p class="quiz-info-card__title">문제 목록</p>
                 <ul class="question-grid-legend">
                   <li><span class="question-grid-legend__swatch question-grid-legend__swatch--done"
@@ -143,7 +148,7 @@
                 <div class="question-grid" id="quiz-question-grid"></div>
               </div>
 
-              <div class="memo-panel memo-panel--timer">
+              <div class="memo-panel memo-panel--timer quiz-timer-panel">
                 <p class="quiz-info-card__title">시험 진행 정보</p>
                 <div class="time-ring">
                   <svg viewBox="0 0 80 80" role="img" aria-label="남은 시간">

@@ -157,7 +157,10 @@ function renderExamList(list) {
       <li data-category="${escapeHtml(exam.category)}"><a class="exam-row" href="/pages/exam/quiz.html?id=${escapeHtml(exam.id)}">
           <span class="exam-row__icon-box exam-row__icon-box--${categoryColor}" aria-hidden="true"><span class="icon icon--${categoryIcon}"></span></span>
           <span class="exam-row__body">
-            <span class="exam-row__title">${escapeHtml(exam.title)} ${badges}</span>
+            <span class="exam-row__title-wrap">
+              <span class="exam-row__title">${escapeHtml(exam.title)}</span>
+              ${badges}
+            </span>
             <span class="exam-row__desc">${escapeHtml(exam.description)}</span>
             <span class="exam-row__meta"><span>${escapeHtml(exam.level)}</span><span>·</span><span>${exam.questionCount}문제</span><span>·</span><span>예상 ${exam.estimatedMinutes}분</span><span>·</span><span>평균 ${exam.avgScore}점</span></span>
           </span>

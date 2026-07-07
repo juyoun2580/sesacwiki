@@ -291,6 +291,14 @@
   flex-shrink: 0;
 }
 
+/* 모바일 Card 레이아웃(하단 767px 미디어쿼리)에서만 날짜+액션을 한 행으로 묶어
+   border-top 위 배치를 만드는 wrapper. Desktop에서는 display:contents로 풀어
+   .word-row__date/.word-row__actions가 그대로 .word-row의 flex item으로 남아
+   기존 한 줄 레이아웃과 100% 동일하게 유지된다. */
+.word-row__footer {
+  display: contents;
+}
+
 .word-row__date {
   font-size: var(--fs-13);
   color: var(--neutral-200);
@@ -887,4 +895,38 @@
 
 .settings-danger .settings-section__title-main {
   color: var(--coral-600);
+}
+
+@media (max-width: 767px) {
+  /* ---------- Word row → Card 형태 (모바일) ----------
+     Desktop 레이아웃(word-row가 body/tag/date/actions를 한 줄에 가로 배치)은 그대로 두고,
+     모바일에서만 상단(단어/뜻 + 카테고리 Tag)·하단(등록일 + Action, border-top 구분) 2행 카드로 바꾼다.
+     HTML은 word-row__footer wrapper 하나만 최소 추가(mypage.js buildWordRowSection). */
+  .word-row {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    row-gap: var(--space-10);
+    padding: var(--space-14) var(--space-16);
+  }
+
+  .word-row .tag {
+    order: 1;
+    align-self: flex-start;
+  }
+
+  .word-row__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 100%;
+    order: 2;
+    margin-top: var(--space-2);
+    padding-top: var(--space-12);
+    border-top: 1px solid var(--neutral-40);
+  }
+
+  .word-row__date {
+    width: auto;
+    text-align: left;
+  }
 }

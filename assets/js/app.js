@@ -127,4 +127,7 @@ window.authReady.then(() => {
 // 로그아웃 상태면 refreshProfileUI() 내부에서 기본 이미지로 떨어진다.
 Promise.all([headerReady, window.authReady]).then(() => {
   if (typeof refreshProfileUI === 'function') refreshProfileUI();
+  // headerReady(#bottom-nav-auth-slot 마운트)와 authReady(currentSession 확정)가 서로 다른
+  // 타이밍에 끝날 수 있어, updateHeader()가 슬롯 마운트 전에 먼저 불렸을 경우를 대비해 한 번 더 갱신한다.
+  if (typeof renderBottomNavAuthSlot === 'function') renderBottomNavAuthSlot();
 });

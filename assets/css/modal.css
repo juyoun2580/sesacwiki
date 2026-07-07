@@ -76,3 +76,9 @@
   line-height: 1.6;
   padding: var(--space-8) 0 var(--space-4);
 }
+
+@media (max-width: 767px) {
+  .modal--word{
+    width: 90%;
+  }
+}

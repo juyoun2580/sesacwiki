@@ -198,3 +198,22 @@
   border: none;
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  .auth-body{
+    background: var(--neutral-surface);
+  }
+
+  .auth-card{
+    max-width: 90%;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    padding: 0 var(--space-20);
+  }
+
+  .auth-card__subtitle{
+    word-break: keep-all;
+  }
+}

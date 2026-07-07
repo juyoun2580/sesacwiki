@@ -77,7 +77,7 @@
 .profile-card__username {
   font-size: var(--fs-13);
   color: var(--neutral-500);
-  margin-top: 2px;
+  margin-top: var(--space-3);
 }
 
 .profile-card__actions {
@@ -742,4 +742,39 @@
   .settings-section__title {
     width: 100%;
   }
+}
+
+/* ---------- 마이페이지 로그아웃 버튼 (Mobile 전용) ----------
+   Desktop은 Header Dropdown의 로그아웃(components/header.html)을 그대로 쓰므로 숨긴다.
+   Mobile은 Header user-menu 자체가 숨겨져 있어(layout.css) 대시보드 안에 별도로 노출한다.
+   data-action="logout"만 있으면 되므로 새 로그아웃 함수 없이 auth.js의 기존 위임 리스너를
+   그대로 재사용한다(assets/js/auth.js의 bindLogout/logout). */
+.mypage-logout-btn {
+  display: none;
+  width: 100%;
+  margin-top: var(--space-20);
+}
+
+@media (max-width: 767px) {
+  .mypage-logout-btn {
+    display: inline-flex;
+  }
+
+  .profile-card{
+    flex-direction: column;
+  }
+
+  .profile-card__username {
+    text-align: center;
+  }
+
+  .profile-card__actions{
+    display:block;
+    width: 100%;
+  }
+
+  .profile-card__actions .btn{
+    width: 100%;
+  }
+
 }

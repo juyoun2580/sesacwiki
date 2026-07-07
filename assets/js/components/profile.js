@@ -37,11 +37,13 @@ async function loadProfile({ force = false } = {}) {
   }
 }
 
-// Header / 마이페이지 대시보드 / 프로필 수정 미리보기 중 현재 페이지에 실제로 있는
-// 요소만 골라 전부 같은 값으로 갱신한다. 없는 페이지의 요소는 조용히 건너뛴다.
+// Header / Bottom Navigation(모바일, nav.js) / 마이페이지 대시보드 / 프로필 수정 미리보기 중
+// 현재 페이지에 실제로 있는 요소만 골라 전부 같은 값으로 갱신한다. .user-chip__avatar는
+// Header와 Bottom Navigation 두 곳에 동시에 존재할 수 있어 querySelectorAll로 전부 갱신한다.
+// 없는 페이지의 요소는 조용히 건너뛴다.
 async function refreshProfileUI({ force = false } = {}) {
   const profile = await loadProfile({ force });
-  setProfileAvatar(document.querySelector('.user-chip__avatar'), profile);
+  document.querySelectorAll('.user-chip__avatar').forEach((el) => setProfileAvatar(el, profile));
   setProfileAvatar(document.getElementById('profile-avatar'), profile);
   setProfileAvatar(document.getElementById('avatar-preview'), profile);
 }

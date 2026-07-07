@@ -66,6 +66,10 @@ function updateHeader() {
     const nameEl = document.querySelector(".user-chip__name");
     if (nameEl) nameEl.textContent = user.name;
   }
+
+  // Bottom Navigation의 마지막 칸(로그인 링크 ↔ Header user-menu 재배치)도 auth 상태가
+  // 바뀔 때마다 함께 갱신한다 (nav.js, 아직 마운트 전이면 내부에서 안전하게 no-op).
+  if (typeof renderBottomNavAuthSlot === 'function') renderBottomNavAuthSlot();
 }
 
 // ── Guest 상태에서 노출되는 로그인 버튼: login.html로 이동만 담당(세션 생성은 하지 않는다) ──
@@ -105,14 +109,17 @@ function bindDropdown() {
   });
 }
 
-// ── Dropdown의 로그아웃 버튼: Supabase 세션 종료 후 로그인 페이지로 이동 ──
-function bindLogout() {
-  const logoutBtn = document.querySelector(".user-menu button.user-menu__item");
-  if (!logoutBtn) return;
+// ── Supabase 세션 종료 후 로그인 페이지로 이동 — Header Dropdown/마이페이지 로그아웃 버튼이 공유한다 ──
+async function logout() {
+  await supabaseClient.auth.signOut();
+  location.href = "/pages/auth/login.html";
+}
 
-  logoutBtn.addEventListener("click", async () => {
-    await supabaseClient.auth.signOut();
-    location.href = "/pages/auth/login.html";
+// ── data-action="logout"이 붙은 버튼은 위치(Header Dropdown, 마이페이지 등)에 상관없이
+// 전부 같은 logout()을 호출한다 — 위임 방식이라 나중에 로그아웃 버튼이 추가돼도 그대로 동작한다. ──
+function bindLogout() {
+  document.addEventListener("click", (e) => {
+    if (e.target.closest('[data-action="logout"]')) logout();
   });
 }
 
